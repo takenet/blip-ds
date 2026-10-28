@@ -66,7 +66,6 @@ export class BdsStep {
         return {
             "last": {
                 "type": "boolean",
-                "attribute": "last",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -82,11 +81,11 @@ export class BdsStep {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "last",
                 "defaultValue": "false"
             },
             "completed": {
                 "type": "boolean",
-                "attribute": "completed",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -102,11 +101,11 @@ export class BdsStep {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "completed",
                 "defaultValue": "false"
             },
             "active": {
                 "type": "boolean",
-                "attribute": "active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -122,11 +121,11 @@ export class BdsStep {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "active",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -142,11 +141,11 @@ export class BdsStep {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "index": {
                 "type": "number",
-                "attribute": "index",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -162,11 +161,11 @@ export class BdsStep {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "index",
                 "defaultValue": "0"
             },
             "pointer": {
                 "type": "boolean",
-                "attribute": "pointer",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -182,11 +181,11 @@ export class BdsStep {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "pointer",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -202,10 +201,10 @@ export class BdsStep {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=step.js.map

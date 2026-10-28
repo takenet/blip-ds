@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
 const CardSubtitle = class {
     constructor(hostRef) {
@@ -12,6 +12,3 @@ const CardSubtitle = class {
 };
 
 exports.bds_card_subtitle = CardSubtitle;
-//# sourceMappingURL=bds-card-subtitle.entry.cjs.js.map
-
-//# sourceMappingURL=bds-card-subtitle.cjs.entry.js.map

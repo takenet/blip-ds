@@ -43,7 +43,6 @@ export class Grid {
         return {
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -58,11 +57,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "height"
             },
             "direction": {
                 "type": "string",
-                "attribute": "direction",
                 "mutable": false,
                 "complexType": {
                     "original": "direction",
@@ -71,7 +70,8 @@ export class Grid {
                         "direction": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::direction"
+                            "id": "src/components/grid/grid-interface.ts::direction",
+                            "referenceLocation": "direction"
                         }
                     }
                 },
@@ -83,11 +83,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "direction"
             },
             "justifyContent": {
                 "type": "string",
-                "attribute": "justify-content",
                 "mutable": false,
                 "complexType": {
                     "original": "justifyContent",
@@ -96,7 +96,8 @@ export class Grid {
                         "justifyContent": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::justifyContent"
+                            "id": "src/components/grid/grid-interface.ts::justifyContent",
+                            "referenceLocation": "justifyContent"
                         }
                     }
                 },
@@ -108,11 +109,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "justify-content"
             },
             "flexWrap": {
                 "type": "string",
-                "attribute": "flex-wrap",
                 "mutable": false,
                 "complexType": {
                     "original": "flexWrap",
@@ -121,7 +122,8 @@ export class Grid {
                         "flexWrap": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::flexWrap"
+                            "id": "src/components/grid/grid-interface.ts::flexWrap",
+                            "referenceLocation": "flexWrap"
                         }
                     }
                 },
@@ -133,11 +135,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "flex-wrap"
             },
             "alignItems": {
                 "type": "string",
-                "attribute": "align-items",
                 "mutable": false,
                 "complexType": {
                     "original": "alignItems",
@@ -146,7 +148,8 @@ export class Grid {
                         "alignItems": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::alignItems"
+                            "id": "src/components/grid/grid-interface.ts::alignItems",
+                            "referenceLocation": "alignItems"
                         }
                     }
                 },
@@ -158,11 +161,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "align-items"
             },
             "container": {
                 "type": "boolean",
-                "attribute": "container",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -177,11 +180,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "container"
             },
             "containerFluid": {
                 "type": "boolean",
-                "attribute": "container-fluid",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -196,11 +199,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "container-fluid"
             },
             "xxs": {
                 "type": "string",
-                "attribute": "xxs",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -209,7 +212,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -221,11 +225,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "xxs"
             },
             "xs": {
                 "type": "string",
-                "attribute": "xs",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -234,7 +238,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -246,11 +251,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "xs"
             },
             "sm": {
                 "type": "string",
-                "attribute": "sm",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -259,7 +264,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -271,11 +277,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "sm"
             },
             "md": {
                 "type": "string",
-                "attribute": "md",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -284,7 +290,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -296,11 +303,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "md"
             },
             "lg": {
                 "type": "string",
-                "attribute": "lg",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -309,7 +316,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -321,11 +329,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "lg"
             },
             "xg": {
                 "type": "string",
-                "attribute": "xg",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -334,7 +342,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -346,11 +355,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "xg"
             },
             "xxsOffset": {
                 "type": "string",
-                "attribute": "xxs-offset",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -359,7 +368,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -371,11 +381,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "xxs-offset"
             },
             "xsOffset": {
                 "type": "string",
-                "attribute": "xs-offset",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -384,7 +394,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -396,11 +407,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "xs-offset"
             },
             "smOffset": {
                 "type": "string",
-                "attribute": "sm-offset",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -409,7 +420,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -421,11 +433,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "sm-offset"
             },
             "mdOffset": {
                 "type": "string",
-                "attribute": "md-offset",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -434,7 +446,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -446,11 +459,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "md-offset"
             },
             "lgOffset": {
                 "type": "string",
-                "attribute": "lg-offset",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -459,7 +472,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -471,11 +485,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "lg-offset"
             },
             "xgOffset": {
                 "type": "string",
-                "attribute": "xg-offset",
                 "mutable": false,
                 "complexType": {
                     "original": "breakpoint",
@@ -484,7 +498,8 @@ export class Grid {
                         "breakpoint": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::breakpoint"
+                            "id": "src/components/grid/grid-interface.ts::breakpoint",
+                            "referenceLocation": "breakpoint"
                         }
                     }
                 },
@@ -496,11 +511,11 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "xg-offset"
             },
             "gap": {
                 "type": "string",
-                "attribute": "gap",
                 "mutable": false,
                 "complexType": {
                     "original": "gap",
@@ -509,7 +524,8 @@ export class Grid {
                         "gap": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::gap"
+                            "id": "src/components/grid/grid-interface.ts::gap",
+                            "referenceLocation": "gap"
                         }
                     }
                 },
@@ -521,20 +537,21 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "gap"
             },
             "padding": {
                 "type": "string",
-                "attribute": "padding",
                 "mutable": false,
                 "complexType": {
                     "original": "padding",
-                    "resolved": "\"none\" | \"half\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"10\" | \"11\" | \"12\" | \"l-none\" | \"l-half\" | \"l-1\" | \"l-2\" | \"l-3\" | \"l-4\" | \"l-5\" | \"l-6\" | \"l-7\" | \"l-8\" | \"l-9\" | \"l-10\" | \"l-11\" | \"l-12\" | \"b-none\" | \"b-half\" | \"b-1\" | \"b-2\" | \"b-3\" | \"b-4\" | \"b-5\" | \"b-6\" | \"b-7\" | \"b-8\" | \"b-9\" | \"b-10\" | \"b-11\" | \"b-12\" | \"r-none\" | \"r-half\" | \"r-1\" | \"r-2\" | \"r-3\" | \"r-4\" | \"r-5\" | \"r-6\" | \"r-7\" | \"r-8\" | \"r-9\" | \"r-10\" | \"r-11\" | \"r-12\" | \"t-none\" | \"t-half\" | \"t-1\" | \"t-2\" | \"t-3\" | \"t-4\" | \"t-5\" | \"t-6\" | \"t-7\" | \"t-8\" | \"t-9\" | \"t-10\" | \"t-11\" | \"t-12\" | \"y-none\" | \"y-half\" | \"y-1\" | \"y-2\" | \"y-3\" | \"y-4\" | \"y-5\" | \"y-6\" | \"y-7\" | \"y-8\" | \"y-9\" | \"y-10\" | \"y-11\" | \"y-12\" | \"x-none\" | \"x-half\" | \"x-1\" | \"x-2\" | \"x-3\" | \"x-4\" | \"x-5\" | \"x-6\" | \"x-7\" | \"x-8\" | \"x-9\" | \"x-10\" | \"x-11\" | \"x-12\"",
+                    "resolved": "\"1\" | \"10\" | \"11\" | \"12\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"b-1\" | \"b-10\" | \"b-11\" | \"b-12\" | \"b-2\" | \"b-3\" | \"b-4\" | \"b-5\" | \"b-6\" | \"b-7\" | \"b-8\" | \"b-9\" | \"b-half\" | \"b-none\" | \"half\" | \"l-1\" | \"l-10\" | \"l-11\" | \"l-12\" | \"l-2\" | \"l-3\" | \"l-4\" | \"l-5\" | \"l-6\" | \"l-7\" | \"l-8\" | \"l-9\" | \"l-half\" | \"l-none\" | \"none\" | \"r-1\" | \"r-10\" | \"r-11\" | \"r-12\" | \"r-2\" | \"r-3\" | \"r-4\" | \"r-5\" | \"r-6\" | \"r-7\" | \"r-8\" | \"r-9\" | \"r-half\" | \"r-none\" | \"t-1\" | \"t-10\" | \"t-11\" | \"t-12\" | \"t-2\" | \"t-3\" | \"t-4\" | \"t-5\" | \"t-6\" | \"t-7\" | \"t-8\" | \"t-9\" | \"t-half\" | \"t-none\" | \"x-1\" | \"x-10\" | \"x-11\" | \"x-12\" | \"x-2\" | \"x-3\" | \"x-4\" | \"x-5\" | \"x-6\" | \"x-7\" | \"x-8\" | \"x-9\" | \"x-half\" | \"x-none\" | \"y-1\" | \"y-10\" | \"y-11\" | \"y-12\" | \"y-2\" | \"y-3\" | \"y-4\" | \"y-5\" | \"y-6\" | \"y-7\" | \"y-8\" | \"y-9\" | \"y-half\" | \"y-none\"",
                     "references": {
                         "padding": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::padding"
+                            "id": "src/components/grid/grid-interface.ts::padding",
+                            "referenceLocation": "padding"
                         }
                     }
                 },
@@ -546,20 +563,21 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "padding"
             },
             "margin": {
                 "type": "string",
-                "attribute": "margin",
                 "mutable": false,
                 "complexType": {
                     "original": "margin",
-                    "resolved": "\"none\" | \"half\" | \"1\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"10\" | \"11\" | \"12\" | \"l-none\" | \"l-half\" | \"l-1\" | \"l-2\" | \"l-3\" | \"l-4\" | \"l-5\" | \"l-6\" | \"l-7\" | \"l-8\" | \"l-9\" | \"l-10\" | \"l-11\" | \"l-12\" | \"b-none\" | \"b-half\" | \"b-1\" | \"b-2\" | \"b-3\" | \"b-4\" | \"b-5\" | \"b-6\" | \"b-7\" | \"b-8\" | \"b-9\" | \"b-10\" | \"b-11\" | \"r-none\" | \"r-half\" | \"r-1\" | \"r-2\" | \"r-3\" | \"r-4\" | \"r-5\" | \"r-6\" | \"r-7\" | \"r-8\" | \"r-9\" | \"r-10\" | \"r-11\" | \"r-12\" | \"t-none\" | \"t-half\" | \"t-1\" | \"t-2\" | \"t-3\" | \"t-4\" | \"t-5\" | \"t-6\" | \"t-7\" | \"t-8\" | \"t-9\" | \"t-10\" | \"t-11\" | \"t-12\" | \"y-none\" | \"y-half\" | \"y-1\" | \"y-2\" | \"y-3\" | \"y-4\" | \"y-5\" | \"y-6\" | \"y-7\" | \"y-8\" | \"y-9\" | \"y-10\" | \"y-11\" | \"y-12\" | \"x-none\" | \"x-half\" | \"x-1\" | \"x-2\" | \"x-3\" | \"x-4\" | \"x-5\" | \"x-6\" | \"x-7\" | \"x-8\" | \"x-9\" | \"x-10\" | \"x-11\" | \"x-12\"",
+                    "resolved": "\"1\" | \"10\" | \"11\" | \"12\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"b-1\" | \"b-10\" | \"b-11\" | \"b-2\" | \"b-3\" | \"b-4\" | \"b-5\" | \"b-6\" | \"b-7\" | \"b-8\" | \"b-9\" | \"b-half\" | \"b-none\" | \"half\" | \"l-1\" | \"l-10\" | \"l-11\" | \"l-12\" | \"l-2\" | \"l-3\" | \"l-4\" | \"l-5\" | \"l-6\" | \"l-7\" | \"l-8\" | \"l-9\" | \"l-half\" | \"l-none\" | \"none\" | \"r-1\" | \"r-10\" | \"r-11\" | \"r-12\" | \"r-2\" | \"r-3\" | \"r-4\" | \"r-5\" | \"r-6\" | \"r-7\" | \"r-8\" | \"r-9\" | \"r-half\" | \"r-none\" | \"t-1\" | \"t-10\" | \"t-11\" | \"t-12\" | \"t-2\" | \"t-3\" | \"t-4\" | \"t-5\" | \"t-6\" | \"t-7\" | \"t-8\" | \"t-9\" | \"t-half\" | \"t-none\" | \"x-1\" | \"x-10\" | \"x-11\" | \"x-12\" | \"x-2\" | \"x-3\" | \"x-4\" | \"x-5\" | \"x-6\" | \"x-7\" | \"x-8\" | \"x-9\" | \"x-half\" | \"x-none\" | \"y-1\" | \"y-10\" | \"y-11\" | \"y-12\" | \"y-2\" | \"y-3\" | \"y-4\" | \"y-5\" | \"y-6\" | \"y-7\" | \"y-8\" | \"y-9\" | \"y-half\" | \"y-none\"",
                     "references": {
                         "margin": {
                             "location": "import",
                             "path": "./grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::margin"
+                            "id": "src/components/grid/grid-interface.ts::margin",
+                            "referenceLocation": "margin"
                         }
                     }
                 },
@@ -571,20 +589,21 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "margin"
             },
             "bgColor": {
                 "type": "string",
-                "attribute": "bg-color",
                 "mutable": false,
                 "complexType": {
                     "original": "Color",
-                    "resolved": "\"$color-brand\" | \"$color-primary\" | \"$color-secondary\" | \"$color-surface-0\" | \"$color-surface-1\" | \"$color-surface-2\" | \"$color-surface-3\" | \"$color-surface-4\" | \"$color-surface-positive\" | \"$color-surface-negative\" | \"$color-surface-primary\" | \"$color-content-default\" | \"$color-content-disable\" | \"$color-content-ghost\" | \"$color-content-bright\" | \"$color-content-din\" | \"$color-border-1\" | \"$color-border-2\" | \"$color-border-3\" | \"$color-info\" | \"$color-system\" | \"$color-focus\" | \"$color-success\" | \"$color-warning\" | \"$color-error\" | \"$color-delete\" | \"$color-shadow-0\" | \"$color-shadow-1\" | \"$color-hover\" | \"$color-pressed\" | \"$color-positive\" | \"$color-negative\"",
+                    "resolved": "\"$color-border-1\" | \"$color-border-2\" | \"$color-border-3\" | \"$color-brand\" | \"$color-content-bright\" | \"$color-content-default\" | \"$color-content-din\" | \"$color-content-disable\" | \"$color-content-ghost\" | \"$color-delete\" | \"$color-error\" | \"$color-focus\" | \"$color-hover\" | \"$color-info\" | \"$color-negative\" | \"$color-positive\" | \"$color-pressed\" | \"$color-primary\" | \"$color-secondary\" | \"$color-shadow-0\" | \"$color-shadow-1\" | \"$color-success\" | \"$color-surface-0\" | \"$color-surface-1\" | \"$color-surface-2\" | \"$color-surface-3\" | \"$color-surface-4\" | \"$color-surface-negative\" | \"$color-surface-positive\" | \"$color-surface-primary\" | \"$color-system\" | \"$color-warning\"",
                     "references": {
                         "Color": {
                             "location": "import",
                             "path": "./color-grid-interface",
-                            "id": "src/components/grid/color-grid-interface.ts::Color"
+                            "id": "src/components/grid/color-grid-interface.ts::Color",
+                            "referenceLocation": "Color"
                         }
                     }
                 },
@@ -596,9 +615,9 @@ export class Grid {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "bg-color"
             }
         };
     }
 }
-//# sourceMappingURL=grid.js.map

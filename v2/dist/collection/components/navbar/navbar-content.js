@@ -17,4 +17,3 @@ export class NavbarContent {
     }
     static get elementRef() { return "hostElement"; }
 }
-//# sourceMappingURL=navbar-content.js.map

@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
-const modalCloseButtonCss = ".modal__close__button-icon{opacity:0;visibility:hidden;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:16px}.modal__close__button-icon--active{opacity:1;visibility:visible}";
+const modalCloseButtonCss = () => `.modal__close__button-icon{opacity:0;visibility:hidden;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:16px}.modal__close__button-icon--active{opacity:1;visibility:visible}`;
 
 const BdsModalCloseButton = class {
     constructor(hostRef) {
@@ -19,9 +19,6 @@ const BdsModalCloseButton = class {
             } }, index.h("bds-icon", { key: '0d39577548c668c4c780810e6a3c5fce4a3e50e1', size: "medium", name: "close" })));
     }
 };
-BdsModalCloseButton.style = modalCloseButtonCss;
+BdsModalCloseButton.style = modalCloseButtonCss();
 
 exports.bds_modal_close_button = BdsModalCloseButton;
-//# sourceMappingURL=bds-modal-close-button.entry.cjs.js.map
-
-//# sourceMappingURL=bds-modal-close-button.cjs.entry.js.map

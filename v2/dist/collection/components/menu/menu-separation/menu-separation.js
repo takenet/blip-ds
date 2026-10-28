@@ -32,7 +32,6 @@ export class BdsMenuSeparation {
         return {
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -48,11 +47,11 @@ export class BdsMenuSeparation {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "null"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -68,9 +67,9 @@ export class BdsMenuSeparation {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "null"
             }
         };
     }
 }
-//# sourceMappingURL=menu-separation.js.map

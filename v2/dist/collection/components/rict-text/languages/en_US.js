@@ -22,4 +22,3 @@ export const enTerms = [
         expand: 'Expand',
     },
 ];
-//# sourceMappingURL=en_US.js.map

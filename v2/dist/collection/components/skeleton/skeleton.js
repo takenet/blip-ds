@@ -42,7 +42,6 @@ export class Skeleton {
         return {
             "shape": {
                 "type": "string",
-                "attribute": "shape",
                 "mutable": false,
                 "complexType": {
                     "original": "Shape",
@@ -64,11 +63,11 @@ export class Skeleton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "shape",
                 "defaultValue": "'square'"
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -84,11 +83,11 @@ export class Skeleton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "height",
                 "defaultValue": "'50px'"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -104,11 +103,11 @@ export class Skeleton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "width",
                 "defaultValue": "'100%'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -124,9 +123,9 @@ export class Skeleton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
     }
 }
-//# sourceMappingURL=skeleton.js.map

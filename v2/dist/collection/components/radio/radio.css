@@ -31,8 +31,6 @@
   display: inline-flex;
   align-items: center;
   flex-wrap: nowrap;
-  /** State Checked */
-  /** State Disabled */
 }
 .radio [type=radio] {
   display: none;
@@ -107,6 +105,9 @@
   padding-left: 8px;
   color: var(--color-content-default, rgb(40, 40, 40));
 }
+.radio {
+  /** State Checked */
+}
 .radio__input[type=radio]:checked ~ .radio__circle {
   background: transparent;
   border-color: var(--color-content-default, rgb(40, 40, 40));
@@ -119,6 +120,9 @@
 }
 .radio__input[type=radio]:checked ~ .radio__circle:hover .radio__circle__pointer {
   background-color: var(--color-primary, rgb(30, 107, 241));
+}
+.radio {
+  /** State Disabled */
 }
 .radio__input[type=radio]:disabled ~ .radio__circle {
   border-color: var(--color-content-disable, rgb(89, 89, 89));

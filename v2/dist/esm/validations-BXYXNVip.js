@@ -21,6 +21,3 @@ const dateValidation = (term) => {
 };
 
 export { dateValidation as d, emailValidation as e, numberValidation as n, whitespaceValidation as w };
-//# sourceMappingURL=validations-BXYXNVip.js.map
-
-//# sourceMappingURL=validations-BXYXNVip.js.map

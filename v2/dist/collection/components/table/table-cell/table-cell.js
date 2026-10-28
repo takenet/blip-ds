@@ -34,7 +34,6 @@ export class TableCell {
         return {
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -50,11 +49,11 @@ export class TableCell {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'text'"
             },
             "sortable": {
                 "type": "boolean",
-                "attribute": "sortable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -70,11 +69,11 @@ export class TableCell {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "sortable",
                 "defaultValue": "false"
             },
             "justifyContent": {
                 "type": "string",
-                "attribute": "justify-content",
                 "mutable": false,
                 "complexType": {
                     "original": "JustifyContent",
@@ -96,6 +95,7 @@ export class TableCell {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "justify-content",
                 "defaultValue": "'left'"
             }
         };
@@ -107,4 +107,3 @@ export class TableCell {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=table-cell.js.map

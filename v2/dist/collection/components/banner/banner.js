@@ -59,7 +59,6 @@ export class Banner {
         return {
             "bannerAlign": {
                 "type": "string",
-                "attribute": "banner-align",
                 "mutable": false,
                 "complexType": {
                     "original": "BannerAlign",
@@ -81,11 +80,11 @@ export class Banner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "banner-align",
                 "defaultValue": "'center'"
             },
             "buttonClose": {
                 "type": "string",
-                "attribute": "button-close",
                 "mutable": false,
                 "complexType": {
                     "original": "ButtonClose",
@@ -107,11 +106,11 @@ export class Banner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "button-close",
                 "defaultValue": "'false'"
             },
             "context": {
                 "type": "string",
-                "attribute": "context",
                 "mutable": false,
                 "complexType": {
                     "original": "Context",
@@ -133,11 +132,11 @@ export class Banner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "context",
                 "defaultValue": "'outside'"
             },
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "BannerVariant",
@@ -159,11 +158,11 @@ export class Banner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'system'"
             },
             "dtButtonClose": {
                 "type": "string",
-                "attribute": "dt-button-close",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -179,6 +178,7 @@ export class Banner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-close",
                 "defaultValue": "null"
             }
         };
@@ -229,4 +229,3 @@ export class Banner {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=banner.js.map

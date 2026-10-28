@@ -83,7 +83,6 @@ export class DataTable {
         return {
             "options": {
                 "type": "string",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -98,11 +97,11 @@ export class DataTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "options"
             },
             "column": {
                 "type": "string",
-                "attribute": "column",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -117,11 +116,11 @@ export class DataTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "column"
             },
             "avatar": {
                 "type": "boolean",
-                "attribute": "avatar",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -137,11 +136,11 @@ export class DataTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "avatar",
                 "defaultValue": "false"
             },
             "chips": {
                 "type": "boolean",
-                "attribute": "chips",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -157,11 +156,11 @@ export class DataTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "chips",
                 "defaultValue": "false"
             },
             "actionArea": {
                 "type": "boolean",
-                "attribute": "action-area",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -176,11 +175,11 @@ export class DataTable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "action-area"
             },
             "sorting": {
                 "type": "boolean",
-                "attribute": "sorting",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -196,6 +195,7 @@ export class DataTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "sorting",
                 "defaultValue": "false"
             }
         };
@@ -284,4 +284,3 @@ export class DataTable {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=data-table.js.map

@@ -175,7 +175,6 @@ export class ListItem {
         return {
             "checked": {
                 "type": "boolean",
-                "attribute": "checked",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -191,11 +190,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "checked",
                 "defaultValue": "false"
             },
             "typeList": {
                 "type": "string",
-                "attribute": "type-list",
                 "mutable": false,
                 "complexType": {
                     "original": "TypeList",
@@ -204,7 +203,8 @@ export class ListItem {
                         "TypeList": {
                             "location": "import",
                             "path": "./list",
-                            "id": "src/components/list/list.tsx::TypeList"
+                            "id": "src/components/list/list.tsx::TypeList",
+                            "referenceLocation": "TypeList"
                         }
                     }
                 },
@@ -217,11 +217,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type-list",
                 "defaultValue": "null"
             },
             "avatarName": {
                 "type": "string",
-                "attribute": "avatar-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -237,11 +237,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "avatar-name",
                 "defaultValue": "null"
             },
             "avatarThumbnail": {
                 "type": "string",
-                "attribute": "avatar-thumbnail",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -257,11 +257,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "avatar-thumbnail",
                 "defaultValue": "null"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -277,11 +277,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -297,11 +297,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "null"
             },
             "text": {
                 "type": "string",
-                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -317,11 +317,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "text",
                 "defaultValue": "null"
             },
             "secondaryText": {
                 "type": "string",
-                "attribute": "secondary-text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -337,11 +337,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "secondary-text",
                 "defaultValue": "null"
             },
             "chips": {
                 "type": "string",
-                "attribute": "chips",
                 "mutable": true,
                 "complexType": {
                     "original": "string | string[]",
@@ -357,11 +357,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "chips",
                 "defaultValue": "[]"
             },
             "actionsButtons": {
                 "type": "string",
-                "attribute": "actions-buttons",
                 "mutable": true,
                 "complexType": {
                     "original": "string | string[]",
@@ -377,11 +377,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "actions-buttons",
                 "defaultValue": "[]"
             },
             "clickable": {
                 "type": "boolean",
-                "attribute": "clickable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -397,11 +397,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "clickable",
                 "defaultValue": "false"
             },
             "active": {
                 "type": "boolean",
-                "attribute": "active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -417,11 +417,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "active",
                 "defaultValue": "false"
             },
             "borderRadius": {
                 "type": "boolean",
-                "attribute": "border-radius",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -437,11 +437,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "border-radius",
                 "defaultValue": "false"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "ItemSize",
@@ -463,11 +463,11 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -483,6 +483,7 @@ export class ListItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -511,7 +512,8 @@ export class ListItem {
                         "TypeList": {
                             "location": "import",
                             "path": "./list",
-                            "id": "src/components/list/list.tsx::TypeList"
+                            "id": "src/components/list/list.tsx::TypeList",
+                            "referenceLocation": "TypeList"
                         }
                     }
                 }
@@ -551,4 +553,3 @@ export class ListItem {
             }];
     }
 }
-//# sourceMappingURL=list-item.js.map

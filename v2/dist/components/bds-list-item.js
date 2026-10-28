@@ -1,9 +1,1 @@
-import { L as ListItem, d as defineCustomElement$1 } from './p-BSA2RLdw.js';
-
-const BdsListItem = ListItem;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsListItem, defineCustomElement };
-//# sourceMappingURL=bds-list-item.js.map
-
-//# sourceMappingURL=bds-list-item.js.map
+import{L as s,d as o}from"./p-B8NQBSsS.js";const p=s,r=o;export{p as BdsListItem,r as defineCustomElement}

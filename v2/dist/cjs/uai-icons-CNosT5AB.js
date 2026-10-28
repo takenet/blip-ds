@@ -658,6 +658,3 @@ const UAI_ICONS = {
 const isUaiIcon = (theme, name) => !!name && UAI_ICONS[theme].has(name);
 
 exports.isUaiIcon = isUaiIcon;
-//# sourceMappingURL=uai-icons-CNosT5AB.js.map
-
-//# sourceMappingURL=uai-icons-CNosT5AB.js.map

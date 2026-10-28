@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 var positionElement = require('./position-element-Due63Z64.js');
 
 const en_US = {
@@ -22,7 +22,7 @@ const es_MX = {
     pages: 'páginas'
 };
 
-const paginationCss = ":host{display:block}:host .actions_select{width:74px}:host(.full_width){width:100%}@media screen and (max-width: 905px){.items_per_page{display:none}.actions{width:100%;-ms-flex-pack:center;justify-content:center}}@media screen and (max-width: 600px){.actions--text{display:none}}";
+const paginationCss = () => `:host{display:block}:host .actions_select{width:74px}:host(.full_width){width:100%}@media screen and (max-width: 905px){.items_per_page{display:none}.actions{width:100%;-ms-flex-pack:center;justify-content:center}}@media screen and (max-width: 600px){.actions--text{display:none}}`;
 
 const Pagination = class {
     constructor(hostRef) {
@@ -205,15 +205,20 @@ const Pagination = class {
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {
-        "pages": ["pagesChanged"],
-        "startedPage": ["pagesChanged"],
-        "value": ["valueChanged"],
-        "itemValue": ["itemSelected"]
+        "pages": [{
+                "pagesChanged": 0
+            }],
+        "startedPage": [{
+                "pagesChanged": 0
+            }],
+        "value": [{
+                "valueChanged": 0
+            }],
+        "itemValue": [{
+                "itemSelected": 0
+            }]
     }; }
 };
-Pagination.style = paginationCss;
+Pagination.style = paginationCss();
 
 exports.bds_pagination = Pagination;
-//# sourceMappingURL=bds-pagination.entry.cjs.js.map
-
-//# sourceMappingURL=bds-pagination.cjs.entry.js.map

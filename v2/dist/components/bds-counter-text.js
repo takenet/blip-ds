@@ -1,9 +1,1 @@
-import { C as CounterText, d as defineCustomElement$1 } from './p-DRXzHY5G.js';
-
-const BdsCounterText = CounterText;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsCounterText, defineCustomElement };
-//# sourceMappingURL=bds-counter-text.js.map
-
-//# sourceMappingURL=bds-counter-text.js.map
+import{C as o,d as s}from"./p-BHifBnC-.js";const p=o,r=s;export{p as BdsCounterText,r as defineCustomElement}

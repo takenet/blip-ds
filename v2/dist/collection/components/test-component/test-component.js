@@ -15,4 +15,3 @@ export class TestComponent {
         };
     }
 }
-//# sourceMappingURL=test-component.js.map

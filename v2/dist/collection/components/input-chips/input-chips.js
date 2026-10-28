@@ -397,7 +397,6 @@ export class InputChips {
         return {
             "chips": {
                 "type": "string",
-                "attribute": "chips",
                 "mutable": true,
                 "complexType": {
                     "original": "string[] | string",
@@ -413,11 +412,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "chips",
                 "defaultValue": "[]"
             },
             "blurCreation": {
                 "type": "boolean",
-                "attribute": "blur-creation",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -433,11 +432,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "blur-creation",
                 "defaultValue": "false"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "InputChipsTypes",
@@ -446,7 +445,8 @@ export class InputChips {
                         "InputChipsTypes": {
                             "location": "import",
                             "path": "./input-chips-interface",
-                            "id": "src/components/input-chips/input-chips-interface.ts::InputChipsTypes"
+                            "id": "src/components/input-chips/input-chips-interface.ts::InputChipsTypes",
+                            "referenceLocation": "InputChipsTypes"
                         }
                     }
                 },
@@ -459,11 +459,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'text'"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -479,11 +479,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "''"
             },
             "maxlength": {
                 "type": "number",
-                "attribute": "maxlength",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -498,11 +498,11 @@ export class InputChips {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "maxlength"
             },
             "maxChipsLength": {
                 "type": "number",
-                "attribute": "max-chips-length",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -517,11 +517,11 @@ export class InputChips {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "max-chips-length"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -537,11 +537,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "''"
             },
             "delimiters": {
                 "type": "unknown",
-                "attribute": "delimiters",
                 "mutable": false,
                 "complexType": {
                     "original": "RegExp",
@@ -565,7 +565,6 @@ export class InputChips {
             },
             "errorMessage": {
                 "type": "string",
-                "attribute": "error-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -581,11 +580,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error-message",
                 "defaultValue": "''"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -601,11 +600,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "success": {
                 "type": "boolean",
-                "attribute": "success",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -621,11 +620,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "success",
                 "defaultValue": "false"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string | null",
@@ -641,11 +640,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "value",
                 "defaultValue": "''"
             },
             "duplicated": {
                 "type": "boolean",
-                "attribute": "duplicated",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -661,11 +660,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "duplicated",
                 "defaultValue": "false"
             },
             "disableSubmit": {
                 "type": "boolean",
-                "attribute": "disable-submit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -681,11 +680,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disable-submit",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -701,11 +700,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "helperMessage": {
                 "type": "string",
-                "attribute": "helper-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -721,11 +720,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "helper-message",
                 "defaultValue": "''"
             },
             "successMessage": {
                 "type": "string",
-                "attribute": "success-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -741,11 +740,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "success-message",
                 "defaultValue": "''"
             },
             "inputName": {
                 "type": "string",
-                "attribute": "input-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -761,11 +760,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "input-name",
                 "defaultValue": "''"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -781,11 +780,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "counterLength": {
                 "type": "boolean",
-                "attribute": "counter-length",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -801,11 +800,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "counter-length",
                 "defaultValue": "false"
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -820,11 +819,11 @@ export class InputChips {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "height"
             },
             "maxHeight": {
                 "type": "string",
-                "attribute": "max-height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -839,11 +838,11 @@ export class InputChips {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "max-height"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -859,11 +858,11 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             },
             "dtButtonClose": {
                 "type": "string",
-                "attribute": "dt-button-close",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -879,6 +878,7 @@ export class InputChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-close",
                 "defaultValue": "null"
             }
         };
@@ -1126,4 +1126,3 @@ export class InputChips {
             }];
     }
 }
-//# sourceMappingURL=input-chips.js.map

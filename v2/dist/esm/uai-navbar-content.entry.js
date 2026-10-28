@@ -1,6 +1,6 @@
-import { r as registerInstance, h, H as Host, a as getElement } from './index-gowA9FoV.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BnSR_zce.js';
 
-const uaiNavbarContentCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}";
+const uaiNavbarContentCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}`;
 
 const UaiNavbarContent = class {
     constructor(hostRef) {
@@ -11,9 +11,6 @@ const UaiNavbarContent = class {
     }
     get hostElement() { return getElement(this); }
 };
-UaiNavbarContent.style = uaiNavbarContentCss;
+UaiNavbarContent.style = uaiNavbarContentCss();
 
 export { UaiNavbarContent as uai_navbar_content };
-//# sourceMappingURL=uai-navbar-content.entry.js.map
-
-//# sourceMappingURL=uai-navbar-content.entry.js.map

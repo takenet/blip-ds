@@ -349,7 +349,6 @@ export class BdsdatepickerPeriod {
         return {
             "startDate": {
                 "type": "unknown",
-                "attribute": "start-date",
                 "mutable": false,
                 "complexType": {
                     "original": "DaysList",
@@ -358,7 +357,8 @@ export class BdsdatepickerPeriod {
                         "DaysList": {
                             "location": "import",
                             "path": "../datepicker-interface",
-                            "id": "src/components/datepicker/datepicker-interface.ts::DaysList"
+                            "id": "src/components/datepicker/datepicker-interface.ts::DaysList",
+                            "referenceLocation": "DaysList"
                         }
                     }
                 },
@@ -374,7 +374,6 @@ export class BdsdatepickerPeriod {
             },
             "endDate": {
                 "type": "unknown",
-                "attribute": "end-date",
                 "mutable": false,
                 "complexType": {
                     "original": "DaysList",
@@ -383,7 +382,8 @@ export class BdsdatepickerPeriod {
                         "DaysList": {
                             "location": "import",
                             "path": "../datepicker-interface",
-                            "id": "src/components/datepicker/datepicker-interface.ts::DaysList"
+                            "id": "src/components/datepicker/datepicker-interface.ts::DaysList",
+                            "referenceLocation": "DaysList"
                         }
                     }
                 },
@@ -399,7 +399,6 @@ export class BdsdatepickerPeriod {
             },
             "startDateSelect": {
                 "type": "unknown",
-                "attribute": "start-date-select",
                 "mutable": true,
                 "complexType": {
                     "original": "Date",
@@ -423,7 +422,6 @@ export class BdsdatepickerPeriod {
             },
             "endDateSelect": {
                 "type": "unknown",
-                "attribute": "end-date-select",
                 "mutable": true,
                 "complexType": {
                     "original": "Date",
@@ -447,7 +445,6 @@ export class BdsdatepickerPeriod {
             },
             "language": {
                 "type": "string",
-                "attribute": "language",
                 "mutable": false,
                 "complexType": {
                     "original": "languages",
@@ -456,7 +453,8 @@ export class BdsdatepickerPeriod {
                         "languages": {
                             "location": "import",
                             "path": "../../../utils/languages",
-                            "id": "src/utils/languages/index.ts::languages"
+                            "id": "src/utils/languages/index.ts::languages",
+                            "referenceLocation": "languages"
                         }
                     }
                 },
@@ -469,11 +467,11 @@ export class BdsdatepickerPeriod {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "language",
                 "defaultValue": "'pt_BR'"
             },
             "stateSelect": {
                 "type": "string",
-                "attribute": "state-select",
                 "mutable": true,
                 "complexType": {
                     "original": "stateSelect",
@@ -495,11 +493,11 @@ export class BdsdatepickerPeriod {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "state-select",
                 "defaultValue": "'start'"
             },
             "dtButtonPrev": {
                 "type": "string",
-                "attribute": "dt-button-prev",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -515,11 +513,11 @@ export class BdsdatepickerPeriod {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-prev",
                 "defaultValue": "null"
             },
             "dtButtonNext": {
                 "type": "string",
-                "attribute": "dt-button-next",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -535,11 +533,11 @@ export class BdsdatepickerPeriod {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-next",
                 "defaultValue": "null"
             },
             "dtSelectMonth": {
                 "type": "string",
-                "attribute": "dt-select-month",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -555,11 +553,11 @@ export class BdsdatepickerPeriod {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-select-month",
                 "defaultValue": "null"
             },
             "dtSelectYear": {
                 "type": "string",
-                "attribute": "dt-select-year",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -575,6 +573,7 @@ export class BdsdatepickerPeriod {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-select-year",
                 "defaultValue": "null"
             }
         };
@@ -696,4 +695,3 @@ export class BdsdatepickerPeriod {
             }];
     }
 }
-//# sourceMappingURL=datepicker-period.js.map

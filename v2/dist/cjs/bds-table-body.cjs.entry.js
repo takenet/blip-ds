@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
-const tableBodyCss = ".sc-bds-table-body-h{display:table-row-group;height:64px}.multiple.sc-bds-table-body-h{border-bottom:1px solid var(--color-border-2, rgba(0, 0, 0, 0.16))}.sc-bds-table-body-h:last-child{border-bottom:none}";
+const tableBodyCss = () => `.sc-bds-table-body-h{display:table-row-group;height:64px}.multiple.sc-bds-table-body-h{border-bottom:1px solid var(--color-border-2, rgba(0, 0, 0, 0.16))}.sc-bds-table-body-h:last-child{border-bottom:none}`;
 
 const TableBody = class {
     constructor(hostRef) {
@@ -20,9 +20,6 @@ const TableBody = class {
     }
     get element() { return index.getElement(this); }
 };
-TableBody.style = tableBodyCss;
+TableBody.style = tableBodyCss();
 
 exports.bds_table_body = TableBody;
-//# sourceMappingURL=bds-table-body.entry.cjs.js.map
-
-//# sourceMappingURL=bds-table-body.cjs.entry.js.map

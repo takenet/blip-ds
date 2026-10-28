@@ -1,7 +1,7 @@
-import { r as registerInstance, c as createEvent, h, H as Host } from './index-gowA9FoV.js';
+import { r as registerInstance, c as createEvent, h, H as Host } from './index-BnSR_zce.js';
 import { c as getScrollParent, d as positionElement } from './position-element-CyGI72Zy.js';
 
-const menuCss = ".menu{position:fixed;pointer-events:none;top:0;left:0;padding:2px;background-color:var(--color-surface-1, rgb(246, 246, 246));border-radius:8px;-webkit-box-shadow:0px 8px 12px rgba(0, 0, 0, 0.08);box-shadow:0px 8px 12px rgba(0, 0, 0, 0.08);width:240px;opacity:0;-webkit-transition:opacity 0.5s;-moz-transition:opacity 0.5s;transition:opacity 0.5s;z-index:90000}.menu__open{pointer-events:auto;opacity:1}.outzone{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:80000}";
+const menuCss = () => `.menu{position:fixed;pointer-events:none;top:0;left:0;padding:2px;background-color:var(--color-surface-1, rgb(246, 246, 246));border-radius:8px;-webkit-box-shadow:0px 8px 12px rgba(0, 0, 0, 0.08);box-shadow:0px 8px 12px rgba(0, 0, 0, 0.08);width:240px;opacity:0;-webkit-transition:opacity 0.5s;-moz-transition:opacity 0.5s;transition:opacity 0.5s;z-index:90000}.menu__open{pointer-events:auto;opacity:1}.outzone{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:80000}`;
 
 const BdsMenu = class {
     constructor(hostRef) {
@@ -62,12 +62,11 @@ const BdsMenu = class {
             }, style: menuPosition, part: "bds-menu__container" }, h("slot", { key: '7e7fe200ec5ead5f60f7e01938f5ec19cedf6ff7' })), this.open && h("div", { key: '4278c4de9006197f145a93631ec7845d6bde0cd7', class: { outzone: true }, onClick: (ev) => this.onClickCloseButtom(ev) })));
     }
     static get watchers() { return {
-        "open": ["openMenu"]
+        "open": [{
+                "openMenu": 0
+            }]
     }; }
 };
-BdsMenu.style = menuCss;
+BdsMenu.style = menuCss();
 
 export { BdsMenu as bds_menu };
-//# sourceMappingURL=bds-menu.entry.js.map
-
-//# sourceMappingURL=bds-menu.entry.js.map

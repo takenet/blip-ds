@@ -26,4 +26,3 @@ export const maskDate = (term) => {
     value = value.replace(/^(\d{2}\/\d{2})(\d)/, '$1/$2');
     return value;
 };
-//# sourceMappingURL=validations.js.map

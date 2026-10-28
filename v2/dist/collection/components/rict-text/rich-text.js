@@ -773,7 +773,6 @@ export class RichText {
         return {
             "language": {
                 "type": "string",
-                "attribute": "language",
                 "mutable": false,
                 "complexType": {
                     "original": "languages",
@@ -782,7 +781,8 @@ export class RichText {
                         "languages": {
                             "location": "import",
                             "path": "./rich-text-interface",
-                            "id": "src/components/rict-text/rich-text-interface.ts::languages"
+                            "id": "src/components/rict-text/rich-text-interface.ts::languages",
+                            "referenceLocation": "languages"
                         }
                     }
                 },
@@ -795,11 +795,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "language",
                 "defaultValue": "'pt_BR'"
             },
             "weightButton": {
                 "type": "boolean",
-                "attribute": "weight-button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -815,11 +815,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "weight-button",
                 "defaultValue": "true"
             },
             "italicButton": {
                 "type": "boolean",
-                "attribute": "italic-button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -835,11 +835,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "italic-button",
                 "defaultValue": "true"
             },
             "strikeThroughButton": {
                 "type": "boolean",
-                "attribute": "strike-through-button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -855,11 +855,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "strike-through-button",
                 "defaultValue": "true"
             },
             "underlineButton": {
                 "type": "boolean",
-                "attribute": "underline-button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -875,11 +875,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "underline-button",
                 "defaultValue": "true"
             },
             "linkButton": {
                 "type": "boolean",
-                "attribute": "link-button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -895,11 +895,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "link-button",
                 "defaultValue": "true"
             },
             "codeButton": {
                 "type": "boolean",
-                "attribute": "code-button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -915,11 +915,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "code-button",
                 "defaultValue": "true"
             },
             "alignmentButtons": {
                 "type": "boolean",
-                "attribute": "alignment-buttons",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -935,11 +935,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "alignment-buttons",
                 "defaultValue": "true"
             },
             "listButtons": {
                 "type": "boolean",
-                "attribute": "list-buttons",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -955,11 +955,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "list-buttons",
                 "defaultValue": "true"
             },
             "quoteButton": {
                 "type": "boolean",
-                "attribute": "quote-button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -975,11 +975,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "quote-button",
                 "defaultValue": "true"
             },
             "headingButtons": {
                 "type": "boolean",
-                "attribute": "heading-buttons",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -995,11 +995,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "heading-buttons",
                 "defaultValue": "true"
             },
             "unstyledButton": {
                 "type": "boolean",
-                "attribute": "unstyled-button",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -1015,11 +1015,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "unstyled-button",
                 "defaultValue": "true"
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1035,11 +1035,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "height",
                 "defaultValue": "null"
             },
             "maxHeight": {
                 "type": "string",
-                "attribute": "max-height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1055,11 +1055,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max-height",
                 "defaultValue": "null"
             },
             "positionBar": {
                 "type": "string",
-                "attribute": "position-bar",
                 "mutable": false,
                 "complexType": {
                     "original": "positionBar",
@@ -1081,11 +1081,11 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position-bar",
                 "defaultValue": "'top'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1101,6 +1101,7 @@ export class RichText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -1250,4 +1251,3 @@ export class RichText {
             }];
     }
 }
-//# sourceMappingURL=rich-text.js.map

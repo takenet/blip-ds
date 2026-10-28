@@ -394,6 +394,3 @@ const dateToTypeDate = (value) => {
 };
 
 export { THIS_DAY as T, defaultEndDate as a, dateToDayList as b, dateToInputDate as c, defaultStartDate as d, dateToTypeDate as e, fillDayList as f, termTranslate as g, fillDate as h, getMonthsSlide as i, getYears as j, getMonths as k, changeMonths as l, messageTranslate as m, typeDateToStringDate as t, weekDays as w };
-//# sourceMappingURL=calendar-DL5vi8uh.js.map
-
-//# sourceMappingURL=calendar-DL5vi8uh.js.map

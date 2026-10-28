@@ -151,7 +151,6 @@ export class BdsAvatar {
         return {
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -167,11 +166,11 @@ export class BdsAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "name",
                 "defaultValue": "null"
             },
             "thumbnail": {
                 "type": "string",
-                "attribute": "thumbnail",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -187,11 +186,11 @@ export class BdsAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "thumbnail",
                 "defaultValue": "null"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "avatarSize",
@@ -213,11 +212,11 @@ export class BdsAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "colors",
@@ -239,11 +238,11 @@ export class BdsAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'colorLetter'"
             },
             "upload": {
                 "type": "boolean",
-                "attribute": "upload",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -259,11 +258,11 @@ export class BdsAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "upload",
                 "defaultValue": "false"
             },
             "openUpload": {
                 "type": "boolean",
-                "attribute": "open-upload",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -279,11 +278,11 @@ export class BdsAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "open-upload",
                 "defaultValue": "false"
             },
             "ellipsis": {
                 "type": "number",
-                "attribute": "ellipsis",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -299,11 +298,11 @@ export class BdsAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "ellipsis",
                 "defaultValue": "null"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -319,6 +318,7 @@ export class BdsAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -368,4 +368,3 @@ export class BdsAvatar {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=avatar.js.map

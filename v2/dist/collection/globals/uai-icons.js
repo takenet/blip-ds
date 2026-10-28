@@ -654,4 +654,3 @@ const UAI_ICONS = {
     solid: new Set(UAI_SOLID_ICONS),
 };
 export const isUaiIcon = (theme, name) => !!name && UAI_ICONS[theme].has(name);
-//# sourceMappingURL=uai-icons.js.map

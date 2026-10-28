@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 var assetLoader = require('./asset-loader-7VlbCeFu.js');
 
 const FILL_ELEMENTS = ['path', 'rect', 'circle', 'ellipse', 'polygon', 'polyline', 'line'];
@@ -93,7 +93,7 @@ const getLogoName = (name) => {
     return `asset-logo-${name}`;
 };
 
-const iconCss = ":host{width:1em;height:1em;color:var(--color-content-default, rgb(40, 40, 40));fill:currentColor;-webkit-box-sizing:content-box !important;box-sizing:content-box !important}.icon-inner{max-width:100%;height:100%}.emoji-inner{max-width:100%;height:100%;display:-ms-flexbox;display:flex}:host(.bds-icon){display:inline-block}:host(.bds-icon) svg{fill:currentColor;width:100%;min-width:100%}:host(.bds-icon__size--brand){width:64px;min-width:64px;height:64px;max-height:64px;min-height:64px}:host(.bds-icon__size--xxx-large){width:40px;min-width:40px;height:40px;max-height:40px;min-height:40px}:host(.bds-icon__size--xx-large){width:36px;min-width:36px;height:36px;max-height:36px;min-height:36px}:host(.bds-icon__size--x-large){width:32px;min-width:32px;height:32px;max-height:32px;min-height:32px}:host(.bds-icon__size--large){width:28px;min-width:28px;height:28px;max-height:28px;min-height:28px}:host(.bds-icon__size--medium){width:24px;min-width:24px;height:24px;max-height:24px;min-height:24px}:host(.bds-icon__size--small){width:20px;min-width:20px;height:20px;max-height:20px;min-height:20px}:host(.bds-icon__size--x-small){width:16px;min-width:16px;height:16px;max-height:16px;min-height:16px}:host(.bds-icon__size--xx-small){width:12px;min-width:12px;height:12px;max-height:12px;min-height:12px}";
+const iconCss = () => `:host{width:1em;height:1em;color:var(--color-content-default, rgb(40, 40, 40));fill:currentColor;-webkit-box-sizing:content-box !important;box-sizing:content-box !important}.icon-inner{max-width:100%;height:100%}.emoji-inner{max-width:100%;height:100%;display:-ms-flexbox;display:flex}:host(.bds-icon){display:inline-block}:host(.bds-icon) svg{fill:currentColor;width:100%;min-width:100%}:host(.bds-icon__size--brand){width:64px;min-width:64px;height:64px;max-height:64px;min-height:64px}:host(.bds-icon__size--xxx-large){width:40px;min-width:40px;height:40px;max-height:40px;min-height:40px}:host(.bds-icon__size--xx-large){width:36px;min-width:36px;height:36px;max-height:36px;min-height:36px}:host(.bds-icon__size--x-large){width:32px;min-width:32px;height:32px;max-height:32px;min-height:32px}:host(.bds-icon__size--large){width:28px;min-width:28px;height:28px;max-height:28px;min-height:28px}:host(.bds-icon__size--medium){width:24px;min-width:24px;height:24px;max-height:24px;min-height:24px}:host(.bds-icon__size--small){width:20px;min-width:20px;height:20px;max-height:20px;min-height:20px}:host(.bds-icon__size--x-small){width:16px;min-width:16px;height:16px;max-height:16px;min-height:16px}:host(.bds-icon__size--xx-small){width:12px;min-width:12px;height:12px;max-height:12px;min-height:12px}`;
 
 const Icon = class {
     constructor(hostRef) {
@@ -205,17 +205,26 @@ const Icon = class {
     static get assetsDirs() { return ["svg"]; }
     get el() { return index.getElement(this); }
     static get watchers() { return {
-        "name": ["loadIcon"],
-        "src": ["loadIcon"],
-        "icon": ["loadIcon"],
-        "color": ["loadIcon"],
-        "theme": ["loadIcon"],
-        "type": ["loadIcon"]
+        "name": [{
+                "loadIcon": 0
+            }],
+        "src": [{
+                "loadIcon": 0
+            }],
+        "icon": [{
+                "loadIcon": 0
+            }],
+        "color": [{
+                "loadIcon": 0
+            }],
+        "theme": [{
+                "loadIcon": 0
+            }],
+        "type": [{
+                "loadIcon": 0
+            }]
     }; }
 };
-Icon.style = iconCss;
+Icon.style = iconCss();
 
 exports.bds_icon = Icon;
-//# sourceMappingURL=bds-icon.entry.cjs.js.map
-
-//# sourceMappingURL=bds-icon.cjs.entry.js.map

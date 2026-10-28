@@ -31,3 +31,5 @@ export interface SetPlatformOptions {
   rel?: (el: EventTarget, eventName: string, listener: EventListenerOrEventListenerObject, options: boolean | AddEventListenerOptions) => void;
 }
 export declare const setPlatformOptions: (opts: SetPlatformOptions) => void;
+
+export * from '../types';

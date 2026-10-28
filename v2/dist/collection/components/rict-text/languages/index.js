@@ -18,4 +18,3 @@ export const termTranslate = (lang, string) => {
     }
     return translate;
 };
-//# sourceMappingURL=index.js.map

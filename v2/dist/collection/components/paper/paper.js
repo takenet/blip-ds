@@ -59,7 +59,6 @@ export class Paper {
         return {
             "elevation": {
                 "type": "string",
-                "attribute": "elevation",
                 "mutable": true,
                 "complexType": {
                     "original": "PaperElevation",
@@ -68,7 +67,8 @@ export class Paper {
                         "PaperElevation": {
                             "location": "import",
                             "path": "./paper-interface",
-                            "id": "src/components/paper/paper-interface.ts::PaperElevation"
+                            "id": "src/components/paper/paper-interface.ts::PaperElevation",
+                            "referenceLocation": "PaperElevation"
                         }
                     }
                 },
@@ -81,11 +81,11 @@ export class Paper {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "elevation",
                 "defaultValue": "'static'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -101,11 +101,11 @@ export class Paper {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             },
             "border": {
                 "type": "boolean",
-                "attribute": "border",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -121,11 +121,11 @@ export class Paper {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "border",
                 "defaultValue": "false"
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -141,11 +141,11 @@ export class Paper {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "height",
                 "defaultValue": "null"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -161,11 +161,11 @@ export class Paper {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "width",
                 "defaultValue": "null"
             },
             "bgColor": {
                 "type": "string",
-                "attribute": "bg-color",
                 "mutable": false,
                 "complexType": {
                     "original": "PaperBackground",
@@ -174,7 +174,8 @@ export class Paper {
                         "PaperBackground": {
                             "location": "import",
                             "path": "./paper-interface",
-                            "id": "src/components/paper/paper-interface.ts::PaperBackground"
+                            "id": "src/components/paper/paper-interface.ts::PaperBackground",
+                            "referenceLocation": "PaperBackground"
                         }
                     }
                 },
@@ -187,11 +188,11 @@ export class Paper {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bg-color",
                 "defaultValue": "'surface-1'"
             },
             "borderColor": {
                 "type": "string",
-                "attribute": "border-color",
                 "mutable": false,
                 "complexType": {
                     "original": "BorderColor",
@@ -200,7 +201,8 @@ export class Paper {
                         "BorderColor": {
                             "location": "import",
                             "path": "./paper-interface",
-                            "id": "src/components/paper/paper-interface.ts::BorderColor"
+                            "id": "src/components/paper/paper-interface.ts::BorderColor",
+                            "referenceLocation": "BorderColor"
                         }
                     }
                 },
@@ -213,6 +215,7 @@ export class Paper {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "border-color",
                 "defaultValue": "null"
             }
         };
@@ -224,4 +227,3 @@ export class Paper {
         };
     }
 }
-//# sourceMappingURL=paper.js.map

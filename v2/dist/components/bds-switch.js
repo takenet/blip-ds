@@ -1,9 +1,1 @@
-import { S as Switch, d as defineCustomElement$1 } from './p-BUKGTfeg.js';
-
-const BdsSwitch = Switch;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsSwitch, defineCustomElement };
-//# sourceMappingURL=bds-switch.js.map
-
-//# sourceMappingURL=bds-switch.js.map
+import{S as o,d as s}from"./p-BDVynDo0.js";const p=o,r=s;export{p as BdsSwitch,r as defineCustomElement}

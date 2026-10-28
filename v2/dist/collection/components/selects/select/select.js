@@ -292,7 +292,6 @@ export class Select {
         return {
             "options": {
                 "type": "string",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "string | Option[]",
@@ -301,7 +300,8 @@ export class Select {
                         "Option": {
                             "location": "import",
                             "path": "../select-interface",
-                            "id": "src/components/selects/select-interface.ts::Option"
+                            "id": "src/components/selects/select-interface.ts::Option",
+                            "referenceLocation": "Option"
                         }
                     }
                 },
@@ -313,11 +313,11 @@ export class Select {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "options"
             },
             "value": {
                 "type": "any",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "any | null",
@@ -332,11 +332,11 @@ export class Select {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -352,11 +352,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "success": {
                 "type": "boolean",
-                "attribute": "success",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -372,11 +372,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "success",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -392,11 +392,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -412,11 +412,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "''"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -432,11 +432,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "''"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -452,11 +452,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "helperMessage": {
                 "type": "string",
-                "attribute": "helper-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -472,11 +472,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "helper-message",
                 "defaultValue": "''"
             },
             "errorMessage": {
                 "type": "string",
-                "attribute": "error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -492,11 +492,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error-message",
                 "defaultValue": "''"
             },
             "successMessage": {
                 "type": "string",
-                "attribute": "success-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -512,11 +512,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "success-message",
                 "defaultValue": "''"
             },
             "optionsPosition": {
                 "type": "string",
-                "attribute": "options-position",
                 "mutable": true,
                 "complexType": {
                     "original": "SelectOptionsPositionType",
@@ -525,7 +525,8 @@ export class Select {
                         "SelectOptionsPositionType": {
                             "location": "import",
                             "path": "../select-interface",
-                            "id": "src/components/selects/select-interface.ts::SelectOptionsPositionType"
+                            "id": "src/components/selects/select-interface.ts::SelectOptionsPositionType",
+                            "referenceLocation": "SelectOptionsPositionType"
                         }
                     }
                 },
@@ -538,11 +539,11 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "options-position",
                 "defaultValue": "'auto'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -558,6 +559,7 @@ export class Select {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -591,7 +593,8 @@ export class Select {
                         "SelectChangeEventDetail": {
                             "location": "import",
                             "path": "../select-interface",
-                            "id": "src/components/selects/select-interface.ts::SelectChangeEventDetail"
+                            "id": "src/components/selects/select-interface.ts::SelectChangeEventDetail",
+                            "referenceLocation": "SelectChangeEventDetail"
                         }
                     }
                 }
@@ -665,4 +668,3 @@ export class Select {
             }];
     }
 }
-//# sourceMappingURL=select.js.map

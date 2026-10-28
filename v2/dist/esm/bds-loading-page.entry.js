@@ -1,7 +1,7 @@
-import { r as registerInstance, h, H as Host } from './index-gowA9FoV.js';
+import { r as registerInstance, h, H as Host } from './index-BnSR_zce.js';
 import { l as loadAssetSvg } from './asset-loader-rO3zRdCx.js';
 
-const loadingPageCss = ":host{display:block;position:fixed;top:0;left:0;height:100vh;width:100vw;z-index:999}.loading-container{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;background-color:var(--color-surface-4, rgb(20, 20, 20));opacity:0.65;mix-blend-mode:multiply}.page_loading{-webkit-animation:growUp 0.8s ease-in-out infinite;animation:growUp 0.8s ease-in-out infinite;width:90px;height:90px;color:var(--color-surface-1, rgb(246, 246, 246))}@-webkit-keyframes growUp{from{opacity:0}10%{opacity:1}60%{opacity:1}to{-webkit-transform:scale(1.6);transform:scale(1.6);opacity:0}}@keyframes growUp{from{opacity:0}10%{opacity:1}60%{opacity:1}to{-webkit-transform:scale(1.6);transform:scale(1.6);opacity:0}}";
+const loadingPageCss = () => `:host{display:block;position:fixed;top:0;left:0;height:100vh;width:100vw;z-index:999}.loading-container{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;background-color:var(--color-surface-4, rgb(20, 20, 20));opacity:0.65;mix-blend-mode:multiply}.page_loading{-webkit-animation:growUp 0.8s ease-in-out infinite;animation:growUp 0.8s ease-in-out infinite;width:90px;height:90px;color:var(--color-surface-1, rgb(246, 246, 246))}@-webkit-keyframes growUp{from{opacity:0}10%{opacity:1}60%{opacity:1}to{-webkit-transform:scale(1.6);transform:scale(1.6);opacity:0}}@keyframes growUp{from{opacity:0}10%{opacity:1}60%{opacity:1}to{-webkit-transform:scale(1.6);transform:scale(1.6);opacity:0}}`;
 
 const BdsLoading = class {
     constructor(hostRef) {
@@ -36,9 +36,6 @@ const BdsLoading = class {
         return (h(Host, { key: 'b9230027dba64a64a4a15248d2986c05e8ad995c' }, h("div", { key: 'fb8857a0825ac7052dd8d874d5d0afcd882350be', class: "loading-container", "data-test": this.dataTest }, h("div", { key: '0a63110aadbaaed564b047bb1f0c5905a0bdf977', class: { page_loading: true }, innerHTML: this.svgContent }))));
     }
 };
-BdsLoading.style = loadingPageCss;
+BdsLoading.style = loadingPageCss();
 
 export { BdsLoading as bds_loading_page };
-//# sourceMappingURL=bds-loading-page.entry.js.map
-
-//# sourceMappingURL=bds-loading-page.entry.js.map

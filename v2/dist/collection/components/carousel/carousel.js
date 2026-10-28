@@ -357,7 +357,6 @@ export class BdsCarousel {
         return {
             "autoplay": {
                 "type": "boolean",
-                "attribute": "autoplay",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -373,11 +372,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "autoplay",
                 "defaultValue": "false"
             },
             "autoplayTimeout": {
                 "type": "number",
-                "attribute": "autoplay-timeout",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -393,11 +392,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "autoplay-timeout",
                 "defaultValue": "5000"
             },
             "autoplayHoverPause": {
                 "type": "boolean",
-                "attribute": "autoplay-hover-pause",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -413,11 +412,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "autoplay-hover-pause",
                 "defaultValue": "false"
             },
             "autoHeight": {
                 "type": "boolean",
-                "attribute": "auto-height",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -433,11 +432,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto-height",
                 "defaultValue": "false"
             },
             "bullets": {
                 "type": "any",
-                "attribute": "bullets",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean | bullets",
@@ -446,7 +445,8 @@ export class BdsCarousel {
                         "bullets": {
                             "location": "import",
                             "path": "./carousel-interface",
-                            "id": "src/components/carousel/carousel-interface.ts::bullets"
+                            "id": "src/components/carousel/carousel-interface.ts::bullets",
+                            "referenceLocation": "bullets"
                         }
                     }
                 },
@@ -459,11 +459,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bullets",
                 "defaultValue": "'outside'"
             },
             "bulletsPosition": {
                 "type": "string",
-                "attribute": "bullets-position",
                 "mutable": false,
                 "complexType": {
                     "original": "bulletsPositions",
@@ -472,7 +472,8 @@ export class BdsCarousel {
                         "bulletsPositions": {
                             "location": "import",
                             "path": "./carousel-interface",
-                            "id": "src/components/carousel/carousel-interface.ts::bulletsPositions"
+                            "id": "src/components/carousel/carousel-interface.ts::bulletsPositions",
+                            "referenceLocation": "bulletsPositions"
                         }
                     }
                 },
@@ -485,11 +486,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bullets-position",
                 "defaultValue": "'center'"
             },
             "infiniteLoop": {
                 "type": "boolean",
-                "attribute": "infinite-loop",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -505,11 +506,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "infinite-loop",
                 "defaultValue": "false"
             },
             "arrows": {
                 "type": "string",
-                "attribute": "arrows",
                 "mutable": false,
                 "complexType": {
                     "original": "arrows",
@@ -518,7 +519,8 @@ export class BdsCarousel {
                         "arrows": {
                             "location": "import",
                             "path": "./carousel-interface",
-                            "id": "src/components/carousel/carousel-interface.ts::arrows"
+                            "id": "src/components/carousel/carousel-interface.ts::arrows",
+                            "referenceLocation": "arrows"
                         }
                     }
                 },
@@ -531,11 +533,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "arrows",
                 "defaultValue": "'outside'"
             },
             "slidePerPage": {
                 "type": "number",
-                "attribute": "slide-per-page",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -551,11 +553,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "slide-per-page",
                 "defaultValue": "1"
             },
             "gap": {
                 "type": "string",
-                "attribute": "gap",
                 "mutable": false,
                 "complexType": {
                     "original": "gap",
@@ -564,7 +566,8 @@ export class BdsCarousel {
                         "gap": {
                             "location": "import",
                             "path": "./carousel-interface",
-                            "id": "src/components/carousel/carousel-interface.ts::gap"
+                            "id": "src/components/carousel/carousel-interface.ts::gap",
+                            "referenceLocation": "gap"
                         }
                     }
                 },
@@ -577,11 +580,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "gap",
                 "defaultValue": "'none'"
             },
             "grab": {
                 "type": "boolean",
-                "attribute": "grab",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -597,11 +600,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "grab",
                 "defaultValue": "true"
             },
             "loading": {
                 "type": "boolean",
-                "attribute": "loading",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -617,11 +620,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "loading",
                 "defaultValue": "false"
             },
             "dtSlideContent": {
                 "type": "string",
-                "attribute": "dt-slide-content",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -637,11 +640,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-slide-content",
                 "defaultValue": "null"
             },
             "dtButtonPrev": {
                 "type": "string",
-                "attribute": "dt-button-prev",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -657,11 +660,11 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-prev",
                 "defaultValue": "null"
             },
             "dtButtonNext": {
                 "type": "string",
-                "attribute": "dt-button-next",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -677,6 +680,7 @@ export class BdsCarousel {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-next",
                 "defaultValue": "null"
             }
         };
@@ -713,7 +717,8 @@ export class BdsCarousel {
                         "Itens": {
                             "location": "import",
                             "path": "./carousel-interface",
-                            "id": "src/components/carousel/carousel-interface.ts::Itens"
+                            "id": "src/components/carousel/carousel-interface.ts::Itens",
+                            "referenceLocation": "Itens"
                         }
                     }
                 }
@@ -854,4 +859,3 @@ export class BdsCarousel {
             }];
     }
 }
-//# sourceMappingURL=carousel.js.map

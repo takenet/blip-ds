@@ -23,7 +23,6 @@ export class ExpansionPanelBody {
         return {
             "open": {
                 "type": "boolean",
-                "attribute": "open",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -39,11 +38,11 @@ export class ExpansionPanelBody {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "open",
                 "defaultValue": "false"
             },
             "text": {
                 "type": "string",
-                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -59,9 +58,9 @@ export class ExpansionPanelBody {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "text",
                 "defaultValue": "null"
             }
         };
     }
 }
-//# sourceMappingURL=expansion-panel-body.js.map

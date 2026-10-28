@@ -59,6 +59,12 @@
   /* Corrects inability to style clickable `input` types in iOS */
   -webkit-appearance: none;
   /* Remove excess padding and border in Firefox 4+ */
+}
+.button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.button {
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -75,10 +81,6 @@
   box-sizing: border-box;
   gap: 4px;
   padding: 0 16px;
-}
-.button::-moz-focus-inner {
-  border: 0;
-  padding: 0;
 }
 .button__size--short {
   height: 32px;

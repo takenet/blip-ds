@@ -1,9 +1,1 @@
-import { S as Skeleton, d as defineCustomElement$1 } from './p-D2LBJ6f5.js';
-
-const BdsSkeleton = Skeleton;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsSkeleton, defineCustomElement };
-//# sourceMappingURL=bds-skeleton.js.map
-
-//# sourceMappingURL=bds-skeleton.js.map
+import{S as o,d as s}from"./p-DXQQC19k.js";const p=o,r=s;export{p as BdsSkeleton,r as defineCustomElement}

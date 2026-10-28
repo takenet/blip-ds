@@ -128,7 +128,6 @@ export class Icon {
         return {
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -143,11 +142,11 @@ export class Icon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "color"
             },
             "ariaLabel": {
                 "type": "string",
-                "attribute": "aria-label",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -162,11 +161,11 @@ export class Icon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "aria-label"
             },
             "flipRtl": {
                 "type": "boolean",
-                "attribute": "flip-rtl",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -181,11 +180,11 @@ export class Icon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "flip-rtl"
             },
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -200,11 +199,11 @@ export class Icon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "name"
             },
             "src": {
                 "type": "string",
-                "attribute": "src",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -219,11 +218,11 @@ export class Icon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "src"
             },
             "icon": {
                 "type": "any",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "any",
@@ -238,11 +237,11 @@ export class Icon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "IconSize",
@@ -251,7 +250,8 @@ export class Icon {
                         "IconSize": {
                             "location": "import",
                             "path": "./icon-interface",
-                            "id": "src/components/icon/icon-interface.ts::IconSize"
+                            "id": "src/components/icon/icon-interface.ts::IconSize",
+                            "referenceLocation": "IconSize"
                         }
                     }
                 },
@@ -264,11 +264,11 @@ export class Icon {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'medium'"
             },
             "lazy": {
                 "type": "boolean",
-                "attribute": "lazy",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -284,11 +284,11 @@ export class Icon {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "lazy",
                 "defaultValue": "false"
             },
             "theme": {
                 "type": "string",
-                "attribute": "theme",
                 "mutable": false,
                 "complexType": {
                     "original": "IconTheme",
@@ -297,7 +297,8 @@ export class Icon {
                         "IconTheme": {
                             "location": "import",
                             "path": "./icon-interface",
-                            "id": "src/components/icon/icon-interface.ts::IconTheme"
+                            "id": "src/components/icon/icon-interface.ts::IconTheme",
+                            "referenceLocation": "IconTheme"
                         }
                     }
                 },
@@ -310,11 +311,11 @@ export class Icon {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "theme",
                 "defaultValue": "'outline'"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "IconType",
@@ -323,7 +324,8 @@ export class Icon {
                         "IconType": {
                             "location": "import",
                             "path": "./icon-interface",
-                            "id": "src/components/icon/icon-interface.ts::IconType"
+                            "id": "src/components/icon/icon-interface.ts::IconType",
+                            "referenceLocation": "IconType"
                         }
                     }
                 },
@@ -336,11 +338,11 @@ export class Icon {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'icon'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -356,6 +358,7 @@ export class Icon {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -389,4 +392,3 @@ export class Icon {
             }];
     }
 }
-//# sourceMappingURL=icon.js.map

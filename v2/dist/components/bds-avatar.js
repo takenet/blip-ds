@@ -1,9 +1,1 @@
-import { B as BdsAvatar$1, d as defineCustomElement$1 } from './p-BabdbaeG.js';
-
-const BdsAvatar = BdsAvatar$1;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsAvatar, defineCustomElement };
-//# sourceMappingURL=bds-avatar.js.map
-
-//# sourceMappingURL=bds-avatar.js.map
+import{B as o,d as s}from"./p-9F_6J_ZP.js";const p=o,r=s;export{p as BdsAvatar,r as defineCustomElement}

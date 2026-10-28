@@ -1,9 +1,1 @@
-import { I as IconButton, d as defineCustomElement$1 } from './p-BKsUIUnJ.js';
-
-const BdsButtonIcon = IconButton;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsButtonIcon, defineCustomElement };
-//# sourceMappingURL=bds-button-icon.js.map
-
-//# sourceMappingURL=bds-button-icon.js.map
+import{I as o,d as s}from"./p-DWQaI1HK.js";const a=o,p=s;export{a as BdsButtonIcon,p as defineCustomElement}

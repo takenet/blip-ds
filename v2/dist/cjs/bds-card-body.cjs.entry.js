@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
 const CardBody = class {
     constructor(hostRef) {
@@ -12,6 +12,3 @@ const CardBody = class {
 };
 
 exports.bds_card_body = CardBody;
-//# sourceMappingURL=bds-card-body.entry.cjs.js.map
-
-//# sourceMappingURL=bds-card-body.cjs.entry.js.map

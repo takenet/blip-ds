@@ -478,7 +478,6 @@ export class Input {
         return {
             "inputName": {
                 "type": "string",
-                "attribute": "input-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -494,11 +493,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "input-name",
                 "defaultValue": "''"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "InputType",
@@ -507,7 +506,8 @@ export class Input {
                         "InputType": {
                             "location": "import",
                             "path": "./input-interface",
-                            "id": "src/components/input/input-interface.ts::InputType"
+                            "id": "src/components/input/input-interface.ts::InputType",
+                            "referenceLocation": "InputType"
                         }
                     }
                 },
@@ -520,11 +520,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "type",
                 "defaultValue": "'text'"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -540,11 +540,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "''"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -560,11 +560,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "autoCapitalize": {
                 "type": "string",
-                "attribute": "auto-capitalize",
                 "mutable": false,
                 "complexType": {
                     "original": "InputAutocapitalize",
@@ -573,7 +573,8 @@ export class Input {
                         "InputAutocapitalize": {
                             "location": "import",
                             "path": "./input-interface",
-                            "id": "src/components/input/input-interface.ts::InputAutocapitalize"
+                            "id": "src/components/input/input-interface.ts::InputAutocapitalize",
+                            "referenceLocation": "InputAutocapitalize"
                         }
                     }
                 },
@@ -586,11 +587,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto-capitalize",
                 "defaultValue": "'off'"
             },
             "autoComplete": {
                 "type": "string",
-                "attribute": "auto-complete",
                 "mutable": false,
                 "complexType": {
                     "original": "InputAutoComplete",
@@ -599,7 +600,8 @@ export class Input {
                         "InputAutoComplete": {
                             "location": "import",
                             "path": "./input-interface",
-                            "id": "src/components/input/input-interface.ts::InputAutoComplete"
+                            "id": "src/components/input/input-interface.ts::InputAutoComplete",
+                            "referenceLocation": "InputAutoComplete"
                         }
                     }
                 },
@@ -612,11 +614,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto-complete",
                 "defaultValue": "'off'"
             },
             "max": {
                 "type": "string",
-                "attribute": "max",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -631,11 +633,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "max"
             },
             "maxlength": {
                 "type": "number",
-                "attribute": "maxlength",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -650,11 +652,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "maxlength"
             },
             "min": {
                 "type": "string",
-                "attribute": "min",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -669,11 +671,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "min"
             },
             "minlength": {
                 "type": "number",
-                "attribute": "minlength",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -688,11 +690,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "minlength"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -708,11 +710,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "readonly",
                 "defaultValue": "false"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -727,11 +729,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "pattern": {
                 "type": "string",
-                "attribute": "pattern",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -746,11 +748,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "pattern"
             },
             "helperMessage": {
                 "type": "string",
-                "attribute": "helper-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -766,11 +768,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "helper-message",
                 "defaultValue": "''"
             },
             "errorMessage": {
                 "type": "string",
-                "attribute": "error-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -786,11 +788,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error-message",
                 "defaultValue": "''"
             },
             "successMessage": {
                 "type": "string",
-                "attribute": "success-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -806,11 +808,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "success-message",
                 "defaultValue": "''"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -826,11 +828,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "''"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -846,11 +848,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -866,11 +868,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "success": {
                 "type": "boolean",
-                "attribute": "success",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -886,11 +888,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "success",
                 "defaultValue": "false"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string | null",
@@ -906,11 +908,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "''"
             },
             "counterLength": {
                 "type": "boolean",
-                "attribute": "counter-length",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -926,11 +928,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "counter-length",
                 "defaultValue": "false"
             },
             "counterLengthRule": {
                 "type": "unknown",
-                "attribute": "counter-length-rule",
                 "mutable": false,
                 "complexType": {
                     "original": "InputCounterLengthRules",
@@ -939,7 +941,8 @@ export class Input {
                         "InputCounterLengthRules": {
                             "location": "import",
                             "path": "./input-interface",
-                            "id": "src/components/input/input-interface.ts::InputCounterLengthRules"
+                            "id": "src/components/input/input-interface.ts::InputCounterLengthRules",
+                            "referenceLocation": "InputCounterLengthRules"
                         }
                     }
                 },
@@ -955,7 +958,6 @@ export class Input {
             },
             "isSubmit": {
                 "type": "boolean",
-                "attribute": "is-submit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -971,11 +973,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "is-submit",
                 "defaultValue": "false"
             },
             "isTextarea": {
                 "type": "boolean",
-                "attribute": "is-textarea",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -991,11 +993,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "is-textarea",
                 "defaultValue": "false"
             },
             "rows": {
                 "type": "number",
-                "attribute": "rows",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -1011,11 +1013,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "rows",
                 "defaultValue": "3"
             },
             "cols": {
                 "type": "number",
-                "attribute": "cols",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -1031,11 +1033,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "cols",
                 "defaultValue": "0"
             },
             "autoResize": {
                 "type": "boolean",
-                "attribute": "auto-resize",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -1051,11 +1053,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto-resize",
                 "defaultValue": "true"
             },
             "resizable": {
                 "type": "boolean",
-                "attribute": "resizable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -1071,11 +1073,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "resizable",
                 "defaultValue": "false"
             },
             "minHeight": {
                 "type": "number",
-                "attribute": "min-height",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -1091,11 +1093,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "min-height",
                 "defaultValue": "60"
             },
             "maxHeight": {
                 "type": "number",
-                "attribute": "max-height",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -1111,11 +1113,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max-height",
                 "defaultValue": "200"
             },
             "iconSize": {
                 "type": "string",
-                "attribute": "icon-size",
                 "mutable": false,
                 "complexType": {
                     "original": "'small' | 'medium'",
@@ -1131,11 +1133,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon-size",
                 "defaultValue": "'small'"
             },
             "requiredErrorMessage": {
                 "type": "string",
-                "attribute": "required-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1150,11 +1152,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required-error-message"
             },
             "minlengthErrorMessage": {
                 "type": "string",
-                "attribute": "minlength-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1169,11 +1171,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "minlength-error-message"
             },
             "minErrorMessage": {
                 "type": "string",
-                "attribute": "min-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1188,11 +1190,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "min-error-message"
             },
             "maxErrorMessage": {
                 "type": "string",
-                "attribute": "max-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1207,11 +1209,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "max-error-message"
             },
             "emailErrorMessage": {
                 "type": "string",
-                "attribute": "email-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1226,11 +1228,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "email-error-message"
             },
             "numberErrorMessage": {
                 "type": "string",
-                "attribute": "number-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1245,11 +1247,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "number-error-message"
             },
             "chips": {
                 "type": "boolean",
-                "attribute": "chips",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -1264,11 +1266,11 @@ export class Input {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "chips"
             },
             "debounceDelay": {
                 "type": "number",
-                "attribute": "debounce-delay",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -1284,11 +1286,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "debounce-delay",
                 "defaultValue": "100"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1304,11 +1306,11 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             },
             "encode": {
                 "type": "boolean",
-                "attribute": "encode",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -1324,6 +1326,7 @@ export class Input {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "encode",
                 "defaultValue": "false"
             }
         };
@@ -1563,4 +1566,3 @@ export class Input {
             }];
     }
 }
-//# sourceMappingURL=input.js.map

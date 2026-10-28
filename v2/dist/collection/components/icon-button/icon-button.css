@@ -40,20 +40,17 @@
   /* Corrects inability to style clickable `input` types in iOS */
   -webkit-appearance: none;
   /* Remove excess padding and border in Firefox 4+ */
+}
+.icon__button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.icon__button {
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s;
-  border-radius: 8px;
-  padding: 8px;
-}
-.icon__button::-moz-focus-inner {
-  border: 0;
-  padding: 0;
 }
 .icon__button::before {
   content: "";
@@ -67,6 +64,13 @@
 }
 .icon__button:focus-visible::before {
   border-color: var(--color-focus, rgb(194, 38, 251));
+}
+.icon__button {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  border-radius: 8px;
+  padding: 8px;
 }
 .icon__button::after {
   content: "";

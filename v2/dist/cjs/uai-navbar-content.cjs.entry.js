@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
-const uaiNavbarContentCss = ":host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}";
+const uaiNavbarContentCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}`;
 
 const UaiNavbarContent = class {
     constructor(hostRef) {
@@ -13,9 +13,6 @@ const UaiNavbarContent = class {
     }
     get hostElement() { return index.getElement(this); }
 };
-UaiNavbarContent.style = uaiNavbarContentCss;
+UaiNavbarContent.style = uaiNavbarContentCss();
 
 exports.uai_navbar_content = UaiNavbarContent;
-//# sourceMappingURL=uai-navbar-content.entry.cjs.js.map
-
-//# sourceMappingURL=uai-navbar-content.cjs.entry.js.map

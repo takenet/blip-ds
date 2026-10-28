@@ -43,7 +43,6 @@ export class CounterText {
         return {
             "length": {
                 "type": "number",
-                "attribute": "length",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -58,11 +57,11 @@ export class CounterText {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "length"
             },
             "max": {
                 "type": "number",
-                "attribute": "max",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -77,11 +76,11 @@ export class CounterText {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "max"
             },
             "active": {
                 "type": "boolean",
-                "attribute": "active",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -97,11 +96,11 @@ export class CounterText {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "active",
                 "defaultValue": "false"
             },
             "warning": {
                 "type": "unknown",
-                "attribute": "warning",
                 "mutable": true,
                 "complexType": {
                     "original": "CounterTextRule",
@@ -110,7 +109,8 @@ export class CounterText {
                         "CounterTextRule": {
                             "location": "import",
                             "path": "./counter-text-interface",
-                            "id": "src/components/counter-text/counter-text-interface.ts::CounterTextRule"
+                            "id": "src/components/counter-text/counter-text-interface.ts::CounterTextRule",
+                            "referenceLocation": "CounterTextRule"
                         }
                     }
                 },
@@ -126,7 +126,6 @@ export class CounterText {
             },
             "delete": {
                 "type": "unknown",
-                "attribute": "delete",
                 "mutable": true,
                 "complexType": {
                     "original": "CounterTextRule",
@@ -135,7 +134,8 @@ export class CounterText {
                         "CounterTextRule": {
                             "location": "import",
                             "path": "./counter-text-interface",
-                            "id": "src/components/counter-text/counter-text-interface.ts::CounterTextRule"
+                            "id": "src/components/counter-text/counter-text-interface.ts::CounterTextRule",
+                            "referenceLocation": "CounterTextRule"
                         }
                     }
                 },
@@ -152,4 +152,3 @@ export class CounterText {
         };
     }
 }
-//# sourceMappingURL=counter-text.js.map

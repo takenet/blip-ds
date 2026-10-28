@@ -26,4 +26,3 @@ export const colorLetter = [
     { value: 'W', color: 'info' },
     { value: 'Z', color: 'system' },
 ];
-//# sourceMappingURL=color-letter.js.map

@@ -98,7 +98,6 @@ export class ChipClickable {
         return {
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -113,11 +112,11 @@ export class ChipClickable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "avatar": {
                 "type": "string",
-                "attribute": "avatar",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -132,11 +131,11 @@ export class ChipClickable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "avatar"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "ColorChipClickable",
@@ -158,11 +157,11 @@ export class ChipClickable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'default'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "Size",
@@ -184,11 +183,11 @@ export class ChipClickable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "clickable": {
                 "type": "boolean",
-                "attribute": "clickable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -204,11 +203,11 @@ export class ChipClickable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "clickable",
                 "defaultValue": "false"
             },
             "close": {
                 "type": "boolean",
-                "attribute": "close",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -224,11 +223,11 @@ export class ChipClickable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "close",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -244,11 +243,11 @@ export class ChipClickable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -264,11 +263,11 @@ export class ChipClickable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             },
             "dtButtonClose": {
                 "type": "string",
-                "attribute": "dt-button-close",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -284,6 +283,7 @@ export class ChipClickable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-close",
                 "defaultValue": "null"
             }
         };
@@ -328,4 +328,3 @@ export class ChipClickable {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=chip-clickable.js.map

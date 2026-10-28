@@ -105,7 +105,6 @@ export class NavTreeItem {
         return {
             "collapse": {
                 "type": "string",
-                "attribute": "collapse",
                 "mutable": false,
                 "complexType": {
                     "original": "collapses",
@@ -127,11 +126,11 @@ export class NavTreeItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "collapse",
                 "defaultValue": "'single'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -147,11 +146,11 @@ export class NavTreeItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "text": {
                 "type": "string",
-                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -166,11 +165,11 @@ export class NavTreeItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "text"
             },
             "secondaryText": {
                 "type": "string",
-                "attribute": "secondary-text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -186,11 +185,11 @@ export class NavTreeItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "secondary-text",
                 "defaultValue": "null"
             },
             "isOpen": {
                 "type": "boolean",
-                "attribute": "is-open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -206,11 +205,11 @@ export class NavTreeItem {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "is-open",
                 "defaultValue": "false"
             },
             "loading": {
                 "type": "boolean",
-                "attribute": "loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -226,11 +225,11 @@ export class NavTreeItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "loading",
                 "defaultValue": "false"
             },
             "disable": {
                 "type": "boolean",
-                "attribute": "disable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -246,11 +245,11 @@ export class NavTreeItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disable",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -266,6 +265,7 @@ export class NavTreeItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -322,4 +322,3 @@ export class NavTreeItem {
             }];
     }
 }
-//# sourceMappingURL=nav-tree-item.js.map

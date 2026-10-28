@@ -22,4 +22,3 @@ export const ptTerms = [
         expand: 'Expandir',
     },
 ];
-//# sourceMappingURL=pt_BR.js.map

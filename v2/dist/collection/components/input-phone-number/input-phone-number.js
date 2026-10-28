@@ -264,7 +264,6 @@ export class InputPhoneNumber {
         return {
             "options": {
                 "type": "unknown",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "Array<Option>",
@@ -277,7 +276,8 @@ export class InputPhoneNumber {
                         "Option": {
                             "location": "import",
                             "path": "../selects/select-interface",
-                            "id": "src/components/selects/select-interface.ts::Option"
+                            "id": "src/components/selects/select-interface.ts::Option",
+                            "referenceLocation": "Option"
                         }
                     }
                 },
@@ -293,7 +293,6 @@ export class InputPhoneNumber {
             },
             "text": {
                 "type": "string",
-                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -309,11 +308,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "text",
                 "defaultValue": "''"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string | null",
@@ -329,11 +328,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "'+55'"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -349,11 +348,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "success": {
                 "type": "boolean",
-                "attribute": "success",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -369,11 +368,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "success",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -389,11 +388,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -408,11 +407,11 @@ export class InputPhoneNumber {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             },
             "helperMessage": {
                 "type": "string",
-                "attribute": "helper-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -428,11 +427,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "helper-message",
                 "defaultValue": "''"
             },
             "errorMessage": {
                 "type": "string",
-                "attribute": "error-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -448,11 +447,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error-message",
                 "defaultValue": "''"
             },
             "successMessage": {
                 "type": "string",
-                "attribute": "success-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -468,11 +467,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "success-message",
                 "defaultValue": "''"
             },
             "requiredErrorMessage": {
                 "type": "string",
-                "attribute": "required-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -487,11 +486,11 @@ export class InputPhoneNumber {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required-error-message"
             },
             "numberErrorMessage": {
                 "type": "string",
-                "attribute": "number-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -506,11 +505,11 @@ export class InputPhoneNumber {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "number-error-message"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -526,11 +525,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             },
             "dtSelectFlag": {
                 "type": "string",
-                "attribute": "dt-select-flag",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -546,11 +545,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-select-flag",
                 "defaultValue": "null"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -566,11 +565,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "'Phone number'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -586,11 +585,11 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "''"
             },
             "language": {
                 "type": "string",
-                "attribute": "language",
                 "mutable": true,
                 "complexType": {
                     "original": "languages",
@@ -612,6 +611,7 @@ export class InputPhoneNumber {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "language",
                 "defaultValue": "'pt_BR'"
             }
         };
@@ -782,4 +782,3 @@ export class InputPhoneNumber {
             }];
     }
 }
-//# sourceMappingURL=input-phone-number.js.map

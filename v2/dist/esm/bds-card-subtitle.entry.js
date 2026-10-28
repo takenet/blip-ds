@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-gowA9FoV.js';
+import { r as registerInstance, h } from './index-BnSR_zce.js';
 
 const CardSubtitle = class {
     constructor(hostRef) {
@@ -10,6 +10,3 @@ const CardSubtitle = class {
 };
 
 export { CardSubtitle as bds_card_subtitle };
-//# sourceMappingURL=bds-card-subtitle.entry.js.map
-
-//# sourceMappingURL=bds-card-subtitle.entry.js.map

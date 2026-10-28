@@ -1,9 +1,1 @@
-import { T as TableCell, d as defineCustomElement$1 } from './p-SgKTTlib.js';
-
-const BdsTableCell = TableCell;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsTableCell, defineCustomElement };
-//# sourceMappingURL=bds-table-cell.js.map
-
-//# sourceMappingURL=bds-table-cell.js.map
+import{T as o,d as s}from"./p-DyID29_N.js";const p=o,r=s;export{p as BdsTableCell,r as defineCustomElement}

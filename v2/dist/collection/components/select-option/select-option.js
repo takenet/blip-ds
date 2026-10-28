@@ -125,7 +125,6 @@ export class SelectOption {
         return {
             "value": {
                 "type": "any",
-                "attribute": "value",
                 "mutable": false,
                 "complexType": {
                     "original": "any",
@@ -140,11 +139,11 @@ export class SelectOption {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             },
             "selected": {
                 "type": "boolean",
-                "attribute": "selected",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -160,11 +159,11 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "selected",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -180,11 +179,11 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "invisible": {
                 "type": "boolean",
-                "attribute": "invisible",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -200,11 +199,11 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "invisible",
                 "defaultValue": "false"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -220,11 +219,11 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "bulkOption": {
                 "type": "string",
-                "attribute": "bulk-option",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -240,11 +239,11 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bulk-option",
                 "defaultValue": "''"
             },
             "slotAlign": {
                 "type": "string",
-                "attribute": "slot-align",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -260,11 +259,11 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "slot-align",
                 "defaultValue": "'center'"
             },
             "titleText": {
                 "type": "string",
-                "attribute": "title-text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -279,11 +278,11 @@ export class SelectOption {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "title-text"
             },
             "status": {
                 "type": "string",
-                "attribute": "status",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -298,11 +297,11 @@ export class SelectOption {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "status"
             },
             "typeOption": {
                 "type": "string",
-                "attribute": "type-option",
                 "mutable": true,
                 "complexType": {
                     "original": "TypeOption",
@@ -324,11 +323,11 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "type-option",
                 "defaultValue": "'default'"
             },
             "checked": {
                 "type": "boolean",
-                "attribute": "checked",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -344,11 +343,11 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "checked",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -364,6 +363,7 @@ export class SelectOption {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -464,4 +464,3 @@ export class SelectOption {
             }];
     }
 }
-//# sourceMappingURL=select-option.js.map

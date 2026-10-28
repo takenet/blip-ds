@@ -381,7 +381,6 @@ export class DatePicker {
         return {
             "typeOfDate": {
                 "type": "string",
-                "attribute": "type-of-date",
                 "mutable": false,
                 "complexType": {
                     "original": "typeDate",
@@ -403,11 +402,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type-of-date",
                 "defaultValue": "'single'"
             },
             "startDateLimit": {
                 "type": "string",
-                "attribute": "start-date-limit",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -423,11 +422,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "start-date-limit",
                 "defaultValue": "defaultStartDate"
             },
             "endDateLimit": {
                 "type": "string",
-                "attribute": "end-date-limit",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -443,11 +442,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "end-date-limit",
                 "defaultValue": "defaultEndDate"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -463,11 +462,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "''"
             },
             "message": {
                 "type": "string",
-                "attribute": "message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -483,11 +482,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "message",
                 "defaultValue": "null"
             },
             "variantBanner": {
                 "type": "string",
-                "attribute": "variant-banner",
                 "mutable": true,
                 "complexType": {
                     "original": "BannerVariant",
@@ -496,7 +495,8 @@ export class DatePicker {
                         "BannerVariant": {
                             "location": "import",
                             "path": "../banner/banner",
-                            "id": "src/components/banner/banner.tsx::BannerVariant"
+                            "id": "src/components/banner/banner.tsx::BannerVariant",
+                            "referenceLocation": "BannerVariant"
                         }
                     }
                 },
@@ -509,11 +509,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "variant-banner",
                 "defaultValue": "'warning'"
             },
             "language": {
                 "type": "string",
-                "attribute": "language",
                 "mutable": false,
                 "complexType": {
                     "original": "languages",
@@ -522,7 +522,8 @@ export class DatePicker {
                         "languages": {
                             "location": "import",
                             "path": "../../utils/languages",
-                            "id": "src/utils/languages/index.ts::languages"
+                            "id": "src/utils/languages/index.ts::languages",
+                            "referenceLocation": "languages"
                         }
                     }
                 },
@@ -535,11 +536,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "language",
                 "defaultValue": "'pt_BR'"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -555,11 +556,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "valueDateSelected": {
                 "type": "string",
-                "attribute": "value-date-selected",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -575,11 +576,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "value-date-selected",
                 "defaultValue": "null"
             },
             "valueEndDateSelected": {
                 "type": "string",
-                "attribute": "value-end-date-selected",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -595,11 +596,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "value-end-date-selected",
                 "defaultValue": "null"
             },
             "positionOptions": {
                 "type": "string",
-                "attribute": "position-options",
                 "mutable": false,
                 "complexType": {
                     "original": "DropdownPostionType",
@@ -621,11 +622,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position-options",
                 "defaultValue": "'auto'"
             },
             "dtInputStart": {
                 "type": "string",
-                "attribute": "dt-input-start",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -641,11 +642,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-input-start",
                 "defaultValue": "null"
             },
             "dtInputEnd": {
                 "type": "string",
-                "attribute": "dt-input-end",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -661,11 +662,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-input-end",
                 "defaultValue": "null"
             },
             "dtOutzone": {
                 "type": "string",
-                "attribute": "dt-outzone",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -681,11 +682,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-outzone",
                 "defaultValue": "null"
             },
             "dtButtonPrev": {
                 "type": "string",
-                "attribute": "dt-button-prev",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -701,11 +702,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-prev",
                 "defaultValue": "null"
             },
             "dtButtonNext": {
                 "type": "string",
-                "attribute": "dt-button-next",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -721,11 +722,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-next",
                 "defaultValue": "null"
             },
             "dtSelectMonth": {
                 "type": "string",
-                "attribute": "dt-select-month",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -741,11 +742,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-select-month",
                 "defaultValue": "null"
             },
             "dtSelectYear": {
                 "type": "string",
-                "attribute": "dt-select-year",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -761,11 +762,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-select-year",
                 "defaultValue": "null"
             },
             "dtButtonClear": {
                 "type": "string",
-                "attribute": "dt-button-clear",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -781,11 +782,11 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-clear",
                 "defaultValue": "null"
             },
             "dtButtonConfirm": {
                 "type": "string",
-                "attribute": "dt-button-confirm",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -801,6 +802,7 @@ export class DatePicker {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-confirm",
                 "defaultValue": "null"
             }
         };
@@ -912,4 +914,3 @@ export class DatePicker {
             }];
     }
 }
-//# sourceMappingURL=datepicker.js.map

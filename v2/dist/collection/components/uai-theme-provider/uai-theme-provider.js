@@ -43,7 +43,6 @@ export class UaiThemeProvider {
         return {
             "theme": {
                 "type": "string",
-                "attribute": "theme",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiTheme",
@@ -65,6 +64,7 @@ export class UaiThemeProvider {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "theme",
                 "defaultValue": "'light'"
             }
         };
@@ -76,4 +76,3 @@ export class UaiThemeProvider {
             }];
     }
 }
-//# sourceMappingURL=uai-theme-provider.js.map

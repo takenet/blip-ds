@@ -1910,6 +1910,3 @@ function loadAssetSvg(key) {
 }
 
 export { getAssetUrl as g, loadAssetSvg as l };
-//# sourceMappingURL=asset-loader-rO3zRdCx.js.map
-
-//# sourceMappingURL=asset-loader-rO3zRdCx.js.map

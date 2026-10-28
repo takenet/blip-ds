@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
-const menuExibitionCss = ".menuexibition{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:16px}.menuexibition__disabled{opacity:0.5;cursor:no-drop}.menuexibition .avatar-item{display:block;margin-right:8px}.menuexibition .content-item{width:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.menuexibition .content-item .title-item{color:var(--color-content-default, rgb(40, 40, 40))}.menuexibition .content-item .subtitle-item{color:var(--color-content-disable, rgb(89, 89, 89))}.menuexibition .content-item .description-item{color:var(--color-content-default, rgb(40, 40, 40))}";
+const menuExibitionCss = () => `.menuexibition{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:16px}.menuexibition__disabled{opacity:0.5;cursor:no-drop}.menuexibition .avatar-item{display:block;margin-right:8px}.menuexibition .content-item{width:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.menuexibition .content-item .title-item{color:var(--color-content-default, rgb(40, 40, 40))}.menuexibition .content-item .subtitle-item{color:var(--color-content-disable, rgb(89, 89, 89))}.menuexibition .content-item .description-item{color:var(--color-content-default, rgb(40, 40, 40))}`;
 
 const BdsMenuExibition = class {
     constructor(hostRef) {
@@ -44,9 +44,6 @@ const BdsMenuExibition = class {
             } }, hasAvatar && (index.h("bds-avatar", { key: 'c485d7a4248a4a34553ef499ba60cabc6b580036', class: "avatar-item", name: this.avatarName, thumbnail: this.avatarThumbnail, size: this.avatarSize })), index.h("div", { key: '5b41a63882e63541b2315cba00ba981c2167e403', class: "content-item" }, this.value && (index.h("bds-typo", { key: '2214b9f2a065e365065e7beca3dfa7664dedcd59', class: "title-item", variant: "fs-16", tag: "span" }, this.value)), this.subtitle && (index.h("bds-typo", { key: 'fd08dfd0153a07bd3095ca258f5501fc92e28c67', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (index.h("bds-typo", { key: 'e607923f89a5b744d79b62ee220003f36ac2b3a8', class: "description-item", variant: "fs-10", tag: "span" }, this.description)))));
     }
 };
-BdsMenuExibition.style = menuExibitionCss;
+BdsMenuExibition.style = menuExibitionCss();
 
 exports.bds_menu_exibition = BdsMenuExibition;
-//# sourceMappingURL=bds-menu-exibition.entry.cjs.js.map
-
-//# sourceMappingURL=bds-menu-exibition.cjs.entry.js.map

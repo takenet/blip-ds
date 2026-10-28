@@ -35,7 +35,7 @@ export class Image {
     }
     render() {
         var _a;
-        return (h(Host, { key: '3de2dfe02e30c64a7ca439bcf31e442e524c6a31', class: { empty_img: !this.imageLoaded } }, this.currentSrc && !this.loadError && (h("img", { key: 'eeecb765739c9756bd5da797d20e3dcde3e555cd', src: this.currentSrc, alt: this.alt, hidden: !this.imageLoaded, onLoad: () => {
+        return (h(Host, { key: 'ab977e7cd30a5099a6f03cb9db535613fef463bd', class: { empty_img: !this.imageLoaded } }, this.currentSrc && !this.loadError && (h("img", { key: '7f4d85726077ecb33e153fd96825dd04d59449fc', src: this.currentSrc, alt: this.alt, hidden: !this.imageLoaded, onLoad: () => {
                 this.imageLoaded = true;
                 this.imageHasLoading = false;
             }, onError: () => {
@@ -64,7 +64,6 @@ export class Image {
         return {
             "src": {
                 "type": "string",
-                "attribute": "src",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -79,11 +78,11 @@ export class Image {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "src"
             },
             "alt": {
                 "type": "string",
-                "attribute": "alt",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -98,11 +97,11 @@ export class Image {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "alt"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -117,11 +116,11 @@ export class Image {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "width"
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -136,11 +135,11 @@ export class Image {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "height"
             },
             "objectFit": {
                 "type": "string",
-                "attribute": "object-fit",
                 "mutable": false,
                 "complexType": {
                     "original": "ObjectFitValue",
@@ -162,11 +161,11 @@ export class Image {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "object-fit",
                 "defaultValue": "'cover'"
             },
             "brightness": {
                 "type": "number",
-                "attribute": "brightness",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -181,11 +180,11 @@ export class Image {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "brightness"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -201,6 +200,7 @@ export class Image {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -242,4 +242,3 @@ export class Image {
             }];
     }
 }
-//# sourceMappingURL=image.js.map

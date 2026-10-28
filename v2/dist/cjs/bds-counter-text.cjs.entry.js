@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
 var CounterTextState;
 (function (CounterTextState) {
@@ -9,7 +9,7 @@ var CounterTextState;
     CounterTextState["Delete"] = "delete";
 })(CounterTextState || (CounterTextState = {}));
 
-const counterTextCss = ".counter-text{background:var(--color-surface-2, rgb(237, 237, 237));color:var(--color-content-disable, rgb(89, 89, 89));-webkit-box-sizing:content-box;box-sizing:content-box;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;border-radius:11px;padding:0 8px;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none}.counter-text--active{background:var(--color-system, rgb(178, 223, 253));color:var(--color-content-din, rgb(0, 0, 0))}.counter-text--warning{background:var(--color-warning, rgb(253, 233, 155));color:var(--color-content-din, rgb(0, 0, 0))}.counter-text--delete{background:var(--color-delete, rgb(230, 15, 15));color:var(--color-content-bright, rgb(255, 255, 255))}";
+const counterTextCss = () => `.counter-text{background:var(--color-surface-2, rgb(237, 237, 237));color:var(--color-content-disable, rgb(89, 89, 89));-webkit-box-sizing:content-box;box-sizing:content-box;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;border-radius:11px;padding:0 8px;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none}.counter-text--active{background:var(--color-system, rgb(178, 223, 253));color:var(--color-content-din, rgb(0, 0, 0))}.counter-text--warning{background:var(--color-warning, rgb(253, 233, 155));color:var(--color-content-din, rgb(0, 0, 0))}.counter-text--delete{background:var(--color-delete, rgb(230, 15, 15));color:var(--color-content-bright, rgb(255, 255, 255))}`;
 
 const CounterText = class {
     constructor(hostRef) {
@@ -41,9 +41,6 @@ const CounterText = class {
             } }, index.h("bds-typo", { key: '0bcaf50caba975fe7e75cc7ba58163d2f6e3f18b', variant: "fs-10" }, actualLength)));
     }
 };
-CounterText.style = counterTextCss;
+CounterText.style = counterTextCss();
 
 exports.bds_counter_text = CounterText;
-//# sourceMappingURL=bds-counter-text.entry.cjs.js.map
-
-//# sourceMappingURL=bds-counter-text.cjs.entry.js.map

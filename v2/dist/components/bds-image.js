@@ -1,9 +1,1 @@
-import { I as Image, d as defineCustomElement$1 } from './p-CfXMK2Xc.js';
-
-const BdsImage = Image;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsImage, defineCustomElement };
-//# sourceMappingURL=bds-image.js.map
-
-//# sourceMappingURL=bds-image.js.map
+import{I as o,d as s}from"./p-CgoPuhS8.js";const p=o,r=s;export{p as BdsImage,r as defineCustomElement}

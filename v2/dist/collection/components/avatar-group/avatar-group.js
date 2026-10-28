@@ -60,7 +60,6 @@ export class AvatarGroup {
         return {
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "avatarSize",
@@ -82,11 +81,11 @@ export class AvatarGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "users": {
                 "type": "string",
-                "attribute": "users",
                 "mutable": false,
                 "complexType": {
                     "original": "string | AvatarDataList[]",
@@ -95,7 +94,8 @@ export class AvatarGroup {
                         "AvatarDataList": {
                             "location": "import",
                             "path": "./avatar-group-interface",
-                            "id": "src/components/avatar-group/avatar-group-interface.ts::AvatarDataList"
+                            "id": "src/components/avatar-group/avatar-group-interface.ts::AvatarDataList",
+                            "referenceLocation": "AvatarDataList"
                         }
                     }
                 },
@@ -107,11 +107,11 @@ export class AvatarGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "users"
             },
             "canClick": {
                 "type": "boolean",
-                "attribute": "can-click",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -126,7 +126,8 @@ export class AvatarGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "can-click"
             }
         };
     }
@@ -160,4 +161,3 @@ export class AvatarGroup {
             }];
     }
 }
-//# sourceMappingURL=avatar-group.js.map

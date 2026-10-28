@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
-const tabItemCss = ":host{display:none}:host(.is-open){display:block;height:100%}.tab_item{height:100%}.tab_item_content{display:none;height:100%}.tab_item_content--open{display:block}";
+const tabItemCss = () => `:host{display:none}:host(.is-open){display:block;height:100%}.tab_item{height:100%}.tab_item_content{display:none;height:100%}.tab_item_content--open{display:block}`;
 
 const BdsTabItem = class {
     constructor(hostRef) {
@@ -91,12 +91,11 @@ const BdsTabItem = class {
         return (index.h(index.Host, { key: '7fba977b5aac7b438e396a0909bff59623cb8174', class: { [`is-open`]: this.disable === true ? false : this.open } }, index.h("div", { key: 'bc698ee5760314ea17c66bacc0718619f6f863fa', class: { tab_item: true }, "data-test": this.dataTest }, index.h("div", { key: '1d76a0e7fb691d5d54440a2a47874a24ea3b929e', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, index.h("slot", { key: '25aedd8e9e4689fdcdaf510d862079ae25db02fc' })))));
     }
     static get watchers() { return {
-        "disable": ["disableChanged"]
+        "disable": [{
+                "disableChanged": 0
+            }]
     }; }
 };
-BdsTabItem.style = tabItemCss;
+BdsTabItem.style = tabItemCss();
 
 exports.bds_tab_item = BdsTabItem;
-//# sourceMappingURL=bds-tab-item.entry.cjs.js.map
-
-//# sourceMappingURL=bds-tab-item.cjs.entry.js.map

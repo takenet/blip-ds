@@ -1,9 +1,1 @@
-import { B as Button, d as defineCustomElement$1 } from './p-DxbdVioK.js';
-
-const BdsButton = Button;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsButton, defineCustomElement };
-//# sourceMappingURL=bds-button.js.map
-
-//# sourceMappingURL=bds-button.js.map
+import{B as s,d as o}from"./p-CsEfjA5F.js";const p=s,r=o;export{p as BdsButton,r as defineCustomElement}

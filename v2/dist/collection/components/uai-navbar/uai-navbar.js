@@ -39,7 +39,6 @@ export class UaiNavbar {
         return {
             "orientation": {
                 "type": "string",
-                "attribute": "orientation",
                 "mutable": false,
                 "complexType": {
                     "original": "uaiNavbarOrientation",
@@ -61,11 +60,11 @@ export class UaiNavbar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "orientation",
                 "defaultValue": "'vertical'"
             },
             "backgroundColor": {
                 "type": "string",
-                "attribute": "background-color",
                 "mutable": false,
                 "complexType": {
                     "original": "uaiNavbarBackground",
@@ -87,11 +86,11 @@ export class UaiNavbar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "background-color",
                 "defaultValue": "'surface-paper'"
             },
             "justifyContent": {
                 "type": "string",
-                "attribute": "justify-content",
                 "mutable": false,
                 "complexType": {
                     "original": "uaiNavbarJustifyContent",
@@ -113,11 +112,11 @@ export class UaiNavbar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "justify-content",
                 "defaultValue": "'space-between'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -133,10 +132,10 @@ export class UaiNavbar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
     }
     static get elementRef() { return "hostElement"; }
 }
-//# sourceMappingURL=uai-navbar.js.map

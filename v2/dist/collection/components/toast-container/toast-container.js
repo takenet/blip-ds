@@ -16,4 +16,3 @@ export class BdsToastContainer {
         };
     }
 }
-//# sourceMappingURL=toast-container.js.map

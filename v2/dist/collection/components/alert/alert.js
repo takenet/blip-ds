@@ -61,7 +61,6 @@ export class BdsAlert {
         return {
             "open": {
                 "type": "boolean",
-                "attribute": "open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -77,11 +76,11 @@ export class BdsAlert {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "open",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -97,11 +96,11 @@ export class BdsAlert {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             },
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -117,6 +116,7 @@ export class BdsAlert {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'fixed'"
             }
         };
@@ -167,4 +167,3 @@ export class BdsAlert {
             }];
     }
 }
-//# sourceMappingURL=alert.js.map

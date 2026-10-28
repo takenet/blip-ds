@@ -4,4 +4,3 @@ export var CounterTextState;
     CounterTextState["Warning"] = "warning";
     CounterTextState["Delete"] = "delete";
 })(CounterTextState || (CounterTextState = {}));
-//# sourceMappingURL=counter-text-interface.js.map

@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
-const tabPanelCss = ".bds-tab-panel{display:none;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}";
+const tabPanelCss = () => `.bds-tab-panel{display:none;font-family:"Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}`;
 
 const TabPanel = class {
     constructor(hostRef) {
@@ -22,9 +22,6 @@ const TabPanel = class {
             } }, index.h("slot", { key: '230a7ece5a265e850470743eebe175ef3c7d5c58' })));
     }
 };
-TabPanel.style = tabPanelCss;
+TabPanel.style = tabPanelCss();
 
 exports.bds_tab_panel = TabPanel;
-//# sourceMappingURL=bds-tab-panel.entry.cjs.js.map
-
-//# sourceMappingURL=bds-tab-panel.cjs.entry.js.map

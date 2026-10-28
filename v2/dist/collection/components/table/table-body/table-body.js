@@ -31,4 +31,3 @@ export class TableBody {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=table-body.js.map

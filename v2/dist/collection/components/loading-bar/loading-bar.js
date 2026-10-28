@@ -38,7 +38,6 @@ export class BdsloadingBar {
         return {
             "percent": {
                 "type": "number",
-                "attribute": "percent",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -54,11 +53,11 @@ export class BdsloadingBar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "percent",
                 "defaultValue": "0"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "loadingBarSize",
@@ -80,11 +79,11 @@ export class BdsloadingBar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'default'"
             },
             "text": {
                 "type": "string",
-                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -100,11 +99,11 @@ export class BdsloadingBar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "text",
                 "defaultValue": "''"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -120,9 +119,9 @@ export class BdsloadingBar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
     }
 }
-//# sourceMappingURL=loading-bar.js.map

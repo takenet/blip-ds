@@ -7,4 +7,3 @@ export const termTranslate = (lang, key) => {
             ptTerms;
     return terms[key];
 };
-//# sourceMappingURL=index.js.map

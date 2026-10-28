@@ -243,7 +243,6 @@ export class InputEditable {
         return {
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "SizeInputEditable",
@@ -265,11 +264,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "expand": {
                 "type": "boolean",
-                "attribute": "expand",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -285,11 +284,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "expand",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -305,11 +304,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             },
             "inputName": {
                 "type": "string",
-                "attribute": "input-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -325,11 +324,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "input-name",
                 "defaultValue": "''"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string | null",
@@ -345,11 +344,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "value",
                 "defaultValue": "''"
             },
             "requiredErrorMessage": {
                 "type": "string",
-                "attribute": "required-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -364,11 +363,11 @@ export class InputEditable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required-error-message"
             },
             "minlength": {
                 "type": "number",
-                "attribute": "minlength",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -384,11 +383,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "minlength",
                 "defaultValue": "0"
             },
             "minlengthErrorMessage": {
                 "type": "string",
-                "attribute": "minlength-error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -403,11 +402,11 @@ export class InputEditable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "minlength-error-message"
             },
             "maxlength": {
                 "type": "number",
-                "attribute": "maxlength",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -422,11 +421,11 @@ export class InputEditable {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "maxlength"
             },
             "errorMessage": {
                 "type": "string",
-                "attribute": "error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -442,11 +441,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error-message",
                 "defaultValue": "''"
             },
             "successMessage": {
                 "type": "string",
-                "attribute": "success-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -462,11 +461,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "success-message",
                 "defaultValue": "''"
             },
             "helperMessage": {
                 "type": "string",
-                "attribute": "helper-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -482,11 +481,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "helper-message",
                 "defaultValue": "''"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -502,11 +501,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -522,11 +521,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "success": {
                 "type": "boolean",
-                "attribute": "success",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -542,11 +541,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "success",
                 "defaultValue": "false"
             },
             "dtButtonEdit": {
                 "type": "string",
-                "attribute": "dt-button-edit",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -562,11 +561,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-edit",
                 "defaultValue": "null"
             },
             "dtButtonClose": {
                 "type": "string",
-                "attribute": "dt-button-close",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -582,11 +581,11 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-close",
                 "defaultValue": "null"
             },
             "dtButtonConfirm": {
                 "type": "string",
-                "attribute": "dt-button-confirm",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -602,6 +601,7 @@ export class InputEditable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-confirm",
                 "defaultValue": "null"
             }
         };
@@ -729,4 +729,3 @@ export class InputEditable {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=input-editable.js.map

@@ -22,4 +22,3 @@ export const esTerms = [
         expand: 'Expandir',
     },
 ];
-//# sourceMappingURL=es_ES.js.map

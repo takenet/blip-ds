@@ -1,9 +1,1 @@
-import { T as Tooltip, d as defineCustomElement$1 } from './p-7wwi1guL.js';
-
-const BdsTooltip = Tooltip;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsTooltip, defineCustomElement };
-//# sourceMappingURL=bds-tooltip.js.map
-
-//# sourceMappingURL=bds-tooltip.js.map
+import{T as o,d as s}from"./p-DeQLDNPG.js";const p=o,r=s;export{p as BdsTooltip,r as defineCustomElement}

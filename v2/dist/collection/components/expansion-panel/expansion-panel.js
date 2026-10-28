@@ -16,4 +16,3 @@ export class ExpansionPanel {
         };
     }
 }
-//# sourceMappingURL=expansion-panel.js.map

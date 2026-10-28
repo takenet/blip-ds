@@ -167,7 +167,6 @@ export class BdsDropdown {
         return {
             "activeMode": {
                 "type": "string",
-                "attribute": "active-mode",
                 "mutable": false,
                 "complexType": {
                     "original": "activeMode",
@@ -189,11 +188,11 @@ export class BdsDropdown {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "active-mode",
                 "defaultValue": "'click'"
             },
             "open": {
                 "type": "boolean",
-                "attribute": "open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -209,11 +208,11 @@ export class BdsDropdown {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "open",
                 "defaultValue": "false"
             },
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
                     "original": "DropdownPostionType",
@@ -235,11 +234,11 @@ export class BdsDropdown {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'auto'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -255,6 +254,7 @@ export class BdsDropdown {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -358,4 +358,3 @@ export class BdsDropdown {
             }];
     }
 }
-//# sourceMappingURL=dropdown.js.map

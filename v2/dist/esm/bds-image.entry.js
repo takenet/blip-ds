@@ -1,6 +1,6 @@
-import { r as registerInstance, h, H as Host, a as getElement } from './index-gowA9FoV.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-BnSR_zce.js';
 
-const imageCss = ":host{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}:host .img-feedback{height:76%}:host(.empty_img){background-color:var(--color-surface-3, rgb(227, 227, 227))}";
+const imageCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}:host .img-feedback{height:76%}:host(.empty_img){background-color:var(--color-surface-3, rgb(227, 227, 227))}`;
 
 const Image = class {
     constructor(hostRef) {
@@ -39,7 +39,7 @@ const Image = class {
     }
     render() {
         var _a;
-        return (h(Host, { key: '3de2dfe02e30c64a7ca439bcf31e442e524c6a31', class: { empty_img: !this.imageLoaded } }, this.currentSrc && !this.loadError && (h("img", { key: 'eeecb765739c9756bd5da797d20e3dcde3e555cd', src: this.currentSrc, alt: this.alt, hidden: !this.imageLoaded, onLoad: () => {
+        return (h(Host, { key: 'ab977e7cd30a5099a6f03cb9db535613fef463bd', class: { empty_img: !this.imageLoaded } }, this.currentSrc && !this.loadError && (h("img", { key: '7f4d85726077ecb33e153fd96825dd04d59449fc', src: this.currentSrc, alt: this.alt, hidden: !this.imageLoaded, onLoad: () => {
                 this.imageLoaded = true;
                 this.imageHasLoading = false;
             }, onError: () => {
@@ -54,12 +54,11 @@ const Image = class {
     }
     get element() { return getElement(this); }
     static get watchers() { return {
-        "src": ["loadImage"]
+        "src": [{
+                "loadImage": 0
+            }]
     }; }
 };
-Image.style = imageCss;
+Image.style = imageCss();
 
 export { Image as bds_image };
-//# sourceMappingURL=bds-image.entry.js.map
-
-//# sourceMappingURL=bds-image.entry.js.map

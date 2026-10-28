@@ -81,7 +81,6 @@ export class Tooltip {
         return {
             "tooltipText": {
                 "type": "string",
-                "attribute": "tooltip-text",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -97,11 +96,11 @@ export class Tooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "tooltip-text",
                 "defaultValue": "'Tooltip'"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -117,11 +116,11 @@ export class Tooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
                     "original": "TooltipPostionType",
@@ -143,11 +142,11 @@ export class Tooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'left-center'"
             },
             "maxWidth": {
                 "type": "string",
-                "attribute": "max-width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -163,11 +162,11 @@ export class Tooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "max-width",
                 "defaultValue": "'320px'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -183,6 +182,7 @@ export class Tooltip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -242,4 +242,3 @@ export class Tooltip {
             }];
     }
 }
-//# sourceMappingURL=tooltip.js.map

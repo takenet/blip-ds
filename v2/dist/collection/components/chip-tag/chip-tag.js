@@ -32,7 +32,6 @@ export class ChipTag {
         return {
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -47,11 +46,11 @@ export class ChipTag {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "ColorChipTag",
@@ -73,11 +72,11 @@ export class ChipTag {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'default'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -93,9 +92,9 @@ export class ChipTag {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
     }
 }
-//# sourceMappingURL=chip-tag.js.map

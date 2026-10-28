@@ -58,7 +58,6 @@ export class NavTreeGroup {
         return {
             "collapse": {
                 "type": "string",
-                "attribute": "collapse",
                 "mutable": false,
                 "complexType": {
                     "original": "collapses",
@@ -80,6 +79,7 @@ export class NavTreeGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "collapse",
                 "defaultValue": "'single'"
             }
         };
@@ -171,4 +171,3 @@ export class NavTreeGroup {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=nav-tree-group.js.map

@@ -133,6 +133,3 @@ exports.getParentsUntil = getParentsUntil;
 exports.getScrollParent = getScrollParent;
 exports.positionAbsoluteElement = positionAbsoluteElement;
 exports.positionElement = positionElement;
-//# sourceMappingURL=position-element-Due63Z64.js.map
-
-//# sourceMappingURL=position-element-Due63Z64.js.map

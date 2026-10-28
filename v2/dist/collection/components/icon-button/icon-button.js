@@ -75,7 +75,6 @@ export class IconButton {
         return {
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -91,11 +90,11 @@ export class IconButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "IconButtonSize",
@@ -117,11 +116,11 @@ export class IconButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "IconButtonVariant",
@@ -143,11 +142,11 @@ export class IconButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'primary'"
             },
             "iconTheme": {
                 "type": "string",
-                "attribute": "icon-theme",
                 "mutable": false,
                 "complexType": {
                     "original": "ButtonIconTheme",
@@ -169,11 +168,11 @@ export class IconButton {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon-theme",
                 "defaultValue": "'outline'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -189,11 +188,11 @@ export class IconButton {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -209,6 +208,7 @@ export class IconButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -237,4 +237,3 @@ export class IconButton {
             }];
     }
 }
-//# sourceMappingURL=icon-button.js.map

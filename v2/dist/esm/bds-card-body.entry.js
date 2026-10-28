@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-gowA9FoV.js';
+import { r as registerInstance, h } from './index-BnSR_zce.js';
 
 const CardBody = class {
     constructor(hostRef) {
@@ -10,6 +10,3 @@ const CardBody = class {
 };
 
 export { CardBody as bds_card_body };
-//# sourceMappingURL=bds-card-body.entry.js.map
-
-//# sourceMappingURL=bds-card-body.entry.js.map

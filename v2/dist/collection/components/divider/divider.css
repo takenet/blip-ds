@@ -31,8 +31,6 @@
 
 hr {
   border: none;
-  /* Cores */
-  /* Margens */
 }
 hr.horizontal {
   width: 100%;
@@ -62,6 +60,9 @@ hr.vertical.dotted {
 hr.vertical.dashed {
   border-left-style: dashed;
 }
+hr {
+  /* Cores */
+}
 hr.color-divider-1 {
   border-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
 }
@@ -70,6 +71,9 @@ hr.color-divider-2 {
 }
 hr.color-divider-3 {
   border-color: var(--color-border-3, rgba(0, 0, 0, 0.06));
+}
+hr {
+  /* Margens */
 }
 hr.margin-4 {
   margin: 4px;

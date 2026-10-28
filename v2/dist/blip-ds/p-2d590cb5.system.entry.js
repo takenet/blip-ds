@@ -1,2 +1,0 @@
-System.register(["./p-CD9MMdoC.system.js"],(function(t){"use strict";var n,e;return{setters:[function(t){n=t.r;e=t.h}],execute:function(){var r=t("bds_card_subtitle",function(){function t(t){n(this,t)}t.prototype.render=function(){return e("bds-typo",{key:"b48d7632808b2f32eb87615780650d4cbfa10a8d",variant:"fs-12",tag:"p",bold:"regular",margin:false},this.text)};return t}())}}}));
-//# sourceMappingURL=p-2d590cb5.system.entry.js.map

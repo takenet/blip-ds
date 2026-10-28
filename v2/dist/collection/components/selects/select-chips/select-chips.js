@@ -600,7 +600,6 @@ export class SelectChips {
         return {
             "options": {
                 "type": "string",
-                "attribute": "options",
                 "mutable": true,
                 "complexType": {
                     "original": "string | Option[]",
@@ -609,7 +608,8 @@ export class SelectChips {
                         "Option": {
                             "location": "import",
                             "path": "../select-interface",
-                            "id": "src/components/selects/select-interface.ts::Option"
+                            "id": "src/components/selects/select-interface.ts::Option",
+                            "referenceLocation": "Option"
                         }
                     }
                 },
@@ -621,11 +621,11 @@ export class SelectChips {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "options"
             },
             "chips": {
                 "type": "string",
-                "attribute": "chips",
                 "mutable": true,
                 "complexType": {
                     "original": "string | string[]",
@@ -641,11 +641,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "chips",
                 "defaultValue": "[]"
             },
             "newPrefix": {
                 "type": "string",
-                "attribute": "new-prefix",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -661,11 +661,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "new-prefix",
                 "defaultValue": "''"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string | null",
@@ -681,11 +681,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "''"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -701,11 +701,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "success": {
                 "type": "boolean",
-                "attribute": "success",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -721,11 +721,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "success",
                 "defaultValue": "false"
             },
             "maxlength": {
                 "type": "number",
-                "attribute": "maxlength",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -740,11 +740,11 @@ export class SelectChips {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "maxlength"
             },
             "errorMessage": {
                 "type": "string",
-                "attribute": "error-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -760,11 +760,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error-message",
                 "defaultValue": "''"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -780,11 +780,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -800,11 +800,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "''"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -820,11 +820,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "''"
             },
             "duplicated": {
                 "type": "boolean",
-                "attribute": "duplicated",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -840,11 +840,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "duplicated",
                 "defaultValue": "false"
             },
             "canAddNew": {
                 "type": "boolean",
-                "attribute": "can-add-new",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -860,11 +860,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "can-add-new",
                 "defaultValue": "true"
             },
             "notFoundMessage": {
                 "type": "string",
-                "attribute": "not-found-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -880,11 +880,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "not-found-message",
                 "defaultValue": "'No results found'"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "InputChipsTypes",
@@ -893,7 +893,8 @@ export class SelectChips {
                         "InputChipsTypes": {
                             "location": "import",
                             "path": "../../input-chips/input-chips-interface",
-                            "id": "src/components/input-chips/input-chips-interface.ts::InputChipsTypes"
+                            "id": "src/components/input-chips/input-chips-interface.ts::InputChipsTypes",
+                            "referenceLocation": "InputChipsTypes"
                         }
                     }
                 },
@@ -906,11 +907,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'text'"
             },
             "delimiters": {
                 "type": "unknown",
-                "attribute": "delimiters",
                 "mutable": false,
                 "complexType": {
                     "original": "RegExp",
@@ -934,7 +935,6 @@ export class SelectChips {
             },
             "disableSubmit": {
                 "type": "boolean",
-                "attribute": "disable-submit",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -950,11 +950,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disable-submit",
                 "defaultValue": "false"
             },
             "helperMessage": {
                 "type": "string",
-                "attribute": "helper-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -970,11 +970,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "helper-message",
                 "defaultValue": "''"
             },
             "successMessage": {
                 "type": "string",
-                "attribute": "success-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -990,11 +990,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "success-message",
                 "defaultValue": "''"
             },
             "inputName": {
                 "type": "string",
-                "attribute": "input-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1010,11 +1010,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "input-name",
                 "defaultValue": "''"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1030,11 +1030,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "optionsPosition": {
                 "type": "string",
-                "attribute": "options-position",
                 "mutable": true,
                 "complexType": {
                     "original": "SelectOptionsPositionType",
@@ -1043,7 +1043,8 @@ export class SelectChips {
                         "SelectOptionsPositionType": {
                             "location": "import",
                             "path": "../select-interface",
-                            "id": "src/components/selects/select-interface.ts::SelectOptionsPositionType"
+                            "id": "src/components/selects/select-interface.ts::SelectOptionsPositionType",
+                            "referenceLocation": "SelectOptionsPositionType"
                         }
                     }
                 },
@@ -1056,11 +1057,11 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "options-position",
                 "defaultValue": "'auto'"
             },
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1075,11 +1076,11 @@ export class SelectChips {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "height"
             },
             "maxHeight": {
                 "type": "string",
-                "attribute": "max-height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1094,11 +1095,11 @@ export class SelectChips {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "max-height"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -1114,6 +1115,7 @@ export class SelectChips {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -1149,7 +1151,8 @@ export class SelectChips {
                         "SelectChangeEvent": {
                             "location": "import",
                             "path": "../select-interface",
-                            "id": "src/components/selects/select-interface.ts::SelectChangeEvent"
+                            "id": "src/components/selects/select-interface.ts::SelectChangeEvent",
+                            "referenceLocation": "SelectChangeEvent"
                         }
                     }
                 }
@@ -1386,4 +1389,3 @@ export class SelectChips {
             }];
     }
 }
-//# sourceMappingURL=select-chips.js.map

@@ -1,9 +1,1 @@
-import { T as Typo, d as defineCustomElement$1 } from './p-BTwF0c-l.js';
-
-const BdsTypo = Typo;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsTypo, defineCustomElement };
-//# sourceMappingURL=bds-typo.js.map
-
-//# sourceMappingURL=bds-typo.js.map
+import{T as o,d as p}from"./p-DApxFR7K.js";const s=o,r=p;export{s as BdsTypo,r as defineCustomElement}

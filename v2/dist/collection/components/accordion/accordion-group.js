@@ -62,7 +62,6 @@ export class AccordionGroup {
         return {
             "collapse": {
                 "type": "string",
-                "attribute": "collapse",
                 "mutable": false,
                 "complexType": {
                     "original": "collapses",
@@ -84,11 +83,11 @@ export class AccordionGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "collapse",
                 "defaultValue": "'single'"
             },
             "divisor": {
                 "type": "boolean",
-                "attribute": "divisor",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -104,6 +103,7 @@ export class AccordionGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "divisor",
                 "defaultValue": "true"
             }
         };
@@ -195,4 +195,3 @@ export class AccordionGroup {
             }];
     }
 }
-//# sourceMappingURL=accordion-group.js.map

@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
-const buttonGroupCss = ":host{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}";
+const buttonGroupCss = () => `:host{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}`;
 
 const ButtonGroup = class {
     constructor(hostRef) {
@@ -123,15 +123,20 @@ const ButtonGroup = class {
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {
-        "size": ["handlePropChanges"],
-        "direction": ["handlePropChanges"],
-        "color": ["handlePropChanges"],
-        "multiple": ["handlePropChanges"]
+        "size": [{
+                "handlePropChanges": 0
+            }],
+        "direction": [{
+                "handlePropChanges": 0
+            }],
+        "color": [{
+                "handlePropChanges": 0
+            }],
+        "multiple": [{
+                "handlePropChanges": 0
+            }]
     }; }
 };
-ButtonGroup.style = buttonGroupCss;
+ButtonGroup.style = buttonGroupCss();
 
 exports.bds_button_group = ButtonGroup;
-//# sourceMappingURL=bds-button-group.entry.cjs.js.map
-
-//# sourceMappingURL=bds-button-group.cjs.entry.js.map

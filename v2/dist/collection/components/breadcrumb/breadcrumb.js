@@ -82,7 +82,6 @@ export class Breadcrumb {
         return {
             "items": {
                 "type": "string",
-                "attribute": "items",
                 "mutable": false,
                 "complexType": {
                     "original": "string | Array<{ label: string; href?: string }>",
@@ -103,11 +102,11 @@ export class Breadcrumb {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "items",
                 "defaultValue": "[]"
             },
             "wrapItems": {
                 "type": "boolean",
-                "attribute": "wrap-items",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -123,6 +122,7 @@ export class Breadcrumb {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "wrap-items",
                 "defaultValue": "true"
             }
         };
@@ -140,4 +140,3 @@ export class Breadcrumb {
             }];
     }
 }
-//# sourceMappingURL=breadcrumb.js.map

@@ -42,7 +42,6 @@ export class CardColor {
         return {
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -57,11 +56,11 @@ export class CardColor {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "name"
             },
             "hex": {
                 "type": "string",
-                "attribute": "hex",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -76,11 +75,11 @@ export class CardColor {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hex"
             },
             "gradient": {
                 "type": "boolean",
-                "attribute": "gradient",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -96,11 +95,11 @@ export class CardColor {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "gradient",
                 "defaultValue": "false"
             },
             "variable": {
                 "type": "string",
-                "attribute": "variable",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -115,11 +114,11 @@ export class CardColor {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "variable"
             },
             "lightText": {
                 "type": "boolean",
-                "attribute": "light-text",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -135,6 +134,7 @@ export class CardColor {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "light-text",
                 "defaultValue": "false"
             }
         };
@@ -145,4 +145,3 @@ export class CardColor {
         };
     }
 }
-//# sourceMappingURL=card-color.js.map

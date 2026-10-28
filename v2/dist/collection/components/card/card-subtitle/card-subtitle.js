@@ -9,7 +9,6 @@ export class CardSubtitle {
         return {
             "text": {
                 "type": "string",
-                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -24,9 +23,9 @@ export class CardSubtitle {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "text"
             }
         };
     }
 }
-//# sourceMappingURL=card-subtitle.js.map

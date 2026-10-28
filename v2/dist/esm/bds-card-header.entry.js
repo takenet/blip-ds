@@ -1,6 +1,6 @@
-import { r as registerInstance, h } from './index-gowA9FoV.js';
+import { r as registerInstance, h } from './index-BnSR_zce.js';
 
-const cardHeaderCss = ":host{width:100%}";
+const cardHeaderCss = () => `:host{width:100%}`;
 
 const CardHeader = class {
     constructor(hostRef) {
@@ -14,9 +14,6 @@ const CardHeader = class {
         return (h("bds-grid", { key: '35e82fd0bef4b8b877ba5872e4e67fe488f361ea', xxs: "12", direction: "row", gap: "1", justifyContent: this.align, alignItems: "center" }, h("slot", { key: '23dccd08124c47a7dc509aaf5c6259fd2addac48' })));
     }
 };
-CardHeader.style = cardHeaderCss;
+CardHeader.style = cardHeaderCss();
 
 export { CardHeader as bds_card_header };
-//# sourceMappingURL=bds-card-header.entry.js.map
-
-//# sourceMappingURL=bds-card-header.entry.js.map

@@ -69,4 +69,3 @@ export const messageTranslate = (lang, string) => {
     }
     return tranlate;
 };
-//# sourceMappingURL=index.js.map

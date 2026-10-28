@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-gowA9FoV.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BnSR_zce.js';
 
 const RadioGroup = class {
     constructor(hostRef) {
@@ -36,11 +36,10 @@ const RadioGroup = class {
     }
     get element() { return getElement(this); }
     static get watchers() { return {
-        "value": ["valueChanged"]
+        "value": [{
+                "valueChanged": 0
+            }]
     }; }
 };
 
 export { RadioGroup as bds_radio_group };
-//# sourceMappingURL=bds-radio-group.entry.js.map
-
-//# sourceMappingURL=bds-radio-group.entry.js.map

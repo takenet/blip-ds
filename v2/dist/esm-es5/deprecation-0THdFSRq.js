@@ -1,2 +1,0 @@
-import"./index-gowA9FoV.js";var warnings=new Set;var warnOnce=function(n,r,a){var e="".concat(n,":").concat(r);if(warnings.has(e))return;warnings.add(e);console.warn("[".concat(n,"] ").concat(a))};export{warnOnce as w};
-//# sourceMappingURL=deprecation-0THdFSRq.js.map

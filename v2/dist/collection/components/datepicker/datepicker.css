@@ -72,11 +72,6 @@
 .input--textarea .input__icon--textarea {
   align-self: flex-start;
 }
-.input--state-primary {
-  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
-  box-sizing: border-box;
-  border-radius: 8px;
-}
 .input--state-primary .input__icon {
   position: relative;
 }
@@ -89,6 +84,11 @@
   height: 100%;
   background-color: var(--color-hover, rgba(0, 0, 0, 0.08));
   z-index: 0;
+  border-radius: 8px;
+}
+.input--state-primary {
+  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  box-sizing: border-box;
   border-radius: 8px;
 }
 .input--state-primary:hover {
@@ -116,11 +116,6 @@
   caret-color: var(--color-primary, rgb(30, 107, 241));
   color: var(--color-content-default, rgb(40, 40, 40));
 }
-.input--state-danger {
-  border: 1px solid var(--color-delete, rgb(230, 15, 15));
-  box-sizing: border-box;
-  border-radius: 8px;
-}
 .input--state-danger .input__icon {
   position: relative;
 }
@@ -134,6 +129,11 @@
   background-color: var(--color-surface-negative, rgb(138, 0, 0));
   z-index: 0;
   opacity: 50%;
+  border-radius: 8px;
+}
+.input--state-danger {
+  border: 1px solid var(--color-delete, rgb(230, 15, 15));
+  box-sizing: border-box;
   border-radius: 8px;
 }
 .input--state-danger:hover {
@@ -161,11 +161,6 @@
   caret-color: var(--color-negative, #e60f0f);
   color: var(--color-content-default, rgb(40, 40, 40));
 }
-.input--state-success {
-  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
-  box-sizing: border-box;
-  border-radius: 8px;
-}
 .input--state-success .input__icon {
   position: relative;
 }
@@ -178,6 +173,11 @@
   height: 100%;
   background-color: var(--color-surface-positive, rgb(1, 114, 62));
   z-index: 0;
+  border-radius: 8px;
+}
+.input--state-success {
+  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  box-sizing: border-box;
   border-radius: 8px;
 }
 .input--state-success:hover {
@@ -205,11 +205,6 @@
   caret-color: var(--color-positive, #10603b);
   color: var(--color-content-default, rgb(40, 40, 40));
 }
-.input--state-disabled {
-  opacity: 50%;
-  pointer-events: none;
-  cursor: not-allowed;
-}
 .input--state-disabled .input__icon {
   position: relative;
 }
@@ -224,6 +219,11 @@
   z-index: 0;
   opacity: 50%;
   border-radius: 8px;
+}
+.input--state-disabled {
+  opacity: 50%;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 .input .icon-success {
   color: var(--color-positive, #10603b);
@@ -264,11 +264,6 @@
   flex-direction: column;
   flex-wrap: nowrap;
 }
-.input__container__wrapper__chips {
-  display: inline;
-  max-height: 100px;
-  overflow: auto;
-}
 .input__container__wrapper__chips::-webkit-scrollbar {
   width: 16px;
   background-color: var(--color-shadow-0, rgba(0, 0, 0, 0.04));
@@ -280,6 +275,11 @@
   border-radius: 10px;
   background-clip: content-box;
   background-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
+}
+.input__container__wrapper__chips {
+  display: inline;
+  max-height: 100px;
+  overflow: auto;
 }
 .input__container__label {
   display: flex;
@@ -303,16 +303,6 @@
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  /* Make webkit render the search input like a normal text field */
-  /* Turn off the recent search for webkit. It adds about 15px padding on the left */
-  /* Fix IE7 display bug */
-  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
-  font-size: 0.875rem;
-  line-height: 22px;
-  resize: none;
-  cursor: inherit;
-  width: 100%;
-  min-height: auto;
 }
 .input__container__text:focus {
   outline: 0;
@@ -329,16 +319,30 @@
   width: 13px;
   height: 13px;
 }
+.input__container__text {
+  /* Make webkit render the search input like a normal text field */
+}
 .input__container__text[type=search] {
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
+}
+.input__container__text {
+  /* Turn off the recent search for webkit. It adds about 15px padding on the left */
 }
 ::-webkit-search-decoration {
   display: none;
 }
 
+.input__container__text {
+  /* Fix IE7 display bug */
+}
 .input__container__text[type=reset], .input__container__text[type=button], .input__container__text[type=submit] {
   overflow: visible;
+}
+.input__container__text {
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  font-size: 0.875rem;
+  line-height: 22px;
 }
 .input__container__text::-webkit-scrollbar {
   width: 16px;
@@ -352,13 +356,17 @@
   background-clip: content-box;
   background-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
 }
+.input__container__text {
+  resize: none;
+  cursor: inherit;
+  width: 100%;
+  min-height: auto;
+}
 .input__container__text--textarea {
   resize: vertical;
   overflow-y: auto;
   line-height: 20px;
   padding: 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border-2, rgba(0, 0, 0, 0.16)) transparent;
 }
 .input__container__text--textarea::-webkit-scrollbar {
   width: 8px;
@@ -372,6 +380,10 @@
 }
 .input__container__text--textarea::-webkit-scrollbar-thumb:hover {
   background: var(--color-content-ghost, rgb(140, 140, 140));
+}
+.input__container__text--textarea {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-2, rgba(0, 0, 0, 0.16)) transparent;
 }
 .input__container__text[type=date]::-webkit-calendar-picker-indicator {
   opacity: 0;
@@ -444,15 +456,6 @@
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  /* Make webkit render the search input like a normal text field */
-  /* Turn off the recent search for webkit. It adds about 15px padding on the left */
-  /* Fix IE7 display bug */
-  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
-  font-size: 0.875rem;
-  line-height: 22px;
-  width: 100%;
-  resize: none;
-  cursor: inherit;
 }
 .input__container__text:focus {
   outline: 0;
@@ -469,16 +472,33 @@
   width: 13px;
   height: 13px;
 }
+.input__container__text {
+  /* Make webkit render the search input like a normal text field */
+}
 .input__container__text[type=search] {
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
+}
+.input__container__text {
+  /* Turn off the recent search for webkit. It adds about 15px padding on the left */
 }
 ::-webkit-search-decoration {
   display: none;
 }
 
+.input__container__text {
+  /* Fix IE7 display bug */
+}
 .input__container__text[type=reset], .input__container__text[type=button], .input__container__text[type=submit] {
   overflow: visible;
+}
+.input__container__text {
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  font-size: 0.875rem;
+  line-height: 22px;
+  width: 100%;
+  resize: none;
+  cursor: inherit;
 }
 .input__container__text__chips {
   width: auto;
@@ -758,6 +778,18 @@
   color: var(--color-content-ghost, rgb(140, 140, 140));
   display: flex;
 }
+.datepicker__calendar__selectDate__select__options::-webkit-scrollbar {
+  width: 16px;
+  background-color: var(--color-shadow-0, rgba(0, 0, 0, 0.04));
+  border-radius: 10px;
+}
+.datepicker__calendar__selectDate__select__options::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 4px solid transparent;
+  border-radius: 10px;
+  background-clip: content-box;
+  background-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
+}
 .datepicker__calendar__selectDate__select__options {
   background: var(--color-surface-0, rgb(255, 255, 255));
   width: 100%;
@@ -774,18 +806,6 @@
   transform-origin: top left;
   transform: scaleY(0);
   opacity: 0;
-}
-.datepicker__calendar__selectDate__select__options::-webkit-scrollbar {
-  width: 16px;
-  background-color: var(--color-shadow-0, rgba(0, 0, 0, 0.04));
-  border-radius: 10px;
-}
-.datepicker__calendar__selectDate__select__options::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  border: 4px solid transparent;
-  border-radius: 10px;
-  background-clip: content-box;
-  background-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
 }
 .datepicker__calendar__selectDate__select__options--open {
   visibility: visible;

@@ -491,7 +491,6 @@ export class BdsAutocomplete {
         return {
             "options": {
                 "type": "string",
-                "attribute": "options",
                 "mutable": false,
                 "complexType": {
                     "original": "string | AutocompleteOption[]",
@@ -500,7 +499,8 @@ export class BdsAutocomplete {
                         "AutocompleteOption": {
                             "location": "import",
                             "path": "./autocomplete-select-interface",
-                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteOption"
+                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteOption",
+                            "referenceLocation": "AutocompleteOption"
                         }
                     }
                 },
@@ -512,11 +512,11 @@ export class BdsAutocomplete {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "options"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string | null",
@@ -531,11 +531,11 @@ export class BdsAutocomplete {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             },
             "selected": {
                 "type": "unknown",
-                "attribute": "selected",
                 "mutable": true,
                 "complexType": {
                     "original": "HTMLBdsSelectOptionElement | null",
@@ -558,7 +558,6 @@ export class BdsAutocomplete {
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -574,11 +573,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "success": {
                 "type": "boolean",
-                "attribute": "success",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -594,11 +593,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "success",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -614,11 +613,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "searchOnlyTitle": {
                 "type": "boolean",
-                "attribute": "search-only-title",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -634,11 +633,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "search-only-title",
                 "defaultValue": "true"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -654,11 +653,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "''"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -674,11 +673,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "''"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -694,11 +693,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "helperMessage": {
                 "type": "string",
-                "attribute": "helper-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -714,11 +713,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "helper-message",
                 "defaultValue": "''"
             },
             "errorMessage": {
                 "type": "string",
-                "attribute": "error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -734,11 +733,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error-message",
                 "defaultValue": "''"
             },
             "successMessage": {
                 "type": "string",
-                "attribute": "success-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -754,11 +753,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "success-message",
                 "defaultValue": "''"
             },
             "optionsPosition": {
                 "type": "string",
-                "attribute": "options-position",
                 "mutable": false,
                 "complexType": {
                     "original": "AutocompleteOptionsPositionType",
@@ -767,7 +766,8 @@ export class BdsAutocomplete {
                         "AutocompleteOptionsPositionType": {
                             "location": "import",
                             "path": "./autocomplete-select-interface",
-                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteOptionsPositionType"
+                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteOptionsPositionType",
+                            "referenceLocation": "AutocompleteOptionsPositionType"
                         }
                     }
                 },
@@ -780,11 +780,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "options-position",
                 "defaultValue": "'auto'"
             },
             "clearIconOnFocus": {
                 "type": "boolean",
-                "attribute": "clear-icon-on-focus",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -800,11 +800,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "clear-icon-on-focus",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -820,11 +820,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             },
             "language": {
                 "type": "string",
-                "attribute": "language",
                 "mutable": false,
                 "complexType": {
                     "original": "languages",
@@ -833,7 +833,8 @@ export class BdsAutocomplete {
                         "languages": {
                             "location": "import",
                             "path": "./languages",
-                            "id": "src/components/autocomplete/languages/index.ts::languages"
+                            "id": "src/components/autocomplete/languages/index.ts::languages",
+                            "referenceLocation": "languages"
                         }
                     }
                 },
@@ -846,11 +847,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "language",
                 "defaultValue": "'pt_BR'"
             },
             "loading": {
                 "type": "boolean",
-                "attribute": "loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -866,11 +867,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "loading",
                 "defaultValue": "false"
             },
             "selectionType": {
                 "type": "string",
-                "attribute": "selection-type",
                 "mutable": false,
                 "complexType": {
                     "original": "SelectionType",
@@ -892,11 +893,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "selection-type",
                 "defaultValue": "'single'"
             },
             "selectionTitle": {
                 "type": "string",
-                "attribute": "selection-title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -912,11 +913,11 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "selection-title",
                 "defaultValue": "''"
             },
             "selectedAll": {
                 "type": "boolean",
-                "attribute": "selected-all",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -932,6 +933,7 @@ export class BdsAutocomplete {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "selected-all",
                 "defaultValue": "true"
             }
         };
@@ -970,7 +972,8 @@ export class BdsAutocomplete {
                         "AutocompleteChangeEventDetail": {
                             "location": "import",
                             "path": "./autocomplete-select-interface",
-                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteChangeEventDetail"
+                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteChangeEventDetail",
+                            "referenceLocation": "AutocompleteChangeEventDetail"
                         }
                     }
                 }
@@ -991,7 +994,8 @@ export class BdsAutocomplete {
                         "AutocompleteSelectedChangeEventDetail": {
                             "location": "import",
                             "path": "./autocomplete-select-interface",
-                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteSelectedChangeEventDetail"
+                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteSelectedChangeEventDetail",
+                            "referenceLocation": "AutocompleteSelectedChangeEventDetail"
                         }
                     }
                 }
@@ -1012,7 +1016,8 @@ export class BdsAutocomplete {
                         "AutocompleteMultiSelectedChangeEventDetail": {
                             "location": "import",
                             "path": "./autocomplete-select-interface",
-                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteMultiSelectedChangeEventDetail"
+                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteMultiSelectedChangeEventDetail",
+                            "referenceLocation": "AutocompleteMultiSelectedChangeEventDetail"
                         }
                     }
                 }
@@ -1053,7 +1058,8 @@ export class BdsAutocomplete {
                         "AutocompleteChangeEventDetail": {
                             "location": "import",
                             "path": "./autocomplete-select-interface",
-                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteChangeEventDetail"
+                            "id": "src/components/autocomplete/autocomplete-select-interface.ts::AutocompleteChangeEventDetail",
+                            "referenceLocation": "AutocompleteChangeEventDetail"
                         }
                     }
                 }
@@ -1142,4 +1148,3 @@ export class BdsAutocomplete {
             }];
     }
 }
-//# sourceMappingURL=autocomplete.js.map

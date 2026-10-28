@@ -42,7 +42,6 @@ export class Navbar {
         return {
             "orientation": {
                 "type": "string",
-                "attribute": "orientation",
                 "mutable": false,
                 "complexType": {
                     "original": "orientation",
@@ -64,11 +63,11 @@ export class Navbar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "orientation",
                 "defaultValue": "'vertical'"
             },
             "backgroundColor": {
                 "type": "string",
-                "attribute": "background-color",
                 "mutable": false,
                 "complexType": {
                     "original": "navbarBackground",
@@ -90,11 +89,11 @@ export class Navbar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "background-color",
                 "defaultValue": "'surface-1'"
             },
             "justifyContent": {
                 "type": "string",
-                "attribute": "justify-content",
                 "mutable": false,
                 "complexType": {
                     "original": "justifyContent",
@@ -116,11 +115,11 @@ export class Navbar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "justify-content",
                 "defaultValue": "'space-between'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -136,10 +135,10 @@ export class Navbar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
     }
     static get elementRef() { return "hostElement"; }
 }
-//# sourceMappingURL=navbar.js.map

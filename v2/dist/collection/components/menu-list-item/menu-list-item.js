@@ -20,7 +20,6 @@ export class MenuListItem {
         return {
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -35,11 +34,11 @@ export class MenuListItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "color"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -54,9 +53,9 @@ export class MenuListItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "icon"
             }
         };
     }
 }
-//# sourceMappingURL=menu-list-item.js.map

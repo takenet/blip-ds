@@ -92,7 +92,6 @@ export class Sidebar {
         return {
             "isOpen": {
                 "type": "boolean",
-                "attribute": "is-open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -108,11 +107,11 @@ export class Sidebar {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "is-open",
                 "defaultValue": "this.type === 'fixed' ? true : false"
             },
             "sidebarPosition": {
                 "type": "string",
-                "attribute": "sidebar-position",
                 "mutable": false,
                 "complexType": {
                     "original": "sidebarPosition",
@@ -134,11 +133,11 @@ export class Sidebar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "sidebar-position",
                 "defaultValue": "'left'"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "sidebarType",
@@ -160,11 +159,11 @@ export class Sidebar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'over'"
             },
             "margin": {
                 "type": "boolean",
-                "attribute": "margin",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -180,11 +179,11 @@ export class Sidebar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "margin",
                 "defaultValue": "true"
             },
             "width": {
                 "type": "number",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -200,11 +199,11 @@ export class Sidebar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "width",
                 "defaultValue": "360"
             },
             "dtOutzone": {
                 "type": "string",
-                "attribute": "dt-outzone",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -220,11 +219,11 @@ export class Sidebar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-outzone",
                 "defaultValue": "null"
             },
             "dtButtonClose": {
                 "type": "string",
-                "attribute": "dt-button-close",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -240,11 +239,11 @@ export class Sidebar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-close",
                 "defaultValue": "null"
             },
             "background": {
                 "type": "string",
-                "attribute": "background",
                 "mutable": false,
                 "complexType": {
                     "original": "sidebarBackground",
@@ -266,6 +265,7 @@ export class Sidebar {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "background",
                 "defaultValue": "'surface-2'"
             }
         };
@@ -322,4 +322,3 @@ export class Sidebar {
             }];
     }
 }
-//# sourceMappingURL=sidebar.js.map

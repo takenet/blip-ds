@@ -6,4 +6,3 @@ export class CardBody {
     static get is() { return "bds-card-body"; }
     static get encapsulation() { return "shadow"; }
 }
-//# sourceMappingURL=card-body.js.map

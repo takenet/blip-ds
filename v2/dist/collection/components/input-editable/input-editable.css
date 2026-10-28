@@ -56,11 +56,6 @@
   max-height: 100%;
   background: var(--color-surface-1, rgb(246, 246, 246));
 }
-.input--state-primary {
-  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
-  box-sizing: border-box;
-  border-radius: 8px;
-}
 .input--state-primary .input__icon {
   position: relative;
 }
@@ -74,6 +69,11 @@
   background-color: var(--color-primary, rgb(30, 107, 241));
   z-index: 0;
   opacity: 50%;
+  border-radius: 8px;
+}
+.input--state-primary {
+  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  box-sizing: border-box;
   border-radius: 8px;
 }
 .input--state-primary:hover {
@@ -98,11 +98,6 @@
   caret-color: var(--color-primary, rgb(30, 107, 241));
   color: var(--color-content-default, rgb(40, 40, 40));
 }
-.input--state-danger {
-  border: 1px solid var(--color-delete, rgb(230, 15, 15));
-  box-sizing: border-box;
-  border-radius: 8px;
-}
 .input--state-danger .input__icon {
   position: relative;
 }
@@ -116,6 +111,11 @@
   background-color: var(--color-delete, rgb(230, 15, 15));
   z-index: 0;
   opacity: 50%;
+  border-radius: 8px;
+}
+.input--state-danger {
+  border: 1px solid var(--color-delete, rgb(230, 15, 15));
+  box-sizing: border-box;
   border-radius: 8px;
 }
 .input--state-danger:hover {
@@ -140,11 +140,6 @@
   caret-color: var(--color-delete, rgb(230, 15, 15));
   color: var(--color-content-default, rgb(40, 40, 40));
 }
-.input--state-success {
-  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
-  box-sizing: border-box;
-  border-radius: 8px;
-}
 .input--state-success .input__icon {
   position: relative;
 }
@@ -157,6 +152,11 @@
   height: 100%;
   background-color: var(--color-success, rgb(132, 235, 188));
   z-index: 0;
+  border-radius: 8px;
+}
+.input--state-success {
+  border: 1px solid var(--color-border-1, rgba(0, 0, 0, 0.2));
+  box-sizing: border-box;
   border-radius: 8px;
 }
 .input--state-success:hover {
@@ -181,12 +181,6 @@
   caret-color: var(--color-content-default, rgb(40, 40, 40));
   color: var(--color-content-default, rgb(40, 40, 40));
 }
-.input--state-disabled {
-  opacity: 50%;
-  pointer-events: none;
-  cursor: not-allowed;
-  background: var(--color-surface-2, rgb(237, 237, 237));
-}
 .input--state-disabled .input__icon {
   position: relative;
 }
@@ -201,6 +195,12 @@
   z-index: 0;
   opacity: 50%;
   border-radius: 8px;
+}
+.input--state-disabled {
+  opacity: 50%;
+  pointer-events: none;
+  cursor: not-allowed;
+  background: var(--color-surface-2, rgb(237, 237, 237));
 }
 .input .icon-success {
   color: var(--color-success, rgb(132, 235, 188));
@@ -231,11 +231,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-.input__container__wrapper__chips {
-  display: inline;
-  max-height: 100px;
-  overflow: auto;
-}
 .input__container__wrapper__chips::-webkit-scrollbar {
   width: 16px;
   background-color: var(--color-shadow-0, rgba(0, 0, 0, 0.04));
@@ -247,6 +242,11 @@
   border-radius: 10px;
   background-clip: content-box;
   background-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
+}
+.input__container__wrapper__chips {
+  display: inline;
+  max-height: 100px;
+  overflow: auto;
 }
 .input__container__label {
   display: flex;
@@ -269,14 +269,6 @@
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  /* Make webkit render the search input like a normal text field */
-  /* Turn off the recent search for webkit. It adds about 15px padding on the left */
-  /* Fix IE7 display bug */
-  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
-  font-size: 0.875rem;
-  line-height: 150%;
-  resize: none;
-  cursor: inherit;
 }
 .input__container__text:focus {
   outline: 0;
@@ -293,16 +285,30 @@
   width: 13px;
   height: 13px;
 }
+.input__container__text {
+  /* Make webkit render the search input like a normal text field */
+}
 .input__container__text[type=search] {
   -webkit-appearance: textfield;
   -webkit-box-sizing: content-box;
+}
+.input__container__text {
+  /* Turn off the recent search for webkit. It adds about 15px padding on the left */
 }
 ::-webkit-search-decoration {
   display: none;
 }
 
+.input__container__text {
+  /* Fix IE7 display bug */
+}
 .input__container__text[type=reset], .input__container__text[type=button], .input__container__text[type=submit] {
   overflow: visible;
+}
+.input__container__text {
+  font-family: "Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;
+  font-size: 0.875rem;
+  line-height: 150%;
 }
 .input__container__text::-webkit-scrollbar {
   width: 16px;
@@ -315,6 +321,10 @@
   border-radius: 10px;
   background-clip: content-box;
   background-color: var(--color-border-1, rgba(0, 0, 0, 0.2));
+}
+.input__container__text {
+  resize: none;
+  cursor: inherit;
 }
 .input__message {
   display: flex;

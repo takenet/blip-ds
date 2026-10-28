@@ -1,9 +1,1 @@
-import { B as BdsdatepickerSingle, d as defineCustomElement$1 } from './p-fl1zCZyY.js';
-
-const BdsDatepickerSingle = BdsdatepickerSingle;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsDatepickerSingle, defineCustomElement };
-//# sourceMappingURL=bds-datepicker-single.js.map
-
-//# sourceMappingURL=bds-datepicker-single.js.map
+import{B as o,d as p}from"./p-BE0qxgpc.js";const s=o,r=p;export{s as BdsDatepickerSingle,r as defineCustomElement}

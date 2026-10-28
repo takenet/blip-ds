@@ -1,9 +1,1 @@
-import { C as ChipClickable, d as defineCustomElement$1 } from './p-iy4JKzlF.js';
-
-const BdsChipClickable = ChipClickable;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsChipClickable, defineCustomElement };
-//# sourceMappingURL=bds-chip-clickable.js.map
-
-//# sourceMappingURL=bds-chip-clickable.js.map
+import{C as o,d as s}from"./p-DKTW0zey.js";const p=o,r=s;export{p as BdsChipClickable,r as defineCustomElement}

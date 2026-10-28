@@ -6,4 +6,3 @@ export const ptTerms = [
         formatError: 'Ocorreu um erro ao anexar o arquivo, tente novamente ou selecione outro arquivo',
     },
 ];
-//# sourceMappingURL=pt_BR.js.map

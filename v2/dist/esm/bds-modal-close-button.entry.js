@@ -1,6 +1,6 @@
-import { r as registerInstance, h } from './index-gowA9FoV.js';
+import { r as registerInstance, h } from './index-BnSR_zce.js';
 
-const modalCloseButtonCss = ".modal__close__button-icon{opacity:0;visibility:hidden;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:16px}.modal__close__button-icon--active{opacity:1;visibility:visible}";
+const modalCloseButtonCss = () => `.modal__close__button-icon{opacity:0;visibility:hidden;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:16px}.modal__close__button-icon--active{opacity:1;visibility:visible}`;
 
 const BdsModalCloseButton = class {
     constructor(hostRef) {
@@ -17,9 +17,6 @@ const BdsModalCloseButton = class {
             } }, h("bds-icon", { key: '0d39577548c668c4c780810e6a3c5fce4a3e50e1', size: "medium", name: "close" })));
     }
 };
-BdsModalCloseButton.style = modalCloseButtonCss;
+BdsModalCloseButton.style = modalCloseButtonCss();
 
 export { BdsModalCloseButton as bds_modal_close_button };
-//# sourceMappingURL=bds-modal-close-button.entry.js.map
-
-//# sourceMappingURL=bds-modal-close-button.entry.js.map

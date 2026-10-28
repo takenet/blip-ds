@@ -201,7 +201,6 @@ export class BdsTabGroup {
         return {
             "contentScrollable": {
                 "type": "boolean",
-                "attribute": "content-scrollable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -217,11 +216,11 @@ export class BdsTabGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "content-scrollable",
                 "defaultValue": "true"
             },
             "align": {
                 "type": "string",
-                "attribute": "align",
                 "mutable": false,
                 "complexType": {
                     "original": "'left' | 'center' | 'right'",
@@ -237,11 +236,11 @@ export class BdsTabGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align",
                 "defaultValue": "'center'"
             },
             "dtButtonPrev": {
                 "type": "string",
-                "attribute": "dt-button-prev",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -257,11 +256,11 @@ export class BdsTabGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-prev",
                 "defaultValue": "null"
             },
             "dtButtonNext": {
                 "type": "string",
-                "attribute": "dt-button-next",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -277,6 +276,7 @@ export class BdsTabGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-next",
                 "defaultValue": "null"
             }
         };
@@ -335,4 +335,3 @@ export class BdsTabGroup {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=tab-group.js.map

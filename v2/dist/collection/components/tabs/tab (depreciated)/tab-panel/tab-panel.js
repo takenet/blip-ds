@@ -30,7 +30,6 @@ export class TabPanel {
         return {
             "group": {
                 "type": "string",
-                "attribute": "group",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -45,7 +44,8 @@ export class TabPanel {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "group"
             }
         };
     }
@@ -70,4 +70,3 @@ export class TabPanel {
             }];
     }
 }
-//# sourceMappingURL=tab-panel.js.map

@@ -1,9 +1,1 @@
-import { U as UaiTypo$1, d as defineCustomElement$1 } from './p-HAouR65e.js';
-
-const UaiTypo = UaiTypo$1;
-const defineCustomElement = defineCustomElement$1;
-
-export { UaiTypo, defineCustomElement };
-//# sourceMappingURL=uai-typo.js.map
-
-//# sourceMappingURL=uai-typo.js.map
+import{U as o,d as s}from"./p-BGyWPbmI.js";const m=o,p=s;export{m as UaiTypo,p as defineCustomElement}

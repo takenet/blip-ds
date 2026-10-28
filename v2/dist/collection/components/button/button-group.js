@@ -130,7 +130,6 @@ export class ButtonGroup {
         return {
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": true,
                 "complexType": {
                     "original": "ButtonSize",
@@ -139,7 +138,8 @@ export class ButtonGroup {
                         "ButtonSize": {
                             "location": "import",
                             "path": "./button",
-                            "id": "src/components/button/button.tsx::ButtonSize"
+                            "id": "src/components/button/button.tsx::ButtonSize",
+                            "referenceLocation": "ButtonSize"
                         }
                     }
                 },
@@ -152,11 +152,11 @@ export class ButtonGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'medium'"
             },
             "direction": {
                 "type": "string",
-                "attribute": "direction",
                 "mutable": true,
                 "complexType": {
                     "original": "direction",
@@ -165,7 +165,8 @@ export class ButtonGroup {
                         "direction": {
                             "location": "import",
                             "path": "../grid/grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::direction"
+                            "id": "src/components/grid/grid-interface.ts::direction",
+                            "referenceLocation": "direction"
                         }
                     }
                 },
@@ -178,11 +179,11 @@ export class ButtonGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "direction",
                 "defaultValue": "'row'"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -198,11 +199,11 @@ export class ButtonGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'primary'"
             },
             "multiple": {
                 "type": "boolean",
-                "attribute": "multiple",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -218,6 +219,7 @@ export class ButtonGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "multiple",
                 "defaultValue": "false"
             }
         };
@@ -287,4 +289,3 @@ export class ButtonGroup {
             }];
     }
 }
-//# sourceMappingURL=button-group.js.map

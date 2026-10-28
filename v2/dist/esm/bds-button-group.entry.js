@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-gowA9FoV.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BnSR_zce.js';
 
-const buttonGroupCss = ":host{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}";
+const buttonGroupCss = () => `:host{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}`;
 
 const ButtonGroup = class {
     constructor(hostRef) {
@@ -121,15 +121,20 @@ const ButtonGroup = class {
     }
     get el() { return getElement(this); }
     static get watchers() { return {
-        "size": ["handlePropChanges"],
-        "direction": ["handlePropChanges"],
-        "color": ["handlePropChanges"],
-        "multiple": ["handlePropChanges"]
+        "size": [{
+                "handlePropChanges": 0
+            }],
+        "direction": [{
+                "handlePropChanges": 0
+            }],
+        "color": [{
+                "handlePropChanges": 0
+            }],
+        "multiple": [{
+                "handlePropChanges": 0
+            }]
     }; }
 };
-ButtonGroup.style = buttonGroupCss;
+ButtonGroup.style = buttonGroupCss();
 
 export { ButtonGroup as bds_button_group };
-//# sourceMappingURL=bds-button-group.entry.js.map
-
-//# sourceMappingURL=bds-button-group.entry.js.map

@@ -1,4 +1,6 @@
-declare type CustomMethodDecorator<T> = (target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void;
+type CustomMethodDecorator<T> = (target: object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<T>) => TypedPropertyDescriptor<T> | void;
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+type MixinInstance<F> = F extends (base: MixedInCtor) => MixedInCtor<infer I> ? I : never;
 export interface ComponentDecorator {
     (opts?: ComponentOptions): ClassDecorator;
 }
@@ -61,6 +63,12 @@ export interface ShadowRootOptions {
      * focusable part is given focus, and the shadow host is given any available `:focus` styling.
      */
     delegatesFocus?: boolean;
+    /**
+     * Sets the slot assignment mode for the shadow root. When set to `'manual'`, enables imperative
+     * slotting using the `HTMLSlotElement.assign()` method. Defaults to `'named'` for standard
+     * declarative slotting behavior.
+     */
+    slotAssignment?: 'manual' | 'named';
 }
 export interface ModeStyles {
     [modeName: string]: string | string[];
@@ -117,11 +125,33 @@ export interface EventOptions {
      */
     composed?: boolean;
 }
+export interface AttachInternalsOptions {
+    /**
+     * Initial custom states to set on the ElementInternals.states CustomStateSet.
+     * Each key is the state name and the value is the initial boolean state.
+     *
+     * These states can be targeted with the CSS `:state()` pseudo-class.
+     *
+     * @example
+     * ```tsx
+     * @AttachInternals({ states: { open: true, active: false } })
+     * internals: ElementInternals;
+     * ```
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/CustomStateSet
+     */
+    states?: {
+        [stateName: string]: boolean;
+    };
+}
 export interface AttachInternalsDecorator {
-    (): PropertyDecorator;
+    (opts?: AttachInternalsOptions): PropertyDecorator;
 }
 export interface ListenDecorator {
     (eventName: string, opts?: ListenOptions): CustomMethodDecorator<any>;
+}
+export interface ResolveVarFunction {
+    <T>(variable: T): string;
 }
 export interface ListenOptions {
     /**
@@ -151,7 +181,15 @@ export interface StateDecorator {
     (): PropertyDecorator;
 }
 export interface WatchDecorator {
-    (propName: string): CustomMethodDecorator<any>;
+    (propName: any, watchOptions?: {
+        immediate?: boolean;
+    }): CustomMethodDecorator<(newValue?: any, oldValue?: any, propName?: any, ...args: any[]) => any | void>;
+}
+export interface PropSerializeDecorator {
+    (propName: any): CustomMethodDecorator<(newValue?: any, propName?: string, ...args: any[]) => string | null>;
+}
+export interface AttrDeserializeDecorator {
+    (propName: any): CustomMethodDecorator<(newValue?: any, propName?: string, ...args: any[]) => any>;
 }
 export interface UserBuildConditionals {
     isDev: boolean;
@@ -201,6 +239,24 @@ export declare const AttachInternals: AttachInternalsDecorator;
  */
 export declare const Listen: ListenDecorator;
 /**
+ * The `resolveVar()` function is a compile-time utility that resolves const variables
+ * and object properties to their string literal values. This allows variables to be
+ * used in `@Listen` and `@Event` decorators instead of hardcoded strings.
+ *
+ * @example
+ * ```ts
+ * const MY_EVENT = 'myEvent';
+ * @Listen(resolveVar(MY_EVENT))
+ * ```
+ *
+ * @example
+ * ```ts
+ * const EVENTS = { MY_EVENT: 'myEvent' } as const;
+ * @Event({ eventName: resolveVar(EVENTS.MY_EVENT) })
+ * ```
+ */
+export declare const resolveVar: ResolveVarFunction;
+/**
  * The `@Method()` decorator is used to expose methods on the public API.
  * Class methods decorated with the @Method() decorator can be called directly
  * from the element, meaning they are intended to be callable from the outside.
@@ -233,6 +289,14 @@ export declare const State: StateDecorator;
  * https://stenciljs.com/docs/reactive-data#watch-decorator
  */
 export declare const Watch: WatchDecorator;
+/**
+ * Decorator to serialize a property to an attribute string.
+ */
+export declare const PropSerialize: PropSerializeDecorator;
+/**
+ * Decorator to deserialize an attribute string to a property.
+ */
+export declare const AttrDeserialize: AttrDeserializeDecorator;
 export type ResolutionHandler = (elm: HTMLElement) => string | undefined | null;
 export type ErrorHandler = (err: any, element?: HTMLElement) => void;
 /**
@@ -349,6 +413,58 @@ export declare function readTask(task: RafCallback): void;
  * Unhandled exception raised while rendering, during event handling, or lifecycles will trigger the custom event handler.
  */
 export declare const setErrorHandler: (handler: ErrorHandler) => void;
+export type TagTransformer = (tag: string) => string;
+/**
+ * Sets a tag transformer to be used when rendering your custom elements.
+ * ```ts
+ * setTagTransformer((tag) => {
+ *  if (tag.startsWith('my-')) return `new-${tag}`
+ *  return tag;
+ * });
+ * ```
+ * Will mean all your components that start with `my-` are defined instead with `new-my-` prefix.
+ *
+ * @param transformer the transformer function to use which must return a string.
+ */
+export declare function setTagTransformer(transformer: TagTransformer): void;
+/**
+ * Transforms a tag name using a transformer set via `setTagTransformer`
+ *
+ * @param tag - the tag to transform e.g. `my-tag`
+ * @returns the transformed tag e.g. `new-my-tag`
+ */
+export declare function transformTag(tag: string): string;
+/**
+ * @deprecated - Use `MixedInCtor` instead:
+ * ```ts
+ * import { MixedInCtor } from '@stencil/core';
+ *
+ * const AFactoryFn = <B extends MixedInCtor>(Base: B) => {class A extends Base { propA = A }; return A;}
+ * ```
+ */
+export type MixinFactory = (base: MixedInCtor) => MixedInCtor;
+export type MixedInCtor<T = {}> = new (...args: any[]) => T;
+/**
+ * Compose multiple mixin classes into a single constructor.
+ * The resulting class has the combined instance types of all mixed-in classes.
+ *
+ * Example:
+ * ```ts
+ * import { Mixin, MixedInCtor } from '@stencil/core';
+ *
+ * const AWrap = <B extends MixedInCtor>(Base: B) => {class A extends Base { propA = A }; return A;}
+ * const BWrap = <B extends MixedInCtor>(Base: B) => {class B extends Base { propB = B }; return B;}
+ * const CWrap = <B extends MixedInCtor>(Base: B) => {class C extends Base { propC = C }; return C;}
+ *
+ * class X extends Mixin(AWrap, BWrap, CWrap) {
+ *   render() { return <div>{this.propA} {this.propB} {this.propC}</div>; }
+ * }
+ * ```
+ *
+ * @param mixinFactories mixin factory functions that return a class which extends from the provided class.
+ * @returns a class that is composed from extending each of the provided classes in the order they were provided.
+ */
+export declare function Mixin<const TMixins extends readonly MixinFactory[]>(...mixinFactories: TMixins): abstract new (...args: any[]) => UnionToIntersection<MixinInstance<TMixins[number]>>;
 /**
  * This file gets copied to all distributions of stencil component collections.
  * - no imports
@@ -521,7 +637,7 @@ export interface FunctionalUtilities {
     map: (children: VNode[], cb: (vnode: ChildNode, index: number, array: ChildNode[]) => ChildNode) => VNode[];
 }
 export interface FunctionalComponent<T = {}> {
-    (props: T, children: VNode[], utils: FunctionalUtilities): VNode | VNode[];
+    (props: T, children: VNode[], utils: FunctionalUtilities): VNode | VNode[] | null;
 }
 /**
  * A Child VDOM node
@@ -563,6 +679,7 @@ export declare namespace h {
     function h(sel: any, data: VNodeData | null, text: string): VNode;
     function h(sel: any, data: VNodeData | null, children: Array<VNode | undefined | null>): VNode;
     function h(sel: any, data: VNodeData | null, children: VNode): VNode;
+    function h(sel: any, data: VNodeData | null, ...children: (VNode | string | number)[]): VNode;
     namespace JSX {
         interface IntrinsicElements extends LocalJSX.IntrinsicElements, JSXBase.IntrinsicElements {
             [tagName: string]: any;
@@ -577,6 +694,36 @@ export declare function h(sel: any, children: Array<VNode | undefined | null>): 
 export declare function h(sel: any, data: VNodeData | null, text: string): VNode;
 export declare function h(sel: any, data: VNodeData | null, children: Array<VNode | undefined | null>): VNode;
 export declare function h(sel: any, data: VNodeData | null, children: VNode): VNode;
+export declare function h(sel: any, data: VNodeData | null, ...children: (VNode | string | number)[]): VNode;
+/**
+ * Automatic JSX runtime functions for TypeScript's react-jsx mode.
+ * These functions are called automatically by TypeScript when using "jsx": "react-jsx".
+ * @param type type of node
+ * @param props properties of node
+ * @param key optional key for the node
+ * @returns a jsx vnode
+ */
+export declare function jsx(type: any, props: any, key?: string): VNode;
+/**
+ * Automatic JSX runtime functions for TypeScript's react-jsxmode with multiple children.
+ * @param type type of node
+ * @param props properties of node
+ * @param key optional key for the node
+ * @returns a jsx vnode
+ */
+export declare function jsxs(type: any, props: any, key?: string): VNode;
+/**
+ * Automatic JSX runtime functions for TypeScript's react-jsxdev mode.
+ * These functions are called automatically by TypeScript when using "jsx": "react-jsxdev".
+ * @param type type of node
+ * @param props properties of node
+ * @param key optional key for the node
+ * @param isStaticChildren indicates if the children are static
+ * @param source source information
+ * @param self reference to the component instance
+ * @returns a jsx vnode
+ */
+export declare function jsxDEV(type: any, props: any, key?: string | number, isStaticChildren?: boolean, source?: any, self?: any): VNode;
 /**
  * A virtual DOM node
  */
@@ -605,8 +752,8 @@ declare namespace LocalJSX {
 }
 export { LocalJSX as JSX };
 export declare namespace JSXBase {
-    interface IntrinsicElements {
-        slot: JSXBase.SlotAttributes;
+    export interface IntrinsicElements {
+        slot: JSXBase.SlotAttributes<HTMLSlotElement>;
         a: JSXBase.AnchorHTMLAttributes<HTMLAnchorElement>;
         abbr: JSXBase.HTMLAttributes;
         address: JSXBase.HTMLAttributes;
@@ -776,12 +923,12 @@ export declare namespace JSXBase {
         use: JSXBase.SVGAttributes;
         view: JSXBase.SVGAttributes;
     }
-    interface SlotAttributes extends JSXAttributes {
+    export interface SlotAttributes<T = HTMLSlotElement> extends JSXAttributes<T> {
         name?: string;
         slot?: string;
         onSlotchange?: (event: Event) => void;
     }
-    interface AnchorHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface AnchorHTMLAttributes<T> extends HTMLAttributes<T> {
         download?: any;
         href?: string;
         hrefLang?: string;
@@ -792,9 +939,9 @@ export declare namespace JSXBase {
         target?: string;
         referrerPolicy?: ReferrerPolicy;
     }
-    interface AudioHTMLAttributes<T> extends MediaHTMLAttributes<T> {
+    export interface AudioHTMLAttributes<T> extends MediaHTMLAttributes<T> {
     }
-    interface AreaHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface AreaHTMLAttributes<T> extends HTMLAttributes<T> {
         alt?: string;
         coords?: string;
         download?: any;
@@ -806,14 +953,14 @@ export declare namespace JSXBase {
         shape?: string;
         target?: string;
     }
-    interface BaseHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface BaseHTMLAttributes<T> extends HTMLAttributes<T> {
         href?: string;
         target?: string;
     }
-    interface BlockquoteHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface BlockquoteHTMLAttributes<T> extends HTMLAttributes<T> {
         cite?: string;
     }
-    interface ButtonHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ButtonHTMLAttributes<T> extends HTMLAttributes<T> {
         disabled?: boolean;
         form?: string;
         formAction?: string;
@@ -832,45 +979,49 @@ export declare namespace JSXBase {
         popoverTargetAction?: string;
         popoverTargetElement?: Element | null;
         popoverTarget?: string;
+        command?: string;
+        commandFor?: string;
+        commandfor?: string;
     }
-    interface CanvasHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface CanvasHTMLAttributes<T> extends HTMLAttributes<T> {
         height?: number | string;
         width?: number | string;
     }
-    interface ColHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ColHTMLAttributes<T> extends HTMLAttributes<T> {
         span?: number;
     }
-    interface ColgroupHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ColgroupHTMLAttributes<T> extends HTMLAttributes<T> {
         span?: number;
     }
-    interface DetailsHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface DetailsHTMLAttributes<T> extends HTMLAttributes<T> {
         open?: boolean;
         name?: string;
-        onToggle?: (event: Event) => void;
+        onToggle?: (event: ToggleEvent) => void;
     }
-    interface DelHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface DelHTMLAttributes<T> extends HTMLAttributes<T> {
         cite?: string;
         dateTime?: string;
         datetime?: string;
     }
-    interface DialogHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface DialogHTMLAttributes<T> extends HTMLAttributes<T> {
         onCancel?: (event: Event) => void;
         onClose?: (event: Event) => void;
         open?: boolean;
         returnValue?: string;
+        closedby?: 'any' | 'closerequest' | 'none';
     }
-    interface EmbedHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface EmbedHTMLAttributes<T> extends HTMLAttributes<T> {
         height?: number | string;
         src?: string;
         type?: string;
         width?: number | string;
     }
-    interface FieldsetHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface FieldsetHTMLAttributes<T> extends HTMLAttributes<T> {
         disabled?: boolean;
         form?: string;
         name?: string;
     }
-    interface FormHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface FormHTMLAttributes<T> extends HTMLAttributes<T> {
         acceptCharset?: string;
         acceptcharset?: string;
         action?: string;
@@ -884,10 +1035,10 @@ export declare namespace JSXBase {
         novalidate?: boolean | string;
         target?: string;
     }
-    interface HtmlHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface HtmlHTMLAttributes<T> extends HTMLAttributes<T> {
         manifest?: string;
     }
-    interface IframeHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface IframeHTMLAttributes<T> extends HTMLAttributes<T> {
         allow?: string;
         allowFullScreen?: boolean;
         allowfullScreen?: string | boolean;
@@ -895,6 +1046,8 @@ export declare namespace JSXBase {
         allowtransparency?: string | boolean;
         frameBorder?: number | string;
         frameborder?: number | string;
+        fetchPriority?: 'high' | 'low' | 'auto';
+        fetchpriority?: 'high' | 'low' | 'auto';
         importance?: 'low' | 'auto' | 'high';
         height?: number | string;
         loading?: 'lazy' | 'auto' | 'eager';
@@ -912,14 +1065,17 @@ export declare namespace JSXBase {
         srcdoc?: string;
         width?: number | string;
     }
-    interface ImgHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ImgHTMLAttributes<T> extends HTMLAttributes<T> {
         alt?: string;
         crossOrigin?: string;
         crossorigin?: string;
         decoding?: 'async' | 'auto' | 'sync';
+        fetchPriority?: 'high' | 'low' | 'auto';
+        fetchpriority?: 'high' | 'low' | 'auto';
         importance?: 'low' | 'auto' | 'high';
         height?: number | string;
         loading?: 'lazy' | 'auto' | 'eager';
+        referrerPolicy?: ReferrerPolicy;
         sizes?: string;
         src?: string;
         srcSet?: string;
@@ -928,12 +1084,12 @@ export declare namespace JSXBase {
         usemap?: string;
         width?: number | string;
     }
-    interface InsHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface InsHTMLAttributes<T> extends HTMLAttributes<T> {
         cite?: string;
         dateTime?: string;
         datetime?: string;
     }
-    interface InputHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface InputHTMLAttributes<T> extends HTMLAttributes<T> {
         accept?: string;
         allowdirs?: boolean;
         alt?: string;
@@ -996,7 +1152,7 @@ export declare namespace JSXBase {
         popoverTargetElement?: Element | null;
         popoverTarget?: string;
     }
-    interface KeygenHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface KeygenHTMLAttributes<T> extends HTMLAttributes<T> {
         challenge?: string;
         disabled?: boolean;
         form?: string;
@@ -1006,15 +1162,17 @@ export declare namespace JSXBase {
         keyparams?: string;
         name?: string;
     }
-    interface LabelHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface LabelHTMLAttributes<T> extends HTMLAttributes<T> {
         form?: string;
         htmlFor?: string;
     }
-    interface LiHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface LiHTMLAttributes<T> extends HTMLAttributes<T> {
         value?: string | string[] | number;
     }
-    interface LinkHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface LinkHTMLAttributes<T> extends HTMLAttributes<T> {
         as?: string;
+        fetchPriority?: 'high' | 'low' | 'auto';
+        fetchpriority?: 'high' | 'low' | 'auto';
         href?: string;
         hrefLang?: string;
         hreflang?: string;
@@ -1025,13 +1183,13 @@ export declare namespace JSXBase {
         sizes?: string;
         type?: string;
     }
-    interface MapHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface MapHTMLAttributes<T> extends HTMLAttributes<T> {
         name?: string;
     }
-    interface MenuHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface MenuHTMLAttributes<T> extends HTMLAttributes<T> {
         type?: string;
     }
-    interface MediaHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface MediaHTMLAttributes<T> extends HTMLAttributes<T> {
         autoPlay?: boolean;
         autoplay?: boolean | string;
         controls?: boolean;
@@ -1071,7 +1229,7 @@ export declare namespace JSXBase {
         onVolumeChange?: (event: Event) => void;
         onWaiting?: (event: Event) => void;
     }
-    interface MetaHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface MetaHTMLAttributes<T> extends HTMLAttributes<T> {
         charSet?: string;
         charset?: string;
         content?: string;
@@ -1079,7 +1237,7 @@ export declare namespace JSXBase {
         httpequiv?: string;
         name?: string;
     }
-    interface MeterHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface MeterHTMLAttributes<T> extends HTMLAttributes<T> {
         form?: string;
         high?: number;
         low?: number;
@@ -1088,10 +1246,10 @@ export declare namespace JSXBase {
         optimum?: number;
         value?: string | string[] | number;
     }
-    interface QuoteHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface QuoteHTMLAttributes<T> extends HTMLAttributes<T> {
         cite?: string;
     }
-    interface ObjectHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ObjectHTMLAttributes<T> extends HTMLAttributes<T> {
         classID?: string;
         classid?: string;
         data?: string;
@@ -1104,47 +1262,49 @@ export declare namespace JSXBase {
         width?: number | string;
         wmode?: string;
     }
-    interface OlHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface OlHTMLAttributes<T> extends HTMLAttributes<T> {
         reversed?: boolean;
         start?: number;
     }
-    interface OptgroupHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface OptgroupHTMLAttributes<T> extends HTMLAttributes<T> {
         disabled?: boolean;
         label?: string;
     }
-    interface OptionHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface OptionHTMLAttributes<T> extends HTMLAttributes<T> {
         disabled?: boolean;
         label?: string;
         selected?: boolean;
         value?: string | string[] | number;
     }
-    interface OutputHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface OutputHTMLAttributes<T> extends HTMLAttributes<T> {
         form?: string;
         htmlFor?: string;
         name?: string;
     }
-    interface ParamHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ParamHTMLAttributes<T> extends HTMLAttributes<T> {
         name?: string;
         value?: string | string[] | number;
     }
-    interface ProgressHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ProgressHTMLAttributes<T> extends HTMLAttributes<T> {
         max?: number | string;
         value?: string | string[] | number;
     }
-    interface ScriptHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ScriptHTMLAttributes<T> extends HTMLAttributes<T> {
         async?: boolean;
         charSet?: string;
         charset?: string;
         crossOrigin?: string;
         crossorigin?: string;
         defer?: boolean;
+        fetchPriority?: 'high' | 'low' | 'auto';
+        fetchpriority?: 'high' | 'low' | 'auto';
         importance?: 'low' | 'auto' | 'high';
         integrity?: string;
         nonce?: string;
         src?: string;
         type?: string;
     }
-    interface SelectHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface SelectHTMLAttributes<T> extends HTMLAttributes<T> {
         disabled?: boolean;
         form?: string;
         multiple?: boolean;
@@ -1154,7 +1314,7 @@ export declare namespace JSXBase {
         autoComplete?: string;
         autocomplete?: string;
     }
-    interface SourceHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface SourceHTMLAttributes<T> extends HTMLAttributes<T> {
         height?: number;
         media?: string;
         sizes?: string;
@@ -1163,20 +1323,20 @@ export declare namespace JSXBase {
         type?: string;
         width?: number;
     }
-    interface StyleHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface StyleHTMLAttributes<T> extends HTMLAttributes<T> {
         media?: string;
         nonce?: string;
         scoped?: boolean;
         type?: string;
     }
-    interface TableHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface TableHTMLAttributes<T> extends HTMLAttributes<T> {
         cellPadding?: number | string;
         cellpadding?: number | string;
         cellSpacing?: number | string;
         cellspacing?: number | string;
         summary?: string;
     }
-    interface TextareaHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface TextareaHTMLAttributes<T> extends HTMLAttributes<T> {
         autoComplete?: string;
         autocomplete?: string;
         cols?: number;
@@ -1197,12 +1357,12 @@ export declare namespace JSXBase {
         value?: string | string[] | number;
         wrap?: string;
     }
-    interface TdHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface TdHTMLAttributes<T> extends HTMLAttributes<T> {
         colSpan?: number;
         headers?: string;
         rowSpan?: number;
     }
-    interface ThHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface ThHTMLAttributes<T> extends HTMLAttributes<T> {
         abbr?: string;
         colSpan?: number;
         headers?: string;
@@ -1210,10 +1370,10 @@ export declare namespace JSXBase {
         rowspan?: number | string;
         scope?: string;
     }
-    interface TimeHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface TimeHTMLAttributes<T> extends HTMLAttributes<T> {
         dateTime?: string;
     }
-    interface TrackHTMLAttributes<T> extends HTMLAttributes<T> {
+    export interface TrackHTMLAttributes<T> extends HTMLAttributes<T> {
         default?: boolean;
         kind?: string;
         label?: string;
@@ -1221,14 +1381,14 @@ export declare namespace JSXBase {
         srcLang?: string;
         srclang?: string;
     }
-    interface VideoHTMLAttributes<T> extends MediaHTMLAttributes<T> {
+    export interface VideoHTMLAttributes<T> extends MediaHTMLAttributes<T> {
         height?: number | string;
         playsInline?: boolean;
         playsinline?: boolean | string;
         poster?: string;
         width?: number | string;
     }
-    interface HTMLAttributes<T = HTMLElement> extends DOMAttributes<T> {
+    export interface HTMLAttributes<T = HTMLElement> extends DOMAttributes<T> {
         innerHTML?: string;
         accessKey?: string;
         autoFocus?: boolean;
@@ -1253,7 +1413,10 @@ export declare namespace JSXBase {
         tabIndex?: number;
         tabindex?: number | string;
         title?: string;
+        translate?: 'yes' | 'no' | (string & {});
         popover?: string | null;
+        focusgroup?: string;
+        focusgroupstart?: boolean;
         inputMode?: string;
         inputmode?: string;
         enterKeyHint?: string;
@@ -1291,7 +1454,7 @@ export declare namespace JSXBase {
         security?: string;
         unselectable?: boolean;
     }
-    interface SVGAttributes<T = SVGElement> extends DOMAttributes<T> {
+    export interface SVGAttributes<T = SVGElement> extends DOMAttributes<T> {
         class?: string | {
             [className: string]: boolean;
         };
@@ -1552,7 +1715,20 @@ export declare namespace JSXBase {
         z?: number | string;
         zoomAndPan?: string;
     }
-    interface DOMAttributes<T> extends JSXAttributes<T> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent) */
+    export interface ToggleEvent extends Event {
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent/newState) */
+        readonly newState: string;
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent/oldState) */
+        readonly oldState: string;
+    }
+    type AriaIDLPropertyName = {
+        [K in keyof ARIAMixin]: ARIAMixin[K] extends string | null ? K : never;
+    }[keyof ARIAMixin];
+    type JSXAriaProperties = {
+        [K in AriaIDLPropertyName]?: string | boolean | undefined;
+    };
+    export interface DOMAttributes<T> extends JSXAttributes<T>, JSXAriaProperties {
         slot?: string;
         part?: string;
         exportparts?: string;
@@ -1568,6 +1744,10 @@ export declare namespace JSXBase {
         onCompositionstartCapture?: (event: CompositionEvent) => void;
         onCompositionupdate?: (event: CompositionEvent) => void;
         onCompositionupdateCapture?: (event: CompositionEvent) => void;
+        onBeforeToggle?: (event: ToggleEvent) => void;
+        onBeforeToggleCapture?: (event: ToggleEvent) => void;
+        onToggle?: (event: ToggleEvent) => void;
+        onToggleCapture?: (event: ToggleEvent) => void;
         onFocus?: (event: FocusEvent) => void;
         onFocusCapture?: (event: FocusEvent) => void;
         onFocusin?: (event: FocusEvent) => void;
@@ -1586,10 +1766,6 @@ export declare namespace JSXBase {
         onSubmitCapture?: (event: Event) => void;
         onInvalid?: (event: Event) => void;
         onInvalidCapture?: (event: Event) => void;
-        onBeforeToggle?: (event: Event) => void;
-        onBeforeToggleCapture?: (event: Event) => void;
-        onToggle?: (event: Event) => void;
-        onToggleCapture?: (event: Event) => void;
         onLoad?: (event: Event) => void;
         onLoadCapture?: (event: Event) => void;
         onError?: (event: Event) => void;
@@ -1682,8 +1858,8 @@ export declare namespace JSXBase {
         onTransitionStart?: (event: TransitionEvent) => void;
         onTransitionStartCapture?: (event: TransitionEvent) => void;
         [key: `aria-${string}`]: string | boolean | undefined;
-        [key: `aria${string}`]: string | boolean | undefined;
     }
+    export {};
 }
 export interface JSXAttributes<T = Element> {
     key?: string | number;
@@ -1693,6 +1869,7 @@ export interface CustomElementsDefineOptions {
     exclude?: string[];
     resourcesUrl?: string;
     syncQueue?: boolean;
+    /** @deprecated in-favour of `setTagTransformer` and `transformTag` */
     transformTagName?: (tagName: string) => string;
     jmp?: (c: Function) => any;
     raf?: (c: FrameRequestCallback) => number;

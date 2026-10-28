@@ -91,7 +91,6 @@ export class ChipSelected {
         return {
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -106,11 +105,11 @@ export class ChipSelected {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "ColorChipSelected",
@@ -132,11 +131,11 @@ export class ChipSelected {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'default'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "Size",
@@ -158,11 +157,11 @@ export class ChipSelected {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "selected": {
                 "type": "boolean",
-                "attribute": "selected",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -178,11 +177,11 @@ export class ChipSelected {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "selected",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -198,11 +197,11 @@ export class ChipSelected {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -218,6 +217,7 @@ export class ChipSelected {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -247,4 +247,3 @@ export class ChipSelected {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=chip-selected.js.map

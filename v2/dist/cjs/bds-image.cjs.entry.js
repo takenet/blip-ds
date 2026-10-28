@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
-const imageCss = ":host{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}:host .img-feedback{height:76%}:host(.empty_img){background-color:var(--color-surface-3, rgb(227, 227, 227))}";
+const imageCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}:host .img-feedback{height:76%}:host(.empty_img){background-color:var(--color-surface-3, rgb(227, 227, 227))}`;
 
 const Image = class {
     constructor(hostRef) {
@@ -41,7 +41,7 @@ const Image = class {
     }
     render() {
         var _a;
-        return (index.h(index.Host, { key: '3de2dfe02e30c64a7ca439bcf31e442e524c6a31', class: { empty_img: !this.imageLoaded } }, this.currentSrc && !this.loadError && (index.h("img", { key: 'eeecb765739c9756bd5da797d20e3dcde3e555cd', src: this.currentSrc, alt: this.alt, hidden: !this.imageLoaded, onLoad: () => {
+        return (index.h(index.Host, { key: 'ab977e7cd30a5099a6f03cb9db535613fef463bd', class: { empty_img: !this.imageLoaded } }, this.currentSrc && !this.loadError && (index.h("img", { key: '7f4d85726077ecb33e153fd96825dd04d59449fc', src: this.currentSrc, alt: this.alt, hidden: !this.imageLoaded, onLoad: () => {
                 this.imageLoaded = true;
                 this.imageHasLoading = false;
             }, onError: () => {
@@ -56,12 +56,11 @@ const Image = class {
     }
     get element() { return index.getElement(this); }
     static get watchers() { return {
-        "src": ["loadImage"]
+        "src": [{
+                "loadImage": 0
+            }]
     }; }
 };
-Image.style = imageCss;
+Image.style = imageCss();
 
 exports.bds_image = Image;
-//# sourceMappingURL=bds-image.entry.cjs.js.map
-
-//# sourceMappingURL=bds-image.cjs.entry.js.map

@@ -40,7 +40,6 @@ export class BannerLink {
         return {
             "link": {
                 "type": "string",
-                "attribute": "link",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -55,11 +54,11 @@ export class BannerLink {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "link"
             },
             "target": {
                 "type": "string",
-                "attribute": "target",
                 "mutable": false,
                 "complexType": {
                     "original": "targets",
@@ -81,11 +80,11 @@ export class BannerLink {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "target",
                 "defaultValue": "'blank'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -101,6 +100,7 @@ export class BannerLink {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -130,4 +130,3 @@ export class BannerLink {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=banner-link.js.map

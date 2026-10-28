@@ -220,7 +220,6 @@ export class BdsUpload {
         return {
             "language": {
                 "type": "string",
-                "attribute": "language",
                 "mutable": false,
                 "complexType": {
                     "original": "languages",
@@ -229,7 +228,8 @@ export class BdsUpload {
                         "languages": {
                             "location": "import",
                             "path": "./languages",
-                            "id": "src/components/upload/languages/index.ts::languages"
+                            "id": "src/components/upload/languages/index.ts::languages",
+                            "referenceLocation": "languages"
                         }
                     }
                 },
@@ -242,11 +242,11 @@ export class BdsUpload {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "language",
                 "defaultValue": "'pt_BR'"
             },
             "titleName": {
                 "type": "string",
-                "attribute": "title-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -261,11 +261,11 @@ export class BdsUpload {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "title-name"
             },
             "subtitle": {
                 "type": "string",
-                "attribute": "subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -280,11 +280,11 @@ export class BdsUpload {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "subtitle"
             },
             "error": {
                 "type": "string",
-                "attribute": "error",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -299,11 +299,11 @@ export class BdsUpload {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "error"
             },
             "multiple": {
                 "type": "boolean",
-                "attribute": "multiple",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -318,11 +318,11 @@ export class BdsUpload {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "multiple"
             },
             "accept": {
                 "type": "string",
-                "attribute": "accept",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -337,11 +337,11 @@ export class BdsUpload {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "accept"
             },
             "dataAccept": {
                 "type": "string",
-                "attribute": "data-accept",
                 "mutable": false,
                 "complexType": {
                     "original": "string[] | string",
@@ -357,11 +357,11 @@ export class BdsUpload {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-accept",
                 "defaultValue": "[]"
             },
             "dtInputFiles": {
                 "type": "string",
-                "attribute": "dt-input-files",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -377,11 +377,11 @@ export class BdsUpload {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-input-files",
                 "defaultValue": "null"
             },
             "dtLabelAddFile": {
                 "type": "string",
-                "attribute": "dt-label-add-file",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -397,11 +397,11 @@ export class BdsUpload {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-label-add-file",
                 "defaultValue": "null"
             },
             "dtButtonDelete": {
                 "type": "string",
-                "attribute": "dt-button-delete",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -417,11 +417,11 @@ export class BdsUpload {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-delete",
                 "defaultValue": "null"
             },
             "showListPreview": {
                 "type": "boolean",
-                "attribute": "show-list-preview",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -437,6 +437,7 @@ export class BdsUpload {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show-list-preview",
                 "defaultValue": "true"
             }
         };
@@ -541,4 +542,3 @@ export class BdsUpload {
             }];
     }
 }
-//# sourceMappingURL=bds-upload.js.map

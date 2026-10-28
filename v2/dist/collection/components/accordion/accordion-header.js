@@ -85,7 +85,6 @@ export class AccordionHeader {
         return {
             "accordionTitle": {
                 "type": "string",
-                "attribute": "accordion-title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -101,11 +100,11 @@ export class AccordionHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "accordion-title",
                 "defaultValue": "null"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -121,11 +120,11 @@ export class AccordionHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "iconColor": {
                 "type": "string",
-                "attribute": "icon-color",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -141,11 +140,11 @@ export class AccordionHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon-color",
                 "defaultValue": "'inherit'"
             },
             "avatarName": {
                 "type": "string",
-                "attribute": "avatar-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -161,11 +160,11 @@ export class AccordionHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "avatar-name",
                 "defaultValue": "null"
             },
             "avatarThumb": {
                 "type": "string",
-                "attribute": "avatar-thumb",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -181,11 +180,11 @@ export class AccordionHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "avatar-thumb",
                 "defaultValue": "null"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -201,6 +200,7 @@ export class AccordionHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -269,4 +269,3 @@ export class AccordionHeader {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=accordion-header.js.map

@@ -135,7 +135,6 @@ export class Tabs {
         return {
             "align": {
                 "type": "string",
-                "attribute": "align",
                 "mutable": false,
                 "complexType": {
                     "original": "'left' | 'center' | 'right'",
@@ -151,6 +150,7 @@ export class Tabs {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align",
                 "defaultValue": "'center'"
             }
         };
@@ -173,7 +173,8 @@ export class Tabs {
                         "Overflow": {
                             "location": "import",
                             "path": "./tabs-interface",
-                            "id": "src/components/tabs/tab (depreciated)/tabs-interface.ts::Overflow"
+                            "id": "src/components/tabs/tab (depreciated)/tabs-interface.ts::Overflow",
+                            "referenceLocation": "Overflow"
                         }
                     }
                 }
@@ -211,4 +212,3 @@ export class Tabs {
             }];
     }
 }
-//# sourceMappingURL=tabs.js.map

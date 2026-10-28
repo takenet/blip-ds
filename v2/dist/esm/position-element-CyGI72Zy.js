@@ -125,6 +125,3 @@ const gapChanged = (gap) => {
 };
 
 export { getHighestItem as a, gapChanged as b, getScrollParent as c, positionElement as d, getParentsUntil as e, getItems as g, positionAbsoluteElement as p };
-//# sourceMappingURL=position-element-CyGI72Zy.js.map
-
-//# sourceMappingURL=position-element-CyGI72Zy.js.map

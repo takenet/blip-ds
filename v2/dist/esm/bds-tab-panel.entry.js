@@ -1,6 +1,6 @@
-import { r as registerInstance, h, H as Host } from './index-gowA9FoV.js';
+import { r as registerInstance, h, H as Host } from './index-BnSR_zce.js';
 
-const tabPanelCss = ".bds-tab-panel{display:none;font-family:\"Nunito Sans\", \"Carbona\", \"Tahoma\", \"Helvetica\", \"Arial\", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}";
+const tabPanelCss = () => `.bds-tab-panel{display:none;font-family:"Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}`;
 
 const TabPanel = class {
     constructor(hostRef) {
@@ -20,9 +20,6 @@ const TabPanel = class {
             } }, h("slot", { key: '230a7ece5a265e850470743eebe175ef3c7d5c58' })));
     }
 };
-TabPanel.style = tabPanelCss;
+TabPanel.style = tabPanelCss();
 
 export { TabPanel as bds_tab_panel };
-//# sourceMappingURL=bds-tab-panel.entry.js.map
-
-//# sourceMappingURL=bds-tab-panel.entry.js.map

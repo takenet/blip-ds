@@ -99,7 +99,6 @@ export class BdsTabItem {
         return {
             "numberElement": {
                 "type": "number",
-                "attribute": "number-element",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -115,11 +114,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "number-element",
                 "defaultValue": "null"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -135,11 +134,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "null"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -155,11 +154,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "iconPosition": {
                 "type": "string",
-                "attribute": "icon-position",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -175,11 +174,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon-position",
                 "defaultValue": "'left'"
             },
             "iconTheme": {
                 "type": "string",
-                "attribute": "icon-theme",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -195,11 +194,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon-theme",
                 "defaultValue": "'outline'"
             },
             "badge": {
                 "type": "boolean",
-                "attribute": "badge",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -215,11 +214,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "badge",
                 "defaultValue": "false"
             },
             "badgeShape": {
                 "type": "string",
-                "attribute": "badge-shape",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -235,11 +234,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "badge-shape",
                 "defaultValue": "'circle'"
             },
             "badgeColor": {
                 "type": "string",
-                "attribute": "badge-color",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -255,11 +254,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "badge-color",
                 "defaultValue": "'system'"
             },
             "badgeIcon": {
                 "type": "string",
-                "attribute": "badge-icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -275,11 +274,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "badge-icon",
                 "defaultValue": "null"
             },
             "badgeAnimation": {
                 "type": "boolean",
-                "attribute": "badge-animation",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -295,11 +294,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "badge-animation",
                 "defaultValue": "false"
             },
             "badgePosition": {
                 "type": "string",
-                "attribute": "badge-position",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -315,11 +314,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "badge-position",
                 "defaultValue": "'left'"
             },
             "badgeNumber": {
                 "type": "number",
-                "attribute": "badge-number",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -335,11 +334,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "badge-number",
                 "defaultValue": "null"
             },
             "disable": {
                 "type": "boolean",
-                "attribute": "disable",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -355,11 +354,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "disable",
                 "defaultValue": "false"
             },
             "error": {
                 "type": "boolean",
-                "attribute": "error",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -375,11 +374,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error",
                 "defaultValue": "false"
             },
             "headerStyle": {
                 "type": "string",
-                "attribute": "header-style",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -395,11 +394,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "header-style",
                 "defaultValue": "null"
             },
             "contentStyle": {
                 "type": "string",
-                "attribute": "content-style",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -415,11 +414,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "content-style",
                 "defaultValue": "null"
             },
             "open": {
                 "type": "boolean",
-                "attribute": "open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -435,11 +434,11 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "open",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -455,6 +454,7 @@ export class BdsTabItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -509,4 +509,3 @@ export class BdsTabItem {
             }];
     }
 }
-//# sourceMappingURL=tab-item.js.map

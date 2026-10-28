@@ -26,7 +26,6 @@ export class ThemeProvider {
         return {
             "theme": {
                 "type": "string",
-                "attribute": "theme",
                 "mutable": false,
                 "complexType": {
                     "original": "Themes",
@@ -48,9 +47,9 @@ export class ThemeProvider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "theme",
                 "defaultValue": "'light'"
             }
         };
     }
 }
-//# sourceMappingURL=theme-provider.js.map

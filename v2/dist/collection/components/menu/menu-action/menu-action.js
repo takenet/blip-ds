@@ -131,7 +131,6 @@ export class BdsMenuAction {
         return {
             "buttonText": {
                 "type": "string",
-                "attribute": "button-text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -147,11 +146,11 @@ export class BdsMenuAction {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "button-text",
                 "defaultValue": "''"
             },
             "subMenu": {
                 "type": "boolean",
-                "attribute": "sub-menu",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -167,11 +166,11 @@ export class BdsMenuAction {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "sub-menu",
                 "defaultValue": "false"
             },
             "iconLeft": {
                 "type": "string",
-                "attribute": "icon-left",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -187,11 +186,11 @@ export class BdsMenuAction {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon-left",
                 "defaultValue": "null"
             },
             "subtitle": {
                 "type": "string",
-                "attribute": "subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -207,11 +206,11 @@ export class BdsMenuAction {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "subtitle",
                 "defaultValue": "null"
             },
             "description": {
                 "type": "string",
-                "attribute": "description",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -227,11 +226,11 @@ export class BdsMenuAction {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "description",
                 "defaultValue": "null"
             },
             "lipstick": {
                 "type": "boolean",
-                "attribute": "lipstick",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -247,11 +246,11 @@ export class BdsMenuAction {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "lipstick",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -267,6 +266,7 @@ export class BdsMenuAction {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             }
         };
@@ -296,4 +296,3 @@ export class BdsMenuAction {
             }];
     }
 }
-//# sourceMappingURL=menu-action.js.map

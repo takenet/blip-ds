@@ -1,9 +1,1 @@
-import { P as Paper, d as defineCustomElement$1 } from './p-2TfGvztS.js';
-
-const BdsPaper = Paper;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsPaper, defineCustomElement };
-//# sourceMappingURL=bds-paper.js.map
-
-//# sourceMappingURL=bds-paper.js.map
+import{P as o,d as s}from"./p-BgKnecJO.js";const p=o,r=s;export{p as BdsPaper,r as defineCustomElement}

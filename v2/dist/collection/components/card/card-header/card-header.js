@@ -25,7 +25,6 @@ export class CardHeader {
         return {
             "align": {
                 "type": "string",
-                "attribute": "align",
                 "mutable": false,
                 "complexType": {
                     "original": "justifyContent",
@@ -47,9 +46,9 @@ export class CardHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align",
                 "defaultValue": "'space-between'"
             }
         };
     }
 }
-//# sourceMappingURL=card-header.js.map

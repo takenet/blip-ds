@@ -1,9 +1,1 @@
-import { B as Badge, d as defineCustomElement$1 } from './p-IpWn4gjZ.js';
-
-const BdsBadge = Badge;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsBadge, defineCustomElement };
-//# sourceMappingURL=bds-badge.js.map
-
-//# sourceMappingURL=bds-badge.js.map
+import{B as o,d as s}from"./p-B72iqn0K.js";const p=o,r=s;export{p as BdsBadge,r as defineCustomElement}

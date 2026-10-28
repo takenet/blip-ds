@@ -1,9 +1,1 @@
-import { B as Banner, d as defineCustomElement$1 } from './p-BXkANJ77.js';
-
-const BdsBanner = Banner;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsBanner, defineCustomElement };
-//# sourceMappingURL=bds-banner.js.map
-
-//# sourceMappingURL=bds-banner.js.map
+import{B as o,d as s}from"./p-BO3DMYd0.js";const p=o,r=s;export{p as BdsBanner,r as defineCustomElement}

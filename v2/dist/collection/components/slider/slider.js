@@ -155,7 +155,6 @@ export class Slider {
         return {
             "step": {
                 "type": "number",
-                "attribute": "step",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -170,11 +169,11 @@ export class Slider {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "step"
             },
             "min": {
                 "type": "number",
-                "attribute": "min",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -189,11 +188,11 @@ export class Slider {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "min"
             },
             "max": {
                 "type": "number",
-                "attribute": "max",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -208,11 +207,11 @@ export class Slider {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "max"
             },
             "value": {
                 "type": "number",
-                "attribute": "value",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -228,11 +227,11 @@ export class Slider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "this.min ? this.min : 0"
             },
             "markers": {
                 "type": "boolean",
-                "attribute": "markers",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -248,11 +247,11 @@ export class Slider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "markers",
                 "defaultValue": "false"
             },
             "label": {
                 "type": "boolean",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -268,11 +267,11 @@ export class Slider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "false"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "typeRange",
@@ -281,7 +280,8 @@ export class Slider {
                         "typeRange": {
                             "location": "import",
                             "path": "./slider-interface",
-                            "id": "src/components/slider/slider-interface.ts::typeRange"
+                            "id": "src/components/slider/slider-interface.ts::typeRange",
+                            "referenceLocation": "typeRange"
                         }
                     }
                 },
@@ -294,11 +294,11 @@ export class Slider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'fill'"
             },
             "dataMarkers": {
                 "type": "string",
-                "attribute": "data-markers",
                 "mutable": false,
                 "complexType": {
                     "original": "string | StepOption[]",
@@ -307,7 +307,8 @@ export class Slider {
                         "StepOption": {
                             "location": "import",
                             "path": "./slider-interface",
-                            "id": "src/components/slider/slider-interface.ts::StepOption"
+                            "id": "src/components/slider/slider-interface.ts::StepOption",
+                            "referenceLocation": "StepOption"
                         }
                     }
                 },
@@ -319,11 +320,11 @@ export class Slider {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "data-markers"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -339,6 +340,7 @@ export class Slider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -370,4 +372,3 @@ export class Slider {
             }];
     }
 }
-//# sourceMappingURL=slider.js.map

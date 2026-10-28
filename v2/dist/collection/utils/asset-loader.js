@@ -44,4 +44,3 @@ export function loadAssetSvg(key) {
     pending.set(url, request);
     return request;
 }
-//# sourceMappingURL=asset-loader.js.map

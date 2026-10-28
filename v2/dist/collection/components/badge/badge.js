@@ -86,7 +86,6 @@ export class Badge {
         return {
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -102,11 +101,11 @@ export class Badge {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'system'"
             },
             "shape": {
                 "type": "string",
-                "attribute": "shape",
                 "mutable": false,
                 "complexType": {
                     "original": "Shape",
@@ -128,11 +127,11 @@ export class Badge {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "shape",
                 "defaultValue": "'circle'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -148,11 +147,11 @@ export class Badge {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "number": {
                 "type": "number",
-                "attribute": "number",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -167,11 +166,11 @@ export class Badge {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "number"
             },
             "animation": {
                 "type": "boolean",
-                "attribute": "animation",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -187,11 +186,11 @@ export class Badge {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "animation",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -207,6 +206,7 @@ export class Badge {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -223,4 +223,3 @@ export class Badge {
             }];
     }
 }
-//# sourceMappingURL=badge.js.map

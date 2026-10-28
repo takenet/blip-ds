@@ -89,7 +89,6 @@ export class BdsModal {
         return {
             "open": {
                 "type": "boolean",
-                "attribute": "open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -105,11 +104,11 @@ export class BdsModal {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "open",
                 "defaultValue": "false"
             },
             "closeButton": {
                 "type": "boolean",
-                "attribute": "close-button",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -125,11 +124,11 @@ export class BdsModal {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "close-button",
                 "defaultValue": "true"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": true,
                 "complexType": {
                     "original": "sizes",
@@ -151,11 +150,11 @@ export class BdsModal {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "size",
                 "defaultValue": "'fixed'"
             },
             "outzoneClose": {
                 "type": "boolean",
-                "attribute": "outzone-close",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -171,11 +170,11 @@ export class BdsModal {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "outzone-close",
                 "defaultValue": "true"
             },
             "enterClose": {
                 "type": "boolean",
-                "attribute": "enter-close",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -191,11 +190,11 @@ export class BdsModal {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "enter-close",
                 "defaultValue": "true"
             },
             "dtOutzone": {
                 "type": "string",
-                "attribute": "dt-outzone",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -211,11 +210,11 @@ export class BdsModal {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-outzone",
                 "defaultValue": "null"
             },
             "dtButtonClose": {
                 "type": "string",
-                "attribute": "dt-button-close",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -231,6 +230,7 @@ export class BdsModal {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-close",
                 "defaultValue": "null"
             }
         };
@@ -281,4 +281,3 @@ export class BdsModal {
             }];
     }
 }
-//# sourceMappingURL=modal.js.map

@@ -196,4 +196,3 @@ export const dateToTypeDate = (value) => {
         .toString()
         .padStart(2, '0')}-${value.getDate().toString().padStart(2, '0')}`;
 };
-//# sourceMappingURL=calendar.js.map

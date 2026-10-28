@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, a as getElement } from './index-gowA9FoV.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-BnSR_zce.js';
 import { c as getScrollParent } from './position-element-CyGI72Zy.js';
 
 const en_US = {
@@ -20,7 +20,7 @@ const es_MX = {
     pages: 'páginas'
 };
 
-const paginationCss = ":host{display:block}:host .actions_select{width:74px}:host(.full_width){width:100%}@media screen and (max-width: 905px){.items_per_page{display:none}.actions{width:100%;-ms-flex-pack:center;justify-content:center}}@media screen and (max-width: 600px){.actions--text{display:none}}";
+const paginationCss = () => `:host{display:block}:host .actions_select{width:74px}:host(.full_width){width:100%}@media screen and (max-width: 905px){.items_per_page{display:none}.actions{width:100%;-ms-flex-pack:center;justify-content:center}}@media screen and (max-width: 600px){.actions--text{display:none}}`;
 
 const Pagination = class {
     constructor(hostRef) {
@@ -203,15 +203,20 @@ const Pagination = class {
     }
     get el() { return getElement(this); }
     static get watchers() { return {
-        "pages": ["pagesChanged"],
-        "startedPage": ["pagesChanged"],
-        "value": ["valueChanged"],
-        "itemValue": ["itemSelected"]
+        "pages": [{
+                "pagesChanged": 0
+            }],
+        "startedPage": [{
+                "pagesChanged": 0
+            }],
+        "value": [{
+                "valueChanged": 0
+            }],
+        "itemValue": [{
+                "itemSelected": 0
+            }]
     }; }
 };
-Pagination.style = paginationCss;
+Pagination.style = paginationCss();
 
 export { Pagination as bds_pagination };
-//# sourceMappingURL=bds-pagination.entry.js.map
-
-//# sourceMappingURL=bds-pagination.entry.js.map

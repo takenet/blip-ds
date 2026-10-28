@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, h, a as getElement } from './index-gowA9FoV.js';
+import { r as registerInstance, c as createEvent, h, g as getElement } from './index-BnSR_zce.js';
 
-const bannerLinkCss = ":Host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;cursor:pointer;text-decoration:underline;white-space:nowrap;margin-left:16px;-ms-flex-order:2;order:2}.banner__link{position:relative}.banner__link::before{content:\"\";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px}.banner__link:focus-visible{outline:none}.banner__link:focus-visible::before{border-color:var(--color-focus, rgb(194, 38, 251))}";
+const bannerLinkCss = () => `:Host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;cursor:pointer;text-decoration:underline;white-space:nowrap;margin-left:16px;-ms-flex-order:2;order:2}.banner__link{position:relative}.banner__link::before{content:"";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px}.banner__link:focus-visible{outline:none}.banner__link:focus-visible::before{border-color:var(--color-focus, rgb(194, 38, 251))}`;
 
 const BannerLink = class {
     constructor(hostRef) {
@@ -31,9 +31,6 @@ const BannerLink = class {
     }
     get el() { return getElement(this); }
 };
-BannerLink.style = bannerLinkCss;
+BannerLink.style = bannerLinkCss();
 
 export { BannerLink as bds_banner_link };
-//# sourceMappingURL=bds-banner-link.entry.js.map
-
-//# sourceMappingURL=bds-banner-link.entry.js.map

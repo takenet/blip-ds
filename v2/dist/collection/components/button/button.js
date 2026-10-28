@@ -202,7 +202,6 @@ export class Button {
         return {
             "block": {
                 "type": "boolean",
-                "attribute": "block",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -218,11 +217,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "block",
                 "defaultValue": "false"
             },
             "fullWidth": {
                 "type": "boolean",
-                "attribute": "full-width",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -238,11 +237,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "full-width",
                 "defaultValue": "false"
             },
             "justifyContent": {
                 "type": "string",
-                "attribute": "justify-content",
                 "mutable": false,
                 "complexType": {
                     "original": "ButtonJustifyContent",
@@ -264,11 +263,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "justify-content",
                 "defaultValue": "'center'"
             },
             "groupIcon": {
                 "type": "boolean",
-                "attribute": "group-icon",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -284,11 +283,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "group-icon",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -304,11 +303,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -324,11 +323,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'primary'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": true,
                 "complexType": {
                     "original": "ButtonSize",
@@ -350,11 +349,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'medium'"
             },
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": true,
                 "complexType": {
                     "original": "ButtonVariant",
@@ -376,11 +375,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'solid'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -396,11 +395,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "iconLeft": {
                 "type": "string",
-                "attribute": "icon-left",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -416,11 +415,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon-left",
                 "defaultValue": "null"
             },
             "iconRight": {
                 "type": "string",
-                "attribute": "icon-right",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -436,11 +435,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon-right",
                 "defaultValue": "null"
             },
             "arrow": {
                 "type": "boolean",
-                "attribute": "arrow",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -456,11 +455,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "arrow",
                 "defaultValue": "false"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "ButtonType",
@@ -482,11 +481,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'button'"
             },
             "iconTheme": {
                 "type": "string",
-                "attribute": "icon-theme",
                 "mutable": false,
                 "complexType": {
                     "original": "IconTheme",
@@ -508,11 +507,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon-theme",
                 "defaultValue": "'outline'"
             },
             "typeIcon": {
                 "type": "string",
-                "attribute": "type-icon",
                 "mutable": false,
                 "complexType": {
                     "original": "IconType",
@@ -534,11 +533,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "type-icon",
                 "defaultValue": "'icon'"
             },
             "bdsLoading": {
                 "type": "boolean",
-                "attribute": "bds-loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -554,11 +553,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bds-loading",
                 "defaultValue": "false"
             },
             "bdsLoadingVariant": {
                 "type": "string",
-                "attribute": "bds-loading-variant",
                 "mutable": false,
                 "complexType": {
                     "original": "LoadingSpinnerVariant",
@@ -567,7 +566,8 @@ export class Button {
                         "LoadingSpinnerVariant": {
                             "location": "import",
                             "path": "../loading-spinner/loading-spinner",
-                            "id": "src/components/loading-spinner/loading-spinner.tsx::LoadingSpinnerVariant"
+                            "id": "src/components/loading-spinner/loading-spinner.tsx::LoadingSpinnerVariant",
+                            "referenceLocation": "LoadingSpinnerVariant"
                         }
                     }
                 },
@@ -580,11 +580,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bds-loading-variant",
                 "defaultValue": "'primary'"
             },
             "bdsLoadingColor": {
                 "type": "string",
-                "attribute": "bds-loading-color",
                 "mutable": false,
                 "complexType": {
                     "original": "colorsVariants",
@@ -593,7 +593,8 @@ export class Button {
                         "colorsVariants": {
                             "location": "import",
                             "path": "../loading-spinner/loading-spinner",
-                            "id": "src/components/loading-spinner/loading-spinner.tsx::colorsVariants"
+                            "id": "src/components/loading-spinner/loading-spinner.tsx::colorsVariants",
+                            "referenceLocation": "colorsVariants"
                         }
                     }
                 },
@@ -606,11 +607,11 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bds-loading-color",
                 "defaultValue": "'main'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -626,6 +627,7 @@ export class Button {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -824,4 +826,3 @@ export class Button {
             }];
     }
 }
-//# sourceMappingURL=button.js.map

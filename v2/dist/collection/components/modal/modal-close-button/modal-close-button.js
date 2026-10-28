@@ -28,7 +28,6 @@ export class BdsModalCloseButton {
         return {
             "active": {
                 "type": "boolean",
-                "attribute": "active",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -44,9 +43,9 @@ export class BdsModalCloseButton {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "active",
                 "defaultValue": "true"
             }
         };
     }
 }
-//# sourceMappingURL=modal-close-button.js.map

@@ -16,4 +16,3 @@ export class TableHeader {
         };
     }
 }
-//# sourceMappingURL=table-header.js.map

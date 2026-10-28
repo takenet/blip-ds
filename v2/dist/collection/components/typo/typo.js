@@ -70,7 +70,6 @@ export class Typo {
         return {
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "FontSize",
@@ -92,11 +91,11 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'fs-16'"
             },
             "lineHeight": {
                 "type": "string",
-                "attribute": "line-height",
                 "mutable": false,
                 "complexType": {
                     "original": "FontLineHeight",
@@ -118,11 +117,11 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "line-height",
                 "defaultValue": "null"
             },
             "bold": {
                 "type": "string",
-                "attribute": "bold",
                 "mutable": false,
                 "complexType": {
                     "original": "Bold",
@@ -144,11 +143,11 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bold",
                 "defaultValue": "null"
             },
             "italic": {
                 "type": "boolean",
-                "attribute": "italic",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -164,11 +163,11 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "italic",
                 "defaultValue": "false"
             },
             "noWrap": {
                 "type": "boolean",
-                "attribute": "no-wrap",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -184,11 +183,11 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "no-wrap",
                 "defaultValue": "false"
             },
             "paragraph": {
                 "type": "boolean",
-                "attribute": "paragraph",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -204,11 +203,11 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "paragraph",
                 "defaultValue": "false"
             },
             "margin": {
                 "type": "boolean",
-                "attribute": "margin",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -224,11 +223,11 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "margin",
                 "defaultValue": "true"
             },
             "tag": {
                 "type": "string",
-                "attribute": "tag",
                 "mutable": false,
                 "complexType": {
                     "original": "Tag",
@@ -250,11 +249,11 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "tag",
                 "defaultValue": "'p'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -270,9 +269,9 @@ export class Typo {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
     }
 }
-//# sourceMappingURL=typo.js.map

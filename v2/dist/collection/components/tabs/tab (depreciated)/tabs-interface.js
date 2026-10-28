@@ -3,4 +3,3 @@ export class Overflow {
         this.distance = null;
     }
 }
-//# sourceMappingURL=tabs-interface.js.map

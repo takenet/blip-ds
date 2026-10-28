@@ -72,7 +72,6 @@ export class TableRow {
         return {
             "clickable": {
                 "type": "boolean",
-                "attribute": "clickable",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -88,11 +87,11 @@ export class TableRow {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "clickable",
                 "defaultValue": "false"
             },
             "selected": {
                 "type": "boolean",
-                "attribute": "selected",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -108,11 +107,11 @@ export class TableRow {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "selected",
                 "defaultValue": "false"
             },
             "bodyCollapse": {
                 "type": "string",
-                "attribute": "body-collapse",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -127,11 +126,11 @@ export class TableRow {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "body-collapse"
             },
             "dataTarget": {
                 "type": "string",
-                "attribute": "data-target",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -146,7 +145,8 @@ export class TableRow {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "data-target"
             }
         };
     }
@@ -162,4 +162,3 @@ export class TableRow {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=table-row.js.map

@@ -123,4 +123,3 @@ export const gapChanged = (gap) => {
     }
     return spaceGap;
 };
-//# sourceMappingURL=position-element.js.map

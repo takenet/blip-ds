@@ -62,11 +62,11 @@
 .avatar__group__size--extra-small {
   margin-left: 8px;
 }
-.avatar__group__size--extra-small > * {
-  margin-left: -8px;
-}
 .avatar__group__size--extra-small > *:nth-child(6) div {
   padding: 0 8px;
+}
+.avatar__group__size--extra-small > * {
+  margin-left: -8px;
 }
 .avatar__group__size--extra-small .avatar {
   height: 32px;

@@ -47,7 +47,6 @@ export class UaiAvatar {
         return {
             "src": {
                 "type": "string",
-                "attribute": "src",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -62,11 +61,11 @@ export class UaiAvatar {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "src"
             },
             "initials": {
                 "type": "string",
-                "attribute": "initials",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -81,11 +80,11 @@ export class UaiAvatar {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "initials"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -100,11 +99,11 @@ export class UaiAvatar {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiAvatarSize",
@@ -126,11 +125,11 @@ export class UaiAvatar {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -145,7 +144,8 @@ export class UaiAvatar {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "data-test"
             }
         };
     }
@@ -161,4 +161,3 @@ export class UaiAvatar {
             }];
     }
 }
-//# sourceMappingURL=uai-avatar.js.map

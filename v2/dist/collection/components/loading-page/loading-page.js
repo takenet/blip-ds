@@ -47,7 +47,6 @@ export class BdsLoading {
         return {
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -63,6 +62,7 @@ export class BdsLoading {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -73,4 +73,3 @@ export class BdsLoading {
         };
     }
 }
-//# sourceMappingURL=loading-page.js.map

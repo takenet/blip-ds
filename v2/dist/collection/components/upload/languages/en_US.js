@@ -6,4 +6,3 @@ export const enTerms = [
         formatError: 'There was an error attaching the file, please try again or select another file',
     },
 ];
-//# sourceMappingURL=en_US.js.map

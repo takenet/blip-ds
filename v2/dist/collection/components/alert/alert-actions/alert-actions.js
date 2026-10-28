@@ -16,4 +16,3 @@ export class AlertActions {
         };
     }
 }
-//# sourceMappingURL=alert-actions.js.map

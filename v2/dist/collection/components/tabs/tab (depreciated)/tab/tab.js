@@ -38,7 +38,6 @@ export class Tab {
         return {
             "group": {
                 "type": "string",
-                "attribute": "group",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -53,11 +52,11 @@ export class Tab {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "group"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -72,11 +71,11 @@ export class Tab {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "active": {
                 "type": "boolean",
-                "attribute": "active",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -92,6 +91,7 @@ export class Tab {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "active",
                 "defaultValue": "false"
             }
         };
@@ -135,4 +135,3 @@ export class Tab {
             }];
     }
 }
-//# sourceMappingURL=tab.js.map

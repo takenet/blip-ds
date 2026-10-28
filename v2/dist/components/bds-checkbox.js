@@ -1,9 +1,1 @@
-import { C as Checkbox, d as defineCustomElement$1 } from './p-zid6bYB6.js';
-
-const BdsCheckbox = Checkbox;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsCheckbox, defineCustomElement };
-//# sourceMappingURL=bds-checkbox.js.map
-
-//# sourceMappingURL=bds-checkbox.js.map
+import{C as o,d as s}from"./p-CD1DmNJ5.js";const m=o,p=s;export{m as BdsCheckbox,p as defineCustomElement}

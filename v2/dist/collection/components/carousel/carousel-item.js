@@ -27,7 +27,6 @@ export class BdsCarouselItem {
         return {
             "theme": {
                 "type": "string",
-                "attribute": "theme",
                 "mutable": false,
                 "complexType": {
                     "original": "Themes",
@@ -36,7 +35,8 @@ export class BdsCarouselItem {
                         "Themes": {
                             "location": "import",
                             "path": "../theme-provider/theme-provider",
-                            "id": "src/components/theme-provider/theme-provider.tsx::Themes"
+                            "id": "src/components/theme-provider/theme-provider.tsx::Themes",
+                            "referenceLocation": "Themes"
                         }
                     }
                 },
@@ -49,11 +49,11 @@ export class BdsCarouselItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "theme",
                 "defaultValue": "'light'"
             },
             "bgImage": {
                 "type": "string",
-                "attribute": "bg-image",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -68,11 +68,11 @@ export class BdsCarouselItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "bg-image"
             },
             "bgImageBrightness": {
                 "type": "number",
-                "attribute": "bg-image-brightness",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -88,11 +88,11 @@ export class BdsCarouselItem {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bg-image-brightness",
                 "defaultValue": "1"
             },
             "bgColor": {
                 "type": "string",
-                "attribute": "bg-color",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -107,9 +107,9 @@ export class BdsCarouselItem {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "bg-color"
             }
         };
     }
 }
-//# sourceMappingURL=carousel-item.js.map

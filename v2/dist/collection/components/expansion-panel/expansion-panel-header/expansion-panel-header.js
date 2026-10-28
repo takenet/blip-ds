@@ -19,7 +19,6 @@ export class ExpansionPanelHeader {
         return {
             "text": {
                 "type": "string",
-                "attribute": "text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -34,9 +33,9 @@ export class ExpansionPanelHeader {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "text"
             }
         };
     }
 }
-//# sourceMappingURL=expansion-panel-header.js.map

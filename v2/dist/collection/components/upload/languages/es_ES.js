@@ -6,4 +6,3 @@ export const esTerms = [
         formatError: 'Se produjo un error al adjuntar el archivo, inténtelo nuevamente o seleccione otro archivo',
     },
 ];
-//# sourceMappingURL=es_ES.js.map

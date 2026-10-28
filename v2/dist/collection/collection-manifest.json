@@ -113,10 +113,11 @@
     "components/upload/bds-upload.js",
     "components/warning/warning.js"
   ],
+  "mixins": [],
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.35.1",
-    "typescriptVersion": "5.5.4"
+    "version": "4.45.2",
+    "typescriptVersion": "5.8.3"
   },
   "collections": [],
   "bundles": []

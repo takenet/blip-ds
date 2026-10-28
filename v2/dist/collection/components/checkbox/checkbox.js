@@ -129,7 +129,6 @@ export class Checkbox {
         return {
             "refer": {
                 "type": "string",
-                "attribute": "refer",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -144,11 +143,11 @@ export class Checkbox {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "refer"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -163,11 +162,11 @@ export class Checkbox {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -182,11 +181,11 @@ export class Checkbox {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "name"
             },
             "checked": {
                 "type": "boolean",
-                "attribute": "checked",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -202,11 +201,11 @@ export class Checkbox {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "checked",
                 "defaultValue": "false"
             },
             "indeterminate": {
                 "type": "boolean",
-                "attribute": "indeterminate",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -222,11 +221,11 @@ export class Checkbox {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "indeterminate",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -242,11 +241,11 @@ export class Checkbox {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -262,6 +261,7 @@ export class Checkbox {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -369,4 +369,3 @@ export class Checkbox {
         };
     }
 }
-//# sourceMappingURL=checkbox.js.map

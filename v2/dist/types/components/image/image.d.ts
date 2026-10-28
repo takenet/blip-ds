@@ -1,3 +1,4 @@
+import type { JSX } from '../../stencil-public-runtime';
 export type ObjectFitValue = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
 export declare class Image {
     private imageHasLoading;

@@ -33,7 +33,6 @@ export class AlertHeader {
         return {
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "AlertHeaderVariannt",
@@ -55,11 +54,11 @@ export class AlertHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'system'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -75,9 +74,9 @@ export class AlertHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "null"
             }
         };
     }
 }
-//# sourceMappingURL=alert-header.js.map

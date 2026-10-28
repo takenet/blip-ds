@@ -16,4 +16,3 @@ export const es_MX = {
     items: 'itens',
     pages: 'páginas'
 };
-//# sourceMappingURL=languages.js.map

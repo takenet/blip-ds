@@ -34,7 +34,6 @@ export class BdsDivider {
         return {
             "styleType": {
                 "type": "string",
-                "attribute": "style-type",
                 "mutable": false,
                 "complexType": {
                     "original": "'solid' | 'dotted' | 'dashed'",
@@ -50,11 +49,11 @@ export class BdsDivider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "style-type",
                 "defaultValue": "'solid'"
             },
             "orientation": {
                 "type": "string",
-                "attribute": "orientation",
                 "mutable": false,
                 "complexType": {
                     "original": "'horizontal' | 'vertical'",
@@ -70,11 +69,11 @@ export class BdsDivider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "orientation",
                 "defaultValue": "'horizontal'"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "'divider-1' | 'divider-2' | 'divider-3'",
@@ -90,9 +89,9 @@ export class BdsDivider {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'divider-1'"
             }
         };
     }
 }
-//# sourceMappingURL=divider.js.map

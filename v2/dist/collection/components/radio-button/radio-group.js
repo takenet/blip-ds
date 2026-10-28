@@ -37,7 +37,6 @@ export class RadioGroup {
         return {
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -52,7 +51,8 @@ export class RadioGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "value"
             }
         };
     }
@@ -82,4 +82,3 @@ export class RadioGroup {
             }];
     }
 }
-//# sourceMappingURL=radio-group.js.map

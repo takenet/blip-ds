@@ -38,7 +38,6 @@ export class TableHeaderCell {
         return {
             "sortable": {
                 "type": "boolean",
-                "attribute": "sortable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -54,11 +53,11 @@ export class TableHeaderCell {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "sortable",
                 "defaultValue": "false"
             },
             "arrow": {
                 "type": "string",
-                "attribute": "arrow",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -74,11 +73,11 @@ export class TableHeaderCell {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "arrow",
                 "defaultValue": "''"
             },
             "justifyContent": {
                 "type": "string",
-                "attribute": "justify-content",
                 "mutable": false,
                 "complexType": {
                     "original": "JustifyContent",
@@ -100,6 +99,7 @@ export class TableHeaderCell {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "justify-content",
                 "defaultValue": "'left'"
             }
         };
@@ -111,4 +111,3 @@ export class TableHeaderCell {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=table-header-cell.js.map

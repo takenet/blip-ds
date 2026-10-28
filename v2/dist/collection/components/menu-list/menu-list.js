@@ -16,4 +16,3 @@ export class MenuList {
         };
     }
 }
-//# sourceMappingURL=menu-list.js.map

@@ -90,7 +90,6 @@ export class Accordion {
         return {
             "startOpen": {
                 "type": "boolean",
-                "attribute": "start-open",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -106,11 +105,11 @@ export class Accordion {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "start-open",
                 "defaultValue": "false"
             },
             "divisor": {
                 "type": "boolean",
-                "attribute": "divisor",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -126,6 +125,7 @@ export class Accordion {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "divisor",
                 "defaultValue": "true"
             }
         };
@@ -289,4 +289,3 @@ export class Accordion {
             }];
     }
 }
-//# sourceMappingURL=accordion.js.map

@@ -1,9 +1,1 @@
-import { R as Radio, d as defineCustomElement$1 } from './p-ColXpkMx.js';
-
-const BdsRadio = Radio;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsRadio, defineCustomElement };
-//# sourceMappingURL=bds-radio.js.map
-
-//# sourceMappingURL=bds-radio.js.map
+import{R as o,d as s}from"./p-z0bjy9BP.js";const p=o,r=s;export{p as BdsRadio,r as defineCustomElement}

@@ -411,6 +411,3 @@ exports.messageTranslate = messageTranslate;
 exports.termTranslate = termTranslate;
 exports.typeDateToStringDate = typeDateToStringDate;
 exports.weekDays = weekDays;
-//# sourceMappingURL=calendar-DT2tBJeg.js.map
-
-//# sourceMappingURL=calendar-DT2tBJeg.js.map

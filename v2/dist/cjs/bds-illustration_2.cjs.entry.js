@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 var assetLoader = require('./asset-loader-7VlbCeFu.js');
 
-const illustrationCss = ":host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}";
+const illustrationCss = () => `:host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}`;
 
 const BdsIllustration = class {
     constructor(hostRef) {
@@ -35,13 +35,17 @@ const BdsIllustration = class {
     }
     static get assetsDirs() { return ["svg"]; }
     static get watchers() { return {
-        "name": ["setIllustrationContent"],
-        "type": ["setIllustrationContent"]
+        "name": [{
+                "setIllustrationContent": 0
+            }],
+        "type": [{
+                "setIllustrationContent": 0
+            }]
     }; }
 };
-BdsIllustration.style = illustrationCss;
+BdsIllustration.style = illustrationCss();
 
-const skeletonCss = ".skeleton{min-width:8px;min-height:8px;background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.16;overflow:hidden}.skeleton_shape--circle{border-radius:50%}.skeleton_shape--square{border-radius:8px}.animation{position:absolute;width:100%;height:100%;background:-webkit-gradient(linear, left top, right top, from(rgba(246, 246, 246, 0)), color-stop(50%, rgba(246, 246, 246, 0.56)), to(rgba(246, 246, 246, 0)));background:linear-gradient(90deg, rgba(246, 246, 246, 0) 0%, rgba(246, 246, 246, 0.56) 50%, rgba(246, 246, 246, 0) 100%);mix-blend-mode:overlay;-webkit-animation:2.5s ease-out infinite shine;animation:2.5s ease-out infinite shine}@-webkit-keyframes shine{0%{-webkit-transform:translateX(-100%);transform:translateX(-100%)}20%{-webkit-transform:translateX(100%);transform:translateX(100%)}100%{-webkit-transform:translateX(100%);transform:translateX(100%)}}@keyframes shine{0%{-webkit-transform:translateX(-100%);transform:translateX(-100%)}20%{-webkit-transform:translateX(100%);transform:translateX(100%)}100%{-webkit-transform:translateX(100%);transform:translateX(100%)}}";
+const skeletonCss = () => `.skeleton{min-width:8px;min-height:8px;background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.16;overflow:hidden}.skeleton_shape--circle{border-radius:50%}.skeleton_shape--square{border-radius:8px}.animation{position:absolute;width:100%;height:100%;background:-webkit-gradient(linear, left top, right top, from(rgba(246, 246, 246, 0)), color-stop(50%, rgba(246, 246, 246, 0.56)), to(rgba(246, 246, 246, 0)));background:linear-gradient(90deg, rgba(246, 246, 246, 0) 0%, rgba(246, 246, 246, 0.56) 50%, rgba(246, 246, 246, 0) 100%);mix-blend-mode:overlay;-webkit-animation:2.5s ease-out infinite shine;animation:2.5s ease-out infinite shine}@-webkit-keyframes shine{0%{-webkit-transform:translateX(-100%);transform:translateX(-100%)}20%{-webkit-transform:translateX(100%);transform:translateX(100%)}100%{-webkit-transform:translateX(100%);transform:translateX(100%)}}@keyframes shine{0%{-webkit-transform:translateX(-100%);transform:translateX(-100%)}20%{-webkit-transform:translateX(100%);transform:translateX(100%)}100%{-webkit-transform:translateX(100%);transform:translateX(100%)}}`;
 
 const Skeleton = class {
     constructor(hostRef) {
@@ -72,10 +76,7 @@ const Skeleton = class {
             }, "data-test": this.dataTest }, index.h("div", { key: '174969e6c92034eab3e42afd40b5c199583c4413', class: "animation" }))));
     }
 };
-Skeleton.style = skeletonCss;
+Skeleton.style = skeletonCss();
 
 exports.bds_illustration = BdsIllustration;
 exports.bds_skeleton = Skeleton;
-//# sourceMappingURL=bds-illustration.bds-skeleton.entry.cjs.js.map
-
-//# sourceMappingURL=bds-illustration_2.cjs.entry.js.map

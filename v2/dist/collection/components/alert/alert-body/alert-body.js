@@ -16,4 +16,3 @@ export class AlertBody {
         };
     }
 }
-//# sourceMappingURL=alert-body.js.map

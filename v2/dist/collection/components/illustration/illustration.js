@@ -44,7 +44,6 @@ export class BdsIllustration {
         return {
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "IllustrationType",
@@ -53,7 +52,8 @@ export class BdsIllustration {
                         "IllustrationType": {
                             "location": "import",
                             "path": "./illustration-interface",
-                            "id": "src/components/illustration/illustration-interface.ts::IllustrationType"
+                            "id": "src/components/illustration/illustration-interface.ts::IllustrationType",
+                            "referenceLocation": "IllustrationType"
                         }
                     }
                 },
@@ -66,11 +66,11 @@ export class BdsIllustration {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'default'"
             },
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -85,11 +85,11 @@ export class BdsIllustration {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "name"
             },
             "alt": {
                 "type": "string",
-                "attribute": "alt",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -104,11 +104,11 @@ export class BdsIllustration {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "alt"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -124,6 +124,7 @@ export class BdsIllustration {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -143,4 +144,3 @@ export class BdsIllustration {
             }];
     }
 }
-//# sourceMappingURL=illustration.js.map

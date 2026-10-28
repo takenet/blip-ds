@@ -41,4 +41,3 @@ export const esMessages = [
         endDateIsEmpty: 'Selecciona la fecha de finalización',
     },
 ];
-//# sourceMappingURL=es_ES.js.map

@@ -16,4 +16,3 @@ export class Warning {
         };
     }
 }
-//# sourceMappingURL=warning.js.map

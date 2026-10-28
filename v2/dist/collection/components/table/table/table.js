@@ -19,7 +19,6 @@ export class Table {
         return {
             "scrollable": {
                 "type": "boolean",
-                "attribute": "scrollable",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -34,11 +33,11 @@ export class Table {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "scrollable"
             },
             "collapse": {
                 "type": "boolean",
-                "attribute": "collapse",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -53,11 +52,11 @@ export class Table {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "collapse"
             },
             "denseTable": {
                 "type": "boolean",
-                "attribute": "dense-table",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -72,9 +71,9 @@ export class Table {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "dense-table"
             }
         };
     }
 }
-//# sourceMappingURL=table.js.map

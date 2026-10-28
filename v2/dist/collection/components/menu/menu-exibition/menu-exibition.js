@@ -53,7 +53,6 @@ export class BdsMenuExibition {
         return {
             "avatarName": {
                 "type": "string",
-                "attribute": "avatar-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -69,11 +68,11 @@ export class BdsMenuExibition {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "avatar-name",
                 "defaultValue": "null"
             },
             "avatarThumbnail": {
                 "type": "string",
-                "attribute": "avatar-thumbnail",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -89,11 +88,11 @@ export class BdsMenuExibition {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "avatar-thumbnail",
                 "defaultValue": "null"
             },
             "avatarSize": {
                 "type": "string",
-                "attribute": "avatar-size",
                 "mutable": false,
                 "complexType": {
                     "original": "avatarSize",
@@ -115,11 +114,11 @@ export class BdsMenuExibition {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "avatar-size",
                 "defaultValue": "'standard'"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -135,11 +134,11 @@ export class BdsMenuExibition {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "value",
                 "defaultValue": "null"
             },
             "subtitle": {
                 "type": "string",
-                "attribute": "subtitle",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -155,11 +154,11 @@ export class BdsMenuExibition {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "subtitle",
                 "defaultValue": "null"
             },
             "description": {
                 "type": "string",
-                "attribute": "description",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -175,11 +174,11 @@ export class BdsMenuExibition {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "description",
                 "defaultValue": "null"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -195,9 +194,9 @@ export class BdsMenuExibition {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             }
         };
     }
 }
-//# sourceMappingURL=menu-exibition.js.map

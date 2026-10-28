@@ -87,4 +87,3 @@ export const getEmojiName = (name) => {
 export const getLogoName = (name) => {
     return `asset-logo-${name}`;
 };
-//# sourceMappingURL=utils.js.map

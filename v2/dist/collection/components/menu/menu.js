@@ -72,7 +72,6 @@ export class BdsMenu {
         return {
             "menu": {
                 "type": "string",
-                "attribute": "menu",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -88,11 +87,11 @@ export class BdsMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "menu",
                 "defaultValue": "null"
             },
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
                     "original": "menuPosition",
@@ -114,11 +113,11 @@ export class BdsMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'right'"
             },
             "open": {
                 "type": "boolean",
-                "attribute": "open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -134,6 +133,7 @@ export class BdsMenu {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "open",
                 "defaultValue": "false"
             }
         };
@@ -192,4 +192,3 @@ export class BdsMenu {
             }];
     }
 }
-//# sourceMappingURL=menu.js.map

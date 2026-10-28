@@ -1,9 +1,1 @@
-import { S as Select, d as defineCustomElement$1 } from './p-BZh5MAHA.js';
-
-const BdsSelect = Select;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsSelect, defineCustomElement };
-//# sourceMappingURL=bds-select.js.map
-
-//# sourceMappingURL=bds-select.js.map
+import{S as o,d as s}from"./p-C5bU23Jw.js";const p=o,r=s;export{p as BdsSelect,r as defineCustomElement}

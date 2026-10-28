@@ -16,4 +16,3 @@ export class BdsModalAction {
         };
     }
 }
-//# sourceMappingURL=modal-action.js.map

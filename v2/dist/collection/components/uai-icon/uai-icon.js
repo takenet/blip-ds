@@ -73,7 +73,6 @@ export class UaiIcon {
         return {
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -88,11 +87,11 @@ export class UaiIcon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "name"
             },
             "theme": {
                 "type": "string",
-                "attribute": "theme",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiIconTheme",
@@ -101,7 +100,8 @@ export class UaiIcon {
                         "UaiIconTheme": {
                             "location": "import",
                             "path": "../../globals/uai-icons",
-                            "id": "src/globals/uai-icons.ts::UaiIconTheme"
+                            "id": "src/globals/uai-icons.ts::UaiIconTheme",
+                            "referenceLocation": "UaiIconTheme"
                         }
                     }
                 },
@@ -114,11 +114,11 @@ export class UaiIcon {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "theme",
                 "defaultValue": "'outline'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiIconSize",
@@ -140,11 +140,11 @@ export class UaiIcon {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "size",
                 "defaultValue": "'medium'"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiIconColor",
@@ -165,11 +165,11 @@ export class UaiIcon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "color"
             },
             "ariaLabel": {
                 "type": "string",
-                "attribute": "aria-label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -185,11 +185,11 @@ export class UaiIcon {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "aria-label",
                 "defaultValue": "null"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -205,9 +205,9 @@ export class UaiIcon {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
     }
 }
-//# sourceMappingURL=uai-icon.js.map

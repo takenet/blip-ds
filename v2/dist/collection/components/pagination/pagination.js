@@ -193,7 +193,6 @@ export class Pagination {
         return {
             "pages": {
                 "type": "number",
-                "attribute": "pages",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -208,11 +207,11 @@ export class Pagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "pages"
             },
             "startedPage": {
                 "type": "number",
-                "attribute": "started-page",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -227,11 +226,11 @@ export class Pagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "started-page"
             },
             "optionsPosition": {
                 "type": "string",
-                "attribute": "options-position",
                 "mutable": false,
                 "complexType": {
                     "original": "PaginationOptionsPositionType",
@@ -253,11 +252,11 @@ export class Pagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "options-position",
                 "defaultValue": "'auto'"
             },
             "pageCounter": {
                 "type": "boolean",
-                "attribute": "page-counter",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -273,11 +272,11 @@ export class Pagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "page-counter",
                 "defaultValue": "false"
             },
             "itemsPage": {
                 "type": "any",
-                "attribute": "items-page",
                 "mutable": true,
                 "complexType": {
                     "original": "any",
@@ -292,11 +291,11 @@ export class Pagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "items-page"
             },
             "numberItems": {
                 "type": "number",
-                "attribute": "number-items",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -311,11 +310,11 @@ export class Pagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "number-items"
             },
             "language": {
                 "type": "string",
-                "attribute": "language",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -331,11 +330,11 @@ export class Pagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "language",
                 "defaultValue": "'pt_BR'"
             },
             "dtButtonInitial": {
                 "type": "string",
-                "attribute": "dt-button-initial",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -351,11 +350,11 @@ export class Pagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-initial",
                 "defaultValue": "null"
             },
             "dtButtonPrev": {
                 "type": "string",
-                "attribute": "dt-button-prev",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -371,11 +370,11 @@ export class Pagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-prev",
                 "defaultValue": "null"
             },
             "dtSelectNumber": {
                 "type": "string",
-                "attribute": "dt-select-number",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -391,11 +390,11 @@ export class Pagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-select-number",
                 "defaultValue": "null"
             },
             "dtButtonNext": {
                 "type": "string",
-                "attribute": "dt-button-next",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -411,11 +410,11 @@ export class Pagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-next",
                 "defaultValue": "null"
             },
             "dtButtonEnd": {
                 "type": "string",
-                "attribute": "dt-button-end",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -431,6 +430,7 @@ export class Pagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-end",
                 "defaultValue": "null"
             }
         };
@@ -495,4 +495,3 @@ export class Pagination {
             }];
     }
 }
-//# sourceMappingURL=pagination.js.map

@@ -5649,6 +5649,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    type OneOf<K extends string, PropT, AttrT = PropT> = { [P in K]: PropT } & { [P in `attr:${K}`]?: never } | { [P in `attr:${K}`]: AttrT } & { [P in K]?: never };
+
     interface BdsAccordion {
         /**
           * @default true
@@ -9694,272 +9696,1181 @@ declare namespace LocalJSX {
          */
         "variant"?: UaiTypoVariant;
     }
+
+    interface BdsAccordionAttributes {
+        "startOpen": boolean;
+        "divisor": boolean;
+    }
+    interface BdsAccordionBodyAttributes {
+        "dataTest": string;
+    }
+    interface BdsAccordionGroupAttributes {
+        "collapse": collapses;
+        "divisor": boolean;
+    }
+    interface BdsAccordionHeaderAttributes {
+        "accordionTitle": string;
+        "icon": string;
+        "iconColor": string;
+        "avatarName": string;
+        "avatarThumb": string;
+        "dataTest": string;
+    }
+    interface BdsAlertAttributes {
+        "open": boolean;
+        "dataTest": string;
+        "position": string;
+    }
+    interface BdsAlertHeaderAttributes {
+        "variant": AlertHeaderVariannt;
+        "icon": string;
+    }
+    interface BdsAutocompleteAttributes {
+        "options": string | AutocompleteOption[];
+        "value": string | null;
+        "danger": boolean;
+        "success": boolean;
+        "disabled": boolean;
+        "searchOnlyTitle": boolean;
+        "label": string;
+        "icon": string;
+        "placeholder": string;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "optionsPosition": AutocompleteOptionsPositionType;
+        "clearIconOnFocus": boolean;
+        "dataTest": string;
+        "language": languages;
+        "loading": boolean;
+        "selectionType": SelectionType;
+        "selectionTitle": string;
+        "selectedAll": boolean;
+    }
+    interface BdsAvatarAttributes {
+        "name": string;
+        "thumbnail": string;
+        "size": avatarSize;
+        "color": colors;
+        "upload": boolean;
+        "openUpload": boolean;
+        "ellipsis": number;
+        "dataTest": string;
+    }
+    interface BdsAvatarGroupAttributes {
+        "size": avatarSize;
+        "users": string | AvatarDataList[];
+        "canClick": boolean;
+    }
+    interface BdsBadgeAttributes {
+        "color": string;
+        "shape": Shape;
+        "icon": string;
+        "number": number;
+        "animation": boolean;
+        "dataTest": string;
+    }
+    interface BdsBannerAttributes {
+        "bannerAlign": BannerAlign;
+        "buttonClose": ButtonClose;
+        "context": Context;
+        "variant": BannerVariant;
+        "dtButtonClose": string;
+    }
+    interface BdsBannerLinkAttributes {
+        "link": string;
+        "target": targets;
+        "dataTest": string;
+    }
+    interface BdsBreadcrumbAttributes {
+        "items": string | Array<{ label: string; href?: string }>;
+        "wrapItems": boolean;
+    }
+    interface BdsButtonAttributes {
+        "block": boolean;
+        "fullWidth": boolean;
+        "justifyContent": ButtonJustifyContent;
+        "groupIcon": boolean;
+        "disabled": boolean;
+        "color": string;
+        "size": ButtonSize;
+        "variant": ButtonVariant;
+        "icon": string;
+        "iconLeft": string;
+        "iconRight": string;
+        "arrow": boolean;
+        "type": ButtonType;
+        "iconTheme": IconTheme;
+        "typeIcon": IconType;
+        "bdsLoading": boolean;
+        "bdsLoadingVariant": LoadingSpinnerVariant;
+        "bdsLoadingColor": colorsVariants;
+        "dataTest": string;
+    }
+    interface BdsButtonGroupAttributes {
+        "size": ButtonSize;
+        "direction": direction;
+        "color": string;
+        "multiple": boolean;
+    }
+    interface BdsButtonIconAttributes {
+        "disabled": boolean;
+        "size": IconButtonSize;
+        "variant": IconButtonVariant;
+        "iconTheme": ButtonIconTheme;
+        "icon": string;
+        "dataTest": string;
+    }
+    interface BdsCardAttributes {
+        "height": string;
+        "width": string;
+        "clickable": boolean;
+        "bgColor": PaperBackground;
+        "selectable": boolean;
+        "borderColor": BorderColor;
+        "dataTest": string;
+    }
+    interface BdsCardColorAttributes {
+        "name": string;
+        "hex": string;
+        "gradient": boolean;
+        "variable": string;
+        "lightText": boolean;
+    }
+    interface BdsCardFooterAttributes {
+        "align": justifyContent;
+    }
+    interface BdsCardHeaderAttributes {
+        "align": justifyContent;
+    }
+    interface BdsCardSubtitleAttributes {
+        "text": string;
+    }
+    interface BdsCardTitleAttributes {
+        "text": string;
+    }
+    interface BdsCarouselAttributes {
+        "autoplay": boolean;
+        "autoplayTimeout": number;
+        "autoplayHoverPause": boolean;
+        "autoHeight": boolean;
+        "bullets": string;
+        "bulletsPosition": bulletsPositions;
+        "infiniteLoop": boolean;
+        "arrows": arrows;
+        "slidePerPage": number;
+        "gap": gap;
+        "grab": boolean;
+        "loading": boolean;
+        "dtSlideContent": string;
+        "dtButtonPrev": string;
+        "dtButtonNext": string;
+    }
+    interface BdsCarouselItemAttributes {
+        "theme": Themes;
+        "bgImage": string;
+        "bgImageBrightness": number;
+        "bgColor": string;
+    }
+    interface BdsCheckboxAttributes {
+        "refer": string;
+        "label": string;
+        "name": string;
+        "checked": boolean;
+        "indeterminate": boolean;
+        "disabled": boolean;
+        "dataTest": string;
+    }
+    interface BdsChipAttributes {
+        "icon": string;
+        "size": ChipSize;
+        "variant": ChipVariant;
+        "danger": boolean;
+        "filter": boolean;
+        "clickable": boolean;
+        "deletable": boolean;
+        "disabled": boolean;
+    }
+    interface BdsChipClickableAttributes {
+        "icon": string;
+        "avatar": string;
+        "color": ColorChipClickable;
+        "size": Size;
+        "clickable": boolean;
+        "close": boolean;
+        "disabled": boolean;
+        "dataTest": string;
+        "dtButtonClose": string;
+    }
+    interface BdsChipSelectedAttributes {
+        "icon": string;
+        "color": ColorChipSelected;
+        "size": Size;
+        "selected": boolean;
+        "disabled": boolean;
+        "dataTest": string;
+    }
+    interface BdsChipTagAttributes {
+        "icon": string;
+        "color": ColorChipTag;
+        "dataTest": string;
+    }
+    interface BdsCounterTextAttributes {
+        "length": number;
+        "max": number;
+        "active": boolean;
+    }
+    interface BdsDataTableAttributes {
+        "options": string;
+        "column": string;
+        "avatar": boolean;
+        "chips": boolean;
+        "actionArea": boolean;
+        "sorting": boolean;
+    }
+    interface BdsDatepickerAttributes {
+        "typeOfDate": typeDate;
+        "startDateLimit": string;
+        "endDateLimit": string;
+        "label": string;
+        "message": string;
+        "variantBanner": BannerVariant;
+        "language": languages;
+        "disabled": boolean;
+        "valueDateSelected": string;
+        "valueEndDateSelected": string;
+        "positionOptions": DropdownPostionType;
+        "dtInputStart": string;
+        "dtInputEnd": string;
+        "dtOutzone": string;
+        "dtButtonPrev": string;
+        "dtButtonNext": string;
+        "dtSelectMonth": string;
+        "dtSelectYear": string;
+        "dtButtonClear": string;
+        "dtButtonConfirm": string;
+    }
+    interface BdsDatepickerPeriodAttributes {
+        "language": languages;
+        "stateSelect": stateSelect;
+        "dtButtonPrev": string;
+        "dtButtonNext": string;
+        "dtSelectMonth": string;
+        "dtSelectYear": string;
+    }
+    interface BdsDatepickerSingleAttributes {
+        "language": languages;
+        "dtButtonPrev": string;
+        "dtButtonNext": string;
+        "dtSelectMonth": string;
+        "dtSelectYear": string;
+    }
+    interface BdsDividerAttributes {
+        "styleType": 'solid' | 'dotted' | 'dashed';
+        "orientation": 'horizontal' | 'vertical';
+        "color": 'divider-1' | 'divider-2' | 'divider-3';
+    }
+    interface BdsDropdownAttributes {
+        "activeMode": activeMode;
+        "open": boolean;
+        "position": DropdownPostionType;
+        "dataTest": string;
+    }
+    interface BdsExpansionPanelBodyAttributes {
+        "open": boolean;
+        "text": string;
+    }
+    interface BdsExpansionPanelHeaderAttributes {
+        "text": string;
+    }
+    interface BdsGridAttributes {
+        "height": string;
+        "direction": direction;
+        "justifyContent": justifyContent;
+        "flexWrap": flexWrap;
+        "alignItems": alignItems;
+        "container": boolean;
+        "containerFluid": boolean;
+        "xxs": breakpoint;
+        "xs": breakpoint;
+        "sm": breakpoint;
+        "md": breakpoint;
+        "lg": breakpoint;
+        "xg": breakpoint;
+        "xxsOffset": breakpoint;
+        "xsOffset": breakpoint;
+        "smOffset": breakpoint;
+        "mdOffset": breakpoint;
+        "lgOffset": breakpoint;
+        "xgOffset": breakpoint;
+        "gap": gap;
+        "padding": padding;
+        "margin": margin;
+        "bgColor": Color;
+    }
+    interface BdsIconAttributes {
+        "color": string;
+        "ariaLabel": string;
+        "flipRtl": boolean;
+        "name": string;
+        "src": string;
+        "icon": string;
+        "size": IconSize;
+        "lazy": boolean;
+        "theme": IconTheme;
+        "type": IconType;
+        "dataTest": string;
+    }
+    interface BdsIllustrationAttributes {
+        "type": IllustrationType;
+        "name": string;
+        "alt": string;
+        "dataTest": string;
+    }
+    interface BdsImageAttributes {
+        "src": string;
+        "alt": string;
+        "width": string;
+        "height": string;
+        "objectFit": ObjectFitValue;
+        "brightness": number;
+        "dataTest": string;
+    }
+    interface BdsInputAttributes {
+        "inputName": string;
+        "type": InputType;
+        "label": string;
+        "placeholder": string;
+        "autoCapitalize": InputAutocapitalize;
+        "autoComplete": InputAutoComplete;
+        "max": string;
+        "maxlength": number;
+        "min": string;
+        "minlength": number;
+        "readonly": boolean;
+        "required": boolean;
+        "pattern": string;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "icon": string;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "value": string | null;
+        "counterLength": boolean;
+        "isSubmit": boolean;
+        "isTextarea": boolean;
+        "rows": number;
+        "cols": number;
+        "autoResize": boolean;
+        "resizable": boolean;
+        "minHeight": number;
+        "maxHeight": number;
+        "iconSize": 'small' | 'medium';
+        "requiredErrorMessage": string;
+        "minlengthErrorMessage": string;
+        "minErrorMessage": string;
+        "maxErrorMessage": string;
+        "emailErrorMessage": string;
+        "numberErrorMessage": string;
+        "chips": boolean;
+        "debounceDelay": number;
+        "dataTest": string;
+        "encode": boolean;
+    }
+    interface BdsInputChipsAttributes {
+        "chips": string[] | string;
+        "blurCreation": boolean;
+        "type": InputChipsTypes;
+        "label": string;
+        "maxlength": number;
+        "maxChipsLength": number;
+        "icon": string;
+        "errorMessage": string;
+        "danger": boolean;
+        "success": boolean;
+        "value": string | null;
+        "duplicated": boolean;
+        "disableSubmit": boolean;
+        "disabled": boolean;
+        "helperMessage": string;
+        "successMessage": string;
+        "inputName": string;
+        "placeholder": string;
+        "counterLength": boolean;
+        "height": string;
+        "maxHeight": string;
+        "dataTest": string;
+        "dtButtonClose": string;
+    }
+    interface BdsInputEditableAttributes {
+        "size": SizeInputEditable;
+        "expand": boolean;
+        "dataTest": string;
+        "inputName": string;
+        "value": string | null;
+        "requiredErrorMessage": string;
+        "minlength": number;
+        "minlengthErrorMessage": string;
+        "maxlength": number;
+        "errorMessage": string;
+        "successMessage": string;
+        "helperMessage": string;
+        "placeholder": string;
+        "danger": boolean;
+        "success": boolean;
+        "dtButtonEdit": string;
+        "dtButtonClose": string;
+        "dtButtonConfirm": string;
+    }
+    interface BdsInputPasswordAttributes {
+        "openEyes": boolean;
+        "value": string | null;
+        "label": string;
+        "inputName": string;
+        "max": string;
+        "maxlength": number;
+        "min": string;
+        "minlength": number;
+        "readonly": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "danger": boolean;
+        "success": boolean;
+        "icon": string;
+        "disabled": boolean;
+        "autoCapitalize": InputAutocapitalize;
+        "autoComplete": InputAutoComplete;
+        "placeholder": string;
+        "dataTest": string;
+    }
+    interface BdsInputPhoneNumberAttributes {
+        "text": string;
+        "value": string | null;
+        "danger": boolean;
+        "success": boolean;
+        "disabled": boolean;
+        "required": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "requiredErrorMessage": string;
+        "numberErrorMessage": string;
+        "dataTest": string;
+        "dtSelectFlag": string;
+        "label": string;
+        "icon": string;
+        "language": languages;
+    }
+    interface BdsListAttributes {
+        "typeList": TypeList;
+        "value": string;
+        "data": string | Data[];
+    }
+    interface BdsListItemAttributes {
+        "checked": boolean;
+        "typeList": TypeList;
+        "avatarName": string;
+        "avatarThumbnail": string;
+        "icon": string;
+        "value": string;
+        "text": string;
+        "secondaryText": string;
+        "chips": string | string[];
+        "actionsButtons": string | string[];
+        "clickable": boolean;
+        "active": boolean;
+        "borderRadius": boolean;
+        "size": ItemSize;
+        "dataTest": string;
+    }
+    interface BdsListItemContentAttributes {
+        "direction": direction;
+        "justifyContent": justifyContent;
+        "flexWrap": flexWrap;
+        "alignItems": alignItems;
+        "gap": gap;
+    }
+    interface BdsLoadingBarAttributes {
+        "percent": number;
+        "size": loadingBarSize;
+        "text": string;
+        "dataTest": string;
+    }
+    interface BdsLoadingPageAttributes {
+        "dataTest": string;
+    }
+    interface BdsLoadingSpinnerAttributes {
+        "variant": LoadingSpinnerVariant;
+        "size": loadingSize;
+        "color": colorsVariants;
+        "dataTest": string;
+    }
+    interface BdsMenuAttributes {
+        "menu": string;
+        "position": menuPosition;
+        "open": boolean;
+    }
+    interface BdsMenuActionAttributes {
+        "buttonText": string;
+        "subMenu": boolean;
+        "iconLeft": string;
+        "subtitle": string;
+        "description": string;
+        "lipstick": boolean;
+        "disabled": boolean;
+    }
+    interface BdsMenuExibitionAttributes {
+        "avatarName": string;
+        "avatarThumbnail": string;
+        "avatarSize": avatarSize;
+        "value": string;
+        "subtitle": string;
+        "description": string;
+        "disabled": boolean;
+    }
+    interface BdsMenuListItemAttributes {
+        "color": string;
+        "icon": string;
+    }
+    interface BdsMenuSeparationAttributes {
+        "value": string;
+        "size": string;
+    }
+    interface BdsModalAttributes {
+        "open": boolean;
+        "closeButton": boolean;
+        "size": sizes;
+        "outzoneClose": boolean;
+        "enterClose": boolean;
+        "dtOutzone": string;
+        "dtButtonClose": string;
+    }
+    interface BdsModalCloseButtonAttributes {
+        "active": boolean;
+    }
+    interface BdsNavTreeAttributes {
+        "collapse": collapses;
+        "isOpen": boolean;
+        "icon": string;
+        "text": string;
+        "secondaryText": string;
+        "dataTest": string;
+        "loading": boolean;
+        "disable": boolean;
+    }
+    interface BdsNavTreeGroupAttributes {
+        "collapse": collapses;
+    }
+    interface BdsNavTreeItemAttributes {
+        "collapse": collapses;
+        "icon": string;
+        "text": string;
+        "secondaryText": string;
+        "isOpen": boolean;
+        "loading": boolean;
+        "disable": boolean;
+        "dataTest": string;
+    }
+    interface BdsNavbarAttributes {
+        "orientation": orientation;
+        "backgroundColor": navbarBackground;
+        "justifyContent": justifyContent;
+        "dataTest": string;
+    }
+    interface BdsPaginationAttributes {
+        "pages": number;
+        "startedPage": number;
+        "optionsPosition": PaginationOptionsPositionType;
+        "pageCounter": boolean;
+        "itemsPage": string;
+        "numberItems": number;
+        "language": string;
+        "dtButtonInitial": string;
+        "dtButtonPrev": string;
+        "dtSelectNumber": string;
+        "dtButtonNext": string;
+        "dtButtonEnd": string;
+    }
+    interface BdsPaperAttributes {
+        "elevation": PaperElevation;
+        "dataTest": string;
+        "border": boolean;
+        "height": string;
+        "width": string;
+        "bgColor": PaperBackground;
+        "borderColor": BorderColor;
+    }
+    interface BdsProgressBarAttributes {
+        "percent": number;
+        "size": progressBarSize;
+        "color": progressBarColor;
+        "text": string;
+        "dataTest": string;
+    }
+    interface BdsRadioAttributes {
+        "refer": string;
+        "label": string;
+        "value": string;
+        "name": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "dataTest": string;
+    }
+    interface BdsRadioGroupAttributes {
+        "value": string;
+    }
+    interface BdsRichTextAttributes {
+        "language": languages;
+        "weightButton": boolean;
+        "italicButton": boolean;
+        "strikeThroughButton": boolean;
+        "underlineButton": boolean;
+        "linkButton": boolean;
+        "codeButton": boolean;
+        "alignmentButtons": boolean;
+        "listButtons": boolean;
+        "quoteButton": boolean;
+        "headingButtons": boolean;
+        "unstyledButton": boolean;
+        "height": string;
+        "maxHeight": string;
+        "positionBar": positionBar;
+        "dataTest": string;
+    }
+    interface BdsSelectAttributes {
+        "options": string | Option[];
+        "value": string;
+        "danger": boolean;
+        "success": boolean;
+        "disabled": boolean;
+        "label": string;
+        "icon": string;
+        "placeholder": string;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "optionsPosition": SelectOptionsPositionType;
+        "dataTest": string;
+    }
+    interface BdsSelectChipsAttributes {
+        "options": string | Option[];
+        "chips": string | string[];
+        "newPrefix": string;
+        "value": string | null;
+        "danger": boolean;
+        "success": boolean;
+        "maxlength": number;
+        "errorMessage": string;
+        "disabled": boolean;
+        "label": string;
+        "icon": string;
+        "duplicated": boolean;
+        "canAddNew": boolean;
+        "notFoundMessage": string;
+        "type": InputChipsTypes;
+        "disableSubmit": boolean;
+        "helperMessage": string;
+        "successMessage": string;
+        "inputName": string;
+        "placeholder": string;
+        "optionsPosition": SelectOptionsPositionType;
+        "height": string;
+        "maxHeight": string;
+        "dataTest": string;
+    }
+    interface BdsSelectOptionAttributes {
+        "value": string;
+        "selected": boolean;
+        "disabled": boolean;
+        "invisible": boolean;
+        "danger": boolean;
+        "bulkOption": string;
+        "slotAlign": string;
+        "titleText": string;
+        "status": string;
+        "typeOption": TypeOption;
+        "checked": boolean;
+        "dataTest": string;
+    }
+    interface BdsSidebarAttributes {
+        "isOpen": boolean;
+        "sidebarPosition": sidebarPosition;
+        "type": sidebarType;
+        "margin": boolean;
+        "width": number;
+        "dtOutzone": string;
+        "dtButtonClose": string;
+        "background": sidebarBackground;
+    }
+    interface BdsSkeletonAttributes {
+        "shape": Shape;
+        "height": string;
+        "width": string;
+        "dataTest": string;
+    }
+    interface BdsSliderAttributes {
+        "step": number;
+        "min": number;
+        "max": number;
+        "value": number;
+        "markers": boolean;
+        "label": boolean;
+        "type": typeRange;
+        "dataMarkers": string | StepOption[];
+        "dataTest": string;
+    }
+    interface BdsStepAttributes {
+        "last": boolean;
+        "completed": boolean;
+        "active": boolean;
+        "disabled": boolean;
+        "index": number;
+        "pointer": boolean;
+        "dataTest": string;
+    }
+    interface BdsSwitchAttributes {
+        "refer": string;
+        "size": SwitchSize;
+        "name": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "dataTest": string;
+    }
+    interface BdsTabAttributes {
+        "group": string;
+        "label": string;
+        "active": boolean;
+    }
+    interface BdsTabGroupAttributes {
+        "contentScrollable": boolean;
+        "align": 'left' | 'center' | 'right';
+        "dtButtonPrev": string;
+        "dtButtonNext": string;
+    }
+    interface BdsTabItemAttributes {
+        "numberElement": number;
+        "label": string;
+        "icon": string;
+        "iconPosition": string;
+        "iconTheme": string;
+        "badge": boolean;
+        "badgeShape": string;
+        "badgeColor": string;
+        "badgeIcon": string;
+        "badgeAnimation": boolean;
+        "badgePosition": string;
+        "badgeNumber": number;
+        "disable": boolean;
+        "error": boolean;
+        "headerStyle": string;
+        "contentStyle": string;
+        "open": boolean;
+        "dataTest": string;
+    }
+    interface BdsTabPanelAttributes {
+        "group": string;
+    }
+    interface BdsTableAttributes {
+        "scrollable": boolean;
+        "collapse": boolean;
+        "denseTable": boolean;
+    }
+    interface BdsTableCellAttributes {
+        "type": string;
+        "sortable": boolean;
+        "justifyContent": JustifyContent;
+    }
+    interface BdsTableRowAttributes {
+        "clickable": boolean;
+        "selected": boolean;
+        "bodyCollapse": string;
+        "dataTarget": string;
+    }
+    interface BdsTableThAttributes {
+        "sortable": boolean;
+        "arrow": string;
+        "justifyContent": JustifyContent;
+    }
+    interface BdsTabsAttributes {
+        "align": 'left' | 'center' | 'right';
+    }
+    interface BdsThemeProviderAttributes {
+        "theme": Themes;
+    }
+    interface BdsToastAttributes {
+        "icon": string;
+        "actionType": ActionType;
+        "variant": VariantType;
+        "toastTitle": string;
+        "toastText": string;
+        "buttonText": string;
+        "duration": number;
+        "buttonAction": ButtonActionType;
+        "show": boolean;
+        "hide": boolean;
+        "position": PositionType;
+        "dtButtonAction": string;
+        "dtButtonClose": string;
+    }
+    interface BdsTooltipAttributes {
+        "tooltipText": string;
+        "disabled": boolean;
+        "position": TooltipPostionType;
+        "maxWidth": string;
+        "dataTest": string;
+    }
+    interface BdsTypoAttributes {
+        "variant": FontSize;
+        "lineHeight": FontLineHeight;
+        "bold": Bold;
+        "italic": boolean;
+        "noWrap": boolean;
+        "paragraph": boolean;
+        "margin": boolean;
+        "tag": Tag;
+        "dataTest": string;
+    }
+    interface BdsUploadAttributes {
+        "language": languages;
+        "titleName": string;
+        "subtitle": string;
+        "error": string;
+        "multiple": boolean;
+        "accept": string;
+        "dataAccept": string[] | string;
+        "dtInputFiles": string;
+        "dtLabelAddFile": string;
+        "dtButtonDelete": string;
+        "showListPreview": boolean;
+    }
+    interface UaiAvatarAttributes {
+        "src": string;
+        "initials": string;
+        "label": string;
+        "size": UaiAvatarSize;
+        "dataTest": string;
+    }
+    interface UaiButtonAttributes {
+        "block": boolean;
+        "fullWidth": boolean;
+        "justifyContent": UaiButtonJustifyContent;
+        "groupIcon": boolean;
+        "disabled": boolean;
+        "color": UaiButtonColor;
+        "size": UaiButtonSize;
+        "variant": UaiButtonVariant;
+        "icon": string;
+        "iconLeft": string;
+        "iconRight": string;
+        "arrow": boolean;
+        "type": UaiButtonType;
+        "iconTheme": UaiButtonIconTheme;
+        "typeIcon": UaiButtonIconType;
+        "loading": boolean;
+        "bdsLoadingVariant": LoadingSpinnerVariant;
+        "bdsLoadingColor": colorsVariants;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
+    interface UaiIconAttributes {
+        "name": string;
+        "theme": UaiIconTheme;
+        "size": UaiIconSize;
+        "color": UaiIconColor;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
+    interface UaiNavbarAttributes {
+        "orientation": uaiNavbarOrientation;
+        "backgroundColor": uaiNavbarBackground;
+        "justifyContent": uaiNavbarJustifyContent;
+        "dataTest": string;
+    }
+    interface UaiThemeProviderAttributes {
+        "theme": UaiTheme;
+    }
+    interface UaiTypoAttributes {
+        "variant": UaiTypoVariant;
+        "bold": UaiTypoBold;
+        "letterSpacing": UaiTypoLetterSpacing;
+        "lineHeight": UaiTypoLineHeight;
+        "italic": boolean;
+        "noWrap": boolean;
+        "paragraph": boolean;
+        "margin": boolean;
+        "tag": UaiTypoTag;
+        "dataTest": string;
+    }
+
     interface IntrinsicElements {
-        "bds-accordion": BdsAccordion;
-        "bds-accordion-body": BdsAccordionBody;
-        "bds-accordion-group": BdsAccordionGroup;
-        "bds-accordion-header": BdsAccordionHeader;
-        "bds-alert": BdsAlert;
+        "bds-accordion": Omit<BdsAccordion, keyof BdsAccordionAttributes> & { [K in keyof BdsAccordion & keyof BdsAccordionAttributes]?: BdsAccordion[K] } & { [K in keyof BdsAccordion & keyof BdsAccordionAttributes as `attr:${K}`]?: BdsAccordionAttributes[K] } & { [K in keyof BdsAccordion & keyof BdsAccordionAttributes as `prop:${K}`]?: BdsAccordion[K] };
+        "bds-accordion-body": Omit<BdsAccordionBody, keyof BdsAccordionBodyAttributes> & { [K in keyof BdsAccordionBody & keyof BdsAccordionBodyAttributes]?: BdsAccordionBody[K] } & { [K in keyof BdsAccordionBody & keyof BdsAccordionBodyAttributes as `attr:${K}`]?: BdsAccordionBodyAttributes[K] } & { [K in keyof BdsAccordionBody & keyof BdsAccordionBodyAttributes as `prop:${K}`]?: BdsAccordionBody[K] };
+        "bds-accordion-group": Omit<BdsAccordionGroup, keyof BdsAccordionGroupAttributes> & { [K in keyof BdsAccordionGroup & keyof BdsAccordionGroupAttributes]?: BdsAccordionGroup[K] } & { [K in keyof BdsAccordionGroup & keyof BdsAccordionGroupAttributes as `attr:${K}`]?: BdsAccordionGroupAttributes[K] } & { [K in keyof BdsAccordionGroup & keyof BdsAccordionGroupAttributes as `prop:${K}`]?: BdsAccordionGroup[K] };
+        "bds-accordion-header": Omit<BdsAccordionHeader, keyof BdsAccordionHeaderAttributes> & { [K in keyof BdsAccordionHeader & keyof BdsAccordionHeaderAttributes]?: BdsAccordionHeader[K] } & { [K in keyof BdsAccordionHeader & keyof BdsAccordionHeaderAttributes as `attr:${K}`]?: BdsAccordionHeaderAttributes[K] } & { [K in keyof BdsAccordionHeader & keyof BdsAccordionHeaderAttributes as `prop:${K}`]?: BdsAccordionHeader[K] };
+        "bds-alert": Omit<BdsAlert, keyof BdsAlertAttributes> & { [K in keyof BdsAlert & keyof BdsAlertAttributes]?: BdsAlert[K] } & { [K in keyof BdsAlert & keyof BdsAlertAttributes as `attr:${K}`]?: BdsAlertAttributes[K] } & { [K in keyof BdsAlert & keyof BdsAlertAttributes as `prop:${K}`]?: BdsAlert[K] };
         "bds-alert-actions": BdsAlertActions;
         "bds-alert-body": BdsAlertBody;
-        "bds-alert-header": BdsAlertHeader;
-        "bds-autocomplete": BdsAutocomplete;
-        "bds-avatar": BdsAvatar;
-        "bds-avatar-group": BdsAvatarGroup;
-        "bds-badge": BdsBadge;
-        "bds-banner": BdsBanner;
-        "bds-banner-link": BdsBannerLink;
-        "bds-breadcrumb": BdsBreadcrumb;
-        "bds-button": BdsButton;
-        "bds-button-group": BdsButtonGroup;
-        "bds-button-icon": BdsButtonIcon;
-        "bds-card": BdsCard;
+        "bds-alert-header": Omit<BdsAlertHeader, keyof BdsAlertHeaderAttributes> & { [K in keyof BdsAlertHeader & keyof BdsAlertHeaderAttributes]?: BdsAlertHeader[K] } & { [K in keyof BdsAlertHeader & keyof BdsAlertHeaderAttributes as `attr:${K}`]?: BdsAlertHeaderAttributes[K] } & { [K in keyof BdsAlertHeader & keyof BdsAlertHeaderAttributes as `prop:${K}`]?: BdsAlertHeader[K] };
+        "bds-autocomplete": Omit<BdsAutocomplete, keyof BdsAutocompleteAttributes> & { [K in keyof BdsAutocomplete & keyof BdsAutocompleteAttributes]?: BdsAutocomplete[K] } & { [K in keyof BdsAutocomplete & keyof BdsAutocompleteAttributes as `attr:${K}`]?: BdsAutocompleteAttributes[K] } & { [K in keyof BdsAutocomplete & keyof BdsAutocompleteAttributes as `prop:${K}`]?: BdsAutocomplete[K] };
+        "bds-avatar": Omit<BdsAvatar, keyof BdsAvatarAttributes> & { [K in keyof BdsAvatar & keyof BdsAvatarAttributes]?: BdsAvatar[K] } & { [K in keyof BdsAvatar & keyof BdsAvatarAttributes as `attr:${K}`]?: BdsAvatarAttributes[K] } & { [K in keyof BdsAvatar & keyof BdsAvatarAttributes as `prop:${K}`]?: BdsAvatar[K] };
+        "bds-avatar-group": Omit<BdsAvatarGroup, keyof BdsAvatarGroupAttributes> & { [K in keyof BdsAvatarGroup & keyof BdsAvatarGroupAttributes]?: BdsAvatarGroup[K] } & { [K in keyof BdsAvatarGroup & keyof BdsAvatarGroupAttributes as `attr:${K}`]?: BdsAvatarGroupAttributes[K] } & { [K in keyof BdsAvatarGroup & keyof BdsAvatarGroupAttributes as `prop:${K}`]?: BdsAvatarGroup[K] };
+        "bds-badge": Omit<BdsBadge, keyof BdsBadgeAttributes> & { [K in keyof BdsBadge & keyof BdsBadgeAttributes]?: BdsBadge[K] } & { [K in keyof BdsBadge & keyof BdsBadgeAttributes as `attr:${K}`]?: BdsBadgeAttributes[K] } & { [K in keyof BdsBadge & keyof BdsBadgeAttributes as `prop:${K}`]?: BdsBadge[K] };
+        "bds-banner": Omit<BdsBanner, keyof BdsBannerAttributes> & { [K in keyof BdsBanner & keyof BdsBannerAttributes]?: BdsBanner[K] } & { [K in keyof BdsBanner & keyof BdsBannerAttributes as `attr:${K}`]?: BdsBannerAttributes[K] } & { [K in keyof BdsBanner & keyof BdsBannerAttributes as `prop:${K}`]?: BdsBanner[K] };
+        "bds-banner-link": Omit<BdsBannerLink, keyof BdsBannerLinkAttributes> & { [K in keyof BdsBannerLink & keyof BdsBannerLinkAttributes]?: BdsBannerLink[K] } & { [K in keyof BdsBannerLink & keyof BdsBannerLinkAttributes as `attr:${K}`]?: BdsBannerLinkAttributes[K] } & { [K in keyof BdsBannerLink & keyof BdsBannerLinkAttributes as `prop:${K}`]?: BdsBannerLink[K] };
+        "bds-breadcrumb": Omit<BdsBreadcrumb, keyof BdsBreadcrumbAttributes> & { [K in keyof BdsBreadcrumb & keyof BdsBreadcrumbAttributes]?: BdsBreadcrumb[K] } & { [K in keyof BdsBreadcrumb & keyof BdsBreadcrumbAttributes as `attr:${K}`]?: BdsBreadcrumbAttributes[K] } & { [K in keyof BdsBreadcrumb & keyof BdsBreadcrumbAttributes as `prop:${K}`]?: BdsBreadcrumb[K] };
+        "bds-button": Omit<BdsButton, keyof BdsButtonAttributes> & { [K in keyof BdsButton & keyof BdsButtonAttributes]?: BdsButton[K] } & { [K in keyof BdsButton & keyof BdsButtonAttributes as `attr:${K}`]?: BdsButtonAttributes[K] } & { [K in keyof BdsButton & keyof BdsButtonAttributes as `prop:${K}`]?: BdsButton[K] };
+        "bds-button-group": Omit<BdsButtonGroup, keyof BdsButtonGroupAttributes> & { [K in keyof BdsButtonGroup & keyof BdsButtonGroupAttributes]?: BdsButtonGroup[K] } & { [K in keyof BdsButtonGroup & keyof BdsButtonGroupAttributes as `attr:${K}`]?: BdsButtonGroupAttributes[K] } & { [K in keyof BdsButtonGroup & keyof BdsButtonGroupAttributes as `prop:${K}`]?: BdsButtonGroup[K] };
+        "bds-button-icon": Omit<BdsButtonIcon, keyof BdsButtonIconAttributes> & { [K in keyof BdsButtonIcon & keyof BdsButtonIconAttributes]?: BdsButtonIcon[K] } & { [K in keyof BdsButtonIcon & keyof BdsButtonIconAttributes as `attr:${K}`]?: BdsButtonIconAttributes[K] } & { [K in keyof BdsButtonIcon & keyof BdsButtonIconAttributes as `prop:${K}`]?: BdsButtonIcon[K] };
+        "bds-card": Omit<BdsCard, keyof BdsCardAttributes> & { [K in keyof BdsCard & keyof BdsCardAttributes]?: BdsCard[K] } & { [K in keyof BdsCard & keyof BdsCardAttributes as `attr:${K}`]?: BdsCardAttributes[K] } & { [K in keyof BdsCard & keyof BdsCardAttributes as `prop:${K}`]?: BdsCard[K] };
         "bds-card-body": BdsCardBody;
-        "bds-card-color": BdsCardColor;
-        "bds-card-footer": BdsCardFooter;
-        "bds-card-header": BdsCardHeader;
-        "bds-card-subtitle": BdsCardSubtitle;
-        "bds-card-title": BdsCardTitle;
-        "bds-carousel": BdsCarousel;
-        "bds-carousel-item": BdsCarouselItem;
-        "bds-checkbox": BdsCheckbox;
-        "bds-chip": BdsChip;
-        "bds-chip-clickable": BdsChipClickable;
-        "bds-chip-selected": BdsChipSelected;
-        "bds-chip-tag": BdsChipTag;
-        "bds-counter-text": BdsCounterText;
-        "bds-data-table": BdsDataTable;
-        "bds-datepicker": BdsDatepicker;
-        "bds-datepicker-period": BdsDatepickerPeriod;
-        "bds-datepicker-single": BdsDatepickerSingle;
-        "bds-divider": BdsDivider;
-        "bds-dropdown": BdsDropdown;
+        "bds-card-color": Omit<BdsCardColor, keyof BdsCardColorAttributes> & { [K in keyof BdsCardColor & keyof BdsCardColorAttributes]?: BdsCardColor[K] } & { [K in keyof BdsCardColor & keyof BdsCardColorAttributes as `attr:${K}`]?: BdsCardColorAttributes[K] } & { [K in keyof BdsCardColor & keyof BdsCardColorAttributes as `prop:${K}`]?: BdsCardColor[K] } & OneOf<"name", BdsCardColor["name"], BdsCardColorAttributes["name"]> & OneOf<"variable", BdsCardColor["variable"], BdsCardColorAttributes["variable"]>;
+        "bds-card-footer": Omit<BdsCardFooter, keyof BdsCardFooterAttributes> & { [K in keyof BdsCardFooter & keyof BdsCardFooterAttributes]?: BdsCardFooter[K] } & { [K in keyof BdsCardFooter & keyof BdsCardFooterAttributes as `attr:${K}`]?: BdsCardFooterAttributes[K] } & { [K in keyof BdsCardFooter & keyof BdsCardFooterAttributes as `prop:${K}`]?: BdsCardFooter[K] };
+        "bds-card-header": Omit<BdsCardHeader, keyof BdsCardHeaderAttributes> & { [K in keyof BdsCardHeader & keyof BdsCardHeaderAttributes]?: BdsCardHeader[K] } & { [K in keyof BdsCardHeader & keyof BdsCardHeaderAttributes as `attr:${K}`]?: BdsCardHeaderAttributes[K] } & { [K in keyof BdsCardHeader & keyof BdsCardHeaderAttributes as `prop:${K}`]?: BdsCardHeader[K] };
+        "bds-card-subtitle": Omit<BdsCardSubtitle, keyof BdsCardSubtitleAttributes> & { [K in keyof BdsCardSubtitle & keyof BdsCardSubtitleAttributes]?: BdsCardSubtitle[K] } & { [K in keyof BdsCardSubtitle & keyof BdsCardSubtitleAttributes as `attr:${K}`]?: BdsCardSubtitleAttributes[K] } & { [K in keyof BdsCardSubtitle & keyof BdsCardSubtitleAttributes as `prop:${K}`]?: BdsCardSubtitle[K] };
+        "bds-card-title": Omit<BdsCardTitle, keyof BdsCardTitleAttributes> & { [K in keyof BdsCardTitle & keyof BdsCardTitleAttributes]?: BdsCardTitle[K] } & { [K in keyof BdsCardTitle & keyof BdsCardTitleAttributes as `attr:${K}`]?: BdsCardTitleAttributes[K] } & { [K in keyof BdsCardTitle & keyof BdsCardTitleAttributes as `prop:${K}`]?: BdsCardTitle[K] };
+        "bds-carousel": Omit<BdsCarousel, keyof BdsCarouselAttributes> & { [K in keyof BdsCarousel & keyof BdsCarouselAttributes]?: BdsCarousel[K] } & { [K in keyof BdsCarousel & keyof BdsCarouselAttributes as `attr:${K}`]?: BdsCarouselAttributes[K] } & { [K in keyof BdsCarousel & keyof BdsCarouselAttributes as `prop:${K}`]?: BdsCarousel[K] };
+        "bds-carousel-item": Omit<BdsCarouselItem, keyof BdsCarouselItemAttributes> & { [K in keyof BdsCarouselItem & keyof BdsCarouselItemAttributes]?: BdsCarouselItem[K] } & { [K in keyof BdsCarouselItem & keyof BdsCarouselItemAttributes as `attr:${K}`]?: BdsCarouselItemAttributes[K] } & { [K in keyof BdsCarouselItem & keyof BdsCarouselItemAttributes as `prop:${K}`]?: BdsCarouselItem[K] };
+        "bds-checkbox": Omit<BdsCheckbox, keyof BdsCheckboxAttributes> & { [K in keyof BdsCheckbox & keyof BdsCheckboxAttributes]?: BdsCheckbox[K] } & { [K in keyof BdsCheckbox & keyof BdsCheckboxAttributes as `attr:${K}`]?: BdsCheckboxAttributes[K] } & { [K in keyof BdsCheckbox & keyof BdsCheckboxAttributes as `prop:${K}`]?: BdsCheckbox[K] } & OneOf<"refer", BdsCheckbox["refer"], BdsCheckboxAttributes["refer"]> & OneOf<"label", BdsCheckbox["label"], BdsCheckboxAttributes["label"]> & OneOf<"name", BdsCheckbox["name"], BdsCheckboxAttributes["name"]>;
+        "bds-chip": Omit<BdsChip, keyof BdsChipAttributes> & { [K in keyof BdsChip & keyof BdsChipAttributes]?: BdsChip[K] } & { [K in keyof BdsChip & keyof BdsChipAttributes as `attr:${K}`]?: BdsChipAttributes[K] } & { [K in keyof BdsChip & keyof BdsChipAttributes as `prop:${K}`]?: BdsChip[K] };
+        "bds-chip-clickable": Omit<BdsChipClickable, keyof BdsChipClickableAttributes> & { [K in keyof BdsChipClickable & keyof BdsChipClickableAttributes]?: BdsChipClickable[K] } & { [K in keyof BdsChipClickable & keyof BdsChipClickableAttributes as `attr:${K}`]?: BdsChipClickableAttributes[K] } & { [K in keyof BdsChipClickable & keyof BdsChipClickableAttributes as `prop:${K}`]?: BdsChipClickable[K] };
+        "bds-chip-selected": Omit<BdsChipSelected, keyof BdsChipSelectedAttributes> & { [K in keyof BdsChipSelected & keyof BdsChipSelectedAttributes]?: BdsChipSelected[K] } & { [K in keyof BdsChipSelected & keyof BdsChipSelectedAttributes as `attr:${K}`]?: BdsChipSelectedAttributes[K] } & { [K in keyof BdsChipSelected & keyof BdsChipSelectedAttributes as `prop:${K}`]?: BdsChipSelected[K] };
+        "bds-chip-tag": Omit<BdsChipTag, keyof BdsChipTagAttributes> & { [K in keyof BdsChipTag & keyof BdsChipTagAttributes]?: BdsChipTag[K] } & { [K in keyof BdsChipTag & keyof BdsChipTagAttributes as `attr:${K}`]?: BdsChipTagAttributes[K] } & { [K in keyof BdsChipTag & keyof BdsChipTagAttributes as `prop:${K}`]?: BdsChipTag[K] };
+        "bds-counter-text": Omit<BdsCounterText, keyof BdsCounterTextAttributes> & { [K in keyof BdsCounterText & keyof BdsCounterTextAttributes]?: BdsCounterText[K] } & { [K in keyof BdsCounterText & keyof BdsCounterTextAttributes as `attr:${K}`]?: BdsCounterTextAttributes[K] } & { [K in keyof BdsCounterText & keyof BdsCounterTextAttributes as `prop:${K}`]?: BdsCounterText[K] } & OneOf<"length", BdsCounterText["length"], BdsCounterTextAttributes["length"]>;
+        "bds-data-table": Omit<BdsDataTable, keyof BdsDataTableAttributes> & { [K in keyof BdsDataTable & keyof BdsDataTableAttributes]?: BdsDataTable[K] } & { [K in keyof BdsDataTable & keyof BdsDataTableAttributes as `attr:${K}`]?: BdsDataTableAttributes[K] } & { [K in keyof BdsDataTable & keyof BdsDataTableAttributes as `prop:${K}`]?: BdsDataTable[K] };
+        "bds-datepicker": Omit<BdsDatepicker, keyof BdsDatepickerAttributes> & { [K in keyof BdsDatepicker & keyof BdsDatepickerAttributes]?: BdsDatepicker[K] } & { [K in keyof BdsDatepicker & keyof BdsDatepickerAttributes as `attr:${K}`]?: BdsDatepickerAttributes[K] } & { [K in keyof BdsDatepicker & keyof BdsDatepickerAttributes as `prop:${K}`]?: BdsDatepicker[K] };
+        "bds-datepicker-period": Omit<BdsDatepickerPeriod, keyof BdsDatepickerPeriodAttributes> & { [K in keyof BdsDatepickerPeriod & keyof BdsDatepickerPeriodAttributes]?: BdsDatepickerPeriod[K] } & { [K in keyof BdsDatepickerPeriod & keyof BdsDatepickerPeriodAttributes as `attr:${K}`]?: BdsDatepickerPeriodAttributes[K] } & { [K in keyof BdsDatepickerPeriod & keyof BdsDatepickerPeriodAttributes as `prop:${K}`]?: BdsDatepickerPeriod[K] };
+        "bds-datepicker-single": Omit<BdsDatepickerSingle, keyof BdsDatepickerSingleAttributes> & { [K in keyof BdsDatepickerSingle & keyof BdsDatepickerSingleAttributes]?: BdsDatepickerSingle[K] } & { [K in keyof BdsDatepickerSingle & keyof BdsDatepickerSingleAttributes as `attr:${K}`]?: BdsDatepickerSingleAttributes[K] } & { [K in keyof BdsDatepickerSingle & keyof BdsDatepickerSingleAttributes as `prop:${K}`]?: BdsDatepickerSingle[K] };
+        "bds-divider": Omit<BdsDivider, keyof BdsDividerAttributes> & { [K in keyof BdsDivider & keyof BdsDividerAttributes]?: BdsDivider[K] } & { [K in keyof BdsDivider & keyof BdsDividerAttributes as `attr:${K}`]?: BdsDividerAttributes[K] } & { [K in keyof BdsDivider & keyof BdsDividerAttributes as `prop:${K}`]?: BdsDivider[K] };
+        "bds-dropdown": Omit<BdsDropdown, keyof BdsDropdownAttributes> & { [K in keyof BdsDropdown & keyof BdsDropdownAttributes]?: BdsDropdown[K] } & { [K in keyof BdsDropdown & keyof BdsDropdownAttributes as `attr:${K}`]?: BdsDropdownAttributes[K] } & { [K in keyof BdsDropdown & keyof BdsDropdownAttributes as `prop:${K}`]?: BdsDropdown[K] };
         "bds-expansion-panel": BdsExpansionPanel;
-        "bds-expansion-panel-body": BdsExpansionPanelBody;
-        "bds-expansion-panel-header": BdsExpansionPanelHeader;
-        "bds-grid": BdsGrid;
-        "bds-icon": BdsIcon;
-        "bds-illustration": BdsIllustration;
-        "bds-image": BdsImage;
-        "bds-input": BdsInput;
-        "bds-input-chips": BdsInputChips;
-        "bds-input-editable": BdsInputEditable;
-        "bds-input-password": BdsInputPassword;
-        "bds-input-phone-number": BdsInputPhoneNumber;
-        "bds-list": BdsList;
-        "bds-list-item": BdsListItem;
-        "bds-list-item-content": BdsListItemContent;
-        "bds-loading-bar": BdsLoadingBar;
-        "bds-loading-page": BdsLoadingPage;
-        "bds-loading-spinner": BdsLoadingSpinner;
-        "bds-menu": BdsMenu;
-        "bds-menu-action": BdsMenuAction;
-        "bds-menu-exibition": BdsMenuExibition;
+        "bds-expansion-panel-body": Omit<BdsExpansionPanelBody, keyof BdsExpansionPanelBodyAttributes> & { [K in keyof BdsExpansionPanelBody & keyof BdsExpansionPanelBodyAttributes]?: BdsExpansionPanelBody[K] } & { [K in keyof BdsExpansionPanelBody & keyof BdsExpansionPanelBodyAttributes as `attr:${K}`]?: BdsExpansionPanelBodyAttributes[K] } & { [K in keyof BdsExpansionPanelBody & keyof BdsExpansionPanelBodyAttributes as `prop:${K}`]?: BdsExpansionPanelBody[K] };
+        "bds-expansion-panel-header": Omit<BdsExpansionPanelHeader, keyof BdsExpansionPanelHeaderAttributes> & { [K in keyof BdsExpansionPanelHeader & keyof BdsExpansionPanelHeaderAttributes]?: BdsExpansionPanelHeader[K] } & { [K in keyof BdsExpansionPanelHeader & keyof BdsExpansionPanelHeaderAttributes as `attr:${K}`]?: BdsExpansionPanelHeaderAttributes[K] } & { [K in keyof BdsExpansionPanelHeader & keyof BdsExpansionPanelHeaderAttributes as `prop:${K}`]?: BdsExpansionPanelHeader[K] };
+        "bds-grid": Omit<BdsGrid, keyof BdsGridAttributes> & { [K in keyof BdsGrid & keyof BdsGridAttributes]?: BdsGrid[K] } & { [K in keyof BdsGrid & keyof BdsGridAttributes as `attr:${K}`]?: BdsGridAttributes[K] } & { [K in keyof BdsGrid & keyof BdsGridAttributes as `prop:${K}`]?: BdsGrid[K] };
+        "bds-icon": Omit<BdsIcon, keyof BdsIconAttributes> & { [K in keyof BdsIcon & keyof BdsIconAttributes]?: BdsIcon[K] } & { [K in keyof BdsIcon & keyof BdsIconAttributes as `attr:${K}`]?: BdsIconAttributes[K] } & { [K in keyof BdsIcon & keyof BdsIconAttributes as `prop:${K}`]?: BdsIcon[K] };
+        "bds-illustration": Omit<BdsIllustration, keyof BdsIllustrationAttributes> & { [K in keyof BdsIllustration & keyof BdsIllustrationAttributes]?: BdsIllustration[K] } & { [K in keyof BdsIllustration & keyof BdsIllustrationAttributes as `attr:${K}`]?: BdsIllustrationAttributes[K] } & { [K in keyof BdsIllustration & keyof BdsIllustrationAttributes as `prop:${K}`]?: BdsIllustration[K] };
+        "bds-image": Omit<BdsImage, keyof BdsImageAttributes> & { [K in keyof BdsImage & keyof BdsImageAttributes]?: BdsImage[K] } & { [K in keyof BdsImage & keyof BdsImageAttributes as `attr:${K}`]?: BdsImageAttributes[K] } & { [K in keyof BdsImage & keyof BdsImageAttributes as `prop:${K}`]?: BdsImage[K] };
+        "bds-input": Omit<BdsInput, keyof BdsInputAttributes> & { [K in keyof BdsInput & keyof BdsInputAttributes]?: BdsInput[K] } & { [K in keyof BdsInput & keyof BdsInputAttributes as `attr:${K}`]?: BdsInputAttributes[K] } & { [K in keyof BdsInput & keyof BdsInputAttributes as `prop:${K}`]?: BdsInput[K] };
+        "bds-input-chips": Omit<BdsInputChips, keyof BdsInputChipsAttributes> & { [K in keyof BdsInputChips & keyof BdsInputChipsAttributes]?: BdsInputChips[K] } & { [K in keyof BdsInputChips & keyof BdsInputChipsAttributes as `attr:${K}`]?: BdsInputChipsAttributes[K] } & { [K in keyof BdsInputChips & keyof BdsInputChipsAttributes as `prop:${K}`]?: BdsInputChips[K] };
+        "bds-input-editable": Omit<BdsInputEditable, keyof BdsInputEditableAttributes> & { [K in keyof BdsInputEditable & keyof BdsInputEditableAttributes]?: BdsInputEditable[K] } & { [K in keyof BdsInputEditable & keyof BdsInputEditableAttributes as `attr:${K}`]?: BdsInputEditableAttributes[K] } & { [K in keyof BdsInputEditable & keyof BdsInputEditableAttributes as `prop:${K}`]?: BdsInputEditable[K] };
+        "bds-input-password": Omit<BdsInputPassword, keyof BdsInputPasswordAttributes> & { [K in keyof BdsInputPassword & keyof BdsInputPasswordAttributes]?: BdsInputPassword[K] } & { [K in keyof BdsInputPassword & keyof BdsInputPasswordAttributes as `attr:${K}`]?: BdsInputPasswordAttributes[K] } & { [K in keyof BdsInputPassword & keyof BdsInputPasswordAttributes as `prop:${K}`]?: BdsInputPassword[K] };
+        "bds-input-phone-number": Omit<BdsInputPhoneNumber, keyof BdsInputPhoneNumberAttributes> & { [K in keyof BdsInputPhoneNumber & keyof BdsInputPhoneNumberAttributes]?: BdsInputPhoneNumber[K] } & { [K in keyof BdsInputPhoneNumber & keyof BdsInputPhoneNumberAttributes as `attr:${K}`]?: BdsInputPhoneNumberAttributes[K] } & { [K in keyof BdsInputPhoneNumber & keyof BdsInputPhoneNumberAttributes as `prop:${K}`]?: BdsInputPhoneNumber[K] };
+        "bds-list": Omit<BdsList, keyof BdsListAttributes> & { [K in keyof BdsList & keyof BdsListAttributes]?: BdsList[K] } & { [K in keyof BdsList & keyof BdsListAttributes as `attr:${K}`]?: BdsListAttributes[K] } & { [K in keyof BdsList & keyof BdsListAttributes as `prop:${K}`]?: BdsList[K] };
+        "bds-list-item": Omit<BdsListItem, keyof BdsListItemAttributes> & { [K in keyof BdsListItem & keyof BdsListItemAttributes]?: BdsListItem[K] } & { [K in keyof BdsListItem & keyof BdsListItemAttributes as `attr:${K}`]?: BdsListItemAttributes[K] } & { [K in keyof BdsListItem & keyof BdsListItemAttributes as `prop:${K}`]?: BdsListItem[K] };
+        "bds-list-item-content": Omit<BdsListItemContent, keyof BdsListItemContentAttributes> & { [K in keyof BdsListItemContent & keyof BdsListItemContentAttributes]?: BdsListItemContent[K] } & { [K in keyof BdsListItemContent & keyof BdsListItemContentAttributes as `attr:${K}`]?: BdsListItemContentAttributes[K] } & { [K in keyof BdsListItemContent & keyof BdsListItemContentAttributes as `prop:${K}`]?: BdsListItemContent[K] };
+        "bds-loading-bar": Omit<BdsLoadingBar, keyof BdsLoadingBarAttributes> & { [K in keyof BdsLoadingBar & keyof BdsLoadingBarAttributes]?: BdsLoadingBar[K] } & { [K in keyof BdsLoadingBar & keyof BdsLoadingBarAttributes as `attr:${K}`]?: BdsLoadingBarAttributes[K] } & { [K in keyof BdsLoadingBar & keyof BdsLoadingBarAttributes as `prop:${K}`]?: BdsLoadingBar[K] };
+        "bds-loading-page": Omit<BdsLoadingPage, keyof BdsLoadingPageAttributes> & { [K in keyof BdsLoadingPage & keyof BdsLoadingPageAttributes]?: BdsLoadingPage[K] } & { [K in keyof BdsLoadingPage & keyof BdsLoadingPageAttributes as `attr:${K}`]?: BdsLoadingPageAttributes[K] } & { [K in keyof BdsLoadingPage & keyof BdsLoadingPageAttributes as `prop:${K}`]?: BdsLoadingPage[K] };
+        "bds-loading-spinner": Omit<BdsLoadingSpinner, keyof BdsLoadingSpinnerAttributes> & { [K in keyof BdsLoadingSpinner & keyof BdsLoadingSpinnerAttributes]?: BdsLoadingSpinner[K] } & { [K in keyof BdsLoadingSpinner & keyof BdsLoadingSpinnerAttributes as `attr:${K}`]?: BdsLoadingSpinnerAttributes[K] } & { [K in keyof BdsLoadingSpinner & keyof BdsLoadingSpinnerAttributes as `prop:${K}`]?: BdsLoadingSpinner[K] };
+        "bds-menu": Omit<BdsMenu, keyof BdsMenuAttributes> & { [K in keyof BdsMenu & keyof BdsMenuAttributes]?: BdsMenu[K] } & { [K in keyof BdsMenu & keyof BdsMenuAttributes as `attr:${K}`]?: BdsMenuAttributes[K] } & { [K in keyof BdsMenu & keyof BdsMenuAttributes as `prop:${K}`]?: BdsMenu[K] };
+        "bds-menu-action": Omit<BdsMenuAction, keyof BdsMenuActionAttributes> & { [K in keyof BdsMenuAction & keyof BdsMenuActionAttributes]?: BdsMenuAction[K] } & { [K in keyof BdsMenuAction & keyof BdsMenuActionAttributes as `attr:${K}`]?: BdsMenuActionAttributes[K] } & { [K in keyof BdsMenuAction & keyof BdsMenuActionAttributes as `prop:${K}`]?: BdsMenuAction[K] };
+        "bds-menu-exibition": Omit<BdsMenuExibition, keyof BdsMenuExibitionAttributes> & { [K in keyof BdsMenuExibition & keyof BdsMenuExibitionAttributes]?: BdsMenuExibition[K] } & { [K in keyof BdsMenuExibition & keyof BdsMenuExibitionAttributes as `attr:${K}`]?: BdsMenuExibitionAttributes[K] } & { [K in keyof BdsMenuExibition & keyof BdsMenuExibitionAttributes as `prop:${K}`]?: BdsMenuExibition[K] };
         "bds-menu-list": BdsMenuList;
-        "bds-menu-list-item": BdsMenuListItem;
-        "bds-menu-separation": BdsMenuSeparation;
-        "bds-modal": BdsModal;
+        "bds-menu-list-item": Omit<BdsMenuListItem, keyof BdsMenuListItemAttributes> & { [K in keyof BdsMenuListItem & keyof BdsMenuListItemAttributes]?: BdsMenuListItem[K] } & { [K in keyof BdsMenuListItem & keyof BdsMenuListItemAttributes as `attr:${K}`]?: BdsMenuListItemAttributes[K] } & { [K in keyof BdsMenuListItem & keyof BdsMenuListItemAttributes as `prop:${K}`]?: BdsMenuListItem[K] } & OneOf<"icon", BdsMenuListItem["icon"], BdsMenuListItemAttributes["icon"]>;
+        "bds-menu-separation": Omit<BdsMenuSeparation, keyof BdsMenuSeparationAttributes> & { [K in keyof BdsMenuSeparation & keyof BdsMenuSeparationAttributes]?: BdsMenuSeparation[K] } & { [K in keyof BdsMenuSeparation & keyof BdsMenuSeparationAttributes as `attr:${K}`]?: BdsMenuSeparationAttributes[K] } & { [K in keyof BdsMenuSeparation & keyof BdsMenuSeparationAttributes as `prop:${K}`]?: BdsMenuSeparation[K] };
+        "bds-modal": Omit<BdsModal, keyof BdsModalAttributes> & { [K in keyof BdsModal & keyof BdsModalAttributes]?: BdsModal[K] } & { [K in keyof BdsModal & keyof BdsModalAttributes as `attr:${K}`]?: BdsModalAttributes[K] } & { [K in keyof BdsModal & keyof BdsModalAttributes as `prop:${K}`]?: BdsModal[K] };
         "bds-modal-action": BdsModalAction;
-        "bds-modal-close-button": BdsModalCloseButton;
-        "bds-nav-tree": BdsNavTree;
-        "bds-nav-tree-group": BdsNavTreeGroup;
-        "bds-nav-tree-item": BdsNavTreeItem;
-        "bds-navbar": BdsNavbar;
+        "bds-modal-close-button": Omit<BdsModalCloseButton, keyof BdsModalCloseButtonAttributes> & { [K in keyof BdsModalCloseButton & keyof BdsModalCloseButtonAttributes]?: BdsModalCloseButton[K] } & { [K in keyof BdsModalCloseButton & keyof BdsModalCloseButtonAttributes as `attr:${K}`]?: BdsModalCloseButtonAttributes[K] } & { [K in keyof BdsModalCloseButton & keyof BdsModalCloseButtonAttributes as `prop:${K}`]?: BdsModalCloseButton[K] };
+        "bds-nav-tree": Omit<BdsNavTree, keyof BdsNavTreeAttributes> & { [K in keyof BdsNavTree & keyof BdsNavTreeAttributes]?: BdsNavTree[K] } & { [K in keyof BdsNavTree & keyof BdsNavTreeAttributes as `attr:${K}`]?: BdsNavTreeAttributes[K] } & { [K in keyof BdsNavTree & keyof BdsNavTreeAttributes as `prop:${K}`]?: BdsNavTree[K] } & OneOf<"text", BdsNavTree["text"], BdsNavTreeAttributes["text"]>;
+        "bds-nav-tree-group": Omit<BdsNavTreeGroup, keyof BdsNavTreeGroupAttributes> & { [K in keyof BdsNavTreeGroup & keyof BdsNavTreeGroupAttributes]?: BdsNavTreeGroup[K] } & { [K in keyof BdsNavTreeGroup & keyof BdsNavTreeGroupAttributes as `attr:${K}`]?: BdsNavTreeGroupAttributes[K] } & { [K in keyof BdsNavTreeGroup & keyof BdsNavTreeGroupAttributes as `prop:${K}`]?: BdsNavTreeGroup[K] };
+        "bds-nav-tree-item": Omit<BdsNavTreeItem, keyof BdsNavTreeItemAttributes> & { [K in keyof BdsNavTreeItem & keyof BdsNavTreeItemAttributes]?: BdsNavTreeItem[K] } & { [K in keyof BdsNavTreeItem & keyof BdsNavTreeItemAttributes as `attr:${K}`]?: BdsNavTreeItemAttributes[K] } & { [K in keyof BdsNavTreeItem & keyof BdsNavTreeItemAttributes as `prop:${K}`]?: BdsNavTreeItem[K] } & OneOf<"text", BdsNavTreeItem["text"], BdsNavTreeItemAttributes["text"]>;
+        "bds-navbar": Omit<BdsNavbar, keyof BdsNavbarAttributes> & { [K in keyof BdsNavbar & keyof BdsNavbarAttributes]?: BdsNavbar[K] } & { [K in keyof BdsNavbar & keyof BdsNavbarAttributes as `attr:${K}`]?: BdsNavbarAttributes[K] } & { [K in keyof BdsNavbar & keyof BdsNavbarAttributes as `prop:${K}`]?: BdsNavbar[K] };
         "bds-navbar-content": BdsNavbarContent;
-        "bds-pagination": BdsPagination;
-        "bds-paper": BdsPaper;
-        "bds-progress-bar": BdsProgressBar;
-        "bds-radio": BdsRadio;
-        "bds-radio-group": BdsRadioGroup;
-        "bds-rich-text": BdsRichText;
-        "bds-select": BdsSelect;
-        "bds-select-chips": BdsSelectChips;
-        "bds-select-option": BdsSelectOption;
-        "bds-sidebar": BdsSidebar;
-        "bds-skeleton": BdsSkeleton;
-        "bds-slider": BdsSlider;
-        "bds-step": BdsStep;
+        "bds-pagination": Omit<BdsPagination, keyof BdsPaginationAttributes> & { [K in keyof BdsPagination & keyof BdsPaginationAttributes]?: BdsPagination[K] } & { [K in keyof BdsPagination & keyof BdsPaginationAttributes as `attr:${K}`]?: BdsPaginationAttributes[K] } & { [K in keyof BdsPagination & keyof BdsPaginationAttributes as `prop:${K}`]?: BdsPagination[K] };
+        "bds-paper": Omit<BdsPaper, keyof BdsPaperAttributes> & { [K in keyof BdsPaper & keyof BdsPaperAttributes]?: BdsPaper[K] } & { [K in keyof BdsPaper & keyof BdsPaperAttributes as `attr:${K}`]?: BdsPaperAttributes[K] } & { [K in keyof BdsPaper & keyof BdsPaperAttributes as `prop:${K}`]?: BdsPaper[K] };
+        "bds-progress-bar": Omit<BdsProgressBar, keyof BdsProgressBarAttributes> & { [K in keyof BdsProgressBar & keyof BdsProgressBarAttributes]?: BdsProgressBar[K] } & { [K in keyof BdsProgressBar & keyof BdsProgressBarAttributes as `attr:${K}`]?: BdsProgressBarAttributes[K] } & { [K in keyof BdsProgressBar & keyof BdsProgressBarAttributes as `prop:${K}`]?: BdsProgressBar[K] };
+        "bds-radio": Omit<BdsRadio, keyof BdsRadioAttributes> & { [K in keyof BdsRadio & keyof BdsRadioAttributes]?: BdsRadio[K] } & { [K in keyof BdsRadio & keyof BdsRadioAttributes as `attr:${K}`]?: BdsRadioAttributes[K] } & { [K in keyof BdsRadio & keyof BdsRadioAttributes as `prop:${K}`]?: BdsRadio[K] } & OneOf<"value", BdsRadio["value"], BdsRadioAttributes["value"]>;
+        "bds-radio-group": Omit<BdsRadioGroup, keyof BdsRadioGroupAttributes> & { [K in keyof BdsRadioGroup & keyof BdsRadioGroupAttributes]?: BdsRadioGroup[K] } & { [K in keyof BdsRadioGroup & keyof BdsRadioGroupAttributes as `attr:${K}`]?: BdsRadioGroupAttributes[K] } & { [K in keyof BdsRadioGroup & keyof BdsRadioGroupAttributes as `prop:${K}`]?: BdsRadioGroup[K] };
+        "bds-rich-text": Omit<BdsRichText, keyof BdsRichTextAttributes> & { [K in keyof BdsRichText & keyof BdsRichTextAttributes]?: BdsRichText[K] } & { [K in keyof BdsRichText & keyof BdsRichTextAttributes as `attr:${K}`]?: BdsRichTextAttributes[K] } & { [K in keyof BdsRichText & keyof BdsRichTextAttributes as `prop:${K}`]?: BdsRichText[K] };
+        "bds-select": Omit<BdsSelect, keyof BdsSelectAttributes> & { [K in keyof BdsSelect & keyof BdsSelectAttributes]?: BdsSelect[K] } & { [K in keyof BdsSelect & keyof BdsSelectAttributes as `attr:${K}`]?: BdsSelectAttributes[K] } & { [K in keyof BdsSelect & keyof BdsSelectAttributes as `prop:${K}`]?: BdsSelect[K] };
+        "bds-select-chips": Omit<BdsSelectChips, keyof BdsSelectChipsAttributes> & { [K in keyof BdsSelectChips & keyof BdsSelectChipsAttributes]?: BdsSelectChips[K] } & { [K in keyof BdsSelectChips & keyof BdsSelectChipsAttributes as `attr:${K}`]?: BdsSelectChipsAttributes[K] } & { [K in keyof BdsSelectChips & keyof BdsSelectChipsAttributes as `prop:${K}`]?: BdsSelectChips[K] };
+        "bds-select-option": Omit<BdsSelectOption, keyof BdsSelectOptionAttributes> & { [K in keyof BdsSelectOption & keyof BdsSelectOptionAttributes]?: BdsSelectOption[K] } & { [K in keyof BdsSelectOption & keyof BdsSelectOptionAttributes as `attr:${K}`]?: BdsSelectOptionAttributes[K] } & { [K in keyof BdsSelectOption & keyof BdsSelectOptionAttributes as `prop:${K}`]?: BdsSelectOption[K] } & OneOf<"value", BdsSelectOption["value"], BdsSelectOptionAttributes["value"]>;
+        "bds-sidebar": Omit<BdsSidebar, keyof BdsSidebarAttributes> & { [K in keyof BdsSidebar & keyof BdsSidebarAttributes]?: BdsSidebar[K] } & { [K in keyof BdsSidebar & keyof BdsSidebarAttributes as `attr:${K}`]?: BdsSidebarAttributes[K] } & { [K in keyof BdsSidebar & keyof BdsSidebarAttributes as `prop:${K}`]?: BdsSidebar[K] };
+        "bds-skeleton": Omit<BdsSkeleton, keyof BdsSkeletonAttributes> & { [K in keyof BdsSkeleton & keyof BdsSkeletonAttributes]?: BdsSkeleton[K] } & { [K in keyof BdsSkeleton & keyof BdsSkeletonAttributes as `attr:${K}`]?: BdsSkeletonAttributes[K] } & { [K in keyof BdsSkeleton & keyof BdsSkeletonAttributes as `prop:${K}`]?: BdsSkeleton[K] };
+        "bds-slider": Omit<BdsSlider, keyof BdsSliderAttributes> & { [K in keyof BdsSlider & keyof BdsSliderAttributes]?: BdsSlider[K] } & { [K in keyof BdsSlider & keyof BdsSliderAttributes as `attr:${K}`]?: BdsSliderAttributes[K] } & { [K in keyof BdsSlider & keyof BdsSliderAttributes as `prop:${K}`]?: BdsSlider[K] };
+        "bds-step": Omit<BdsStep, keyof BdsStepAttributes> & { [K in keyof BdsStep & keyof BdsStepAttributes]?: BdsStep[K] } & { [K in keyof BdsStep & keyof BdsStepAttributes as `attr:${K}`]?: BdsStepAttributes[K] } & { [K in keyof BdsStep & keyof BdsStepAttributes as `prop:${K}`]?: BdsStep[K] };
         "bds-stepper": BdsStepper;
-        "bds-switch": BdsSwitch;
-        "bds-tab": BdsTab;
-        "bds-tab-group": BdsTabGroup;
-        "bds-tab-item": BdsTabItem;
-        "bds-tab-panel": BdsTabPanel;
-        "bds-table": BdsTable;
+        "bds-switch": Omit<BdsSwitch, keyof BdsSwitchAttributes> & { [K in keyof BdsSwitch & keyof BdsSwitchAttributes]?: BdsSwitch[K] } & { [K in keyof BdsSwitch & keyof BdsSwitchAttributes as `attr:${K}`]?: BdsSwitchAttributes[K] } & { [K in keyof BdsSwitch & keyof BdsSwitchAttributes as `prop:${K}`]?: BdsSwitch[K] } & OneOf<"refer", BdsSwitch["refer"], BdsSwitchAttributes["refer"]> & OneOf<"name", BdsSwitch["name"], BdsSwitchAttributes["name"]>;
+        "bds-tab": Omit<BdsTab, keyof BdsTabAttributes> & { [K in keyof BdsTab & keyof BdsTabAttributes]?: BdsTab[K] } & { [K in keyof BdsTab & keyof BdsTabAttributes as `attr:${K}`]?: BdsTabAttributes[K] } & { [K in keyof BdsTab & keyof BdsTabAttributes as `prop:${K}`]?: BdsTab[K] } & OneOf<"group", BdsTab["group"], BdsTabAttributes["group"]> & OneOf<"label", BdsTab["label"], BdsTabAttributes["label"]>;
+        "bds-tab-group": Omit<BdsTabGroup, keyof BdsTabGroupAttributes> & { [K in keyof BdsTabGroup & keyof BdsTabGroupAttributes]?: BdsTabGroup[K] } & { [K in keyof BdsTabGroup & keyof BdsTabGroupAttributes as `attr:${K}`]?: BdsTabGroupAttributes[K] } & { [K in keyof BdsTabGroup & keyof BdsTabGroupAttributes as `prop:${K}`]?: BdsTabGroup[K] };
+        "bds-tab-item": Omit<BdsTabItem, keyof BdsTabItemAttributes> & { [K in keyof BdsTabItem & keyof BdsTabItemAttributes]?: BdsTabItem[K] } & { [K in keyof BdsTabItem & keyof BdsTabItemAttributes as `attr:${K}`]?: BdsTabItemAttributes[K] } & { [K in keyof BdsTabItem & keyof BdsTabItemAttributes as `prop:${K}`]?: BdsTabItem[K] };
+        "bds-tab-panel": Omit<BdsTabPanel, keyof BdsTabPanelAttributes> & { [K in keyof BdsTabPanel & keyof BdsTabPanelAttributes]?: BdsTabPanel[K] } & { [K in keyof BdsTabPanel & keyof BdsTabPanelAttributes as `attr:${K}`]?: BdsTabPanelAttributes[K] } & { [K in keyof BdsTabPanel & keyof BdsTabPanelAttributes as `prop:${K}`]?: BdsTabPanel[K] } & OneOf<"group", BdsTabPanel["group"], BdsTabPanelAttributes["group"]>;
+        "bds-table": Omit<BdsTable, keyof BdsTableAttributes> & { [K in keyof BdsTable & keyof BdsTableAttributes]?: BdsTable[K] } & { [K in keyof BdsTable & keyof BdsTableAttributes as `attr:${K}`]?: BdsTableAttributes[K] } & { [K in keyof BdsTable & keyof BdsTableAttributes as `prop:${K}`]?: BdsTable[K] };
         "bds-table-body": BdsTableBody;
-        "bds-table-cell": BdsTableCell;
+        "bds-table-cell": Omit<BdsTableCell, keyof BdsTableCellAttributes> & { [K in keyof BdsTableCell & keyof BdsTableCellAttributes]?: BdsTableCell[K] } & { [K in keyof BdsTableCell & keyof BdsTableCellAttributes as `attr:${K}`]?: BdsTableCellAttributes[K] } & { [K in keyof BdsTableCell & keyof BdsTableCellAttributes as `prop:${K}`]?: BdsTableCell[K] };
         "bds-table-header": BdsTableHeader;
-        "bds-table-row": BdsTableRow;
-        "bds-table-th": BdsTableTh;
-        "bds-tabs": BdsTabs;
+        "bds-table-row": Omit<BdsTableRow, keyof BdsTableRowAttributes> & { [K in keyof BdsTableRow & keyof BdsTableRowAttributes]?: BdsTableRow[K] } & { [K in keyof BdsTableRow & keyof BdsTableRowAttributes as `attr:${K}`]?: BdsTableRowAttributes[K] } & { [K in keyof BdsTableRow & keyof BdsTableRowAttributes as `prop:${K}`]?: BdsTableRow[K] };
+        "bds-table-th": Omit<BdsTableTh, keyof BdsTableThAttributes> & { [K in keyof BdsTableTh & keyof BdsTableThAttributes]?: BdsTableTh[K] } & { [K in keyof BdsTableTh & keyof BdsTableThAttributes as `attr:${K}`]?: BdsTableThAttributes[K] } & { [K in keyof BdsTableTh & keyof BdsTableThAttributes as `prop:${K}`]?: BdsTableTh[K] };
+        "bds-tabs": Omit<BdsTabs, keyof BdsTabsAttributes> & { [K in keyof BdsTabs & keyof BdsTabsAttributes]?: BdsTabs[K] } & { [K in keyof BdsTabs & keyof BdsTabsAttributes as `attr:${K}`]?: BdsTabsAttributes[K] } & { [K in keyof BdsTabs & keyof BdsTabsAttributes as `prop:${K}`]?: BdsTabs[K] };
         "bds-test-component": BdsTestComponent;
-        "bds-theme-provider": BdsThemeProvider;
-        "bds-toast": BdsToast;
+        "bds-theme-provider": Omit<BdsThemeProvider, keyof BdsThemeProviderAttributes> & { [K in keyof BdsThemeProvider & keyof BdsThemeProviderAttributes]?: BdsThemeProvider[K] } & { [K in keyof BdsThemeProvider & keyof BdsThemeProviderAttributes as `attr:${K}`]?: BdsThemeProviderAttributes[K] } & { [K in keyof BdsThemeProvider & keyof BdsThemeProviderAttributes as `prop:${K}`]?: BdsThemeProvider[K] };
+        "bds-toast": Omit<BdsToast, keyof BdsToastAttributes> & { [K in keyof BdsToast & keyof BdsToastAttributes]?: BdsToast[K] } & { [K in keyof BdsToast & keyof BdsToastAttributes as `attr:${K}`]?: BdsToastAttributes[K] } & { [K in keyof BdsToast & keyof BdsToastAttributes as `prop:${K}`]?: BdsToast[K] };
         "bds-toast-container": BdsToastContainer;
-        "bds-tooltip": BdsTooltip;
-        "bds-typo": BdsTypo;
-        "bds-upload": BdsUpload;
+        "bds-tooltip": Omit<BdsTooltip, keyof BdsTooltipAttributes> & { [K in keyof BdsTooltip & keyof BdsTooltipAttributes]?: BdsTooltip[K] } & { [K in keyof BdsTooltip & keyof BdsTooltipAttributes as `attr:${K}`]?: BdsTooltipAttributes[K] } & { [K in keyof BdsTooltip & keyof BdsTooltipAttributes as `prop:${K}`]?: BdsTooltip[K] };
+        "bds-typo": Omit<BdsTypo, keyof BdsTypoAttributes> & { [K in keyof BdsTypo & keyof BdsTypoAttributes]?: BdsTypo[K] } & { [K in keyof BdsTypo & keyof BdsTypoAttributes as `attr:${K}`]?: BdsTypoAttributes[K] } & { [K in keyof BdsTypo & keyof BdsTypoAttributes as `prop:${K}`]?: BdsTypo[K] };
+        "bds-upload": Omit<BdsUpload, keyof BdsUploadAttributes> & { [K in keyof BdsUpload & keyof BdsUploadAttributes]?: BdsUpload[K] } & { [K in keyof BdsUpload & keyof BdsUploadAttributes as `attr:${K}`]?: BdsUploadAttributes[K] } & { [K in keyof BdsUpload & keyof BdsUploadAttributes as `prop:${K}`]?: BdsUpload[K] };
         "bds-warning": BdsWarning;
-        "uai-avatar": UaiAvatar;
-        "uai-button": UaiButton;
-        "uai-icon": UaiIcon;
-        "uai-navbar": UaiNavbar;
+        "uai-avatar": Omit<UaiAvatar, keyof UaiAvatarAttributes> & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes]?: UaiAvatar[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `attr:${K}`]?: UaiAvatarAttributes[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `prop:${K}`]?: UaiAvatar[K] };
+        "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
+        "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
+        "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
-        "uai-theme-provider": UaiThemeProvider;
-        "uai-typo": UaiTypo;
+        "uai-theme-provider": Omit<UaiThemeProvider, keyof UaiThemeProviderAttributes> & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes]?: UaiThemeProvider[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `attr:${K}`]?: UaiThemeProviderAttributes[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `prop:${K}`]?: UaiThemeProvider[K] };
+        "uai-typo": Omit<UaiTypo, keyof UaiTypoAttributes> & { [K in keyof UaiTypo & keyof UaiTypoAttributes]?: UaiTypo[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `attr:${K}`]?: UaiTypoAttributes[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `prop:${K}`]?: UaiTypo[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "bds-accordion": LocalJSX.BdsAccordion & JSXBase.HTMLAttributes<HTMLBdsAccordionElement>;
-            "bds-accordion-body": LocalJSX.BdsAccordionBody & JSXBase.HTMLAttributes<HTMLBdsAccordionBodyElement>;
-            "bds-accordion-group": LocalJSX.BdsAccordionGroup & JSXBase.HTMLAttributes<HTMLBdsAccordionGroupElement>;
-            "bds-accordion-header": LocalJSX.BdsAccordionHeader & JSXBase.HTMLAttributes<HTMLBdsAccordionHeaderElement>;
-            "bds-alert": LocalJSX.BdsAlert & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
-            "bds-alert-actions": LocalJSX.BdsAlertActions & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
-            "bds-alert-body": LocalJSX.BdsAlertBody & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
-            "bds-alert-header": LocalJSX.BdsAlertHeader & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
-            "bds-autocomplete": LocalJSX.BdsAutocomplete & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
+            "bds-accordion": LocalJSX.IntrinsicElements["bds-accordion"] & JSXBase.HTMLAttributes<HTMLBdsAccordionElement>;
+            "bds-accordion-body": LocalJSX.IntrinsicElements["bds-accordion-body"] & JSXBase.HTMLAttributes<HTMLBdsAccordionBodyElement>;
+            "bds-accordion-group": LocalJSX.IntrinsicElements["bds-accordion-group"] & JSXBase.HTMLAttributes<HTMLBdsAccordionGroupElement>;
+            "bds-accordion-header": LocalJSX.IntrinsicElements["bds-accordion-header"] & JSXBase.HTMLAttributes<HTMLBdsAccordionHeaderElement>;
+            "bds-alert": LocalJSX.IntrinsicElements["bds-alert"] & JSXBase.HTMLAttributes<HTMLBdsAlertElement>;
+            "bds-alert-actions": LocalJSX.IntrinsicElements["bds-alert-actions"] & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
+            "bds-alert-body": LocalJSX.IntrinsicElements["bds-alert-body"] & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
+            "bds-alert-header": LocalJSX.IntrinsicElements["bds-alert-header"] & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
+            "bds-autocomplete": LocalJSX.IntrinsicElements["bds-autocomplete"] & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
             /**
              * @deprecated Use `uai-avatar` for new UAI experiences. This component remains supported for existing consumers.
              */
-            "bds-avatar": LocalJSX.BdsAvatar & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
-            "bds-avatar-group": LocalJSX.BdsAvatarGroup & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
-            "bds-badge": LocalJSX.BdsBadge & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
-            "bds-banner": LocalJSX.BdsBanner & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
-            "bds-banner-link": LocalJSX.BdsBannerLink & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
-            "bds-breadcrumb": LocalJSX.BdsBreadcrumb & JSXBase.HTMLAttributes<HTMLBdsBreadcrumbElement>;
-            "bds-button": LocalJSX.BdsButton & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
-            "bds-button-group": LocalJSX.BdsButtonGroup & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
-            "bds-button-icon": LocalJSX.BdsButtonIcon & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
-            "bds-card": LocalJSX.BdsCard & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
-            "bds-card-body": LocalJSX.BdsCardBody & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;
-            "bds-card-color": LocalJSX.BdsCardColor & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
-            "bds-card-footer": LocalJSX.BdsCardFooter & JSXBase.HTMLAttributes<HTMLBdsCardFooterElement>;
-            "bds-card-header": LocalJSX.BdsCardHeader & JSXBase.HTMLAttributes<HTMLBdsCardHeaderElement>;
-            "bds-card-subtitle": LocalJSX.BdsCardSubtitle & JSXBase.HTMLAttributes<HTMLBdsCardSubtitleElement>;
-            "bds-card-title": LocalJSX.BdsCardTitle & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
-            "bds-carousel": LocalJSX.BdsCarousel & JSXBase.HTMLAttributes<HTMLBdsCarouselElement>;
-            "bds-carousel-item": LocalJSX.BdsCarouselItem & JSXBase.HTMLAttributes<HTMLBdsCarouselItemElement>;
-            "bds-checkbox": LocalJSX.BdsCheckbox & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
-            "bds-chip": LocalJSX.BdsChip & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
-            "bds-chip-clickable": LocalJSX.BdsChipClickable & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;
-            "bds-chip-selected": LocalJSX.BdsChipSelected & JSXBase.HTMLAttributes<HTMLBdsChipSelectedElement>;
-            "bds-chip-tag": LocalJSX.BdsChipTag & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
-            "bds-counter-text": LocalJSX.BdsCounterText & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
-            "bds-data-table": LocalJSX.BdsDataTable & JSXBase.HTMLAttributes<HTMLBdsDataTableElement>;
-            "bds-datepicker": LocalJSX.BdsDatepicker & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
-            "bds-datepicker-period": LocalJSX.BdsDatepickerPeriod & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
-            "bds-datepicker-single": LocalJSX.BdsDatepickerSingle & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
-            "bds-divider": LocalJSX.BdsDivider & JSXBase.HTMLAttributes<HTMLBdsDividerElement>;
-            "bds-dropdown": LocalJSX.BdsDropdown & JSXBase.HTMLAttributes<HTMLBdsDropdownElement>;
-            "bds-expansion-panel": LocalJSX.BdsExpansionPanel & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
-            "bds-expansion-panel-body": LocalJSX.BdsExpansionPanelBody & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
-            "bds-expansion-panel-header": LocalJSX.BdsExpansionPanelHeader & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
-            "bds-grid": LocalJSX.BdsGrid & JSXBase.HTMLAttributes<HTMLBdsGridElement>;
+            "bds-avatar": LocalJSX.IntrinsicElements["bds-avatar"] & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
+            "bds-avatar-group": LocalJSX.IntrinsicElements["bds-avatar-group"] & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
+            "bds-badge": LocalJSX.IntrinsicElements["bds-badge"] & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
+            "bds-banner": LocalJSX.IntrinsicElements["bds-banner"] & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
+            "bds-banner-link": LocalJSX.IntrinsicElements["bds-banner-link"] & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
+            "bds-breadcrumb": LocalJSX.IntrinsicElements["bds-breadcrumb"] & JSXBase.HTMLAttributes<HTMLBdsBreadcrumbElement>;
+            "bds-button": LocalJSX.IntrinsicElements["bds-button"] & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
+            "bds-button-group": LocalJSX.IntrinsicElements["bds-button-group"] & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
+            "bds-button-icon": LocalJSX.IntrinsicElements["bds-button-icon"] & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
+            "bds-card": LocalJSX.IntrinsicElements["bds-card"] & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
+            "bds-card-body": LocalJSX.IntrinsicElements["bds-card-body"] & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;
+            "bds-card-color": LocalJSX.IntrinsicElements["bds-card-color"] & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
+            "bds-card-footer": LocalJSX.IntrinsicElements["bds-card-footer"] & JSXBase.HTMLAttributes<HTMLBdsCardFooterElement>;
+            "bds-card-header": LocalJSX.IntrinsicElements["bds-card-header"] & JSXBase.HTMLAttributes<HTMLBdsCardHeaderElement>;
+            "bds-card-subtitle": LocalJSX.IntrinsicElements["bds-card-subtitle"] & JSXBase.HTMLAttributes<HTMLBdsCardSubtitleElement>;
+            "bds-card-title": LocalJSX.IntrinsicElements["bds-card-title"] & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
+            "bds-carousel": LocalJSX.IntrinsicElements["bds-carousel"] & JSXBase.HTMLAttributes<HTMLBdsCarouselElement>;
+            "bds-carousel-item": LocalJSX.IntrinsicElements["bds-carousel-item"] & JSXBase.HTMLAttributes<HTMLBdsCarouselItemElement>;
+            "bds-checkbox": LocalJSX.IntrinsicElements["bds-checkbox"] & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
+            "bds-chip": LocalJSX.IntrinsicElements["bds-chip"] & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
+            "bds-chip-clickable": LocalJSX.IntrinsicElements["bds-chip-clickable"] & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;
+            "bds-chip-selected": LocalJSX.IntrinsicElements["bds-chip-selected"] & JSXBase.HTMLAttributes<HTMLBdsChipSelectedElement>;
+            "bds-chip-tag": LocalJSX.IntrinsicElements["bds-chip-tag"] & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
+            "bds-counter-text": LocalJSX.IntrinsicElements["bds-counter-text"] & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
+            "bds-data-table": LocalJSX.IntrinsicElements["bds-data-table"] & JSXBase.HTMLAttributes<HTMLBdsDataTableElement>;
+            "bds-datepicker": LocalJSX.IntrinsicElements["bds-datepicker"] & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
+            "bds-datepicker-period": LocalJSX.IntrinsicElements["bds-datepicker-period"] & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
+            "bds-datepicker-single": LocalJSX.IntrinsicElements["bds-datepicker-single"] & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
+            "bds-divider": LocalJSX.IntrinsicElements["bds-divider"] & JSXBase.HTMLAttributes<HTMLBdsDividerElement>;
+            "bds-dropdown": LocalJSX.IntrinsicElements["bds-dropdown"] & JSXBase.HTMLAttributes<HTMLBdsDropdownElement>;
+            "bds-expansion-panel": LocalJSX.IntrinsicElements["bds-expansion-panel"] & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
+            "bds-expansion-panel-body": LocalJSX.IntrinsicElements["bds-expansion-panel-body"] & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
+            "bds-expansion-panel-header": LocalJSX.IntrinsicElements["bds-expansion-panel-header"] & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
+            "bds-grid": LocalJSX.IntrinsicElements["bds-grid"] & JSXBase.HTMLAttributes<HTMLBdsGridElement>;
             /**
              * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
              */
-            "bds-icon": LocalJSX.BdsIcon & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
-            "bds-illustration": LocalJSX.BdsIllustration & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
-            "bds-image": LocalJSX.BdsImage & JSXBase.HTMLAttributes<HTMLBdsImageElement>;
-            "bds-input": LocalJSX.BdsInput & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
-            "bds-input-chips": LocalJSX.BdsInputChips & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
-            "bds-input-editable": LocalJSX.BdsInputEditable & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
-            "bds-input-password": LocalJSX.BdsInputPassword & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
-            "bds-input-phone-number": LocalJSX.BdsInputPhoneNumber & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
-            "bds-list": LocalJSX.BdsList & JSXBase.HTMLAttributes<HTMLBdsListElement>;
-            "bds-list-item": LocalJSX.BdsListItem & JSXBase.HTMLAttributes<HTMLBdsListItemElement>;
-            "bds-list-item-content": LocalJSX.BdsListItemContent & JSXBase.HTMLAttributes<HTMLBdsListItemContentElement>;
-            "bds-loading-bar": LocalJSX.BdsLoadingBar & JSXBase.HTMLAttributes<HTMLBdsLoadingBarElement>;
-            "bds-loading-page": LocalJSX.BdsLoadingPage & JSXBase.HTMLAttributes<HTMLBdsLoadingPageElement>;
-            "bds-loading-spinner": LocalJSX.BdsLoadingSpinner & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
-            "bds-menu": LocalJSX.BdsMenu & JSXBase.HTMLAttributes<HTMLBdsMenuElement>;
-            "bds-menu-action": LocalJSX.BdsMenuAction & JSXBase.HTMLAttributes<HTMLBdsMenuActionElement>;
-            "bds-menu-exibition": LocalJSX.BdsMenuExibition & JSXBase.HTMLAttributes<HTMLBdsMenuExibitionElement>;
-            "bds-menu-list": LocalJSX.BdsMenuList & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
-            "bds-menu-list-item": LocalJSX.BdsMenuListItem & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
-            "bds-menu-separation": LocalJSX.BdsMenuSeparation & JSXBase.HTMLAttributes<HTMLBdsMenuSeparationElement>;
-            "bds-modal": LocalJSX.BdsModal & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
-            "bds-modal-action": LocalJSX.BdsModalAction & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
-            "bds-modal-close-button": LocalJSX.BdsModalCloseButton & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
-            "bds-nav-tree": LocalJSX.BdsNavTree & JSXBase.HTMLAttributes<HTMLBdsNavTreeElement>;
-            "bds-nav-tree-group": LocalJSX.BdsNavTreeGroup & JSXBase.HTMLAttributes<HTMLBdsNavTreeGroupElement>;
-            "bds-nav-tree-item": LocalJSX.BdsNavTreeItem & JSXBase.HTMLAttributes<HTMLBdsNavTreeItemElement>;
-            "bds-navbar": LocalJSX.BdsNavbar & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
-            "bds-navbar-content": LocalJSX.BdsNavbarContent & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
-            "bds-pagination": LocalJSX.BdsPagination & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
-            "bds-paper": LocalJSX.BdsPaper & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
-            "bds-progress-bar": LocalJSX.BdsProgressBar & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
-            "bds-radio": LocalJSX.BdsRadio & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
-            "bds-radio-group": LocalJSX.BdsRadioGroup & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
-            "bds-rich-text": LocalJSX.BdsRichText & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
-            "bds-select": LocalJSX.BdsSelect & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
-            "bds-select-chips": LocalJSX.BdsSelectChips & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
-            "bds-select-option": LocalJSX.BdsSelectOption & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
-            "bds-sidebar": LocalJSX.BdsSidebar & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
-            "bds-skeleton": LocalJSX.BdsSkeleton & JSXBase.HTMLAttributes<HTMLBdsSkeletonElement>;
-            "bds-slider": LocalJSX.BdsSlider & JSXBase.HTMLAttributes<HTMLBdsSliderElement>;
-            "bds-step": LocalJSX.BdsStep & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
-            "bds-stepper": LocalJSX.BdsStepper & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
-            "bds-switch": LocalJSX.BdsSwitch & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
-            "bds-tab": LocalJSX.BdsTab & JSXBase.HTMLAttributes<HTMLBdsTabElement>;
-            "bds-tab-group": LocalJSX.BdsTabGroup & JSXBase.HTMLAttributes<HTMLBdsTabGroupElement>;
-            "bds-tab-item": LocalJSX.BdsTabItem & JSXBase.HTMLAttributes<HTMLBdsTabItemElement>;
-            "bds-tab-panel": LocalJSX.BdsTabPanel & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
-            "bds-table": LocalJSX.BdsTable & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
-            "bds-table-body": LocalJSX.BdsTableBody & JSXBase.HTMLAttributes<HTMLBdsTableBodyElement>;
-            "bds-table-cell": LocalJSX.BdsTableCell & JSXBase.HTMLAttributes<HTMLBdsTableCellElement>;
-            "bds-table-header": LocalJSX.BdsTableHeader & JSXBase.HTMLAttributes<HTMLBdsTableHeaderElement>;
-            "bds-table-row": LocalJSX.BdsTableRow & JSXBase.HTMLAttributes<HTMLBdsTableRowElement>;
-            "bds-table-th": LocalJSX.BdsTableTh & JSXBase.HTMLAttributes<HTMLBdsTableThElement>;
-            "bds-tabs": LocalJSX.BdsTabs & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
-            "bds-test-component": LocalJSX.BdsTestComponent & JSXBase.HTMLAttributes<HTMLBdsTestComponentElement>;
-            "bds-theme-provider": LocalJSX.BdsThemeProvider & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;
-            "bds-toast": LocalJSX.BdsToast & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
-            "bds-toast-container": LocalJSX.BdsToastContainer & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
-            "bds-tooltip": LocalJSX.BdsTooltip & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
-            "bds-typo": LocalJSX.BdsTypo & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
-            "bds-upload": LocalJSX.BdsUpload & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
-            "bds-warning": LocalJSX.BdsWarning & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
+            "bds-icon": LocalJSX.IntrinsicElements["bds-icon"] & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
+            "bds-illustration": LocalJSX.IntrinsicElements["bds-illustration"] & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
+            "bds-image": LocalJSX.IntrinsicElements["bds-image"] & JSXBase.HTMLAttributes<HTMLBdsImageElement>;
+            "bds-input": LocalJSX.IntrinsicElements["bds-input"] & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+            "bds-input-chips": LocalJSX.IntrinsicElements["bds-input-chips"] & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
+            "bds-input-editable": LocalJSX.IntrinsicElements["bds-input-editable"] & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
+            "bds-input-password": LocalJSX.IntrinsicElements["bds-input-password"] & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
+            "bds-input-phone-number": LocalJSX.IntrinsicElements["bds-input-phone-number"] & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
+            "bds-list": LocalJSX.IntrinsicElements["bds-list"] & JSXBase.HTMLAttributes<HTMLBdsListElement>;
+            "bds-list-item": LocalJSX.IntrinsicElements["bds-list-item"] & JSXBase.HTMLAttributes<HTMLBdsListItemElement>;
+            "bds-list-item-content": LocalJSX.IntrinsicElements["bds-list-item-content"] & JSXBase.HTMLAttributes<HTMLBdsListItemContentElement>;
+            "bds-loading-bar": LocalJSX.IntrinsicElements["bds-loading-bar"] & JSXBase.HTMLAttributes<HTMLBdsLoadingBarElement>;
+            "bds-loading-page": LocalJSX.IntrinsicElements["bds-loading-page"] & JSXBase.HTMLAttributes<HTMLBdsLoadingPageElement>;
+            "bds-loading-spinner": LocalJSX.IntrinsicElements["bds-loading-spinner"] & JSXBase.HTMLAttributes<HTMLBdsLoadingSpinnerElement>;
+            "bds-menu": LocalJSX.IntrinsicElements["bds-menu"] & JSXBase.HTMLAttributes<HTMLBdsMenuElement>;
+            "bds-menu-action": LocalJSX.IntrinsicElements["bds-menu-action"] & JSXBase.HTMLAttributes<HTMLBdsMenuActionElement>;
+            "bds-menu-exibition": LocalJSX.IntrinsicElements["bds-menu-exibition"] & JSXBase.HTMLAttributes<HTMLBdsMenuExibitionElement>;
+            "bds-menu-list": LocalJSX.IntrinsicElements["bds-menu-list"] & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
+            "bds-menu-list-item": LocalJSX.IntrinsicElements["bds-menu-list-item"] & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
+            "bds-menu-separation": LocalJSX.IntrinsicElements["bds-menu-separation"] & JSXBase.HTMLAttributes<HTMLBdsMenuSeparationElement>;
+            "bds-modal": LocalJSX.IntrinsicElements["bds-modal"] & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
+            "bds-modal-action": LocalJSX.IntrinsicElements["bds-modal-action"] & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
+            "bds-modal-close-button": LocalJSX.IntrinsicElements["bds-modal-close-button"] & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
+            "bds-nav-tree": LocalJSX.IntrinsicElements["bds-nav-tree"] & JSXBase.HTMLAttributes<HTMLBdsNavTreeElement>;
+            "bds-nav-tree-group": LocalJSX.IntrinsicElements["bds-nav-tree-group"] & JSXBase.HTMLAttributes<HTMLBdsNavTreeGroupElement>;
+            "bds-nav-tree-item": LocalJSX.IntrinsicElements["bds-nav-tree-item"] & JSXBase.HTMLAttributes<HTMLBdsNavTreeItemElement>;
+            "bds-navbar": LocalJSX.IntrinsicElements["bds-navbar"] & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
+            "bds-navbar-content": LocalJSX.IntrinsicElements["bds-navbar-content"] & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
+            "bds-pagination": LocalJSX.IntrinsicElements["bds-pagination"] & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
+            "bds-paper": LocalJSX.IntrinsicElements["bds-paper"] & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
+            "bds-progress-bar": LocalJSX.IntrinsicElements["bds-progress-bar"] & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
+            "bds-radio": LocalJSX.IntrinsicElements["bds-radio"] & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
+            "bds-radio-group": LocalJSX.IntrinsicElements["bds-radio-group"] & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
+            "bds-rich-text": LocalJSX.IntrinsicElements["bds-rich-text"] & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
+            "bds-select": LocalJSX.IntrinsicElements["bds-select"] & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
+            "bds-select-chips": LocalJSX.IntrinsicElements["bds-select-chips"] & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
+            "bds-select-option": LocalJSX.IntrinsicElements["bds-select-option"] & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
+            "bds-sidebar": LocalJSX.IntrinsicElements["bds-sidebar"] & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
+            "bds-skeleton": LocalJSX.IntrinsicElements["bds-skeleton"] & JSXBase.HTMLAttributes<HTMLBdsSkeletonElement>;
+            "bds-slider": LocalJSX.IntrinsicElements["bds-slider"] & JSXBase.HTMLAttributes<HTMLBdsSliderElement>;
+            "bds-step": LocalJSX.IntrinsicElements["bds-step"] & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
+            "bds-stepper": LocalJSX.IntrinsicElements["bds-stepper"] & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
+            "bds-switch": LocalJSX.IntrinsicElements["bds-switch"] & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
+            "bds-tab": LocalJSX.IntrinsicElements["bds-tab"] & JSXBase.HTMLAttributes<HTMLBdsTabElement>;
+            "bds-tab-group": LocalJSX.IntrinsicElements["bds-tab-group"] & JSXBase.HTMLAttributes<HTMLBdsTabGroupElement>;
+            "bds-tab-item": LocalJSX.IntrinsicElements["bds-tab-item"] & JSXBase.HTMLAttributes<HTMLBdsTabItemElement>;
+            "bds-tab-panel": LocalJSX.IntrinsicElements["bds-tab-panel"] & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
+            "bds-table": LocalJSX.IntrinsicElements["bds-table"] & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
+            "bds-table-body": LocalJSX.IntrinsicElements["bds-table-body"] & JSXBase.HTMLAttributes<HTMLBdsTableBodyElement>;
+            "bds-table-cell": LocalJSX.IntrinsicElements["bds-table-cell"] & JSXBase.HTMLAttributes<HTMLBdsTableCellElement>;
+            "bds-table-header": LocalJSX.IntrinsicElements["bds-table-header"] & JSXBase.HTMLAttributes<HTMLBdsTableHeaderElement>;
+            "bds-table-row": LocalJSX.IntrinsicElements["bds-table-row"] & JSXBase.HTMLAttributes<HTMLBdsTableRowElement>;
+            "bds-table-th": LocalJSX.IntrinsicElements["bds-table-th"] & JSXBase.HTMLAttributes<HTMLBdsTableThElement>;
+            "bds-tabs": LocalJSX.IntrinsicElements["bds-tabs"] & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
+            "bds-test-component": LocalJSX.IntrinsicElements["bds-test-component"] & JSXBase.HTMLAttributes<HTMLBdsTestComponentElement>;
+            "bds-theme-provider": LocalJSX.IntrinsicElements["bds-theme-provider"] & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;
+            "bds-toast": LocalJSX.IntrinsicElements["bds-toast"] & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
+            "bds-toast-container": LocalJSX.IntrinsicElements["bds-toast-container"] & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
+            "bds-tooltip": LocalJSX.IntrinsicElements["bds-tooltip"] & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
+            "bds-typo": LocalJSX.IntrinsicElements["bds-typo"] & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
+            "bds-upload": LocalJSX.IntrinsicElements["bds-upload"] & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
+            "bds-warning": LocalJSX.IntrinsicElements["bds-warning"] & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
             /**
              * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
              * and an accessible name with `label`. The consuming application is responsible for uploading images.
              */
-            "uai-avatar": LocalJSX.UaiAvatar & JSXBase.HTMLAttributes<HTMLUaiAvatarElement>;
+            "uai-avatar": LocalJSX.IntrinsicElements["uai-avatar"] & JSXBase.HTMLAttributes<HTMLUaiAvatarElement>;
             /**
              * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
              * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
              * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
              */
-            "uai-button": LocalJSX.UaiButton & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
+            "uai-button": LocalJSX.IntrinsicElements["uai-button"] & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
             /**
              * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
              * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
              * Without `color`, the icon takes the text color around it, so it matches the label next to it.
              * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
              */
-            "uai-icon": LocalJSX.UaiIcon & JSXBase.HTMLAttributes<HTMLUaiIconElement>;
+            "uai-icon": LocalJSX.IntrinsicElements["uai-icon"] & JSXBase.HTMLAttributes<HTMLUaiIconElement>;
             /**
              * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
              */
-            "uai-navbar": LocalJSX.UaiNavbar & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
+            "uai-navbar": LocalJSX.IntrinsicElements["uai-navbar"] & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
             /**
              * Group of items inside a uai-navbar.
              */
-            "uai-navbar-content": LocalJSX.UaiNavbarContent & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
+            "uai-navbar-content": LocalJSX.IntrinsicElements["uai-navbar-content"] & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
             /**
              * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
              * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
              */
-            "uai-theme-provider": LocalJSX.UaiThemeProvider & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;
+            "uai-theme-provider": LocalJSX.IntrinsicElements["uai-theme-provider"] & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;
             /**
              * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
              * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
              */
-            "uai-typo": LocalJSX.UaiTypo & JSXBase.HTMLAttributes<HTMLUaiTypoElement>;
+            "uai-typo": LocalJSX.IntrinsicElements["uai-typo"] & JSXBase.HTMLAttributes<HTMLUaiTypoElement>;
         }
     }
 }

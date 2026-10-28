@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-DQyYkciT.js');
+var index = require('./index-BqjYThoc.js');
 
 const RadioGroup = class {
     constructor(hostRef) {
@@ -38,11 +38,10 @@ const RadioGroup = class {
     }
     get element() { return index.getElement(this); }
     static get watchers() { return {
-        "value": ["valueChanged"]
+        "value": [{
+                "valueChanged": 0
+            }]
     }; }
 };
 
 exports.bds_radio_group = RadioGroup;
-//# sourceMappingURL=bds-radio-group.entry.cjs.js.map
-
-//# sourceMappingURL=bds-radio-group.cjs.entry.js.map

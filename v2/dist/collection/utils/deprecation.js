@@ -31,4 +31,3 @@ export const warnLegacyValue = (tag, prop, value, fallback) => {
     warnOnce(tag, `value:${prop}:${String(value)}`, `Unsupported ${prop} "${String(value)}". Using "${fallback}".`);
 };
 export const resetDeprecationWarnings = () => warnings.clear();
-//# sourceMappingURL=deprecation.js.map

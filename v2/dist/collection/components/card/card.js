@@ -103,7 +103,6 @@ export class Card {
         return {
             "height": {
                 "type": "string",
-                "attribute": "height",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -119,11 +118,11 @@ export class Card {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "height",
                 "defaultValue": "null"
             },
             "width": {
                 "type": "string",
-                "attribute": "width",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -139,11 +138,11 @@ export class Card {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "width",
                 "defaultValue": "'fit-content'"
             },
             "clickable": {
                 "type": "boolean",
-                "attribute": "clickable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -159,11 +158,11 @@ export class Card {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "clickable",
                 "defaultValue": "false"
             },
             "bgColor": {
                 "type": "string",
-                "attribute": "bg-color",
                 "mutable": false,
                 "complexType": {
                     "original": "PaperBackground",
@@ -172,7 +171,8 @@ export class Card {
                         "PaperBackground": {
                             "location": "import",
                             "path": "../paper/paper-interface",
-                            "id": "src/components/paper/paper-interface.ts::PaperBackground"
+                            "id": "src/components/paper/paper-interface.ts::PaperBackground",
+                            "referenceLocation": "PaperBackground"
                         }
                     }
                 },
@@ -185,11 +185,11 @@ export class Card {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "bg-color",
                 "defaultValue": "'surface-1'"
             },
             "selectable": {
                 "type": "boolean",
-                "attribute": "selectable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -205,11 +205,11 @@ export class Card {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "selectable",
                 "defaultValue": "false"
             },
             "borderColor": {
                 "type": "string",
-                "attribute": "border-color",
                 "mutable": true,
                 "complexType": {
                     "original": "BorderColor",
@@ -218,7 +218,8 @@ export class Card {
                         "BorderColor": {
                             "location": "import",
                             "path": "../paper/paper-interface",
-                            "id": "src/components/paper/paper-interface.ts::BorderColor"
+                            "id": "src/components/paper/paper-interface.ts::BorderColor",
+                            "referenceLocation": "BorderColor"
                         }
                     }
                 },
@@ -231,11 +232,11 @@ export class Card {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "border-color",
                 "defaultValue": "null"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -251,6 +252,7 @@ export class Card {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -291,4 +293,3 @@ export class Card {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=card.js.map

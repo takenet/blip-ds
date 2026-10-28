@@ -1,9 +1,1 @@
-import { G as Grid, d as defineCustomElement$1 } from './p-B97SDoLM.js';
-
-const BdsGrid = Grid;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsGrid, defineCustomElement };
-//# sourceMappingURL=bds-grid.js.map
-
-//# sourceMappingURL=bds-grid.js.map
+import{G as o,d as s}from"./p-BmO2cMWG.js";const m=o,p=s;export{m as BdsGrid,p as defineCustomElement}

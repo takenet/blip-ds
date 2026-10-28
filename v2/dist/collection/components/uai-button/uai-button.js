@@ -252,7 +252,6 @@ export class UaiButton {
         return {
             "block": {
                 "type": "boolean",
-                "attribute": "block",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -268,11 +267,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "block",
                 "defaultValue": "false"
             },
             "fullWidth": {
                 "type": "boolean",
-                "attribute": "full-width",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -288,11 +287,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "full-width",
                 "defaultValue": "false"
             },
             "justifyContent": {
                 "type": "string",
-                "attribute": "justify-content",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiButtonJustifyContent",
@@ -314,11 +313,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "justify-content",
                 "defaultValue": "'center'"
             },
             "groupIcon": {
                 "type": "boolean",
-                "attribute": "group-icon",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -336,11 +335,11 @@ export class UaiButton {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "group-icon"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -356,11 +355,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": true,
                 "complexType": {
                     "original": "UaiButtonColor",
@@ -382,11 +381,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'primary'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": true,
                 "complexType": {
                     "original": "UaiButtonSize",
@@ -408,11 +407,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'medium'"
             },
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": true,
                 "complexType": {
                     "original": "UaiButtonVariant",
@@ -434,11 +433,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'solid'"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -454,11 +453,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "iconLeft": {
                 "type": "string",
-                "attribute": "icon-left",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -474,11 +473,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon-left",
                 "defaultValue": "null"
             },
             "iconRight": {
                 "type": "string",
-                "attribute": "icon-right",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -494,11 +493,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon-right",
                 "defaultValue": "null"
             },
             "arrow": {
                 "type": "boolean",
-                "attribute": "arrow",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -514,11 +513,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "arrow",
                 "defaultValue": "false"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiButtonType",
@@ -540,11 +539,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type",
                 "defaultValue": "'button'"
             },
             "iconTheme": {
                 "type": "string",
-                "attribute": "icon-theme",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiButtonIconTheme",
@@ -566,11 +565,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon-theme",
                 "defaultValue": "'outline'"
             },
             "typeIcon": {
                 "type": "string",
-                "attribute": "type-icon",
                 "mutable": false,
                 "complexType": {
                     "original": "UaiButtonIconType",
@@ -592,11 +591,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "type-icon",
                 "defaultValue": "'icon'"
             },
             "loading": {
                 "type": "boolean",
-                "attribute": "loading",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -612,11 +611,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "loading",
                 "defaultValue": "false"
             },
             "bdsLoadingVariant": {
                 "type": "string",
-                "attribute": "bds-loading-variant",
                 "mutable": false,
                 "complexType": {
                     "original": "LoadingSpinnerVariant",
@@ -625,7 +624,8 @@ export class UaiButton {
                         "LoadingSpinnerVariant": {
                             "location": "import",
                             "path": "../loading-spinner/loading-spinner",
-                            "id": "src/components/loading-spinner/loading-spinner.tsx::LoadingSpinnerVariant"
+                            "id": "src/components/loading-spinner/loading-spinner.tsx::LoadingSpinnerVariant",
+                            "referenceLocation": "LoadingSpinnerVariant"
                         }
                     }
                 },
@@ -640,11 +640,11 @@ export class UaiButton {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "bds-loading-variant"
             },
             "bdsLoadingColor": {
                 "type": "string",
-                "attribute": "bds-loading-color",
                 "mutable": false,
                 "complexType": {
                     "original": "colorsVariants",
@@ -653,7 +653,8 @@ export class UaiButton {
                         "colorsVariants": {
                             "location": "import",
                             "path": "../loading-spinner/loading-spinner",
-                            "id": "src/components/loading-spinner/loading-spinner.tsx::colorsVariants"
+                            "id": "src/components/loading-spinner/loading-spinner.tsx::colorsVariants",
+                            "referenceLocation": "colorsVariants"
                         }
                     }
                 },
@@ -668,11 +669,11 @@ export class UaiButton {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "bds-loading-color"
             },
             "ariaLabel": {
                 "type": "string",
-                "attribute": "aria-label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -688,11 +689,11 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "aria-label",
                 "defaultValue": "null"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -708,6 +709,7 @@ export class UaiButton {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -912,4 +914,3 @@ export class UaiButton {
             }];
     }
 }
-//# sourceMappingURL=uai-button.js.map

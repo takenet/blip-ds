@@ -1,9 +1,1 @@
-import { U as UaiIcon$1, d as defineCustomElement$1 } from './p-OT0vyIk-.js';
-
-const UaiIcon = UaiIcon$1;
-const defineCustomElement = defineCustomElement$1;
-
-export { UaiIcon, defineCustomElement };
-//# sourceMappingURL=uai-icon.js.map
-
-//# sourceMappingURL=uai-icon.js.map
+import{U as o,d as s}from"./p-UIJvZej9.js";const p=o,r=s;export{p as UaiIcon,r as defineCustomElement}

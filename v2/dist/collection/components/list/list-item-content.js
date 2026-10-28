@@ -27,7 +27,6 @@ export class ListItemContent {
         return {
             "direction": {
                 "type": "string",
-                "attribute": "direction",
                 "mutable": false,
                 "complexType": {
                     "original": "direction",
@@ -36,7 +35,8 @@ export class ListItemContent {
                         "direction": {
                             "location": "import",
                             "path": "../grid/grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::direction"
+                            "id": "src/components/grid/grid-interface.ts::direction",
+                            "referenceLocation": "direction"
                         }
                     }
                 },
@@ -49,11 +49,11 @@ export class ListItemContent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "direction",
                 "defaultValue": "'column'"
             },
             "justifyContent": {
                 "type": "string",
-                "attribute": "justify-content",
                 "mutable": false,
                 "complexType": {
                     "original": "justifyContent",
@@ -62,7 +62,8 @@ export class ListItemContent {
                         "justifyContent": {
                             "location": "import",
                             "path": "../grid/grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::justifyContent"
+                            "id": "src/components/grid/grid-interface.ts::justifyContent",
+                            "referenceLocation": "justifyContent"
                         }
                     }
                 },
@@ -75,11 +76,11 @@ export class ListItemContent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "justify-content",
                 "defaultValue": "'flex-start'"
             },
             "flexWrap": {
                 "type": "string",
-                "attribute": "flex-wrap",
                 "mutable": false,
                 "complexType": {
                     "original": "flexWrap",
@@ -88,7 +89,8 @@ export class ListItemContent {
                         "flexWrap": {
                             "location": "import",
                             "path": "../grid/grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::flexWrap"
+                            "id": "src/components/grid/grid-interface.ts::flexWrap",
+                            "referenceLocation": "flexWrap"
                         }
                     }
                 },
@@ -101,11 +103,11 @@ export class ListItemContent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "flex-wrap",
                 "defaultValue": "'wrap'"
             },
             "alignItems": {
                 "type": "string",
-                "attribute": "align-items",
                 "mutable": false,
                 "complexType": {
                     "original": "alignItems",
@@ -114,7 +116,8 @@ export class ListItemContent {
                         "alignItems": {
                             "location": "import",
                             "path": "../grid/grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::alignItems"
+                            "id": "src/components/grid/grid-interface.ts::alignItems",
+                            "referenceLocation": "alignItems"
                         }
                     }
                 },
@@ -127,11 +130,11 @@ export class ListItemContent {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align-items",
                 "defaultValue": "'flex-start'"
             },
             "gap": {
                 "type": "string",
-                "attribute": "gap",
                 "mutable": false,
                 "complexType": {
                     "original": "gap",
@@ -140,7 +143,8 @@ export class ListItemContent {
                         "gap": {
                             "location": "import",
                             "path": "../grid/grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::gap"
+                            "id": "src/components/grid/grid-interface.ts::gap",
+                            "referenceLocation": "gap"
                         }
                     }
                 },
@@ -152,10 +156,10 @@ export class ListItemContent {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "gap"
             }
         };
     }
     static get elementRef() { return "hostElement"; }
 }
-//# sourceMappingURL=list-item-content.js.map

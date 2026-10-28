@@ -189,7 +189,6 @@ export class InputPassword {
         return {
             "openEyes": {
                 "type": "boolean",
-                "attribute": "open-eyes",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -205,11 +204,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "open-eyes",
                 "defaultValue": "false"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string | null",
@@ -225,11 +224,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "value",
                 "defaultValue": "''"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -245,11 +244,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "label",
                 "defaultValue": "''"
             },
             "inputName": {
                 "type": "string",
-                "attribute": "input-name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -265,11 +264,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "input-name",
                 "defaultValue": "''"
             },
             "max": {
                 "type": "string",
-                "attribute": "max",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -284,11 +283,11 @@ export class InputPassword {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "max"
             },
             "maxlength": {
                 "type": "number",
-                "attribute": "maxlength",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -303,11 +302,11 @@ export class InputPassword {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "maxlength"
             },
             "min": {
                 "type": "string",
-                "attribute": "min",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -322,11 +321,11 @@ export class InputPassword {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "min"
             },
             "minlength": {
                 "type": "number",
-                "attribute": "minlength",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -341,11 +340,11 @@ export class InputPassword {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "minlength"
             },
             "readonly": {
                 "type": "boolean",
-                "attribute": "readonly",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -361,11 +360,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "readonly",
                 "defaultValue": "false"
             },
             "helperMessage": {
                 "type": "string",
-                "attribute": "helper-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -381,11 +380,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "helper-message",
                 "defaultValue": "''"
             },
             "errorMessage": {
                 "type": "string",
-                "attribute": "error-message",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -401,11 +400,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "error-message",
                 "defaultValue": "''"
             },
             "successMessage": {
                 "type": "string",
-                "attribute": "success-message",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -421,11 +420,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "success-message",
                 "defaultValue": "''"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -441,11 +440,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "success": {
                 "type": "boolean",
-                "attribute": "success",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -461,11 +460,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "success",
                 "defaultValue": "false"
             },
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -481,11 +480,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "''"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -501,11 +500,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "autoCapitalize": {
                 "type": "string",
-                "attribute": "auto-capitalize",
                 "mutable": false,
                 "complexType": {
                     "original": "InputAutocapitalize",
@@ -514,7 +513,8 @@ export class InputPassword {
                         "InputAutocapitalize": {
                             "location": "import",
                             "path": "../input/input-interface",
-                            "id": "src/components/input/input-interface.ts::InputAutocapitalize"
+                            "id": "src/components/input/input-interface.ts::InputAutocapitalize",
+                            "referenceLocation": "InputAutocapitalize"
                         }
                     }
                 },
@@ -527,11 +527,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto-capitalize",
                 "defaultValue": "'off'"
             },
             "autoComplete": {
                 "type": "string",
-                "attribute": "auto-complete",
                 "mutable": false,
                 "complexType": {
                     "original": "InputAutoComplete",
@@ -540,7 +540,8 @@ export class InputPassword {
                         "InputAutoComplete": {
                             "location": "import",
                             "path": "../input/input-interface",
-                            "id": "src/components/input/input-interface.ts::InputAutoComplete"
+                            "id": "src/components/input/input-interface.ts::InputAutoComplete",
+                            "referenceLocation": "InputAutoComplete"
                         }
                     }
                 },
@@ -553,11 +554,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "auto-complete",
                 "defaultValue": "'off'"
             },
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -573,11 +574,11 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "''"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -593,6 +594,7 @@ export class InputPassword {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -719,4 +721,3 @@ export class InputPassword {
             }];
     }
 }
-//# sourceMappingURL=input-password.js.map

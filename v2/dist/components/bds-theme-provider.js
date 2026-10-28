@@ -1,9 +1,1 @@
-import { T as ThemeProvider, d as defineCustomElement$1 } from './p-HUbgptm9.js';
-
-const BdsThemeProvider = ThemeProvider;
-const defineCustomElement = defineCustomElement$1;
-
-export { BdsThemeProvider, defineCustomElement };
-//# sourceMappingURL=bds-theme-provider.js.map
-
-//# sourceMappingURL=bds-theme-provider.js.map
+import{T as s,d as o}from"./p-OqBMHHbs.js";const p=s,r=o;export{p as BdsThemeProvider,r as defineCustomElement}

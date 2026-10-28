@@ -137,7 +137,6 @@ export class List {
         return {
             "typeList": {
                 "type": "string",
-                "attribute": "type-list",
                 "mutable": false,
                 "complexType": {
                     "original": "TypeList",
@@ -159,11 +158,11 @@ export class List {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "type-list",
                 "defaultValue": "null"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -178,11 +177,11 @@ export class List {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "value"
             },
             "data": {
                 "type": "string",
-                "attribute": "data",
                 "mutable": true,
                 "complexType": {
                     "original": "string | Data[]",
@@ -191,7 +190,8 @@ export class List {
                         "Data": {
                             "location": "import",
                             "path": "./list-interface",
-                            "id": "src/components/list/list-interface.ts::Data"
+                            "id": "src/components/list/list-interface.ts::Data",
+                            "referenceLocation": "Data"
                         }
                     }
                 },
@@ -203,7 +203,8 @@ export class List {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "data"
             }
         };
     }
@@ -307,4 +308,3 @@ export class List {
             }];
     }
 }
-//# sourceMappingURL=list.js.map

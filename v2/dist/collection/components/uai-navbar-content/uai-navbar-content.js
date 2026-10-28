@@ -22,4 +22,3 @@ export class UaiNavbarContent {
     }
     static get elementRef() { return "hostElement"; }
 }
-//# sourceMappingURL=uai-navbar-content.js.map

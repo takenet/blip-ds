@@ -25,7 +25,6 @@ export class CardFooter {
         return {
             "align": {
                 "type": "string",
-                "attribute": "align",
                 "mutable": false,
                 "complexType": {
                     "original": "justifyContent",
@@ -47,9 +46,9 @@ export class CardFooter {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "align",
                 "defaultValue": "'flex-end'"
             }
         };
     }
 }
-//# sourceMappingURL=card-footer.js.map

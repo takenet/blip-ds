@@ -160,7 +160,6 @@ export class BdsToast {
         return {
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -176,11 +175,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "icon",
                 "defaultValue": "null"
             },
             "actionType": {
                 "type": "string",
-                "attribute": "action-type",
                 "mutable": false,
                 "complexType": {
                     "original": "ActionType",
@@ -189,7 +188,8 @@ export class BdsToast {
                         "ActionType": {
                             "location": "import",
                             "path": "./toast-interface",
-                            "id": "src/components/toast/toast-interface.ts::ActionType"
+                            "id": "src/components/toast/toast-interface.ts::ActionType",
+                            "referenceLocation": "ActionType"
                         }
                     }
                 },
@@ -202,11 +202,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "action-type",
                 "defaultValue": "'button'"
             },
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "VariantType",
@@ -215,7 +215,8 @@ export class BdsToast {
                         "VariantType": {
                             "location": "import",
                             "path": "./toast-interface",
-                            "id": "src/components/toast/toast-interface.ts::VariantType"
+                            "id": "src/components/toast/toast-interface.ts::VariantType",
+                            "referenceLocation": "VariantType"
                         }
                     }
                 },
@@ -228,11 +229,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'system'"
             },
             "toastTitle": {
                 "type": "string",
-                "attribute": "toast-title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -247,11 +248,11 @@ export class BdsToast {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "toast-title"
             },
             "toastText": {
                 "type": "string",
-                "attribute": "toast-text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -266,11 +267,11 @@ export class BdsToast {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "toast-text"
             },
             "buttonText": {
                 "type": "string",
-                "attribute": "button-text",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -285,11 +286,11 @@ export class BdsToast {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "button-text"
             },
             "duration": {
                 "type": "number",
-                "attribute": "duration",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -305,11 +306,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "duration",
                 "defaultValue": "0"
             },
             "buttonAction": {
                 "type": "string",
-                "attribute": "button-action",
                 "mutable": false,
                 "complexType": {
                     "original": "ButtonActionType",
@@ -318,7 +319,8 @@ export class BdsToast {
                         "ButtonActionType": {
                             "location": "import",
                             "path": "./toast-interface",
-                            "id": "src/components/toast/toast-interface.ts::ButtonActionType"
+                            "id": "src/components/toast/toast-interface.ts::ButtonActionType",
+                            "referenceLocation": "ButtonActionType"
                         }
                     }
                 },
@@ -331,11 +333,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "button-action",
                 "defaultValue": "'close'"
             },
             "show": {
                 "type": "boolean",
-                "attribute": "show",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -351,11 +353,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "show",
                 "defaultValue": "false"
             },
             "hide": {
                 "type": "boolean",
-                "attribute": "hide",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -371,11 +373,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "hide",
                 "defaultValue": "false"
             },
             "position": {
                 "type": "string",
-                "attribute": "position",
                 "mutable": false,
                 "complexType": {
                     "original": "PositionType",
@@ -384,7 +386,8 @@ export class BdsToast {
                         "PositionType": {
                             "location": "import",
                             "path": "./toast-interface",
-                            "id": "src/components/toast/toast-interface.ts::PositionType"
+                            "id": "src/components/toast/toast-interface.ts::PositionType",
+                            "referenceLocation": "PositionType"
                         }
                     }
                 },
@@ -397,11 +400,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "position",
                 "defaultValue": "'bottom-left'"
             },
             "dtButtonAction": {
                 "type": "string",
-                "attribute": "dt-button-action",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -417,11 +420,11 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-action",
                 "defaultValue": "null"
             },
             "dtButtonClose": {
                 "type": "string",
-                "attribute": "dt-button-close",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -437,6 +440,7 @@ export class BdsToast {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "dt-button-close",
                 "defaultValue": "null"
             }
         };
@@ -482,7 +486,8 @@ export class BdsToast {
                         "CreateToastType": {
                             "location": "import",
                             "path": "./toast-interface",
-                            "id": "src/components/toast/toast-interface.ts::CreateToastType"
+                            "id": "src/components/toast/toast-interface.ts::CreateToastType",
+                            "referenceLocation": "CreateToastType"
                         }
                     },
                     "return": "Promise<void>"
@@ -513,4 +518,3 @@ export class BdsToast {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=toast.js.map

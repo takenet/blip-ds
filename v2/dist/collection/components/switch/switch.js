@@ -90,7 +90,6 @@ export class Switch {
         return {
             "refer": {
                 "type": "string",
-                "attribute": "refer",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -105,11 +104,11 @@ export class Switch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "refer"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "SwitchSize",
@@ -131,11 +130,11 @@ export class Switch {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -150,11 +149,11 @@ export class Switch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "name"
             },
             "checked": {
                 "type": "boolean",
-                "attribute": "checked",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -170,11 +169,11 @@ export class Switch {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "checked",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -190,11 +189,11 @@ export class Switch {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -210,6 +209,7 @@ export class Switch {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -286,4 +286,3 @@ export class Switch {
             }];
     }
 }
-//# sourceMappingURL=switch.js.map

@@ -81,7 +81,6 @@ export class Chip {
         return {
             "icon": {
                 "type": "string",
-                "attribute": "icon",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -96,11 +95,11 @@ export class Chip {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "icon"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "ChipSize",
@@ -122,11 +121,11 @@ export class Chip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "ChipVariant",
@@ -148,11 +147,11 @@ export class Chip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'default'"
             },
             "danger": {
                 "type": "boolean",
-                "attribute": "danger",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -168,11 +167,11 @@ export class Chip {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "danger",
                 "defaultValue": "false"
             },
             "filter": {
                 "type": "boolean",
-                "attribute": "filter",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -188,11 +187,11 @@ export class Chip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "filter",
                 "defaultValue": "false"
             },
             "clickable": {
                 "type": "boolean",
-                "attribute": "clickable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -208,11 +207,11 @@ export class Chip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "clickable",
                 "defaultValue": "false"
             },
             "deletable": {
                 "type": "boolean",
-                "attribute": "deletable",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -228,11 +227,11 @@ export class Chip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "deletable",
                 "defaultValue": "false"
             },
             "disabled": {
                 "type": "boolean",
-                "attribute": "disabled",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -248,6 +247,7 @@ export class Chip {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "disabled",
                 "defaultValue": "false"
             }
         };
@@ -272,4 +272,3 @@ export class Chip {
     }
     static get elementRef() { return "element"; }
 }
-//# sourceMappingURL=chip.js.map

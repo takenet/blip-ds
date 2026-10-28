@@ -76,7 +76,6 @@ export class BdsLoadingSpinner {
         return {
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": false,
                 "complexType": {
                     "original": "LoadingSpinnerVariant",
@@ -98,11 +97,11 @@ export class BdsLoadingSpinner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "variant",
                 "defaultValue": "'primary'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "loadingSize",
@@ -124,11 +123,11 @@ export class BdsLoadingSpinner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'standard'"
             },
             "color": {
                 "type": "string",
-                "attribute": "color",
                 "mutable": false,
                 "complexType": {
                     "original": "colorsVariants",
@@ -150,11 +149,11 @@ export class BdsLoadingSpinner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "color",
                 "defaultValue": "'main'"
             },
             "dataTest": {
                 "type": "string",
-                "attribute": "data-test",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -170,6 +169,7 @@ export class BdsLoadingSpinner {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data-test",
                 "defaultValue": "null"
             }
         };
@@ -186,4 +186,3 @@ export class BdsLoadingSpinner {
             }];
     }
 }
-//# sourceMappingURL=loading-spinner.js.map

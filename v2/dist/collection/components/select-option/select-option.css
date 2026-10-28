@@ -51,14 +51,14 @@
 .select-option--selected .select-option__container--value {
   color: var(--color-primary, rgb(30, 107, 241));
 }
+.select-option--disabled .select-option__container--value:hover,
+.select-option--disabled .select-option__container--bulk:hover {
+  background-color: var(--color-surface-1, rgb(246, 246, 246));
+}
 .select-option--disabled .select-option__container--value,
 .select-option--disabled .select-option__container--bulk {
   cursor: not-allowed;
   color: var(--color-content-disable, rgb(89, 89, 89));
-}
-.select-option--disabled .select-option__container--value:hover,
-.select-option--disabled .select-option__container--bulk:hover {
-  background-color: var(--color-surface-1, rgb(246, 246, 246));
 }
 .select-option ::slotted(bds-icon) {
   margin-right: 10px;
