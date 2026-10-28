@@ -409,8 +409,8 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'bds-input-phone-number',
     name: 'Input Phone Number',
-    primaryStory: 'components-input-phone-number--properties',
-    stories: [{ storyId: 'components-input-phone-number--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-input-phone-number--properties',
+    stories: [{ storyId: 'components-deprecated-input-phone-number--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-chip-clickable',

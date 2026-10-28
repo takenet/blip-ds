@@ -7,6 +7,10 @@ import * as countriesEnUS from './countries-en_US.json';
 import * as countriesEsES from './countries-es_ES.json';
 
 export type languages = 'pt_BR' | 'es_ES' | 'en_US';
+
+/**
+ * @deprecated Use `uai-input-phone` for new UAI experiences. This component remains supported for existing consumers.
+ */
 @Component({
   tag: 'bds-input-phone-number',
   styleUrl: 'input-phone-number.scss',
