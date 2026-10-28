@@ -7,8 +7,8 @@
 
 ## Overview
 
-Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
-en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+Date field. The person types the date as DD-MM-YYYY in every language or picks it in the browser calendar;
+value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
 for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
 times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
 
@@ -26,13 +26,13 @@ times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
 | `icon`                 | `icon`                   | UaiIcon name shown before the date.                                                                                           | `string`                        | `''`        |
 | `inputName`            | `input-name`             | Name of the value in the submitted form data. Same as name, kept from bds-input.                                              | `string`                        | `''`        |
 | `label`                | `label`                  | Label shown above the field. Without it, the default text of the language is shown ("Data").                                  | `string`                        | `undefined` |
-| `language`             | `language`               | Language of the date format and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.                            | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`   |
+| `language`             | `language`               | Language of the default texts. The date format is always DD-MM-YYYY. Can be 'pt_BR' (default), 'en_US', 'es_ES'.              | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`   |
 | `max`                  | `max`                    | Latest accepted date, as ISO YYYY-MM-DD.                                                                                      | `string`                        | `undefined` |
 | `maxErrorMessage`      | `max-error-message`      | Message shown when the date is after max. Without it, the default text with the max date is shown.                            | `string`                        | `undefined` |
 | `min`                  | `min`                    | Earliest accepted date, as ISO YYYY-MM-DD.                                                                                    | `string`                        | `undefined` |
 | `minErrorMessage`      | `min-error-message`      | Message shown when the date is before min. Without it, the default text with the min date is shown.                           | `string`                        | `undefined` |
 | `name`                 | `name`                   | Name of the value in the submitted form data, which is the ISO date. Without name (or inputName), the field is not submitted. | `string`                        | `undefined` |
-| `placeholder`          | `placeholder`            | Text shown while the field is empty. Without it, the date format of the language is shown ("dd/mm/aaaa").                     | `string`                        | `undefined` |
+| `placeholder`          | `placeholder`            | Text shown while the field is empty. Without it, "DD-MM-YYYY" is shown.                                                       | `string`                        | `undefined` |
 | `readonly`             | `readonly`               | If true, the date can be selected and copied but not edited, and the calendar button is hidden.                               | `boolean`                       | `false`     |
 | `required`             | `required`               | If true, an empty field blocks the form submission.                                                                           | `boolean`                       | `undefined` |
 | `requiredErrorMessage` | `required-error-message` | Message shown when a required field is empty. Without it, the default text of the language is shown.                          | `string`                        | `undefined` |
@@ -107,7 +107,7 @@ Type: `Promise<void>`
 | Part                | Description                                                                |
 | ------------------- | -------------------------------------------------------------------------- |
 | `"calendar-button"` | The button that opens the browser calendar.                                |
-| `"input"`           | The native text input with the date in the format of the language.         |
+| `"input"`           | The native text input with the date as DD-MM-YYYY.                         |
 | `"input-container"` | The field box with border, icon, the native input and the calendar button. |
 | `"input__message"`  | The helper, error or success message below the field.                      |
 

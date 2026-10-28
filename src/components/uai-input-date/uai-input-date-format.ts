@@ -20,7 +20,7 @@ const LOCALES: Record<UaiInputDateLanguage, DateLocale> = {
   pt_BR: {
     order: ['day', 'month', 'year'],
     label: 'Data',
-    placeholder: 'dd/mm/aaaa',
+    placeholder: 'DD-MM-YYYY',
     calendar: 'Abrir calendário',
     required: 'Informe a data.',
     date: 'Informe uma data válida.',
@@ -28,9 +28,9 @@ const LOCALES: Record<UaiInputDateLanguage, DateLocale> = {
     max: (date) => `Informe uma data até ${date}.`,
   },
   en_US: {
-    order: ['month', 'day', 'year'],
+    order: ['day', 'month', 'year'],
     label: 'Date',
-    placeholder: 'mm/dd/yyyy',
+    placeholder: 'DD-MM-YYYY',
     calendar: 'Open calendar',
     required: 'Enter the date.',
     date: 'Enter a valid date.',
@@ -40,7 +40,7 @@ const LOCALES: Record<UaiInputDateLanguage, DateLocale> = {
   es_ES: {
     order: ['day', 'month', 'year'],
     label: 'Fecha',
-    placeholder: 'dd/mm/aaaa',
+    placeholder: 'DD-MM-YYYY',
     calendar: 'Abrir calendario',
     required: 'Ingrese la fecha.',
     date: 'Ingrese una fecha válida.',
@@ -60,7 +60,7 @@ export function isIsoDate(text: string | null | undefined): boolean {
   return year > 0 && date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
 }
 
-/** Groups the typed digits with slashes in the order of the language: "25122026" -> "25/12/2026". */
+/** Groups the typed digits as DD-MM-YYYY: "25122026" -> "25-12-2026". */
 export function groupDigits(digits: string, language: UaiInputDateLanguage): string {
   const groups: string[] = [];
   let rest = digits;
@@ -69,7 +69,7 @@ export function groupDigits(digits: string, language: UaiInputDateLanguage): str
     groups.push(rest.slice(0, LENGTHS[part]));
     rest = rest.slice(LENGTHS[part]);
   }
-  return groups.join('/');
+  return groups.join('-');
 }
 
 /** ISO date for eight typed digits, or '' when they are incomplete or name a day that does not exist. */
@@ -85,10 +85,10 @@ export function displayToIso(digits: string, language: UaiInputDateLanguage): st
   return isIsoDate(iso) ? iso : '';
 }
 
-/** Date in the format of the language for an ISO date, or '' when the ISO text is not valid. */
+/** Date as DD-MM-YYYY for an ISO date, or '' when the ISO text is not valid. */
 export function isoToDisplay(iso: string | null | undefined, language: UaiInputDateLanguage): string {
   const match = ISO_DATE.exec(iso || '');
   if (!match || !isIsoDate(iso)) return '';
   const parts: Record<DatePart, string> = { year: match[1], month: match[2], day: match[3] };
-  return LOCALES[language].order.map((part) => parts[part]).join('/');
+  return LOCALES[language].order.map((part) => parts[part]).join('-');
 }

@@ -20,9 +20,9 @@ Um formulário de agendamento com a data controlada por estado, limitada por `mi
 <Canvas of={UaiInputDateStories.Usage} sourceState="shown" />
 
 - Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
-- `value`, `min`, `max` e o valor enviado no formulário são sempre ISO `YYYY-MM-DD`. O campo exibe a data no formato do idioma: `dd/mm/aaaa` em `pt_BR` (padrão) e `es_ES`, `mm/dd/yyyy` em `en_US`.
-- A pessoa digita só os números; as barras entram sozinhas. O botão de calendário abre o seletor nativo do navegador, enquanto o calendário UAI (`uai-datepicker`) não chega.
-- Sem `label`, o rótulo é "Data" (`pt_BR`), "Date" (`en_US`) ou "Fecha" (`es_ES`). Sem `placeholder`, aparece o formato do idioma.
+- `value`, `min`, `max` e o valor enviado no formulário são sempre ISO `YYYY-MM-DD`. O campo exibe a data em `DD-MM-YYYY` em todos os idiomas.
+- A pessoa digita só os números; os hifens entram sozinhas. O botão de calendário abre o seletor nativo do navegador, enquanto o calendário UAI (`uai-datepicker`) não chega.
+- Sem `label`, o rótulo é "Data" (`pt_BR`), "Date" (`en_US`) ou "Fecha" (`es_ES`). Sem `placeholder`, aparece `DD-MM-YYYY`.
 - Fora do React, use o custom element `<uai-input-date>`, com as propriedades em kebab-case (`helper-message`, `min-error-message`) e os eventos `uaiChange`, `uaiInput` etc.
 
 ## Estados
@@ -46,9 +46,9 @@ Um formulário de agendamento com a data controlada por estado, limitada por `mi
 
 | Regra | Teste |
 | --- | --- |
-| Só dígitos são aceitos e as barras entram sozinhas: digitar `25122026` em `pt_BR` mostra `25/12/2026` e `value` vira `2026-12-25` | `test/uai-input-date.e2e.ts` |
-| Um `value` ISO aparece no formato do idioma: `2026-12-25` vira `12/25/2026` em `en_US` | `test/uai-input-date.spec.tsx` |
-| Sem `placeholder`, aparece o formato do idioma (`dd/mm/aaaa` ou `mm/dd/yyyy`); sem `label`, o texto padrão do idioma | `test/uai-input-date.spec.tsx` |
+| Só dígitos são aceitos e os hifens entram sozinhas: digitar `25122026` em `pt_BR` mostra `25-12-2026` e `value` vira `2026-12-25` | `test/uai-input-date.e2e.ts` |
+| Um `value` ISO aparece em `DD-MM-YYYY`: `2026-12-25` vira `25-12-2026`, inclusive em `en_US` | `test/uai-input-date.spec.tsx` |
+| Sem `placeholder`, aparece `DD-MM-YYYY`; sem `label`, o texto padrão do idioma | `test/uai-input-date.spec.tsx` |
 | `language` desconhecido cai em `pt_BR` e `size` desconhecido em `medium`, com aviso único | `test/uai-input-date.spec.tsx` |
 
 <Canvas of={UaiInputDateStories.Languages} />
@@ -70,7 +70,7 @@ Um formulário de agendamento com a data controlada por estado, limitada por `mi
 | O reset do formulário volta à data inicial e limpa a validação | `test/uai-input-date.e2e.ts` |
 | Dentro de um `fieldset` desabilitado, campo e botão ficam desabilitados e o valor não é enviado | `test/uai-input-date.e2e.ts` |
 | `required` vazio mostra `requiredErrorMessage` ao sair do campo ou no envio | `test/uai-input-date.e2e.ts` |
-| Data incompleta ou inexistente (`31/02/2026`) deixa `value` vazio, mostra `dateErrorMessage` e `isValid()` retorna `false` | `test/uai-input-date.e2e.ts` |
+| Data incompleta ou inexistente (`31-02-2026`) deixa `value` vazio, mostra `dateErrorMessage` e `isValid()` retorna `false` | `test/uai-input-date.e2e.ts` |
 | Data antes de `min` ou depois de `max` mostra `minErrorMessage` ou `maxErrorMessage`; sem a prop, o texto padrão do idioma com o limite | `test/uai-input-date.e2e.ts` |
 
 <Canvas of={UaiInputDateStories.Range} />
@@ -126,8 +126,8 @@ Props e métodos têm os mesmos nomes do `BdsInput`. As diferenças:
 | --- | --- |
 | `<BdsInput type="date" />` | `<UaiInputDate />`, componente próprio |
 | `onBdsChange`, `onBdsInput`, `onBdsFocus`, `onBdsOnBlur` | `onUaiChange`, `onUaiInput`, `onUaiFocus`, `onUaiOnBlur`; `uaiChange` traz `{ value }` em ISO |
-| `value`, `min`, `max` em ISO `YYYY-MM-DD` | Iguais, em ISO; a exibição segue o formato do idioma |
-| Aparência e seletor do `input type="date"` do navegador | Campo UAI digitável (só números, barras automáticas) e botão de calendário que abre o seletor nativo |
+| `value`, `min`, `max` em ISO `YYYY-MM-DD` | Iguais, em ISO; a exibição usa `DD-MM-YYYY` |
+| Aparência e seletor do `input type="date"` do navegador | Campo UAI digitável (só números, hifens automáticos) e botão de calendário que abre o seletor nativo |
 | `pattern`, `minlength`, `maxlength`, `counterLength`, `type` | Não se aplicam a data |
 | Campo fora do `<form>` nativo | Participa do formulário: `FormData` em ISO, reset, validação e `fieldset` |
 | — | `size` (`short` \| `medium`), `name`, `language`, `dateErrorMessage`, `aria-label` |
