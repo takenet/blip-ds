@@ -81,6 +81,7 @@ import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconTy
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 import { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
+import { UaiInputChipsChange, UaiInputChipsLanguage, UaiInputChipsSize, UaiInputChipsType } from "./components/uai-input-chips/uai-input-chips";
 import { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
 import { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
 import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
@@ -165,6 +166,7 @@ export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconTy
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 export { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
+export { UaiInputChipsChange, UaiInputChipsLanguage, UaiInputChipsSize, UaiInputChipsType } from "./components/uai-input-chips/uai-input-chips";
 export { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
 export { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
 export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
@@ -1697,6 +1699,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputChips {
         "add": (value: string) => Promise<void>;
         /**
@@ -4201,6 +4206,190 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
+     * Field that turns free text into removable chips. The person types a value and presses Enter, or separates values
+     * with comma or semicolon; Backspace on the empty field removes the last chip. It takes part in native forms: with a
+     * name, each chip is submitted as one entry (read them with FormData.getAll). Use it for several open values, such as
+     * e-mails or tags. Pair with UaiButton in forms. Avoid it to choose from known options (use uai-select-chips or
+     * uai-autocomplete). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputChips {
+        /**
+          * Adds chips from the given text, or from the typed text when no value is given.
+         */
+        "add": (value?: string) => Promise<void>;
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * If true, leaving the field turns the typed text into a chip.
+          * @default false
+         */
+        "blurCreation": boolean;
+        /**
+          * Values shown as chips. Accepts an array or a JSON array string, for example '["ana@blip.ai", "bia@blip.ai"]'.
+          * @default []
+         */
+        "chips": string[] | string;
+        /**
+          * Removes all chips and the typed text.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If true, shows the number of chips and maxChipsLength.
+          * @default false
+         */
+        "counterLength"?: boolean;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Characters that split the text into several chips. Default: comma and semicolon (/,|;/).
+          * @default /,|;/
+         */
+        "delimiters"?: RegExp;
+        /**
+          * @deprecated Has no effect.
+         */
+        "disableSubmit"?: boolean;
+        /**
+          * If true, the field cannot be used and the chips are left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the remove button of each chip.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * If true, repeated values are accepted. If false (default), a value equal to an existing chip, ignoring case, is ignored.
+          * @default false
+         */
+        "duplicated"?: boolean;
+        /**
+          * Message shown when type is 'email' and a chip is not an e-mail. Without it, the default text is shown.
+         */
+        "emailErrorMessage": string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Returns the chips.
+         */
+        "get": () => Promise<string[]>;
+        /**
+          * @deprecated The field grows with the chips. Has no effect.
+         */
+        "height"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the chips.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the values in the submitted form data. Same as name, kept from bds-input-chips.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Returns true when the chips are valid for the type and, if required, there is at least one.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputChipsLanguage;
+        /**
+          * Largest number of chips. When it is reached, the text input is hidden.
+         */
+        "maxChipsLength"?: number;
+        /**
+          * @deprecated The field grows with the chips. Has no effect.
+         */
+        "maxHeight"?: string;
+        /**
+          * Largest number of characters of each chip.
+         */
+        "maxlength"?: number;
+        /**
+          * Name of the values in the submitted form data; each chip is one entry. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Example of a value, shown while the text is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the chips are shown without remove buttons and no value can be typed.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes the focus from the text input.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, the field without chips blocks the form submission.
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field has no chips. Without it, the default text is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * Moves the focus to the text input.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Minimum height of the field, which grows with the chips. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputChipsSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Kind of value. Can be one of: 'text' (default), 'email'. With 'email', chips that are not e-mails are marked as errors and the field is invalid.
+          * @default 'text'
+         */
+        "type": UaiInputChipsType;
+        /**
+          * Text being typed, before it becomes a chip.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
      * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
      * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
@@ -5201,6 +5390,10 @@ export interface UaiInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputElement;
 }
+export interface UaiInputChipsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputChipsElement;
+}
 export interface UaiInputDateCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputDateElement;
@@ -5804,6 +5997,9 @@ declare global {
         "bdsExtendedQuantityInput": { value: boolean };
         "bdsSubmit": { value: string[] };
     }
+    /**
+     * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputChipsElementEventMap>(type: K, listener: (this: HTMLBdsInputChipsElement, ev: BdsInputChipsCustomEvent<HTMLBdsInputChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6608,6 +6804,36 @@ declare global {
         prototype: HTMLUaiInputElement;
         new (): HTMLUaiInputElement;
     };
+    interface HTMLUaiInputChipsElementEventMap {
+        "uaiChange": UaiInputChipsChange;
+        "uaiChangeChips": UaiInputChipsChange;
+        "uaiInputChipsFocus": void;
+        "uaiBlur": string[];
+        "uaiInputChipsInput": InputEvent;
+        "uaiExtendedQuantityInput": { value: boolean };
+        "uaiSubmit": { value: string[] };
+    }
+    /**
+     * Field that turns free text into removable chips. The person types a value and presses Enter, or separates values
+     * with comma or semicolon; Backspace on the empty field removes the last chip. It takes part in native forms: with a
+     * name, each chip is submitted as one entry (read them with FormData.getAll). Use it for several open values, such as
+     * e-mails or tags. Pair with UaiButton in forms. Avoid it to choose from known options (use uai-select-chips or
+     * uai-autocomplete). Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiInputChipsElement extends Components.UaiInputChips, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputChipsElementEventMap>(type: K, listener: (this: HTMLUaiInputChipsElement, ev: UaiInputChipsCustomEvent<HTMLUaiInputChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputChipsElementEventMap>(type: K, listener: (this: HTMLUaiInputChipsElement, ev: UaiInputChipsCustomEvent<HTMLUaiInputChipsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputChipsElement: {
+        prototype: HTMLUaiInputChipsElement;
+        new (): HTMLUaiInputChipsElement;
+    };
     interface HTMLUaiInputDateElementEventMap {
         "uaiChange": { value: string };
         "uaiInput": InputEvent;
@@ -6872,6 +7098,7 @@ declare global {
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-input": HTMLUaiInputElement;
+        "uai-input-chips": HTMLUaiInputChipsElement;
         "uai-input-date": HTMLUaiInputDateElement;
         "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-input-phone": HTMLUaiInputPhoneElement;
@@ -8498,6 +8725,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputChips {
         /**
           * When true, the press enter will be simulated on blur event.
@@ -11185,6 +11415,198 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
+     * Field that turns free text into removable chips. The person types a value and presses Enter, or separates values
+     * with comma or semicolon; Backspace on the empty field removes the last chip. It takes part in native forms: with a
+     * name, each chip is submitted as one entry (read them with FormData.getAll). Use it for several open values, such as
+     * e-mails or tags. Pair with UaiButton in forms. Avoid it to choose from known options (use uai-select-chips or
+     * uai-autocomplete). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputChips {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, leaving the field turns the typed text into a chip.
+          * @default false
+         */
+        "blurCreation"?: boolean;
+        /**
+          * Values shown as chips. Accepts an array or a JSON array string, for example '["ana@blip.ai", "bia@blip.ai"]'.
+          * @default []
+         */
+        "chips"?: string[] | string;
+        /**
+          * If true, shows the number of chips and maxChipsLength.
+          * @default false
+         */
+        "counterLength"?: boolean;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Characters that split the text into several chips. Default: comma and semicolon (/,|;/).
+          * @default /,|;/
+         */
+        "delimiters"?: RegExp;
+        /**
+          * @deprecated Has no effect.
+         */
+        "disableSubmit"?: boolean;
+        /**
+          * If true, the field cannot be used and the chips are left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the remove button of each chip.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * If true, repeated values are accepted. If false (default), a value equal to an existing chip, ignoring case, is ignored.
+          * @default false
+         */
+        "duplicated"?: boolean;
+        /**
+          * Message shown when type is 'email' and a chip is not an e-mail. Without it, the default text is shown.
+         */
+        "emailErrorMessage"?: string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * @deprecated The field grows with the chips. Has no effect.
+         */
+        "height"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the chips.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the values in the submitted form data. Same as name, kept from bds-input-chips.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputChipsLanguage;
+        /**
+          * Largest number of chips. When it is reached, the text input is hidden.
+         */
+        "maxChipsLength"?: number;
+        /**
+          * @deprecated The field grows with the chips. Has no effect.
+         */
+        "maxHeight"?: string;
+        /**
+          * Largest number of characters of each chip.
+         */
+        "maxlength"?: number;
+        /**
+          * Name of the values in the submitted form data; each chip is one entry. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the text input loses focus. detail: all chips.
+         */
+        "onUaiBlur"?: (event: UaiInputChipsCustomEvent<string[]>) => void;
+        /**
+          * Emitted when chips are added or removed. detail: { data (all chips), value (last chip) }.
+         */
+        "onUaiChange"?: (event: UaiInputChipsCustomEvent<UaiInputChipsChange>) => void;
+        /**
+          * Emitted when chips are added or removed. Same as uaiChange, kept from bds-input-chips.
+         */
+        "onUaiChangeChips"?: (event: UaiInputChipsCustomEvent<UaiInputChipsChange>) => void;
+        /**
+          * Emitted when maxChipsLength is reached. detail: { value: true }.
+         */
+        "onUaiExtendedQuantityInput"?: (event: UaiInputChipsCustomEvent<{ value: boolean }>) => void;
+        /**
+          * Emitted when the text input receives focus.
+         */
+        "onUaiInputChipsFocus"?: (event: UaiInputChipsCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInputChipsInput"?: (event: UaiInputChipsCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when the text input loses focus with chips. detail: { value (all chips) }.
+         */
+        "onUaiSubmit"?: (event: UaiInputChipsCustomEvent<{ value: string[] }>) => void;
+        /**
+          * Example of a value, shown while the text is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the chips are shown without remove buttons and no value can be typed.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, the field without chips blocks the form submission.
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field has no chips. Without it, the default text is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Minimum height of the field, which grows with the chips. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputChipsSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Kind of value. Can be one of: 'text' (default), 'email'. With 'email', chips that are not e-mails are marked as errors and the field is invalid.
+          * @default 'text'
+         */
+        "type"?: UaiInputChipsType;
+        /**
+          * Text being typed, before it becomes a chip.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
      * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
      * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
@@ -12962,6 +13384,39 @@ declare namespace LocalJSX {
         "iconSize": 'small' | 'medium';
         "debounceDelay": number;
     }
+    interface UaiInputChipsAttributes {
+        "chips": string[] | string;
+        "value": string | null;
+        "duplicated": boolean;
+        "blurCreation": boolean;
+        "type": UaiInputChipsType;
+        "name": string;
+        "inputName": string;
+        "label": string;
+        "placeholder": string;
+        "size": UaiInputChipsSize;
+        "language": UaiInputChipsLanguage;
+        "icon": string;
+        "required": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "emailErrorMessage": string;
+        "requiredErrorMessage": string;
+        "maxlength": number;
+        "maxChipsLength": number;
+        "counterLength": boolean;
+        "ariaLabel": string;
+        "dataTest": string;
+        "dtButtonClose": string;
+        "height": string;
+        "maxHeight": string;
+        "disableSubmit": boolean;
+    }
     interface UaiInputDateAttributes {
         "name": string;
         "inputName": string;
@@ -13229,6 +13684,7 @@ declare namespace LocalJSX {
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
+        "uai-input-chips": Omit<UaiInputChips, keyof UaiInputChipsAttributes> & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes]?: UaiInputChips[K] } & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes as `attr:${K}`]?: UaiInputChipsAttributes[K] } & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes as `prop:${K}`]?: UaiInputChips[K] };
         "uai-input-date": Omit<UaiInputDate, keyof UaiInputDateAttributes> & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes]?: UaiInputDate[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `attr:${K}`]?: UaiInputDateAttributes[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `prop:${K}`]?: UaiInputDate[K] };
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
@@ -13300,6 +13756,9 @@ declare module "@stencil/core" {
              * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
              */
             "bds-input": LocalJSX.IntrinsicElements["bds-input"] & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+            /**
+             * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+             */
             "bds-input-chips": LocalJSX.IntrinsicElements["bds-input-chips"] & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-editable": LocalJSX.IntrinsicElements["bds-input-editable"] & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
             /**
@@ -13394,6 +13853,14 @@ declare module "@stencil/core" {
              * Wrap the app in UaiThemeProvider.
              */
             "uai-input": LocalJSX.IntrinsicElements["uai-input"] & JSXBase.HTMLAttributes<HTMLUaiInputElement>;
+            /**
+             * Field that turns free text into removable chips. The person types a value and presses Enter, or separates values
+             * with comma or semicolon; Backspace on the empty field removes the last chip. It takes part in native forms: with a
+             * name, each chip is submitted as one entry (read them with FormData.getAll). Use it for several open values, such as
+             * e-mails or tags. Pair with UaiButton in forms. Avoid it to choose from known options (use uai-select-chips or
+             * uai-autocomplete). Wrap the app in UaiThemeProvider.
+             */
+            "uai-input-chips": LocalJSX.IntrinsicElements["uai-input-chips"] & JSXBase.HTMLAttributes<HTMLUaiInputChipsElement>;
             /**
              * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
              * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it

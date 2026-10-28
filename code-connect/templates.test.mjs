@@ -14,6 +14,7 @@ const passwordSource = readFileSync(new URL('./uai-input-password.figma.ts', imp
 const textareaSource = readFileSync(new URL('./uai-textarea.figma.ts', import.meta.url), 'utf8');
 const phoneSource = readFileSync(new URL('./uai-input-phone.figma.ts', import.meta.url), 'utf8');
 const dateSource = readFileSync(new URL('./uai-input-date.figma.ts', import.meta.url), 'utf8');
+const chipsSource = readFileSync(new URL('./uai-input-chips.figma.ts', import.meta.url), 'utf8');
 const imports = ['import { UaiIcon } from "blip-ds-react/dist/components"'];
 
 const evaluate = (source, properties = {}, swaps = {}, instances = {}) => {
@@ -455,4 +456,81 @@ test('date preserves special characters in label and messages', () => {
   assertJsx(example);
   assert.ok(example.includes(`label={${JSON.stringify(Label)}}`));
   assert.ok(example.includes('errorMessage={"Informe uma data válida."}'));
+});
+
+const chipsDefaults = {
+  Label: 'Convidados',
+  Placeholder: 'nome@empresa.com',
+  Message: 'Separe os e-mails por vírgula.',
+  Feedback: 'Default',
+  State: 'Empty',
+};
+const chip = (Label, Removable = true) => ({
+  type: 'INSTANCE',
+  getString: (key) => ({ Label })[key],
+  getBoolean: (key) => ({ Removable })[key],
+});
+const chipInstances = { 'Chip 1': chip('ana@blip.ai'), 'Chip 2': chip('bia@blip.ai') };
+
+test('input chips covers every feedback and state with valid React', () => {
+  for (const Feedback of ['Default', 'Error', 'Success'])
+    for (const State of ['Empty', 'Filled', 'Focus', 'Disabled']) {
+      const { example } = evaluate(chipsSource, { ...chipsDefaults, Feedback, State }, {}, chipInstances);
+      assertJsx(example);
+      assert.ok(example.startsWith('<UaiInputChips'));
+      assert.ok(example.includes('label={"Convidados"}'));
+      assert.ok(example.includes('placeholder={"nome@empresa.com"}'));
+      assert.equal(example.includes('chips={["ana@blip.ai","bia@blip.ai"]}'), ['Filled', 'Disabled'].includes(State));
+      assert.equal(example.includes('chips='), ['Filled', 'Disabled'].includes(State));
+      assert.equal(example.includes(' danger'), Feedback === 'Error');
+      assert.equal(example.includes(' success '), Feedback === 'Success');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+      assert.ok(!example.includes('readonly'));
+      const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+      assert.ok(example.includes(`${message}={"Separe os e-mails por vírgula."}`));
+    }
+});
+
+test('input chips reads only the labels of the nested chips and skips empty or missing ones', () => {
+  const removable = evaluate(
+    chipsSource,
+    { ...chipsDefaults, State: 'Filled' },
+    {},
+    { 'Chip 1': chip('design', false), 'Chip 2': chip('  ') },
+  );
+  assertJsx(removable.example);
+  assert.ok(removable.example.includes('chips={["design"]}'));
+  assert.ok(!removable.example.includes('Removable') && !removable.example.includes('readonly'));
+
+  const missing = evaluate(chipsSource, { ...chipsDefaults, State: 'Filled', Message: '' });
+  assertJsx(missing.example);
+  assert.equal(missing.example, '<UaiInputChips label={"Convidados"} placeholder={"nome@empresa.com"} />');
+  assert.deepEqual(Array.from(missing.imports), ['import { UaiInputChips } from "blip-ds-react/dist/components"']);
+  assert.equal(missing.id, 'uai-input-chips');
+  assert.equal(missing.metadata.nestable, true);
+});
+
+test('input chips names the field by aria-label without a label and rejects a field without any name', () => {
+  const { example } = evaluate(chipsSource, { ...chipsDefaults, Label: ' ' }, {}, chipInstances);
+  assertJsx(example);
+  assert.ok(example.includes('aria-label={"nome@empresa.com"}'));
+  assert.ok(!example.includes(' label='));
+  assert.throws(
+    () => evaluate(chipsSource, { ...chipsDefaults, Label: ' ', Placeholder: '' }, {}, chipInstances),
+    /accessible name/,
+  );
+});
+
+test('input chips preserves special characters in label, chips and message', () => {
+  const Label = 'Tags "A&B" <novas> {teste}';
+  const { example } = evaluate(
+    chipsSource,
+    { ...chipsDefaults, Label, State: 'Filled', Feedback: 'Error', Message: 'Revise "A&B".' },
+    {},
+    { 'Chip 1': chip('<a&b>'), 'Chip 2': chip('{x}') },
+  );
+  assertJsx(example);
+  assert.ok(example.includes(`label={${JSON.stringify(Label)}}`));
+  assert.ok(example.includes(`chips={${JSON.stringify(['<a&b>', '{x}'])}}`));
+  assert.ok(example.includes(`errorMessage={${JSON.stringify('Revise "A&B".')}}`));
 });
