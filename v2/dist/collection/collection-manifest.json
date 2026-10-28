@@ -109,6 +109,7 @@
     "components/test-component/test-component.js",
     "components/toast/toast.js",
     "components/toast-container/toast-container.js",
+    "components/uai-grid/uai-grid.js",
     "components/uai-navbar-content/uai-navbar-content.js",
     "components/upload/bds-upload.js",
     "components/warning/warning.js"

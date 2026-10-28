@@ -3816,6 +3816,104 @@ export namespace Components {
         "variant"?: UaiButtonVariant;
     }
     /**
+     * UAI layout grid. The legacy bds-grid remains available; this component keeps
+     * its layout props while using UAI dimensions and theme-aware color tokens.
+     */
+    interface UaiGrid {
+        /**
+          * Controls the alignment of children along the cross axis.
+         */
+        "alignItems"?: alignItems;
+        /**
+          * Legacy color name mapped to the closest semantic UAI background token. Prefer surface tokens in new UAI usage.
+         */
+        "bgColor"?: Color;
+        /**
+          * Applies a centered container capped by the UAI width-content token.
+         */
+        "container"?: boolean;
+        /**
+          * Applies the wider responsive fluid-container max widths compatible with bds-grid.
+         */
+        "containerFluid"?: boolean;
+        /**
+          * Controls the flex direction of children.
+         */
+        "direction"?: direction;
+        /**
+          * Controls whether children wrap to another line.
+         */
+        "flexWrap"?: flexWrap;
+        /**
+          * Gap token alias retained for compatibility with bds-grid.
+         */
+        "gap"?: gap1;
+        /**
+          * Sets an explicit height on the grid container.
+         */
+        "height"?: string;
+        /**
+          * Controls how children are distributed along the main axis.
+         */
+        "justifyContent"?: justifyContent2;
+        /**
+          * 12-column span from the legacy lg breakpoint.
+         */
+        "lg"?: breakpoint;
+        /**
+          * Left offset from the legacy lg breakpoint.
+         */
+        "lgOffset"?: breakpoint;
+        /**
+          * Margin token alias retained for compatibility with bds-grid.
+         */
+        "margin"?: margin;
+        /**
+          * 12-column span from the legacy md breakpoint.
+         */
+        "md"?: breakpoint;
+        /**
+          * Left offset from the legacy md breakpoint.
+         */
+        "mdOffset"?: breakpoint;
+        /**
+          * Padding token alias retained for compatibility with bds-grid.
+         */
+        "padding"?: padding;
+        /**
+          * 12-column span from the legacy sm breakpoint.
+         */
+        "sm"?: breakpoint;
+        /**
+          * Left offset from the legacy sm breakpoint.
+         */
+        "smOffset"?: breakpoint;
+        /**
+          * 12-column span from the legacy xg breakpoint.
+         */
+        "xg"?: breakpoint;
+        /**
+          * Left offset from the legacy xg breakpoint.
+         */
+        "xgOffset"?: breakpoint;
+        /**
+          * 12-column span from the legacy xs breakpoint.
+         */
+        "xs"?: breakpoint;
+        /**
+          * Left offset from the legacy xs breakpoint.
+         */
+        "xsOffset"?: breakpoint;
+        /**
+          * Base 12-column span.
+         */
+        "xxs"?: breakpoint;
+        /**
+          * Base left offset in the 12-column grid.
+         */
+        "xxsOffset"?: breakpoint;
+    }
+    /**
      * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
      * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
      * Without `color`, the icon takes the text color around it, so it matches the label next to it.
@@ -5484,6 +5582,16 @@ declare global {
         new (): HTMLUaiButtonElement;
     };
     /**
+     * UAI layout grid. The legacy bds-grid remains available; this component keeps
+     * its layout props while using UAI dimensions and theme-aware color tokens.
+     */
+    interface HTMLUaiGridElement extends Components.UaiGrid, HTMLStencilElement {
+    }
+    var HTMLUaiGridElement: {
+        prototype: HTMLUaiGridElement;
+        new (): HTMLUaiGridElement;
+    };
+    /**
      * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
      * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
      * Without `color`, the icon takes the text color around it, so it matches the label next to it.
@@ -5641,6 +5749,7 @@ declare global {
         "bds-warning": HTMLBdsWarningElement;
         "uai-avatar": HTMLUaiAvatarElement;
         "uai-button": HTMLUaiButtonElement;
+        "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
@@ -9565,6 +9674,104 @@ declare namespace LocalJSX {
         "variant"?: UaiButtonVariant;
     }
     /**
+     * UAI layout grid. The legacy bds-grid remains available; this component keeps
+     * its layout props while using UAI dimensions and theme-aware color tokens.
+     */
+    interface UaiGrid {
+        /**
+          * Controls the alignment of children along the cross axis.
+         */
+        "alignItems"?: alignItems;
+        /**
+          * Legacy color name mapped to the closest semantic UAI background token. Prefer surface tokens in new UAI usage.
+         */
+        "bgColor"?: Color;
+        /**
+          * Applies a centered container capped by the UAI width-content token.
+         */
+        "container"?: boolean;
+        /**
+          * Applies the wider responsive fluid-container max widths compatible with bds-grid.
+         */
+        "containerFluid"?: boolean;
+        /**
+          * Controls the flex direction of children.
+         */
+        "direction"?: direction;
+        /**
+          * Controls whether children wrap to another line.
+         */
+        "flexWrap"?: flexWrap;
+        /**
+          * Gap token alias retained for compatibility with bds-grid.
+         */
+        "gap"?: gap1;
+        /**
+          * Sets an explicit height on the grid container.
+         */
+        "height"?: string;
+        /**
+          * Controls how children are distributed along the main axis.
+         */
+        "justifyContent"?: justifyContent2;
+        /**
+          * 12-column span from the legacy lg breakpoint.
+         */
+        "lg"?: breakpoint;
+        /**
+          * Left offset from the legacy lg breakpoint.
+         */
+        "lgOffset"?: breakpoint;
+        /**
+          * Margin token alias retained for compatibility with bds-grid.
+         */
+        "margin"?: margin;
+        /**
+          * 12-column span from the legacy md breakpoint.
+         */
+        "md"?: breakpoint;
+        /**
+          * Left offset from the legacy md breakpoint.
+         */
+        "mdOffset"?: breakpoint;
+        /**
+          * Padding token alias retained for compatibility with bds-grid.
+         */
+        "padding"?: padding;
+        /**
+          * 12-column span from the legacy sm breakpoint.
+         */
+        "sm"?: breakpoint;
+        /**
+          * Left offset from the legacy sm breakpoint.
+         */
+        "smOffset"?: breakpoint;
+        /**
+          * 12-column span from the legacy xg breakpoint.
+         */
+        "xg"?: breakpoint;
+        /**
+          * Left offset from the legacy xg breakpoint.
+         */
+        "xgOffset"?: breakpoint;
+        /**
+          * 12-column span from the legacy xs breakpoint.
+         */
+        "xs"?: breakpoint;
+        /**
+          * Left offset from the legacy xs breakpoint.
+         */
+        "xsOffset"?: breakpoint;
+        /**
+          * Base 12-column span.
+         */
+        "xxs"?: breakpoint;
+        /**
+          * Base left offset in the 12-column grid.
+         */
+        "xxsOffset"?: breakpoint;
+    }
+    /**
      * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
      * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
      * Without `color`, the icon takes the text color around it, so it matches the label next to it.
@@ -10575,6 +10782,31 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiGridAttributes {
+        "height": string;
+        "direction": direction;
+        "justifyContent": justifyContent;
+        "flexWrap": flexWrap;
+        "alignItems": alignItems;
+        "container": boolean;
+        "containerFluid": boolean;
+        "xxs": breakpoint;
+        "xs": breakpoint;
+        "sm": breakpoint;
+        "md": breakpoint;
+        "lg": breakpoint;
+        "xg": breakpoint;
+        "xxsOffset": breakpoint;
+        "xsOffset": breakpoint;
+        "smOffset": breakpoint;
+        "mdOffset": breakpoint;
+        "lgOffset": breakpoint;
+        "xgOffset": breakpoint;
+        "gap": gap;
+        "padding": padding;
+        "margin": margin;
+        "bgColor": Color;
+    }
     interface UaiIconAttributes {
         "name": string;
         "theme": UaiIconTheme;
@@ -10713,6 +10945,7 @@ declare namespace LocalJSX {
         "bds-warning": BdsWarning;
         "uai-avatar": Omit<UaiAvatar, keyof UaiAvatarAttributes> & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes]?: UaiAvatar[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `attr:${K}`]?: UaiAvatarAttributes[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `prop:${K}`]?: UaiAvatar[K] };
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
+        "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
@@ -10846,6 +11079,11 @@ declare module "@stencil/core" {
              * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
              */
             "uai-button": LocalJSX.IntrinsicElements["uai-button"] & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
+            /**
+             * UAI layout grid. The legacy bds-grid remains available; this component keeps
+             * its layout props while using UAI dimensions and theme-aware color tokens.
+             */
+            "uai-grid": LocalJSX.IntrinsicElements["uai-grid"] & JSXBase.HTMLAttributes<HTMLUaiGridElement>;
             /**
              * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
              * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
