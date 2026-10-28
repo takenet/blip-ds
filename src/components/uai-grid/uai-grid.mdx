@@ -1,0 +1,56 @@
+import { Canvas, Controls, Meta, Source } from '@storybook/addon-docs/blocks';
+import * as UaiGridStories from './uai-grid.stories';
+
+<Meta isTemplate />
+
+# UaiGrid
+
+[Design e Acessibilidade](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2433-10)
+
+## Estrutura
+
+O `uai-grid` é o container flexível de layout UAI. Mantém os nomes de props e os spans de 12 colunas do `bds-grid` para facilitar a migração; `bds-grid` continua disponível sem alterações.
+
+Os espaçamentos, fundos e a largura do container padrão usam tokens UAI, com suporte a temas que fornecem as variáveis `--uai-*`. `container` usa `uai-width-content`; `container-fluid` mantém os limites responsivos mais amplos do `bds-grid`. Os nomes numéricos de `gap`, `padding` e `margin` são aliases compatíveis: `1` mapeia para `spacing-xs`, `2` para `spacing-md`, `3` para `spacing-lg`, e assim por diante. Os nomes, spans e thresholds dos breakpoints permanecem compatíveis com `bds-grid`, que continua inalterado.
+
+<Canvas of={UaiGridStories.Playground} />
+
+## Propriedades
+
+Use os controles para experimentar as propriedades do contêiner e dos itens. Os spans e offsets são aplicados a cada item do exemplo; `itemCount` apenas altera a quantidade de itens exibidos e não é uma prop do componente. O Playground começa com `gap="none"`: as colunas já têm padding horizontal interno. Um `gap` adicional ocupa espaço entre os itens e pode fazê-los quebrar de linha mesmo quando os spans somam 12, como também acontece no `bds-grid`.
+
+<Controls of={UaiGridStories.Playground} />
+
+## Três colunas iguais
+
+Cada filho recebe span `4` em uma grade de 12 colunas, então cada um ocupa um terço da linha.
+
+<Canvas of={UaiGridStories.EqualColumns} />
+
+## Responsivo e aninhado
+
+O exemplo responsivo usa span 12 na base e span 4 a partir do breakpoint `md`. Os grids internos são instâncias aninhadas do mesmo componente.
+
+<Canvas of={UaiGridStories.ResponsiveColumns} />
+
+<Canvas of={UaiGridStories.NestedGrid} />
+
+## Container fluido
+
+`container` usa o limite `uai-width-content` (1112px com a raiz de 16px padrão). `container-fluid` continua mais largo em viewports grandes, mantendo os limites responsivos do `bds-grid`.
+
+<Canvas of={UaiGridStories.FluidContainer} />
+
+## Usando em React
+
+```tsx
+import { UaiGrid } from 'blip-ds-react/dist/components';
+
+<UaiGrid container flexWrap="wrap">
+  <UaiGrid xxs="4">Coluna 1</UaiGrid>
+  <UaiGrid xxs="4">Coluna 2</UaiGrid>
+  <UaiGrid xxs="4">Coluna 3</UaiGrid>
+</UaiGrid>;
+```
+
+<Source of={UaiGridStories.EqualColumns} />

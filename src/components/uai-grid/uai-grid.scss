@@ -1,0 +1,510 @@
+@use 'sass:list';
+
+// Use UAI tokens wherever an equivalent exists. Keep these BDS-specific
+// breakpoints and fluid-container widths local: UAI uses a different
+// breakpoint scale and has no matching fluid-container width tokens.
+$bds-grid-breakpoint-xs: 600px;
+$bds-grid-breakpoint-sm: 905px;
+$bds-grid-breakpoint-md: 993px;
+$bds-grid-breakpoint-lg: 1601px;
+$bds-grid-breakpoint-xg: 1921px;
+$bds-grid-breakpoint-fluid-lg: 1280px;
+$bds-grid-breakpoint-fluid-xl: 1440px;
+$bds-grid-breakpoint-fluid-xg: 1920px;
+
+$bds-grid-container-fluid-width-sm: 848px;
+$bds-grid-container-fluid-width-md: 944px;
+$bds-grid-container-fluid-width-lg: 1232px;
+$bds-grid-container-fluid-width-xl: 1328px;
+$bds-grid-container-fluid-width-xg: 1424px;
+
+$uai-grid-spacing: (
+  'none': (
+    'none',
+    $uai-spacing-none,
+  ),
+  'half': (
+    '2xs',
+    $uai-spacing-2xs,
+  ),
+  '1': (
+    'xs',
+    $uai-spacing-xs,
+  ),
+  '2': (
+    'md',
+    $uai-spacing-md,
+  ),
+  '3': (
+    'lg',
+    $uai-spacing-lg,
+  ),
+  '4': (
+    'xl',
+    $uai-spacing-xl,
+  ),
+  '5': (
+    '2xl',
+    $uai-spacing-2xl,
+  ),
+  '6': (
+    '3xl',
+    $uai-spacing-3xl,
+  ),
+  '7': (
+    '4xl',
+    $uai-spacing-4xl,
+  ),
+  '8': (
+    '5xl',
+    $uai-spacing-5xl,
+  ),
+  '9': (
+    '6xl',
+    $uai-spacing-6xl,
+  ),
+  '10': (
+    '7xl',
+    $uai-spacing-7xl,
+  ),
+  '11': (
+    '8xl',
+    $uai-spacing-8xl,
+  ),
+  '12': (
+    '9xl',
+    $uai-spacing-9xl,
+  ),
+);
+
+$grid-column-widths: (
+  8.333333%,
+  16.666667%,
+  25%,
+  33.333333%,
+  41.666667%,
+  50%,
+  58.333333%,
+  66.666667%,
+  75%,
+  83.333333%,
+  91.666667%,
+  100%
+);
+
+// Old bgColor values are retained as aliases, but resolve to UAI semantic tokens.
+$uai-grid-backgrounds: (
+  'color-brand': (
+    'fixed-brand',
+    $uai-fixed-brand,
+  ),
+  'color-primary': (
+    'fixed-blue',
+    $uai-fixed-blue,
+  ),
+  'color-secondary': (
+    'surface-inverse',
+    $uai-surface-inverse,
+  ),
+  'color-surface-0': (
+    'surface-paper',
+    $uai-surface-paper,
+  ),
+  'color-surface-1': (
+    'surface-background',
+    $uai-surface-background,
+  ),
+  'color-surface-2': (
+    'surface-contrast',
+    $uai-surface-contrast,
+  ),
+  'color-surface-3': (
+    'surface-muted',
+    $uai-surface-muted,
+  ),
+  'color-surface-4': (
+    'surface-inverse',
+    $uai-surface-inverse,
+  ),
+  'color-surface-positive': (
+    'feedback-success-subtle',
+    $uai-feedback-success-subtle,
+  ),
+  'color-surface-negative': (
+    'feedback-error-subtle',
+    $uai-feedback-error-subtle,
+  ),
+  'color-surface-primary': (
+    'fixed-blue',
+    $uai-fixed-blue,
+  ),
+  'color-content-default': (
+    'surface-inverse',
+    $uai-surface-inverse,
+  ),
+  'color-content-disable': (
+    'surface-contrast',
+    $uai-surface-contrast,
+  ),
+  'color-content-ghost': (
+    'surface-muted',
+    $uai-surface-muted,
+  ),
+  'color-content-bright': (
+    'surface-paper',
+    $uai-surface-paper,
+  ),
+  'color-content-din': (
+    'surface-inverse',
+    $uai-surface-inverse,
+  ),
+  'color-border-1': (
+    'surface-contrast',
+    $uai-surface-contrast,
+  ),
+  'color-border-2': (
+    'surface-contrast',
+    $uai-surface-contrast,
+  ),
+  'color-border-3': (
+    'surface-contrast',
+    $uai-surface-contrast,
+  ),
+  'color-info': (
+    'feedback-info-subtle',
+    $uai-feedback-info-subtle,
+  ),
+  'color-system': (
+    'feedback-info-subtle',
+    $uai-feedback-info-subtle,
+  ),
+  'color-focus': (
+    'surface-contrast',
+    $uai-surface-contrast,
+  ),
+  'color-success': (
+    'feedback-success-subtle',
+    $uai-feedback-success-subtle,
+  ),
+  'color-warning': (
+    'feedback-warning-subtle',
+    $uai-feedback-warning-subtle,
+  ),
+  'color-error': (
+    'feedback-error-subtle',
+    $uai-feedback-error-subtle,
+  ),
+  'color-delete': (
+    'action-destructive',
+    $uai-action-destructive,
+  ),
+  'color-shadow-0': (
+    'surface-background',
+    $uai-surface-background,
+  ),
+  'color-shadow-1': (
+    'surface-contrast',
+    $uai-surface-contrast,
+  ),
+  'color-hover': (
+    'action-outline-hover',
+    $uai-action-outline-hover,
+  ),
+  'color-pressed': (
+    'action-outline-pressed',
+    $uai-action-outline-pressed,
+  ),
+  'color-positive': (
+    'action-positive',
+    $uai-action-positive,
+  ),
+  'color-negative': (
+    'action-destructive',
+    $uai-action-destructive,
+  ),
+);
+
+:host {
+  box-sizing: border-box;
+  display: flex;
+}
+
+:host(.container) {
+  width: 100%;
+  max-width: var(--uai-width-content, #{$uai-width-content});
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (min-width: $bds-grid-breakpoint-xs) {
+  :host(.container-fluid) {
+    max-width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: $bds-grid-breakpoint-sm) {
+  :host(.container-fluid) {
+    max-width: $bds-grid-container-fluid-width-sm;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: $bds-grid-breakpoint-md) {
+  :host(.container-fluid) {
+    max-width: $bds-grid-container-fluid-width-md;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: $bds-grid-breakpoint-fluid-lg) {
+  :host(.container-fluid) {
+    max-width: $bds-grid-container-fluid-width-lg;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: $bds-grid-breakpoint-fluid-xl) {
+  :host(.container-fluid) {
+    max-width: $bds-grid-container-fluid-width-xl;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (min-width: $bds-grid-breakpoint-fluid-xg) {
+  :host(.container-fluid) {
+    max-width: $bds-grid-container-fluid-width-xg;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@each $legacy-color, $uai-color in $uai-grid-backgrounds {
+  $token-name: list.nth($uai-color, 1);
+  $token-value: list.nth($uai-color, 2);
+
+  :host(.bg-color--#{$legacy-color}) {
+    background-color: var(--uai-#{$token-name}, #{$token-value});
+  }
+}
+
+:host(.flex_wrap--wrap) {
+  flex-wrap: wrap;
+}
+
+:host(.flex_wrap--wrap-reverse) {
+  flex-wrap: wrap-reverse;
+}
+
+:host(.direction--row) {
+  flex-direction: row;
+}
+
+:host(.direction--row-reverse) {
+  flex-direction: row-reverse;
+}
+
+:host(.direction--column) {
+  flex-direction: column;
+}
+
+:host(.direction--column-reverse) {
+  flex-direction: column-reverse;
+}
+
+:host(.justify_content--flex-start) {
+  justify-content: flex-start;
+}
+
+:host(.justify_content--center) {
+  justify-content: center;
+}
+
+:host(.justify_content--flex-end) {
+  justify-content: flex-end;
+}
+
+:host(.justify_content--space-between) {
+  justify-content: space-between;
+}
+
+:host(.justify_content--space-around) {
+  justify-content: space-around;
+}
+
+:host(.justify_content--space-evenly) {
+  justify-content: space-evenly;
+}
+
+:host(.justify_content--stretch) {
+  justify-content: stretch;
+}
+
+:host(.align_items--flex-start) {
+  align-items: flex-start;
+}
+
+:host(.align_items--center) {
+  align-items: center;
+}
+
+:host(.align_items--flex-end) {
+  align-items: flex-end;
+}
+
+:host(.align_items--stretch) {
+  align-items: stretch;
+}
+
+:host(.align_items--baseline) {
+  align-items: baseline;
+}
+
+@each $legacy-spacing, $uai-spacing in $uai-grid-spacing {
+  $token-name: list.nth($uai-spacing, 1);
+  $token-value: list.nth($uai-spacing, 2);
+  $value: var(--uai-spacing-#{$token-name}, #{$token-value});
+
+  :host(.gap--#{$legacy-spacing}) {
+    gap: $value;
+  }
+
+  :host(.padding--#{$legacy-spacing}) {
+    padding: $value !important;
+  }
+  :host(.padding--l-#{$legacy-spacing}) {
+    padding-left: $value !important;
+  }
+  :host(.padding--r-#{$legacy-spacing}) {
+    padding-right: $value !important;
+  }
+  :host(.padding--t-#{$legacy-spacing}) {
+    padding-top: $value !important;
+  }
+  :host(.padding--b-#{$legacy-spacing}) {
+    padding-bottom: $value !important;
+  }
+  :host(.padding--x-#{$legacy-spacing}) {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+  :host(.padding--y-#{$legacy-spacing}) {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+
+  :host(.margin--#{$legacy-spacing}) {
+    margin: $value !important;
+  }
+  :host(.margin--l-#{$legacy-spacing}) {
+    margin-left: $value !important;
+  }
+  :host(.margin--r-#{$legacy-spacing}) {
+    margin-right: $value !important;
+  }
+  :host(.margin--t-#{$legacy-spacing}) {
+    margin-top: $value !important;
+  }
+  :host(.margin--b-#{$legacy-spacing}) {
+    margin-bottom: $value !important;
+  }
+  :host(.margin--x-#{$legacy-spacing}) {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+  :host(.margin--y-#{$legacy-spacing}) {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+}
+
+:host(.margin--auto) {
+  margin: auto !important;
+}
+:host(.margin--l-auto) {
+  margin-left: auto !important;
+}
+:host(.margin--r-auto) {
+  margin-right: auto !important;
+}
+:host(.margin--t-auto) {
+  margin-top: auto !important;
+}
+:host(.margin--b-auto) {
+  margin-bottom: auto !important;
+}
+:host(.margin--x-auto) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+:host(.margin--y-auto) {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+@mixin grid-span($span) {
+  $width: list.nth($grid-column-widths, $span);
+  flex: 0 0 $width;
+  width: $width;
+  padding-left: var(--uai-spacing-xs, #{$uai-spacing-xs}) !important;
+  padding-right: var(--uai-spacing-xs, #{$uai-spacing-xs}) !important;
+}
+
+@mixin grid-span-auto {
+  flex: 1 0 auto;
+  width: auto;
+  padding-left: var(--uai-spacing-xs, #{$uai-spacing-xs}) !important;
+  padding-right: var(--uai-spacing-xs, #{$uai-spacing-xs}) !important;
+}
+
+@mixin grid-offset($offset) {
+  margin-left: list.nth($grid-column-widths, $offset) !important;
+}
+
+@mixin grid-breakpoint($span-prefix, $offset-prefix) {
+  :host(.#{$span-prefix}--auto) {
+    @include grid-span-auto;
+  }
+  @for $span from 1 through 12 {
+    :host(.#{$span-prefix}--#{$span}) {
+      @include grid-span($span);
+    }
+  }
+
+  :host(.#{$offset-prefix}--auto) {
+    margin-left: auto !important;
+  }
+  @for $offset from 1 through 12 {
+    :host(.#{$offset-prefix}--#{$offset}) {
+      @include grid-offset($offset);
+    }
+  }
+}
+
+// Keep the legacy mobile-first thresholds for API compatibility with bds-grid.
+@include grid-breakpoint('xxs', 'xxsoffset');
+
+@media (min-width: $bds-grid-breakpoint-xs) {
+  @include grid-breakpoint('xs', 'xsoffset');
+}
+
+@media (min-width: $bds-grid-breakpoint-sm) {
+  @include grid-breakpoint('sm', 'smoffset');
+}
+
+@media (min-width: $bds-grid-breakpoint-md) {
+  @include grid-breakpoint('md', 'mdoffset');
+}
+
+@media (min-width: $bds-grid-breakpoint-lg) {
+  @include grid-breakpoint('lg', 'lgoffset');
+}
+
+@media (min-width: $bds-grid-breakpoint-xg) {
+  @include grid-breakpoint('xg', 'xgoffset');
+}

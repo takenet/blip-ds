@@ -120,6 +120,7 @@ import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload }
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
+import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
@@ -1541,6 +1542,17 @@ export const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents,
     react: React,
     events: { onUaiClick: 'uaiClick' } as UaiButtonEvents,
     defineCustomElement: defineUaiButton
+});
+
+export type UaiGridEvents = NonNullable<unknown>;
+
+export const UaiGrid: StencilReactComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid> = /*@__PURE__*/ createComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid>({
+    tagName: 'uai-grid',
+    elementClass: UaiGridElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiGridEvents,
+    defineCustomElement: defineUaiGrid
 });
 
 export type UaiIconEvents = NonNullable<unknown>;
