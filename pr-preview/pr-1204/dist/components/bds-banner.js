@@ -1,1 +1,0 @@
-import{B as o,d as p}from"./p-DmdkpXJE.js";const s=o,m=p;export{s as BdsBanner,m as defineCustomElement}

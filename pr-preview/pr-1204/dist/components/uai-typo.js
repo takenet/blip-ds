@@ -1,1 +1,0 @@
-import{U as o,d as p}from"./p-D0zmgdpo.js";const s=o,m=p;export{s as UaiTypo,m as defineCustomElement}
