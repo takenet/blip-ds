@@ -46,7 +46,11 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 
  - [uai-button](../uai-button)
  - [uai-input](../uai-input)
+ - [uai-input-chips](../uai-input-chips)
+ - [uai-input-date](../uai-input-date)
+ - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
+ - [uai-input-phone](../uai-input-phone)
  - [uai-textarea](../uai-textarea)
 
 ### Graph
@@ -54,7 +58,11 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 graph TD;
   uai-button --> uai-typo
   uai-input --> uai-typo
+  uai-input-chips --> uai-typo
+  uai-input-date --> uai-typo
+  uai-input-editable --> uai-typo
   uai-input-password --> uai-typo
+  uai-input-phone --> uai-typo
   uai-textarea --> uai-typo
   style uai-typo fill:#f9f,stroke:#333,stroke-width:4px
 ```

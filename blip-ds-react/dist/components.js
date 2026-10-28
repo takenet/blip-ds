@@ -110,7 +110,11 @@ import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar }
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
+import { UaiInputChips as UaiInputChipsElement, defineCustomElement as defineUaiInputChips } from "blip-ds/dist/components/uai-input-chips.js";
+import { UaiInputDate as UaiInputDateElement, defineCustomElement as defineUaiInputDate } from "blip-ds/dist/components/uai-input-date.js";
+import { UaiInputEditable as UaiInputEditableElement, defineCustomElement as defineUaiInputEditable } from "blip-ds/dist/components/uai-input-editable.js";
 import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
+import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
@@ -977,7 +981,10 @@ export const UaiAvatar = createComponent({
     tagName: 'uai-avatar',
     elementClass: UaiAvatarElement,
     react: React,
-    events: {},
+    events: {
+        onUaiClickAvatar: 'uaiClickAvatar',
+        onUaiImageUpload: 'uaiImageUpload'
+    },
     defineCustomElement: defineUaiAvatar
 });
 export const UaiButton = createComponent({
@@ -1016,6 +1023,47 @@ export const UaiInput = createComponent({
     },
     defineCustomElement: defineUaiInput
 });
+export const UaiInputChips = createComponent({
+    tagName: 'uai-input-chips',
+    elementClass: UaiInputChipsElement,
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiChangeChips: 'uaiChangeChips',
+        onUaiInputChipsFocus: 'uaiInputChipsFocus',
+        onUaiBlur: 'uaiBlur',
+        onUaiInputChipsInput: 'uaiInputChipsInput',
+        onUaiExtendedQuantityInput: 'uaiExtendedQuantityInput',
+        onUaiSubmit: 'uaiSubmit'
+    },
+    defineCustomElement: defineUaiInputChips
+});
+export const UaiInputDate = createComponent({
+    tagName: 'uai-input-date',
+    elementClass: UaiInputDateElement,
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiFocus: 'uaiFocus',
+        onUaiOnBlur: 'uaiOnBlur'
+    },
+    defineCustomElement: defineUaiInputDate
+});
+export const UaiInputEditable = createComponent({
+    tagName: 'uai-input-editable',
+    elementClass: UaiInputEditableElement,
+    react: React,
+    events: {
+        onUaiInputEditableSave: 'uaiInputEditableSave',
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiCancel: 'uaiCancel',
+        onUaiFocus: 'uaiFocus',
+        onUaiBlur: 'uaiBlur'
+    },
+    defineCustomElement: defineUaiInputEditable
+});
 export const UaiInputPassword = createComponent({
     tagName: 'uai-input-password',
     elementClass: UaiInputPasswordElement,
@@ -1029,6 +1077,19 @@ export const UaiInputPassword = createComponent({
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     },
     defineCustomElement: defineUaiInputPassword
+});
+export const UaiInputPhone = createComponent({
+    tagName: 'uai-input-phone',
+    elementClass: UaiInputPhoneElement,
+    react: React,
+    events: {
+        onUaiPhoneNumberChange: 'uaiPhoneNumberChange',
+        onUaiInput: 'uaiInput',
+        onUaiCancel: 'uaiCancel',
+        onUaiFocus: 'uaiFocus',
+        onUaiBlur: 'uaiBlur'
+    },
+    defineCustomElement: defineUaiInputPhone
 });
 export const UaiNavbar = createComponent({
     tagName: 'uai-navbar',

@@ -1,0 +1,153 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiInputChipsStories from './uai-input-chips.stories';
+
+<Meta isTemplate />
+
+# Input Chips
+
+Campo que transforma o texto digitado em chips removíveis. Use para listas curtas de valores livres, como e-mails de convidados ou tags. Para escolher de uma lista fechada, use o select; para um único valor, use o input.
+
+## Visão geral
+
+No React, importe `UaiInputChips` de `blip-ds-react/dist/components` e passe `label` (ou `aria-label`), `chips` e `name`. Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação. Fora do React, use o custom element `<uai-input-chips>`, com as propriedades em kebab-case (`helper-message`, `max-chips-length`) e os eventos `uaiChange`, `uaiChangeChips` etc.
+
+## Playground
+
+<Canvas of={UaiInputChipsStories.Playground} />
+
+<Controls of={UaiInputChipsStories.Playground} />
+
+## Como usar
+
+Um convite de pessoas por e-mail, com os chips controlados por estado, validação de e-mail e envio. O código abaixo pode ser copiado como ponto de partida.
+
+<Canvas of={UaiInputChipsStories.Usage} sourceState="shown" />
+
+- `chips` aceita um array ou um JSON de array. Para controlar por estado, atualize `chips` com `event.detail.data` de `onUaiChangeChips`.
+- Enter, `,` e `;` criam chips; `delimiters` troca os separadores. Colar `ana@blip.ai; bia@blip.ai` cria dois chips.
+- Com `name`, cada chip é uma entrada do formulário: `new FormData(form).getAll('emails')` retorna a lista.
+- Não há rótulo padrão. Sem `label`, informe `aria-label`; sem os dois, o componente avisa no console.
+
+## Estados
+
+`danger` tem prioridade sobre `success`. Erro e sucesso mostram um ícone além da cor. O foco aparece no contorno do campo e, nos botões de remover, como anel próprio. Em `disabled` e `readonly` os botões de remover somem; em `disabled` os chips ganham borda, o campo fica esmaecido e sai do formulário.
+
+<Canvas of={UaiInputChipsStories.States} />
+
+O tamanho define a altura mínima. Os chips quebram linha e o campo cresce; o layout ao redor deve aceitar altura variável.
+
+| Tamanho | Altura mínima |
+| --- | --- |
+| `short` | `control-height/short` |
+| `medium` (padrão) | `control-height/medium` |
+
+<Canvas of={UaiInputChipsStories.Sizes} />
+
+## Comportamento
+
+As regras são cobertas por `src/components/uai-input-chips/test/uai-input-chips.spec.tsx` (unitário) e `src/components/uai-input-chips/test/uai-input-chips.e2e.ts` (integração).
+
+### Criação e remoção
+
+| Regra | Teste |
+| --- | --- |
+| `chips='["ana@blip.ai", "bia@blip.ai"]'` mostra dois chips e `get()` retorna os dois valores | `test/uai-input-chips.spec.tsx` |
+| Enter com texto cria um chip sem espaços nas pontas, limpa o campo, emite `uaiChange` e `uaiChangeChips` e não envia o formulário; Enter com o campo vazio envia | `test/uai-input-chips.e2e.ts` |
+| Texto com delimitadores (`,` e `;`, ou `delimiters`) cria um chip por parte: `ana, bia; carla` vira três chips | `test/uai-input-chips.e2e.ts` |
+| Valores vazios são ignorados; repetidos (sem diferenciar maiúsculas) também, a não ser com `duplicated` | `test/uai-input-chips.spec.tsx` |
+| Com `blurCreation`, sair do campo cria o chip com o texto digitado | `test/uai-input-chips.e2e.ts` |
+| `add('carla')` cria o chip `carla`; `clear()` remove todos | `test/uai-input-chips.spec.tsx` |
+| O botão "Remover ana" remove o chip, emite `uaiChange` e `uaiChangeChips` e move o foco para o campo | `test/uai-input-chips.e2e.ts` |
+| Backspace ou Delete com o campo vazio remove o último chip | `test/uai-input-chips.e2e.ts` |
+| Em `disabled` ou `readonly`, sem botões de remover | `test/uai-input-chips.spec.tsx` |
+| Chip longo termina em reticências na largura do campo; o valor completo fica no `title` e no nome do botão | `test/uai-input-chips.spec.tsx` |
+
+### Limite
+
+| Regra | Teste |
+| --- | --- |
+| Com `maxChipsLength`, ao atingir o limite o campo de digitação some e `uaiExtendedQuantityInput` é emitido com `{ value: true }` | `test/uai-input-chips.e2e.ts` |
+| Com `counterLength`, o campo mostra a contagem `chips/máximo` | `test/uai-input-chips.spec.tsx` |
+
+<Canvas of={UaiInputChipsStories.Limit} />
+
+### Formulário e validação
+
+| Regra | Teste |
+| --- | --- |
+| Com `name` (ou `inputName`), cada chip é uma entrada: `FormData.getAll('emails')` é `['ana', 'bia']`; sem chips, nada é enviado | `test/uai-input-chips.e2e.ts` |
+| O reset do formulário volta aos chips iniciais e limpa a validação | `test/uai-input-chips.e2e.ts` |
+| Dentro de um `fieldset` desabilitado, o campo fica desabilitado e os chips não são enviados | `test/uai-input-chips.e2e.ts` |
+| Com `type="email"`, chips que não são e-mail ficam com estilo de erro, o campo mostra `emailErrorMessage` (ou o texto padrão do idioma) e `isValid()` retorna `false` | `test/uai-input-chips.e2e.ts` |
+| Com `required` e sem chips, o campo mostra `requiredErrorMessage` (ou o texto padrão do idioma) ao sair do campo ou no envio | `test/uai-input-chips.e2e.ts` |
+| `size` desconhecido cai em `medium` e `language` desconhecido em `pt_BR`, com aviso único; `height`, `maxHeight` e `disableSubmit` avisam uma vez e não têm efeito | `test/uai-input-chips.spec.tsx` |
+
+<Canvas of={UaiInputChipsStories.Email} />
+
+<Canvas of={UaiInputChipsStories.Form} />
+
+### Eventos e métodos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiChange` / `onUaiChangeChips` | `uaiChange` / `uaiChangeChips` | Um chip é criado ou removido | `{ data, value }`: a lista e o último chip |
+| `onUaiInputChipsFocus` | `uaiInputChipsFocus` | O campo ganha o foco | — |
+| `onUaiBlur` | `uaiBlur` | O campo perde o foco | A lista de chips |
+| `onUaiInputChipsInput` | `uaiInputChipsInput` | A cada tecla no campo de digitação | `InputEvent` nativo |
+| `onUaiExtendedQuantityInput` | `uaiExtendedQuantityInput` | O limite de `maxChipsLength` é atingido | `{ value: true }` |
+| `onUaiSubmit` | `uaiSubmit` | O campo perde o foco com chips | `{ value }`: a lista de chips |
+
+Cobertos por `test/uai-input-chips.spec.tsx` (payload e métodos) e `test/uai-input-chips.e2e.ts` (teclado e foco).
+
+Métodos: `add(value)`, `get()`, `clear()`, `isValid()`, `setFocus()` e `removeFocus()`. Slot `input-right` para um conteúdo à direita do campo. Parts: `input-container`, `chips`, `chip`, `chip-remove`, `input` e `input__message`.
+
+<Canvas of={UaiInputChipsStories.Events} />
+
+### Movimento
+
+Hover e foco do campo e hover do botão de remover usam `duration/fast` e `easing/standard`. Com `prefers-reduced-motion: reduce`, tudo acontece sem transição (`test/uai-input-chips.e2e.ts`).
+
+## Acessibilidade
+
+- O rótulo é um `<label>` associado ao input nativo: clicar nele foca o campo. Não há rótulo padrão; sem `label`, use `aria-label`. Sem os dois, o componente avisa no console.
+- Os chips ficam em uma lista (`role="list"` e `role="listitem"`), anunciada com a quantidade de itens.
+- Cada chip tem um `<button>` nativo de remover com o valor no nome, por idioma: "Remover ana" (`pt_BR`), "Remove ana" (`en_US`), "Quitar ana" (`es_ES`). Chips truncados mantêm o valor completo no nome e no `title`.
+- A ordem de Tab é: botões de remover, na ordem dos chips, e o campo de digitação. Depois de remover, o foco vai para o campo. Backspace ou Delete com o campo vazio removem o último chip sem sair do teclado.
+- Mensagens são ligadas ao campo por `aria-describedby`; o erro define `aria-invalid` e mostra ícone e texto além da cor. Chips com e-mail inválido têm borda e texto de erro.
+- O foco aparece no contorno do campo (`:focus-within`) e nos botões (`:focus-visible`), com `border/ring`. Em modo de alto contraste, vira um contorno do sistema.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Tamanho e forma | `control-height-short`, `control-height-medium` (altura mínima), `radius-lg`, `border-width-default` |
+| Espaços | `spacing-xs` (padding), `spacing-2xs` (gap, rótulo e mensagem) |
+| Repouso e hover | `surface-paper`, `border-input`, `content-secondary` |
+| Foco | `border-ring`, `border-width-thick`, `opacity-focus-ring` |
+| Erro e sucesso | `feedback-error`, `feedback-success` |
+| Desabilitado | `surface-muted`, `border-default`, `content-disabled` |
+| Chip | `surface-muted`, `radius-full`, `spacing-3xs` e `spacing-xs` (padding), `spacing-2xs` (gap), `caption`, `content-secondary` |
+| Chip desabilitado e inválido | `border-width-default`, `border-input`; `feedback-error` com `type="email"` |
+| Botão de remover | `caption` semibold, `overlay-hover`, anel `border-ring` |
+| Contador | `caption`, `content-secondary` |
+| Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-input-chips`
+
+Props, valores e métodos têm os mesmos nomes do `BdsInputChips`. As diferenças:
+
+| `BdsInputChips` | `UaiInputChips` |
+| --- | --- |
+| `onBdsChange`, `onBdsChangeChips`, `onBdsInputChipsFocus`, `onBdsBlur`, `onBdsInputChipsInput`, `onBdsExtendedQuantityInput`, `onBdsSubmit` | `onUaiChange`, `onUaiChangeChips`, `onUaiInputChipsFocus`, `onUaiBlur`, `onUaiInputChipsInput`, `onUaiExtendedQuantityInput`, `onUaiSubmit`, com o mesmo payload |
+| Chip longo cortado em 20 caracteres, com tooltip | Chip inteiro, com reticências só quando não cabe na largura do campo; o valor completo fica no `title` e no nome do botão |
+| `height` e `maxHeight` fixam a altura, com rolagem | Deprecated, sem efeito e com aviso único: o campo cresce a partir de `size` |
+| `disableSubmit` | Deprecated, sem efeito (como no legado) e com aviso único |
+| Remoção por ícone clicável | `<button>` nativo `"Remover <valor>"`; `dtButtonClose` vai em cada botão |
+| Campo fora do `<form>` nativo | Participa do formulário: uma entrada por chip sob `name`, reset, validação e `fieldset` |
+| — | `size` (`short` \| `medium`), `name`, `required`, `readonly`, `language`, `emailErrorMessage`, `requiredErrorMessage`, `aria-label` |
+
+Parts `input-container`, `input` e `input__message` continuam; `chips`, `chip` e `chip-remove` são novos.
+
+## Design
+
+[UaiInputChips no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2410-4540)

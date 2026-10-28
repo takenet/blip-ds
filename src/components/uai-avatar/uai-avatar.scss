@@ -1,33 +1,33 @@
 @use '../../globals/helpers' as *;
 
+/**
+ * Same sizes as bds-avatar, with UAI tokens: micro sizing/lg, extra-small sizing/xl, small sizing/2xl,
+ * standard sizing/3xl, large sizing/4xl and extra-large sizing/5xl.
+ */
 :host {
   --avatar-size: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
   --avatar-font-size: var(--uai-heading-md-font-size, #{$uai-heading-md-font-size});
   --avatar-line-height: var(--uai-heading-md-line-height, #{$uai-heading-md-line-height});
+  --avatar-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  --avatar-content: var(--uai-content-secondary, #{$uai-content-secondary});
 
-  position: relative;
   display: inline-flex;
   flex: 0 0 var(--avatar-size);
-  align-items: center;
-  justify-content: center;
+  box-sizing: border-box;
   width: var(--avatar-size);
   height: var(--avatar-size);
-  overflow: hidden;
   border-radius: var(--uai-radius-full, #{$uai-radius-full});
-  box-sizing: border-box;
-  background-color: var(--uai-surface-muted, #{$uai-surface-muted});
-  color: var(--uai-content-secondary, #{$uai-content-secondary});
-  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
-  font-size: var(--avatar-font-size);
-  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
-  line-height: var(--avatar-line-height);
   vertical-align: middle;
+}
+
+:host([hidden]) {
+  display: none;
 }
 
 :host(.uai-avatar--size-micro) {
   --avatar-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
-  --avatar-font-size: var(--uai-caption-font-size, #{$uai-caption-font-size});
-  --avatar-line-height: var(--uai-caption-line-height, #{$uai-caption-line-height});
+  --avatar-font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  --avatar-line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
 }
 
 :host(.uai-avatar--size-extra-small) {
@@ -38,12 +38,8 @@
 
 :host(.uai-avatar--size-small) {
   --avatar-size: var(--uai-sizing-2xl, #{$uai-sizing-2xl});
-  --avatar-font-size: var(--uai-title-md-font-size, #{$uai-title-md-font-size});
-  --avatar-line-height: var(--uai-title-md-line-height, #{$uai-title-md-line-height});
-}
-
-:host(.uai-avatar--size-standard) {
-  --avatar-size: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
+  --avatar-font-size: var(--uai-body-lg-font-size, #{$uai-body-lg-font-size});
+  --avatar-line-height: var(--uai-body-lg-line-height, #{$uai-body-lg-line-height});
 }
 
 :host(.uai-avatar--size-large) {
@@ -58,6 +54,49 @@
   --avatar-line-height: var(--uai-heading-xl-line-height, #{$uai-heading-xl-line-height});
 }
 
+:host(.uai-avatar--color-info) {
+  --avatar-background: var(--uai-feedback-info-subtle, #{$uai-feedback-info-subtle});
+  --avatar-content: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+:host(.uai-avatar--color-success) {
+  --avatar-background: var(--uai-feedback-success-subtle, #{$uai-feedback-success-subtle});
+  --avatar-content: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+:host(.uai-avatar--color-warning) {
+  --avatar-background: var(--uai-feedback-warning-subtle, #{$uai-feedback-warning-subtle});
+  --avatar-content: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+:host(.uai-avatar--color-error) {
+  --avatar-background: var(--uai-feedback-error-subtle, #{$uai-feedback-error-subtle});
+  --avatar-content: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+:host(.uai-avatar--upload) {
+  cursor: pointer;
+  @include uai-focus-visible;
+}
+
+.avatar {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background-color: var(--avatar-background);
+  color: var(--avatar-content);
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+  font-size: var(--avatar-font-size);
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  line-height: var(--avatar-line-height);
+}
+
 .avatar__image {
   display: block;
   width: 100%;
@@ -65,15 +104,40 @@
   object-fit: cover;
 }
 
-.avatar__initials {
-  max-width: 100%;
+.avatar__initials,
+.avatar__ellipsis {
   overflow: hidden;
-  padding: 0 var(--uai-spacing-3xs, #{$uai-spacing-3xs});
-  text-overflow: clip;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 
 .avatar__icon {
   color: currentColor;
+}
+
+// Upload affordance: the icon appears over the content on hover and keyboard focus.
+.avatar__upload {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--uai-overlay-default, #{$uai-overlay-default});
+  color: var(--uai-content-inverse, #{$uai-content-inverse});
+  opacity: 0;
+  @include uai-transition(opacity);
+}
+
+:host(.uai-avatar--upload:hover) .avatar__upload,
+:host(.uai-avatar--upload:focus-visible) .avatar__upload {
+  opacity: 1;
+}
+
+.avatar__file {
+  display: none;
+}
+
+@media (forced-colors: active) {
+  .avatar {
+    border: var(--uai-border-width-default, #{$uai-border-width-default}) solid CanvasText;
+  }
 }

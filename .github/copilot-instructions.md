@@ -16,6 +16,9 @@ Blip Design System (blip-ds) is a design system component library built with Web
   - `/utils/` - Utility functions and helpers
   - `/view_components/` - View-specific components
 - `/blip-ds-react/` - React wrapper components (generated from StencilJS components)
+- `/.openspec/uai-convergence/` - Local OpenSpec store for the UAI migration (`--store uai-convergence`). Excluded via `.git/info/exclude` and never committed to blip-ds (ADR-009). Write to it through this path, not `~/openspec/...`.
+
+To create or change a `uai-*` component, use the `uai-component` skill in `.github/skills/uai-component/`.
 
 ## Core Technologies
 
@@ -71,6 +74,13 @@ Must follow stencil's testing guidelines and use the `@stencil/core/testing` pac
 2. The project follows semantic versioning and uses conventional commits for releases.
 
 3. Design tokens come from the `blip-tokens` package which should be kept updated.
+
+## Working Autonomy and Approval
+
+- When asked to implement, fix, or update something, treat the request as authorization for the ordinary, scoped edits needed in source code, tests, and directly related documentation. Do not ask for separate permission before each file edit or patch.
+- Follow repository conventions and make the complete change, including focused validation, without pausing for routine implementation choices.
+- Ask for clarification only when an unresolved product or behavior decision materially changes the result, the requested scope is ambiguous, or an action is destructive, irreversible, or externally visible.
+- This instruction guides the agent's decisions but cannot change VS Code or host-level tool approval settings. If the editor itself requires confirmation before a write, that permission must be adjusted in the editor's settings; workspace instructions cannot bypass it.
 
 ## Resources
 

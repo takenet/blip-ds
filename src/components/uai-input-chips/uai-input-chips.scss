@@ -1,0 +1,240 @@
+@use '../../globals/helpers' as *;
+
+/**
+ * @prop --uai-input-chips-width: Width of the field. Defaults to the full width of the container.
+ */
+:host {
+  --input-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  --input-background: var(--uai-surface-paper, #{$uai-surface-paper});
+  --input-border: var(--uai-border-input, #{$uai-border-input});
+  --input-content: var(--uai-content-primary, #{$uai-content-primary});
+  --input-label: var(--uai-content-primary, #{$uai-content-primary});
+  --input-message: var(--uai-content-secondary, #{$uai-content-secondary});
+  --input-feedback: var(--input-content);
+  // Focus halo: border/ring at opacity/focus-ring, as published for the UAI input.
+  --input-halo: color-mix(
+    in srgb,
+    var(--uai-border-ring, #{$uai-border-ring}) calc(var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring}) * 100%),
+    transparent
+  );
+  display: block;
+  width: var(--uai-input-chips-width, 100%);
+}
+
+:host(.uai-input-chips--size-short) {
+  --input-height: var(--uai-control-height-short, #{$uai-control-height-short});
+}
+
+:host(.uai-input-chips--danger) {
+  --input-border: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-label: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-message: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-feedback: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+:host(.uai-input-chips--success) {
+  --input-border: var(--uai-feedback-success, #{$uai-feedback-success});
+  --input-message: var(--uai-feedback-success, #{$uai-feedback-success});
+  --input-feedback: var(--uai-feedback-success, #{$uai-feedback-success});
+}
+
+:host(.uai-input-chips--disabled) {
+  --input-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  --input-border: var(--uai-border-default, #{$uai-border-default});
+  --input-content: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-label: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-message: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-feedback: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+}
+
+.input__label,
+.input__message {
+  --uai-typo-color: currentColor;
+}
+
+.input__label {
+  color: var(--input-label);
+}
+
+.input__message {
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--input-message);
+}
+
+.input__control {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  min-height: var(--input-height);
+  padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs}) var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--input-border);
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background-color: var(--input-background);
+  color: var(--input-content);
+  cursor: text;
+  @include uai-transition(border-color box-shadow);
+
+  &:focus-within {
+    --input-border: var(--uai-border-ring, #{$uai-border-ring});
+    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--input-halo);
+  }
+
+  @media (forced-colors: active) {
+    &:focus-within {
+      box-shadow: none;
+      outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid CanvasText;
+    }
+  }
+}
+
+:host(
+    :not(.uai-input-chips--disabled):not(.uai-input-chips--readonly):not(.uai-input-chips--danger):not(
+        .uai-input-chips--success
+      )
+  )
+  .input__control:hover:not(:focus-within) {
+  --input-border: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+:host(.uai-input-chips--disabled) .input__control {
+  cursor: not-allowed;
+}
+
+.input__icon {
+  flex: none;
+  color: var(--input-content);
+}
+
+.input__feedback {
+  flex: none;
+  color: var(--input-feedback);
+}
+
+.input__field {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  min-width: 0;
+}
+
+.input__native {
+  flex: 1 1 0;
+  box-sizing: border-box;
+  min-width: 25%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  text-overflow: ellipsis;
+  appearance: none;
+
+  &::placeholder {
+    color: var(--uai-content-placeholder, #{$uai-content-placeholder});
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 1;
+    -webkit-text-fill-color: currentColor;
+
+    &::placeholder {
+      color: var(--uai-content-disabled, #{$uai-content-disabled});
+    }
+  }
+}
+
+.input__counter {
+  --uai-typo-color: currentColor;
+  flex: none;
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+:host(.uai-input-chips--disabled) .input__counter {
+  color: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+// The list keeps its semantics while its chips flow with the input in the same wrapping row.
+.chips {
+  display: contents;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  max-width: 100%;
+  padding: var(--uai-spacing-3xs, #{$uai-spacing-3xs}) var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid transparent;
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background: var(--uai-surface-muted, #{$uai-surface-muted});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+  font-size: var(--uai-caption-font-size, #{$uai-caption-font-size});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  line-height: var(--uai-caption-line-height, #{$uai-caption-line-height});
+
+  &--static {
+    border-color: var(--uai-border-input, #{$uai-border-input});
+  }
+
+  &--invalid {
+    border-color: var(--uai-feedback-error, #{$uai-feedback-error});
+    color: var(--uai-feedback-error, #{$uai-feedback-error});
+  }
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+:host(.uai-input-chips--disabled) .chip {
+  color: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+.chip__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chip__remove {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: var(--uai-font-weight-semibold, #{$uai-font-weight-semibold});
+  cursor: pointer;
+  @include uai-transition(background-color);
+  @include uai-focus-visible;
+
+  &:hover {
+    background: var(--uai-overlay-hover, #{$uai-overlay-hover});
+  }
+}

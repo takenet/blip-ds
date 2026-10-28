@@ -7,6 +7,9 @@ export interface InputEditableEventDetail {
   oldValue: string;
 }
 
+/**
+ * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+ */
 @Component({
   tag: 'bds-input-editable',
   styleUrl: 'input-editable.scss',

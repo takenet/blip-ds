@@ -12,9 +12,13 @@ const iconSource = readFileSync(new URL('./uai-icon.figma.ts', import.meta.url),
 const inputSource = readFileSync(new URL('./uai-input.figma.ts', import.meta.url), 'utf8');
 const passwordSource = readFileSync(new URL('./uai-input-password.figma.ts', import.meta.url), 'utf8');
 const textareaSource = readFileSync(new URL('./uai-textarea.figma.ts', import.meta.url), 'utf8');
+const phoneSource = readFileSync(new URL('./uai-input-phone.figma.ts', import.meta.url), 'utf8');
+const dateSource = readFileSync(new URL('./uai-input-date.figma.ts', import.meta.url), 'utf8');
+const chipsSource = readFileSync(new URL('./uai-input-chips.figma.ts', import.meta.url), 'utf8');
+const editableSource = readFileSync(new URL('./uai-input-editable.figma.ts', import.meta.url), 'utf8');
 const imports = ['import { UaiIcon } from "blip-ds-react/dist/components"'];
 
-const evaluate = (source, properties = {}, swaps = {}) => {
+const evaluate = (source, properties = {}, swaps = {}, instances = {}) => {
   const figma = {
     selectedInstance: {
       getString: (key) => properties[key],
@@ -24,6 +28,7 @@ const evaluate = (source, properties = {}, swaps = {}) => {
         return values[properties[key]];
       },
       getInstanceSwap: (key) => swaps[key],
+      findInstance: (name) => instances[name] ?? { type: 'ERROR' },
     },
     code: (strings, ...values) => strings.reduce((result, part, index) => result + part + (values[index] ?? ''), ''),
   };
@@ -341,4 +346,309 @@ test('textarea rejects an unmapped icon and a missing accessible name', () => {
     () => evaluate(textareaSource, { ...textareaDefaults, 'Show Label': false, Label: ' ' }),
     /accessible name/,
   );
+});
+
+const phoneDefaults = {
+  Label: 'Telefone',
+  Text: '11 99999-0000',
+  'Helper Message': 'Informe um número com DDD.',
+  'Error Message': 'Informe um número válido.',
+  'Success Message': 'Número confirmado.',
+  Feedback: 'Default',
+  State: 'Default',
+};
+const prefixSelect = (Value = '+55') => ({
+  type: 'INSTANCE',
+  getString: (key) => ({ Value })[key],
+  getBoolean: () => true,
+});
+
+test('phone covers every feedback and state with valid React', () => {
+  for (const Feedback of ['Default', 'Error', 'Success'])
+    for (const State of ['Default', 'Filled', 'Hover', 'Focus', 'Disabled', 'Readonly']) {
+      const { example } = evaluate(
+        phoneSource,
+        { ...phoneDefaults, Feedback, State },
+        {},
+        { 'Leading Adornment': prefixSelect() },
+      );
+      assertJsx(example);
+      assert.ok(example.startsWith('<UaiInputPhone'));
+      assert.ok(example.includes('label={"Telefone"}'));
+      assert.ok(example.includes('value={"+55"}'));
+      assert.equal(example.includes('placeholder={"11 99999-0000"}'), ['Default', 'Hover'].includes(State));
+      assert.equal(example.includes('text={"11 99999-0000"}'), !['Default', 'Hover'].includes(State));
+      assert.equal(example.includes(' danger'), Feedback === 'Error');
+      assert.equal(example.includes(' success '), Feedback === 'Success');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+      assert.equal(example.includes(' readonly'), State === 'Readonly');
+      const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+      assert.ok(example.includes(`${message}={`));
+    }
+});
+
+test('phone maps the dialing code of the nested prefix and keeps the default label and code', () => {
+  const custom = evaluate(
+    phoneSource,
+    { ...phoneDefaults, State: 'Filled' },
+    {},
+    { 'Leading Adornment': prefixSelect('+1-264') },
+  );
+  assertJsx(custom.example);
+  assert.ok(custom.example.includes('value={"+1-264"}'));
+
+  const fallback = evaluate(phoneSource, { ...phoneDefaults, Label: ' ', 'Helper Message': '' });
+  assertJsx(fallback.example);
+  assert.ok(!fallback.example.includes('label='));
+  assert.ok(!fallback.example.includes('value='));
+  assert.ok(!fallback.example.includes('Message='));
+});
+
+test('phone rejects a prefix value that is not a dialing code', () => {
+  assert.throws(
+    () => evaluate(phoneSource, phoneDefaults, {}, { 'Leading Adornment': prefixSelect('Brasil') }),
+    /dialing code/,
+  );
+});
+
+const dateDefaults = {
+  Label: 'Data de entrega',
+  Text: 'DD/MM/YYYY',
+  'Helper Message': 'Escolha um dia útil.',
+  'Error Message': 'Informe uma data válida.',
+  'Success Message': 'Data confirmada.',
+  Feedback: 'Default',
+  State: 'Default',
+};
+
+test('date covers every feedback and state with valid React', () => {
+  for (const Feedback of ['Default', 'Error', 'Success'])
+    for (const State of ['Default', 'Filled', 'Hover', 'Focus', 'Disabled', 'Readonly']) {
+      const { example } = evaluate(dateSource, { ...dateDefaults, Feedback, State });
+      assertJsx(example);
+      assert.ok(example.startsWith('<UaiInputDate'));
+      assert.ok(example.includes('label={"Data de entrega"}'));
+      assert.equal(example.includes('placeholder={"DD/MM/YYYY"}'), ['Default', 'Hover'].includes(State));
+      assert.ok(!example.includes('value='));
+      assert.equal(example.includes(' danger'), Feedback === 'Error');
+      assert.equal(example.includes(' success '), Feedback === 'Success');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+      assert.equal(example.includes(' readonly'), State === 'Readonly');
+      const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+      assert.ok(example.includes(`${message}={`));
+    }
+});
+
+test('date never maps the displayed Text to the ISO value and keeps the default label', () => {
+  const filled = evaluate(dateSource, { ...dateDefaults, Text: '25/12/2026', State: 'Filled' });
+  assertJsx(filled.example);
+  assert.ok(!filled.example.includes('25/12/2026'));
+
+  const fallback = evaluate(dateSource, { ...dateDefaults, Label: ' ', Text: ' ', 'Helper Message': '' });
+  assertJsx(fallback.example);
+  assert.equal(fallback.example, '<UaiInputDate />');
+  assert.deepEqual(Array.from(fallback.imports), ['import { UaiInputDate } from "blip-ds-react/dist/components"']);
+  assert.equal(fallback.id, 'uai-input-date');
+});
+
+test('date preserves special characters in label and messages', () => {
+  const Label = 'Data "A&B" <início> {teste}';
+  const { example } = evaluate(dateSource, { ...dateDefaults, Label, Feedback: 'Error' });
+  assertJsx(example);
+  assert.ok(example.includes(`label={${JSON.stringify(Label)}}`));
+  assert.ok(example.includes('errorMessage={"Informe uma data válida."}'));
+});
+
+const chipsDefaults = {
+  Label: 'Convidados',
+  Placeholder: 'nome@empresa.com',
+  Message: 'Separe os e-mails por vírgula.',
+  Feedback: 'Default',
+  State: 'Empty',
+};
+const chip = (Label, Removable = true) => ({
+  type: 'INSTANCE',
+  getString: (key) => ({ Label })[key],
+  getBoolean: (key) => ({ Removable })[key],
+});
+const chipInstances = { 'Chip 1': chip('ana@blip.ai'), 'Chip 2': chip('bia@blip.ai') };
+
+test('input chips covers every feedback and state with valid React', () => {
+  for (const Feedback of ['Default', 'Error', 'Success'])
+    for (const State of ['Empty', 'Filled', 'Focus', 'Disabled']) {
+      const { example } = evaluate(chipsSource, { ...chipsDefaults, Feedback, State }, {}, chipInstances);
+      assertJsx(example);
+      assert.ok(example.startsWith('<UaiInputChips'));
+      assert.ok(example.includes('label={"Convidados"}'));
+      assert.ok(example.includes('placeholder={"nome@empresa.com"}'));
+      assert.equal(example.includes('chips={["ana@blip.ai","bia@blip.ai"]}'), ['Filled', 'Disabled'].includes(State));
+      assert.equal(example.includes('chips='), ['Filled', 'Disabled'].includes(State));
+      assert.equal(example.includes(' danger'), Feedback === 'Error');
+      assert.equal(example.includes(' success '), Feedback === 'Success');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+      assert.ok(!example.includes('readonly'));
+      const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+      assert.ok(example.includes(`${message}={"Separe os e-mails por vírgula."}`));
+    }
+});
+
+test('input chips reads only the labels of the nested chips and skips empty or missing ones', () => {
+  const removable = evaluate(
+    chipsSource,
+    { ...chipsDefaults, State: 'Filled' },
+    {},
+    { 'Chip 1': chip('design', false), 'Chip 2': chip('  ') },
+  );
+  assertJsx(removable.example);
+  assert.ok(removable.example.includes('chips={["design"]}'));
+  assert.ok(!removable.example.includes('Removable') && !removable.example.includes('readonly'));
+
+  const missing = evaluate(chipsSource, { ...chipsDefaults, State: 'Filled', Message: '' });
+  assertJsx(missing.example);
+  assert.equal(missing.example, '<UaiInputChips label={"Convidados"} placeholder={"nome@empresa.com"} />');
+  assert.deepEqual(Array.from(missing.imports), ['import { UaiInputChips } from "blip-ds-react/dist/components"']);
+  assert.equal(missing.id, 'uai-input-chips');
+  assert.equal(missing.metadata.nestable, true);
+});
+
+test('input chips names the field by aria-label without a label and rejects a field without any name', () => {
+  const { example } = evaluate(chipsSource, { ...chipsDefaults, Label: ' ' }, {}, chipInstances);
+  assertJsx(example);
+  assert.ok(example.includes('aria-label={"nome@empresa.com"}'));
+  assert.ok(!example.includes(' label='));
+  assert.throws(
+    () => evaluate(chipsSource, { ...chipsDefaults, Label: ' ', Placeholder: '' }, {}, chipInstances),
+    /accessible name/,
+  );
+});
+
+test('input chips preserves special characters in label, chips and message', () => {
+  const Label = 'Tags "A&B" <novas> {teste}';
+  const { example } = evaluate(
+    chipsSource,
+    { ...chipsDefaults, Label, State: 'Filled', Feedback: 'Error', Message: 'Revise "A&B".' },
+    {},
+    { 'Chip 1': chip('<a&b>'), 'Chip 2': chip('{x}') },
+  );
+  assertJsx(example);
+  assert.ok(example.includes(`label={${JSON.stringify(Label)}}`));
+  assert.ok(example.includes(`chips={${JSON.stringify(['<a&b>', '{x}'])}}`));
+  assert.ok(example.includes(`errorMessage={${JSON.stringify('Revise "A&B".')}}`));
+});
+
+const editableDefaults = {
+  Value: 'Projeto Alfa',
+  Label: 'Nome do projeto',
+  'Helper message': 'Use até 40 caracteres.',
+  'Error message': 'Informe um nome.',
+  'Success message': 'Nome salvo.',
+  Mode: 'View',
+  Size: 'Standard',
+  Feedback: 'Default',
+};
+
+test('input editable covers every mode, size and feedback with valid React', () => {
+  for (const Mode of ['View', 'Edit'])
+    for (const Size of ['Short', 'Standard', 'Tall'])
+      for (const Feedback of ['Default', 'Error', 'Success']) {
+        const { example } = evaluate(editableSource, { ...editableDefaults, Mode, Size, Feedback });
+        assertJsx(example);
+        assert.ok(example.startsWith('<UaiInputEditable'));
+        assert.ok(example.includes('label={"Nome do projeto"}'));
+        assert.ok(example.includes('value={"Projeto Alfa"}'));
+        assert.equal(example.includes(' size="short"'), Size === 'Short');
+        assert.equal(example.includes(' size="tall"'), Size === 'Tall');
+        assert.ok(!example.includes('size="standard"') && !example.includes('size="medium"'));
+        assert.equal(example.includes(' danger'), Feedback === 'Error');
+        assert.equal(example.includes(' success '), Feedback === 'Success');
+        const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+        const text = { Default: 'Use até 40 caracteres.', Error: 'Informe um nome.', Success: 'Nome salvo.' }[Feedback];
+        assert.ok(example.includes(`${message}={${JSON.stringify(text)}}`));
+        assert.equal((example.match(/Message=/g) || []).length, 1);
+        assert.ok(!/mode|edit/i.test(example.replace('UaiInputEditable', '')));
+      }
+});
+
+test('input editable omits an empty value and message and keeps imports and metadata', () => {
+  const empty = evaluate(editableSource, { ...editableDefaults, Value: ' ', 'Helper message': '' });
+  assertJsx(empty.example);
+  assert.equal(empty.example, '<UaiInputEditable label={"Nome do projeto"} />');
+  assert.deepEqual(Array.from(empty.imports), ['import { UaiInputEditable } from "blip-ds-react/dist/components"']);
+  assert.equal(empty.id, 'uai-input-editable');
+  assert.equal(empty.metadata.nestable, true);
+
+  const error = evaluate(editableSource, { ...editableDefaults, Feedback: 'Error', 'Error message': '  ' });
+  assertJsx(error.example);
+  assert.equal(error.example, '<UaiInputEditable label={"Nome do projeto"} value={"Projeto Alfa"} danger />');
+});
+
+test('input editable rejects a field without label and an unmapped mode', () => {
+  assert.throws(() => evaluate(editableSource, { ...editableDefaults, Label: ' ' }), /accessible name/);
+  assert.throws(() => evaluate(editableSource, { ...editableDefaults, Mode: 'Hover' }), /Unmapped Mode/);
+});
+
+test('input editable preserves special characters in value, label and message', () => {
+  const Label = 'Título "A&B" <novo> {teste}';
+  const Value = '<Projeto> & "Beta" {1}';
+  const { example } = evaluate(editableSource, {
+    ...editableDefaults,
+    Label,
+    Value,
+    Feedback: 'Success',
+    'Success message': 'Salvo "A&B".',
+  });
+  assertJsx(example);
+  assert.ok(example.includes(`label={${JSON.stringify(Label)}}`));
+  assert.ok(example.includes(`value={${JSON.stringify(Value)}}`));
+  assert.ok(example.includes(`successMessage={${JSON.stringify('Salvo "A&B".')}}`));
+});
+
+const avatarSource = readFileSync(new URL('./uai-avatar.figma.ts', import.meta.url), 'utf8');
+const avatarDefaults = { Initials: 'CJ', Size: 'standard', Type: 'Fallback' };
+const avatarSizes = ['micro', 'extra-small', 'small', 'standard', 'large', 'extra-large'];
+
+test('avatar covers every size and type with valid React', () => {
+  for (const Size of avatarSizes)
+    for (const Type of ['Image', 'Fallback']) {
+      const { example } = evaluate(avatarSource, { ...avatarDefaults, Size, Type });
+      assertJsx(example);
+      assert.ok(example.startsWith('<UaiAvatar'));
+      assert.ok(example.includes('name={"C J"}'));
+      assert.equal(example.includes(` size="${Size}"`), Size !== 'standard');
+      assert.ok(!example.includes('size="standard"'));
+      assert.equal(/ thumbnail=\{"https:\/\/[^"]+"\}/.test(example), Type === 'Image');
+      assert.equal(example.includes(' color="surface"'), Type === 'Fallback');
+      assert.ok(!/initials=|src=|label=/.test(example));
+    }
+});
+
+test('avatar keeps imports and metadata and builds the exact fallback example', () => {
+  const result = evaluate(avatarSource, avatarDefaults);
+  assert.equal(result.example, '<UaiAvatar name={"C J"} color="surface" />');
+  assert.deepEqual(Array.from(result.imports), ['import { UaiAvatar } from "blip-ds-react/dist/components"']);
+  assert.equal(result.id, 'uai-avatar');
+  assert.equal(result.metadata.nestable, true);
+});
+
+test('avatar turns at most two initials into name words and omits an empty name', () => {
+  const spaced = evaluate(avatarSource, { ...avatarDefaults, Initials: ' a  b c ', Size: 'micro' });
+  assertJsx(spaced.example);
+  assert.equal(spaced.example, '<UaiAvatar name={"a b"} size="micro" color="surface" />');
+
+  const single = evaluate(avatarSource, { ...avatarDefaults, Initials: 'M' });
+  assert.equal(single.example, '<UaiAvatar name={"M"} color="surface" />');
+
+  const empty = evaluate(avatarSource, { ...avatarDefaults, Initials: '  ', Type: 'Image' });
+  assertJsx(empty.example);
+  assert.ok(!empty.example.includes('name='));
+  assert.ok(empty.example.includes(' thumbnail={"https://'));
+
+  const quoted = evaluate(avatarSource, { ...avatarDefaults, Initials: '"{' });
+  assertJsx(quoted.example);
+  assert.ok(quoted.example.includes(`name={${JSON.stringify('" {')}}`));
+});
+
+test('avatar rejects unmapped size and type', () => {
+  assert.throws(() => evaluate(avatarSource, { ...avatarDefaults, Size: 'huge' }), /Unmapped Size/);
+  assert.throws(() => evaluate(avatarSource, { ...avatarDefaults, Type: 'Icon' }), /Unmapped Type/);
 });

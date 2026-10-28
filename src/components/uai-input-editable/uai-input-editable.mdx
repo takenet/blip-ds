@@ -1,0 +1,146 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiInputEditableStories from './uai-input-editable.stories';
+
+<Meta isTemplate />
+
+# Input Editable
+
+Campo que mostra um valor salvo e permite editá-lo no lugar, com confirmação explícita. Use para renomear ou ajustar um valor existente sem abrir um formulário, como o nome de um projeto ou de um bot. Para preencher um valor novo, use o input; para textos longos, use o textarea.
+
+## Visão geral
+
+No React, importe `UaiInputEditable` de `blip-ds-react/dist/components` e passe `label`, `value` e `onUaiInputEditableSave`. Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação. Fora do React, use o custom element `<uai-input-editable>`, com as propriedades em kebab-case (`helper-message`, `minlength-error-message`) e os eventos `uaiInputEditableSave`, `uaiChange` etc.
+
+## Playground
+
+<Canvas of={UaiInputEditableStories.Playground} />
+
+<Controls of={UaiInputEditableStories.Playground} />
+
+## Como usar
+
+Renomear um projeto, com o valor controlado por estado. Ao salvar, `onUaiInputEditableSave` atualiza o estado e a tela mostra "Salvo: ...". O código abaixo pode ser copiado como ponto de partida.
+
+<Canvas of={UaiInputEditableStories.Usage} sourceState="shown" />
+
+- Em leitura, o campo mostra o valor e o botão "Editar". Clicar no valor também abre a edição.
+- Em edição, "Salvar" (ou Enter) confirma e "Cancelar" (ou Esc) descarta. Para controlar por estado, atualize `value` com `event.detail.value` de `onUaiInputEditableSave`.
+- Salvar é recusado com o campo vazio, com menos de `minlength` caracteres ou com `danger`: o campo continua em edição e mostra a mensagem.
+- Com `name`, o formulário recebe só o valor salvo, nunca o rascunho em edição.
+
+## Estados
+
+O campo tem dois modos, leitura e edição, e os dois aceitam os feedbacks padrão, erro e sucesso. `danger` tem prioridade sobre `success`. Erro e sucesso mostram um ícone e a mensagem além da cor. O foco aparece no contorno do campo e, nos botões, como anel próprio. Em `disabled`, o botão "Editar" some, o valor fica esmaecido e sai do formulário.
+
+<Canvas of={UaiInputEditableStories.States} />
+
+O tamanho muda só a altura; o texto usa `body/base` em todos os tamanhos.
+
+| Tamanho | Altura |
+| --- | --- |
+| `short` | `control-height/short` |
+| `standard` (padrão; `medium` é sinônimo) | `control-height/medium` |
+| `tall` | `control-height/large` |
+
+<Canvas of={UaiInputEditableStories.Sizes} />
+
+## Comportamento
+
+As regras são cobertas por `src/components/uai-input-editable/test/uai-input-editable.spec.tsx` (unitário) e `src/components/uai-input-editable/test/uai-input-editable.e2e.ts` (integração).
+
+### Leitura e edição
+
+| Regra | Teste |
+| --- | --- |
+| Em leitura, o campo mostra o valor e o botão nativo `"Editar <label>"` | `test/uai-input-editable.spec.tsx` |
+| Ativar "Editar" ou clicar no valor abre a edição com o input focado e o texto selecionado | `test/uai-input-editable.e2e.ts` |
+| Em edição, os botões nativos "Salvar" e "Cancelar" aparecem | `test/uai-input-editable.spec.tsx` |
+| Enter salva e Esc cancela; depois de salvar ou cancelar, o foco volta ao "Editar" | `test/uai-input-editable.e2e.ts` |
+| Cancelar volta ao valor anterior e emite `uaiCancel` | `test/uai-input-editable.e2e.ts` |
+| Salvar de `Ana` para `Ana Clara` emite `uaiInputEditableSave` com `{ value: 'Ana Clara', oldValue: 'Ana' }` | `test/uai-input-editable.e2e.ts` |
+| Em `disabled`, o botão "Editar" não aparece | `test/uai-input-editable.spec.tsx` |
+| `edit()`, `save()` e `cancel()` fazem o mesmo que os botões; `setFocus()` foca o campo | `test/uai-input-editable.spec.tsx` |
+
+<Canvas of={UaiInputEditableStories.Editing} />
+
+### Validação
+
+| Regra | Teste |
+| --- | --- |
+| Salvar com o campo vazio é recusado: o campo continua em edição com `requiredErrorMessage` (ou o texto padrão do idioma) | `test/uai-input-editable.e2e.ts` |
+| Salvar com menos de `minlength` caracteres é recusado com `minlengthErrorMessage` (ou o texto padrão do idioma) | `test/uai-input-editable.spec.tsx` |
+| Com `danger`, salvar é recusado | `test/uai-input-editable.spec.tsx` |
+| `size` desconhecido cai em `standard` e `medium` vale como `standard`; `expand` não tem efeito | `test/uai-input-editable.spec.tsx` |
+
+<Canvas of={UaiInputEditableStories.Validation} />
+
+### Formulário
+
+| Regra | Teste |
+| --- | --- |
+| Com `name` (ou `inputName`), o formulário recebe só o valor salvo: com `Ana` salvo e o rascunho `Bia` em edição, `FormData.get('title')` é `Ana` | `test/uai-input-editable.e2e.ts` |
+| O reset do formulário volta ao valor inicial e sai da edição | `test/uai-input-editable.e2e.ts` |
+| Dentro de um `fieldset` desabilitado, o campo fica desabilitado e o valor não é enviado | `test/uai-input-editable.e2e.ts` |
+
+<Canvas of={UaiInputEditableStories.Form} />
+
+### Eventos e métodos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiInputEditableSave` | `uaiInputEditableSave` | O valor é salvo | `{ value, oldValue }` |
+| `onUaiChange` | `uaiChange` | A cada tecla em edição | `{ value, oldValue }` |
+| `onUaiInput` | `uaiInput` | A cada tecla em edição | `InputEvent` nativo |
+| `onUaiCancel` | `uaiCancel` | A edição é cancelada | — |
+| `onUaiFocus` | `uaiFocus` | O input em edição ganha o foco | — |
+| `onUaiBlur` | `uaiBlur` | O input em edição perde o foco | — |
+
+Cobertos por `test/uai-input-editable.spec.tsx` (payload e métodos) e `test/uai-input-editable.e2e.ts` (teclado e foco).
+
+Métodos: `edit()`, `save()`, `cancel()` e `setFocus()`. Parts: `input-container`, `input`, `input__message`, `edit-button`, `confirm-button` e `cancel-button`.
+
+<Canvas of={UaiInputEditableStories.Events} />
+
+### Movimento
+
+Hover e foco do campo e hover dos botões usam `duration/fast` e `easing/standard`. Com `prefers-reduced-motion: reduce`, tudo acontece sem transição (`test/uai-input-editable.e2e.ts`).
+
+## Acessibilidade
+
+- Os três botões são `<button>` nativos com nomes por idioma: `"Editar <label>"`, "Salvar" e "Cancelar" (`pt_BR`); `"Edit <label>"`, "Save" e "Cancel" (`en_US`); `"Editar <label>"`, "Guardar" e "Cancelar" (`es_ES`).
+- Em edição, o input nativo tem o rótulo associado ou, sem `label`, o `aria-label`.
+- Mensagens são ligadas ao input por `aria-describedby`; o erro define `aria-invalid` e mostra ícone e texto além da cor.
+- Ao abrir a edição, o foco vai para o input com o texto selecionado. Depois de salvar ou cancelar, o foco volta ao botão "Editar", sem perder a posição na página.
+- O foco aparece no contorno do campo (`:focus-within`) e nos botões (`:focus-visible`), com `border/ring`. Em modo de alto contraste, vira um contorno do sistema.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Tamanho e forma | `control-height-short`, `control-height-medium`, `control-height-large`, `radius-lg`, `border-width-default` |
+| Espaços | `spacing-xs` (padding), `spacing-sm` (padding à esquerda), `spacing-2xs` (gap, rótulo e mensagem) |
+| Repouso e hover | `border-input`, `content-secondary` |
+| Foco | `border-ring`, `border-width-thick`, `opacity-focus-ring` |
+| Erro e sucesso | `feedback-error`, `feedback-success` |
+| Desabilitado | `surface-muted`, `border-default`, `content-disabled` |
+| Botões editar, salvar e cancelar | `spacing-2xs` (padding), `radius-md`, ícone `sizing-lg`, `overlay-hover`, anel `border-ring` |
+| Texto | `caption` semibold (rótulo), `body-base` (valor), `caption` (mensagem) |
+| Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-input-editable`
+
+Props, valores e o payload dos eventos têm os mesmos nomes do `BdsInputEditable`. As diferenças:
+
+| `BdsInputEditable` | `UaiInputEditable` |
+| --- | --- |
+| `onBdsInputEditableSave`, `onBdsChange`, `onBdsInput`, `onBdsCancel`, `onBdsFocus`, `onBdsBlur` | `onUaiInputEditableSave`, `onUaiChange`, `onUaiInput`, `onUaiCancel`, `onUaiFocus`, `onUaiBlur`, com o mesmo payload |
+| Ícones clicáveis para editar, salvar e cancelar | `<button>` nativos com nome por idioma; `dtButtonEdit`, `dtButtonConfirm` e `dtButtonClose` vão nos botões |
+| Fonte maior em `standard` e `tall` | Texto sempre em `body/base`; o tamanho muda só a altura |
+| `expand` | Deprecated, sem efeito: o campo ocupa a largura do contêiner |
+| Esc não cancela; o foco não volta | Esc cancela e o foco volta ao botão "Editar" |
+| Campo fora do `<form>` nativo | Participa do formulário: envia só o valor salvo sob `name`, com reset e `fieldset` |
+| — | `label`, `name`, `disabled`, `language`, `aria-label`, `edit()`, `save()`, `cancel()`, `setFocus()`; `size` aceita `medium` como sinônimo de `standard` |
+
+## Design
+
+[UaiInputEditable no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2415-4557)

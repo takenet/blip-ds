@@ -76,12 +76,17 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
-import { UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
+import { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 import { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
+import { UaiInputChipsChange, UaiInputChipsLanguage, UaiInputChipsSize, UaiInputChipsType } from "./components/uai-input-chips/uai-input-chips";
+import { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
+import { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
+import { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditableSize } from "./components/uai-input-editable/uai-input-editable";
 import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
+import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
@@ -157,12 +162,17 @@ export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
-export { UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
+export { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 export { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
+export { UaiInputChipsChange, UaiInputChipsLanguage, UaiInputChipsSize, UaiInputChipsType } from "./components/uai-input-chips/uai-input-chips";
+export { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
+export { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
+export { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditableSize } from "./components/uai-input-editable/uai-input-editable";
 export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
+export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
@@ -1691,6 +1701,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputChips {
         "add": (value: string) => Promise<void>;
         /**
@@ -1824,6 +1837,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputEditable {
         /**
           * Add state danger on input, use for use feedback. If true avoid save confirmation.
@@ -2013,6 +2029,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-phone` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputPhoneNumber {
         "changeCountry": (code: any, isoCode: any, flag: any) => Promise<void>;
         /**
@@ -3673,31 +3692,64 @@ export namespace Components {
     interface BdsWarning {
     }
     /**
-     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
-     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
+     * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
+     * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
+     * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
      */
     interface UaiAvatar {
         /**
-          * Value placed on the avatar host for automated tests.
+          * Background behind the initials. Can be one of: 'colorLetter' (default, picked by the first letter of the name), 'system', 'success', 'warning', 'error', 'info', 'surface' (neutral).
+          * @default 'colorLetter'
+         */
+        "color"?: UaiAvatarColor;
+        /**
+          * Data test id, set on the host.
+          * @default null
          */
         "dataTest"?: string;
         /**
-          * Explicit one- or two-character fallback shown when the image is absent or fails to load.
+          * Number of hidden people, shown as "+N" (for example in a group of avatars).
+          * @default null
+         */
+        "ellipsis"?: number;
+        /**
+          * @deprecated The initials come from name. Without name, at most two characters are shown.
          */
         "initials"?: string;
         /**
-          * Accessible name for the avatar. Without a label, the avatar is hidden from assistive technology.
+          * @deprecated Use name. It builds the initials and the accessible name.
          */
         "label"?: string;
         /**
-          * Avatar diameter: micro (`sizing/lg`), extra-small (`sizing/xl`), small (`sizing/2xl`), standard (`sizing/3xl`), large (`sizing/4xl`), or extra-large (`sizing/5xl`).
+          * Full name of the person. Builds the initials (first letter of the first and the last name) and the accessible name.
+          * @default null
+         */
+        "name"?: string;
+        /**
+          * If true, activating the avatar opens the image picker, shows the chosen image and emits uaiImageUpload.
+          * @default false
+         */
+        "openUpload"?: boolean;
+        /**
+          * Avatar size. Can be one of: 'micro', 'extra-small', 'small', 'standard' (default), 'large', 'extra-large'.
           * @default 'standard'
          */
-        "size": UaiAvatarSize;
+        "size"?: UaiAvatarSize;
         /**
-          * URL of the avatar image. The consuming application handles file selection and upload.
+          * @deprecated Use thumbnail.
          */
         "src"?: string;
+        /**
+          * URL of the photo. Without it, or if it fails to load, the initials are shown.
+          * @default null
+         */
+        "thumbnail"?: string;
+        /**
+          * If true, shows the upload icon on hover and focus. The click only emits uaiClickAvatar; the app opens its own picker.
+          * @default false
+         */
+        "upload"?: boolean;
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
@@ -4192,6 +4244,460 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
+     * Field that turns free text into removable chips. The person types a value and presses Enter, or separates values
+     * with comma or semicolon; Backspace on the empty field removes the last chip. It takes part in native forms: with a
+     * name, each chip is submitted as one entry (read them with FormData.getAll). Use it for several open values, such as
+     * e-mails or tags. Pair with UaiButton in forms. Avoid it to choose from known options (use uai-select-chips or
+     * uai-autocomplete). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputChips {
+        /**
+          * Adds chips from the given text, or from the typed text when no value is given.
+         */
+        "add": (value?: string) => Promise<void>;
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * If true, leaving the field turns the typed text into a chip.
+          * @default false
+         */
+        "blurCreation": boolean;
+        /**
+          * Values shown as chips. Accepts an array or a JSON array string, for example '["ana@blip.ai", "bia@blip.ai"]'.
+          * @default []
+         */
+        "chips": string[] | string;
+        /**
+          * Removes all chips and the typed text.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If true, shows the number of chips and maxChipsLength.
+          * @default false
+         */
+        "counterLength"?: boolean;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Characters that split the text into several chips. Default: comma and semicolon (/,|;/).
+          * @default /,|;/
+         */
+        "delimiters"?: RegExp;
+        /**
+          * @deprecated Has no effect.
+         */
+        "disableSubmit"?: boolean;
+        /**
+          * If true, the field cannot be used and the chips are left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the remove button of each chip.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * If true, repeated values are accepted. If false (default), a value equal to an existing chip, ignoring case, is ignored.
+          * @default false
+         */
+        "duplicated"?: boolean;
+        /**
+          * Message shown when type is 'email' and a chip is not an e-mail. Without it, the default text is shown.
+         */
+        "emailErrorMessage": string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Returns the chips.
+         */
+        "get": () => Promise<string[]>;
+        /**
+          * @deprecated The field grows with the chips. Has no effect.
+         */
+        "height"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the chips.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the values in the submitted form data. Same as name, kept from bds-input-chips.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Returns true when the chips are valid for the type and, if required, there is at least one.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputChipsLanguage;
+        /**
+          * Largest number of chips. When it is reached, the text input is hidden.
+         */
+        "maxChipsLength"?: number;
+        /**
+          * @deprecated The field grows with the chips. Has no effect.
+         */
+        "maxHeight"?: string;
+        /**
+          * Largest number of characters of each chip.
+         */
+        "maxlength"?: number;
+        /**
+          * Name of the values in the submitted form data; each chip is one entry. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Example of a value, shown while the text is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the chips are shown without remove buttons and no value can be typed.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes the focus from the text input.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, the field without chips blocks the form submission.
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field has no chips. Without it, the default text is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * Moves the focus to the text input.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Minimum height of the field, which grows with the chips. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputChipsSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Kind of value. Can be one of: 'text' (default), 'email'. With 'email', chips that are not e-mails are marked as errors and the field is invalid.
+          * @default 'text'
+         */
+        "type": UaiInputChipsType;
+        /**
+          * Text being typed, before it becomes a chip.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
+     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
+     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputDate {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Clears the date.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Message shown when the typed date is incomplete or does not exist. Without it, the default text is shown.
+         */
+        "dateErrorMessage": string;
+        /**
+          * If true, the field and the calendar button cannot be used and the value is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the date.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in the submitted form data. Same as name, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Returns true when the date is complete, exists, is within min and max, and is present when required.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Data").
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts, not the date format. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputDateLanguage;
+        /**
+          * Latest accepted date, as ISO YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * Message shown when the date is after max. Without it, the default text with the max date is shown.
+         */
+        "maxErrorMessage": string;
+        /**
+          * Earliest accepted date, as ISO YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * Message shown when the date is before min. Without it, the default text with the min date is shown.
+         */
+        "minErrorMessage": string;
+        /**
+          * Name of the value in the submitted form data, which is the ISO date. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Text shown while the field is empty. Defaults to the browser's regional date format, such as "DD/MM/YYYY".
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the date can be selected and copied but not edited, and the calendar button is hidden.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes the focus from the field.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, an empty field blocks the form submission.
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * Moves the focus to the field.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputDateSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Selected date as ISO YYYY-MM-DD, for example "2026-12-25". Empty while the typed date is incomplete or invalid.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Value shown as text that the person can edit and confirm. In reading mode it shows the value and an Edit button;
+     * in editing mode it shows a field with Save and Cancel. Enter saves, Escape cancels and the focus goes back to Edit.
+     * Empty values, values shorter than minlength and values with danger are not saved. It takes part in native forms
+     * with the saved value. Use it to rename or adjust an existing value in place, such as a title. Pair with a label
+     * that names the value. Avoid it for forms where every field is edited at once (use uai-input). Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiInputEditable {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Discards the value being typed and returns to reading mode.
+         */
+        "cancel": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage, and saving is blocked. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the value is shown without the Edit button and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the Cancel button.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test id, set on the Save button.
+          * @default null
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test id, set on the Edit button.
+          * @default null
+         */
+        "dtButtonEdit"?: string;
+        /**
+          * Starts editing and moves the focus to the field.
+         */
+        "edit": () => Promise<void>;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @deprecated The field takes the width of its container (--uai-input-editable-width). Has no effect.
+         */
+        "expand"?: boolean;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Name of the saved value in the submitted form data. Same as name, kept from bds-input-editable.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. It also names the Edit button ("Editar <label>").
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputEditableLanguage;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * Smallest number of characters to save.
+          * @default 0
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when saving a value shorter than minlength. Without it, the default text is shown.
+         */
+        "minlengthErrorMessage": string;
+        /**
+          * Name of the saved value in the submitted form data. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Text shown while the value is empty, in both modes.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * Message shown when saving an empty value. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * Saves the value being typed. Returns false when it cannot be saved (empty, shorter than minlength or danger).
+         */
+        "save": () => Promise<boolean>;
+        /**
+          * Moves the focus to the field while editing, or to the Edit button.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Height of the field. Can be one of: 'short', 'standard' (default), 'tall'. 'medium' is the same as 'standard'.
+          * @default 'standard'
+         */
+        "size"?: UaiInputEditableSize | 'medium';
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Saved value, shown in reading mode and submitted with the form.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
      * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
      * UaiThemeProvider.
@@ -4348,6 +4854,144 @@ export namespace Components {
         /**
           * Current password. It is not reflected to an attribute.
           * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Phone number field with a country code selector. Use it to ask for a phone number when the country matters:
+     * the person picks the country (flag and dial code) and types the number freely, without mask or automatic
+     * formatting. It takes part in native forms: give it a name to submit "<code> <number>" (for example
+     * "+55 11 99999-0000"). Pair with UaiButton in forms. Avoid it for numbers without a country, or to infer the
+     * country from the number. Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputPhone {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Selects a country. code is the dial code ("+1"), isoCode the ISO text ("US / USA") and flag the country key ("united-states-flag").
+         */
+        "changeCountry": (code: string, isoCode: string, flag: string) => Promise<void>;
+        /**
+          * Clears the number. The country stays selected.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the field and the country selector cannot be used and the value is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the country selector button.
+          * @default null
+         */
+        "dtSelectFlag"?: string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Message below the field that helps to fill it, for example the expected format.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the country selector.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in the submitted form data. Same as name.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Returns true when the number meets required and has only digits, spaces and + - ( ) .
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Telefone").
+         */
+        "label"?: string;
+        /**
+          * Language of the country names and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputPhoneLanguage;
+        /**
+          * Name of the value in the submitted form data, which is "<code> <number>". Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Message shown when the number has characters other than digits, spaces and + - ( ) . Without it, the default text of the language is shown.
+         */
+        "numberErrorMessage": string;
+        /**
+          * @deprecated The country list comes from the language. Has no effect.
+         */
+        "options"?: Array<unknown>;
+        /**
+          * Example of the expected number, shown while the field is empty, for example "11 99999-0000". Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the number can be selected and copied but not edited, and the country cannot be changed.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes the focus from the field.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, an empty number blocks the form submission.
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * Moves the focus to the number.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputPhoneSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Phone number typed by the person, without the country code. Free text: no mask or formatting is applied.
+          * @default ''
+         */
+        "text"?: string;
+        /**
+          * Dial code of the selected country, for example "+55" (default) or "+1". Use changeCountry to pick a country that shares its code with others.
+          * @default '+55'
          */
         "value"?: string | null;
     }
@@ -4912,6 +5556,10 @@ export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsUploadElement;
 }
+export interface UaiAvatarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiAvatarElement;
+}
 export interface UaiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiButtonElement;
@@ -4920,9 +5568,25 @@ export interface UaiInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputElement;
 }
+export interface UaiInputChipsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputChipsElement;
+}
+export interface UaiInputDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputDateElement;
+}
+export interface UaiInputEditableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputEditableElement;
+}
 export interface UaiInputPasswordCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputPasswordElement;
+}
+export interface UaiInputPhoneCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputPhoneElement;
 }
 export interface UaiTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5515,6 +6179,9 @@ declare global {
         "bdsExtendedQuantityInput": { value: boolean };
         "bdsSubmit": { value: string[] };
     }
+    /**
+     * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputChipsElement extends Components.BdsInputChips, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputChipsElementEventMap>(type: K, listener: (this: HTMLBdsInputChipsElement, ev: BdsInputChipsCustomEvent<HTMLBdsInputChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5537,6 +6204,9 @@ declare global {
         "bdsFocus": void;
         "bdsBlur": void;
     }
+    /**
+     * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputEditableElement extends Components.BdsInputEditable, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputEditableElementEventMap>(type: K, listener: (this: HTMLBdsInputEditableElement, ev: BdsInputEditableCustomEvent<HTMLBdsInputEditableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5588,6 +6258,9 @@ declare global {
         "bdsFocus": void;
         "bdsBlur": void;
     }
+    /**
+     * @deprecated Use `uai-input-phone` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputPhoneNumberElement extends Components.BdsInputPhoneNumber, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputPhoneNumberElementEventMap>(type: K, listener: (this: HTMLBdsInputPhoneNumberElement, ev: BdsInputPhoneNumberCustomEvent<HTMLBdsInputPhoneNumberElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6233,11 +6906,25 @@ declare global {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
     };
+    interface HTMLUaiAvatarElementEventMap {
+        "uaiClickAvatar": PointerEvent | KeyboardEvent;
+        "uaiImageUpload": string;
+    }
     /**
-     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
-     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
+     * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
+     * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
+     * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
      */
     interface HTMLUaiAvatarElement extends Components.UaiAvatar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiAvatarElementEventMap>(type: K, listener: (this: HTMLUaiAvatarElement, ev: UaiAvatarCustomEvent<HTMLUaiAvatarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiAvatarElementEventMap>(type: K, listener: (this: HTMLUaiAvatarElement, ev: UaiAvatarCustomEvent<HTMLUaiAvatarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLUaiAvatarElement: {
         prototype: HTMLUaiAvatarElement;
@@ -6316,6 +7003,92 @@ declare global {
         prototype: HTMLUaiInputElement;
         new (): HTMLUaiInputElement;
     };
+    interface HTMLUaiInputChipsElementEventMap {
+        "uaiChange": UaiInputChipsChange;
+        "uaiChangeChips": UaiInputChipsChange;
+        "uaiInputChipsFocus": void;
+        "uaiBlur": string[];
+        "uaiInputChipsInput": InputEvent;
+        "uaiExtendedQuantityInput": { value: boolean };
+        "uaiSubmit": { value: string[] };
+    }
+    /**
+     * Field that turns free text into removable chips. The person types a value and presses Enter, or separates values
+     * with comma or semicolon; Backspace on the empty field removes the last chip. It takes part in native forms: with a
+     * name, each chip is submitted as one entry (read them with FormData.getAll). Use it for several open values, such as
+     * e-mails or tags. Pair with UaiButton in forms. Avoid it to choose from known options (use uai-select-chips or
+     * uai-autocomplete). Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiInputChipsElement extends Components.UaiInputChips, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputChipsElementEventMap>(type: K, listener: (this: HTMLUaiInputChipsElement, ev: UaiInputChipsCustomEvent<HTMLUaiInputChipsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputChipsElementEventMap>(type: K, listener: (this: HTMLUaiInputChipsElement, ev: UaiInputChipsCustomEvent<HTMLUaiInputChipsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputChipsElement: {
+        prototype: HTMLUaiInputChipsElement;
+        new (): HTMLUaiInputChipsElement;
+    };
+    interface HTMLUaiInputDateElementEventMap {
+        "uaiChange": { value: string };
+        "uaiInput": InputEvent;
+        "uaiFocus": void;
+        "uaiOnBlur": void;
+    }
+    /**
+     * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
+     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
+     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiInputDateElement extends Components.UaiInputDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputDateElementEventMap>(type: K, listener: (this: HTMLUaiInputDateElement, ev: UaiInputDateCustomEvent<HTMLUaiInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputDateElementEventMap>(type: K, listener: (this: HTMLUaiInputDateElement, ev: UaiInputDateCustomEvent<HTMLUaiInputDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputDateElement: {
+        prototype: HTMLUaiInputDateElement;
+        new (): HTMLUaiInputDateElement;
+    };
+    interface HTMLUaiInputEditableElementEventMap {
+        "uaiInputEditableSave": UaiInputEditableEventDetail;
+        "uaiChange": UaiInputEditableEventDetail;
+        "uaiInput": InputEvent;
+        "uaiCancel": void;
+        "uaiFocus": void;
+        "uaiBlur": void;
+    }
+    /**
+     * Value shown as text that the person can edit and confirm. In reading mode it shows the value and an Edit button;
+     * in editing mode it shows a field with Save and Cancel. Enter saves, Escape cancels and the focus goes back to Edit.
+     * Empty values, values shorter than minlength and values with danger are not saved. It takes part in native forms
+     * with the saved value. Use it to rename or adjust an existing value in place, such as a title. Pair with a label
+     * that names the value. Avoid it for forms where every field is edited at once (use uai-input). Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface HTMLUaiInputEditableElement extends Components.UaiInputEditable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputEditableElementEventMap>(type: K, listener: (this: HTMLUaiInputEditableElement, ev: UaiInputEditableCustomEvent<HTMLUaiInputEditableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputEditableElementEventMap>(type: K, listener: (this: HTMLUaiInputEditableElement, ev: UaiInputEditableCustomEvent<HTMLUaiInputEditableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputEditableElement: {
+        prototype: HTMLUaiInputEditableElement;
+        new (): HTMLUaiInputEditableElement;
+    };
     interface HTMLUaiInputPasswordElementEventMap {
         "uaiInputPasswordChange": { value: string | null };
         "uaiInputPasswordInput": InputEvent;
@@ -6342,6 +7115,34 @@ declare global {
     var HTMLUaiInputPasswordElement: {
         prototype: HTMLUaiInputPasswordElement;
         new (): HTMLUaiInputPasswordElement;
+    };
+    interface HTMLUaiInputPhoneElementEventMap {
+        "uaiPhoneNumberChange": UaiPhoneNumberChange;
+        "uaiInput": InputEvent;
+        "uaiCancel": void;
+        "uaiFocus": void;
+        "uaiBlur": void;
+    }
+    /**
+     * Phone number field with a country code selector. Use it to ask for a phone number when the country matters:
+     * the person picks the country (flag and dial code) and types the number freely, without mask or automatic
+     * formatting. It takes part in native forms: give it a name to submit "<code> <number>" (for example
+     * "+55 11 99999-0000"). Pair with UaiButton in forms. Avoid it for numbers without a country, or to infer the
+     * country from the number. Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiInputPhoneElement extends Components.UaiInputPhone, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputPhoneElementEventMap>(type: K, listener: (this: HTMLUaiInputPhoneElement, ev: UaiInputPhoneCustomEvent<HTMLUaiInputPhoneElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputPhoneElementEventMap>(type: K, listener: (this: HTMLUaiInputPhoneElement, ev: UaiInputPhoneCustomEvent<HTMLUaiInputPhoneElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputPhoneElement: {
+        prototype: HTMLUaiInputPhoneElement;
+        new (): HTMLUaiInputPhoneElement;
     };
     /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
@@ -6526,7 +7327,11 @@ declare global {
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-input": HTMLUaiInputElement;
+        "uai-input-chips": HTMLUaiInputChipsElement;
+        "uai-input-date": HTMLUaiInputDateElement;
+        "uai-input-editable": HTMLUaiInputEditableElement;
         "uai-input-password": HTMLUaiInputPasswordElement;
+        "uai-input-phone": HTMLUaiInputPhoneElement;
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-paper": HTMLUaiPaperElement;
@@ -8150,6 +8955,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputChips {
         /**
           * When true, the press enter will be simulated on blur event.
@@ -8296,6 +9104,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputEditable {
         /**
           * Add state danger on input, use for use feedback. If true avoid save confirmation.
@@ -8533,6 +9344,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-phone` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputPhoneNumber {
         /**
           * Habilita o estado "danger" no input.
@@ -10323,31 +11137,72 @@ declare namespace LocalJSX {
     interface BdsWarning {
     }
     /**
-     * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
-     * and an accessible name with `label`. The consuming application is responsible for uploading images.
+     * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
+     * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
+     * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
+     * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
      */
     interface UaiAvatar {
         /**
-          * Value placed on the avatar host for automated tests.
+          * Background behind the initials. Can be one of: 'colorLetter' (default, picked by the first letter of the name), 'system', 'success', 'warning', 'error', 'info', 'surface' (neutral).
+          * @default 'colorLetter'
+         */
+        "color"?: UaiAvatarColor;
+        /**
+          * Data test id, set on the host.
+          * @default null
          */
         "dataTest"?: string;
         /**
-          * Explicit one- or two-character fallback shown when the image is absent or fails to load.
+          * Number of hidden people, shown as "+N" (for example in a group of avatars).
+          * @default null
+         */
+        "ellipsis"?: number;
+        /**
+          * @deprecated The initials come from name. Without name, at most two characters are shown.
          */
         "initials"?: string;
         /**
-          * Accessible name for the avatar. Without a label, the avatar is hidden from assistive technology.
+          * @deprecated Use name. It builds the initials and the accessible name.
          */
         "label"?: string;
         /**
-          * Avatar diameter: micro (`sizing/lg`), extra-small (`sizing/xl`), small (`sizing/2xl`), standard (`sizing/3xl`), large (`sizing/4xl`), or extra-large (`sizing/5xl`).
+          * Full name of the person. Builds the initials (first letter of the first and the last name) and the accessible name.
+          * @default null
+         */
+        "name"?: string;
+        /**
+          * Emitted when the avatar is clicked, or activated with Enter or Space when it is interactive.
+         */
+        "onUaiClickAvatar"?: (event: UaiAvatarCustomEvent<PointerEvent | KeyboardEvent>) => void;
+        /**
+          * Emitted with the chosen image as a data URL, when openUpload is true.
+         */
+        "onUaiImageUpload"?: (event: UaiAvatarCustomEvent<string>) => void;
+        /**
+          * If true, activating the avatar opens the image picker, shows the chosen image and emits uaiImageUpload.
+          * @default false
+         */
+        "openUpload"?: boolean;
+        /**
+          * Avatar size. Can be one of: 'micro', 'extra-small', 'small', 'standard' (default), 'large', 'extra-large'.
           * @default 'standard'
          */
         "size"?: UaiAvatarSize;
         /**
-          * URL of the avatar image. The consuming application handles file selection and upload.
+          * @deprecated Use thumbnail.
          */
         "src"?: string;
+        /**
+          * URL of the photo. Without it, or if it fails to load, the initials are shown.
+          * @default null
+         */
+        "thumbnail"?: string;
+        /**
+          * If true, shows the upload icon on hover and focus. The click only emits uaiClickAvatar; the app opens its own picker.
+          * @default false
+         */
+        "upload"?: boolean;
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
@@ -10834,6 +11689,484 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
+     * Field that turns free text into removable chips. The person types a value and presses Enter, or separates values
+     * with comma or semicolon; Backspace on the empty field removes the last chip. It takes part in native forms: with a
+     * name, each chip is submitted as one entry (read them with FormData.getAll). Use it for several open values, such as
+     * e-mails or tags. Pair with UaiButton in forms. Avoid it to choose from known options (use uai-select-chips or
+     * uai-autocomplete). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputChips {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, leaving the field turns the typed text into a chip.
+          * @default false
+         */
+        "blurCreation"?: boolean;
+        /**
+          * Values shown as chips. Accepts an array or a JSON array string, for example '["ana@blip.ai", "bia@blip.ai"]'.
+          * @default []
+         */
+        "chips"?: string[] | string;
+        /**
+          * If true, shows the number of chips and maxChipsLength.
+          * @default false
+         */
+        "counterLength"?: boolean;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Characters that split the text into several chips. Default: comma and semicolon (/,|;/).
+          * @default /,|;/
+         */
+        "delimiters"?: RegExp;
+        /**
+          * @deprecated Has no effect.
+         */
+        "disableSubmit"?: boolean;
+        /**
+          * If true, the field cannot be used and the chips are left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the remove button of each chip.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * If true, repeated values are accepted. If false (default), a value equal to an existing chip, ignoring case, is ignored.
+          * @default false
+         */
+        "duplicated"?: boolean;
+        /**
+          * Message shown when type is 'email' and a chip is not an e-mail. Without it, the default text is shown.
+         */
+        "emailErrorMessage"?: string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * @deprecated The field grows with the chips. Has no effect.
+         */
+        "height"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the chips.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the values in the submitted form data. Same as name, kept from bds-input-chips.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputChipsLanguage;
+        /**
+          * Largest number of chips. When it is reached, the text input is hidden.
+         */
+        "maxChipsLength"?: number;
+        /**
+          * @deprecated The field grows with the chips. Has no effect.
+         */
+        "maxHeight"?: string;
+        /**
+          * Largest number of characters of each chip.
+         */
+        "maxlength"?: number;
+        /**
+          * Name of the values in the submitted form data; each chip is one entry. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the text input loses focus. detail: all chips.
+         */
+        "onUaiBlur"?: (event: UaiInputChipsCustomEvent<string[]>) => void;
+        /**
+          * Emitted when chips are added or removed. detail: { data (all chips), value (last chip) }.
+         */
+        "onUaiChange"?: (event: UaiInputChipsCustomEvent<UaiInputChipsChange>) => void;
+        /**
+          * Emitted when chips are added or removed. Same as uaiChange, kept from bds-input-chips.
+         */
+        "onUaiChangeChips"?: (event: UaiInputChipsCustomEvent<UaiInputChipsChange>) => void;
+        /**
+          * Emitted when maxChipsLength is reached. detail: { value: true }.
+         */
+        "onUaiExtendedQuantityInput"?: (event: UaiInputChipsCustomEvent<{ value: boolean }>) => void;
+        /**
+          * Emitted when the text input receives focus.
+         */
+        "onUaiInputChipsFocus"?: (event: UaiInputChipsCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInputChipsInput"?: (event: UaiInputChipsCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when the text input loses focus with chips. detail: { value (all chips) }.
+         */
+        "onUaiSubmit"?: (event: UaiInputChipsCustomEvent<{ value: string[] }>) => void;
+        /**
+          * Example of a value, shown while the text is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the chips are shown without remove buttons and no value can be typed.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, the field without chips blocks the form submission.
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field has no chips. Without it, the default text is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Minimum height of the field, which grows with the chips. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputChipsSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Kind of value. Can be one of: 'text' (default), 'email'. With 'email', chips that are not e-mails are marked as errors and the field is invalid.
+          * @default 'text'
+         */
+        "type"?: UaiInputChipsType;
+        /**
+          * Text being typed, before it becomes a chip.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
+     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
+     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputDate {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Message shown when the typed date is incomplete or does not exist. Without it, the default text is shown.
+         */
+        "dateErrorMessage"?: string;
+        /**
+          * If true, the field and the calendar button cannot be used and the value is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the date.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in the submitted form data. Same as name, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Data").
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts, not the date format. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputDateLanguage;
+        /**
+          * Latest accepted date, as ISO YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * Message shown when the date is after max. Without it, the default text with the max date is shown.
+         */
+        "maxErrorMessage"?: string;
+        /**
+          * Earliest accepted date, as ISO YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * Message shown when the date is before min. Without it, the default text with the min date is shown.
+         */
+        "minErrorMessage"?: string;
+        /**
+          * Name of the value in the submitted form data, which is the ISO date. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the date changes, by typing, by the calendar or programmatically. detail: { value } as ISO YYYY-MM-DD, or '' while the typed date is incomplete or invalid.
+         */
+        "onUaiChange"?: (event: UaiInputDateCustomEvent<{ value: string }>) => void;
+        /**
+          * Emitted when the field receives focus.
+         */
+        "onUaiFocus"?: (event: UaiInputDateCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiInputDateCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when the field loses focus.
+         */
+        "onUaiOnBlur"?: (event: UaiInputDateCustomEvent<void>) => void;
+        /**
+          * Text shown while the field is empty. Defaults to the browser's regional date format, such as "DD/MM/YYYY".
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the date can be selected and copied but not edited, and the calendar button is hidden.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, an empty field blocks the form submission.
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputDateSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Selected date as ISO YYYY-MM-DD, for example "2026-12-25". Empty while the typed date is incomplete or invalid.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Value shown as text that the person can edit and confirm. In reading mode it shows the value and an Edit button;
+     * in editing mode it shows a field with Save and Cancel. Enter saves, Escape cancels and the focus goes back to Edit.
+     * Empty values, values shorter than minlength and values with danger are not saved. It takes part in native forms
+     * with the saved value. Use it to rename or adjust an existing value in place, such as a title. Pair with a label
+     * that names the value. Avoid it for forms where every field is edited at once (use uai-input). Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiInputEditable {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, shows the error state and errorMessage, and saving is blocked. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the value is shown without the Edit button and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the Cancel button.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test id, set on the Save button.
+          * @default null
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test id, set on the Edit button.
+          * @default null
+         */
+        "dtButtonEdit"?: string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @deprecated The field takes the width of its container (--uai-input-editable-width). Has no effect.
+         */
+        "expand"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Name of the saved value in the submitted form data. Same as name, kept from bds-input-editable.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. It also names the Edit button ("Editar <label>").
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputEditableLanguage;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * Smallest number of characters to save.
+          * @default 0
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when saving a value shorter than minlength. Without it, the default text is shown.
+         */
+        "minlengthErrorMessage"?: string;
+        /**
+          * Name of the saved value in the submitted form data. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the field loses focus while editing.
+         */
+        "onUaiBlur"?: (event: UaiInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted when the editing is cancelled.
+         */
+        "onUaiCancel"?: (event: UaiInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke while editing. detail: { value (being typed), oldValue (saved) }.
+         */
+        "onUaiChange"?: (event: UaiInputEditableCustomEvent<UaiInputEditableEventDetail>) => void;
+        /**
+          * Emitted when the field receives focus while editing.
+         */
+        "onUaiFocus"?: (event: UaiInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiInputEditableCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when a value is saved. detail: { value (new), oldValue }.
+         */
+        "onUaiInputEditableSave"?: (event: UaiInputEditableCustomEvent<UaiInputEditableEventDetail>) => void;
+        /**
+          * Text shown while the value is empty, in both modes.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * Message shown when saving an empty value. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Height of the field. Can be one of: 'short', 'standard' (default), 'tall'. 'medium' is the same as 'standard'.
+          * @default 'standard'
+         */
+        "size"?: UaiInputEditableSize | 'medium';
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Saved value, shown in reading mode and submitted with the form.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
      * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
      * UaiThemeProvider.
@@ -10998,6 +12331,148 @@ declare namespace LocalJSX {
         /**
           * Current password. It is not reflected to an attribute.
           * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Phone number field with a country code selector. Use it to ask for a phone number when the country matters:
+     * the person picks the country (flag and dial code) and types the number freely, without mask or automatic
+     * formatting. It takes part in native forms: give it a name to submit "<code> <number>" (for example
+     * "+55 11 99999-0000"). Pair with UaiButton in forms. Avoid it for numbers without a country, or to infer the
+     * country from the number. Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputPhone {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the field and the country selector cannot be used and the value is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the country selector button.
+          * @default null
+         */
+        "dtSelectFlag"?: string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it, for example the expected format.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the country selector.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in the submitted form data. Same as name.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Telefone").
+         */
+        "label"?: string;
+        /**
+          * Language of the country names and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputPhoneLanguage;
+        /**
+          * Name of the value in the submitted form data, which is "<code> <number>". Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Message shown when the number has characters other than digits, spaces and + - ( ) . Without it, the default text of the language is shown.
+         */
+        "numberErrorMessage"?: string;
+        /**
+          * Emitted when the number loses focus.
+         */
+        "onUaiBlur"?: (event: UaiInputPhoneCustomEvent<void>) => void;
+        /**
+          * Emitted when the country list closes without a new choice (Escape or click outside).
+         */
+        "onUaiCancel"?: (event: UaiInputPhoneCustomEvent<void>) => void;
+        /**
+          * Emitted when the number receives focus.
+         */
+        "onUaiFocus"?: (event: UaiInputPhoneCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke in the number with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiInputPhoneCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when the number or the country changes. detail: { value (number), code, isoCode, country (flag key) }.
+         */
+        "onUaiPhoneNumberChange"?: (event: UaiInputPhoneCustomEvent<UaiPhoneNumberChange>) => void;
+        /**
+          * @deprecated The country list comes from the language. Has no effect.
+         */
+        "options"?: Array<unknown>;
+        /**
+          * Example of the expected number, shown while the field is empty, for example "11 99999-0000". Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the number can be selected and copied but not edited, and the country cannot be changed.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, an empty number blocks the form submission.
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputPhoneSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Phone number typed by the person, without the country code. Free text: no mask or formatting is applied.
+          * @default ''
+         */
+        "text"?: string;
+        /**
+          * Dial code of the selected country, for example "+55" (default) or "+1". Use changeCountry to pick a country that shares its code with others.
+          * @default '+55'
          */
         "value"?: string | null;
     }
@@ -12224,11 +13699,17 @@ declare namespace LocalJSX {
         "showListPreview": boolean;
     }
     interface UaiAvatarAttributes {
-        "src": string;
-        "initials": string;
-        "label": string;
+        "name": string;
+        "thumbnail": string;
         "size": UaiAvatarSize;
+        "color": UaiAvatarColor;
+        "upload": boolean;
+        "openUpload": boolean;
+        "ellipsis": number;
         "dataTest": string;
+        "src": string;
+        "label": string;
+        "initials": string;
     }
     interface UaiButtonAttributes {
         "block": boolean;
@@ -12331,6 +13812,90 @@ declare namespace LocalJSX {
         "iconSize": 'small' | 'medium';
         "debounceDelay": number;
     }
+    interface UaiInputChipsAttributes {
+        "chips": string[] | string;
+        "value": string | null;
+        "duplicated": boolean;
+        "blurCreation": boolean;
+        "type": UaiInputChipsType;
+        "name": string;
+        "inputName": string;
+        "label": string;
+        "placeholder": string;
+        "size": UaiInputChipsSize;
+        "language": UaiInputChipsLanguage;
+        "icon": string;
+        "required": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "emailErrorMessage": string;
+        "requiredErrorMessage": string;
+        "maxlength": number;
+        "maxChipsLength": number;
+        "counterLength": boolean;
+        "ariaLabel": string;
+        "dataTest": string;
+        "dtButtonClose": string;
+        "height": string;
+        "maxHeight": string;
+        "disableSubmit": boolean;
+    }
+    interface UaiInputDateAttributes {
+        "name": string;
+        "inputName": string;
+        "value": string | null;
+        "min": string;
+        "max": string;
+        "language": UaiInputDateLanguage;
+        "size": UaiInputDateSize;
+        "label": string;
+        "placeholder": string;
+        "icon": string;
+        "required": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "requiredErrorMessage": string;
+        "dateErrorMessage": string;
+        "minErrorMessage": string;
+        "maxErrorMessage": string;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
+    interface UaiInputEditableAttributes {
+        "value": string | null;
+        "label": string;
+        "placeholder": string;
+        "size": UaiInputEditableSize | 'medium';
+        "name": string;
+        "inputName": string;
+        "minlength": number;
+        "maxlength": number;
+        "danger": boolean;
+        "success": boolean;
+        "disabled": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "requiredErrorMessage": string;
+        "minlengthErrorMessage": string;
+        "language": UaiInputEditableLanguage;
+        "ariaLabel": string;
+        "dataTest": string;
+        "dtButtonEdit": string;
+        "dtButtonClose": string;
+        "dtButtonConfirm": string;
+        "expand": boolean;
+    }
     interface UaiInputPasswordAttributes {
         "name": string;
         "inputName": string;
@@ -12360,6 +13925,30 @@ declare namespace LocalJSX {
         "dataTest": string;
         "showStrength": boolean;
         "strengthLevel": UaiPasswordStrengthLevel;
+    }
+    interface UaiInputPhoneAttributes {
+        "name": string;
+        "inputName": string;
+        "text": string;
+        "value": string | null;
+        "language": UaiInputPhoneLanguage;
+        "size": UaiInputPhoneSize;
+        "label": string;
+        "placeholder": string;
+        "icon": string;
+        "required": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "requiredErrorMessage": string;
+        "numberErrorMessage": string;
+        "ariaLabel": string;
+        "dataTest": string;
+        "dtSelectFlag": string;
     }
     interface UaiNavbarAttributes {
         "orientation": uaiNavbarOrientation;
@@ -12548,7 +14137,11 @@ declare namespace LocalJSX {
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
+        "uai-input-chips": Omit<UaiInputChips, keyof UaiInputChipsAttributes> & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes]?: UaiInputChips[K] } & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes as `attr:${K}`]?: UaiInputChipsAttributes[K] } & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes as `prop:${K}`]?: UaiInputChips[K] };
+        "uai-input-date": Omit<UaiInputDate, keyof UaiInputDateAttributes> & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes]?: UaiInputDate[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `attr:${K}`]?: UaiInputDateAttributes[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `prop:${K}`]?: UaiInputDate[K] };
+        "uai-input-editable": Omit<UaiInputEditable, keyof UaiInputEditableAttributes> & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes]?: UaiInputEditable[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `attr:${K}`]?: UaiInputEditableAttributes[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `prop:${K}`]?: UaiInputEditable[K] };
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
+        "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
         "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
@@ -12617,12 +14210,21 @@ declare module "@stencil/core" {
              * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
              */
             "bds-input": LocalJSX.IntrinsicElements["bds-input"] & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
+            /**
+             * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+             */
             "bds-input-chips": LocalJSX.IntrinsicElements["bds-input-chips"] & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
+            /**
+             * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+             */
             "bds-input-editable": LocalJSX.IntrinsicElements["bds-input-editable"] & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
             /**
              * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
              */
             "bds-input-password": LocalJSX.IntrinsicElements["bds-input-password"] & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
+            /**
+             * @deprecated Use `uai-input-phone` for new UAI experiences. This component remains supported for existing consumers.
+             */
             "bds-input-phone-number": LocalJSX.IntrinsicElements["bds-input-phone-number"] & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-list": LocalJSX.IntrinsicElements["bds-list"] & JSXBase.HTMLAttributes<HTMLBdsListElement>;
             "bds-list-item": LocalJSX.IntrinsicElements["bds-list-item"] & JSXBase.HTMLAttributes<HTMLBdsListItemElement>;
@@ -12679,8 +14281,10 @@ declare module "@stencil/core" {
             "bds-upload": LocalJSX.IntrinsicElements["bds-upload"] & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.IntrinsicElements["bds-warning"] & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
             /**
-             * Static user avatar. Pass a remote image URL with `src`, explicit fallback initials with `initials`,
-             * and an accessible name with `label`. The consuming application is responsible for uploading images.
+             * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
+             * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
+             * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
+             * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
              */
             "uai-avatar": LocalJSX.IntrinsicElements["uai-avatar"] & JSXBase.HTMLAttributes<HTMLUaiAvatarElement>;
             /**
@@ -12709,11 +14313,43 @@ declare module "@stencil/core" {
              */
             "uai-input": LocalJSX.IntrinsicElements["uai-input"] & JSXBase.HTMLAttributes<HTMLUaiInputElement>;
             /**
+             * Field that turns free text into removable chips. The person types a value and presses Enter, or separates values
+             * with comma or semicolon; Backspace on the empty field removes the last chip. It takes part in native forms: with a
+             * name, each chip is submitted as one entry (read them with FormData.getAll). Use it for several open values, such as
+             * e-mails or tags. Pair with UaiButton in forms. Avoid it to choose from known options (use uai-select-chips or
+             * uai-autocomplete). Wrap the app in UaiThemeProvider.
+             */
+            "uai-input-chips": LocalJSX.IntrinsicElements["uai-input-chips"] & JSXBase.HTMLAttributes<HTMLUaiInputChipsElement>;
+            /**
+             * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
+             * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+             * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
+             * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+             */
+            "uai-input-date": LocalJSX.IntrinsicElements["uai-input-date"] & JSXBase.HTMLAttributes<HTMLUaiInputDateElement>;
+            /**
+             * Value shown as text that the person can edit and confirm. In reading mode it shows the value and an Edit button;
+             * in editing mode it shows a field with Save and Cancel. Enter saves, Escape cancels and the focus goes back to Edit.
+             * Empty values, values shorter than minlength and values with danger are not saved. It takes part in native forms
+             * with the saved value. Use it to rename or adjust an existing value in place, such as a title. Pair with a label
+             * that names the value. Avoid it for forms where every field is edited at once (use uai-input). Wrap the app in
+             * UaiThemeProvider.
+             */
+            "uai-input-editable": LocalJSX.IntrinsicElements["uai-input-editable"] & JSXBase.HTMLAttributes<HTMLUaiInputEditableElement>;
+            /**
              * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
              * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
              * UaiThemeProvider.
              */
             "uai-input-password": LocalJSX.IntrinsicElements["uai-input-password"] & JSXBase.HTMLAttributes<HTMLUaiInputPasswordElement>;
+            /**
+             * Phone number field with a country code selector. Use it to ask for a phone number when the country matters:
+             * the person picks the country (flag and dial code) and types the number freely, without mask or automatic
+             * formatting. It takes part in native forms: give it a name to submit "<code> <number>" (for example
+             * "+55 11 99999-0000"). Pair with UaiButton in forms. Avoid it for numbers without a country, or to infer the
+             * country from the number. Wrap the app in UaiThemeProvider.
+             */
+            "uai-input-phone": LocalJSX.IntrinsicElements["uai-input-phone"] & JSXBase.HTMLAttributes<HTMLUaiInputPhoneElement>;
             /**
              * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
              */

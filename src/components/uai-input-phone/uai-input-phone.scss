@@ -1,0 +1,262 @@
+@use '../../globals/helpers' as *;
+
+/**
+ * @prop --uai-input-phone-width: Width of the field. Defaults to the full width of the container.
+ */
+:host {
+  --input-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  --input-background: var(--uai-surface-paper, #{$uai-surface-paper});
+  --input-border: var(--uai-border-input, #{$uai-border-input});
+  --input-content: var(--uai-content-primary, #{$uai-content-primary});
+  --input-label: var(--uai-content-primary, #{$uai-content-primary});
+  --input-message: var(--uai-content-secondary, #{$uai-content-secondary});
+  --input-feedback: var(--input-content);
+  --prefix-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  // Focus halo: border/ring at opacity/focus-ring, as published for the UAI input.
+  --input-halo: color-mix(
+    in srgb,
+    var(--uai-border-ring, #{$uai-border-ring}) calc(var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring}) * 100%),
+    transparent
+  );
+  display: block;
+  width: var(--uai-input-phone-width, 100%);
+}
+
+:host(.uai-input-phone--size-short) {
+  --input-height: var(--uai-control-height-short, #{$uai-control-height-short});
+}
+
+:host(.uai-input-phone--danger) {
+  --input-border: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-label: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-message: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-feedback: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+:host(.uai-input-phone--success) {
+  --input-border: var(--uai-feedback-success, #{$uai-feedback-success});
+  --input-message: var(--uai-feedback-success, #{$uai-feedback-success});
+  --input-feedback: var(--uai-feedback-success, #{$uai-feedback-success});
+}
+
+:host(.uai-input-phone--disabled) {
+  --input-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  --input-border: var(--uai-border-default, #{$uai-border-default});
+  --input-content: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-label: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-message: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-feedback: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+}
+
+.input__label,
+.input__message,
+.prefix__code {
+  --uai-typo-color: currentColor;
+}
+
+.input__label {
+  color: var(--input-label);
+}
+
+.input__message {
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--input-message);
+}
+
+.input__control {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  height: var(--input-height);
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs}) 0 var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--input-border);
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background-color: var(--input-background);
+  color: var(--input-content);
+  cursor: text;
+  @include uai-transition(border-color box-shadow);
+
+  &:focus-within {
+    --input-border: var(--uai-border-ring, #{$uai-border-ring});
+    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--input-halo);
+  }
+
+  @media (forced-colors: active) {
+    &:focus-within {
+      box-shadow: none;
+      outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid CanvasText;
+    }
+  }
+}
+
+:host(
+    :not(.uai-input-phone--disabled):not(.uai-input-phone--readonly):not(.uai-input-phone--danger):not(
+        .uai-input-phone--success
+      )
+  )
+  .input__control:hover:not(:focus-within) {
+  --input-border: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+:host(.uai-input-phone--disabled) .input__control {
+  cursor: not-allowed;
+}
+
+.input__icon {
+  flex: none;
+  margin-left: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  color: var(--input-content);
+}
+
+.input__feedback {
+  flex: none;
+  color: var(--input-feedback);
+}
+
+.prefix {
+  display: inline-flex;
+  flex: none;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  margin: 0;
+  padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  border: 0;
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background-color: var(--prefix-background);
+  color: var(--input-content);
+  font: inherit;
+  cursor: pointer;
+  @include uai-focus-visible;
+
+  &:disabled {
+    cursor: inherit;
+  }
+
+  @media (forced-colors: active) {
+    border: var(--uai-border-width-default, #{$uai-border-width-default}) solid ButtonText;
+  }
+}
+
+.prefix__flag,
+.option__flag-image {
+  display: block;
+  width: var(--uai-sizing-sm, #{$uai-sizing-sm});
+  height: var(--uai-sizing-sm, #{$uai-sizing-sm});
+  object-fit: contain;
+}
+
+.prefix__arrow {
+  @include uai-transition(transform);
+}
+
+:host(.uai-input-phone--open) .prefix__arrow {
+  transform: rotate(180deg);
+}
+
+.input__field {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.input__native {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  text-overflow: ellipsis;
+  appearance: none;
+
+  &::placeholder {
+    color: var(--uai-content-placeholder, #{$uai-content-placeholder});
+    opacity: 1;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 1;
+    -webkit-text-fill-color: currentColor;
+
+    &::placeholder {
+      color: var(--uai-content-disabled, #{$uai-content-disabled});
+    }
+  }
+}
+
+.list {
+  @include uai-overlay-panel;
+  max-height: calc(5 * var(--uai-control-height-medium, #{$uai-control-height-medium}));
+  min-width: var(--uai-width-menu, #{$uai-width-menu});
+  padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  list-style: none;
+  outline: none;
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+.option {
+  --uai-typo-color: currentColor;
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  cursor: pointer;
+
+  &[aria-selected='true'] {
+    background: var(--uai-overlay-selected, #{$uai-overlay-selected});
+  }
+
+  &--active {
+    background: var(--uai-overlay-hover, #{$uai-overlay-hover});
+  }
+
+  @media (forced-colors: active) {
+    &--active {
+      outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid Highlight;
+    }
+  }
+}
+
+.option__flag {
+  flex: none;
+  width: var(--uai-sizing-sm, #{$uai-sizing-sm});
+}
+
+.option__name {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.option__code {
+  flex: none;
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}

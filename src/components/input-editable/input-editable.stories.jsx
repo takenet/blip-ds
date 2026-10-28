@@ -3,7 +3,7 @@ import DocumentationTemplate from './input-editable.mdx';
 import { BdsInputEditable } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Input Editable',
+  title: 'Components/[deprecated] Input Editable',
   parameters: {
     docs: {
       page: DocumentationTemplate,

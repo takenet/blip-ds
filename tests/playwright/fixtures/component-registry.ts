@@ -391,14 +391,14 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'bds-input-chips',
     name: 'Input Chips',
-    primaryStory: 'components-input-chips--properties',
-    stories: [{ storyId: 'components-input-chips--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-input-chips--properties',
+    stories: [{ storyId: 'components-deprecated-input-chips--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-input-editable',
     name: 'Input Editable',
-    primaryStory: 'components-input-editable--properties',
-    stories: [{ storyId: 'components-input-editable--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-input-editable--properties',
+    stories: [{ storyId: 'components-deprecated-input-editable--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-input-password',
@@ -409,8 +409,8 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'bds-input-phone-number',
     name: 'Input Phone Number',
-    primaryStory: 'components-input-phone-number--properties',
-    stories: [{ storyId: 'components-input-phone-number--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-input-phone-number--properties',
+    stories: [{ storyId: 'components-deprecated-input-phone-number--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-chip-clickable',

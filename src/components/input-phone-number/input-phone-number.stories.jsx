@@ -3,7 +3,7 @@ import DocumentationTemplate from './input-phone-number.mdx';
 import { BdsInputPhoneNumber } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Input Phone Number',
+  title: 'Components/[deprecated] Input Phone Number',
   parameters: {
     docs: {
       page: DocumentationTemplate,

@@ -1,0 +1,140 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiInputPhoneStories from './uai-input-phone.stories';
+
+<Meta isTemplate />
+
+# Input Phone
+
+Campo para número de telefone com o código do país (DDI) em um seletor à esquerda. Use quando o número pode ser de outro país. Para um número sem país, use o input; para escolher de uma lista sem digitar, use o select.
+
+## Playground
+
+<Canvas of={UaiInputPhoneStories.Playground} />
+
+<Controls of={UaiInputPhoneStories.Playground} />
+
+## Como usar
+
+Um formulário de contato com o telefone controlado por estado, validação nativa e envio. O código abaixo pode ser copiado como ponto de partida.
+
+<Canvas of={UaiInputPhoneStories.Usage} sourceState="shown" />
+
+- Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
+- `text` é o número e `value` é o código discável (`+55` por padrão). O número é livre: o componente não aplica máscara nem detecta o país pelo número.
+- Sem `label`, o rótulo é o texto padrão do idioma: "Telefone" (`pt_BR`), "Phone number" (`en_US`) ou "Teléfono" (`es_ES`).
+- Fora do React, use o custom element `<uai-input-phone>`, com as propriedades em kebab-case (`helper-message`) e os eventos `uaiPhoneNumberChange`, `uaiInput` etc.
+
+## Estados
+
+`danger` tem prioridade sobre `success`. Erro e sucesso mostram um ícone além da cor. O foco aparece no contorno do campo e, no prefixo, como anel próprio. Em `readonly` e `disabled` a lista não abre: em `readonly` a seta do prefixo some e, em `disabled`, ela fica esmaecida como o resto do campo, que sai do formulário.
+
+<Canvas of={UaiInputPhoneStories.States} />
+
+<Canvas of={UaiInputPhoneStories.Focus} />
+
+| Tamanho | Altura |
+| --- | --- |
+| `short` | `control-height/short` |
+| `medium` (padrão) | `control-height/medium` |
+
+<Canvas of={UaiInputPhoneStories.Sizes} />
+
+## Comportamento
+
+### Seletor de país
+
+| Regra | Teste |
+| --- | --- |
+| O prefixo é um `<button>` com `aria-haspopup="listbox"` e `aria-expanded`; clique, Enter ou Espaço abrem a lista no top layer | `test/uai-input-phone.e2e.ts` |
+| A lista tem altura máxima de 200 px na escala padrão (cinco `control-height/medium`), reduzida ao espaço disponível em telas menores, com rolagem interna | `test/uai-input-phone.e2e.ts` |
+| Setas, Home e End movem a opção ativa; Enter ou Espaço selecionam, fecham a lista e devolvem o foco ao prefixo | `test/uai-input-phone.e2e.ts` |
+| Digitar uma letra ativa o primeiro país cujo nome começa com ela | `test/uai-input-phone.e2e.ts` |
+| Esc ou clique fora fecham sem trocar o país e emitem `uaiCancel`; Tab fecha a lista | `test/uai-input-phone.e2e.ts` |
+| `changeCountry(code, isoCode, flag)` troca código e bandeira e emite `uaiPhoneNumberChange` | `test/uai-input-phone.spec.tsx` |
+| Bandeira oficial em `sizing/sm`, com `alt=""`; país sem arte publicada mostra só o código | `test/uai-input-phone.spec.tsx` |
+| Em `readonly` ou `disabled`, sem seta e sem abrir a lista | `test/uai-input-phone.spec.tsx` |
+| `language` desconhecido cai em `pt_BR` e `size` desconhecido em `medium`, com aviso único | `test/uai-input-phone.spec.tsx` |
+
+<Canvas of={UaiInputPhoneStories.Countries} />
+
+<Canvas of={UaiInputPhoneStories.Languages} />
+
+### Formulário e validação
+
+| Regra | Teste |
+| --- | --- |
+| Com `name` (ou `inputName`), envia uma entrada `"<código> <número>"` sem normalização, como `phone=+55 11 99999-0000`; sem nome ou sem número, nada é enviado | `test/uai-input-phone.e2e.ts` |
+| O reset do formulário volta ao número e ao código iniciais e limpa a validação | `test/uai-input-phone.e2e.ts` |
+| Dentro de um `fieldset` desabilitado, campo e prefixo ficam desabilitados e o valor não é enviado | `test/uai-input-phone.e2e.ts` |
+| `required` vazio mostra `requiredErrorMessage` ao sair do campo ou no envio | `test/uai-input-phone.e2e.ts` |
+| Caracteres fora de dígitos, espaço, `+`, `-`, `(`, `)` e `.` mostram `numberErrorMessage` e `isValid()` retorna `false`; sem a prop, vale a mensagem do navegador | `test/uai-input-phone.e2e.ts` |
+| Com o código `+55`, o número aceita até 25 caracteres, como no legado | `test/uai-input-phone.spec.tsx` |
+
+<Canvas of={UaiInputPhoneStories.Form} />
+
+### Eventos e métodos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiPhoneNumberChange` | `uaiPhoneNumberChange` | O número ou o país mudam | `{ value, code, isoCode, country }` (`value` é o número, `code` o DDI) |
+| `onUaiInput` | `uaiInput` | A cada tecla no número | `InputEvent` nativo |
+| `onUaiCancel` | `uaiCancel` | A lista fecha sem escolher um país | — |
+| `onUaiFocus` / `onUaiBlur` | `uaiFocus` / `uaiBlur` | O campo ganha ou perde o foco | — |
+
+Cobertos por `test/uai-input-phone.spec.tsx` (payload e métodos) e `test/uai-input-phone.e2e.ts` (digitação, foco e Esc).
+
+Métodos: `changeCountry(code, isoCode, flag)`, `setFocus()`, `removeFocus()`, `isValid()` e `clear()`.
+
+<Canvas of={UaiInputPhoneStories.Events} />
+
+### Movimento
+
+Hover e foco do campo, abertura da lista e rotação da seta usam `duration/fast`, `duration/moderate` e `easing/standard`. Com `prefers-reduced-motion: reduce`, tudo acontece sem transição (`test/uai-input-phone.e2e.ts`).
+
+## Acessibilidade
+
+- O rótulo é um `<label>` associado ao input nativo do número: clicar nele foca o campo. Sem `label`, o texto padrão do idioma garante o nome; `aria-label` substitui o nome acessível quando o contexto pede um texto mais específico.
+- O prefixo é um `<button>` nativo com nome que inclui o país e o código ("Código do país: Brasil +55"), `aria-haspopup="listbox"` e `aria-expanded`.
+- A lista é um `listbox` ("Países") com uma `option` por país (bandeira, nome e código); o país atual tem `aria-selected="true"` e a opção ativa é indicada por `aria-activedescendant`.
+- Ao fechar a lista, o foco volta ao prefixo. A ordem de Tab é: prefixo, número, slot `input-right`.
+- Mensagens são ligadas ao campo por `aria-describedby`; o erro define `aria-invalid` e mostra ícone e texto além da cor.
+- O foco aparece no contorno do campo (`:focus-within`) e no prefixo (`:focus-visible`), com `border/ring`. Em modo de alto contraste, vira um contorno do sistema.
+- A bandeira é decorativa (`alt=""`): o código está sempre visível e no nome do botão.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Tamanho e forma | `control-height-short`, `control-height-medium`, `radius-lg`, `border-width-default` |
+| Espaços | `spacing-2xs` (padding esquerdo, rótulo e mensagem), `spacing-xs` (padding direito e gap) |
+| Repouso e hover | `surface-paper`, `border-input`, `content-secondary` |
+| Foco | `border-ring`, `border-width-thick`, `opacity-focus-ring` |
+| Erro e sucesso | `feedback-error`, `feedback-success` |
+| Desabilitado | `surface-muted`, `border-default`, `content-disabled` |
+| Prefixo | `surface-muted`, `radius-md`, `spacing-2xs`, `sizing-sm` (bandeira), `sizing-lg` (seta) |
+| Lista de países | `width-menu`, `surface-paper`, `border-default`, `radius-lg`, `elevation-2`, `spacing-2xs` |
+| Opção | `spacing-xs`, `radius-md`, `overlay-hover` (ativa), `overlay-selected` (selecionada) |
+| Texto | `body-base` (número), `caption` semibold (rótulo), `caption` (mensagem), `content-primary`, `content-placeholder` |
+| Movimento | `duration-fast`, `duration-moderate`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-input-phone-number`
+
+Props, slots e métodos têm os mesmos nomes. As diferenças:
+
+| `BdsInputPhoneNumber` | `UaiInputPhone` |
+| --- | --- |
+| `onBdsPhoneNumberChange`, `onBdsInput`, `onBdsCancel`, `onBdsFocus`, `onBdsBlur` | `onUaiPhoneNumberChange`, `onUaiInput`, `onUaiCancel`, `onUaiFocus`, `onUaiBlur`, mesmo `detail` |
+| — | `uaiCancel` também é emitido quando a lista fecha sem escolha (Esc ou clique fora) |
+| `label` padrão "Phone number" | Texto padrão do idioma: "Telefone", "Phone number" ou "Teléfono" |
+| Prefixo é uma `div` focável com lista inline | Prefixo é um `<button>` nativo e a lista abre no top layer, com teclado de listbox |
+| Bandeiras do legado | Bandeiras oficiais do blip-tokens; país sem arte mostra só o código |
+| `options` | Deprecada, sem efeito; aviso único no console |
+| `pattern` interno inválido | Validação de caracteres com `numberErrorMessage` |
+| Campo fora do `<form>` nativo | Participa do formulário: `FormData` (`"<código> <número>"`), reset, validação e `fieldset` |
+| — | `size` (`short` \| `medium`), `name`, `inputName`, `placeholder`, `readonly`, `aria-label`, `setFocus()`, `isValid()`, `clear()` |
+
+Slot `input-right` e parts `input-container` e `input__message` continuam; `input`, `country-button`, `country-list` e `country-option` são novos.
+
+## Design
+
+[UaiInputPhone no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2294-375)
