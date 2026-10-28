@@ -14,6 +14,13 @@
 | `type`           | `type`            |             | `string`                        | `'text'` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Used by

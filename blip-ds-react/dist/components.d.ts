@@ -1,5 +1,6 @@
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeItemCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsTabGroupCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiButtonCustomEvent, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiButtonCustomEvent, type stateSelect } from "blip-ds";
+import type { Components } from "blip-ds/dist/components";
 import { BdsAccordionBody as BdsAccordionBodyElement } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement } from "blip-ds/dist/components/bds-accordion-group.js";
 import { BdsAccordionHeader as BdsAccordionHeaderElement } from "blip-ds/dist/components/bds-accordion-header.js";
@@ -113,145 +114,145 @@ import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navba
 import { UaiThemeProvider as UaiThemeProviderElement } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTypo as UaiTypoElement } from "blip-ds/dist/components/uai-typo.js";
 export type BdsAccordionEvents = {
-    onBdsToggle: EventName<CustomEvent<{
+    onBdsToggle: EventName<BdsAccordionCustomEvent<{
         value: boolean;
     }>>;
-    onBdsAccordionOpen: EventName<CustomEvent<void>>;
-    onBdsAccordionClose: EventName<CustomEvent<void>>;
+    onBdsAccordionOpen: EventName<BdsAccordionCustomEvent<void>>;
+    onBdsAccordionClose: EventName<BdsAccordionCustomEvent<void>>;
 };
-export declare const BdsAccordion: StencilReactComponent<BdsAccordionElement, BdsAccordionEvents>;
+export declare const BdsAccordion: StencilReactComponent<BdsAccordionElement, BdsAccordionEvents, Components.BdsAccordion>;
 export type BdsAccordionBodyEvents = NonNullable<unknown>;
-export declare const BdsAccordionBody: StencilReactComponent<BdsAccordionBodyElement, BdsAccordionBodyEvents>;
+export declare const BdsAccordionBody: StencilReactComponent<BdsAccordionBodyElement, BdsAccordionBodyEvents, Components.BdsAccordionBody>;
 export type BdsAccordionGroupEvents = {
-    onBdsAccordionCloseAll: EventName<CustomEvent<void>>;
-    onBdsAccordionOpenAll: EventName<CustomEvent<void>>;
+    onBdsAccordionCloseAll: EventName<BdsAccordionGroupCustomEvent<void>>;
+    onBdsAccordionOpenAll: EventName<BdsAccordionGroupCustomEvent<void>>;
 };
-export declare const BdsAccordionGroup: StencilReactComponent<BdsAccordionGroupElement, BdsAccordionGroupEvents>;
+export declare const BdsAccordionGroup: StencilReactComponent<BdsAccordionGroupElement, BdsAccordionGroupEvents, Components.BdsAccordionGroup>;
 export type BdsAccordionHeaderEvents = NonNullable<unknown>;
-export declare const BdsAccordionHeader: StencilReactComponent<BdsAccordionHeaderElement, BdsAccordionHeaderEvents>;
+export declare const BdsAccordionHeader: StencilReactComponent<BdsAccordionHeaderElement, BdsAccordionHeaderEvents, Components.BdsAccordionHeader>;
 export type BdsAlertEvents = {
-    onBdsAlertChanged: EventName<CustomEvent<{
+    onBdsAlertChanged: EventName<BdsAlertCustomEvent<{
         alertStatus: string;
     }>>;
 };
-export declare const BdsAlert: StencilReactComponent<BdsAlertElement, BdsAlertEvents>;
+export declare const BdsAlert: StencilReactComponent<BdsAlertElement, BdsAlertEvents, Components.BdsAlert>;
 export type BdsAlertActionsEvents = NonNullable<unknown>;
-export declare const BdsAlertActions: StencilReactComponent<BdsAlertActionsElement, BdsAlertActionsEvents>;
+export declare const BdsAlertActions: StencilReactComponent<BdsAlertActionsElement, BdsAlertActionsEvents, Components.BdsAlertActions>;
 export type BdsAlertBodyEvents = NonNullable<unknown>;
-export declare const BdsAlertBody: StencilReactComponent<BdsAlertBodyElement, BdsAlertBodyEvents>;
+export declare const BdsAlertBody: StencilReactComponent<BdsAlertBodyElement, BdsAlertBodyEvents, Components.BdsAlertBody>;
 export type BdsAlertHeaderEvents = NonNullable<unknown>;
-export declare const BdsAlertHeader: StencilReactComponent<BdsAlertHeaderElement, BdsAlertHeaderEvents>;
+export declare const BdsAlertHeader: StencilReactComponent<BdsAlertHeaderElement, BdsAlertHeaderEvents, Components.BdsAlertHeader>;
 export type BdsAutocompleteEvents = {
     onBdsChange: EventName<BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>>;
     onBdsSelectedChange: EventName<BdsAutocompleteCustomEvent<AutocompleteSelectedChangeEventDetail>>;
     onBdsMultiselectedChange: EventName<BdsAutocompleteCustomEvent<AutocompleteMultiSelectedChangeEventDetail>>;
     onBdsInput: EventName<BdsAutocompleteCustomEvent<KeyboardEvent>>;
     onBdsCancel: EventName<BdsAutocompleteCustomEvent<AutocompleteChangeEventDetail>>;
-    onBdsFocus: EventName<CustomEvent<void>>;
-    onBdsBlur: EventName<CustomEvent<void>>;
+    onBdsFocus: EventName<BdsAutocompleteCustomEvent<void>>;
+    onBdsBlur: EventName<BdsAutocompleteCustomEvent<void>>;
 };
-export declare const BdsAutocomplete: StencilReactComponent<BdsAutocompleteElement, BdsAutocompleteEvents>;
+export declare const BdsAutocomplete: StencilReactComponent<BdsAutocompleteElement, BdsAutocompleteEvents, Components.BdsAutocomplete>;
 export type BdsAvatarEvents = {
     onBdsClickAvatar: EventName<BdsAvatarCustomEvent<PointerEvent>>;
-    onBdsImageUpload: EventName<CustomEvent<string>>;
+    onBdsImageUpload: EventName<BdsAvatarCustomEvent<string>>;
 };
-export declare const BdsAvatar: StencilReactComponent<BdsAvatarElement, BdsAvatarEvents>;
+export declare const BdsAvatar: StencilReactComponent<BdsAvatarElement, BdsAvatarEvents, Components.BdsAvatar>;
 export type BdsAvatarGroupEvents = {
     onBdsClickAvatarGroup: EventName<BdsAvatarGroupCustomEvent<PointerEvent>>;
 };
-export declare const BdsAvatarGroup: StencilReactComponent<BdsAvatarGroupElement, BdsAvatarGroupEvents>;
+export declare const BdsAvatarGroup: StencilReactComponent<BdsAvatarGroupElement, BdsAvatarGroupEvents, Components.BdsAvatarGroup>;
 export type BdsBadgeEvents = NonNullable<unknown>;
-export declare const BdsBadge: StencilReactComponent<BdsBadgeElement, BdsBadgeEvents>;
+export declare const BdsBadge: StencilReactComponent<BdsBadgeElement, BdsBadgeEvents, Components.BdsBadge>;
 export type BdsBannerEvents = {
-    onBdsBannerClose: EventName<CustomEvent<void>>;
+    onBdsBannerClose: EventName<BdsBannerCustomEvent<void>>;
 };
-export declare const BdsBanner: StencilReactComponent<BdsBannerElement, BdsBannerEvents>;
+export declare const BdsBanner: StencilReactComponent<BdsBannerElement, BdsBannerEvents, Components.BdsBanner>;
 export type BdsBannerLinkEvents = {
     onBdsBannerLink: EventName<BdsBannerLinkCustomEvent<HTMLBdsBannerElement>>;
 };
-export declare const BdsBannerLink: StencilReactComponent<BdsBannerLinkElement, BdsBannerLinkEvents>;
+export declare const BdsBannerLink: StencilReactComponent<BdsBannerLinkElement, BdsBannerLinkEvents, Components.BdsBannerLink>;
 export type BdsBreadcrumbEvents = NonNullable<unknown>;
-export declare const BdsBreadcrumb: StencilReactComponent<BdsBreadcrumbElement, BdsBreadcrumbEvents>;
+export declare const BdsBreadcrumb: StencilReactComponent<BdsBreadcrumbElement, BdsBreadcrumbEvents, Components.BdsBreadcrumb>;
 export type BdsButtonEvents = {
     onBdsClick: EventName<BdsButtonCustomEvent<PointerEvent | KeyboardEvent>>;
 };
-export declare const BdsButton: StencilReactComponent<BdsButtonElement, BdsButtonEvents>;
+export declare const BdsButton: StencilReactComponent<BdsButtonElement, BdsButtonEvents, Components.BdsButton>;
 export type BdsButtonGroupEvents = {
-    onButtonSelected: EventName<CustomEvent<string>>;
+    onButtonSelected: EventName<BdsButtonGroupCustomEvent<string>>;
 };
-export declare const BdsButtonGroup: StencilReactComponent<BdsButtonGroupElement, BdsButtonGroupEvents>;
+export declare const BdsButtonGroup: StencilReactComponent<BdsButtonGroupElement, BdsButtonGroupEvents, Components.BdsButtonGroup>;
 export type BdsButtonIconEvents = {
     onBdsClick: EventName<BdsButtonIconCustomEvent<PointerEvent>>;
 };
-export declare const BdsButtonIcon: StencilReactComponent<BdsButtonIconElement, BdsButtonIconEvents>;
+export declare const BdsButtonIcon: StencilReactComponent<BdsButtonIconElement, BdsButtonIconEvents, Components.BdsButtonIcon>;
 export type BdsCardEvents = {
     onBdsClick: EventName<BdsCardCustomEvent<PointerEvent | KeyboardEvent>>;
 };
-export declare const BdsCard: StencilReactComponent<BdsCardElement, BdsCardEvents>;
+export declare const BdsCard: StencilReactComponent<BdsCardElement, BdsCardEvents, Components.BdsCard>;
 export type BdsCardBodyEvents = NonNullable<unknown>;
-export declare const BdsCardBody: StencilReactComponent<BdsCardBodyElement, BdsCardBodyEvents>;
+export declare const BdsCardBody: StencilReactComponent<BdsCardBodyElement, BdsCardBodyEvents, Components.BdsCardBody>;
 export type BdsCardColorEvents = NonNullable<unknown>;
-export declare const BdsCardColor: StencilReactComponent<BdsCardColorElement, BdsCardColorEvents>;
+export declare const BdsCardColor: StencilReactComponent<BdsCardColorElement, BdsCardColorEvents, Components.BdsCardColor, 'name' | 'variable'>;
 export type BdsCardFooterEvents = NonNullable<unknown>;
-export declare const BdsCardFooter: StencilReactComponent<BdsCardFooterElement, BdsCardFooterEvents>;
+export declare const BdsCardFooter: StencilReactComponent<BdsCardFooterElement, BdsCardFooterEvents, Components.BdsCardFooter>;
 export type BdsCardHeaderEvents = NonNullable<unknown>;
-export declare const BdsCardHeader: StencilReactComponent<BdsCardHeaderElement, BdsCardHeaderEvents>;
+export declare const BdsCardHeader: StencilReactComponent<BdsCardHeaderElement, BdsCardHeaderEvents, Components.BdsCardHeader>;
 export type BdsCardSubtitleEvents = NonNullable<unknown>;
-export declare const BdsCardSubtitle: StencilReactComponent<BdsCardSubtitleElement, BdsCardSubtitleEvents>;
+export declare const BdsCardSubtitle: StencilReactComponent<BdsCardSubtitleElement, BdsCardSubtitleEvents, Components.BdsCardSubtitle>;
 export type BdsCardTitleEvents = NonNullable<unknown>;
-export declare const BdsCardTitle: StencilReactComponent<BdsCardTitleElement, BdsCardTitleEvents>;
+export declare const BdsCardTitle: StencilReactComponent<BdsCardTitleElement, BdsCardTitleEvents, Components.BdsCardTitle>;
 export type BdsCarouselEvents = {
     onBdsChangeCarousel: EventName<BdsCarouselCustomEvent<{
         value: Itens;
     }>>;
 };
-export declare const BdsCarousel: StencilReactComponent<BdsCarouselElement, BdsCarouselEvents>;
+export declare const BdsCarousel: StencilReactComponent<BdsCarouselElement, BdsCarouselEvents, Components.BdsCarousel>;
 export type BdsCarouselItemEvents = NonNullable<unknown>;
-export declare const BdsCarouselItem: StencilReactComponent<BdsCarouselItemElement, BdsCarouselItemEvents>;
+export declare const BdsCarouselItem: StencilReactComponent<BdsCarouselItemElement, BdsCarouselItemEvents, Components.BdsCarouselItem>;
 export type BdsCheckboxEvents = {
-    onBdsChange: EventName<CustomEvent<any>>;
+    onBdsChange: EventName<BdsCheckboxCustomEvent<any>>;
     onBdsInput: EventName<BdsCheckboxCustomEvent<KeyboardEvent>>;
 };
-export declare const BdsCheckbox: StencilReactComponent<BdsCheckboxElement, BdsCheckboxEvents>;
+export declare const BdsCheckbox: StencilReactComponent<BdsCheckboxElement, BdsCheckboxEvents, Components.BdsCheckbox, 'refer' | 'label' | 'name'>;
 export type BdsChipEvents = {
-    onBdsDelete: EventName<CustomEvent<{
+    onBdsDelete: EventName<BdsChipCustomEvent<{
         id: string;
     }>>;
 };
-export declare const BdsChip: StencilReactComponent<BdsChipElement, BdsChipEvents>;
+export declare const BdsChip: StencilReactComponent<BdsChipElement, BdsChipEvents, Components.BdsChip>;
 export type BdsChipClickableEvents = {
-    onChipClickableClose: EventName<CustomEvent<{
+    onChipClickableClose: EventName<BdsChipClickableCustomEvent<{
         id: string;
     }>>;
-    onChipClickableClick: EventName<CustomEvent<void>>;
+    onChipClickableClick: EventName<BdsChipClickableCustomEvent<void>>;
 };
-export declare const BdsChipClickable: StencilReactComponent<BdsChipClickableElement, BdsChipClickableEvents>;
+export declare const BdsChipClickable: StencilReactComponent<BdsChipClickableElement, BdsChipClickableEvents, Components.BdsChipClickable>;
 export type BdsChipSelectedEvents = {
-    onChipClick: EventName<CustomEvent<{
+    onChipClick: EventName<BdsChipSelectedCustomEvent<{
         selected: boolean;
     }>>;
 };
-export declare const BdsChipSelected: StencilReactComponent<BdsChipSelectedElement, BdsChipSelectedEvents>;
+export declare const BdsChipSelected: StencilReactComponent<BdsChipSelectedElement, BdsChipSelectedEvents, Components.BdsChipSelected>;
 export type BdsChipTagEvents = NonNullable<unknown>;
-export declare const BdsChipTag: StencilReactComponent<BdsChipTagElement, BdsChipTagEvents>;
+export declare const BdsChipTag: StencilReactComponent<BdsChipTagElement, BdsChipTagEvents, Components.BdsChipTag>;
 export type BdsCounterTextEvents = NonNullable<unknown>;
-export declare const BdsCounterText: StencilReactComponent<BdsCounterTextElement, BdsCounterTextEvents>;
+export declare const BdsCounterText: StencilReactComponent<BdsCounterTextElement, BdsCounterTextEvents, Components.BdsCounterText, 'length'>;
 export type BdsDataTableEvents = {
-    onBdsTableClick: EventName<CustomEvent<{
+    onBdsTableClick: EventName<BdsDataTableCustomEvent<{
         item: {
             [key: string]: any;
         };
         index: number;
         nameButton: string;
     }>>;
-    onBdsTableDelete: EventName<CustomEvent<{
+    onBdsTableDelete: EventName<BdsDataTableCustomEvent<{
         [key: string]: any;
     }>>;
-    onBdsTableChange: EventName<CustomEvent<{
+    onBdsTableChange: EventName<BdsDataTableCustomEvent<{
         [key: string]: any;
     }[]>>;
 };
-export declare const BdsDataTable: StencilReactComponent<BdsDataTableElement, BdsDataTableEvents>;
+export declare const BdsDataTable: StencilReactComponent<BdsDataTableElement, BdsDataTableEvents, Components.BdsDataTable>;
 export type BdsDatepickerEvents = {
     onBdsStartDate: EventName<BdsDatepickerCustomEvent<{
         value: Date | null;
@@ -259,15 +260,15 @@ export type BdsDatepickerEvents = {
     onBdsEndDate: EventName<BdsDatepickerCustomEvent<{
         value: Date | null;
     }>>;
-    onConcludeDatepicker: EventName<CustomEvent<{
+    onConcludeDatepicker: EventName<BdsDatepickerCustomEvent<{
         startDate: string;
         endDate?: string;
     } | {
         startDate: string;
     } | any>>;
-    onEmptyConcludeDatepicker: EventName<CustomEvent<void>>;
+    onEmptyConcludeDatepicker: EventName<BdsDatepickerCustomEvent<void>>;
 };
-export declare const BdsDatepicker: StencilReactComponent<BdsDatepickerElement, BdsDatepickerEvents>;
+export declare const BdsDatepicker: StencilReactComponent<BdsDatepickerElement, BdsDatepickerEvents, Components.BdsDatepicker>;
 export type BdsDatepickerPeriodEvents = {
     onBdsStartDate: EventName<BdsDatepickerPeriodCustomEvent<{
         value: Date | null;
@@ -279,89 +280,89 @@ export type BdsDatepickerPeriodEvents = {
         state?: stateSelect;
     }>>;
 };
-export declare const BdsDatepickerPeriod: StencilReactComponent<BdsDatepickerPeriodElement, BdsDatepickerPeriodEvents>;
+export declare const BdsDatepickerPeriod: StencilReactComponent<BdsDatepickerPeriodElement, BdsDatepickerPeriodEvents, Components.BdsDatepickerPeriod>;
 export type BdsDatepickerSingleEvents = {
     onBdsDateSelected: EventName<BdsDatepickerSingleCustomEvent<{
         value: Date | null;
     }>>;
 };
-export declare const BdsDatepickerSingle: StencilReactComponent<BdsDatepickerSingleElement, BdsDatepickerSingleEvents>;
+export declare const BdsDatepickerSingle: StencilReactComponent<BdsDatepickerSingleElement, BdsDatepickerSingleEvents, Components.BdsDatepickerSingle>;
 export type BdsDividerEvents = NonNullable<unknown>;
-export declare const BdsDivider: StencilReactComponent<BdsDividerElement, BdsDividerEvents>;
+export declare const BdsDivider: StencilReactComponent<BdsDividerElement, BdsDividerEvents, Components.BdsDivider>;
 export type BdsDropdownEvents = {
-    onBdsToggle: EventName<CustomEvent<{
+    onBdsToggle: EventName<BdsDropdownCustomEvent<{
         value: boolean;
     }>>;
 };
-export declare const BdsDropdown: StencilReactComponent<BdsDropdownElement, BdsDropdownEvents>;
+export declare const BdsDropdown: StencilReactComponent<BdsDropdownElement, BdsDropdownEvents, Components.BdsDropdown>;
 export type BdsExpansionPanelEvents = NonNullable<unknown>;
-export declare const BdsExpansionPanel: StencilReactComponent<BdsExpansionPanelElement, BdsExpansionPanelEvents>;
+export declare const BdsExpansionPanel: StencilReactComponent<BdsExpansionPanelElement, BdsExpansionPanelEvents, Components.BdsExpansionPanel>;
 export type BdsExpansionPanelBodyEvents = NonNullable<unknown>;
-export declare const BdsExpansionPanelBody: StencilReactComponent<BdsExpansionPanelBodyElement, BdsExpansionPanelBodyEvents>;
+export declare const BdsExpansionPanelBody: StencilReactComponent<BdsExpansionPanelBodyElement, BdsExpansionPanelBodyEvents, Components.BdsExpansionPanelBody>;
 export type BdsExpansionPanelHeaderEvents = NonNullable<unknown>;
-export declare const BdsExpansionPanelHeader: StencilReactComponent<BdsExpansionPanelHeaderElement, BdsExpansionPanelHeaderEvents>;
+export declare const BdsExpansionPanelHeader: StencilReactComponent<BdsExpansionPanelHeaderElement, BdsExpansionPanelHeaderEvents, Components.BdsExpansionPanelHeader>;
 export type BdsGridEvents = NonNullable<unknown>;
-export declare const BdsGrid: StencilReactComponent<BdsGridElement, BdsGridEvents>;
+export declare const BdsGrid: StencilReactComponent<BdsGridElement, BdsGridEvents, Components.BdsGrid>;
 export type BdsIconEvents = NonNullable<unknown>;
-export declare const BdsIcon: StencilReactComponent<BdsIconElement, BdsIconEvents>;
+export declare const BdsIcon: StencilReactComponent<BdsIconElement, BdsIconEvents, Components.BdsIcon>;
 export type BdsIllustrationEvents = NonNullable<unknown>;
-export declare const BdsIllustration: StencilReactComponent<BdsIllustrationElement, BdsIllustrationEvents>;
+export declare const BdsIllustration: StencilReactComponent<BdsIllustrationElement, BdsIllustrationEvents, Components.BdsIllustration>;
 export type BdsImageEvents = NonNullable<unknown>;
-export declare const BdsImage: StencilReactComponent<BdsImageElement, BdsImageEvents>;
+export declare const BdsImage: StencilReactComponent<BdsImageElement, BdsImageEvents, Components.BdsImage>;
 export type BdsInputEvents = {
-    onBdsChange: EventName<CustomEvent<{
+    onBdsChange: EventName<BdsInputCustomEvent<{
         value: string;
     }>>;
     onBdsInput: EventName<BdsInputCustomEvent<InputEvent>>;
-    onBdsOnBlur: EventName<CustomEvent<void>>;
-    onBdsFocus: EventName<CustomEvent<void>>;
+    onBdsOnBlur: EventName<BdsInputCustomEvent<void>>;
+    onBdsFocus: EventName<BdsInputCustomEvent<void>>;
     onBdsSubmit: EventName<BdsInputCustomEvent<{
         event: KeyboardEvent;
         value: string;
     }>>;
-    onBdsPatternValidation: EventName<CustomEvent<boolean>>;
+    onBdsPatternValidation: EventName<BdsInputCustomEvent<boolean>>;
     onBdsKeyDownBackspace: EventName<BdsInputCustomEvent<{
         event: KeyboardEvent;
         value: string;
     }>>;
 };
-export declare const BdsInput: StencilReactComponent<BdsInputElement, BdsInputEvents>;
+export declare const BdsInput: StencilReactComponent<BdsInputElement, BdsInputEvents, Components.BdsInput>;
 export type BdsInputChipsEvents = {
-    onBdsChange: EventName<CustomEvent<{
+    onBdsChange: EventName<BdsInputChipsCustomEvent<{
         data: string[];
         value: string;
     }>>;
-    onBdsChangeChips: EventName<CustomEvent<{
+    onBdsChangeChips: EventName<BdsInputChipsCustomEvent<{
         data: string[];
         value: string;
     }>>;
-    onBdsInputChipsFocus: EventName<CustomEvent<void>>;
-    onBdsBlur: EventName<CustomEvent<string[]>>;
+    onBdsInputChipsFocus: EventName<BdsInputChipsCustomEvent<void>>;
+    onBdsBlur: EventName<BdsInputChipsCustomEvent<string[]>>;
     onBdsInputChipsInput: EventName<BdsInputChipsCustomEvent<InputEvent>>;
-    onBdsExtendedQuantityInput: EventName<CustomEvent<{
+    onBdsExtendedQuantityInput: EventName<BdsInputChipsCustomEvent<{
         value: boolean;
     }>>;
-    onBdsSubmit: EventName<CustomEvent<{
+    onBdsSubmit: EventName<BdsInputChipsCustomEvent<{
         value: string[];
     }>>;
 };
-export declare const BdsInputChips: StencilReactComponent<BdsInputChipsElement, BdsInputChipsEvents>;
+export declare const BdsInputChips: StencilReactComponent<BdsInputChipsElement, BdsInputChipsEvents, Components.BdsInputChips>;
 export type BdsInputEditableEvents = {
     onBdsInputEditableSave: EventName<BdsInputEditableCustomEvent<InputEditableEventDetail>>;
     onBdsChange: EventName<BdsInputEditableCustomEvent<InputEditableEventDetail>>;
     onBdsInput: EventName<BdsInputEditableCustomEvent<InputEvent>>;
-    onBdsCancel: EventName<CustomEvent<void>>;
-    onBdsFocus: EventName<CustomEvent<void>>;
-    onBdsBlur: EventName<CustomEvent<void>>;
+    onBdsCancel: EventName<BdsInputEditableCustomEvent<void>>;
+    onBdsFocus: EventName<BdsInputEditableCustomEvent<void>>;
+    onBdsBlur: EventName<BdsInputEditableCustomEvent<void>>;
 };
-export declare const BdsInputEditable: StencilReactComponent<BdsInputEditableElement, BdsInputEditableEvents>;
+export declare const BdsInputEditable: StencilReactComponent<BdsInputEditableElement, BdsInputEditableEvents, Components.BdsInputEditable>;
 export type BdsInputPasswordEvents = {
-    onBdsInputPasswordChange: EventName<CustomEvent<{
+    onBdsInputPasswordChange: EventName<BdsInputPasswordCustomEvent<{
         value: string | null;
     }>>;
     onBdsInputPasswordInput: EventName<BdsInputPasswordCustomEvent<InputEvent>>;
-    onBdsInputPasswordBlur: EventName<CustomEvent<void>>;
-    onBdsInputPasswordFocus: EventName<CustomEvent<void>>;
+    onBdsInputPasswordBlur: EventName<BdsInputPasswordCustomEvent<void>>;
+    onBdsInputPasswordFocus: EventName<BdsInputPasswordCustomEvent<void>>;
     onBdsInputPasswordSubmit: EventName<BdsInputPasswordCustomEvent<{
         event: KeyboardEvent;
         value: string | null;
@@ -371,20 +372,20 @@ export type BdsInputPasswordEvents = {
         value: string | null;
     }>>;
 };
-export declare const BdsInputPassword: StencilReactComponent<BdsInputPasswordElement, BdsInputPasswordEvents>;
+export declare const BdsInputPassword: StencilReactComponent<BdsInputPasswordElement, BdsInputPasswordEvents, Components.BdsInputPassword>;
 export type BdsInputPhoneNumberEvents = {
-    onBdsPhoneNumberChange: EventName<CustomEvent<{
+    onBdsPhoneNumberChange: EventName<BdsInputPhoneNumberCustomEvent<{
         value: string | null;
         code: string | null;
         isoCode: string | null;
         country: string | null;
     }>>;
     onBdsInput: EventName<BdsInputPhoneNumberCustomEvent<InputEvent>>;
-    onBdsCancel: EventName<CustomEvent<void>>;
-    onBdsFocus: EventName<CustomEvent<void>>;
-    onBdsBlur: EventName<CustomEvent<void>>;
+    onBdsCancel: EventName<BdsInputPhoneNumberCustomEvent<void>>;
+    onBdsFocus: EventName<BdsInputPhoneNumberCustomEvent<void>>;
+    onBdsBlur: EventName<BdsInputPhoneNumberCustomEvent<void>>;
 };
-export declare const BdsInputPhoneNumber: StencilReactComponent<BdsInputPhoneNumberElement, BdsInputPhoneNumberEvents>;
+export declare const BdsInputPhoneNumber: StencilReactComponent<BdsInputPhoneNumberElement, BdsInputPhoneNumberEvents, Components.BdsInputPhoneNumber>;
 export type BdsListEvents = {
     onBdsListCheckboxChange: EventName<BdsListCustomEvent<{
         value: string | null;
@@ -410,9 +411,9 @@ export type BdsListEvents = {
         avatarThumbnail: string | null;
         typeList: TypeList | null;
     }[]>>;
-    onBdsClickActionsButtons: EventName<CustomEvent<any>>;
+    onBdsClickActionsButtons: EventName<BdsListCustomEvent<any>>;
 };
-export declare const BdsList: StencilReactComponent<BdsListElement, BdsListEvents>;
+export declare const BdsList: StencilReactComponent<BdsListElement, BdsListEvents, Components.BdsList>;
 export type BdsListItemEvents = {
     onBdsChecked: EventName<BdsListItemCustomEvent<{
         value: string | null;
@@ -427,220 +428,220 @@ export type BdsListItemEvents = {
         elementButton: EventTarget;
     }>>;
 };
-export declare const BdsListItem: StencilReactComponent<BdsListItemElement, BdsListItemEvents>;
+export declare const BdsListItem: StencilReactComponent<BdsListItemElement, BdsListItemEvents, Components.BdsListItem>;
 export type BdsListItemContentEvents = NonNullable<unknown>;
-export declare const BdsListItemContent: StencilReactComponent<BdsListItemContentElement, BdsListItemContentEvents>;
+export declare const BdsListItemContent: StencilReactComponent<BdsListItemContentElement, BdsListItemContentEvents, Components.BdsListItemContent>;
 export type BdsLoadingBarEvents = NonNullable<unknown>;
-export declare const BdsLoadingBar: StencilReactComponent<BdsLoadingBarElement, BdsLoadingBarEvents>;
+export declare const BdsLoadingBar: StencilReactComponent<BdsLoadingBarElement, BdsLoadingBarEvents, Components.BdsLoadingBar>;
 export type BdsLoadingPageEvents = NonNullable<unknown>;
-export declare const BdsLoadingPage: StencilReactComponent<BdsLoadingPageElement, BdsLoadingPageEvents>;
+export declare const BdsLoadingPage: StencilReactComponent<BdsLoadingPageElement, BdsLoadingPageEvents, Components.BdsLoadingPage>;
 export type BdsLoadingSpinnerEvents = NonNullable<unknown>;
-export declare const BdsLoadingSpinner: StencilReactComponent<BdsLoadingSpinnerElement, BdsLoadingSpinnerEvents>;
+export declare const BdsLoadingSpinner: StencilReactComponent<BdsLoadingSpinnerElement, BdsLoadingSpinnerEvents, Components.BdsLoadingSpinner>;
 export type BdsMenuEvents = {
-    onBdsToggle: EventName<CustomEvent<{
+    onBdsToggle: EventName<BdsMenuCustomEvent<{
         value?: boolean;
     }>>;
 };
-export declare const BdsMenu: StencilReactComponent<BdsMenuElement, BdsMenuEvents>;
+export declare const BdsMenu: StencilReactComponent<BdsMenuElement, BdsMenuEvents, Components.BdsMenu>;
 export type BdsMenuActionEvents = NonNullable<unknown>;
-export declare const BdsMenuAction: StencilReactComponent<BdsMenuActionElement, BdsMenuActionEvents>;
+export declare const BdsMenuAction: StencilReactComponent<BdsMenuActionElement, BdsMenuActionEvents, Components.BdsMenuAction>;
 export type BdsMenuExibitionEvents = NonNullable<unknown>;
-export declare const BdsMenuExibition: StencilReactComponent<BdsMenuExibitionElement, BdsMenuExibitionEvents>;
+export declare const BdsMenuExibition: StencilReactComponent<BdsMenuExibitionElement, BdsMenuExibitionEvents, Components.BdsMenuExibition>;
 export type BdsMenuListEvents = NonNullable<unknown>;
-export declare const BdsMenuList: StencilReactComponent<BdsMenuListElement, BdsMenuListEvents>;
+export declare const BdsMenuList: StencilReactComponent<BdsMenuListElement, BdsMenuListEvents, Components.BdsMenuList>;
 export type BdsMenuListItemEvents = NonNullable<unknown>;
-export declare const BdsMenuListItem: StencilReactComponent<BdsMenuListItemElement, BdsMenuListItemEvents>;
+export declare const BdsMenuListItem: StencilReactComponent<BdsMenuListItemElement, BdsMenuListItemEvents, Components.BdsMenuListItem, 'icon'>;
 export type BdsMenuSeparationEvents = NonNullable<unknown>;
-export declare const BdsMenuSeparation: StencilReactComponent<BdsMenuSeparationElement, BdsMenuSeparationEvents>;
+export declare const BdsMenuSeparation: StencilReactComponent<BdsMenuSeparationElement, BdsMenuSeparationEvents, Components.BdsMenuSeparation>;
 export type BdsModalEvents = {
-    onBdsModalChanged: EventName<CustomEvent<{
+    onBdsModalChanged: EventName<BdsModalCustomEvent<{
         modalStatus: 'opened' | 'closed';
     }>>;
 };
-export declare const BdsModal: StencilReactComponent<BdsModalElement, BdsModalEvents>;
+export declare const BdsModal: StencilReactComponent<BdsModalElement, BdsModalEvents, Components.BdsModal>;
 export type BdsModalActionEvents = NonNullable<unknown>;
-export declare const BdsModalAction: StencilReactComponent<BdsModalActionElement, BdsModalActionEvents>;
+export declare const BdsModalAction: StencilReactComponent<BdsModalActionElement, BdsModalActionEvents, Components.BdsModalAction>;
 export type BdsModalCloseButtonEvents = NonNullable<unknown>;
-export declare const BdsModalCloseButton: StencilReactComponent<BdsModalCloseButtonElement, BdsModalCloseButtonEvents>;
+export declare const BdsModalCloseButton: StencilReactComponent<BdsModalCloseButtonElement, BdsModalCloseButtonEvents, Components.BdsModalCloseButton>;
 export type BdsNavTreeEvents = {
     onBdsToogleChange: EventName<BdsNavTreeCustomEvent<{
         value?: boolean;
         element: HTMLElement;
     }>>;
 };
-export declare const BdsNavTree: StencilReactComponent<BdsNavTreeElement, BdsNavTreeEvents>;
+export declare const BdsNavTree: StencilReactComponent<BdsNavTreeElement, BdsNavTreeEvents, Components.BdsNavTree, 'text'>;
 export type BdsNavTreeGroupEvents = {
-    onBdsNavTreeGroupCloseAll: EventName<CustomEvent<void>>;
-    onBdsNavTreeGroupOpenAll: EventName<CustomEvent<void>>;
+    onBdsNavTreeGroupCloseAll: EventName<BdsNavTreeGroupCustomEvent<void>>;
+    onBdsNavTreeGroupOpenAll: EventName<BdsNavTreeGroupCustomEvent<void>>;
 };
-export declare const BdsNavTreeGroup: StencilReactComponent<BdsNavTreeGroupElement, BdsNavTreeGroupEvents>;
+export declare const BdsNavTreeGroup: StencilReactComponent<BdsNavTreeGroupElement, BdsNavTreeGroupEvents, Components.BdsNavTreeGroup>;
 export type BdsNavTreeItemEvents = {
     onBdsToogleChange: EventName<BdsNavTreeItemCustomEvent<{
         value?: boolean;
         element: HTMLElement;
     }>>;
 };
-export declare const BdsNavTreeItem: StencilReactComponent<BdsNavTreeItemElement, BdsNavTreeItemEvents>;
+export declare const BdsNavTreeItem: StencilReactComponent<BdsNavTreeItemElement, BdsNavTreeItemEvents, Components.BdsNavTreeItem, 'text'>;
 export type BdsNavbarEvents = NonNullable<unknown>;
-export declare const BdsNavbar: StencilReactComponent<BdsNavbarElement, BdsNavbarEvents>;
+export declare const BdsNavbar: StencilReactComponent<BdsNavbarElement, BdsNavbarEvents, Components.BdsNavbar>;
 export type BdsNavbarContentEvents = NonNullable<unknown>;
-export declare const BdsNavbarContent: StencilReactComponent<BdsNavbarContentElement, BdsNavbarContentEvents>;
+export declare const BdsNavbarContent: StencilReactComponent<BdsNavbarContentElement, BdsNavbarContentEvents, Components.BdsNavbarContent>;
 export type BdsPaginationEvents = {
-    onBdsPaginationChange: EventName<CustomEvent<number>>;
-    onBdsItemsPerPageChange: EventName<CustomEvent<number>>;
+    onBdsPaginationChange: EventName<BdsPaginationCustomEvent<number>>;
+    onBdsItemsPerPageChange: EventName<BdsPaginationCustomEvent<number>>;
 };
-export declare const BdsPagination: StencilReactComponent<BdsPaginationElement, BdsPaginationEvents>;
+export declare const BdsPagination: StencilReactComponent<BdsPaginationElement, BdsPaginationEvents, Components.BdsPagination>;
 export type BdsPaperEvents = NonNullable<unknown>;
-export declare const BdsPaper: StencilReactComponent<BdsPaperElement, BdsPaperEvents>;
+export declare const BdsPaper: StencilReactComponent<BdsPaperElement, BdsPaperEvents, Components.BdsPaper>;
 export type BdsProgressBarEvents = NonNullable<unknown>;
-export declare const BdsProgressBar: StencilReactComponent<BdsProgressBarElement, BdsProgressBarEvents>;
+export declare const BdsProgressBar: StencilReactComponent<BdsProgressBarElement, BdsProgressBarEvents, Components.BdsProgressBar>;
 export type BdsRadioEvents = {
-    onBdsChange: EventName<CustomEvent<{
+    onBdsChange: EventName<BdsRadioCustomEvent<{
         checked: boolean;
     }>>;
-    onBdsClickChange: EventName<CustomEvent<{
+    onBdsClickChange: EventName<BdsRadioCustomEvent<{
         checked: boolean;
     }>>;
 };
-export declare const BdsRadio: StencilReactComponent<BdsRadioElement, BdsRadioEvents>;
+export declare const BdsRadio: StencilReactComponent<BdsRadioElement, BdsRadioEvents, Components.BdsRadio, 'value'>;
 export type BdsRadioGroupEvents = {
-    onBdsRadioGroupChange: EventName<CustomEvent<{
+    onBdsRadioGroupChange: EventName<BdsRadioGroupCustomEvent<{
         value?: string;
     }>>;
 };
-export declare const BdsRadioGroup: StencilReactComponent<BdsRadioGroupElement, BdsRadioGroupEvents>;
+export declare const BdsRadioGroup: StencilReactComponent<BdsRadioGroupElement, BdsRadioGroupEvents, Components.BdsRadioGroup>;
 export type BdsRichTextEvents = {
-    onBdsRichTextChange: EventName<CustomEvent<{
+    onBdsRichTextChange: EventName<BdsRichTextCustomEvent<{
         value: string;
     }>>;
     onBdsRichTextInput: EventName<BdsRichTextCustomEvent<InputEvent>>;
-    onBdsBlur: EventName<CustomEvent<void>>;
-    onBdsFocus: EventName<CustomEvent<void>>;
+    onBdsBlur: EventName<BdsRichTextCustomEvent<void>>;
+    onBdsFocus: EventName<BdsRichTextCustomEvent<void>>;
 };
-export declare const BdsRichText: StencilReactComponent<BdsRichTextElement, BdsRichTextEvents>;
+export declare const BdsRichText: StencilReactComponent<BdsRichTextElement, BdsRichTextEvents, Components.BdsRichText>;
 export type BdsSelectEvents = {
     onBdsChange: EventName<BdsSelectCustomEvent<SelectChangeEventDetail>>;
-    onBdsCancel: EventName<CustomEvent<void>>;
-    onBdsFocus: EventName<CustomEvent<void>>;
-    onBdsBlur: EventName<CustomEvent<void>>;
+    onBdsCancel: EventName<BdsSelectCustomEvent<void>>;
+    onBdsFocus: EventName<BdsSelectCustomEvent<void>>;
+    onBdsBlur: EventName<BdsSelectCustomEvent<void>>;
 };
-export declare const BdsSelect: StencilReactComponent<BdsSelectElement, BdsSelectEvents>;
+export declare const BdsSelect: StencilReactComponent<BdsSelectElement, BdsSelectEvents, Components.BdsSelect>;
 export type BdsSelectChipsEvents = {
     onBdsChange: EventName<BdsSelectChipsCustomEvent<SelectChangeEvent>>;
-    onBdsCancel: EventName<CustomEvent<void>>;
-    onBdsFocus: EventName<CustomEvent<void>>;
-    onBdsBlur: EventName<CustomEvent<void>>;
-    onBdsChangeChips: EventName<CustomEvent<{
+    onBdsCancel: EventName<BdsSelectChipsCustomEvent<void>>;
+    onBdsFocus: EventName<BdsSelectChipsCustomEvent<void>>;
+    onBdsBlur: EventName<BdsSelectChipsCustomEvent<void>>;
+    onBdsChangeChips: EventName<BdsSelectChipsCustomEvent<{
         data: string[];
         value: number;
     }>>;
     onBdsSelectChipsInput: EventName<BdsSelectChipsCustomEvent<InputEvent>>;
-    onBdsSubmit: EventName<CustomEvent<void>>;
+    onBdsSubmit: EventName<BdsSelectChipsCustomEvent<void>>;
 };
-export declare const BdsSelectChips: StencilReactComponent<BdsSelectChipsElement, BdsSelectChipsEvents>;
+export declare const BdsSelectChips: StencilReactComponent<BdsSelectChipsElement, BdsSelectChipsEvents, Components.BdsSelectChips>;
 export type BdsSelectOptionEvents = {
-    onOptionSelected: EventName<CustomEvent<{
+    onOptionSelected: EventName<BdsSelectOptionCustomEvent<{
         value: any;
         label: string;
     }>>;
-    onOptionChecked: EventName<CustomEvent<{
+    onOptionChecked: EventName<BdsSelectOptionCustomEvent<{
         value: string;
         label: string;
         checked: boolean;
     }>>;
 };
-export declare const BdsSelectOption: StencilReactComponent<BdsSelectOptionElement, BdsSelectOptionEvents>;
+export declare const BdsSelectOption: StencilReactComponent<BdsSelectOptionElement, BdsSelectOptionEvents, Components.BdsSelectOption, 'value'>;
 export type BdsSidebarEvents = {
-    onBdsToggle: EventName<CustomEvent<{
+    onBdsToggle: EventName<BdsSidebarCustomEvent<{
         value: boolean;
     }>>;
 };
-export declare const BdsSidebar: StencilReactComponent<BdsSidebarElement, BdsSidebarEvents>;
+export declare const BdsSidebar: StencilReactComponent<BdsSidebarElement, BdsSidebarEvents, Components.BdsSidebar>;
 export type BdsSkeletonEvents = NonNullable<unknown>;
-export declare const BdsSkeleton: StencilReactComponent<BdsSkeletonElement, BdsSkeletonEvents>;
+export declare const BdsSkeleton: StencilReactComponent<BdsSkeletonElement, BdsSkeletonEvents, Components.BdsSkeleton>;
 export type BdsSliderEvents = {
-    onBdsChange: EventName<CustomEvent<any>>;
+    onBdsChange: EventName<BdsSliderCustomEvent<any>>;
 };
-export declare const BdsSlider: StencilReactComponent<BdsSliderElement, BdsSliderEvents>;
+export declare const BdsSlider: StencilReactComponent<BdsSliderElement, BdsSliderEvents, Components.BdsSlider>;
 export type BdsStepEvents = NonNullable<unknown>;
-export declare const BdsStep: StencilReactComponent<BdsStepElement, BdsStepEvents>;
+export declare const BdsStep: StencilReactComponent<BdsStepElement, BdsStepEvents, Components.BdsStep>;
 export type BdsStepperEvents = NonNullable<unknown>;
-export declare const BdsStepper: StencilReactComponent<BdsStepperElement, BdsStepperEvents>;
+export declare const BdsStepper: StencilReactComponent<BdsStepperElement, BdsStepperEvents, Components.BdsStepper>;
 export type BdsSwitchEvents = {
-    onBdsChange: EventName<CustomEvent<{
+    onBdsChange: EventName<BdsSwitchCustomEvent<{
         checked: boolean;
     }>>;
 };
-export declare const BdsSwitch: StencilReactComponent<BdsSwitchElement, BdsSwitchEvents>;
+export declare const BdsSwitch: StencilReactComponent<BdsSwitchElement, BdsSwitchEvents, Components.BdsSwitch, 'refer' | 'name'>;
 export type BdsTabEvents = {
-    onBdsTabChange: EventName<CustomEvent<string>>;
+    onBdsTabChange: EventName<BdsTabCustomEvent<string>>;
 };
-export declare const BdsTab: StencilReactComponent<BdsTabElement, BdsTabEvents>;
+export declare const BdsTab: StencilReactComponent<BdsTabElement, BdsTabEvents, Components.BdsTab, 'group' | 'label'>;
 export type BdsTabGroupEvents = {
     onBdsTabChange: EventName<BdsTabGroupCustomEvent<HTMLBdsTabItemElement>>;
     onBdsTabDisabled: EventName<BdsTabGroupCustomEvent<HTMLBdsTabItemElement>>;
 };
-export declare const BdsTabGroup: StencilReactComponent<BdsTabGroupElement, BdsTabGroupEvents>;
+export declare const BdsTabGroup: StencilReactComponent<BdsTabGroupElement, BdsTabGroupEvents, Components.BdsTabGroup>;
 export type BdsTabItemEvents = {
-    onTabDisabled: EventName<CustomEvent<{
+    onTabDisabled: EventName<BdsTabItemCustomEvent<{
         item: number;
         disable: boolean;
     }>>;
 };
-export declare const BdsTabItem: StencilReactComponent<BdsTabItemElement, BdsTabItemEvents>;
+export declare const BdsTabItem: StencilReactComponent<BdsTabItemElement, BdsTabItemEvents, Components.BdsTabItem>;
 export type BdsTabPanelEvents = NonNullable<unknown>;
-export declare const BdsTabPanel: StencilReactComponent<BdsTabPanelElement, BdsTabPanelEvents>;
+export declare const BdsTabPanel: StencilReactComponent<BdsTabPanelElement, BdsTabPanelEvents, Components.BdsTabPanel, 'group'>;
 export type BdsTableEvents = NonNullable<unknown>;
-export declare const BdsTable: StencilReactComponent<BdsTableElement, BdsTableEvents>;
+export declare const BdsTable: StencilReactComponent<BdsTableElement, BdsTableEvents, Components.BdsTable>;
 export type BdsTableBodyEvents = NonNullable<unknown>;
-export declare const BdsTableBody: StencilReactComponent<BdsTableBodyElement, BdsTableBodyEvents>;
+export declare const BdsTableBody: StencilReactComponent<BdsTableBodyElement, BdsTableBodyEvents, Components.BdsTableBody>;
 export type BdsTableCellEvents = NonNullable<unknown>;
-export declare const BdsTableCell: StencilReactComponent<BdsTableCellElement, BdsTableCellEvents>;
+export declare const BdsTableCell: StencilReactComponent<BdsTableCellElement, BdsTableCellEvents, Components.BdsTableCell>;
 export type BdsTableHeaderEvents = NonNullable<unknown>;
-export declare const BdsTableHeader: StencilReactComponent<BdsTableHeaderElement, BdsTableHeaderEvents>;
+export declare const BdsTableHeader: StencilReactComponent<BdsTableHeaderElement, BdsTableHeaderEvents, Components.BdsTableHeader>;
 export type BdsTableRowEvents = NonNullable<unknown>;
-export declare const BdsTableRow: StencilReactComponent<BdsTableRowElement, BdsTableRowEvents>;
+export declare const BdsTableRow: StencilReactComponent<BdsTableRowElement, BdsTableRowEvents, Components.BdsTableRow>;
 export type BdsTableThEvents = NonNullable<unknown>;
-export declare const BdsTableTh: StencilReactComponent<BdsTableThElement, BdsTableThEvents>;
+export declare const BdsTableTh: StencilReactComponent<BdsTableThElement, BdsTableThEvents, Components.BdsTableTh>;
 export type BdsTabsEvents = {
     onScrollButtonClick: EventName<BdsTabsCustomEvent<Overflow>>;
-    onBdsTabInit: EventName<CustomEvent<string>>;
+    onBdsTabInit: EventName<BdsTabsCustomEvent<string>>;
 };
-export declare const BdsTabs: StencilReactComponent<BdsTabsElement, BdsTabsEvents>;
+export declare const BdsTabs: StencilReactComponent<BdsTabsElement, BdsTabsEvents, Components.BdsTabs>;
 export type BdsTestComponentEvents = NonNullable<unknown>;
-export declare const BdsTestComponent: StencilReactComponent<BdsTestComponentElement, BdsTestComponentEvents>;
+export declare const BdsTestComponent: StencilReactComponent<BdsTestComponentElement, BdsTestComponentEvents, Components.BdsTestComponent>;
 export type BdsThemeProviderEvents = NonNullable<unknown>;
-export declare const BdsThemeProvider: StencilReactComponent<BdsThemeProviderElement, BdsThemeProviderEvents>;
+export declare const BdsThemeProvider: StencilReactComponent<BdsThemeProviderElement, BdsThemeProviderEvents, Components.BdsThemeProvider>;
 export type BdsToastEvents = {
     onToastButtonClick: EventName<BdsToastCustomEvent<HTMLBdsToastElement>>;
 };
-export declare const BdsToast: StencilReactComponent<BdsToastElement, BdsToastEvents>;
+export declare const BdsToast: StencilReactComponent<BdsToastElement, BdsToastEvents, Components.BdsToast>;
 export type BdsToastContainerEvents = NonNullable<unknown>;
-export declare const BdsToastContainer: StencilReactComponent<BdsToastContainerElement, BdsToastContainerEvents>;
+export declare const BdsToastContainer: StencilReactComponent<BdsToastContainerElement, BdsToastContainerEvents, Components.BdsToastContainer>;
 export type BdsTooltipEvents = NonNullable<unknown>;
-export declare const BdsTooltip: StencilReactComponent<BdsTooltipElement, BdsTooltipEvents>;
+export declare const BdsTooltip: StencilReactComponent<BdsTooltipElement, BdsTooltipEvents, Components.BdsTooltip>;
 export type BdsTypoEvents = NonNullable<unknown>;
-export declare const BdsTypo: StencilReactComponent<BdsTypoElement, BdsTypoEvents>;
+export declare const BdsTypo: StencilReactComponent<BdsTypoElement, BdsTypoEvents, Components.BdsTypo>;
 export type BdsUploadEvents = {
-    onBdsUploadDelete: EventName<CustomEvent<any>>;
-    onBdsUploadChange: EventName<CustomEvent<any>>;
+    onBdsUploadDelete: EventName<BdsUploadCustomEvent<any>>;
+    onBdsUploadChange: EventName<BdsUploadCustomEvent<any>>;
 };
-export declare const BdsUpload: StencilReactComponent<BdsUploadElement, BdsUploadEvents>;
+export declare const BdsUpload: StencilReactComponent<BdsUploadElement, BdsUploadEvents, Components.BdsUpload>;
 export type BdsWarningEvents = NonNullable<unknown>;
-export declare const BdsWarning: StencilReactComponent<BdsWarningElement, BdsWarningEvents>;
+export declare const BdsWarning: StencilReactComponent<BdsWarningElement, BdsWarningEvents, Components.BdsWarning>;
 export type UaiAvatarEvents = NonNullable<unknown>;
-export declare const UaiAvatar: StencilReactComponent<UaiAvatarElement, UaiAvatarEvents>;
+export declare const UaiAvatar: StencilReactComponent<UaiAvatarElement, UaiAvatarEvents, Components.UaiAvatar>;
 export type UaiButtonEvents = {
     onUaiClick: EventName<UaiButtonCustomEvent<MouseEvent>>;
 };
-export declare const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents>;
+export declare const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents, Components.UaiButton>;
 export type UaiIconEvents = NonNullable<unknown>;
-export declare const UaiIcon: StencilReactComponent<UaiIconElement, UaiIconEvents>;
+export declare const UaiIcon: StencilReactComponent<UaiIconElement, UaiIconEvents, Components.UaiIcon>;
 export type UaiNavbarEvents = NonNullable<unknown>;
-export declare const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents>;
+export declare const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents, Components.UaiNavbar>;
 export type UaiNavbarContentEvents = NonNullable<unknown>;
-export declare const UaiNavbarContent: StencilReactComponent<UaiNavbarContentElement, UaiNavbarContentEvents>;
+export declare const UaiNavbarContent: StencilReactComponent<UaiNavbarContentElement, UaiNavbarContentEvents, Components.UaiNavbarContent>;
 export type UaiThemeProviderEvents = NonNullable<unknown>;
-export declare const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, UaiThemeProviderEvents>;
+export declare const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, UaiThemeProviderEvents, Components.UaiThemeProvider>;
 export type UaiTypoEvents = NonNullable<unknown>;
-export declare const UaiTypo: StencilReactComponent<UaiTypoElement, UaiTypoEvents>;
+export declare const UaiTypo: StencilReactComponent<UaiTypoElement, UaiTypoEvents, Components.UaiTypo>;

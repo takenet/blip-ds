@@ -1,9 +1,9 @@
-FROM node:24-alpine AS dependencies
+FROM node:24.22.1-alpine AS dependencies
 WORKDIR /app
 COPY storybook-server/package.json storybook-server/package-lock.json ./
 RUN npm ci --omit=dev --ignore-scripts --no-audit --no-fund
 
-FROM node:24-alpine
+FROM node:24.22.1-alpine
 WORKDIR /app
 ENV NODE_ENV=production PORT=8080
 ARG RELEASE_VERSION

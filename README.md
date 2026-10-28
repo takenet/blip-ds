@@ -24,7 +24,7 @@ Released packages use `https://cdn.blip.ai/blip-tokens/<exact-version>/<asset-pa
 - Publish each release's SVGs and manifest before publishing its npm package. Keep older version directories available for existing consumers.
 - Configure working CDN DNS and HTTPS, wildcard CORS, `image/svg+xml` for SVGs, `application/json` for the manifest, and immutable caching on released version paths.
 - Applications with a Content Security Policy must allow `https://cdn.blip.ai` in both `connect-src` and `img-src`. Native images do not require `blob:` URLs.
-- Install dependencies with `npm ci --legacy-peer-deps`. CI uses the lockfile and offline asset checks, not automatic token upgrades or live-CDN verification.
+- Install dependencies with `npm ci --strict-peer-deps`. CI uses the lockfile and offline asset checks, not automatic token upgrades or live-CDN verification.
 - After deploying the CDN, run `npm run assets:verify` manually outside CI to check the installed version's manifest and asset families. This checks availability, hashes, MIME types, CORS, and immutable caching. Do not enable production consumers until this succeeds.
 
 ## 📦 Packages
@@ -69,8 +69,10 @@ For detailed installation and usage instructions, visit the [Design Portal](http
 
 ### Prerequisites
 
-- Node.js 16+ 
-- npm 7+
+- Node.js 24 LTS (the exact version is pinned in `.nvmrc`)
+- npm 12.2.1
+
+Stencil's integrated test runner requires Jest 29. TypeScript 6 is used because the asset guard and Storybook source extraction depend on its compiler API, which is not compatible with TypeScript 7. The React wrappers support React 18.3.1 and React 19 consumers.
 
 ### Getting Started
 
@@ -79,8 +81,11 @@ For detailed installation and usage instructions, visit the [Design Portal](http
 git clone https://github.com/takenet/blip-ds.git
 cd blip-ds
 
-# Install dependencies
-npm install
+# Select the supported LTS and install locked dependencies
+nvm install
+nvm use
+npm install --global npm@12.2.1
+npm ci --strict-peer-deps
 
 # Start development environment (Stencil + Storybook)
 npm run dev

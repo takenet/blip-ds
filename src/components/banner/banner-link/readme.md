@@ -21,6 +21,13 @@
 | `bdsBannerLink` | Emitted when the link is clicked. | `CustomEvent<HTMLBdsBannerElement>` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

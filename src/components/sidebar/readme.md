@@ -39,6 +39,15 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot       | Description |
+| ---------- | ----------- |
+| `"body"`   |             |
+| `"footer"` |             |
+| `"header"` |             |
+
+
 ## Dependencies
 
 ### Depends on

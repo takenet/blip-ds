@@ -14,6 +14,13 @@
 | `sortable`       | `sortable`        |             | `boolean`                       | `false`  |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

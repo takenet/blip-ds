@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import typescript from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import react from 'eslint-plugin-react';
 import prettier from 'eslint-plugin-prettier';
 import storybook from 'eslint-plugin-storybook';
 
@@ -53,28 +52,18 @@ export default [
     },
     plugins: {
       '@typescript-eslint': typescript,
-      react,
       prettier,
       storybook,
     },
     rules: {
       ...typescript.configs.recommended.rules,
-      ...react.configs.recommended.rules,
       ...prettier.configs.recommended.rules,
       ...storybook.configs.recommended.rules,
       
       // Custom rules
-      'react/react-in-jsx-scope': 'off',
-      'react/no-unknown-property': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/camelcase': 'off',
       'no-console': ['error'],
-    },
-    settings: {
-      react: {
-        pragma: 'h',
-        version: 'detect',
-      },
     },
   },
   
@@ -100,6 +89,7 @@ export default [
       '**/*.js',
       '**/*.jsx',
       'blip-ds-react/**',
+      'storybook-server/stencil-docs.d.ts',
       'src/**',
       "storybook-static",
       "jest.setup.ts",

@@ -1,4 +1,5 @@
 import { Element, Component, Prop, Method, State, Watch, h, Host } from '@stencil/core';
+import type { JSX } from '@stencil/core';
 
 export type ObjectFitValue = 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
 

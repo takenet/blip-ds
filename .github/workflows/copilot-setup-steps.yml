@@ -23,8 +23,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: 'npm'
+
+      - name: Setup npm
+        run: npm install --global npm@12.2.1
 
       - name: Install JavaScript dependencies
         run: npm ci

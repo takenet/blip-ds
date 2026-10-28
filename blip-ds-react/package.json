@@ -1,6 +1,7 @@
 {
   "name": "blip-ds-react",
   "sideEffects": false,
+  "packageManager": "npm@12.2.1",
   "version": "0.0.0-development",
   "private": false,
   "description": "React specific wrapper for blip-ds",
@@ -20,24 +21,29 @@
     "dist/"
   ],
   "dependencies": {
-    "@stencil/react-output-target": "^1.1.1"
+    "@stencil/react-output-target": "^1.6.5"
   },
   "devDependencies": {
-    "@types/react": "^18.3.1",
-    "@types/react-dom": "^18.3.1",
-    "semantic-release": "^24.2.6",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "semantic-release": "^25.0.9",
     "blip-ds": "file:../",
-    "np": "^10.2.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "^5.8.3"
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "~6.0.3"
   },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^18.3.1 || ^19.0.0",
+    "react-dom": "^18.3.1 || ^19.0.0"
+  },
+  "overrides": {
+    "@semantic-release/npm": {
+      "npm": "^12.2.1"
+    }
   },
   "release": {
     "tagFormat": "blip-ds-react@v${version}",

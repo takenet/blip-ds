@@ -12,6 +12,13 @@
 | `theme`  | `theme`   | Set what theme will be aplyed inside the component. 'light', 'dark'; | `"dark" \| "high-contrast" \| "light"` | `'light'` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Used by

@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "rootDir": "src",
+    "types": ["node", "react", "react-dom"],
     "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,

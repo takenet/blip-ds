@@ -55,7 +55,7 @@ VS Code MCP configuration:
 Build the library and Storybook from the repository root:
 
 ```sh
-npm ci --legacy-peer-deps
+npm ci --strict-peer-deps
 npm run build
 npm run build:react
 npm run storybook:build
@@ -66,7 +66,7 @@ node storybook-server/smoke.mjs
 docker build -f storybook-server/Dockerfile -t blip-ds-storybook .
 ```
 
-The runtime requires Node.js 24 or newer. To run without Docker, from the
+The runtime uses Node.js 24 LTS, pinned in the Dockerfile and repository `.nvmrc`. To run without Docker, from the
 repository root:
 
 ```sh

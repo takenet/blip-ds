@@ -14,11 +14,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version-file: .nvmrc
           cache: npm
+      - name: Setup npm
+        run: npm install --global npm@12.2.1
       - name: Install dependencies
         run: |
-          npm ci --legacy-peer-deps
+          npm ci --strict-peer-deps
           npm ci --prefix storybook-server --ignore-scripts
         env:
           HUSKY: 0

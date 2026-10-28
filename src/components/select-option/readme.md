@@ -64,6 +64,14 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot           | Description      |
+| -------------- | ---------------- |
+|                | The default slot |
+| `"input-left"` |                  |
+
+
 ## Dependencies
 
 ### Used by

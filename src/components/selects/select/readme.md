@@ -34,6 +34,13 @@
 | `bdsFocus`  | Emitted when the select loses focus.     | `CustomEvent<void>`                    |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Shadow Parts
 
 | Part                | Description |

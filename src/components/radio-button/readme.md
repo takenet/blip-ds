@@ -19,6 +19,13 @@
 | `bdsRadioGroupChange` | Emitted when the value has changed due to a click event. | `CustomEvent<{ value?: string; }>` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

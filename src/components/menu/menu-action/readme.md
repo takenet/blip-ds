@@ -18,6 +18,13 @@
 | `subtitle`    | `subtitle`    | Subtitle. Used to insert a subtitle in the display item.                                      | `string`  | `null`  |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

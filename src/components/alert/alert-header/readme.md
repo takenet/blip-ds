@@ -13,6 +13,13 @@
 | `variant` | `variant` | Variant. Entered as one of the variant. Can be one of: 'system', 'error', 'warning', 'delete'; | `"delete" \| "error" \| "system" \| "warning"` | `'system'` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

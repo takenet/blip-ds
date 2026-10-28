@@ -14,6 +14,13 @@
 | `icon`     | `icon`      | used for add icon in left container. Uses the bds-icon component.       | `string`                                                                               | `undefined` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Used by

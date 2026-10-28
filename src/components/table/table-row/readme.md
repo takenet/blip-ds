@@ -15,6 +15,13 @@
 | `selected`     | `selected`      | Prop to highlight the row selected. | `boolean` | `false`     |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

@@ -29,13 +29,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: 'npm'
 
-      # --legacy-peer-deps temporarily added until storybook MCP addon is supported by latest storybook version
+      - name: Setup npm
+        run: npm install --global npm@12.2.1
+
       - name: NPM Install, build and test
         run: |
-          npm ci --legacy-peer-deps
+          npm ci --strict-peer-deps
           npm run assets:prepare
           node --test scripts/test/*.test.cjs
           npm run test
@@ -55,7 +57,7 @@ jobs:
         if: github.ref == 'refs/heads/v2'
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version-file: .nvmrc
 
       - name: Validate production Storybook and MCP
         if: github.ref == 'refs/heads/v2'
@@ -115,7 +117,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version-file: .nvmrc
       - uses: actions/download-artifact@v4
         with:
           name: storybook-v2

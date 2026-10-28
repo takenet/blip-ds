@@ -18,6 +18,13 @@
 | `pointer`   | `pointer`   | Used to set cursor pointer on the step (useful to allow clicks on the steps) | `boolean` | `false` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

@@ -10,10 +10,10 @@
 | Property              | Attribute | Description | Type                            | Default               |
 | --------------------- | --------- | ----------- | ------------------------------- | --------------------- |
 | `active`              | `active`  |             | `boolean`                       | `false`               |
-| `delete`              | `delete`  |             | `{ max: number; min: number; }` | `{ max: 1, min: 0 }`  |
+| `delete`              | --        |             | `{ max: number; min: number; }` | `{ max: 1, min: 0 }`  |
 | `length` _(required)_ | `length`  |             | `number`                        | `undefined`           |
 | `max`                 | `max`     |             | `number`                        | `undefined`           |
-| `warning`             | `warning` |             | `{ max: number; min: number; }` | `{ max: 20, min: 2 }` |
+| `warning`             | --        |             | `{ max: number; min: number; }` | `{ max: 20, min: 2 }` |
 
 
 ## Dependencies
