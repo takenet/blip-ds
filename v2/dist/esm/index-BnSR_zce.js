@@ -411,6 +411,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-navbar-content.entry.js').then(processMod, consoleError);
+                case 'uai-paper':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-paper.entry.js').then(processMod, consoleError);
                 case 'uai-theme-provider':
                     return import(
                       /* webpackMode: "lazy" */

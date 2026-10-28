@@ -431,6 +431,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-navbar-content.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-paper.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-paper.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-theme-provider.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

@@ -157,7 +157,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-navbar.entry.js").then(u,consoleError);case"uai-navbar-content":return import(
 /* webpackMode: "lazy" */
-"./uai-navbar-content.entry.js").then(u,consoleError);case"uai-theme-provider":return import(
+"./uai-navbar-content.entry.js").then(u,consoleError);case"uai-paper":return import(
+/* webpackMode: "lazy" */
+"./uai-paper.entry.js").then(u,consoleError);case"uai-theme-provider":return import(
 /* webpackMode: "lazy" */
 "./uai-theme-provider.entry.js").then(u,consoleError);case"bds-badge":return import(
 /* webpackMode: "lazy" */

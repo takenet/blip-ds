@@ -111,6 +111,7 @@
     "components/toast-container/toast-container.js",
     "components/uai-grid/uai-grid.js",
     "components/uai-navbar-content/uai-navbar-content.js",
+    "components/uai-paper/uai-paper.js",
     "components/upload/bds-upload.js",
     "components/warning/warning.js"
   ],

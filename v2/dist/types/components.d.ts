@@ -81,6 +81,7 @@ import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconTy
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
+import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 import { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export { collapses } from "./components/accordion/accordion-group";
@@ -159,6 +160,7 @@ export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconTy
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
+export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 export { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export namespace Components {
@@ -3979,6 +3981,43 @@ export namespace Components {
      */
     interface UaiNavbarContent {
     }
+    interface UaiPaper {
+        /**
+          * Prop for set the background color.
+          * @default 'surface-1'
+         */
+        "bgColor"?: PaperBackground1;
+        /**
+          * Prop for set the border of the component.
+          * @default false
+         */
+        "border"?: boolean;
+        /**
+          * Prop for set the border color.
+          * @default null
+         */
+        "borderColor"?: BorderColor1;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
+          * @default 'static'
+         */
+        "elevation"?: PaperElevation1;
+        /**
+          * Prop for set the height of the component.
+          * @default null
+         */
+        "height"?: string;
+        /**
+          * Prop for set the width of the component.
+          * @default null
+         */
+        "width"?: string;
+    }
     /**
      * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
      * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
@@ -5621,6 +5660,12 @@ declare global {
         prototype: HTMLUaiNavbarContentElement;
         new (): HTMLUaiNavbarContentElement;
     };
+    interface HTMLUaiPaperElement extends Components.UaiPaper, HTMLStencilElement {
+    }
+    var HTMLUaiPaperElement: {
+        prototype: HTMLUaiPaperElement;
+        new (): HTMLUaiPaperElement;
+    };
     /**
      * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
      * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
@@ -5753,6 +5798,7 @@ declare global {
         "uai-icon": HTMLUaiIconElement;
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
+        "uai-paper": HTMLUaiPaperElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
         "uai-typo": HTMLUaiTypoElement;
     }
@@ -9837,6 +9883,43 @@ declare namespace LocalJSX {
      */
     interface UaiNavbarContent {
     }
+    interface UaiPaper {
+        /**
+          * Prop for set the background color.
+          * @default 'surface-1'
+         */
+        "bgColor"?: PaperBackground1;
+        /**
+          * Prop for set the border of the component.
+          * @default false
+         */
+        "border"?: boolean;
+        /**
+          * Prop for set the border color.
+          * @default null
+         */
+        "borderColor"?: BorderColor1;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Size. Entered as one of the size. Can be one of: 'static', 'primary', 'secondary';
+          * @default 'static'
+         */
+        "elevation"?: PaperElevation1;
+        /**
+          * Prop for set the height of the component.
+          * @default null
+         */
+        "height"?: string;
+        /**
+          * Prop for set the width of the component.
+          * @default null
+         */
+        "width"?: string;
+    }
     /**
      * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
      * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
@@ -10821,6 +10904,15 @@ declare namespace LocalJSX {
         "justifyContent": uaiNavbarJustifyContent;
         "dataTest": string;
     }
+    interface UaiPaperAttributes {
+        "elevation": PaperElevation;
+        "dataTest": string;
+        "border": boolean;
+        "height": string;
+        "width": string;
+        "bgColor": PaperBackground;
+        "borderColor": BorderColor;
+    }
     interface UaiThemeProviderAttributes {
         "theme": UaiTheme;
     }
@@ -10949,6 +11041,7 @@ declare namespace LocalJSX {
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
+        "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
         "uai-theme-provider": Omit<UaiThemeProvider, keyof UaiThemeProviderAttributes> & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes]?: UaiThemeProvider[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `attr:${K}`]?: UaiThemeProviderAttributes[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `prop:${K}`]?: UaiThemeProvider[K] };
         "uai-typo": Omit<UaiTypo, keyof UaiTypoAttributes> & { [K in keyof UaiTypo & keyof UaiTypoAttributes]?: UaiTypo[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `attr:${K}`]?: UaiTypoAttributes[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `prop:${K}`]?: UaiTypo[K] };
     }
@@ -11099,6 +11192,7 @@ declare module "@stencil/core" {
              * Group of items inside a uai-navbar.
              */
             "uai-navbar-content": LocalJSX.IntrinsicElements["uai-navbar-content"] & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
+            "uai-paper": LocalJSX.IntrinsicElements["uai-paper"] & JSXBase.HTMLAttributes<HTMLUaiPaperElement>;
             /**
              * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
              * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
