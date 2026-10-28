@@ -47,6 +47,20 @@
   },
   "release": {
     "tagFormat": "blip-ds-react@v${version}",
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "releaseRules": [
+            { "breaking": true, "release": "major" },
+            { "type": "chore", "release": "patch" }
+          ]
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ],
     "branches": [
       "master",
       "main",

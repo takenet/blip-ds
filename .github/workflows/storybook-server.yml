@@ -11,8 +11,8 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -37,7 +37,7 @@ jobs:
           HUSKY: 0
           STORYBOOK_DISABLE_TELEMETRY: '1'
       - name: Build production image without publishing
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7.4.0
         with:
           context: .
           file: storybook-server/Dockerfile

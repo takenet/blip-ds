@@ -134,6 +134,20 @@ test('CI workflows use locked tokens and never fetch public CDN assets', () => {
   }
 });
 
+test('all external workflow actions use exact stable version tags', () => {
+  const directory = path.resolve(__dirname, '../../.github/workflows');
+  let checked = 0;
+  for (const filename of fs.readdirSync(directory).filter(name => /\.ya?ml$/.test(name))) {
+    const workflow = fs.readFileSync(path.join(directory, filename), 'utf8');
+    for (const [, reference] of workflow.matchAll(/^\s*(?:-\s*)?uses:\s*([^\s#]+)/gm)) {
+      if (reference.startsWith('./')) continue;
+      assert.match(reference, /^[\w.-]+\/[\w./-]+@v\d+\.\d+\.\d+$/, `${filename}: ${reference}`);
+      checked++;
+    }
+  }
+  assert.ok(checked > 0);
+});
+
 test('package metadata preserves portal consumers while development uses a pinned toolchain', () => {
   const root = path.resolve(__dirname, '../..');
   const core = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
