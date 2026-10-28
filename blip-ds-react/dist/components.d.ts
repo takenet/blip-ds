@@ -112,6 +112,7 @@ import { UaiGrid as UaiGridElement } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navbar.js";
+import { UaiPaper as UaiPaperElement } from "blip-ds/dist/components/uai-paper.js";
 import { UaiThemeProvider as UaiThemeProviderElement } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTypo as UaiTypoElement } from "blip-ds/dist/components/uai-typo.js";
 export type BdsAccordionEvents = {
@@ -644,6 +645,8 @@ export type UaiNavbarEvents = NonNullable<unknown>;
 export declare const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents, Components.UaiNavbar>;
 export type UaiNavbarContentEvents = NonNullable<unknown>;
 export declare const UaiNavbarContent: StencilReactComponent<UaiNavbarContentElement, UaiNavbarContentEvents, Components.UaiNavbarContent>;
+export type UaiPaperEvents = NonNullable<unknown>;
+export declare const UaiPaper: StencilReactComponent<UaiPaperElement, UaiPaperEvents, Components.UaiPaper>;
 export type UaiThemeProviderEvents = NonNullable<unknown>;
 export declare const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, UaiThemeProviderEvents, Components.UaiThemeProvider>;
 export type UaiTypoEvents = NonNullable<unknown>;
