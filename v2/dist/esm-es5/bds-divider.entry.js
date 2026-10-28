@@ -7,4 +7,4 @@ import{r as registerInstance,h,H as Host}from"./index-CkbvGS8Z.js";var dividerCs
          */this.orientation="horizontal";
 /**
          * Cor da linha, aceitando qualquer valor válido em CSS (hex, rgb, nome da cor)
-         */this.color="divider-1"}r.prototype.render=function(){var r="".concat(this.orientation," ").concat(this.styleType," color-").concat(this.color," ");return h(Host,{key:"0414bdc7121cbcab89bd865a32f029e2d6deadd3",class:r},h("hr",{key:"48920229a63793328b666feb4b54f431bc47df0f",class:"".concat(this.orientation," ").concat(this.styleType," color-").concat(this.color)}))};return r}();BdsDivider.style=dividerCss();export{BdsDivider as bds_divider};
+         */this.color="divider-1"}r.prototype.render=function(){var r="".concat(this.orientation," ").concat(this.styleType," color-").concat(this.color," ");return h(Host,{key:"a32c43836193c0d9f4edb7b62b098b3f80b3a479",class:r},h("hr",{key:"5f5b5199dce9ec1924b0b9d795bab0fa90039843",class:"".concat(this.orientation," ").concat(this.styleType," color-").concat(this.color)}))};return r}();BdsDivider.style=dividerCss();export{BdsDivider as bds_divider};

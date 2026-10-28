@@ -147,15 +147,17 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./bds-toast.entry.js").then(u,consoleError);case"bds-warning":return import(
 /* webpackMode: "lazy" */
-"./bds-warning.entry.js").then(u,consoleError);case"uai-avatar":return import(
-/* webpackMode: "lazy" */
-"./uai-avatar.entry.js").then(u,consoleError);case"uai-button":return import(
+"./bds-warning.entry.js").then(u,consoleError);case"uai-button":return import(
 /* webpackMode: "lazy" */
 "./uai-button.entry.js").then(u,consoleError);case"uai-grid":return import(
 /* webpackMode: "lazy" */
 "./uai-grid.entry.js").then(u,consoleError);case"uai-input":return import(
 /* webpackMode: "lazy" */
-"./uai-input.entry.js").then(u,consoleError);case"uai-input-password":return import(
+"./uai-input.entry.js").then(u,consoleError);case"uai-input-chips":return import(
+/* webpackMode: "lazy" */
+"./uai-input-chips.entry.js").then(u,consoleError);case"uai-input-editable":return import(
+/* webpackMode: "lazy" */
+"./uai-input-editable.entry.js").then(u,consoleError);case"uai-input-password":return import(
 /* webpackMode: "lazy" */
 "./uai-input-password.entry.js").then(u,consoleError);case"uai-navbar":return import(
 /* webpackMode: "lazy" */
@@ -189,19 +191,27 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./bds-input.entry.js").then(u,consoleError);case"bds-button":return import(
 /* webpackMode: "lazy" */
-"./bds-button.entry.js").then(u,consoleError);case"bds-loading-spinner":return import(
+"./bds-button.entry.js").then(u,consoleError);case"bds-avatar":return import(
+/* webpackMode: "lazy" */
+"./bds-avatar.entry.js").then(u,consoleError);case"bds-loading-spinner":return import(
 /* webpackMode: "lazy" */
 "./bds-loading-spinner.entry.js").then(u,consoleError);case"bds-button-icon":return import(
 /* webpackMode: "lazy" */
-"./bds-button-icon.entry.js").then(u,consoleError);case"bds-pagination":return import(
+"./bds-button-icon.entry.js").then(u,consoleError);case"bds-input-phone-number":return import(
 /* webpackMode: "lazy" */
-"./bds-pagination.entry.js").then(u,consoleError);case"bds-counter-text":return import(
+"./bds-input-phone-number.entry.js").then(u,consoleError);case"bds-pagination":return import(
 /* webpackMode: "lazy" */
-"./bds-counter-text.entry.js").then(u,consoleError);case"bds-avatar":return import(
+"./bds-pagination.entry.js").then(u,consoleError);case"uai-avatar":return import(
 /* webpackMode: "lazy" */
-"./bds-avatar.entry.js").then(u,consoleError);case"bds-icon":return import(
+"./uai-avatar.entry.js").then(u,consoleError);case"uai-input-date":return import(
 /* webpackMode: "lazy" */
-"./bds-icon.entry.js").then(u,consoleError);case"bds-datepicker-period_2":return import(
+"./uai-input-date.entry.js").then(u,consoleError);case"bds-counter-text":return import(
+/* webpackMode: "lazy" */
+"./bds-counter-text.entry.js").then(u,consoleError);case"bds-icon":return import(
+/* webpackMode: "lazy" */
+"./bds-icon.entry.js").then(u,consoleError);case"uai-input-phone":return import(
+/* webpackMode: "lazy" */
+"./uai-input-phone.entry.js").then(u,consoleError);case"bds-datepicker-period_2":return import(
 /* webpackMode: "lazy" */
 "./bds-datepicker-period_2.entry.js").then(u,consoleError);case"bds-illustration_2":return import(
 /* webpackMode: "lazy" */
@@ -209,15 +219,13 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./bds-radio_2.entry.js").then(u,consoleError);case"bds-chip-clickable_2":return import(
 /* webpackMode: "lazy" */
-"./bds-chip-clickable_2.entry.js").then(u,consoleError);case"uai-icon_2":return import(
+"./bds-chip-clickable_2.entry.js").then(u,consoleError);case"bds-checkbox_2":return import(
 /* webpackMode: "lazy" */
-"./uai-icon_2.entry.js").then(u,consoleError);case"bds-checkbox_2":return import(
+"./bds-checkbox_2.entry.js").then(u,consoleError);case"uai-icon_2":return import(
 /* webpackMode: "lazy" */
-"./bds-checkbox_2.entry.js").then(u,consoleError);case"bds-autocomplete":return import(
+"./uai-icon_2.entry.js").then(u,consoleError);case"bds-autocomplete":return import(
 /* webpackMode: "lazy" */
-"./bds-autocomplete.entry.js").then(u,consoleError);case"bds-input-phone-number":return import(
-/* webpackMode: "lazy" */
-"./bds-input-phone-number.entry.js").then(u,consoleError);case"bds-rich-text":return import(
+"./bds-autocomplete.entry.js").then(u,consoleError);case"bds-rich-text":return import(
 /* webpackMode: "lazy" */
 "./bds-rich-text.entry.js").then(u,consoleError);case"bds-upload":return import(
 /* webpackMode: "lazy" */

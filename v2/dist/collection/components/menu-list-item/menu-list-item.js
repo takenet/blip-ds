@@ -2,7 +2,7 @@ import { Host, h } from "@stencil/core";
 export class MenuListItem {
     render() {
         const color = this.color || 'currentColor';
-        return (h(Host, { key: 'bdb0bc901f7a7007c95a086749e39051e62ea899', role: "button" }, h("div", { key: '7d0761f24b2d146d5654ed889b34504dceaee362', class: "menu-list-item" }, h("bds-icon", { key: 'ee8f93fe14fded553d8a14f2ff69108a05f62ac7', color: color, name: this.icon }), h("bds-typo", { key: 'e24931592aa40a162ec834d202e0d57a085a9b25', class: "menu-list-item__text", variant: "fs-10" }, h("slot", { key: '7ad39f92e4a1163714d23de190f224b4a8e1831b' })))));
+        return (h(Host, { key: '20308ef78fadbcc46ed0fb9e6492dc1cc2e89cfa', role: "button" }, h("div", { key: '66e332440f1f98653d36b5fc4fa8f20cef2034e5', class: "menu-list-item" }, h("bds-icon", { key: 'f05613f6c6ff29f5b236bb04176df99def4e72da', color: color, name: this.icon }), h("bds-typo", { key: '3cd97f7d2bd1994793df4f6b27c0c8f68edb488b', class: "menu-list-item__text", variant: "fs-10" }, h("slot", { key: 'b40f25a9aa2c8d7b405790d4d4a36a55029f25fe' })))));
     }
     static get is() { return "bds-menu-list-item"; }
     static get encapsulation() { return "shadow"; }

@@ -7,9 +7,9 @@ export class ListItemContent {
         this.alignItems = 'flex-start';
     }
     render() {
-        return (h(Host, { key: 'e0e5c3888445fc72e6cdfe08c05d9aefedf51b01', class: {
+        return (h(Host, { key: 'a4b6a6604f2a35484fe32df2a99068575a1bd524', class: {
                 list_item_content: true,
-            } }, h("bds-grid", { key: '70ed97e0f1b7b3387662c55fb7ef68d86cdfb4e6', direction: this.direction, flexWrap: this.flexWrap, justifyContent: this.justifyContent, alignItems: this.alignItems, gap: this.gap }, h("slot", { key: '492d4d4f7f25eae5073e65222ecc6b283221e7ba' }))));
+            } }, h("bds-grid", { key: 'c3d951bad343820483d7b17ed01c6ca58f3b150c', direction: this.direction, flexWrap: this.flexWrap, justifyContent: this.justifyContent, alignItems: this.alignItems, gap: this.gap }, h("slot", { key: 'a9d1874eb922c4e4a9f283acfd92f81f097401be' }))));
     }
     static get is() { return "bds-list-item-content"; }
     static get encapsulation() { return "scoped"; }

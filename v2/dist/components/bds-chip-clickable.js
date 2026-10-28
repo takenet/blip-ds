@@ -1,1 +1,1 @@
-import{C as o,d as s}from"./p-Wm-HD9ki.js";const m=o,p=s;export{m as BdsChipClickable,p as defineCustomElement}
+import{C as o,d as s}from"./p-BBGEcbbX.js";const p=o,r=s;export{p as BdsChipClickable,r as defineCustomElement}

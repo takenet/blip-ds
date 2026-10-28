@@ -114,10 +114,10 @@ const Checkbox = class {
     }
     render() {
         const styleState = this.getStyleState();
-        return (h("div", { key: 'ed5f22b3350b49ddf7ba0944437ca78c394af7df', class: {
+        return (h("div", { key: '448d42763ac4e6415d34633866e1eafda51f98a3', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, h("input", { key: '4a9ad15f0fed1f2eddc3afb580f554dab993b536', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: 'd4d3a190a9d1c03416e6b58c69616993c3eba328', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: 'a91cc3a94eaf9510732955785626c841f63d28e8', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: 'f50f2f551529c72f7a79c4b19e762ebeeb5d3128', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: '5b894de752d3c9c52e85e4d78e0272439759237e', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, h("input", { key: '5a1c198fa20fa82803007a6a135e923d1ed55594', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: '6d74e290d319414232b2666e0ca5f5b227111c6b', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: 'd10a0ce2e988a60a82f5dddaa5db4be9e7066541', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: '192149dfba1e322cb3d868a3c22e401c4a5443f4', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: 'e0f04d743017532abd673c0ab67a52cc110ff8f7', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
 };
 Checkbox.style = checkboxCss();

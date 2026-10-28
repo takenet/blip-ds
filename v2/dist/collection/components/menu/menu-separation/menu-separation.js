@@ -11,10 +11,10 @@ export class BdsMenuSeparation {
         this.size = null;
     }
     render() {
-        return (h("div", { key: 'e7b5390abcd7bbbb4e943a1aae726185f00427b1', class: {
+        return (h("div", { key: '4ae9a8d6c6f734faaade7827e3b2c02784f988f1', class: {
                 menuseparation: true,
                 [`menuseparation__${this.size}`]: true,
-            } }, this.value && (h("bds-typo", { key: '7ddc99ba1b1729591c6f7111e6d7d2f489b404fc', class: "title-item", variant: "fs-10", tag: "span" }, this.value)), h("div", { key: '32f2561201f2af66a54284cccfa614a7d19d20db', class: "dividor-item" })));
+            } }, this.value && (h("bds-typo", { key: '7cd9e2cc8affe11913ca11a6ec836f385ca4cf3c', class: "title-item", variant: "fs-10", tag: "span" }, this.value)), h("div", { key: 'aefe7313c5e9e4f489ef7bb2502132f32b1aa60f', class: "dividor-item" })));
     }
     static get is() { return "bds-menu-separation"; }
     static get encapsulation() { return "shadow"; }

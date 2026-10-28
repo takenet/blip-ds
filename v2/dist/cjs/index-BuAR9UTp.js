@@ -411,10 +411,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-warning.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'uai-avatar.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './uai-avatar.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-button.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -427,6 +423,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-input.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-input-chips.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-input-chips.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-input-editable.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-input-editable.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-input-password.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -495,6 +499,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-button.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-avatar.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-avatar.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-loading-spinner.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -503,22 +511,34 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-button-icon.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-input-phone-number.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-input-phone-number.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-pagination.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-pagination.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-avatar.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-avatar.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-input-date.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-input-date.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-counter-text.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-counter-text.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-avatar.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-avatar.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-icon.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-icon.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-input-phone.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-input-phone.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-datepicker-period_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -535,22 +555,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-chip-clickable_2.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'uai-icon_2.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './uai-icon_2.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-checkbox_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-checkbox_2.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-icon_2.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-icon_2.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-autocomplete.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-autocomplete.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-input-phone-number.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-input-phone-number.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-rich-text.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

@@ -5,6 +5,9 @@ export interface InputEditableEventDetail {
     value: string;
     oldValue: string;
 }
+/**
+ * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+ */
 export declare class InputEditable {
     private nativeInput?;
     el: HTMLBdsInputEditableElement;

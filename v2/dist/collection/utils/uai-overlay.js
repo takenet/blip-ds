@@ -131,6 +131,7 @@ export class UaiOverlay {
         const style = panel.style;
         // Measure the natural size from the viewport origin, without the limits of the previous position.
         style.minWidth = style.maxWidth = style.maxHeight = '';
+        const maxHeight = getComputedStyle(panel).maxHeight;
         style.top = style.left = '0';
         const size = panel.getBoundingClientRect();
         const layout = computeOverlayLayout({
@@ -145,7 +146,8 @@ export class UaiOverlay {
         style.left = `${layout.left}px`;
         style.minWidth = `${layout.minWidth}px`;
         style.maxWidth = `${layout.maxWidth}px`;
-        style.maxHeight = `${layout.maxHeight}px`;
+        style.maxHeight =
+            maxHeight === 'none' ? `${layout.maxHeight}px` : `min(${layout.maxHeight}px, ${maxHeight})`;
         panel.dataset.side = layout.side;
         panel.dataset.align = layout.align;
     }

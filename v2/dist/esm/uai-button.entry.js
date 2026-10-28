@@ -205,12 +205,12 @@ const UaiButton = class {
         }
         const left = this.loading ? (h("span", { class: "button__spinner", "aria-hidden": "true" })) : leftIconName ? (this.renderIcon(leftIconName, size, 'left')) : null;
         const right = rightIconName && !(iconOnly && this.loading) ? this.renderIcon(rightIconName, size, 'right') : null;
-        const label = (h("span", { key: 'bd39af4fc8dee1c43fa5a054093bfd07de4acf83', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: 'e39f136dd648e70abf3960edbacf38d0fda098c7', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: '07a400e275ff0983b04b83945f0931b77dc2ee5c', onSlotchange: this.updateHasLabel }))));
+        const label = (h("span", { key: 'dd8c5136d64e810150e6c99c0116be49f47a3352', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: '3dce69f6a25a6ab2d7ea493d29d4e52471badaf2', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: 'eef48aba09ca27f9747cb367d36749e917bce7cc', onSlotchange: this.updateHasLabel }))));
         const grouped = this.groupIcon && justify === 'space-between' && left;
-        return (h(Host, { key: '9afa9bebc295a97831481594008e8b5972dfdaf0', class: {
+        return (h(Host, { key: '22c03199307f9255e9631308a8f4f0dbb5c4b2c6', class: {
                 'uai-button--block': this.block || this.fullWidth,
                 'uai-button--group': !!this.position,
-            } }, h("button", { key: '9841dc0aa47a1d81ac6358bba767031ed14d3705', class: {
+            } }, h("button", { key: 'fe905c828ec5c6f0c53e3d1af592acc6802c6be9', class: {
                 button: true,
                 [`button--${variant}`]: true,
                 [`button--color-${color}`]: true,

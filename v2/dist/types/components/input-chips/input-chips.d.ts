@@ -1,5 +1,8 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { InputChipsTypes } from './input-chips-interface';
+/**
+ * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+ */
 export declare class InputChips {
     private nativeInput?;
     InputSize?: number;
