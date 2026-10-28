@@ -154,15 +154,15 @@ Playground.argTypes = {
     table: { category: 'Contêiner' },
   },
   padding: {
-    description: 'Espaçamento interno do contêiner.',
+    description: 'Espaçamento interno do contêiner. Aceita um valor ou uma lista separada por espaço, como `t-2 x-3`. Em caso de conflito, o lado vence o eixo, e o eixo vence todos os lados.',
     options: directionalSpacing,
-    control: 'select',
+    control: 'text',
     table: { category: 'Contêiner' },
   },
   margin: {
-    description: 'Margem externa do contêiner.',
+    description: 'Margem externa do contêiner. Aceita um valor ou uma lista separada por espaço, como `t-2 x-auto`. Em caso de conflito, o lado vence o eixo, e o eixo vence todos os lados.',
     options: directionalSpacing.filter((value) => value !== 'b-12'),
-    control: 'select',
+    control: 'text',
     table: { category: 'Contêiner' },
   },
   bgColor: {

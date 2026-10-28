@@ -11,7 +11,7 @@ import * as UaiGridStories from './uai-grid.stories';
 
 O `uai-grid` é o container flexível de layout UAI. Mantém os nomes de props e os spans de 12 colunas do `bds-grid` para facilitar a migração; `bds-grid` continua disponível sem alterações.
 
-Os espaçamentos, fundos e a largura do container padrão usam tokens UAI, com suporte a temas que fornecem as variáveis `--uai-*`. `container` usa `uai-width-content`; `container-fluid` mantém os limites responsivos mais amplos do `bds-grid`. Os nomes numéricos de `gap`, `padding` e `margin` são aliases compatíveis: `1` mapeia para `spacing-xs`, `2` para `spacing-md`, `3` para `spacing-lg`, e assim por diante. Os nomes, spans e thresholds dos breakpoints permanecem compatíveis com `bds-grid`, que continua inalterado.
+Os espaçamentos, fundos e a largura do container padrão usam tokens UAI, com suporte a temas que fornecem as variáveis `--uai-*`. `container` usa `uai-width-content`; `container-fluid` mantém os limites responsivos mais amplos do `bds-grid`. Os nomes numéricos de `gap`, `padding` e `margin` são aliases compatíveis: `1` mapeia para `spacing-xs`, `2` para `spacing-md`, `3` para `spacing-lg`, e assim por diante. `padding` e `margin` aceitam também uma lista separada por espaço, como `padding="t-2 x-3"`; quando os valores se sobrepõem, o lado (`t-`, `b-`, `l-`, `r-`) vence o eixo (`x-`, `y-`), e o eixo vence todos os lados, independentemente da ordem escrita. Os nomes, spans e thresholds dos breakpoints permanecem compatíveis com `bds-grid`, que continua inalterado.
 
 <Canvas of={UaiGridStories.Playground} />
 
