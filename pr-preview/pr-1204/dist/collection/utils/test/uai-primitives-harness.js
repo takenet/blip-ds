@@ -22,5 +22,6 @@ export async function loadPrimitives(page, scss = '') {
         type: 'module',
         content: `${transpile('src/utils/uai-form-control.ts')}\nObject.assign(window, { UaiFormControl });`,
     });
-    await page.waitForFunction(() => 'UaiOverlay' in window && 'UaiFormControl' in window);
+    // A string predicate keeps coverage instrumentation (`--coverage`) out of the code evaluated in the browser.
+    await page.waitForFunction(`'UaiOverlay' in window && 'UaiFormControl' in window`);
 }
