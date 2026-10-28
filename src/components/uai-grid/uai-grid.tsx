@@ -7,8 +7,6 @@ import type {
   flexWrap,
   gap,
   justifyContent,
-  margin,
-  padding,
 } from '../grid/grid-interface';
 
 /**
@@ -83,11 +81,20 @@ export class UaiGrid {
   /** Gap token alias retained for compatibility with bds-grid. */
   @Prop() gap?: gap;
 
-  /** Padding token alias retained for compatibility with bds-grid. */
-  @Prop() padding?: padding;
+  /**
+   * Padding token aliases retained for compatibility with bds-grid. Accepts one value or a
+   * space-separated list, for example `"t-2 x-3"`. Values: `none`, `half`, `1` to `12`, optionally
+   * prefixed by a side (`l-`, `r-`, `t-`, `b-`) or an axis (`x-`, `y-`). When values overlap, the more
+   * specific one wins: single side over axis, axis over all sides.
+   */
+  @Prop() padding?: string;
 
-  /** Margin token alias retained for compatibility with bds-grid. */
-  @Prop() margin?: margin;
+  /**
+   * Margin token aliases retained for compatibility with bds-grid. Accepts one value or a
+   * space-separated list, for example `"t-2 x-auto"`. Takes the same values as `padding`, plus `auto`.
+   * When values overlap, the more specific one wins: single side over axis, axis over all sides.
+   */
+  @Prop() margin?: string;
 
   /**
    * Legacy color name mapped to the closest semantic UAI background token.
@@ -99,6 +106,10 @@ export class UaiGrid {
     const classes: Record<string, boolean> = { host: true };
     const addValueClass = (prefix: string, value?: string) => {
       if (value) classes[`${prefix}${value}`] = true;
+    };
+
+    const addValueClasses = (prefix: string, values?: string) => {
+      values?.split(/\s+/).forEach((value) => addValueClass(prefix, value));
     };
 
     addValueClass('direction--', this.direction);
@@ -118,8 +129,8 @@ export class UaiGrid {
     addValueClass('lgoffset--', this.lgOffset);
     addValueClass('xgoffset--', this.xgOffset);
     addValueClass('gap--', this.gap);
-    addValueClass('padding--', this.padding);
-    addValueClass('margin--', this.margin);
+    addValueClasses('padding--', this.padding);
+    addValueClasses('margin--', this.margin);
 
     if (this.container) classes.container = true;
     if (this.containerFluid) classes['container-fluid'] = true;
