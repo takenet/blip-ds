@@ -1,4 +1,4 @@
-import { Component, ComponentInterface, Host, h, Prop, State } from '@stencil/core';
+import { Component, ComponentInterface, Host, h, Prop, State, Watch } from '@stencil/core';
 import { PaperElevation, PaperBackground, BorderColor } from './uai-paper-interface';
 
 @Component({
@@ -43,6 +43,11 @@ export class UaiPaper implements ComponentInterface {
    * Prop for set the border color.
    */
   @Prop() borderColor?: BorderColor = null;
+
+  @Watch('border')
+  borderChanged() {
+    this.hasBorder = this.border !== true;
+  }
 
   componentWillLoad() {
     this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);

@@ -3,15 +3,22 @@
 @use '../../globals/helpers' as *;
 
 :host {
+  --paper-ring: 0 0 0 0 transparent;
+  --paper-elevation: 0 0 0 0 transparent;
+
   display: block;
   border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+
+  // Ring and elevation are separate layers of one shadow, so toggling the
+  // border never cancels the elevation (or the other way around).
+  box-shadow: var(--paper-ring), var(--paper-elevation);
 }
 
 :host(.border) {
   --paper-border-color: var(--uai-border-default, #{$uai-border-default});
 
   // Inset ring instead of a real border, so it does not change the box size.
-  box-shadow: inset 0 0 0 var(--uai-border-width-default, #{$uai-border-width-default}) var(--paper-border-color);
+  --paper-ring: inset 0 0 0 var(--uai-border-width-default, #{$uai-border-width-default}) var(--paper-border-color);
 }
 
 :host(.bg-surface-0) {
@@ -66,19 +73,19 @@
 }
 
 :host(.paper__elevation--none) {
-  box-shadow: none;
+  --paper-elevation: 0 0 0 0 transparent;
 }
 
 :host(.paper__elevation--static) {
-  box-shadow: var(--uai-elevation-1, #{$uai-elevation-1});
+  --paper-elevation: var(--uai-elevation-1, #{$uai-elevation-1});
 }
 
 :host(.paper__elevation--primary) {
-  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+  --paper-elevation: var(--uai-elevation-2, #{$uai-elevation-2});
 }
 
 :host(.paper__elevation--secondary) {
-  box-shadow: var(--uai-elevation-3, #{$uai-elevation-3});
+  --paper-elevation: var(--uai-elevation-3, #{$uai-elevation-3});
 }
 
 .paper__display {

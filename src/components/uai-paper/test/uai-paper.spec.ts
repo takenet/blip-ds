@@ -302,4 +302,24 @@ describe('uai-paper', () => {
     expect(page.root.querySelector('h1').textContent).toBe('Title');
     expect(page.root.querySelector('p').textContent).toBe('Some text content');
   });
+
+  it('should update border and elevation classes when border changes after load', async () => {
+    const page = await newSpecPage({
+      components: [UaiPaper],
+      html: `<uai-paper elevation="primary"></uai-paper>`,
+    });
+
+    expect(page.root.classList.contains('border')).toBe(false);
+    expect(page.root.classList.contains('paper__elevation--primary')).toBe(true);
+
+    page.root.border = true;
+    await page.waitForChanges();
+    expect(page.root.classList.contains('border')).toBe(true);
+    expect(page.root.classList.contains('paper__elevation--primary')).toBe(false);
+
+    page.root.border = false;
+    await page.waitForChanges();
+    expect(page.root.classList.contains('border')).toBe(false);
+    expect(page.root.classList.contains('paper__elevation--primary')).toBe(true);
+  });
 });
