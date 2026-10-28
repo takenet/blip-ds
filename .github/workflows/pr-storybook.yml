@@ -27,14 +27,16 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: 'npm'
 
-      # --legacy-peer-deps temporarily added until storybook MCP addon is supported by latest storybook version
+      - name: Setup npm
+        run: npm install --global npm@12.2.1
+
       - name: NPM Install and build
         if: github.event.action != 'closed'
         run: |
-          npm ci --legacy-peer-deps
+          npm ci --strict-peer-deps
           npm run assets:prepare
           npm run build
         env:

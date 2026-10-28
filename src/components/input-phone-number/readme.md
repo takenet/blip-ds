@@ -19,7 +19,7 @@
 | `label`                | `label`                  | Label do input.                                                                                                   | `string`                        | `'Phone number'` |
 | `language`             | `language`               | Valores possíveis: "pt_BR", "en_US", "es_ES". Se nenhum for informado, utiliza o arquivo padrão (countries.json). | `"en_US" \| "es_ES" \| "pt_BR"` | `'pt_BR'`        |
 | `numberErrorMessage`   | `number-error-message`   | Mensagem de erro para validação numérica.                                                                         | `string`                        | `undefined`      |
-| `options`              | `options`                | Lista de opções do select.                                                                                        | `Option[]`                      | `[]`             |
+| `options`              | --                       | Lista de opções do select.                                                                                        | `Option[]`                      | `[]`             |
 | `required`             | `required`               | Se `true`, o valor do input será obrigatório.                                                                     | `boolean`                       | `undefined`      |
 | `requiredErrorMessage` | `required-error-message` | Mensagem de erro para campo obrigatório.                                                                          | `string`                        | `undefined`      |
 | `success`              | `success`                | Habilita o estado "success" no input.                                                                             | `boolean`                       | `false`          |
@@ -68,6 +68,13 @@ Type: `Promise<void>`
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot            | Description |
+| --------------- | ----------- |
+| `"input-right"` |             |
 
 
 ## Shadow Parts

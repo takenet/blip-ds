@@ -20,6 +20,13 @@
 | `scrollButtonClick` |             | `CustomEvent<Overflow>` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

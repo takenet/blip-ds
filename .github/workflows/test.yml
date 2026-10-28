@@ -20,12 +20,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: 'npm'
+
+      - name: Setup npm
+        run: npm install --global npm@12.2.1
 
       - name: NPM Install and build
         run: |
-          npm ci --legacy-peer-deps
+          npm ci --strict-peer-deps
           npm run assets:prepare
           node --test scripts/test/*.test.cjs
 
@@ -39,3 +42,7 @@ jobs:
       - name: Test
         run: |
           npm run test
+      - name: Build library and React wrappers
+        run: |
+          npm run build
+          npm run build:react

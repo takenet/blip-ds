@@ -29,29 +29,6 @@ global.HTMLSlotElement = class HTMLSlotElement extends HTMLElement {
   }
 } as any;
 
-// Mock the element's shadowRoot property to return a mock with querySelector
-Object.defineProperty(HTMLElement.prototype, 'shadowRoot', {
-  get: function() {
-    const slotMock = document.createElement('slot') as any;
-    slotMock.assignedNodes = jest.fn().mockReturnValue([]);
-    
-    const buttonMock = document.createElement('button');
-    
-    return {
-      querySelector: jest.fn().mockImplementation((selector: string) => {
-        if (selector === 'slot') {
-          return slotMock;
-        }
-        if (selector === 'button') {
-          return buttonMock;
-        }
-        return null;
-      })
-    };
-  },
-  configurable: true
-});
-
 import { newSpecPage } from '@stencil/core/testing';
 import { Button } from '../button';
 

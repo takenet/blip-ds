@@ -55,6 +55,14 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot                   | Description |
+| ---------------------- | ----------- |
+| `"dropdown-activator"` |             |
+| `"dropdown-content"`   |             |
+
+
 ## Dependencies
 
 ### Used by

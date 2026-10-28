@@ -126,8 +126,24 @@ test('CDN failures block config creation', async context => {
 test('CI workflows use locked tokens and never fetch public CDN assets', () => {
   for (const name of ['test', 'publish', 'pr-storybook', 'playwright']) {
     const workflow = fs.readFileSync(path.resolve(__dirname, `../../.github/workflows/${name}.yml`), 'utf8');
-    assert.ok(workflow.includes('npm ci --legacy-peer-deps'));
+    assert.ok(workflow.includes('npm ci --strict-peer-deps'));
+    assert.ok(workflow.includes('node-version-file: .nvmrc'));
+    assert.ok(workflow.includes('npm install --global npm@12.2.1'));
     assert.ok(workflow.includes('npm run assets:prepare') || workflow.includes('npm run build'));
     assert.ok(!/assets:verify|assets:update-tokens/.test(workflow));
   }
+});
+
+test('package metadata preserves portal consumers while development uses a pinned toolchain', () => {
+  const root = path.resolve(__dirname, '../..');
+  const core = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+  const react = JSON.parse(fs.readFileSync(path.join(root, 'blip-ds-react/package.json'), 'utf8'));
+  const nodeVersion = fs.readFileSync(path.join(root, '.nvmrc'), 'utf8').trim();
+  assert.match(nodeVersion, /^24\.\d+\.\d+$/);
+  assert.equal(core.packageManager, react.packageManager);
+  assert.equal(core.engines?.node, undefined);
+  assert.equal(react.peerDependencies.react, '^18.3.1 || ^19.0.0');
+  assert.equal(react.peerDependencies['react-dom'], react.peerDependencies.react);
+  assert.equal(core.exports['./dist/components'].types, './dist/types/components.d.ts');
+  assert.equal(core.exports['./dist/components'].import, undefined);
 });

@@ -23,6 +23,13 @@
 | `bdsTabDisabled` | bdsTabDisabled. Event to return value when Tabs disable is change. | `CustomEvent<HTMLBdsTabItemElement>` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

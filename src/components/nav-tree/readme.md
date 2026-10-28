@@ -39,6 +39,14 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot               | Description      |
+| ------------------ | ---------------- |
+|                    | The default slot |
+| `"header-content"` |                  |
+
+
 ## Dependencies
 
 ### Depends on

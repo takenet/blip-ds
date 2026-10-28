@@ -1,5 +1,6 @@
 'use client';
 import { createComponent } from '@stencil/react-output-target/runtime';
+import React from 'react';
 import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from "blip-ds/dist/components/bds-accordion-group.js";
 import { BdsAccordionHeader as BdsAccordionHeaderElement, defineCustomElement as defineBdsAccordionHeader } from "blip-ds/dist/components/bds-accordion-header.js";
@@ -112,7 +113,6 @@ import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as def
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
-import React from 'react';
 export const BdsAccordion = createComponent({
     tagName: 'bds-accordion',
     elementClass: BdsAccordionElement,

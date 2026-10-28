@@ -24,6 +24,13 @@
 | `chipClick` |             | `CustomEvent<{ selected: boolean; }>` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

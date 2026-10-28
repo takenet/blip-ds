@@ -18,6 +18,13 @@
 | `width`       | `width`        | Prop for set the width of the component.                                           | `string`                                                                                                                            | `null`        |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Used by

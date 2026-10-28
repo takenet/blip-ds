@@ -71,9 +71,8 @@ describe('bds-modal-close-button', () => {
   it('should reflect active prop on attribute when false', async () => {
     const page = await createModalCloseButtonPage({ active: false });
     
-    // With reflect: true, attributes are present for all truthy values
-    // When false, the attribute might still be present with 'false' value
-    expect(page.root.getAttribute('active')).toBe('false');
+    expect(page.root.active).toBe(false);
+    expect(page.root.hasAttribute('active')).toBe(false);
   });
 
   it('should render bds-icon component', async () => {

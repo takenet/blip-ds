@@ -11,8 +11,8 @@
     "node": ">=24"
   },
   "dependencies": {
-    "@hono/node-server": "^1.19.0",
-    "@storybook/mcp": "10.6.2",
-    "hono": "^4.10.0"
+    "@hono/node-server": "^2.1.5",
+    "@storybook/mcp": "10.6.5",
+    "hono": "^4.13.14"
   }
 }

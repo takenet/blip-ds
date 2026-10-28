@@ -20,6 +20,13 @@
 | `variant`    | `variant`     | Variant. Entered as one of the font size variant. Can be one of: 'fs-10' ,'fs-12' ,'fs-14' ,'fs-16' ,'fs-20' ,'fs-24' ,'fs-32' ,'fs-40'; | `"fs-10" \| "fs-12" \| "fs-14" \| "fs-16" \| "fs-20" \| "fs-24" \| "fs-32" \| "fs-40"` | `'fs-16'` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Shadow Parts
 
 | Part               | Description |

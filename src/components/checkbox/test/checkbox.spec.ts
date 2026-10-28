@@ -107,7 +107,7 @@ describe('bds-checkbox', () => {
       const label = page.root.shadowRoot.querySelector('label');
       
       expect(input.id).toBe('custom-id');
-      expect(label.getAttribute('htmlFor')).toBe('custom-id');
+      expect(label.htmlFor).toBe('custom-id');
     });
 
     it('should auto-generate id when refer is not provided', async () => {
@@ -245,7 +245,7 @@ describe('bds-checkbox', () => {
       const label = page.root.shadowRoot.querySelector('label');
       
       expect(input.id).toBe('test-id');
-      expect(label.getAttribute('htmlFor')).toBe('test-id');
+      expect(label.htmlFor).toBe('test-id');
     });
 
     it('should have correct name attribute', async () => {

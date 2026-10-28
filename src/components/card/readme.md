@@ -25,6 +25,13 @@
 | `bdsClick` | This event will be dispatch when click on the component. | `CustomEvent<KeyboardEvent \| PointerEvent>` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

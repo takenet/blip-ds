@@ -14,6 +14,13 @@
 | `scrollable` | `scrollable`  | Specifies whether the table is scrollable or not.                                                         | `boolean` | `undefined` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

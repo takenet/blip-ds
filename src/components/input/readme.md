@@ -13,7 +13,7 @@
 | `chips`                 | `chips`                   | Defines if the input will be displayed as chips (a type of input with multiple values).   | `boolean`                                                                | `undefined` |
 | `cols`                  | `cols`                    | Defines the number of columns for the textarea (if `textarea`).                           | `number`                                                                 | `0`         |
 | `counterLength`         | `counter-length`          | Defines whether a character length counter will be displayed.                             | `boolean`                                                                | `false`     |
-| `counterLengthRule`     | `counter-length-rule`     | Defines the character length counter rule (min, max, etc).                                | `{ warning: CounterTextRule; delete: CounterTextRule; }`                 | `null`      |
+| `counterLengthRule`     | --                        | Defines the character length counter rule (min, max, etc).                                | `{ warning: CounterTextRule; delete: CounterTextRule; }`                 | `null`      |
 | `danger`                | `danger`                  | Defines if the input is in error state.                                                   | `boolean`                                                                | `false`     |
 | `dataTest`              | `data-test`               | Data test is the prop to specifically test the component action.                          | `string`                                                                 | `null`      |
 | `debounceDelay`         | `debounce-delay`          | Defines the debounce delay in milliseconds for textarea auto-resize.                      | `number`                                                                 | `100`       |
@@ -115,6 +115,15 @@ Sets focus to the input field.
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot                  | Description |
+| --------------------- | ----------- |
+| `"input-left"`        |             |
+| `"input-right"`       |             |
+| `"inside-input-left"` |             |
 
 
 ## Shadow Parts

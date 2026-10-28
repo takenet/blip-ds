@@ -49,6 +49,13 @@ Type: `Promise<boolean>`
 
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Used by

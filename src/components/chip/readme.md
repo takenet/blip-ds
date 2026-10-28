@@ -26,6 +26,13 @@
 | `bdsDelete` | Triggered after a mouse click on delete icon, return id element. Only fired when deletable is true. | `CustomEvent<{ id: string; }>` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on

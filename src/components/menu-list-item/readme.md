@@ -13,6 +13,13 @@
 | `icon` _(required)_ | `icon`    | used for add icon in input left. Uses the bds-icon component. | `string` | `undefined` |
 
 
+## Slots
+
+| Slot | Description      |
+| ---- | ---------------- |
+|      | The default slot |
+
+
 ## Dependencies
 
 ### Depends on
