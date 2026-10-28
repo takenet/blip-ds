@@ -1,0 +1,1 @@
+import{R as o,d as p}from"./p-D6rj5EpD.js";const r=o,s=p;export{r as BdsRadio,s as defineCustomElement}

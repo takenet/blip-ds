@@ -1,0 +1,1 @@
+import{C as o,d as s}from"./p-Cm21jq-7.js";const m=o,p=s;export{m as BdsCounterText,p as defineCustomElement}

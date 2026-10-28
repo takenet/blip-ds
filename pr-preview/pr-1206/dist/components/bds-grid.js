@@ -1,0 +1,1 @@
+import{G as o,d as r}from"./p-C_DVrkAc.js";const s=o,p=r;export{s as BdsGrid,p as defineCustomElement}

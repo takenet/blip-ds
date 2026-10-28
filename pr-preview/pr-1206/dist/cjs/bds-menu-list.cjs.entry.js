@@ -1,0 +1,17 @@
+'use strict';
+
+var index = require('./index-BuAR9UTp.js');
+
+const menuListCss = () => `.menu-list{display:-ms-flexbox;display:flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;-webkit-box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));height:56px;border-radius:8px}.menu-list bds-menu-list-item+bds-menu-list-item{border-left:1px solid #d4d4d4}.menu-list__left{width:7px;height:56px;border-radius:8px 0px 0px 8px;background-color:#f6f6f6}.menu-list__right{width:7px;height:56px;border-radius:0px 8px 8px 0px;background-color:#f6f6f6}`;
+
+const MenuList = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+    }
+    render() {
+        return (index.h(index.Host, { key: '160e5bbb19684c2918b46510684b2b50b55873cc' }, index.h("div", { key: 'bfea5a68deba77e767927ff2f39c8d0c02b247c9', class: "menu-list" }, index.h("div", { key: '8056b07062eb924511332b20c6d7262a80b2b168', class: "menu-list__left" }), index.h("slot", { key: 'cc962eec98c46a3a49f831bde10c2b3d5f3dff53' }), index.h("div", { key: 'c8fc6e5921aa3e4d98403c876d4e5cafc1e0bd9e', class: "menu-list__right" }))));
+    }
+};
+MenuList.style = menuListCss();
+
+exports.bds_menu_list = MenuList;
