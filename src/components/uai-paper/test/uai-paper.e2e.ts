@@ -119,7 +119,7 @@ describe('uai-paper e2e tests', () => {
       expect(paper).toBeTruthy();
       
       const tagName = await paper.getProperty('tagName');
-      expect(tagName).toBe('BDS-PAPER');
+      expect(tagName).toBe('UAI-PAPER');
     });
 
     it('should render content in slot', async () => {
