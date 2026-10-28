@@ -9,6 +9,17 @@ import 'blip-tokens/uai-icons/css';
 // Load the custom elements
 defineCustomElements();
 
+// The Stencil React wrappers use the tag name as displayName, so "Show code" would print
+// <uai-input>. Print the React component name (<UaiInput>) instead; host elements stay as they are.
+const isTagName = (name) => /^[a-z][a-z0-9]*(-[a-z0-9]+)+$/.test(name);
+const toPascalCase = (name) => name.replace(/(^|-)([a-z0-9])/g, (_match, _dash, char) => char.toUpperCase());
+const jsxDisplayName = ({ type }) => {
+  if (typeof type === 'string') return type;
+  if (typeof type === 'symbol') return type.description || 'Fragment';
+  const name = type.displayName || type.render?.displayName || type.type?.displayName || type.name || 'Component';
+  return isTagName(name) ? toPascalCase(name) : name;
+};
+
 export const globalTypes = {
   hasTheme: {
     name: 'Theme',
@@ -27,10 +38,11 @@ export const globalTypes = {
 export const parameters = {
   //decorators: [(storyFn, context) => withConsole()(storyFn)(context)],
   actions: { argTypesRegex: '^on[A-Z].*' },
+  jsx: { displayName: jsxDisplayName },
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ["Welcome", "Vamos Começar", "Integrações", "Tokens", "UAI", ["Foundation", ["Tokens", "Colors", "Typography", "Layout", "Motion", "Elevation", "Icons"], "*"], "Components", ["[deprecated] Navbar", "[deprecated] Button", "[deprecated] Icon", "[deprecated] Grid", "[deprecated] Paper", "NavTree", "*"], "Snippets", "Templates"]
+      order: ["Welcome", "Vamos Começar", "Integrações", "Tokens", "UAI", ["Foundation", ["Tokens", "Colors", "Typography", "Layout", "Motion", "Elevation", "Icons"], "*"], "Components", ["[deprecated] Navbar", "[deprecated] Button", "[deprecated] Icon", "[deprecated] Grid", "[deprecated] Paper", "[deprecated] Input", "[deprecated] Input Password", "NavTree", "*"], "Snippets", "Templates"]
     }
   },
   controls: {

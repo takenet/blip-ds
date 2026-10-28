@@ -1,6 +1,9 @@
 import { Component, State, Prop, h, Host, Event, EventEmitter, Watch } from '@stencil/core';
 import { InputAutocapitalize, InputAutoComplete } from '../input/input-interface';
 
+/**
+ * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+ */
 @Component({
   tag: 'bds-input-password',
   styleUrl: 'input-password.scss',

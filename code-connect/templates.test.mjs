@@ -9,6 +9,9 @@ import { glyphTemplate } from './glyph-template.mjs';
 const glyphs = JSON.parse(readFileSync(new URL('./uai-icon-glyphs.json', import.meta.url), 'utf8'));
 const buttonSource = readFileSync(new URL('./uai-button.figma.ts', import.meta.url), 'utf8');
 const iconSource = readFileSync(new URL('./uai-icon.figma.ts', import.meta.url), 'utf8');
+const inputSource = readFileSync(new URL('./uai-input.figma.ts', import.meta.url), 'utf8');
+const passwordSource = readFileSync(new URL('./uai-input-password.figma.ts', import.meta.url), 'utf8');
+const textareaSource = readFileSync(new URL('./uai-textarea.figma.ts', import.meta.url), 'utf8');
 const imports = ['import { UaiIcon } from "blip-ds-react/dist/components"'];
 
 const evaluate = (source, properties = {}, swaps = {}) => {
@@ -163,4 +166,179 @@ test('icon rejects absent or invalid glyph mappings instead of emitting an empty
   assert.throws(() => evaluate(iconSource, iconDefaults), /Connect the selected glyph/);
   assert.throws(() => evaluate(iconSource, iconDefaults, { Icon: swap('', 'outline') }), /UAI name and theme/);
   assert.throws(() => evaluate(iconSource, iconDefaults, { Icon: swap('info', 'invalid') }), /UAI name and theme/);
+});
+
+const inputDefaults = {
+  Label: 'E-mail',
+  'Show Label': true,
+  Text: 'ana@blip.ai',
+  'Helper Message': 'Use o e-mail de trabalho.',
+  'Error Message': 'Informe um e-mail válido.',
+  'Success Message': 'E-mail confirmado.',
+  'Show Message': true,
+  'Show Icon': false,
+  'Counter Length': false,
+  'Counter Value': '0/100',
+  'Show Leading Adornment': false,
+  'Show Inline Adornment': false,
+  'Show Trailing Adornment': false,
+  Size: 'Medium',
+  Feedback: 'Default',
+  State: 'Default',
+};
+
+test('input covers every size, feedback and state with valid React', () => {
+  for (const Size of ['Medium', 'Short'])
+    for (const Feedback of ['Default', 'Error', 'Success'])
+      for (const State of ['Default', 'Hover', 'Filled', 'Focus', 'Disabled', 'Readonly']) {
+        const { example } = evaluate(inputSource, { ...inputDefaults, Size, Feedback, State });
+        assert.equal(example.includes(' size="short"'), Size === 'Short');
+        assertJsx(example);
+        assert.ok(example.includes('label={"E-mail"}'));
+        assert.equal(example.includes('placeholder={"ana@blip.ai"}'), ['Default', 'Hover'].includes(State));
+        assert.equal(example.includes('value={"ana@blip.ai"}'), !['Default', 'Hover'].includes(State));
+        assert.equal(example.includes(' danger'), Feedback === 'Error');
+        assert.equal(example.includes(' success '), Feedback === 'Success');
+        assert.equal(example.includes(' disabled'), State === 'Disabled');
+        assert.equal(example.includes(' readonly'), State === 'Readonly');
+        const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+        assert.ok(example.includes(`${message}={`));
+      }
+});
+
+test('input maps the icon, counter, adornments and an accessible name without visible label', () => {
+  const { example } = evaluate(
+    inputSource,
+    {
+      ...inputDefaults,
+      'Show Label': false,
+      'Show Message': false,
+      'Show Icon': true,
+      'Counter Length': true,
+      'Show Inline Adornment': true,
+      'Show Trailing Adornment': true,
+    },
+    { Icon: swap('search') },
+  );
+  assertJsx(example);
+  assert.ok(example.includes('aria-label={"E-mail"}'));
+  assert.ok(example.includes('icon="search"'));
+  assert.ok(example.includes('counterLength maxlength={100}'));
+  assert.ok(example.includes('slot="inside-input-left"') && example.includes('slot="input-right"'));
+  assert.ok(!example.includes('Message='));
+});
+
+test('input rejects an unmapped icon and an input without any name', () => {
+  assert.throws(() => evaluate(inputSource, { ...inputDefaults, 'Show Icon': true }, {}), /Connect the glyph/);
+  assert.throws(() => evaluate(inputSource, { ...inputDefaults, 'Show Label': false, Label: ' ' }), /accessible name/);
+});
+
+const passwordDefaults = {
+  Label: 'Senha',
+  Text: 'Placeholder',
+  'Helper Message': 'Use a senha da conta.',
+  'Error Message': 'Revise a senha informada.',
+  'Success Message': 'Senha confirmada.',
+  'Show Strength': false,
+  Visibility: 'Hidden',
+  Feedback: 'Default',
+  State: 'Default',
+  Level: 'None',
+};
+
+test('password covers every feedback, state and visibility with valid React', () => {
+  for (const Feedback of ['Default', 'Error', 'Success'])
+    for (const State of ['Default', 'Filled', 'Hover', 'Focus', 'Disabled', 'Readonly'])
+      for (const Visibility of ['Hidden', 'Revealed']) {
+        const { example } = evaluate(passwordSource, { ...passwordDefaults, Feedback, State, Visibility });
+        assertJsx(example);
+        assert.ok(example.includes('label={"Senha"}'));
+        assert.equal(example.includes('placeholder={"Placeholder"}'), ['Default', 'Hover'].includes(State));
+        assert.equal(example.includes('value={"Placeholder"}'), !['Default', 'Hover'].includes(State));
+        assert.equal(example.includes(' openEyes'), Visibility === 'Revealed');
+        assert.equal(example.includes(' danger'), Feedback === 'Error');
+        assert.equal(example.includes(' success'), Feedback === 'Success');
+        assert.equal(example.includes(' disabled'), State === 'Disabled');
+        assert.equal(example.includes(' readonly'), State === 'Readonly');
+        const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+        assert.ok(example.includes(`${message}={`));
+      }
+});
+
+test('password maps the optional consumer-provided strength level', () => {
+  for (const [Level, expected] of [['None', 'none'], ['Low', 'low'], ['Medium', 'medium'], ['High', 'high']]) {
+    const { example } = evaluate(passwordSource, { ...passwordDefaults, 'Show Strength': true, Level });
+    assertJsx(example);
+    assert.ok(example.includes(`showStrength strengthLevel="${expected}"`));
+  }
+  const { example } = evaluate(passwordSource, { ...passwordDefaults, 'Show Strength': false, Level: 'High' });
+  assert.ok(!example.includes('showStrength'));
+});
+
+const textareaDefaults = {
+  Label: 'Descrição',
+  'Show Label': true,
+  Text: 'Detalhes do pedido',
+  'Helper Message': 'Inclua os detalhes importantes.',
+  'Error Message': 'Revise o conteúdo informado.',
+  'Success Message': 'Conteúdo confirmado.',
+  'Show Message': true,
+  'Show Icon': false,
+  'Counter Length': false,
+  'Counter Value': '0/500',
+  'Show Leading Adornment': false,
+  'Show Inline Adornment': false,
+  'Show Trailing Adornment': false,
+  Feedback: 'Default',
+  State: 'Default',
+};
+
+test('textarea covers every feedback and state with valid React', () => {
+  for (const Feedback of ['Default', 'Error', 'Success'])
+    for (const State of ['Default', 'Hover', 'Filled', 'Focus', 'Disabled', 'Readonly']) {
+      const { example } = evaluate(textareaSource, { ...textareaDefaults, Feedback, State });
+      assertJsx(example);
+      assert.ok(example.includes('label={"Descrição"}'));
+      assert.equal(example.includes('placeholder={"Detalhes do pedido"}'), ['Default', 'Hover'].includes(State));
+      assert.equal(example.includes('value={"Detalhes do pedido"}'), !['Default', 'Hover'].includes(State));
+      assert.equal(example.includes(' danger'), Feedback === 'Error');
+      assert.equal(example.includes(' success '), Feedback === 'Success');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+      assert.equal(example.includes(' readonly'), State === 'Readonly');
+      const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+      assert.ok(example.includes(`${message}={`));
+    }
+});
+
+test('textarea maps the icon, counter, adornments and an accessible name without visible label', () => {
+  const { example } = evaluate(
+    textareaSource,
+    {
+      ...textareaDefaults,
+      'Show Label': false,
+      'Show Message': false,
+      'Show Icon': true,
+      'Counter Length': true,
+      'Show Leading Adornment': true,
+      'Show Inline Adornment': true,
+      'Show Trailing Adornment': true,
+    },
+    { Icon: swap('edit') },
+  );
+  assertJsx(example);
+  assert.ok(example.includes('aria-label={"Descrição"}'));
+  assert.ok(example.includes('icon="edit"'));
+  assert.ok(example.includes('counterLength maxlength={500}'));
+  assert.ok(example.includes('slot="input-left"'));
+  assert.ok(example.includes('slot="inside-input-left"'));
+  assert.ok(example.includes('slot="input-right"'));
+  assert.ok(!example.includes('Message='));
+});
+
+test('textarea rejects an unmapped icon and a missing accessible name', () => {
+  assert.throws(() => evaluate(textareaSource, { ...textareaDefaults, 'Show Icon': true }, {}), /Connect the glyph/);
+  assert.throws(
+    () => evaluate(textareaSource, { ...textareaDefaults, 'Show Label': false, Label: ' ' }),
+    /accessible name/,
+  );
 });

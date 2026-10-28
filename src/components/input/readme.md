@@ -3,6 +3,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+
 ## Properties
 
 | Property                | Attribute                 | Description                                                                               | Type                                                                     | Default     |

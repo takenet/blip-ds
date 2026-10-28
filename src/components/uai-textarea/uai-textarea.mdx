@@ -1,0 +1,101 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiTextareaStories from './uai-textarea.stories';
+
+<Meta isTemplate />
+
+# Textarea
+
+Campo para texto em várias linhas. Tem rótulo opcional acima, mensagem de ajuda, erro ou sucesso abaixo e participa de formulários nativos. Para texto curto em uma linha, use o `uai-input`; para escolher de uma lista, use um componente de seleção.
+
+<Canvas of={UaiTextareaStories.Playground} />
+
+<Controls of={UaiTextareaStories.Playground} />
+
+## Como usar
+
+Um formulário de comentário com o campo controlado por estado, contador e validação nativa. O código abaixo pode ser copiado como ponto de partida.
+
+<Canvas of={UaiTextareaStories.Usage} sourceState="shown" />
+
+- Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
+- `size="medium"` é o padrão: inicia com três linhas. `size="short"` inicia com uma linha. `rows` explícito prevalece sobre esse padrão; ambos os tamanhos mantêm sua altura mínima tokenizada. Com `autoResize`, o campo cresce com o conteúdo; `minHeight` e `maxHeight` são limites opcionais em pixels.
+- Para redimensionamento manual, defina `autoResize={false}` e `resizable`.
+- Fora do React, use o custom element `<uai-textarea>`, com as propriedades em kebab-case (`helper-message`) e eventos como `uaiChange` e `uaiSubmit`.
+
+## Estados
+
+`danger` tem prioridade sobre `success`. Erro e sucesso mostram um ícone além da cor. `readonly` mantém a aparência do estado padrão; `disabled` muda as cores e tira o campo do formulário.
+
+<Canvas of={UaiTextareaStories.States} />
+
+## Tamanho e altura
+
+O tamanho compartilhado define a altura mínima: `short` usa `control-height/short` e começa com uma linha; `medium` usa `control-height/medium` e começa com três. Um `rows` explícito define a quantidade inicial de linhas e prevalece sobre o default do tamanho. O comportamento padrão ajusta a altura ao conteúdo sem um limite máximo. `minHeight` e `maxHeight` são opcionais; ao atingir `maxHeight`, o campo pode rolar internamente. `resizable` habilita o redimensionamento vertical manual quando `autoResize` está desativado.
+
+<Canvas of={UaiTextareaStories.Heights} />
+
+## Comportamento
+
+### Formulário
+
+- O valor é enviado com o nome definido em `name` (ou `inputName`). Sem nome, o campo não é enviado.
+- O reset do formulário volta ao valor inicial e emite `uaiChange`.
+- `required`, `minlength`, `maxlength` e `pattern` bloqueiam o envio quando não são atendidos. Use `requiredErrorMessage`, `minlengthErrorMessage` e `patternErrorMessage` para personalizar mensagens; sem uma mensagem específica, o navegador fornece o texto para as validações nativas.
+- Dentro de um `fieldset` desabilitado, o campo fica desabilitado.
+- Enter insere uma nova linha e não envia o formulário. Com `isSubmit`, Enter emite `uaiSubmit`, limpa o campo e cancela a nova linha. Durante composição de texto, Enter não limpa nem envia.
+
+<Canvas of={UaiTextareaStories.Form} />
+
+### Eventos e métodos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiChange` | `uaiChange` | O valor muda, digitando ou por código | `{ value }` |
+| `onUaiInput` | `uaiInput` | A cada entrada nativa | `InputEvent` |
+| `onUaiFocus` / `onUaiOnBlur` | `uaiFocus` / `uaiOnBlur` | O campo ganha ou perde o foco | — |
+| `onUaiSubmit` | `uaiSubmit` | Enter, exceto durante composição | `{ event, value }` |
+| `onUaiKeyDownBackspace` | `uaiKeyDownBackspace` | Backspace ou Delete | `{ event, value }` |
+| `onUaiPatternValidation` | `uaiPatternValidation` | Saída do campo com `pattern` | `true` se o valor atende ao padrão |
+
+Métodos: `setFocus()`, `removeFocus()`, `getInputElement()`, `isValid()` e `clear()`.
+
+<Canvas of={UaiTextareaStories.Events} />
+
+## Acessibilidade
+
+- O rótulo é um `<label>` associado ao textarea nativo; clicar nele foca o campo.
+- Mensagem e contador são ligados ao campo por `aria-describedby`; o erro define `aria-invalid`.
+- Sem rótulo visível, informe `aria-label`. Sem nenhum dos dois, o componente avisa no console.
+- O foco aparece no contorno do campo (`:focus-within`), com borda `border/ring` e halo `opacity/focus-ring`. Em modo de alto contraste, vira um contorno do sistema.
+- Ações nos slots precisam de nome acessível.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Forma | `radius-lg`, `border-width-default` |
+| Altura | `control-height-short`, `control-height-medium` |
+| Espaços | `spacing-2xs` (separação de rótulo e mensagem), `spacing-xs` (padding médio e adornos), `spacing-3xs` (padding vertical curto) |
+| Repouso e hover | `surface-paper`, `border-input`, `content-secondary` |
+| Foco | `border-ring`, `border-width-thick`, `opacity-focus-ring` |
+| Erro e sucesso | `feedback-error`, `feedback-success`; contador em alerta: `feedback-warning` |
+| Desabilitado | `surface-muted`, `border-default`, `content-disabled` |
+| Texto | `body-base` (valor), `caption` semibold (rótulo), `caption` (mensagem e contador), `content-primary`, `content-placeholder` |
+| Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-input`
+
+| `BdsInput` | `UaiTextarea` |
+| --- | --- |
+| `isTextarea` | A tag própria `uai-textarea`; a prop legada é aceita e deprecada |
+| `rows`, `cols`, `autoResize`, `resizable`, `minHeight`, `maxHeight`, `debounceDelay` | Mantêm seus nomes; a altura inicial é fluida e não herda limites fixos |
+| `inputName` | Continua aceito; `name` também participa de formulários |
+| Eventos `bds*` | Eventos equivalentes com prefixo `uai`, mantendo o payload |
+| Enter | Insere nova linha; `isSubmit` preserva o comportamento de envio/limpeza legado |
+| Texto em uma linha | Use `uai-input` |
+
+Os slots `input-left`, `inside-input-left` e `input-right`, as parts `input-container`, `input` e `input__message` e os métodos seguem o contrato UAI do campo.
+
+## Design
+
+[UaiTextarea no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2291-8)

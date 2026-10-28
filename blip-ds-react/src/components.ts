@@ -11,7 +11,7 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiButtonCustomEvent, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiButtonCustomEvent, type UaiInputCustomEvent, type UaiInputPasswordCustomEvent, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
 import type { Components } from "blip-ds/dist/components";
 import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from "blip-ds/dist/components/bds-accordion-group.js";
@@ -122,9 +122,12 @@ import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar }
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
+import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
+import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
+import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
 
@@ -1567,6 +1570,58 @@ export const UaiIcon: StencilReactComponent<UaiIconElement, UaiIconEvents, Compo
     defineCustomElement: defineUaiIcon
 });
 
+export type UaiInputEvents = {
+    onUaiChange: EventName<UaiInputCustomEvent<{ value: string }>>,
+    onUaiInput: EventName<UaiInputCustomEvent<InputEvent>>,
+    onUaiOnBlur: EventName<UaiInputCustomEvent<void>>,
+    onUaiFocus: EventName<UaiInputCustomEvent<void>>,
+    onUaiSubmit: EventName<UaiInputCustomEvent<{ event: KeyboardEvent; value: string }>>,
+    onUaiPatternValidation: EventName<UaiInputCustomEvent<boolean>>,
+    onUaiKeyDownBackspace: EventName<UaiInputCustomEvent<{ event: KeyboardEvent; value: string }>>
+};
+
+export const UaiInput: StencilReactComponent<UaiInputElement, UaiInputEvents, Components.UaiInput> = /*@__PURE__*/ createComponent<UaiInputElement, UaiInputEvents, Components.UaiInput>({
+    tagName: 'uai-input',
+    elementClass: UaiInputElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiOnBlur: 'uaiOnBlur',
+        onUaiFocus: 'uaiFocus',
+        onUaiSubmit: 'uaiSubmit',
+        onUaiPatternValidation: 'uaiPatternValidation',
+        onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
+    } as UaiInputEvents,
+    defineCustomElement: defineUaiInput
+});
+
+export type UaiInputPasswordEvents = {
+    onUaiInputPasswordChange: EventName<UaiInputPasswordCustomEvent<{ value: string | null }>>,
+    onUaiInputPasswordInput: EventName<UaiInputPasswordCustomEvent<InputEvent>>,
+    onUaiInputPasswordBlur: EventName<UaiInputPasswordCustomEvent<void>>,
+    onUaiInputPasswordFocus: EventName<UaiInputPasswordCustomEvent<void>>,
+    onUaiInputPasswordSubmit: EventName<UaiInputPasswordCustomEvent<{ event: KeyboardEvent; value: string | null }>>,
+    onUaiKeyDownBackspace: EventName<UaiInputPasswordCustomEvent<{ event: KeyboardEvent; value: string | null }>>
+};
+
+export const UaiInputPassword: StencilReactComponent<UaiInputPasswordElement, UaiInputPasswordEvents, Components.UaiInputPassword> = /*@__PURE__*/ createComponent<UaiInputPasswordElement, UaiInputPasswordEvents, Components.UaiInputPassword>({
+    tagName: 'uai-input-password',
+    elementClass: UaiInputPasswordElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onUaiInputPasswordChange: 'uaiInputPasswordChange',
+        onUaiInputPasswordInput: 'uaiInputPasswordInput',
+        onUaiInputPasswordBlur: 'uaiInputPasswordBlur',
+        onUaiInputPasswordFocus: 'uaiInputPasswordFocus',
+        onUaiInputPasswordSubmit: 'uaiInputPasswordSubmit',
+        onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
+    } as UaiInputPasswordEvents,
+    defineCustomElement: defineUaiInputPassword
+});
+
 export type UaiNavbarEvents = NonNullable<unknown>;
 
 export const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents, Components.UaiNavbar> = /*@__PURE__*/ createComponent<UaiNavbarElement, UaiNavbarEvents, Components.UaiNavbar>({
@@ -1598,6 +1653,33 @@ export const UaiPaper: StencilReactComponent<UaiPaperElement, UaiPaperEvents, Co
     react: React,
     events: {} as UaiPaperEvents,
     defineCustomElement: defineUaiPaper
+});
+
+export type UaiTextareaEvents = {
+    onUaiChange: EventName<UaiTextareaCustomEvent<{ value: string }>>,
+    onUaiInput: EventName<UaiTextareaCustomEvent<InputEvent>>,
+    onUaiOnBlur: EventName<UaiTextareaCustomEvent<void>>,
+    onUaiFocus: EventName<UaiTextareaCustomEvent<void>>,
+    onUaiSubmit: EventName<UaiTextareaCustomEvent<{ event: KeyboardEvent; value: string }>>,
+    onUaiPatternValidation: EventName<UaiTextareaCustomEvent<boolean>>,
+    onUaiKeyDownBackspace: EventName<UaiTextareaCustomEvent<{ event: KeyboardEvent; value: string }>>
+};
+
+export const UaiTextarea: StencilReactComponent<UaiTextareaElement, UaiTextareaEvents, Components.UaiTextarea> = /*@__PURE__*/ createComponent<UaiTextareaElement, UaiTextareaEvents, Components.UaiTextarea>({
+    tagName: 'uai-textarea',
+    elementClass: UaiTextareaElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiOnBlur: 'uaiOnBlur',
+        onUaiFocus: 'uaiFocus',
+        onUaiSubmit: 'uaiSubmit',
+        onUaiPatternValidation: 'uaiPatternValidation',
+        onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
+    } as UaiTextareaEvents,
+    defineCustomElement: defineUaiTextarea
 });
 
 export type UaiThemeProviderEvents = NonNullable<unknown>;

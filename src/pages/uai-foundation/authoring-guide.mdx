@@ -81,21 +81,25 @@ Use a receita de padding aprovada para cada componente. As famílias `uai-input`
 
 Todo controle de formulário participa de um `<form>` nativo e só envia valor quando tem nome (`inputName` ou `name`). No reset, volta ao valor inicial e emite os eventos de mudança.
 
+Implemente com a base interna `UaiFormControl` (`src/utils/uai-form-control.ts`): declare `formAssociated: true`, use `@AttachInternals()` e repasse `formResetCallback` e `formDisabledCallback` para ela. A base cuida do valor enviado, do reset, da validação (`validateRequired`, `setValidity`) e do `fieldset` desabilitado.
+
 ## Overlays
 
 Dropdown, listbox, popover, tooltip e toast abrem acima de qualquer conteúdo, inclusive do `bds-modal`, e fecham com Esc e, quando aplicável, com clique fora. Ao fechar, o foco volta ao gatilho. `uai-datepicker`, `uai-select` e `uai-dropdown` expõem `open()` e `close()`.
 
+Implemente com a primitiva interna `UaiOverlay` (`src/utils/uai-overlay.ts`) e o mixin `uai-overlay-panel` no painel. Ela abre na top layer (Popover API, com `position: fixed` nos navegadores sem suporte), posiciona a `spacing/2xs` do gatilho e a `spacing/xs` da viewport, inverte para cima quando falta espaço, acompanha rolagem e redimensionamento e fecha com Esc, clique fora ou quando o gatilho sai da área visível. A navegação por setas dentro do painel fica em cada componente.
+
 ## Foco, estados e acessibilidade
 
 - Siga a ordem: HTML nativo, depois WAI-ARIA, depois o contrato do blip-ds.
-- Controles mostram o anel `border/ring` com `:focus-visible`. Campos mostram o anel no contêiner com `:focus-within`. Clique de mouse não deixa anel persistente.
+- Controles mostram o anel `border/ring` com `:focus-visible`. Campos mostram o anel no contêiner com `:focus-within`. Clique de mouse não deixa anel persistente. Use os mixins `uai-focus-visible` e `uai-focus-within`.
 - Estado desabilitado usa as cores `content/disabled`. Reduzir a opacidade do controle inteiro só é permitido onde o contrato do componente define (`opacity/disabled`).
 - Todo botão só com ícone tem nome acessível. Sem `aria-label`, o componente avisa no console e o teste do componente falha.
 - Todo estado tem um sinal além da cor.
 
 ## Movimento
 
-- Transições e animações usam tokens de duração e curva (`duration/fast`, `duration/moderate`, `easing/standard`).
+- Transições e animações usam tokens de duração e curva (`duration/fast`, `duration/moderate`, `easing/standard`). Use o mixin `uai-transition(<propriedades>, <duração>)`, que já zera a transição com movimento reduzido, e `uai-reduced-motion` para as animações contínuas.
 - Com `prefers-reduced-motion: reduce`, as transições de estado acontecem sem animação e as contínuas desaceleram ou param.
 - Quando a fonte mostra um estado interativo sem duração definida, não invente: registre a lacuna e siga o token da família.
 - Consulte a matriz de interações do plano de convergência antes de escolher um token.

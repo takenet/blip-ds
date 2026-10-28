@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+
 ## Properties
 
 | Property         | Attribute         | Description                                                                                                                                                                      | Type                                                                  | Default     |

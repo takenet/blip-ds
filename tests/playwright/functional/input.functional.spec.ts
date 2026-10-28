@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Input - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-input--properties');
+    await storybook.goto('components-deprecated-input--properties');
   });
 
   test('accepts text input', async ({ page }) => {
@@ -33,7 +33,7 @@ test.describe('Input - Functional Tests', () => {
   });
 
   test('does not accept input when disabled', async ({ page }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=components-input--properties&args=disabled:true');
+    await gotoStoryUrl(page, '/iframe.html?id=components-deprecated-input--properties&args=disabled:true');
 
     const isDisabled = await page.evaluate(() => {
       const input = document.querySelector('bds-input');
@@ -45,7 +45,7 @@ test.describe('Input - Functional Tests', () => {
   });
 
   test('shows danger state with error styling', async ({ page }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=components-input--properties&args=danger:true');
+    await gotoStoryUrl(page, '/iframe.html?id=components-deprecated-input--properties&args=danger:true');
 
     const hasDangerClass = await page.evaluate(() => {
       const input = document.querySelector('bds-input');
@@ -57,7 +57,7 @@ test.describe('Input - Functional Tests', () => {
   });
 
   test('supports placeholder text', async ({ page }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=components-input--properties&args=placeholder:Enter%20text');
+    await gotoStoryUrl(page, '/iframe.html?id=components-deprecated-input--properties&args=placeholder:Enter%20text');
 
     const placeholder = await page.evaluate(() => {
       const input = document.querySelector('bds-input');

@@ -1,6 +1,9 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { checkScss, checkScript, checkMdx, tokenCategory } = require('../check_uai_tokens.cjs');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
+const { checkScss, checkScript, checkMdx, listFiles, tokenCategory } = require('../check_uai_tokens.cjs');
 
 const tokens = new Map(
   [
@@ -124,4 +127,30 @@ test('checks MDX examples but not prose', () => {
   );
   assert.equal(errors.length, 1);
   assert.match(errors[0], /demo\.mdx:3 example uses 8px/);
+});
+
+test('checks uai-* components and the internal UAI primitives, not legacy files or tests', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'uai-lint-'));
+  const write = file => {
+    fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true });
+    fs.writeFileSync(path.join(root, file), '');
+  };
+  [
+    'src/components/uai-demo/uai-demo.scss',
+    'src/components/uai-demo/uai-demo.tsx',
+    'src/components/button/button.scss',
+    'src/globals/_uai-mixins.scss',
+    'src/globals/_mixins.scss',
+    'src/utils/uai-overlay.ts',
+    'src/utils/position-element.ts',
+    'src/utils/test/uai-overlay.spec.ts',
+  ].forEach(write);
+  const files = listFiles(root).map(file => path.relative(root, file)).sort();
+  assert.deepEqual(files, [
+    'src/components/uai-demo/uai-demo.scss',
+    'src/components/uai-demo/uai-demo.tsx',
+    'src/globals/_uai-mixins.scss',
+    'src/utils/uai-overlay.ts',
+  ]);
+  fs.rmSync(root, { recursive: true, force: true });
 });

@@ -41,7 +41,7 @@ import { Color } from "./components/grid/color-grid-interface";
 import { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 import { IllustrationType } from "./components/illustration/illustration-interface";
 import { ObjectFitValue } from "./components/image/image";
-import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
+import { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, UaiControlSize } from "./components/input/input-interface";
 import { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 import { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 import { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
@@ -80,6 +80,8 @@ import { UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
+import { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
+import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
@@ -120,7 +122,7 @@ export { Color } from "./components/grid/color-grid-interface";
 export { IconSize, IconTheme as IconTheme1, IconType as IconType1 } from "./components/icon/icon-interface";
 export { IllustrationType } from "./components/illustration/illustration-interface";
 export { ObjectFitValue } from "./components/image/image";
-export { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType } from "./components/input/input-interface";
+export { InputAutocapitalize, InputAutoComplete, InputCounterLengthRules, InputType, UaiControlSize } from "./components/input/input-interface";
 export { InputChipsTypes } from "./components/input-chips/input-chips-interface";
 export { InputEditableEventDetail, SizeInputEditable } from "./components/input-editable/input-editable";
 export { Option, SelectChangeEvent, SelectChangeEventDetail, SelectOptionsPositionType } from "./components/selects/select-interface";
@@ -159,6 +161,8 @@ export { UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
+export { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
+export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
@@ -1466,6 +1470,9 @@ export namespace Components {
          */
         "width"?: string;
     }
+    /**
+     * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+     */
     interface BdsInput {
         /**
           * Defines automatic text capitalization (possible values: `on`, `off`).
@@ -1906,6 +1913,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
@@ -3952,6 +3962,396 @@ export namespace Components {
         "theme": UaiIconTheme;
     }
     /**
+     * Text field. Use it for short free text, e-mail, numbers and search, with an optional label above and a helper,
+     * error or success message below. It takes part in native forms: give it a name to submit its value.
+     * Pair with UaiButton in forms. Avoid it for multiline text (use uai-textarea) or for choosing from a list.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInput {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Automatic capitalization on virtual keyboards. Can be one of: 'off' (default), 'none', 'words', 'on', 'sentences', 'characters'.
+          * @default 'off'
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Browser autofill hint. Can be one of: 'off' (default), 'on', 'current-password', 'new-password', 'username'.
+          * @default 'off'
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "autoResize"?: boolean;
+        /**
+          * @deprecated Use uai-input-chips. Has no effect.
+         */
+        "chips"?: boolean;
+        /**
+          * Clears the value.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "cols"?: number;
+        /**
+          * If true, shows the number of characters typed and maxlength.
+          * @default false
+         */
+        "counterLength"?: boolean;
+        /**
+          * Ranges of remaining characters that color the counter: warning (feedback/warning) and delete (feedback/error).
+          * @default null
+         */
+        "counterLengthRule"?: InputCounterLengthRules;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * @deprecated Has no effect.
+         */
+        "debounceDelay"?: number;
+        /**
+          * If true, the field cannot be focused or edited and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message shown when an e-mail is invalid. Without it, the browser message is shown.
+         */
+        "emailErrorMessage": string;
+        /**
+          * If true, uaiChange emits the value with HTML special characters escaped.
+          * @default false
+         */
+        "encode"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Returns the native input element.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the text, for example "search".
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * @deprecated The icon size follows the field. Has no effect.
+         */
+        "iconSize"?: 'small' | 'medium';
+        /**
+          * Name of the value in the submitted form data. Same as name, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * If true, Enter clears the field after emitting uaiSubmit and does not submit the form (for chat-like fields).
+          * @default false
+         */
+        "isSubmit": boolean;
+        /**
+          * @deprecated Use uai-textarea for multiline text. Has no effect.
+         */
+        "isTextarea"?: boolean;
+        /**
+          * Returns true when the value meets required, minlength, maxlength, min, max, pattern and type.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Largest accepted value for type "number".
+         */
+        "max"?: string;
+        /**
+          * Message shown when the number is larger than max. Without it, the browser message is shown.
+         */
+        "maxErrorMessage": string;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "maxHeight"?: number;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * Smallest accepted value for type "number".
+         */
+        "min"?: string;
+        /**
+          * Message shown when the number is smaller than min. Without it, the browser message is shown.
+         */
+        "minErrorMessage": string;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "minHeight"?: number;
+        /**
+          * Smallest number of characters. Checked when the field loses focus and on submit.
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when the text is shorter than minlength. Without it, the browser message is shown.
+         */
+        "minlengthErrorMessage": string;
+        /**
+          * Name of the value in the submitted form data. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Message shown when a number is invalid. Without it, the browser message is shown.
+         */
+        "numberErrorMessage": string;
+        /**
+          * Regular expression the value must match. Checked when the field loses focus and on submit.
+         */
+        "pattern"?: string;
+        /**
+          * Example of the expected text, shown while the field is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the value can be selected and copied but not edited. It looks like the default state.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes the focus from the field.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, an empty field blocks the form submission.
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the browser message is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "resizable"?: boolean;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "rows"?: number;
+        /**
+          * Moves the focus to the field.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Kind of text. Can be one of: 'text' (default), 'email', 'number', 'search'. 'password', 'phonenumber' and 'date' still work but are deprecated: use the specialized UAI inputs.
+          * @default 'text'
+         */
+        "type"?: UaiInputType | UaiInputLegacyType;
+        /**
+          * Current text of the field.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
+     * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiInputPassword {
+        /**
+          * Accessible name when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Automatic capitalization on virtual keyboards.
+          * @default 'off'
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Browser autofill hint while the password is revealed. While masked, autocomplete is current-password.
+          * @default 'off'
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * Clears the password.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the field cannot be focused or edited and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Returns the native input element.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the password.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in submitted form data, kept from bds-input-password.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Checks the native required and character-length constraints.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Largest accepted number. Kept for compatibility; password inputs do not enforce numeric bounds.
+         */
+        "max"?: string;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * Smallest accepted number. Kept for compatibility; password inputs do not enforce numeric bounds.
+         */
+        "min"?: string;
+        /**
+          * Smallest number of characters. Checked on blur and form submission.
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when the password is shorter than minlength.
+         */
+        "minlengthErrorMessage"?: string;
+        /**
+          * Name of the value in submitted form data. Without name or inputName, the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Controls whether the password is revealed. The visibility button updates this property.
+          * @default false
+         */
+        "openEyes": boolean;
+        /**
+          * Example of the expected text, shown while the field is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the value can be selected and copied but not edited.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes focus from the password field.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, an empty field blocks form submission.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the browser message is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Moves focus to the password field.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * If true, shows the visual strength indicator. The level remains consumer-provided.
+          * @default false
+         */
+        "showStrength": boolean;
+        /**
+          * Height of the field. Can be 'short' or 'medium' (default).
+          * @default 'medium'
+         */
+        "size": UaiControlSize;
+        /**
+          * Consumer-provided visual level. This component does not evaluate the password.
+          * @default 'none'
+         */
+        "strengthLevel": UaiPasswordStrengthLevel;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Current password. It is not reflected to an attribute.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
      */
     interface UaiNavbar {
@@ -4017,6 +4417,233 @@ export namespace Components {
           * @default null
          */
         "width"?: string;
+    }
+    /**
+     * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
+     * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface UaiTextarea {
+        /**
+          * Accessible name when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Automatic capitalization on virtual keyboards.
+          * @default 'off'
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Browser autofill hint.
+          * @default 'off'
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * If true, the field grows with its content.
+          * @default true
+         */
+        "autoResize": boolean;
+        /**
+          * @deprecated Use uai-input-chips for tokenized values. This prop has no effect.
+         */
+        "chips"?: boolean;
+        /**
+          * Clears the textarea value.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Number of columns. Zero leaves the width fluid.
+          * @default 0
+         */
+        "cols": number;
+        /**
+          * If true, shows the number of characters typed and maxlength.
+          * @default false
+         */
+        "counterLength"?: boolean;
+        /**
+          * Ranges of remaining characters that color the counter.
+          * @default null
+         */
+        "counterLengthRule"?: InputCounterLengthRules;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native textarea.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Optional debounce interval in milliseconds for automatic height measurement.
+         */
+        "debounceDelay"?: number;
+        /**
+          * If true, the field cannot be edited or submitted.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @deprecated Textarea has no native e-mail validation. This prop has no effect.
+         */
+        "emailErrorMessage"?: string;
+        /**
+          * If true, uaiChange emits HTML-special characters escaped.
+          * @default false
+         */
+        "encode"?: boolean;
+        /**
+          * Message shown while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Returns the native textarea element.
+         */
+        "getInputElement": () => Promise<HTMLTextAreaElement>;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the text.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * @deprecated Use the native body/base icon size. This prop has no effect.
+         */
+        "iconSize"?: 'small' | 'medium';
+        /**
+          * Name of the value in submitted form data, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * If true, Enter clears the field after uaiSubmit and cancels the newline.
+          * @default false
+         */
+        "isSubmit": boolean;
+        /**
+          * @deprecated The textarea is inherently multiline. This prop has no effect.
+         */
+        "isTextarea"?: boolean;
+        /**
+          * Checks native and pattern validity.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * @deprecated Textareas do not support numeric input constraints. This prop has no effect.
+         */
+        "max"?: string;
+        /**
+          * Optional maximum height in CSS pixels. Omit for unbounded automatic growth.
+         */
+        "maxHeight"?: number;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * @deprecated Textareas do not support numeric input constraints. This prop has no effect.
+         */
+        "min"?: string;
+        /**
+          * Optional minimum height in CSS pixels. Omit to use the native height derived from rows.
+         */
+        "minHeight"?: number;
+        /**
+          * Smallest number of characters. Checked on blur and form submission.
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when the text is shorter than minlength.
+         */
+        "minlengthErrorMessage": string;
+        /**
+          * Name of the value in submitted form data. Without name or inputName, the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * @deprecated Textarea has no native number validation. This prop has no effect.
+         */
+        "numberErrorMessage"?: string;
+        /**
+          * Regular expression the value must match. Checked on blur and form submission.
+         */
+        "pattern"?: string;
+        /**
+          * Message shown when pattern does not match.
+         */
+        "patternErrorMessage"?: string;
+        /**
+          * Example of the expected text, shown while the field is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the value can be selected and copied but not edited.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes focus from the textarea.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, an empty field blocks form submission.
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the browser message is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * If true and autoResize is false, the user can resize the field vertically.
+          * @default false
+         */
+        "resizable": boolean;
+        /**
+          * Initial visible line count. The browser's native row sizing supplies the default height.
+         */
+        "rows"?: number;
+        /**
+          * Moves focus to the textarea.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Minimum control height. Short defaults to one row; medium defaults to three. Explicit rows takes precedence.
+          * @default 'medium'
+         */
+        "size": UaiControlSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message shown while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * @deprecated Textareas do not have a type. This prop has no effect.
+         */
+        "type"?: string;
+        /**
+          * Current multiline text.
+          * @default ''
+         */
+        "value"?: string | null;
     }
     /**
      * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
@@ -4288,6 +4915,18 @@ export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
 export interface UaiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiButtonElement;
+}
+export interface UaiInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputElement;
+}
+export interface UaiInputPasswordCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputPasswordElement;
+}
+export interface UaiTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiTextareaElement;
 }
 declare global {
     interface HTMLBdsAccordionElementEventMap {
@@ -4850,6 +5489,9 @@ declare global {
         "bdsPatternValidation": boolean;
         "bdsKeyDownBackspace": { event: KeyboardEvent; value: string };
     }
+    /**
+     * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputElement extends Components.BdsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputElementEventMap>(type: K, listener: (this: HTMLBdsInputElement, ev: BdsInputCustomEvent<HTMLBdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4917,6 +5559,9 @@ declare global {
         "bdsInputPasswordSubmit": { event: KeyboardEvent; value: string | null } | void;
         "bdsKeyDownBackspace": { event: KeyboardEvent; value: string | null };
     }
+    /**
+     * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputPasswordElement extends Components.BdsInputPassword, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputPasswordElementEventMap>(type: K, listener: (this: HTMLBdsInputPasswordElement, ev: BdsInputPasswordCustomEvent<HTMLBdsInputPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -5642,6 +6287,62 @@ declare global {
         prototype: HTMLUaiIconElement;
         new (): HTMLUaiIconElement;
     };
+    interface HTMLUaiInputElementEventMap {
+        "uaiChange": { value: string };
+        "uaiInput": InputEvent;
+        "uaiOnBlur": void;
+        "uaiFocus": void;
+        "uaiSubmit": { event: KeyboardEvent; value: string };
+        "uaiPatternValidation": boolean;
+        "uaiKeyDownBackspace": { event: KeyboardEvent; value: string };
+    }
+    /**
+     * Text field. Use it for short free text, e-mail, numbers and search, with an optional label above and a helper,
+     * error or success message below. It takes part in native forms: give it a name to submit its value.
+     * Pair with UaiButton in forms. Avoid it for multiline text (use uai-textarea) or for choosing from a list.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiInputElement extends Components.UaiInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputElementEventMap>(type: K, listener: (this: HTMLUaiInputElement, ev: UaiInputCustomEvent<HTMLUaiInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputElementEventMap>(type: K, listener: (this: HTMLUaiInputElement, ev: UaiInputCustomEvent<HTMLUaiInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputElement: {
+        prototype: HTMLUaiInputElement;
+        new (): HTMLUaiInputElement;
+    };
+    interface HTMLUaiInputPasswordElementEventMap {
+        "uaiInputPasswordChange": { value: string | null };
+        "uaiInputPasswordInput": InputEvent;
+        "uaiInputPasswordBlur": void;
+        "uaiInputPasswordFocus": void;
+        "uaiInputPasswordSubmit": { event: KeyboardEvent; value: string | null };
+        "uaiKeyDownBackspace": { event: KeyboardEvent; value: string | null };
+    }
+    /**
+     * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
+     * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface HTMLUaiInputPasswordElement extends Components.UaiInputPassword, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputPasswordElementEventMap>(type: K, listener: (this: HTMLUaiInputPasswordElement, ev: UaiInputPasswordCustomEvent<HTMLUaiInputPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputPasswordElementEventMap>(type: K, listener: (this: HTMLUaiInputPasswordElement, ev: UaiInputPasswordCustomEvent<HTMLUaiInputPasswordElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputPasswordElement: {
+        prototype: HTMLUaiInputPasswordElement;
+        new (): HTMLUaiInputPasswordElement;
+    };
     /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
      */
@@ -5665,6 +6366,34 @@ declare global {
     var HTMLUaiPaperElement: {
         prototype: HTMLUaiPaperElement;
         new (): HTMLUaiPaperElement;
+    };
+    interface HTMLUaiTextareaElementEventMap {
+        "uaiChange": { value: string };
+        "uaiInput": InputEvent;
+        "uaiOnBlur": void;
+        "uaiFocus": void;
+        "uaiSubmit": { event: KeyboardEvent; value: string };
+        "uaiPatternValidation": boolean;
+        "uaiKeyDownBackspace": { event: KeyboardEvent; value: string };
+    }
+    /**
+     * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
+     * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiTextareaElement extends Components.UaiTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiTextareaElementEventMap>(type: K, listener: (this: HTMLUaiTextareaElement, ev: UaiTextareaCustomEvent<HTMLUaiTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiTextareaElementEventMap>(type: K, listener: (this: HTMLUaiTextareaElement, ev: UaiTextareaCustomEvent<HTMLUaiTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiTextareaElement: {
+        prototype: HTMLUaiTextareaElement;
+        new (): HTMLUaiTextareaElement;
     };
     /**
      * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
@@ -5796,9 +6525,12 @@ declare global {
         "uai-button": HTMLUaiButtonElement;
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
+        "uai-input": HTMLUaiInputElement;
+        "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-paper": HTMLUaiPaperElement;
+        "uai-textarea": HTMLUaiTextareaElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
         "uai-typo": HTMLUaiTypoElement;
     }
@@ -7189,6 +7921,9 @@ declare namespace LocalJSX {
          */
         "width"?: string;
     }
+    /**
+     * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+     */
     interface BdsInput {
         /**
           * Defines automatic text capitalization (possible values: `on`, `off`).
@@ -7674,6 +8409,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputPassword {
         /**
           * Capitalizes every word's second character.
@@ -9854,6 +10592,416 @@ declare namespace LocalJSX {
         "theme"?: UaiIconTheme;
     }
     /**
+     * Text field. Use it for short free text, e-mail, numbers and search, with an optional label above and a helper,
+     * error or success message below. It takes part in native forms: give it a name to submit its value.
+     * Pair with UaiButton in forms. Avoid it for multiline text (use uai-textarea) or for choosing from a list.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInput {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Automatic capitalization on virtual keyboards. Can be one of: 'off' (default), 'none', 'words', 'on', 'sentences', 'characters'.
+          * @default 'off'
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Browser autofill hint. Can be one of: 'off' (default), 'on', 'current-password', 'new-password', 'username'.
+          * @default 'off'
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "autoResize"?: boolean;
+        /**
+          * @deprecated Use uai-input-chips. Has no effect.
+         */
+        "chips"?: boolean;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "cols"?: number;
+        /**
+          * If true, shows the number of characters typed and maxlength.
+          * @default false
+         */
+        "counterLength"?: boolean;
+        /**
+          * Ranges of remaining characters that color the counter: warning (feedback/warning) and delete (feedback/error).
+          * @default null
+         */
+        "counterLengthRule"?: InputCounterLengthRules;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * @deprecated Has no effect.
+         */
+        "debounceDelay"?: number;
+        /**
+          * If true, the field cannot be focused or edited and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message shown when an e-mail is invalid. Without it, the browser message is shown.
+         */
+        "emailErrorMessage"?: string;
+        /**
+          * If true, uaiChange emits the value with HTML special characters escaped.
+          * @default false
+         */
+        "encode"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the text, for example "search".
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * @deprecated The icon size follows the field. Has no effect.
+         */
+        "iconSize"?: 'small' | 'medium';
+        /**
+          * Name of the value in the submitted form data. Same as name, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * If true, Enter clears the field after emitting uaiSubmit and does not submit the form (for chat-like fields).
+          * @default false
+         */
+        "isSubmit"?: boolean;
+        /**
+          * @deprecated Use uai-textarea for multiline text. Has no effect.
+         */
+        "isTextarea"?: boolean;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Largest accepted value for type "number".
+         */
+        "max"?: string;
+        /**
+          * Message shown when the number is larger than max. Without it, the browser message is shown.
+         */
+        "maxErrorMessage"?: string;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "maxHeight"?: number;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * Smallest accepted value for type "number".
+         */
+        "min"?: string;
+        /**
+          * Message shown when the number is smaller than min. Without it, the browser message is shown.
+         */
+        "minErrorMessage"?: string;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "minHeight"?: number;
+        /**
+          * Smallest number of characters. Checked when the field loses focus and on submit.
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when the text is shorter than minlength. Without it, the browser message is shown.
+         */
+        "minlengthErrorMessage"?: string;
+        /**
+          * Name of the value in the submitted form data. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Message shown when a number is invalid. Without it, the browser message is shown.
+         */
+        "numberErrorMessage"?: string;
+        /**
+          * Emitted when the value changes, by typing or programmatically. detail: { value }.
+         */
+        "onUaiChange"?: (event: UaiInputCustomEvent<{ value: string }>) => void;
+        /**
+          * Emitted when the field receives focus.
+         */
+        "onUaiFocus"?: (event: UaiInputCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiInputCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted on Backspace or Delete. detail: { event, value }.
+         */
+        "onUaiKeyDownBackspace"?: (event: UaiInputCustomEvent<{ event: KeyboardEvent; value: string }>) => void;
+        /**
+          * Emitted when the field loses focus.
+         */
+        "onUaiOnBlur"?: (event: UaiInputCustomEvent<void>) => void;
+        /**
+          * Emitted when a field with pattern loses focus. detail: true if the value matches.
+         */
+        "onUaiPatternValidation"?: (event: UaiInputCustomEvent<boolean>) => void;
+        /**
+          * Emitted on Enter. detail: { event, value }. Inside a form, call detail.event.preventDefault() to stop the submission.
+         */
+        "onUaiSubmit"?: (event: UaiInputCustomEvent<{ event: KeyboardEvent; value: string }>) => void;
+        /**
+          * Regular expression the value must match. Checked when the field loses focus and on submit.
+         */
+        "pattern"?: string;
+        /**
+          * Example of the expected text, shown while the field is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the value can be selected and copied but not edited. It looks like the default state.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, an empty field blocks the form submission.
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the browser message is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "resizable"?: boolean;
+        /**
+          * @deprecated Use uai-textarea. Has no effect.
+         */
+        "rows"?: number;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Kind of text. Can be one of: 'text' (default), 'email', 'number', 'search'. 'password', 'phonenumber' and 'date' still work but are deprecated: use the specialized UAI inputs.
+          * @default 'text'
+         */
+        "type"?: UaiInputType | UaiInputLegacyType;
+        /**
+          * Current text of the field.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
+     * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiInputPassword {
+        /**
+          * Accessible name when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Automatic capitalization on virtual keyboards.
+          * @default 'off'
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Browser autofill hint while the password is revealed. While masked, autocomplete is current-password.
+          * @default 'off'
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the field cannot be focused or edited and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the password.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in submitted form data, kept from bds-input-password.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Largest accepted number. Kept for compatibility; password inputs do not enforce numeric bounds.
+         */
+        "max"?: string;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * Smallest accepted number. Kept for compatibility; password inputs do not enforce numeric bounds.
+         */
+        "min"?: string;
+        /**
+          * Smallest number of characters. Checked on blur and form submission.
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when the password is shorter than minlength.
+         */
+        "minlengthErrorMessage"?: string;
+        /**
+          * Name of the value in submitted form data. Without name or inputName, the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the field loses focus.
+         */
+        "onUaiInputPasswordBlur"?: (event: UaiInputPasswordCustomEvent<void>) => void;
+        /**
+          * Emitted when the value changes, by typing or programmatically. detail: { value }.
+         */
+        "onUaiInputPasswordChange"?: (event: UaiInputPasswordCustomEvent<{ value: string | null }>) => void;
+        /**
+          * Emitted when the field receives focus.
+         */
+        "onUaiInputPasswordFocus"?: (event: UaiInputPasswordCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInputPasswordInput"?: (event: UaiInputPasswordCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted on Enter. detail: { event, value }.
+         */
+        "onUaiInputPasswordSubmit"?: (event: UaiInputPasswordCustomEvent<{ event: KeyboardEvent; value: string | null }>) => void;
+        /**
+          * Emitted on Backspace or Delete. detail: { event, value }.
+         */
+        "onUaiKeyDownBackspace"?: (event: UaiInputPasswordCustomEvent<{ event: KeyboardEvent; value: string | null }>) => void;
+        /**
+          * Controls whether the password is revealed. The visibility button updates this property.
+          * @default false
+         */
+        "openEyes"?: boolean;
+        /**
+          * Example of the expected text, shown while the field is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the value can be selected and copied but not edited.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, an empty field blocks form submission.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the browser message is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * If true, shows the visual strength indicator. The level remains consumer-provided.
+          * @default false
+         */
+        "showStrength"?: boolean;
+        /**
+          * Height of the field. Can be 'short' or 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiControlSize;
+        /**
+          * Consumer-provided visual level. This component does not evaluate the password.
+          * @default 'none'
+         */
+        "strengthLevel"?: UaiPasswordStrengthLevel;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Current password. It is not reflected to an attribute.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
      */
     interface UaiNavbar {
@@ -9919,6 +11067,245 @@ declare namespace LocalJSX {
           * @default null
          */
         "width"?: string;
+    }
+    /**
+     * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
+     * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface UaiTextarea {
+        /**
+          * Accessible name when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Automatic capitalization on virtual keyboards.
+          * @default 'off'
+         */
+        "autoCapitalize"?: InputAutocapitalize;
+        /**
+          * Browser autofill hint.
+          * @default 'off'
+         */
+        "autoComplete"?: InputAutoComplete;
+        /**
+          * If true, the field grows with its content.
+          * @default true
+         */
+        "autoResize"?: boolean;
+        /**
+          * @deprecated Use uai-input-chips for tokenized values. This prop has no effect.
+         */
+        "chips"?: boolean;
+        /**
+          * Number of columns. Zero leaves the width fluid.
+          * @default 0
+         */
+        "cols"?: number;
+        /**
+          * If true, shows the number of characters typed and maxlength.
+          * @default false
+         */
+        "counterLength"?: boolean;
+        /**
+          * Ranges of remaining characters that color the counter.
+          * @default null
+         */
+        "counterLengthRule"?: InputCounterLengthRules;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native textarea.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Optional debounce interval in milliseconds for automatic height measurement.
+         */
+        "debounceDelay"?: number;
+        /**
+          * If true, the field cannot be edited or submitted.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @deprecated Textarea has no native e-mail validation. This prop has no effect.
+         */
+        "emailErrorMessage"?: string;
+        /**
+          * If true, uaiChange emits HTML-special characters escaped.
+          * @default false
+         */
+        "encode"?: boolean;
+        /**
+          * Message shown while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the text.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * @deprecated Use the native body/base icon size. This prop has no effect.
+         */
+        "iconSize"?: 'small' | 'medium';
+        /**
+          * Name of the value in submitted form data, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * If true, Enter clears the field after uaiSubmit and cancels the newline.
+          * @default false
+         */
+        "isSubmit"?: boolean;
+        /**
+          * @deprecated The textarea is inherently multiline. This prop has no effect.
+         */
+        "isTextarea"?: boolean;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * @deprecated Textareas do not support numeric input constraints. This prop has no effect.
+         */
+        "max"?: string;
+        /**
+          * Optional maximum height in CSS pixels. Omit for unbounded automatic growth.
+         */
+        "maxHeight"?: number;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * @deprecated Textareas do not support numeric input constraints. This prop has no effect.
+         */
+        "min"?: string;
+        /**
+          * Optional minimum height in CSS pixels. Omit to use the native height derived from rows.
+         */
+        "minHeight"?: number;
+        /**
+          * Smallest number of characters. Checked on blur and form submission.
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when the text is shorter than minlength.
+         */
+        "minlengthErrorMessage"?: string;
+        /**
+          * Name of the value in submitted form data. Without name or inputName, the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * @deprecated Textarea has no native number validation. This prop has no effect.
+         */
+        "numberErrorMessage"?: string;
+        /**
+          * Emitted when the value changes, by typing or programmatically. detail: { value }.
+         */
+        "onUaiChange"?: (event: UaiTextareaCustomEvent<{ value: string }>) => void;
+        /**
+          * Emitted when the field gains focus.
+         */
+        "onUaiFocus"?: (event: UaiTextareaCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiTextareaCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted on Backspace or Delete. detail: { event, value }.
+         */
+        "onUaiKeyDownBackspace"?: (event: UaiTextareaCustomEvent<{ event: KeyboardEvent; value: string }>) => void;
+        /**
+          * Emitted when the field loses focus.
+         */
+        "onUaiOnBlur"?: (event: UaiTextareaCustomEvent<void>) => void;
+        /**
+          * Emitted when a field with pattern loses focus. detail: true if the value matches.
+         */
+        "onUaiPatternValidation"?: (event: UaiTextareaCustomEvent<boolean>) => void;
+        /**
+          * Emitted on Enter. detail: { event, value }. The native newline is retained unless isSubmit is true.
+         */
+        "onUaiSubmit"?: (event: UaiTextareaCustomEvent<{ event: KeyboardEvent; value: string }>) => void;
+        /**
+          * Regular expression the value must match. Checked on blur and form submission.
+         */
+        "pattern"?: string;
+        /**
+          * Message shown when pattern does not match.
+         */
+        "patternErrorMessage"?: string;
+        /**
+          * Example of the expected text, shown while the field is empty. Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the value can be selected and copied but not edited.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, an empty field blocks form submission.
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the browser message is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * If true and autoResize is false, the user can resize the field vertically.
+          * @default false
+         */
+        "resizable"?: boolean;
+        /**
+          * Initial visible line count. The browser's native row sizing supplies the default height.
+         */
+        "rows"?: number;
+        /**
+          * Minimum control height. Short defaults to one row; medium defaults to three. Explicit rows takes precedence.
+          * @default 'medium'
+         */
+        "size"?: UaiControlSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message shown while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * @deprecated Textareas do not have a type. This prop has no effect.
+         */
+        "type"?: string;
+        /**
+          * Current multiline text.
+          * @default ''
+         */
+        "value"?: string | null;
     }
     /**
      * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
@@ -10898,6 +12285,82 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiInputAttributes {
+        "name": string;
+        "inputName": string;
+        "type": UaiInputType | UaiInputLegacyType;
+        "size": UaiInputSize;
+        "label": string;
+        "placeholder": string;
+        "autoCapitalize": InputAutocapitalize;
+        "autoComplete": InputAutoComplete;
+        "max": string;
+        "maxlength": number;
+        "min": string;
+        "minlength": number;
+        "readonly": boolean;
+        "required": boolean;
+        "pattern": string;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "icon": string;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "value": string | null;
+        "counterLength": boolean;
+        "isSubmit": boolean;
+        "requiredErrorMessage": string;
+        "minlengthErrorMessage": string;
+        "minErrorMessage": string;
+        "maxErrorMessage": string;
+        "emailErrorMessage": string;
+        "numberErrorMessage": string;
+        "encode": boolean;
+        "ariaLabel": string;
+        "dataTest": string;
+        "isTextarea": boolean;
+        "rows": number;
+        "cols": number;
+        "autoResize": boolean;
+        "resizable": boolean;
+        "minHeight": number;
+        "maxHeight": number;
+        "chips": boolean;
+        "iconSize": 'small' | 'medium';
+        "debounceDelay": number;
+    }
+    interface UaiInputPasswordAttributes {
+        "name": string;
+        "inputName": string;
+        "openEyes": boolean;
+        "size": UaiControlSize;
+        "label": string;
+        "placeholder": string;
+        "max": string;
+        "maxlength": number;
+        "min": string;
+        "minlength": number;
+        "readonly": boolean;
+        "required": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "danger": boolean;
+        "success": boolean;
+        "icon": string;
+        "disabled": boolean;
+        "autoCapitalize": InputAutocapitalize;
+        "autoComplete": InputAutoComplete;
+        "value": string | null;
+        "requiredErrorMessage": string;
+        "minlengthErrorMessage": string;
+        "ariaLabel": string;
+        "dataTest": string;
+        "showStrength": boolean;
+        "strengthLevel": UaiPasswordStrengthLevel;
+    }
     interface UaiNavbarAttributes {
         "orientation": uaiNavbarOrientation;
         "backgroundColor": uaiNavbarBackground;
@@ -10912,6 +12375,51 @@ declare namespace LocalJSX {
         "width": string;
         "bgColor": PaperBackground;
         "borderColor": BorderColor;
+    }
+    interface UaiTextareaAttributes {
+        "name": string;
+        "inputName": string;
+        "label": string;
+        "placeholder": string;
+        "autoCapitalize": InputAutocapitalize;
+        "autoComplete": InputAutoComplete;
+        "maxlength": number;
+        "minlength": number;
+        "readonly": boolean;
+        "required": boolean;
+        "pattern": string;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "icon": string;
+        "size": UaiControlSize;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "value": string | null;
+        "counterLength": boolean;
+        "isSubmit": boolean;
+        "rows": number;
+        "cols": number;
+        "autoResize": boolean;
+        "resizable": boolean;
+        "minHeight": number;
+        "maxHeight": number;
+        "debounceDelay": number;
+        "requiredErrorMessage": string;
+        "minlengthErrorMessage": string;
+        "patternErrorMessage": string;
+        "encode": boolean;
+        "ariaLabel": string;
+        "dataTest": string;
+        "isTextarea": boolean;
+        "iconSize": 'small' | 'medium';
+        "min": string;
+        "max": string;
+        "type": string;
+        "chips": boolean;
+        "emailErrorMessage": string;
+        "numberErrorMessage": string;
     }
     interface UaiThemeProviderAttributes {
         "theme": UaiTheme;
@@ -11039,9 +12547,12 @@ declare namespace LocalJSX {
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
+        "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
+        "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
         "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
+        "uai-textarea": Omit<UaiTextarea, keyof UaiTextareaAttributes> & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes]?: UaiTextarea[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `attr:${K}`]?: UaiTextareaAttributes[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `prop:${K}`]?: UaiTextarea[K] };
         "uai-theme-provider": Omit<UaiThemeProvider, keyof UaiThemeProviderAttributes> & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes]?: UaiThemeProvider[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `attr:${K}`]?: UaiThemeProviderAttributes[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `prop:${K}`]?: UaiThemeProvider[K] };
         "uai-typo": Omit<UaiTypo, keyof UaiTypoAttributes> & { [K in keyof UaiTypo & keyof UaiTypoAttributes]?: UaiTypo[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `attr:${K}`]?: UaiTypoAttributes[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `prop:${K}`]?: UaiTypo[K] };
     }
@@ -11102,9 +12613,15 @@ declare module "@stencil/core" {
             "bds-icon": LocalJSX.IntrinsicElements["bds-icon"] & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-illustration": LocalJSX.IntrinsicElements["bds-illustration"] & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
             "bds-image": LocalJSX.IntrinsicElements["bds-image"] & JSXBase.HTMLAttributes<HTMLBdsImageElement>;
+            /**
+             * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+             */
             "bds-input": LocalJSX.IntrinsicElements["bds-input"] & JSXBase.HTMLAttributes<HTMLBdsInputElement>;
             "bds-input-chips": LocalJSX.IntrinsicElements["bds-input-chips"] & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
             "bds-input-editable": LocalJSX.IntrinsicElements["bds-input-editable"] & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
+            /**
+             * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
+             */
             "bds-input-password": LocalJSX.IntrinsicElements["bds-input-password"] & JSXBase.HTMLAttributes<HTMLBdsInputPasswordElement>;
             "bds-input-phone-number": LocalJSX.IntrinsicElements["bds-input-phone-number"] & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
             "bds-list": LocalJSX.IntrinsicElements["bds-list"] & JSXBase.HTMLAttributes<HTMLBdsListElement>;
@@ -11185,6 +12702,19 @@ declare module "@stencil/core" {
              */
             "uai-icon": LocalJSX.IntrinsicElements["uai-icon"] & JSXBase.HTMLAttributes<HTMLUaiIconElement>;
             /**
+             * Text field. Use it for short free text, e-mail, numbers and search, with an optional label above and a helper,
+             * error or success message below. It takes part in native forms: give it a name to submit its value.
+             * Pair with UaiButton in forms. Avoid it for multiline text (use uai-textarea) or for choosing from a list.
+             * Wrap the app in UaiThemeProvider.
+             */
+            "uai-input": LocalJSX.IntrinsicElements["uai-input"] & JSXBase.HTMLAttributes<HTMLUaiInputElement>;
+            /**
+             * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
+             * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
+             * UaiThemeProvider.
+             */
+            "uai-input-password": LocalJSX.IntrinsicElements["uai-input-password"] & JSXBase.HTMLAttributes<HTMLUaiInputPasswordElement>;
+            /**
              * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
              */
             "uai-navbar": LocalJSX.IntrinsicElements["uai-navbar"] & JSXBase.HTMLAttributes<HTMLUaiNavbarElement>;
@@ -11193,6 +12723,12 @@ declare module "@stencil/core" {
              */
             "uai-navbar-content": LocalJSX.IntrinsicElements["uai-navbar-content"] & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
             "uai-paper": LocalJSX.IntrinsicElements["uai-paper"] & JSXBase.HTMLAttributes<HTMLUaiPaperElement>;
+            /**
+             * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
+             * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
+             * Wrap the app in UaiThemeProvider.
+             */
+            "uai-textarea": LocalJSX.IntrinsicElements["uai-textarea"] & JSXBase.HTMLAttributes<HTMLUaiTextareaElement>;
             /**
              * Theme root for UAI components. Wrap the app (or an area with another theme) in it with theme="light" or "dark".
              * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).

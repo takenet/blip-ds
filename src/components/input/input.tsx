@@ -3,6 +3,9 @@ import { Component, h, Prop, State, Watch, Event, EventEmitter, Method, Host } f
 import { InputType, InputAutocapitalize, InputAutoComplete, InputCounterLengthRules } from './input-interface';
 import { emailValidation, numberValidation } from '../../utils/validations';
 
+/**
+ * @deprecated Use `uai-input` for new UAI experiences. For multiline text (`isTextarea`), use `uai-textarea`; for passwords, use `uai-input-password`. Chips, phone and date will move to their own UAI components. This component remains supported for existing consumers.
+ */
 @Component({
   tag: 'bds-input',
   styleUrl: 'input.scss',
