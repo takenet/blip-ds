@@ -1,1 +1,0 @@
-const o=new Set,e=(e,n,s)=>{const t=`${e}:${n}`;o.has(t)||(o.add(t),console.warn(`[${e}] ${s}`))};export{e as w}
