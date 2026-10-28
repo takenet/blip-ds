@@ -38,6 +38,7 @@ export const globalTypes = {
 export const parameters = {
   //decorators: [(storyFn, context) => withConsole()(storyFn)(context)],
   actions: { argTypesRegex: '^on[A-Z].*' },
+  jsx: { displayName: jsxDisplayName },
   options: {
     storySort: {
       method: 'alphabetical',
