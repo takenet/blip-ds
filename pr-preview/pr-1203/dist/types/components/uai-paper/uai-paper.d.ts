@@ -32,6 +32,7 @@ export declare class UaiPaper implements ComponentInterface {
      * Prop for set the border color.
      */
     borderColor?: BorderColor;
+    borderChanged(): void;
     componentWillLoad(): void;
     render(): any;
 }

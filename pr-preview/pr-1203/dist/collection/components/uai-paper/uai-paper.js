@@ -32,16 +32,19 @@ export class UaiPaper {
          */
         this.borderColor = null;
     }
+    borderChanged() {
+        this.hasBorder = this.border !== true;
+    }
     componentWillLoad() {
         this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
     }
     render() {
-        return (h(Host, { key: 'd8f3a42d49f4aceb2a80b4d61e1c67b2362c5f0d', class: {
+        return (h(Host, { key: 'db87602ae4674803f31f11b8b8ca2302ce73a255', class: {
                 [`paper__elevation--${this.elevation}`]: this.hasBorder,
                 border: this.border,
                 [`bg-${this.bgColor}`]: true,
                 [`border-${this.borderColor}`]: true,
-            }, style: { height: `${this.height}`, width: `${this.width}` } }, h("div", { key: '4e6fd7c0c83be9208be5677e535e2637b56ebdd6', class: "paper__display", "data-test": this.dataTest }, h("slot", { key: '935506c368b95e2d0d72aad77871f7f130c47e28' }))));
+            }, style: { height: `${this.height}`, width: `${this.width}` } }, h("div", { key: '406e8428a2a480f1112c23fbd81e637f364ed864', class: "paper__display", "data-test": this.dataTest }, h("slot", { key: '1dcdaf3e2642176aa9795d3a1bc4c0fe5cf82318' }))));
     }
     static get is() { return "uai-paper"; }
     static get encapsulation() { return "shadow"; }
@@ -225,5 +228,11 @@ export class UaiPaper {
             "hasBorder": {},
             "constElevation": {}
         };
+    }
+    static get watchers() {
+        return [{
+                "propName": "border",
+                "methodName": "borderChanged"
+            }];
     }
 }
