@@ -27,8 +27,8 @@
 }
 
 :host(.border) {
-  border: var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7);
-  margin: calc(var(--uai-border-width-default, 1px) * -1);
+  --paper-border-color: var(--uai-border-default, #e4e6e7);
+  box-shadow: inset 0 0 0 var(--uai-border-width-default, 1px) var(--paper-border-color);
 }
 
 :host(.bg-surface-0) {
@@ -53,33 +53,33 @@
 
 :host(.border-1),
 :host(.border-2) {
-  border-color: var(--uai-border-default, #e4e6e7);
+  --paper-border-color: var(--uai-border-default, #e4e6e7);
 }
 
 :host(.border-primary) {
-  border-color: var(--uai-fixed-blue, #1e6bf1);
+  --paper-border-color: var(--uai-fixed-blue, #1e6bf1);
 }
 
 :host(.border-secondary) {
-  border-color: var(--uai-content-secondary, #5f676d);
+  --paper-border-color: var(--uai-content-secondary, #5f676d);
 }
 
 :host(.border-positive),
 :host(.border-success) {
-  border-color: var(--uai-feedback-success, #3da329);
+  --paper-border-color: var(--uai-feedback-success, #3da329);
 }
 
 :host(.border-negative),
 :host(.border-error) {
-  border-color: var(--uai-feedback-error, #cf0022);
+  --paper-border-color: var(--uai-feedback-error, #cf0022);
 }
 
 :host(.border-warning) {
-  border-color: var(--uai-feedback-warning, #ff8000);
+  --paper-border-color: var(--uai-feedback-warning, #ff8000);
 }
 
 :host(.border-delete) {
-  border-color: var(--uai-action-destructive, #cf0022);
+  --paper-border-color: var(--uai-action-destructive, #cf0022);
 }
 
 :host(.paper__elevation--none) {

@@ -197,18 +197,18 @@
       "jsDocTags": {},
       "error": {
         "name": "No component found",
-        "message": "We could not detect the component from your story file. Specify meta.component.\n  3 | import { UaiPaper } from '../../../blip-ds-react/dist/components';\n  4 |\n> 5 | export default {\n    | ^\n  6 |   title: 'UAI/Paper',\n  7 |   parameters: {\n  8 |     docs: {\n\n./src/components/uai-paper/uai-paper.stories.jsx:\nimport React from 'react';\nimport DocumentationTemplate from './uai-paper.mdx';\nimport { UaiPaper } from '../../../blip-ds-react/dist/components';\n\nexport default {\n  title: 'UAI/Paper',\n  parameters: {\n    docs: {\n      page: DocumentationTemplate,\n    },\n  },\n};\n\nexport const Properties = (args) => {\n  return (\n      <uai-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}></uai-paper>\n);\n} \n\nProperties.args = {\n  border: false,\n  elevation: 'primary',\n  height: '100px',\n  width: '150px',\n};\n\nProperties.argTypes = {\n  border: {\n    table: {\n      defaultValue: { summary: 'false' },\n    },\n    control: 'boolean',\n  },\n  elevation: {\n    table: {\n      defaultValue: { summary: 'primary' },\n    },\n    options: [\"primary\", \"secondary\", \"static\", \"none\"],\n    control: 'select',\n  },\n  height: {\n    table: {\n      defaultValue: { summary: '100px' },\n    },\n    control: 'text',\n  },\n  width: {\n    table: {\n      defaultValue: { summary: '150px' },\n    },\n    control: 'text',\n  },\n}\n\nexport const FrameworkReact = () => {\n  return (\n      <UaiPaper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\"></UaiPaper>\n);\n} "
+        "message": "We could not detect the component from your story file. Specify meta.component.\n   7 | const PAPER_WIDTH = 'calc(var(--uai-sizing-5xl) * 2)';\n   8 |\n>  9 | export default {\n     | ^\n  10 |   title: 'UAI/Paper',\n  11 |   parameters: {\n  12 |     docs: {\n\n./src/components/uai-paper/uai-paper.stories.jsx:\nimport React from 'react';\nimport DocumentationTemplate from './uai-paper.mdx';\nimport { UaiPaper } from '../../../blip-ds-react/dist/components';\n\n// Sample dimensions built from UAI sizing tokens.\nconst PAPER_HEIGHT = 'var(--uai-sizing-5xl)';\nconst PAPER_WIDTH = 'calc(var(--uai-sizing-5xl) * 2)';\n\nexport default {\n  title: 'UAI/Paper',\n  parameters: {\n    docs: {\n      page: DocumentationTemplate,\n    },\n  },\n};\n\nexport const Properties = (args) => {\n  return (\n      <uai-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}></uai-paper>\n);\n} \n\nProperties.args = {\n  border: false,\n  elevation: 'primary',\n  height: PAPER_HEIGHT,\n  width: PAPER_WIDTH,\n};\n\nProperties.argTypes = {\n  border: {\n    table: {\n      defaultValue: { summary: 'false' },\n    },\n    control: 'boolean',\n  },\n  elevation: {\n    table: {\n      defaultValue: { summary: 'primary' },\n    },\n    options: [\"primary\", \"secondary\", \"static\", \"none\"],\n    control: 'select',\n  },\n  height: {\n    table: {\n      defaultValue: { summary: PAPER_HEIGHT },\n    },\n    control: 'text',\n  },\n  width: {\n    table: {\n      defaultValue: { summary: PAPER_WIDTH },\n    },\n    control: 'text',\n  },\n}\n\nexport const FrameworkReact = () => {\n  return (\n      <UaiPaper border={false} elevation=\"primary\" height={PAPER_HEIGHT} width={PAPER_WIDTH}></UaiPaper>\n);\n} "
       },
       "stories": [
         {
           "id": "uai-paper--properties",
           "name": "Properties",
-          "snippet": "const Properties = () => {\n    return <uai-paper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\" />;\n};"
+          "snippet": "const Properties = () => {\n    return (\n        <uai-paper\n            border={false}\n            elevation=\"primary\"\n            height=\"var(--uai-sizing-5xl)\"\n            width=\"calc(var(--uai-sizing-5xl) * 2)\" />\n    );\n};"
         },
         {
           "id": "uai-paper--framework-react",
           "name": "Framework React",
-          "snippet": "const FrameworkReact = () => {\n  return (\n      <UaiPaper border={false} elevation=\"primary\" height=\"100px\" width=\"150px\"></UaiPaper>\n);\n};"
+          "snippet": "const FrameworkReact = () => {\n  return (\n      <UaiPaper border={false} elevation=\"primary\" height={PAPER_HEIGHT} width={PAPER_WIDTH}></UaiPaper>\n);\n};"
         }
       ],
       "import": "import { UaiPaper } from 'blip-ds';"
@@ -2361,6 +2361,6 @@
   },
   "meta": {
     "docgen": "react-docgen",
-    "durationMs": 1082
+    "durationMs": 1384
   }
 }
