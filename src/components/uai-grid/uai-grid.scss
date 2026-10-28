@@ -365,6 +365,10 @@ $uai-grid-backgrounds: (
   align-items: baseline;
 }
 
+// padding and margin accept a space-separated list (e.g. "t-2 x-3"). All
+// rules use !important with equal specificity, so the cascade order below is
+// what decides conflicts: all sides, then x/y axes, then single sides. The more
+// specific value wins regardless of the order the values are written in.
 @each $legacy-spacing, $uai-spacing in $uai-grid-spacing {
   $token-name: list.nth($uai-spacing, 1);
   $token-value: list.nth($uai-spacing, 2);
@@ -377,6 +381,54 @@ $uai-grid-backgrounds: (
   :host(.padding--#{$legacy-spacing}) {
     padding: $value !important;
   }
+
+  :host(.margin--#{$legacy-spacing}) {
+    margin: $value !important;
+  }
+}
+
+:host(.margin--auto) {
+  margin: auto !important;
+}
+
+@each $legacy-spacing, $uai-spacing in $uai-grid-spacing {
+  $token-name: list.nth($uai-spacing, 1);
+  $token-value: list.nth($uai-spacing, 2);
+  $value: var(--uai-spacing-#{$token-name}, #{$token-value});
+
+  :host(.padding--x-#{$legacy-spacing}) {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+  :host(.padding--y-#{$legacy-spacing}) {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+
+  :host(.margin--x-#{$legacy-spacing}) {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+  :host(.margin--y-#{$legacy-spacing}) {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+}
+
+:host(.margin--x-auto) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+:host(.margin--y-auto) {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+@each $legacy-spacing, $uai-spacing in $uai-grid-spacing {
+  $token-name: list.nth($uai-spacing, 1);
+  $token-value: list.nth($uai-spacing, 2);
+  $value: var(--uai-spacing-#{$token-name}, #{$token-value});
+
   :host(.padding--l-#{$legacy-spacing}) {
     padding-left: $value !important;
   }
@@ -389,18 +441,7 @@ $uai-grid-backgrounds: (
   :host(.padding--b-#{$legacy-spacing}) {
     padding-bottom: $value !important;
   }
-  :host(.padding--x-#{$legacy-spacing}) {
-    padding-left: $value !important;
-    padding-right: $value !important;
-  }
-  :host(.padding--y-#{$legacy-spacing}) {
-    padding-top: $value !important;
-    padding-bottom: $value !important;
-  }
 
-  :host(.margin--#{$legacy-spacing}) {
-    margin: $value !important;
-  }
   :host(.margin--l-#{$legacy-spacing}) {
     margin-left: $value !important;
   }
@@ -413,19 +454,8 @@ $uai-grid-backgrounds: (
   :host(.margin--b-#{$legacy-spacing}) {
     margin-bottom: $value !important;
   }
-  :host(.margin--x-#{$legacy-spacing}) {
-    margin-left: $value !important;
-    margin-right: $value !important;
-  }
-  :host(.margin--y-#{$legacy-spacing}) {
-    margin-top: $value !important;
-    margin-bottom: $value !important;
-  }
 }
 
-:host(.margin--auto) {
-  margin: auto !important;
-}
 :host(.margin--l-auto) {
   margin-left: auto !important;
 }
@@ -436,14 +466,6 @@ $uai-grid-backgrounds: (
   margin-top: auto !important;
 }
 :host(.margin--b-auto) {
-  margin-bottom: auto !important;
-}
-:host(.margin--x-auto) {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-:host(.margin--y-auto) {
-  margin-top: auto !important;
   margin-bottom: auto !important;
 }
 

@@ -64,4 +64,32 @@ describe('uai-grid', () => {
     expect(page.root.classList.contains('padding--x-1')).toBe(true);
     expect(page.root.classList.contains('margin--y-3')).toBe(true);
   });
+
+  it('accepts space-separated lists in padding and margin', async () => {
+    const page = await newSpecPage({
+      components: [UaiGrid],
+      html: '<uai-grid padding="t-2  x-3" margin=" b-1 l-auto "></uai-grid>',
+    });
+
+    for (const name of ['padding--t-2', 'padding--x-3', 'margin--b-1', 'margin--l-auto']) {
+      expect(page.root.classList.contains(name)).toBe(true);
+    }
+    const classes = page.root.className.split(/\s+/);
+    expect(classes).not.toContain('padding--');
+    expect(classes).not.toContain('margin--');
+  });
+
+  it('updates spacing classes when the list changes', async () => {
+    const page = await newSpecPage({
+      components: [UaiGrid],
+      html: '<uai-grid padding="t-2 x-3"></uai-grid>',
+    });
+
+    page.root.padding = 'l-1';
+    await page.waitForChanges();
+
+    expect(page.root.classList.contains('padding--l-1')).toBe(true);
+    expect(page.root.classList.contains('padding--t-2')).toBe(false);
+    expect(page.root.classList.contains('padding--x-3')).toBe(false);
+  });
 });
