@@ -51,7 +51,7 @@ A lista cresce por onda. Consulte o Storybook (`UAI/*`) para o estado atual.
 
 ## Ao criar ou alterar um componente `uai-*`
 
-Siga o [guia de autoria](src/pages/uai-foundation/authoring-guide.mdx) e o [modelo de documentação](src/pages/uai-foundation/component-doc-template.mdx). Em resumo:
+Use a skill [`uai-component`](.github/skills/uai-component/SKILL.md) para o fluxo completo (change OpenSpec, subagentes em paralelo, validação e commit). Siga o [guia de autoria](src/pages/uai-foundation/authoring-guide.mdx) e o [modelo de documentação](src/pages/uai-foundation/component-doc-template.mdx). Em resumo:
 
 - Mesmos nomes de props, valores, slots e métodos do `bds-*`; eventos `bds*` viram `uai*`.
 - JSDoc em todo membro público, no formato **o que é · Use · Pair · Avoid**.
