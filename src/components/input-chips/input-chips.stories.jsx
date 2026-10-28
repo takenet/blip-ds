@@ -3,7 +3,7 @@ import DocumentationTemplate from './input-chips.mdx';
 import { BdsInputChips } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Input Chips',
+  title: 'Components/[deprecated] Input Chips',
   parameters: {
     docs: {
       page: DocumentationTemplate,

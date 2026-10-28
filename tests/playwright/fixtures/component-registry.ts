@@ -391,8 +391,8 @@ export const WAVE_4: ComponentEntry[] = [
   {
     tag: 'bds-input-chips',
     name: 'Input Chips',
-    primaryStory: 'components-input-chips--properties',
-    stories: [{ storyId: 'components-input-chips--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-input-chips--properties',
+    stories: [{ storyId: 'components-deprecated-input-chips--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-input-editable',

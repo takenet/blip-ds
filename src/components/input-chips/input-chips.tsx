@@ -2,6 +2,9 @@ import { Component, Host, h, Prop, Method, Event, EventEmitter, Watch, State } f
 import { emailValidation, whitespaceValidation } from '../../utils/validations';
 import { InputChipsTypes } from './input-chips-interface';
 
+/**
+ * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
+ */
 @Component({
   tag: 'bds-input-chips',
   styleUrl: 'input-chips.scss',
