@@ -108,6 +108,7 @@ import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload }
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
+import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
@@ -981,6 +982,13 @@ export const UaiButton = createComponent({
     react: React,
     events: { onUaiClick: 'uaiClick' },
     defineCustomElement: defineUaiButton
+});
+export const UaiGrid = createComponent({
+    tagName: 'uai-grid',
+    elementClass: UaiGridElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiGrid
 });
 export const UaiIcon = createComponent({
     tagName: 'uai-icon',

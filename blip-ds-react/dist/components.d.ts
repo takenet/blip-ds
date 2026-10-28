@@ -108,6 +108,7 @@ import { BdsUpload as BdsUploadElement } from "blip-ds/dist/components/bds-uploa
 import { BdsWarning as BdsWarningElement } from "blip-ds/dist/components/bds-warning.js";
 import { UaiAvatar as UaiAvatarElement } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiButton as UaiButtonElement } from "blip-ds/dist/components/uai-button.js";
+import { UaiGrid as UaiGridElement } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement } from "blip-ds/dist/components/uai-icon.js";
 import { UaiNavbarContent as UaiNavbarContentElement } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navbar.js";
@@ -635,6 +636,8 @@ export type UaiButtonEvents = {
     onUaiClick: EventName<UaiButtonCustomEvent<MouseEvent>>;
 };
 export declare const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents, Components.UaiButton>;
+export type UaiGridEvents = NonNullable<unknown>;
+export declare const UaiGrid: StencilReactComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid>;
 export type UaiIconEvents = NonNullable<unknown>;
 export declare const UaiIcon: StencilReactComponent<UaiIconElement, UaiIconEvents, Components.UaiIcon>;
 export type UaiNavbarEvents = NonNullable<unknown>;

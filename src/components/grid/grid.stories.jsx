@@ -3,7 +3,8 @@ import DocumentationTemplate from './grid.mdx';
 import { BdsGrid } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Grid',
+  title: 'Components/[deprecated] Grid',
+  id: 'components-grid',
   parameters: {
     docs: {
       page: DocumentationTemplate,
