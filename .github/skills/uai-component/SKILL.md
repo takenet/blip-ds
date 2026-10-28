@@ -16,6 +16,7 @@ Meta: um componente do pacote em **2–3 horas**, com no máximo **dois** moment
 
 ## Regras de velocidade
 
+- **Contrato mínimo (orientação do time, 28/10):** clone o `bds-*` equivalente, troque o prefixo `bds` por `uai` (tag e eventos) e aplique os tokens UAI. Mesmas props, valores, slots, métodos e comportamento. Extensões só quando o UAI Core ou a família exigirem (por exemplo `size`, form-association), sempre aditivas. Nunca troque o nome de uma prop do legado (ex.: `name`/`thumbnail` do avatar não viram `label`/`src`).
 - Leia cada arquivo **uma vez** e guarde o que importa em notas da sessão (`files/notas-<componente>.md`). Não releia o componente de referência a cada passo.
 - Agrupe leituras e buscas independentes na mesma resposta.
 - Componente de referência: copie a estrutura de `uai-input` (campo), `uai-button` (ação) ou `uai-paper` (superfície). Não redescubra padrões.
