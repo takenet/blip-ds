@@ -13,6 +13,7 @@ const inputSource = readFileSync(new URL('./uai-input.figma.ts', import.meta.url
 const passwordSource = readFileSync(new URL('./uai-input-password.figma.ts', import.meta.url), 'utf8');
 const textareaSource = readFileSync(new URL('./uai-textarea.figma.ts', import.meta.url), 'utf8');
 const phoneSource = readFileSync(new URL('./uai-input-phone.figma.ts', import.meta.url), 'utf8');
+const dateSource = readFileSync(new URL('./uai-input-date.figma.ts', import.meta.url), 'utf8');
 const imports = ['import { UaiIcon } from "blip-ds-react/dist/components"'];
 
 const evaluate = (source, properties = {}, swaps = {}, instances = {}) => {
@@ -406,4 +407,52 @@ test('phone rejects a prefix value that is not a dialing code', () => {
     () => evaluate(phoneSource, phoneDefaults, {}, { 'Leading Adornment': prefixSelect('Brasil') }),
     /dialing code/,
   );
+});
+
+const dateDefaults = {
+  Label: 'Data de entrega',
+  Text: 'dd/mm/aaaa',
+  'Helper Message': 'Escolha um dia útil.',
+  'Error Message': 'Informe uma data válida.',
+  'Success Message': 'Data confirmada.',
+  Feedback: 'Default',
+  State: 'Default',
+};
+
+test('date covers every feedback and state with valid React', () => {
+  for (const Feedback of ['Default', 'Error', 'Success'])
+    for (const State of ['Default', 'Filled', 'Hover', 'Focus', 'Disabled', 'Readonly']) {
+      const { example } = evaluate(dateSource, { ...dateDefaults, Feedback, State });
+      assertJsx(example);
+      assert.ok(example.startsWith('<UaiInputDate'));
+      assert.ok(example.includes('label={"Data de entrega"}'));
+      assert.equal(example.includes('placeholder={"dd/mm/aaaa"}'), ['Default', 'Hover'].includes(State));
+      assert.ok(!example.includes('value='));
+      assert.equal(example.includes(' danger'), Feedback === 'Error');
+      assert.equal(example.includes(' success '), Feedback === 'Success');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+      assert.equal(example.includes(' readonly'), State === 'Readonly');
+      const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+      assert.ok(example.includes(`${message}={`));
+    }
+});
+
+test('date never maps the displayed Text to the ISO value and keeps the default label', () => {
+  const filled = evaluate(dateSource, { ...dateDefaults, Text: '25/12/2026', State: 'Filled' });
+  assertJsx(filled.example);
+  assert.ok(!filled.example.includes('25/12/2026'));
+
+  const fallback = evaluate(dateSource, { ...dateDefaults, Label: ' ', Text: ' ', 'Helper Message': '' });
+  assertJsx(fallback.example);
+  assert.equal(fallback.example, '<UaiInputDate />');
+  assert.deepEqual(Array.from(fallback.imports), ['import { UaiInputDate } from "blip-ds-react/dist/components"']);
+  assert.equal(fallback.id, 'uai-input-date');
+});
+
+test('date preserves special characters in label and messages', () => {
+  const Label = 'Data "A&B" <início> {teste}';
+  const { example } = evaluate(dateSource, { ...dateDefaults, Label, Feedback: 'Error' });
+  assertJsx(example);
+  assert.ok(example.includes(`label={${JSON.stringify(Label)}}`));
+  assert.ok(example.includes('errorMessage={"Informe uma data válida."}'));
 });

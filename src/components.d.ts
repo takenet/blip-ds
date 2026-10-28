@@ -81,6 +81,8 @@ import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconTy
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 import { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
+import { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
+import { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
 import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
@@ -163,6 +165,8 @@ export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconTy
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 export { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
+export { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
+export { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
 export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
@@ -4197,6 +4201,140 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
+     * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
+     * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
+     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputDate {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Clears the date.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Message shown when the typed date is incomplete or does not exist. Without it, the default text is shown.
+         */
+        "dateErrorMessage": string;
+        /**
+          * If true, the field and the calendar button cannot be used and the value is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the date.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in the submitted form data. Same as name, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Returns true when the date is complete, exists, is within min and max, and is present when required.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Data").
+         */
+        "label"?: string;
+        /**
+          * Language of the date format and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputDateLanguage;
+        /**
+          * Latest accepted date, as ISO YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * Message shown when the date is after max. Without it, the default text with the max date is shown.
+         */
+        "maxErrorMessage": string;
+        /**
+          * Earliest accepted date, as ISO YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * Message shown when the date is before min. Without it, the default text with the min date is shown.
+         */
+        "minErrorMessage": string;
+        /**
+          * Name of the value in the submitted form data, which is the ISO date. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Text shown while the field is empty. Without it, the date format of the language is shown ("dd/mm/aaaa").
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the date can be selected and copied but not edited, and the calendar button is hidden.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes the focus from the field.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, an empty field blocks the form submission.
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * Moves the focus to the field.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputDateSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Selected date as ISO YYYY-MM-DD, for example "2026-12-25". Empty while the typed date is incomplete or invalid.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
      * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
      * UaiThemeProvider.
@@ -5062,6 +5200,10 @@ export interface UaiButtonCustomEvent<T> extends CustomEvent<T> {
 export interface UaiInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputElement;
+}
+export interface UaiInputDateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputDateElement;
 }
 export interface UaiInputPasswordCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -6466,6 +6608,32 @@ declare global {
         prototype: HTMLUaiInputElement;
         new (): HTMLUaiInputElement;
     };
+    interface HTMLUaiInputDateElementEventMap {
+        "uaiChange": { value: string };
+        "uaiInput": InputEvent;
+        "uaiFocus": void;
+        "uaiOnBlur": void;
+    }
+    /**
+     * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
+     * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
+     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiInputDateElement extends Components.UaiInputDate, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputDateElementEventMap>(type: K, listener: (this: HTMLUaiInputDateElement, ev: UaiInputDateCustomEvent<HTMLUaiInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputDateElementEventMap>(type: K, listener: (this: HTMLUaiInputDateElement, ev: UaiInputDateCustomEvent<HTMLUaiInputDateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputDateElement: {
+        prototype: HTMLUaiInputDateElement;
+        new (): HTMLUaiInputDateElement;
+    };
     interface HTMLUaiInputPasswordElementEventMap {
         "uaiInputPasswordChange": { value: string | null };
         "uaiInputPasswordInput": InputEvent;
@@ -6704,6 +6872,7 @@ declare global {
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-input": HTMLUaiInputElement;
+        "uai-input-date": HTMLUaiInputDateElement;
         "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-input-phone": HTMLUaiInputPhoneElement;
         "uai-navbar": HTMLUaiNavbarElement;
@@ -11016,6 +11185,144 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
+     * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
+     * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
+     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputDate {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Message shown when the typed date is incomplete or does not exist. Without it, the default text is shown.
+         */
+        "dateErrorMessage"?: string;
+        /**
+          * If true, the field and the calendar button cannot be used and the value is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the date.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in the submitted form data. Same as name, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Data").
+         */
+        "label"?: string;
+        /**
+          * Language of the date format and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputDateLanguage;
+        /**
+          * Latest accepted date, as ISO YYYY-MM-DD.
+         */
+        "max"?: string;
+        /**
+          * Message shown when the date is after max. Without it, the default text with the max date is shown.
+         */
+        "maxErrorMessage"?: string;
+        /**
+          * Earliest accepted date, as ISO YYYY-MM-DD.
+         */
+        "min"?: string;
+        /**
+          * Message shown when the date is before min. Without it, the default text with the min date is shown.
+         */
+        "minErrorMessage"?: string;
+        /**
+          * Name of the value in the submitted form data, which is the ISO date. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the date changes, by typing, by the calendar or programmatically. detail: { value } as ISO YYYY-MM-DD, or '' while the typed date is incomplete or invalid.
+         */
+        "onUaiChange"?: (event: UaiInputDateCustomEvent<{ value: string }>) => void;
+        /**
+          * Emitted when the field receives focus.
+         */
+        "onUaiFocus"?: (event: UaiInputDateCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiInputDateCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when the field loses focus.
+         */
+        "onUaiOnBlur"?: (event: UaiInputDateCustomEvent<void>) => void;
+        /**
+          * Text shown while the field is empty. Without it, the date format of the language is shown ("dd/mm/aaaa").
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the date can be selected and copied but not edited, and the calendar button is hidden.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, an empty field blocks the form submission.
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputDateSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Selected date as ISO YYYY-MM-DD, for example "2026-12-25". Empty while the typed date is incomplete or invalid.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
      * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
      * UaiThemeProvider.
@@ -12655,6 +12962,32 @@ declare namespace LocalJSX {
         "iconSize": 'small' | 'medium';
         "debounceDelay": number;
     }
+    interface UaiInputDateAttributes {
+        "name": string;
+        "inputName": string;
+        "value": string | null;
+        "min": string;
+        "max": string;
+        "language": UaiInputDateLanguage;
+        "size": UaiInputDateSize;
+        "label": string;
+        "placeholder": string;
+        "icon": string;
+        "required": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "requiredErrorMessage": string;
+        "dateErrorMessage": string;
+        "minErrorMessage": string;
+        "maxErrorMessage": string;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
     interface UaiInputPasswordAttributes {
         "name": string;
         "inputName": string;
@@ -12896,6 +13229,7 @@ declare namespace LocalJSX {
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
+        "uai-input-date": Omit<UaiInputDate, keyof UaiInputDateAttributes> & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes]?: UaiInputDate[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `attr:${K}`]?: UaiInputDateAttributes[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `prop:${K}`]?: UaiInputDate[K] };
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
@@ -13060,6 +13394,13 @@ declare module "@stencil/core" {
              * Wrap the app in UaiThemeProvider.
              */
             "uai-input": LocalJSX.IntrinsicElements["uai-input"] & JSXBase.HTMLAttributes<HTMLUaiInputElement>;
+            /**
+             * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
+             * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+             * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
+             * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+             */
+            "uai-input-date": LocalJSX.IntrinsicElements["uai-input-date"] & JSXBase.HTMLAttributes<HTMLUaiInputDateElement>;
             /**
              * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
              * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in

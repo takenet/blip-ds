@@ -1,0 +1,139 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiInputDateStories from './uai-input-date.stories';
+
+<Meta isTemplate />
+
+# Input Date
+
+Campo para uma data única, digitada só com números ou escolhida no calendário. Use para datas de nascimento, agendamentos e prazos. Para um período (início e fim), use o datepicker; para texto livre, use o input.
+
+## Playground
+
+<Canvas of={UaiInputDateStories.Playground} />
+
+<Controls of={UaiInputDateStories.Playground} />
+
+## Como usar
+
+Um formulário de agendamento com a data controlada por estado, limitada por `min` e `max`, com validação nativa e envio. O código abaixo pode ser copiado como ponto de partida.
+
+<Canvas of={UaiInputDateStories.Usage} sourceState="shown" />
+
+- Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
+- `value`, `min`, `max` e o valor enviado no formulário são sempre ISO `YYYY-MM-DD`. O campo exibe a data no formato do idioma: `dd/mm/aaaa` em `pt_BR` (padrão) e `es_ES`, `mm/dd/yyyy` em `en_US`.
+- A pessoa digita só os números; as barras entram sozinhas. O botão de calendário abre o seletor nativo do navegador, enquanto o calendário UAI (`uai-datepicker`) não chega.
+- Sem `label`, o rótulo é "Data" (`pt_BR`), "Date" (`en_US`) ou "Fecha" (`es_ES`). Sem `placeholder`, aparece o formato do idioma.
+- Fora do React, use o custom element `<uai-input-date>`, com as propriedades em kebab-case (`helper-message`, `min-error-message`) e os eventos `uaiChange`, `uaiInput` etc.
+
+## Estados
+
+`danger` tem prioridade sobre `success`. Erro e sucesso mostram um ícone além da cor, antes do botão de calendário. O foco aparece no contorno do campo e, no botão de calendário, como anel próprio. Em `readonly` o botão de calendário some; em `disabled` ele fica desabilitado como o resto do campo, que sai do formulário.
+
+<Canvas of={UaiInputDateStories.States} />
+
+<Canvas of={UaiInputDateStories.Focus} />
+
+| Tamanho | Altura |
+| --- | --- |
+| `short` | `control-height/short` |
+| `medium` (padrão) | `control-height/medium` |
+
+<Canvas of={UaiInputDateStories.Sizes} />
+
+## Comportamento
+
+### Digitação e formato
+
+| Regra | Teste |
+| --- | --- |
+| Só dígitos são aceitos e as barras entram sozinhas: digitar `25122026` em `pt_BR` mostra `25/12/2026` e `value` vira `2026-12-25` | `test/uai-input-date.e2e.ts` |
+| Um `value` ISO aparece no formato do idioma: `2026-12-25` vira `12/25/2026` em `en_US` | `test/uai-input-date.spec.tsx` |
+| Sem `placeholder`, aparece o formato do idioma (`dd/mm/aaaa` ou `mm/dd/yyyy`); sem `label`, o texto padrão do idioma | `test/uai-input-date.spec.tsx` |
+| `language` desconhecido cai em `pt_BR` e `size` desconhecido em `medium`, com aviso único | `test/uai-input-date.spec.tsx` |
+
+<Canvas of={UaiInputDateStories.Languages} />
+
+### Calendário
+
+| Regra | Teste |
+| --- | --- |
+| O botão de calendário é um `<button>` nativo com nome do idioma ("Abrir calendário") e abre o seletor nativo de data com `min` e `max` | `test/uai-input-date.e2e.ts` |
+| A data escolhida no seletor vira o `value`, aparece formatada e emite `uaiChange` | `test/uai-input-date.e2e.ts` |
+| Alt+Seta para baixo no campo abre o mesmo seletor | `test/uai-input-date.e2e.ts` |
+| Em `readonly` o botão não aparece; em `disabled` fica desabilitado | `test/uai-input-date.spec.tsx` |
+
+### Formulário e validação
+
+| Regra | Teste |
+| --- | --- |
+| Com `name` (ou `inputName`), envia a data em ISO, como `birth=2026-12-25`; sem nome ou sem data válida, nada é enviado | `test/uai-input-date.e2e.ts` |
+| O reset do formulário volta à data inicial e limpa a validação | `test/uai-input-date.e2e.ts` |
+| Dentro de um `fieldset` desabilitado, campo e botão ficam desabilitados e o valor não é enviado | `test/uai-input-date.e2e.ts` |
+| `required` vazio mostra `requiredErrorMessage` ao sair do campo ou no envio | `test/uai-input-date.e2e.ts` |
+| Data incompleta ou inexistente (`31/02/2026`) deixa `value` vazio, mostra `dateErrorMessage` e `isValid()` retorna `false` | `test/uai-input-date.e2e.ts` |
+| Data antes de `min` ou depois de `max` mostra `minErrorMessage` ou `maxErrorMessage`; sem a prop, o texto padrão do idioma com o limite | `test/uai-input-date.e2e.ts` |
+
+<Canvas of={UaiInputDateStories.Range} />
+
+<Canvas of={UaiInputDateStories.Form} />
+
+### Eventos e métodos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiChange` | `uaiChange` | A data muda, digitando, pelo calendário ou por código | `{ value }` em ISO `YYYY-MM-DD` (vazio sem data válida) |
+| `onUaiInput` | `uaiInput` | A cada tecla | `InputEvent` nativo |
+| `onUaiFocus` / `onUaiOnBlur` | `uaiFocus` / `uaiOnBlur` | O campo ganha ou perde o foco | — |
+
+Cobertos por `test/uai-input-date.spec.tsx` (payload e métodos) e `test/uai-input-date.e2e.ts` (digitação, calendário e foco).
+
+Métodos: `setFocus()`, `removeFocus()`, `isValid()` e `clear()`.
+
+<Canvas of={UaiInputDateStories.Events} />
+
+### Movimento
+
+Hover e foco do campo e hover do botão de calendário usam `duration/fast` e `easing/standard`. Com `prefers-reduced-motion: reduce`, tudo acontece sem transição (`test/uai-input-date.e2e.ts`).
+
+## Acessibilidade
+
+- O rótulo é um `<label>` associado ao input nativo: clicar nele foca o campo. Sem `label`, o texto padrão do idioma garante o nome; `aria-label` substitui o nome acessível quando o contexto pede um texto mais específico.
+- O input usa `inputmode="numeric"`, que abre o teclado numérico em dispositivos móveis.
+- O botão de calendário é um `<button>` nativo com nome do idioma ("Abrir calendário", "Open calendar", "Abrir calendario"). O seletor nativo usado por ele fica fora da árvore de acessibilidade e da ordem de Tab.
+- A ordem de Tab é: campo, botão de calendário. Alt+Seta para baixo abre o calendário sem sair do campo.
+- Mensagens são ligadas ao campo por `aria-describedby`; o erro define `aria-invalid` e mostra ícone e texto além da cor.
+- O foco aparece no contorno do campo (`:focus-within`) e no botão (`:focus-visible`), com `border/ring`. Em modo de alto contraste, vira um contorno do sistema.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Tamanho e forma | `control-height-short`, `control-height-medium`, `radius-lg`, `border-width-default` |
+| Espaços | `spacing-xs` (padding e gap), `spacing-2xs` (rótulo e mensagem) |
+| Repouso e hover | `surface-paper`, `border-input`, `content-secondary` |
+| Foco | `border-ring`, `border-width-thick`, `opacity-focus-ring` |
+| Erro e sucesso | `feedback-error`, `feedback-success` |
+| Desabilitado | `surface-muted`, `border-default`, `content-disabled` |
+| Botão de calendário | `spacing-2xs`, `radius-md`, `sizing-lg` (ícone `calendar`), `overlay-hover` |
+| Texto | `body-base` (data), `caption` semibold (rótulo), `caption` (mensagem), `content-primary`, `content-placeholder` |
+| Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-input` com `type="date"`
+
+Props e métodos têm os mesmos nomes do `BdsInput`. As diferenças:
+
+| `BdsInput type="date"` | `UaiInputDate` |
+| --- | --- |
+| `<BdsInput type="date" />` | `<UaiInputDate />`, componente próprio |
+| `onBdsChange`, `onBdsInput`, `onBdsFocus`, `onBdsOnBlur` | `onUaiChange`, `onUaiInput`, `onUaiFocus`, `onUaiOnBlur`; `uaiChange` traz `{ value }` em ISO |
+| `value`, `min`, `max` em ISO `YYYY-MM-DD` | Iguais, em ISO; a exibição segue o formato do idioma |
+| Aparência e seletor do `input type="date"` do navegador | Campo UAI digitável (só números, barras automáticas) e botão de calendário que abre o seletor nativo |
+| `pattern`, `minlength`, `maxlength`, `counterLength`, `type` | Não se aplicam a data |
+| Campo fora do `<form>` nativo | Participa do formulário: `FormData` em ISO, reset, validação e `fieldset` |
+| — | `size` (`short` \| `medium`), `name`, `language`, `dateErrorMessage`, `aria-label` |
+
+Parts `input-container`, `input` e `input__message` continuam; `calendar-button` é novo.
+
+## Design
+
+[UaiInputDate no Figma (UAI Core)](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=2294-86)

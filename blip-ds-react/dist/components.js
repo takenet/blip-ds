@@ -110,6 +110,7 @@ import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar }
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
+import { UaiInputDate as UaiInputDateElement, defineCustomElement as defineUaiInputDate } from "blip-ds/dist/components/uai-input-date.js";
 import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
 import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
@@ -1016,6 +1017,18 @@ export const UaiInput = createComponent({
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     },
     defineCustomElement: defineUaiInput
+});
+export const UaiInputDate = createComponent({
+    tagName: 'uai-input-date',
+    elementClass: UaiInputDateElement,
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiFocus: 'uaiFocus',
+        onUaiOnBlur: 'uaiOnBlur'
+    },
+    defineCustomElement: defineUaiInputDate
 });
 export const UaiInputPassword = createComponent({
     tagName: 'uai-input-password',
