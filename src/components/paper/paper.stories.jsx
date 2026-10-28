@@ -3,7 +3,8 @@ import DocumentationTemplate from './paper.mdx';
 import { BdsPaper } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Paper',
+  title: 'Components/[deprecated] Paper',
+  id: 'components-paper',
   parameters: {
     docs: {
       page: DocumentationTemplate,
