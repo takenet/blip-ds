@@ -15,6 +15,7 @@ const textareaSource = readFileSync(new URL('./uai-textarea.figma.ts', import.me
 const phoneSource = readFileSync(new URL('./uai-input-phone.figma.ts', import.meta.url), 'utf8');
 const dateSource = readFileSync(new URL('./uai-input-date.figma.ts', import.meta.url), 'utf8');
 const chipsSource = readFileSync(new URL('./uai-input-chips.figma.ts', import.meta.url), 'utf8');
+const editableSource = readFileSync(new URL('./uai-input-editable.figma.ts', import.meta.url), 'utf8');
 const imports = ['import { UaiIcon } from "blip-ds-react/dist/components"'];
 
 const evaluate = (source, properties = {}, swaps = {}, instances = {}) => {
@@ -533,4 +534,71 @@ test('input chips preserves special characters in label, chips and message', () 
   assert.ok(example.includes(`label={${JSON.stringify(Label)}}`));
   assert.ok(example.includes(`chips={${JSON.stringify(['<a&b>', '{x}'])}}`));
   assert.ok(example.includes(`errorMessage={${JSON.stringify('Revise "A&B".')}}`));
+});
+
+const editableDefaults = {
+  Value: 'Projeto Alfa',
+  Label: 'Nome do projeto',
+  'Helper message': 'Use até 40 caracteres.',
+  'Error message': 'Informe um nome.',
+  'Success message': 'Nome salvo.',
+  Mode: 'View',
+  Size: 'Standard',
+  Feedback: 'Default',
+};
+
+test('input editable covers every mode, size and feedback with valid React', () => {
+  for (const Mode of ['View', 'Edit'])
+    for (const Size of ['Short', 'Standard', 'Tall'])
+      for (const Feedback of ['Default', 'Error', 'Success']) {
+        const { example } = evaluate(editableSource, { ...editableDefaults, Mode, Size, Feedback });
+        assertJsx(example);
+        assert.ok(example.startsWith('<UaiInputEditable'));
+        assert.ok(example.includes('label={"Nome do projeto"}'));
+        assert.ok(example.includes('value={"Projeto Alfa"}'));
+        assert.equal(example.includes(' size="short"'), Size === 'Short');
+        assert.equal(example.includes(' size="tall"'), Size === 'Tall');
+        assert.ok(!example.includes('size="standard"') && !example.includes('size="medium"'));
+        assert.equal(example.includes(' danger'), Feedback === 'Error');
+        assert.equal(example.includes(' success '), Feedback === 'Success');
+        const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+        const text = { Default: 'Use até 40 caracteres.', Error: 'Informe um nome.', Success: 'Nome salvo.' }[Feedback];
+        assert.ok(example.includes(`${message}={${JSON.stringify(text)}}`));
+        assert.equal((example.match(/Message=/g) || []).length, 1);
+        assert.ok(!/mode|edit/i.test(example.replace('UaiInputEditable', '')));
+      }
+});
+
+test('input editable omits an empty value and message and keeps imports and metadata', () => {
+  const empty = evaluate(editableSource, { ...editableDefaults, Value: ' ', 'Helper message': '' });
+  assertJsx(empty.example);
+  assert.equal(empty.example, '<UaiInputEditable label={"Nome do projeto"} />');
+  assert.deepEqual(Array.from(empty.imports), ['import { UaiInputEditable } from "blip-ds-react/dist/components"']);
+  assert.equal(empty.id, 'uai-input-editable');
+  assert.equal(empty.metadata.nestable, true);
+
+  const error = evaluate(editableSource, { ...editableDefaults, Feedback: 'Error', 'Error message': '  ' });
+  assertJsx(error.example);
+  assert.equal(error.example, '<UaiInputEditable label={"Nome do projeto"} value={"Projeto Alfa"} danger />');
+});
+
+test('input editable rejects a field without label and an unmapped mode', () => {
+  assert.throws(() => evaluate(editableSource, { ...editableDefaults, Label: ' ' }), /accessible name/);
+  assert.throws(() => evaluate(editableSource, { ...editableDefaults, Mode: 'Hover' }), /Unmapped Mode/);
+});
+
+test('input editable preserves special characters in value, label and message', () => {
+  const Label = 'Título "A&B" <novo> {teste}';
+  const Value = '<Projeto> & "Beta" {1}';
+  const { example } = evaluate(editableSource, {
+    ...editableDefaults,
+    Label,
+    Value,
+    Feedback: 'Success',
+    'Success message': 'Salvo "A&B".',
+  });
+  assertJsx(example);
+  assert.ok(example.includes(`label={${JSON.stringify(Label)}}`));
+  assert.ok(example.includes(`value={${JSON.stringify(Value)}}`));
+  assert.ok(example.includes(`successMessage={${JSON.stringify('Salvo "A&B".')}}`));
 });

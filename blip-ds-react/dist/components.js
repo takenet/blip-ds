@@ -112,6 +112,7 @@ import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from 
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement, defineCustomElement as defineUaiInputChips } from "blip-ds/dist/components/uai-input-chips.js";
 import { UaiInputDate as UaiInputDateElement, defineCustomElement as defineUaiInputDate } from "blip-ds/dist/components/uai-input-date.js";
+import { UaiInputEditable as UaiInputEditableElement, defineCustomElement as defineUaiInputEditable } from "blip-ds/dist/components/uai-input-editable.js";
 import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
 import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
@@ -1045,6 +1046,20 @@ export const UaiInputDate = createComponent({
         onUaiOnBlur: 'uaiOnBlur'
     },
     defineCustomElement: defineUaiInputDate
+});
+export const UaiInputEditable = createComponent({
+    tagName: 'uai-input-editable',
+    elementClass: UaiInputEditableElement,
+    react: React,
+    events: {
+        onUaiInputEditableSave: 'uaiInputEditableSave',
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiCancel: 'uaiCancel',
+        onUaiFocus: 'uaiFocus',
+        onUaiBlur: 'uaiBlur'
+    },
+    defineCustomElement: defineUaiInputEditable
 });
 export const UaiInputPassword = createComponent({
     tagName: 'uai-input-password',

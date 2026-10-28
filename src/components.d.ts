@@ -84,6 +84,7 @@ import { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai
 import { UaiInputChipsChange, UaiInputChipsLanguage, UaiInputChipsSize, UaiInputChipsType } from "./components/uai-input-chips/uai-input-chips";
 import { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
 import { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
+import { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditableSize } from "./components/uai-input-editable/uai-input-editable";
 import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
@@ -169,6 +170,7 @@ export { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai
 export { UaiInputChipsChange, UaiInputChipsLanguage, UaiInputChipsSize, UaiInputChipsType } from "./components/uai-input-chips/uai-input-chips";
 export { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
 export { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
+export { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditableSize } from "./components/uai-input-editable/uai-input-editable";
 export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
@@ -1835,6 +1837,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputEditable {
         /**
           * Add state danger on input, use for use feedback. If true avoid save confirmation.
@@ -4524,6 +4529,142 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
+     * Value shown as text that the person can edit and confirm. In reading mode it shows the value and an Edit button;
+     * in editing mode it shows a field with Save and Cancel. Enter saves, Escape cancels and the focus goes back to Edit.
+     * Empty values, values shorter than minlength and values with danger are not saved. It takes part in native forms
+     * with the saved value. Use it to rename or adjust an existing value in place, such as a title. Pair with a label
+     * that names the value. Avoid it for forms where every field is edited at once (use uai-input). Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiInputEditable {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Discards the value being typed and returns to reading mode.
+         */
+        "cancel": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage, and saving is blocked. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the value is shown without the Edit button and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the Cancel button.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test id, set on the Save button.
+          * @default null
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test id, set on the Edit button.
+          * @default null
+         */
+        "dtButtonEdit"?: string;
+        /**
+          * Starts editing and moves the focus to the field.
+         */
+        "edit": () => Promise<void>;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @deprecated The field takes the width of its container (--uai-input-editable-width). Has no effect.
+         */
+        "expand"?: boolean;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Name of the saved value in the submitted form data. Same as name, kept from bds-input-editable.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. It also names the Edit button ("Editar <label>").
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputEditableLanguage;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * Smallest number of characters to save.
+          * @default 0
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when saving a value shorter than minlength. Without it, the default text is shown.
+         */
+        "minlengthErrorMessage": string;
+        /**
+          * Name of the saved value in the submitted form data. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Text shown while the value is empty, in both modes.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * Message shown when saving an empty value. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * Saves the value being typed. Returns false when it cannot be saved (empty, shorter than minlength or danger).
+         */
+        "save": () => Promise<boolean>;
+        /**
+          * Moves the focus to the field while editing, or to the Edit button.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Height of the field. Can be one of: 'short', 'standard' (default), 'tall'. 'medium' is the same as 'standard'.
+          * @default 'standard'
+         */
+        "size"?: UaiInputEditableSize | 'medium';
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Saved value, shown in reading mode and submitted with the form.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
      * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
      * UaiThemeProvider.
@@ -5398,6 +5539,10 @@ export interface UaiInputDateCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputDateElement;
 }
+export interface UaiInputEditableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputEditableElement;
+}
 export interface UaiInputPasswordCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputPasswordElement;
@@ -6022,6 +6167,9 @@ declare global {
         "bdsFocus": void;
         "bdsBlur": void;
     }
+    /**
+     * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface HTMLBdsInputEditableElement extends Components.BdsInputEditable, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsInputEditableElementEventMap>(type: K, listener: (this: HTMLBdsInputEditableElement, ev: BdsInputEditableCustomEvent<HTMLBdsInputEditableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6860,6 +7008,36 @@ declare global {
         prototype: HTMLUaiInputDateElement;
         new (): HTMLUaiInputDateElement;
     };
+    interface HTMLUaiInputEditableElementEventMap {
+        "uaiInputEditableSave": UaiInputEditableEventDetail;
+        "uaiChange": UaiInputEditableEventDetail;
+        "uaiInput": InputEvent;
+        "uaiCancel": void;
+        "uaiFocus": void;
+        "uaiBlur": void;
+    }
+    /**
+     * Value shown as text that the person can edit and confirm. In reading mode it shows the value and an Edit button;
+     * in editing mode it shows a field with Save and Cancel. Enter saves, Escape cancels and the focus goes back to Edit.
+     * Empty values, values shorter than minlength and values with danger are not saved. It takes part in native forms
+     * with the saved value. Use it to rename or adjust an existing value in place, such as a title. Pair with a label
+     * that names the value. Avoid it for forms where every field is edited at once (use uai-input). Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface HTMLUaiInputEditableElement extends Components.UaiInputEditable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputEditableElementEventMap>(type: K, listener: (this: HTMLUaiInputEditableElement, ev: UaiInputEditableCustomEvent<HTMLUaiInputEditableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputEditableElementEventMap>(type: K, listener: (this: HTMLUaiInputEditableElement, ev: UaiInputEditableCustomEvent<HTMLUaiInputEditableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputEditableElement: {
+        prototype: HTMLUaiInputEditableElement;
+        new (): HTMLUaiInputEditableElement;
+    };
     interface HTMLUaiInputPasswordElementEventMap {
         "uaiInputPasswordChange": { value: string | null };
         "uaiInputPasswordInput": InputEvent;
@@ -7100,6 +7278,7 @@ declare global {
         "uai-input": HTMLUaiInputElement;
         "uai-input-chips": HTMLUaiInputChipsElement;
         "uai-input-date": HTMLUaiInputDateElement;
+        "uai-input-editable": HTMLUaiInputEditableElement;
         "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-input-phone": HTMLUaiInputPhoneElement;
         "uai-navbar": HTMLUaiNavbarElement;
@@ -8874,6 +9053,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+     */
     interface BdsInputEditable {
         /**
           * Add state danger on input, use for use feedback. If true avoid save confirmation.
@@ -11745,6 +11927,154 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
+     * Value shown as text that the person can edit and confirm. In reading mode it shows the value and an Edit button;
+     * in editing mode it shows a field with Save and Cancel. Enter saves, Escape cancels and the focus goes back to Edit.
+     * Empty values, values shorter than minlength and values with danger are not saved. It takes part in native forms
+     * with the saved value. Use it to rename or adjust an existing value in place, such as a title. Pair with a label
+     * that names the value. Avoid it for forms where every field is edited at once (use uai-input). Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiInputEditable {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, shows the error state and errorMessage, and saving is blocked. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the value is shown without the Edit button and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id, set on the Cancel button.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Data test id, set on the Save button.
+          * @default null
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test id, set on the Edit button.
+          * @default null
+         */
+        "dtButtonEdit"?: string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @deprecated The field takes the width of its container (--uai-input-editable-width). Has no effect.
+         */
+        "expand"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Name of the saved value in the submitted form data. Same as name, kept from bds-input-editable.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. It also names the Edit button ("Editar <label>").
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputEditableLanguage;
+        /**
+          * Largest number of characters. Typing stops at the limit.
+         */
+        "maxlength"?: number;
+        /**
+          * Smallest number of characters to save.
+          * @default 0
+         */
+        "minlength"?: number;
+        /**
+          * Message shown when saving a value shorter than minlength. Without it, the default text is shown.
+         */
+        "minlengthErrorMessage"?: string;
+        /**
+          * Name of the saved value in the submitted form data. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the field loses focus while editing.
+         */
+        "onUaiBlur"?: (event: UaiInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted when the editing is cancelled.
+         */
+        "onUaiCancel"?: (event: UaiInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke while editing. detail: { value (being typed), oldValue (saved) }.
+         */
+        "onUaiChange"?: (event: UaiInputEditableCustomEvent<UaiInputEditableEventDetail>) => void;
+        /**
+          * Emitted when the field receives focus while editing.
+         */
+        "onUaiFocus"?: (event: UaiInputEditableCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiInputEditableCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when a value is saved. detail: { value (new), oldValue }.
+         */
+        "onUaiInputEditableSave"?: (event: UaiInputEditableCustomEvent<UaiInputEditableEventDetail>) => void;
+        /**
+          * Text shown while the value is empty, in both modes.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * Message shown when saving an empty value. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Height of the field. Can be one of: 'short', 'standard' (default), 'tall'. 'medium' is the same as 'standard'.
+          * @default 'standard'
+         */
+        "size"?: UaiInputEditableSize | 'medium';
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Saved value, shown in reading mode and submitted with the form.
+          * @default ''
+         */
+        "value"?: string | null;
+    }
+    /**
      * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
      * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
      * UaiThemeProvider.
@@ -13443,6 +13773,31 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiInputEditableAttributes {
+        "value": string | null;
+        "label": string;
+        "placeholder": string;
+        "size": UaiInputEditableSize | 'medium';
+        "name": string;
+        "inputName": string;
+        "minlength": number;
+        "maxlength": number;
+        "danger": boolean;
+        "success": boolean;
+        "disabled": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "requiredErrorMessage": string;
+        "minlengthErrorMessage": string;
+        "language": UaiInputEditableLanguage;
+        "ariaLabel": string;
+        "dataTest": string;
+        "dtButtonEdit": string;
+        "dtButtonClose": string;
+        "dtButtonConfirm": string;
+        "expand": boolean;
+    }
     interface UaiInputPasswordAttributes {
         "name": string;
         "inputName": string;
@@ -13686,6 +14041,7 @@ declare namespace LocalJSX {
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
         "uai-input-chips": Omit<UaiInputChips, keyof UaiInputChipsAttributes> & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes]?: UaiInputChips[K] } & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes as `attr:${K}`]?: UaiInputChipsAttributes[K] } & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes as `prop:${K}`]?: UaiInputChips[K] };
         "uai-input-date": Omit<UaiInputDate, keyof UaiInputDateAttributes> & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes]?: UaiInputDate[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `attr:${K}`]?: UaiInputDateAttributes[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `prop:${K}`]?: UaiInputDate[K] };
+        "uai-input-editable": Omit<UaiInputEditable, keyof UaiInputEditableAttributes> & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes]?: UaiInputEditable[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `attr:${K}`]?: UaiInputEditableAttributes[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `prop:${K}`]?: UaiInputEditable[K] };
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
@@ -13760,6 +14116,9 @@ declare module "@stencil/core" {
              * @deprecated Use `uai-input-chips` for new UAI experiences. This component remains supported for existing consumers.
              */
             "bds-input-chips": LocalJSX.IntrinsicElements["bds-input-chips"] & JSXBase.HTMLAttributes<HTMLBdsInputChipsElement>;
+            /**
+             * @deprecated Use `uai-input-editable` for new UAI experiences. This component remains supported for existing consumers.
+             */
             "bds-input-editable": LocalJSX.IntrinsicElements["bds-input-editable"] & JSXBase.HTMLAttributes<HTMLBdsInputEditableElement>;
             /**
              * @deprecated Use `uai-input-password` for new UAI experiences. This component remains supported for existing consumers.
@@ -13868,6 +14227,15 @@ declare module "@stencil/core" {
              * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
              */
             "uai-input-date": LocalJSX.IntrinsicElements["uai-input-date"] & JSXBase.HTMLAttributes<HTMLUaiInputDateElement>;
+            /**
+             * Value shown as text that the person can edit and confirm. In reading mode it shows the value and an Edit button;
+             * in editing mode it shows a field with Save and Cancel. Enter saves, Escape cancels and the focus goes back to Edit.
+             * Empty values, values shorter than minlength and values with danger are not saved. It takes part in native forms
+             * with the saved value. Use it to rename or adjust an existing value in place, such as a title. Pair with a label
+             * that names the value. Avoid it for forms where every field is edited at once (use uai-input). Wrap the app in
+             * UaiThemeProvider.
+             */
+            "uai-input-editable": LocalJSX.IntrinsicElements["uai-input-editable"] & JSXBase.HTMLAttributes<HTMLUaiInputEditableElement>;
             /**
              * Password field with native form support, an accessible visibility toggle and an optional consumer-provided
              * strength indicator. The indicator never evaluates the password or guarantees security. Wrap the app in
