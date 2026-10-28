@@ -3,14 +3,14 @@ import { UaiControlSize } from '../input/input-interface';
 import { UaiInputDateLanguage } from './uai-input-date-format';
 export type UaiInputDateSize = UaiControlSize;
 /**
- * Date field. The person types the date as DD-MM-YYYY in every language or picks it in the browser calendar;
+ * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
  * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
  * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
  * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
  *
  * @slot input-right - Content after the calendar button (for example a clear button). Give actions an accessible name.
  * @part input-container - The field box with border, icon, the native input and the calendar button.
- * @part input - The native text input with the date as DD-MM-YYYY.
+ * @part input - The native text input with the date in the browser's regional format.
  * @part input__message - The helper, error or success message below the field.
  * @part calendar-button - The button that opens the browser calendar.
  */
@@ -48,7 +48,7 @@ export declare class UaiInputDate {
      */
     max?: string;
     /**
-     * Language of the default texts. The date format is always DD-MM-YYYY. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
+     * Language of the default texts, not the date format. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
      */
     language?: UaiInputDateLanguage;
     /**
@@ -60,7 +60,7 @@ export declare class UaiInputDate {
      */
     label?: string;
     /**
-     * Text shown while the field is empty. Without it, "DD-MM-YYYY" is shown.
+     * Text shown while the field is empty. Defaults to the browser's regional date format, such as "DD/MM/YYYY".
      */
     placeholder?: string;
     /**
@@ -160,7 +160,6 @@ export declare class UaiInputDate {
     clear(): Promise<void>;
     protected inputNameChanged(): void;
     protected valueChanged(newValue: string | null): void;
-    protected languageChanged(): void;
     protected onInvalid(): void;
     componentWillLoad(): void;
     componentDidRender(): void;

@@ -1,20 +1,20 @@
 import { Build, Host, h, } from "@stencil/core";
 import { warnLegacyValue, warnOnce } from "../../utils/deprecation";
 import { UaiFormControl } from "../../utils/uai-form-control";
-import { dateLocale, displayToIso, groupDigits, isIsoDate, isoToDisplay, } from "./uai-input-date-format";
+import { dateLocale, displayToIso, groupDigits, isIsoDate, isoToDisplay, regionalDateFormat, } from "./uai-input-date-format";
 const TAG = 'uai-input-date';
 const SIZES = ['short', 'medium'];
 const LANGUAGES = ['pt_BR', 'en_US', 'es_ES'];
 let instances = 0;
 /**
- * Date field. The person types the date as DD-MM-YYYY in every language or picks it in the browser calendar;
+ * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
  * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
  * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
  * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
  *
  * @slot input-right - Content after the calendar button (for example a clear button). Give actions an accessible name.
  * @part input-container - The field box with border, icon, the native input and the calendar button.
- * @part input - The native text input with the date as DD-MM-YYYY.
+ * @part input - The native text input with the date in the browser's regional format.
  * @part input__message - The helper, error or success message below the field.
  * @part calendar-button - The button that opens the browser calendar.
  */
@@ -35,7 +35,7 @@ export class UaiInputDate {
          */
         this.value = '';
         /**
-         * Language of the default texts. The date format is always DD-MM-YYYY. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
+         * Language of the default texts, not the date format. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
          */
         this.language = 'pt_BR';
         /**
@@ -88,7 +88,7 @@ export class UaiInputDate {
             const raw = input.value;
             const caretDigits = raw.slice(0, (_a = input.selectionStart) !== null && _a !== void 0 ? _a : raw.length).replace(/\D/g, '').length;
             const digits = raw.replace(/\D/g, '').slice(0, 8);
-            const display = groupDigits(digits, this.languageValue);
+            const display = groupDigits(digits);
             input.value = display;
             let caret = 0;
             for (let seen = 0; caret < display.length && seen < caretDigits; caret++) {
@@ -98,7 +98,7 @@ export class UaiInputDate {
             (_b = input.setSelectionRange) === null || _b === void 0 ? void 0 : _b.call(input, caret, caret);
             this.display = display;
             this.typing = true;
-            this.value = displayToIso(digits, this.languageValue);
+            this.value = displayToIso(digits);
             this.typing = false;
             this.uaiInput.emit(event);
         };
@@ -136,7 +136,7 @@ export class UaiInputDate {
             const value = ((_a = this.picker) === null || _a === void 0 ? void 0 : _a.value) || '';
             if (!isIsoDate(value))
                 return;
-            this.display = isoToDisplay(value, this.languageValue);
+            this.display = isoToDisplay(value);
             this.value = value;
             this.showValidation(true);
             (_b = this.nativeInput) === null || _b === void 0 ? void 0 : _b.focus();
@@ -185,13 +185,9 @@ export class UaiInputDate {
         var _a;
         const value = newValue || '';
         if (!this.typing)
-            this.display = isoToDisplay(value, this.languageValue);
+            this.display = isoToDisplay(value);
         (_a = this.formControl) === null || _a === void 0 ? void 0 : _a.setValue(isIsoDate(value) ? value : null);
         this.uaiChange.emit({ value });
-    }
-    languageChanged() {
-        if (isIsoDate(this.value))
-            this.display = isoToDisplay(this.value, this.languageValue);
     }
     onInvalid() {
         this.showValidation(true);
@@ -200,7 +196,7 @@ export class UaiInputDate {
         var _a;
         this.inputNameChanged();
         this.defaultValue = isIsoDate(this.value) ? this.value : '';
-        this.display = isoToDisplay(this.defaultValue, this.languageValue);
+        this.display = isoToDisplay(this.defaultValue);
         // Real browsers only: the Stencil mock DOM attaches internals without the form API.
         if (typeof ((_a = this.internals) === null || _a === void 0 ? void 0 : _a.setFormValue) === 'function') {
             this.formControl = new UaiFormControl({
@@ -208,7 +204,7 @@ export class UaiInputDate {
                 defaultValue: () => this.defaultValue || null,
                 onReset: () => {
                     this.validationDanger = false;
-                    this.display = isoToDisplay(this.defaultValue, this.languageValue);
+                    this.display = isoToDisplay(this.defaultValue);
                     this.value = this.defaultValue;
                 },
                 onDisabledChange: (disabled) => {
@@ -268,11 +264,11 @@ export class UaiInputDate {
         if (!value)
             return { invalid: true, flags: { badInput: true }, message: this.dateErrorMessage || locale.date };
         if (isIsoDate(this.min) && value < this.min) {
-            const message = this.minErrorMessage || locale.min(isoToDisplay(this.min, language));
+            const message = this.minErrorMessage || locale.min(isoToDisplay(this.min));
             return { invalid: true, flags: { rangeUnderflow: true }, message };
         }
         if (isIsoDate(this.max) && value > this.max) {
-            const message = this.maxErrorMessage || locale.max(isoToDisplay(this.max, language));
+            const message = this.maxErrorMessage || locale.max(isoToDisplay(this.max));
             return { invalid: true, flags: { rangeOverflow: true }, message };
         }
         return { invalid: false, flags: {}, message: '' };
@@ -299,13 +295,13 @@ export class UaiInputDate {
                     : this.helperMessage;
         const locale = dateLocale(this.languageValue);
         const label = (_a = this.label) !== null && _a !== void 0 ? _a : locale.label;
-        return (h(Host, { key: 'fb69d7aea21632cb1277d4d85e397ee5bbf475f8', "aria-disabled": disabled ? 'true' : null, class: {
+        return (h(Host, { key: '54e724c90d711331fdba584013bc00056e626cfa', "aria-disabled": disabled ? 'true' : null, class: {
                 [`uai-input-date--size-${this.sizeValue}`]: true,
                 'uai-input-date--danger': invalid,
                 'uai-input-date--success': success,
                 'uai-input-date--disabled': disabled,
                 'uai-input-date--readonly': this.readonly && !disabled,
-            } }, h("div", { key: 'a374e8db35783956ac693aa2e2d65f0e3691e0cf', class: "input" }, label && (h("label", { key: '692ab04d9b2a62a872e1c37749b28d76600d4e60', class: "input__label", for: this.id }, h("uai-typo", { key: '78c5f60739c7f500e77e47ef5fed1ea062ec412c', variant: "caption", bold: "semibold", tag: "span", margin: false }, label))), h("div", { key: 'd76f4ae834ef42d81fdaf3bb5bc1f9951edc7ea7', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && h("uai-icon", { key: '472adad0781bf54a8744fb57ac59828e5f5cdf37', class: "input__icon", name: this.icon, size: "medium" }), h("div", { key: '3186a587624aede65c584a1fa8343250905edb77', class: "input__field" }, h("input", { key: '970d98be8f8dea027acc5a6f69db8da91fcd8a3f', id: this.id, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "text", inputMode: "numeric", autocomplete: "off", maxLength: 10, value: this.display, placeholder: (_b = this.placeholder) !== null && _b !== void 0 ? _b : locale.placeholder, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.ariaLabel || null, "aria-invalid": invalid ? 'true' : null, "aria-describedby": message ? `${this.id}-message` : null, "data-test": this.dataTest, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onKeyDown: this.onKeyDown })), invalid && h("uai-icon", { key: '97cc9ac8fa9ba06687b5cb93f0895c7a7cf3645b', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && h("uai-icon", { key: 'cc16fd60f20d9de6dd162f21b725bee66fef6b54', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), !this.readonly && (h("button", { key: '8017b7ec60111e7340636edf18f94fa177d964b9', type: "button", class: "calendar", part: "calendar-button", "aria-label": locale.calendar, disabled: disabled, onClick: this.openCalendar }, h("uai-icon", { key: '6cbc1e1a25b97657e1fea5e116e1f1391892ece5', name: "calendar", size: "medium" }))), h("input", { key: 'da77be19462e4016b2ae4c40882c76c2bdab1ae1', ref: (picker) => (this.picker = picker), class: "picker", type: "date", tabindex: "-1", "aria-hidden": "true", min: isIsoDate(this.min) ? this.min : undefined, max: isIsoDate(this.max) ? this.max : undefined, disabled: disabled, onChange: this.onPick }), h("slot", { key: '28b9620e0f0193754dc12c78778d969574df5719', name: "input-right" })), message && (h("div", { key: '27c8a1d3d6dc8231799b53966b09dcfba44f9a92', id: `${this.id}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '9875946bdaf1bd3a2becef294492bbfa1b51bbce', variant: "caption", tag: "span", margin: false }, message))))));
+            } }, h("div", { key: '4debda5cb5a1839efd6c0aecbd742074bed17724', class: "input" }, label && (h("label", { key: 'd18cf5cf5c897b526b8bdc565e83e32c2ffe46c3', class: "input__label", for: this.id }, h("uai-typo", { key: 'bf06a05812622702b78a2ab082d50bf8376da58d', variant: "caption", bold: "semibold", tag: "span", margin: false }, label))), h("div", { key: 'd9a84a135898a49c60aac1bef415aa48f5a7bfd4', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && h("uai-icon", { key: 'beccd27549f3eeaf8197b5b2fe5a385deefc2c95', class: "input__icon", name: this.icon, size: "medium" }), h("div", { key: '8b7e2ebb6918025c4901621168025bbbcc8130c6', class: "input__field" }, h("input", { key: 'e6847aa9b22dc734e5174c02aacf2091bc0121fe', id: this.id, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "text", inputMode: "numeric", autocomplete: "off", maxLength: regionalDateFormat().placeholder.length, value: this.display, placeholder: (_b = this.placeholder) !== null && _b !== void 0 ? _b : regionalDateFormat().placeholder, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.ariaLabel || null, "aria-invalid": invalid ? 'true' : null, "aria-describedby": message ? `${this.id}-message` : null, "data-test": this.dataTest, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onKeyDown: this.onKeyDown })), invalid && h("uai-icon", { key: '5310aee9b310418649b0c104fbc01c29cda48d7a', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && h("uai-icon", { key: 'b7a956f358801793ab5bca868867b4bb3d13a0a4', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), !this.readonly && (h("button", { key: 'd1b05a20cb5ab09f0a815061bba5b3b1346ce75e', type: "button", class: "calendar", part: "calendar-button", "aria-label": locale.calendar, disabled: disabled, onClick: this.openCalendar }, h("uai-icon", { key: 'f1a7acd05f31aa126abfbc4a2663f76ddc9e540a', name: "calendar", size: "medium" }))), h("input", { key: 'a586ee9e59ceb81e3df1b521beb5987ce1a65d71', ref: (picker) => (this.picker = picker), class: "picker", type: "date", tabindex: "-1", "aria-hidden": "true", min: isIsoDate(this.min) ? this.min : undefined, max: isIsoDate(this.max) ? this.max : undefined, disabled: disabled, onChange: this.onPick }), h("slot", { key: '9a64979dffa5b97f4e28714a2c289a675846f34f', name: "input-right" })), message && (h("div", { key: 'cede9c519b279f06e9541838b77373d4286d8e95', id: `${this.id}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: 'e2ccd09933d51dae2cc544264929fd45d61dae13', variant: "caption", tag: "span", margin: false }, message))))));
     }
     static get is() { return "uai-input-date"; }
     static get encapsulation() { return "shadow"; }
@@ -439,7 +435,7 @@ export class UaiInputDate {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Language of the default texts. The date format is always DD-MM-YYYY. Can be 'pt_BR' (default), 'en_US', 'es_ES'."
+                    "text": "Language of the default texts, not the date format. Can be 'pt_BR' (default), 'en_US', 'es_ES'."
                 },
                 "getter": false,
                 "setter": false,
@@ -504,7 +500,7 @@ export class UaiInputDate {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Text shown while the field is empty. Without it, \"DD-MM-YYYY\" is shown."
+                    "text": "Text shown while the field is empty. Defaults to the browser's regional date format, such as \"DD/MM/YYYY\"."
                 },
                 "getter": false,
                 "setter": false,
@@ -963,9 +959,6 @@ export class UaiInputDate {
             }, {
                 "propName": "value",
                 "methodName": "valueChanged"
-            }, {
-                "propName": "language",
-                "methodName": "languageChanged"
             }];
     }
     static get listeners() {

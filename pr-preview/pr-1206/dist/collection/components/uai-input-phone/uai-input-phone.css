@@ -258,6 +258,7 @@
   }
 }
 .list {
+  max-height: calc(5 * var(--uai-control-height-medium, 2.5rem));
   min-width: var(--uai-width-menu, 14rem);
   padding: var(--uai-spacing-2xs, 0.25rem);
   border: var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7);
