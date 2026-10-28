@@ -111,6 +111,7 @@ import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton }
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
+import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
@@ -1029,6 +1030,19 @@ export const UaiInputPassword = createComponent({
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     },
     defineCustomElement: defineUaiInputPassword
+});
+export const UaiInputPhone = createComponent({
+    tagName: 'uai-input-phone',
+    elementClass: UaiInputPhoneElement,
+    react: React,
+    events: {
+        onUaiPhoneNumberChange: 'uaiPhoneNumberChange',
+        onUaiInput: 'uaiInput',
+        onUaiCancel: 'uaiCancel',
+        onUaiFocus: 'uaiFocus',
+        onUaiBlur: 'uaiBlur'
+    },
+    defineCustomElement: defineUaiInputPhone
 });
 export const UaiNavbar = createComponent({
     tagName: 'uai-navbar',

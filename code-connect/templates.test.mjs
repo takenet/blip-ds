@@ -12,9 +12,10 @@ const iconSource = readFileSync(new URL('./uai-icon.figma.ts', import.meta.url),
 const inputSource = readFileSync(new URL('./uai-input.figma.ts', import.meta.url), 'utf8');
 const passwordSource = readFileSync(new URL('./uai-input-password.figma.ts', import.meta.url), 'utf8');
 const textareaSource = readFileSync(new URL('./uai-textarea.figma.ts', import.meta.url), 'utf8');
+const phoneSource = readFileSync(new URL('./uai-input-phone.figma.ts', import.meta.url), 'utf8');
 const imports = ['import { UaiIcon } from "blip-ds-react/dist/components"'];
 
-const evaluate = (source, properties = {}, swaps = {}) => {
+const evaluate = (source, properties = {}, swaps = {}, instances = {}) => {
   const figma = {
     selectedInstance: {
       getString: (key) => properties[key],
@@ -24,6 +25,7 @@ const evaluate = (source, properties = {}, swaps = {}) => {
         return values[properties[key]];
       },
       getInstanceSwap: (key) => swaps[key],
+      findInstance: (name) => instances[name] ?? { type: 'ERROR' },
     },
     code: (strings, ...values) => strings.reduce((result, part, index) => result + part + (values[index] ?? ''), ''),
   };
@@ -340,5 +342,68 @@ test('textarea rejects an unmapped icon and a missing accessible name', () => {
   assert.throws(
     () => evaluate(textareaSource, { ...textareaDefaults, 'Show Label': false, Label: ' ' }),
     /accessible name/,
+  );
+});
+
+const phoneDefaults = {
+  Label: 'Telefone',
+  Text: '11 99999-0000',
+  'Helper Message': 'Informe um número com DDD.',
+  'Error Message': 'Informe um número válido.',
+  'Success Message': 'Número confirmado.',
+  Feedback: 'Default',
+  State: 'Default',
+};
+const prefixSelect = (Value = '+55') => ({
+  type: 'INSTANCE',
+  getString: (key) => ({ Value })[key],
+  getBoolean: () => true,
+});
+
+test('phone covers every feedback and state with valid React', () => {
+  for (const Feedback of ['Default', 'Error', 'Success'])
+    for (const State of ['Default', 'Filled', 'Hover', 'Focus', 'Disabled', 'Readonly']) {
+      const { example } = evaluate(
+        phoneSource,
+        { ...phoneDefaults, Feedback, State },
+        {},
+        { 'Leading Adornment': prefixSelect() },
+      );
+      assertJsx(example);
+      assert.ok(example.startsWith('<UaiInputPhone'));
+      assert.ok(example.includes('label={"Telefone"}'));
+      assert.ok(example.includes('value={"+55"}'));
+      assert.equal(example.includes('placeholder={"11 99999-0000"}'), ['Default', 'Hover'].includes(State));
+      assert.equal(example.includes('text={"11 99999-0000"}'), !['Default', 'Hover'].includes(State));
+      assert.equal(example.includes(' danger'), Feedback === 'Error');
+      assert.equal(example.includes(' success '), Feedback === 'Success');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+      assert.equal(example.includes(' readonly'), State === 'Readonly');
+      const message = { Default: 'helperMessage', Error: 'errorMessage', Success: 'successMessage' }[Feedback];
+      assert.ok(example.includes(`${message}={`));
+    }
+});
+
+test('phone maps the dialing code of the nested prefix and keeps the default label and code', () => {
+  const custom = evaluate(
+    phoneSource,
+    { ...phoneDefaults, State: 'Filled' },
+    {},
+    { 'Leading Adornment': prefixSelect('+1-264') },
+  );
+  assertJsx(custom.example);
+  assert.ok(custom.example.includes('value={"+1-264"}'));
+
+  const fallback = evaluate(phoneSource, { ...phoneDefaults, Label: ' ', 'Helper Message': '' });
+  assertJsx(fallback.example);
+  assert.ok(!fallback.example.includes('label='));
+  assert.ok(!fallback.example.includes('value='));
+  assert.ok(!fallback.example.includes('Message='));
+});
+
+test('phone rejects a prefix value that is not a dialing code', () => {
+  assert.throws(
+    () => evaluate(phoneSource, phoneDefaults, {}, { 'Leading Adornment': prefixSelect('Brasil') }),
+    /dialing code/,
   );
 });

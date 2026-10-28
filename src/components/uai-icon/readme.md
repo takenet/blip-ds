@@ -44,6 +44,7 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
  - [uai-button](../uai-button)
  - [uai-input](../uai-input)
  - [uai-input-password](../uai-input-password)
+ - [uai-input-phone](../uai-input-phone)
  - [uai-textarea](../uai-textarea)
 
 ### Graph
@@ -53,6 +54,7 @@ graph TD;
   uai-button --> uai-icon
   uai-input --> uai-icon
   uai-input-password --> uai-icon
+  uai-input-phone --> uai-icon
   uai-textarea --> uai-icon
   style uai-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
