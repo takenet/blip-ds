@@ -4428,8 +4428,8 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
-     * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
-     * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * Date field. The person types the date as DD-MM-YYYY in every language or picks it in the browser calendar;
+     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
      * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
      * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
      */
@@ -4491,7 +4491,7 @@ export namespace Components {
          */
         "label"?: string;
         /**
-          * Language of the date format and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * Language of the default texts. The date format is always DD-MM-YYYY. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
           * @default 'pt_BR'
          */
         "language"?: UaiInputDateLanguage;
@@ -4516,7 +4516,7 @@ export namespace Components {
          */
         "name"?: string;
         /**
-          * Text shown while the field is empty. Without it, the date format of the language is shown ("dd/mm/aaaa").
+          * Text shown while the field is empty. Without it, "DD-MM-YYYY" is shown.
          */
         "placeholder"?: string;
         /**
@@ -7040,8 +7040,8 @@ declare global {
         "uaiOnBlur": void;
     }
     /**
-     * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
-     * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * Date field. The person types the date as DD-MM-YYYY in every language or picks it in the browser calendar;
+     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
      * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
      * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
      */
@@ -11881,8 +11881,8 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
-     * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
-     * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+     * Date field. The person types the date as DD-MM-YYYY in every language or picks it in the browser calendar;
+     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
      * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
      * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
      */
@@ -11940,7 +11940,7 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
-          * Language of the date format and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * Language of the default texts. The date format is always DD-MM-YYYY. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
           * @default 'pt_BR'
          */
         "language"?: UaiInputDateLanguage;
@@ -11981,7 +11981,7 @@ declare namespace LocalJSX {
          */
         "onUaiOnBlur"?: (event: UaiInputDateCustomEvent<void>) => void;
         /**
-          * Text shown while the field is empty. Without it, the date format of the language is shown ("dd/mm/aaaa").
+          * Text shown while the field is empty. Without it, "DD-MM-YYYY" is shown.
          */
         "placeholder"?: string;
         /**
@@ -14321,8 +14321,8 @@ declare module "@stencil/core" {
              */
             "uai-input-chips": LocalJSX.IntrinsicElements["uai-input-chips"] & JSXBase.HTMLAttributes<HTMLUaiInputChipsElement>;
             /**
-             * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
-             * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+             * Date field. The person types the date as DD-MM-YYYY in every language or picks it in the browser calendar;
+             * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
              * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
              * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
              */

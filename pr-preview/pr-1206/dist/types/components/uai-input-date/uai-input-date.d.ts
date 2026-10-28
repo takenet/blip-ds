@@ -3,14 +3,14 @@ import { UaiControlSize } from '../input/input-interface';
 import { UaiInputDateLanguage } from './uai-input-date-format';
 export type UaiInputDateSize = UaiControlSize;
 /**
- * Date field. The person types the date in the format of the language (dd/mm/aaaa in pt_BR and es_ES, mm/dd/yyyy in
- * en_US) or picks it in the browser calendar; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
+ * Date field. The person types the date as DD-MM-YYYY in every language or picks it in the browser calendar;
+ * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
  * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
  * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
  *
  * @slot input-right - Content after the calendar button (for example a clear button). Give actions an accessible name.
  * @part input-container - The field box with border, icon, the native input and the calendar button.
- * @part input - The native text input with the date in the format of the language.
+ * @part input - The native text input with the date as DD-MM-YYYY.
  * @part input__message - The helper, error or success message below the field.
  * @part calendar-button - The button that opens the browser calendar.
  */
@@ -48,7 +48,7 @@ export declare class UaiInputDate {
      */
     max?: string;
     /**
-     * Language of the date format and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+     * Language of the default texts. The date format is always DD-MM-YYYY. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
      */
     language?: UaiInputDateLanguage;
     /**
@@ -60,7 +60,7 @@ export declare class UaiInputDate {
      */
     label?: string;
     /**
-     * Text shown while the field is empty. Without it, the date format of the language is shown ("dd/mm/aaaa").
+     * Text shown while the field is empty. Without it, "DD-MM-YYYY" is shown.
      */
     placeholder?: string;
     /**

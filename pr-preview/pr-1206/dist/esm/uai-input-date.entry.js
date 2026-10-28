@@ -7,7 +7,7 @@ const LOCALES = {
     pt_BR: {
         order: ['day', 'month', 'year'],
         label: 'Data',
-        placeholder: 'dd/mm/aaaa',
+        placeholder: 'DD-MM-YYYY',
         calendar: 'Abrir calendário',
         required: 'Informe a data.',
         date: 'Informe uma data válida.',
@@ -15,9 +15,9 @@ const LOCALES = {
         max: (date) => `Informe uma data até ${date}.`,
     },
     en_US: {
-        order: ['month', 'day', 'year'],
+        order: ['day', 'month', 'year'],
         label: 'Date',
-        placeholder: 'mm/dd/yyyy',
+        placeholder: 'DD-MM-YYYY',
         calendar: 'Open calendar',
         required: 'Enter the date.',
         date: 'Enter a valid date.',
@@ -27,7 +27,7 @@ const LOCALES = {
     es_ES: {
         order: ['day', 'month', 'year'],
         label: 'Fecha',
-        placeholder: 'dd/mm/aaaa',
+        placeholder: 'DD-MM-YYYY',
         calendar: 'Abrir calendario',
         required: 'Ingrese la fecha.',
         date: 'Ingrese una fecha válida.',
@@ -45,7 +45,7 @@ function isIsoDate(text) {
     const date = new Date(Date.UTC(year, month - 1, day));
     return year > 0 && date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
 }
-/** Groups the typed digits with slashes in the order of the language: "25122026" -> "25/12/2026". */
+/** Groups the typed digits as DD-MM-YYYY: "25122026" -> "25-12-2026". */
 function groupDigits(digits, language) {
     const groups = [];
     let rest = digits;
@@ -55,7 +55,7 @@ function groupDigits(digits, language) {
         groups.push(rest.slice(0, LENGTHS[part]));
         rest = rest.slice(LENGTHS[part]);
     }
-    return groups.join('/');
+    return groups.join('-');
 }
 /** ISO date for eight typed digits, or '' when they are incomplete or name a day that does not exist. */
 function displayToIso(digits, language) {
@@ -70,13 +70,13 @@ function displayToIso(digits, language) {
     const iso = `${parts.year}-${parts.month}-${parts.day}`;
     return isIsoDate(iso) ? iso : '';
 }
-/** Date in the format of the language for an ISO date, or '' when the ISO text is not valid. */
+/** Date as DD-MM-YYYY for an ISO date, or '' when the ISO text is not valid. */
 function isoToDisplay(iso, language) {
     const match = ISO_DATE.exec(iso || '');
     if (!match || !isIsoDate(iso))
         return '';
     const parts = { year: match[1], month: match[2], day: match[3] };
-    return LOCALES[language].order.map((part) => parts[part]).join('/');
+    return LOCALES[language].order.map((part) => parts[part]).join('-');
 }
 
 const uaiInputDateCss = () => `:host{--input-height:var(--uai-control-height-medium, 2.5rem);--input-background:var(--uai-surface-paper, #ffffff);--input-border:var(--uai-border-input, #adb4b8);--input-content:var(--uai-content-primary, #242729);--input-label:var(--uai-content-primary, #242729);--input-message:var(--uai-content-secondary, #5f676d);--input-feedback:var(--input-content);--input-halo:color-mix(     in srgb,     var(--uai-border-ring, #242729) calc(var(--uai-opacity-focus-ring, 0.3) * 100%),     transparent   );display:block;width:var(--uai-input-date-width, 100%)}:host(.uai-input-date--size-short){--input-height:var(--uai-control-height-short, 2rem)}:host(.uai-input-date--danger){--input-border:var(--uai-feedback-error, #cf0022);--input-label:var(--uai-feedback-error, #cf0022);--input-message:var(--uai-feedback-error, #cf0022);--input-feedback:var(--uai-feedback-error, #cf0022)}:host(.uai-input-date--success){--input-border:var(--uai-feedback-success, #3da329);--input-message:var(--uai-feedback-success, #3da329);--input-feedback:var(--uai-feedback-success, #3da329)}:host(.uai-input-date--disabled){--input-background:var(--uai-surface-muted, #f2f3f3);--input-border:var(--uai-border-default, #e4e6e7);--input-content:var(--uai-content-disabled, #848e94);--input-label:var(--uai-content-disabled, #848e94);--input-message:var(--uai-content-disabled, #848e94);--input-feedback:var(--uai-content-disabled, #848e94)}.input{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;gap:var(--uai-spacing-2xs, 0.25rem)}.input__label,.input__message{--uai-typo-color:currentColor}.input__label{color:var(--input-label)}.input__message{padding:0 var(--uai-spacing-xs, 0.5rem);color:var(--input-message)}.input__control{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem);height:var(--input-height);position:relative;padding:0 var(--uai-spacing-xs, 0.5rem);border:var(--uai-border-width-default, 1px) solid var(--input-border);border-radius:var(--uai-radius-lg, 0.75rem);background-color:var(--input-background);color:var(--input-content);cursor:text;-webkit-transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.input__control{-webkit-transition:none;transition:none}}.input__control:focus-within{--input-border:var(--uai-border-ring, #242729);-webkit-box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo);box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo)}@media (forced-colors: active){.input__control:focus-within{-webkit-box-shadow:none;box-shadow:none;outline:var(--uai-border-width-thick, 2px) solid CanvasText}}:host(:not(.uai-input-date--disabled):not(.uai-input-date--readonly):not(.uai-input-date--danger):not(.uai-input-date--success)) .input__control:hover:not(:focus-within){--input-border:var(--uai-content-secondary, #5f676d)}:host(.uai-input-date--disabled) .input__control{cursor:not-allowed}.input__icon{-ms-flex:none;flex:none;color:var(--input-content)}.input__feedback{-ms-flex:none;flex:none;color:var(--input-feedback)}.input__field{display:-ms-flexbox;display:flex;-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-align:center;align-items:center;min-width:0;height:100%}.input__native{-ms-flex:1 1 auto;flex:1 1 auto;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:0;height:100%;margin:0;padding:0;border:0;outline:none;background:transparent;color:inherit;font-family:var(--uai-font-family-sans, Figtree), sans-serif;font-size:var(--uai-body-base-font-size, 0.875rem);font-weight:var(--uai-font-weight-regular, 400);line-height:var(--uai-body-base-line-height, 1.375rem);text-overflow:ellipsis;-webkit-appearance:none;-moz-appearance:none;appearance:none}.input__native::-webkit-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::-moz-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native:-ms-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::-ms-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native:disabled{cursor:not-allowed;opacity:1;-webkit-text-fill-color:currentColor}.input__native:disabled::-webkit-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::-moz-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled:-ms-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::-ms-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::placeholder{color:var(--uai-content-disabled, #848e94)}.calendar{display:-ms-inline-flexbox;display:inline-flex;-ms-flex:none;flex:none;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;margin:0;padding:var(--uai-spacing-2xs, 0.25rem);border:0;border-radius:var(--uai-radius-md, 0.5rem);background:transparent;color:var(--input-content);cursor:pointer;-webkit-transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.calendar{-webkit-transition:none;transition:none}}.calendar:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}.calendar:hover:not(:disabled){background:var(--uai-overlay-hover, rgba(0, 0, 0, 0.08))}.calendar:disabled{cursor:not-allowed}@media (forced-colors: active){.calendar{border:var(--uai-border-width-default, 1px) solid ButtonText}}.picker{position:absolute;right:0;bottom:0;width:0;height:0;margin:0;padding:0;border:0;opacity:0;pointer-events:none}`;
@@ -113,7 +113,7 @@ const UaiInputDate = class {
          */
         this.value = '';
         /**
-         * Language of the date format and default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+         * Language of the default texts. The date format is always DD-MM-YYYY. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
          */
         this.language = 'pt_BR';
         /**
@@ -372,13 +372,13 @@ const UaiInputDate = class {
                     : this.helperMessage;
         const locale = dateLocale(this.languageValue);
         const label = (_a = this.label) !== null && _a !== void 0 ? _a : locale.label;
-        return (h(Host, { key: 'a8551d914c3fe151062264ddc6aa39cf34dd0112', "aria-disabled": disabled ? 'true' : null, class: {
+        return (h(Host, { key: 'fb69d7aea21632cb1277d4d85e397ee5bbf475f8', "aria-disabled": disabled ? 'true' : null, class: {
                 [`uai-input-date--size-${this.sizeValue}`]: true,
                 'uai-input-date--danger': invalid,
                 'uai-input-date--success': success,
                 'uai-input-date--disabled': disabled,
                 'uai-input-date--readonly': this.readonly && !disabled,
-            } }, h("div", { key: '04e161ec5a0faefb60258197dca751a7a4420b68', class: "input" }, label && (h("label", { key: '851ac5f16a97706cbc2acb562cb2c9de0c2080a8', class: "input__label", for: this.id }, h("uai-typo", { key: 'b670acdfc1dd83fdd287adf104bcc2ae4ff3eaf2', variant: "caption", bold: "semibold", tag: "span", margin: false }, label))), h("div", { key: 'a322dbcac26219101d8622bb660608e477e37a24', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && h("uai-icon", { key: '9049857cc41036e855582fe067347446dfee1919', class: "input__icon", name: this.icon, size: "medium" }), h("div", { key: '0a9ba3630e7ae91dae6a232d7cec47de9bb4af3c', class: "input__field" }, h("input", { key: '98becfa3b5526fa44b7f85f19e8c5ecf966cdcf7', id: this.id, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "text", inputMode: "numeric", autocomplete: "off", maxLength: 10, value: this.display, placeholder: (_b = this.placeholder) !== null && _b !== void 0 ? _b : locale.placeholder, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.ariaLabel || null, "aria-invalid": invalid ? 'true' : null, "aria-describedby": message ? `${this.id}-message` : null, "data-test": this.dataTest, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onKeyDown: this.onKeyDown })), invalid && h("uai-icon", { key: '5b2a6ee2d57a047875e0d430a7e28190fc2c99a3', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && h("uai-icon", { key: 'b1619c0111b2fa18bab2be8cc61eec09e96a38a0', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), !this.readonly && (h("button", { key: '809127142244fb60d6bf8b0ec0ed1db6ffa7669c', type: "button", class: "calendar", part: "calendar-button", "aria-label": locale.calendar, disabled: disabled, onClick: this.openCalendar }, h("uai-icon", { key: '1c3c2ed3f7c69edd032ad9c14de29526eb82021d', name: "calendar", size: "medium" }))), h("input", { key: '7fef9f2ff2a61d95a5a13359af1d3dea7dea5241', ref: (picker) => (this.picker = picker), class: "picker", type: "date", tabindex: "-1", "aria-hidden": "true", min: isIsoDate(this.min) ? this.min : undefined, max: isIsoDate(this.max) ? this.max : undefined, disabled: disabled, onChange: this.onPick }), h("slot", { key: 'abc0262bd0faa5a94c9ace1f9191120a894c1bb7', name: "input-right" })), message && (h("div", { key: '4d5203f898a862f3f5544211ce0d08bb1deb5770', id: `${this.id}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: 'a49c2e54d3e1f15dc69f887fd25d2388031f1705', variant: "caption", tag: "span", margin: false }, message))))));
+            } }, h("div", { key: 'a374e8db35783956ac693aa2e2d65f0e3691e0cf', class: "input" }, label && (h("label", { key: '692ab04d9b2a62a872e1c37749b28d76600d4e60', class: "input__label", for: this.id }, h("uai-typo", { key: '78c5f60739c7f500e77e47ef5fed1ea062ec412c', variant: "caption", bold: "semibold", tag: "span", margin: false }, label))), h("div", { key: 'd76f4ae834ef42d81fdaf3bb5bc1f9951edc7ea7', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && h("uai-icon", { key: '472adad0781bf54a8744fb57ac59828e5f5cdf37', class: "input__icon", name: this.icon, size: "medium" }), h("div", { key: '3186a587624aede65c584a1fa8343250905edb77', class: "input__field" }, h("input", { key: '970d98be8f8dea027acc5a6f69db8da91fcd8a3f', id: this.id, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "text", inputMode: "numeric", autocomplete: "off", maxLength: 10, value: this.display, placeholder: (_b = this.placeholder) !== null && _b !== void 0 ? _b : locale.placeholder, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.ariaLabel || null, "aria-invalid": invalid ? 'true' : null, "aria-describedby": message ? `${this.id}-message` : null, "data-test": this.dataTest, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onKeyDown: this.onKeyDown })), invalid && h("uai-icon", { key: '97cc9ac8fa9ba06687b5cb93f0895c7a7cf3645b', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && h("uai-icon", { key: 'cc16fd60f20d9de6dd162f21b725bee66fef6b54', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), !this.readonly && (h("button", { key: '8017b7ec60111e7340636edf18f94fa177d964b9', type: "button", class: "calendar", part: "calendar-button", "aria-label": locale.calendar, disabled: disabled, onClick: this.openCalendar }, h("uai-icon", { key: '6cbc1e1a25b97657e1fea5e116e1f1391892ece5', name: "calendar", size: "medium" }))), h("input", { key: 'da77be19462e4016b2ae4c40882c76c2bdab1ae1', ref: (picker) => (this.picker = picker), class: "picker", type: "date", tabindex: "-1", "aria-hidden": "true", min: isIsoDate(this.min) ? this.min : undefined, max: isIsoDate(this.max) ? this.max : undefined, disabled: disabled, onChange: this.onPick }), h("slot", { key: '28b9620e0f0193754dc12c78778d969574df5719', name: "input-right" })), message && (h("div", { key: '27c8a1d3d6dc8231799b53966b09dcfba44f9a92', id: `${this.id}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '9875946bdaf1bd3a2becef294492bbfa1b51bbce', variant: "caption", tag: "span", margin: false }, message))))));
     }
     static get delegatesFocus() { return true; }
     static get formAssociated() { return true; }

@@ -334,7 +334,7 @@
         {
           "id": "uai-input-date--playground",
           "name": "Playground",
-          "snippet": "const Playground = () => <UaiInputDate\n    label=\"\"\n    value=\"\"\n    min=\"\"\n    max=\"\"\n    language=\"pt_BR\"\n    placeholder=\"\"\n    size=\"medium\"\n    helperMessage=\"Digite só os números; as barras entram sozinhas.\"\n    errorMessage=\"Informe uma data válida.\"\n    successMessage=\"Data confirmada.\"\n    requiredErrorMessage=\"Informe a data.\"\n    dateErrorMessage=\"Essa data não existe.\"\n    minErrorMessage=\"\"\n    maxErrorMessage=\"\"\n    icon=\"\"\n    danger={false}\n    success={false}\n    disabled={false}\n    readonly={false}\n    required={false} />;",
+          "snippet": "const Playground = () => <UaiInputDate\n    label=\"\"\n    value=\"\"\n    min=\"\"\n    max=\"\"\n    language=\"pt_BR\"\n    placeholder=\"\"\n    size=\"medium\"\n    helperMessage=\"Digite só os números; os hifens entram sozinhas.\"\n    errorMessage=\"Informe uma data válida.\"\n    successMessage=\"Data confirmada.\"\n    requiredErrorMessage=\"Informe a data.\"\n    dateErrorMessage=\"Essa data não existe.\"\n    minErrorMessage=\"\"\n    maxErrorMessage=\"\"\n    icon=\"\"\n    danger={false}\n    success={false}\n    disabled={false}\n    readonly={false}\n    required={false} />;",
           "description": "Teste todas as propriedades."
         },
         {
@@ -359,18 +359,18 @@
           "id": "uai-input-date--languages",
           "name": "Languages",
           "snippet": "const Languages = () => (\n  <div style={grid}>\n    {['pt_BR', 'en_US', 'es_ES'].map((language) => (\n      <div key={language} style={column}>\n        <div style={caption}>language=\"{language}\"</div>\n        <UaiInputDate language={language} value=\"2026-12-25\" />\n        <UaiInputDate language={language} />\n      </div>\n    ))}\n  </div>\n);",
-          "description": "O mesmo `value` ISO nos três idiomas, sem `label` nem `placeholder`: muda o formato exibido e os textos padrão."
+          "description": "O mesmo `value` ISO nos três idiomas: muda os textos padrão, mantendo o formato DD-MM-YYYY."
         },
         {
           "id": "uai-input-date--range",
           "name": "Range",
-          "snippet": "const Range = () => (\n  <div style={grid}>\n    <UaiInputDate\n      label=\"Check-in em 2026\"\n      min=\"2026-01-01\"\n      max=\"2026-12-31\"\n      value=\"2025-12-31\"\n      helperMessage=\"Entre 01/01/2026 e 31/12/2026.\"\n    />\n    <UaiInputDate\n      label=\"Com mensagens próprias\"\n      min=\"2026-01-01\"\n      max=\"2026-12-31\"\n      value=\"2027-01-15\"\n      minErrorMessage=\"O check-in começa em 01/01/2026.\"\n      maxErrorMessage=\"O check-in termina em 31/12/2026.\"\n    />\n  </div>\n);",
+          "snippet": "const Range = () => (\n  <div style={grid}>\n    <UaiInputDate\n      label=\"Check-in em 2026\"\n      min=\"2026-01-01\"\n      max=\"2026-12-31\"\n      value=\"2025-12-31\"\n      helperMessage=\"Entre 01-01-2026 e 31-12-2026.\"\n    />\n    <UaiInputDate\n      label=\"Com mensagens próprias\"\n      min=\"2026-01-01\"\n      max=\"2026-12-31\"\n      value=\"2027-01-15\"\n      minErrorMessage=\"O check-in começa em 01-01-2026.\"\n      maxErrorMessage=\"O check-in termina em 31-12-2026.\"\n    />\n  </div>\n);",
           "description": "`min` e `max` limitam a digitação válida e o calendário. Saia do campo com uma data fora do intervalo para ver a\nmensagem; sem `minErrorMessage` ou `maxErrorMessage`, aparece o texto padrão com o limite."
         },
         {
           "id": "uai-input-date--form",
           "name": "Form",
-          "snippet": "const Form = () => {\n  const [sent, setSent] = useState(null);\n  return (\n    <form\n      style={column}\n      onSubmit={(event) => {\n        event.preventDefault();\n        setSent(JSON.stringify(Object.fromEntries(new FormData(event.currentTarget))));\n      }}\n    >\n      <UaiInputDate\n        name=\"birth\"\n        label=\"Data de nascimento\"\n        value=\"1990-05-20\"\n        max=\"2026-01-01\"\n        required\n        requiredErrorMessage=\"Informe a data de nascimento.\"\n        dateErrorMessage=\"Essa data não existe.\"\n        maxErrorMessage=\"A data precisa ser anterior a 01/01/2026.\"\n      />\n      <div style={row}>\n        <UaiButton type=\"submit\">Enviar</UaiButton>\n        <UaiButton type=\"reset\" variant=\"outline\" color=\"content\">\n          Restaurar\n        </UaiButton>\n      </div>\n      <div style={caption}>{sent ? `Enviado: ${sent}` : 'Nada enviado ainda.'}</div>\n    </form>\n  );\n};",
+          "snippet": "const Form = () => {\n  const [sent, setSent] = useState(null);\n  return (\n    <form\n      style={column}\n      onSubmit={(event) => {\n        event.preventDefault();\n        setSent(JSON.stringify(Object.fromEntries(new FormData(event.currentTarget))));\n      }}\n    >\n      <UaiInputDate\n        name=\"birth\"\n        label=\"Data de nascimento\"\n        value=\"1990-05-20\"\n        max=\"2026-01-01\"\n        required\n        requiredErrorMessage=\"Informe a data de nascimento.\"\n        dateErrorMessage=\"Essa data não existe.\"\n        maxErrorMessage=\"A data precisa ser anterior a 01-01-2026.\"\n      />\n      <div style={row}>\n        <UaiButton type=\"submit\">Enviar</UaiButton>\n        <UaiButton type=\"reset\" variant=\"outline\" color=\"content\">\n          Restaurar\n        </UaiButton>\n      </div>\n      <div style={caption}>{sent ? `Enviado: ${sent}` : 'Nada enviado ainda.'}</div>\n    </form>\n  );\n};",
           "description": "Formulário nativo: com `name`, envia a data em ISO. Sem data válida, nada é enviado. O reset volta à data inicial."
         },
         {
@@ -382,7 +382,7 @@
         {
           "id": "uai-input-date--usage",
           "name": "Usage",
-          "snippet": "const Usage = () => {\n  const [date, setDate] = useState('');\n  const [sent, setSent] = useState('');\n\n  const handleSubmit = (event) => {\n    event.preventDefault();\n    setSent(new FormData(event.currentTarget).get('visit'));\n  };\n\n  return (\n    <form onSubmit={handleSubmit} style={column}>\n      <UaiInputDate\n        name=\"visit\"\n        label=\"Data da visita\"\n        helperMessage=\"Atendemos de janeiro a junho de 2026.\"\n        value={date}\n        min=\"2026-01-01\"\n        max=\"2026-06-30\"\n        required\n        requiredErrorMessage=\"Informe a data da visita.\"\n        minErrorMessage=\"Escolha uma data a partir de 01/01/2026.\"\n        maxErrorMessage=\"Escolha uma data até 30/06/2026.\"\n        onUaiChange={(event) => setDate(event.detail.value)}\n      />\n      <UaiButton type=\"submit\">Agendar</UaiButton>\n      {sent && <span style={caption}>Agendado para: {sent}</span>}\n    </form>\n  );\n};",
+          "snippet": "const Usage = () => {\n  const [date, setDate] = useState('');\n  const [sent, setSent] = useState('');\n\n  const handleSubmit = (event) => {\n    event.preventDefault();\n    setSent(new FormData(event.currentTarget).get('visit'));\n  };\n\n  return (\n    <form onSubmit={handleSubmit} style={column}>\n      <UaiInputDate\n        name=\"visit\"\n        label=\"Data da visita\"\n        helperMessage=\"Atendemos de janeiro a junho de 2026.\"\n        value={date}\n        min=\"2026-01-01\"\n        max=\"2026-06-30\"\n        required\n        requiredErrorMessage=\"Informe a data da visita.\"\n        minErrorMessage=\"Escolha uma data a partir de 01-01-2026.\"\n        maxErrorMessage=\"Escolha uma data até 30-06-2026.\"\n        onUaiChange={(event) => setDate(event.detail.value)}\n      />\n      <UaiButton type=\"submit\">Agendar</UaiButton>\n      {sent && <span style={caption}>Agendado para: {sent}</span>}\n    </form>\n  );\n};",
           "description": "Formulário de agendamento com a data controlada por estado e limitada por `min` e `max`. O valor enviado é ISO."
         }
       ],
@@ -2794,6 +2794,6 @@
   },
   "meta": {
     "docgen": "react-docgen",
-    "durationMs": 1610
+    "durationMs": 1467
   }
 }

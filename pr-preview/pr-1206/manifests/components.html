@@ -626,7 +626,7 @@
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.6s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.5s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -39391,7 +39391,7 @@ export const UaiTypo = createComponent({
     language=&quot;pt_BR&quot;
     placeholder=&quot;&quot;
     size=&quot;medium&quot;
-    helperMessage=&quot;Digite só os números; as barras entram sozinhas.&quot;
+    helperMessage=&quot;Digite só os números; os hifens entram sozinhas.&quot;
     errorMessage=&quot;Informe uma data válida.&quot;
     successMessage=&quot;Data confirmada.&quot;
     requiredErrorMessage=&quot;Informe a data.&quot;
@@ -39476,7 +39476,7 @@ Use os botões para focar e tirar o foco por código (`setFocus()` e `removeFocu
                 <span class="badge ok">story ok</span>
               </div>
               
-              <div class="hint">O mesmo `value` ISO nos três idiomas, sem `label` nem `placeholder`: muda o formato exibido e os textos padrão.</div>
+              <div class="hint">O mesmo `value` ISO nos três idiomas: muda os textos padrão, mantendo o formato DD-MM-YYYY.</div>
               <pre><code>const Languages = () =&gt; (
   &lt;div style={grid}&gt;
     {[&#39;pt_BR&#39;, &#39;en_US&#39;, &#39;es_ES&#39;].map((language) =&gt; (
@@ -39505,15 +39505,15 @@ mensagem; sem `minErrorMessage` ou `maxErrorMessage`, aparece o texto padrão co
       min=&quot;2026-01-01&quot;
       max=&quot;2026-12-31&quot;
       value=&quot;2025-12-31&quot;
-      helperMessage=&quot;Entre 01/01/2026 e 31/12/2026.&quot;
+      helperMessage=&quot;Entre 01-01-2026 e 31-12-2026.&quot;
     /&gt;
     &lt;UaiInputDate
       label=&quot;Com mensagens próprias&quot;
       min=&quot;2026-01-01&quot;
       max=&quot;2026-12-31&quot;
       value=&quot;2027-01-15&quot;
-      minErrorMessage=&quot;O check-in começa em 01/01/2026.&quot;
-      maxErrorMessage=&quot;O check-in termina em 31/12/2026.&quot;
+      minErrorMessage=&quot;O check-in começa em 01-01-2026.&quot;
+      maxErrorMessage=&quot;O check-in termina em 31-12-2026.&quot;
     /&gt;
   &lt;/div&gt;
 );</code></pre>
@@ -39544,7 +39544,7 @@ mensagem; sem `minErrorMessage` ou `maxErrorMessage`, aparece o texto padrão co
         required
         requiredErrorMessage=&quot;Informe a data de nascimento.&quot;
         dateErrorMessage=&quot;Essa data não existe.&quot;
-        maxErrorMessage=&quot;A data precisa ser anterior a 01/01/2026.&quot;
+        maxErrorMessage=&quot;A data precisa ser anterior a 01-01-2026.&quot;
       /&gt;
       &lt;div style={row}&gt;
         &lt;UaiButton type=&quot;submit&quot;&gt;Enviar&lt;/UaiButton&gt;
@@ -39615,8 +39615,8 @@ mensagem; sem `minErrorMessage` ou `maxErrorMessage`, aparece o texto padrão co
         max=&quot;2026-06-30&quot;
         required
         requiredErrorMessage=&quot;Informe a data da visita.&quot;
-        minErrorMessage=&quot;Escolha uma data a partir de 01/01/2026.&quot;
-        maxErrorMessage=&quot;Escolha uma data até 30/06/2026.&quot;
+        minErrorMessage=&quot;Escolha uma data a partir de 01-01-2026.&quot;
+        maxErrorMessage=&quot;Escolha uma data até 30-06-2026.&quot;
         onUaiChange={(event) =&gt; setDate(event.detail.value)}
       /&gt;
       &lt;UaiButton type=&quot;submit&quot;&gt;Agendar&lt;/UaiButton&gt;
@@ -89744,7 +89744,7 @@ export const UaiTypo = createComponent({
     language=&quot;pt_BR&quot;
     placeholder=&quot;&quot;
     size=&quot;medium&quot;
-    helperMessage=&quot;Digite só os números; as barras entram sozinhas.&quot;
+    helperMessage=&quot;Digite só os números; os hifens entram sozinhas.&quot;
     errorMessage=&quot;Informe uma data válida.&quot;
     successMessage=&quot;Data confirmada.&quot;
     requiredErrorMessage=&quot;Informe a data.&quot;
@@ -89829,7 +89829,7 @@ Use os botões para focar e tirar o foco por código (`setFocus()` e `removeFocu
                 <span class="badge ok">story ok</span>
               </div>
               
-              <div class="hint">O mesmo `value` ISO nos três idiomas, sem `label` nem `placeholder`: muda o formato exibido e os textos padrão.</div>
+              <div class="hint">O mesmo `value` ISO nos três idiomas: muda os textos padrão, mantendo o formato DD-MM-YYYY.</div>
               <pre><code>const Languages = () =&gt; (
   &lt;div style={grid}&gt;
     {[&#39;pt_BR&#39;, &#39;en_US&#39;, &#39;es_ES&#39;].map((language) =&gt; (
@@ -89858,15 +89858,15 @@ mensagem; sem `minErrorMessage` ou `maxErrorMessage`, aparece o texto padrão co
       min=&quot;2026-01-01&quot;
       max=&quot;2026-12-31&quot;
       value=&quot;2025-12-31&quot;
-      helperMessage=&quot;Entre 01/01/2026 e 31/12/2026.&quot;
+      helperMessage=&quot;Entre 01-01-2026 e 31-12-2026.&quot;
     /&gt;
     &lt;UaiInputDate
       label=&quot;Com mensagens próprias&quot;
       min=&quot;2026-01-01&quot;
       max=&quot;2026-12-31&quot;
       value=&quot;2027-01-15&quot;
-      minErrorMessage=&quot;O check-in começa em 01/01/2026.&quot;
-      maxErrorMessage=&quot;O check-in termina em 31/12/2026.&quot;
+      minErrorMessage=&quot;O check-in começa em 01-01-2026.&quot;
+      maxErrorMessage=&quot;O check-in termina em 31-12-2026.&quot;
     /&gt;
   &lt;/div&gt;
 );</code></pre>
@@ -89897,7 +89897,7 @@ mensagem; sem `minErrorMessage` ou `maxErrorMessage`, aparece o texto padrão co
         required
         requiredErrorMessage=&quot;Informe a data de nascimento.&quot;
         dateErrorMessage=&quot;Essa data não existe.&quot;
-        maxErrorMessage=&quot;A data precisa ser anterior a 01/01/2026.&quot;
+        maxErrorMessage=&quot;A data precisa ser anterior a 01-01-2026.&quot;
       /&gt;
       &lt;div style={row}&gt;
         &lt;UaiButton type=&quot;submit&quot;&gt;Enviar&lt;/UaiButton&gt;
@@ -89968,8 +89968,8 @@ mensagem; sem `minErrorMessage` ou `maxErrorMessage`, aparece o texto padrão co
         max=&quot;2026-06-30&quot;
         required
         requiredErrorMessage=&quot;Informe a data da visita.&quot;
-        minErrorMessage=&quot;Escolha uma data a partir de 01/01/2026.&quot;
-        maxErrorMessage=&quot;Escolha uma data até 30/06/2026.&quot;
+        minErrorMessage=&quot;Escolha uma data a partir de 01-01-2026.&quot;
+        maxErrorMessage=&quot;Escolha uma data até 30-06-2026.&quot;
         onUaiChange={(event) =&gt; setDate(event.detail.value)}
       /&gt;
       &lt;UaiButton type=&quot;submit&quot;&gt;Agendar&lt;/UaiButton&gt;
