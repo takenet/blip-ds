@@ -620,13 +620,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">73/73 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">73/73 infos</a><span class="filter-pill ok" aria-disabled="true">279 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/279 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">24 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">73/73 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">73/73 infos</a><span class="filter-pill ok" aria-disabled="true">278 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/278 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">24 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.8s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.1s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -21816,182 +21816,6 @@ export const ListWithPagination = () =&gt; {
   </div>
 </article>
 <article
-  id="uai-paper"
-  class="card 
-  has-error
-  has-info
-  no-story-error
-  no-story-warning
-  
-  no-doc-error"
-  role="listitem"
-  aria-label="Paper">
-  <div class="head">
-    <div class="title">
-      <h2><span class="status-dot dot-err"></span> Paper</h2>
-      <div class="badges">
-        <label for="c-44-uai-paper-err" class="badge err as-toggle">API error</label>
-        <label for="c-44-uai-paper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-44-uai-paper-stories" class="badge ok as-toggle">2 stories</label>
-        
-        
-      </div>
-    </div>
-    <div class="meta" title="./src/components/uai-paper/uai-paper.stories.jsx">uai-paper · ./src/components/uai-paper/uai-paper.stories.jsx</div>
-    
-    
-    
-  </div>
-
-  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-44-uai-paper-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-44-uai-paper-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-44-uai-paper-stories" class="tg tg-stories" type="checkbox" hidden />
-  
-  
-  
-
-  <div class="panels">
-    
-        <div class="panel panel-err">
-          
-    <div class="note err">
-      <div class="note-title">API error</div>
-      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-   7 | const PAPER_WIDTH = &#39;calc(var(--uai-sizing-5xl) * 2)&#39;;
-   8 |
-&gt;  9 | export default {
-     | ^
-  10 |   title: &#39;UAI/Paper&#39;,
-  11 |   parameters: {
-  12 |     docs: {
-
-./src/components/uai-paper/uai-paper.stories.jsx:
-import React from &#39;react&#39;;
-import DocumentationTemplate from &#39;./uai-paper.mdx&#39;;
-import { UaiPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
-
-// Sample dimensions built from UAI sizing tokens.
-const PAPER_HEIGHT = &#39;var(--uai-sizing-5xl)&#39;;
-const PAPER_WIDTH = &#39;calc(var(--uai-sizing-5xl) * 2)&#39;;
-
-export default {
-  title: &#39;UAI/Paper&#39;,
-  parameters: {
-    docs: {
-      page: DocumentationTemplate,
-    },
-  },
-};
-
-export const Properties = (args) =&gt; {
-  return (
-      &lt;uai-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}&gt;&lt;/uai-paper&gt;
-);
-} 
-
-Properties.args = {
-  border: false,
-  elevation: &#39;primary&#39;,
-  height: PAPER_HEIGHT,
-  width: PAPER_WIDTH,
-};
-
-Properties.argTypes = {
-  border: {
-    table: {
-      defaultValue: { summary: &#39;false&#39; },
-    },
-    control: &#39;boolean&#39;,
-  },
-  elevation: {
-    table: {
-      defaultValue: { summary: &#39;primary&#39; },
-    },
-    options: [&quot;primary&quot;, &quot;secondary&quot;, &quot;static&quot;, &quot;none&quot;],
-    control: &#39;select&#39;,
-  },
-  height: {
-    table: {
-      defaultValue: { summary: PAPER_HEIGHT },
-    },
-    control: &#39;text&#39;,
-  },
-  width: {
-    table: {
-      defaultValue: { summary: PAPER_WIDTH },
-    },
-    control: &#39;text&#39;,
-  },
-}
-
-export const FrameworkReact = () =&gt; {
-  return (
-      &lt;UaiPaper border={false} elevation=&quot;primary&quot; height={PAPER_HEIGHT} width={PAPER_WIDTH}&gt;&lt;/UaiPaper&gt;
-);
-} </code></pre></div>
-    </div>
-        </div>
-    
-        <div class="panel panel-info">
-          
-    <div class="note info">
-      <div class="note-title">Info</div>
-      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
-    </div>
-        </div>
-    
-    
-        <div class="panel panel-stories">
-          
-          
-          
-          <div class="note ok">
-                <div class="row">
-                  <span class="ex-name">Imports</span>
-                </div>
-                <pre><code>import { UaiPaper } from 'blip-ds';</code></pre>
-              </div>
-          
-          
-            <div class="note ok">
-              <div class="row">
-                <span class="ex-name">Properties</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const Properties = () =&gt; {
-    return (
-        &lt;uai-paper
-            border={false}
-            elevation=&quot;primary&quot;
-            height=&quot;var(--uai-sizing-5xl)&quot;
-            width=&quot;calc(var(--uai-sizing-5xl) * 2)&quot; /&gt;
-    );
-};</code></pre>
-              
-            </div>
-            <div class="note ok">
-              <div class="row">
-                <span class="ex-name">Framework React</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const FrameworkReact = () =&gt; {
-  return (
-      &lt;UaiPaper border={false} elevation=&quot;primary&quot; height={PAPER_HEIGHT} width={PAPER_WIDTH}&gt;&lt;/UaiPaper&gt;
-);
-};</code></pre>
-              
-            </div>
-        </div>
-    
-    
-  </div>
-</article>
-<article
   id="components-progress-bar"
   class="card 
   has-error
@@ -22006,9 +21830,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ProgressBar</h2>
       <div class="badges">
-        <label for="c-45-components-progress-bar-err" class="badge err as-toggle">API error</label>
-        <label for="c-45-components-progress-bar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-45-components-progress-bar-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-44-components-progress-bar-err" class="badge err as-toggle">API error</label>
+        <label for="c-44-components-progress-bar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-44-components-progress-bar-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -22020,9 +21844,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-45-components-progress-bar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-45-components-progress-bar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-45-components-progress-bar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-44-components-progress-bar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-44-components-progress-bar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-44-components-progress-bar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -22180,9 +22004,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> RadioButton</h2>
       <div class="badges">
-        <label for="c-46-components-radio-button-err" class="badge err as-toggle">API error</label>
-        <label for="c-46-components-radio-button-info" class="badge info as-toggle">1 info</label>
-        <label for="c-46-components-radio-button-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-45-components-radio-button-err" class="badge err as-toggle">API error</label>
+        <label for="c-45-components-radio-button-info" class="badge info as-toggle">1 info</label>
+        <label for="c-45-components-radio-button-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -22194,9 +22018,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-46-components-radio-button-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-46-components-radio-button-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-46-components-radio-button-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-45-components-radio-button-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-45-components-radio-button-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-45-components-radio-button-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -22398,9 +22222,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> RichText</h2>
       <div class="badges">
-        <label for="c-47-components-richtext-err" class="badge err as-toggle">API error</label>
-        <label for="c-47-components-richtext-info" class="badge info as-toggle">1 info</label>
-        <label for="c-47-components-richtext-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-46-components-richtext-err" class="badge err as-toggle">API error</label>
+        <label for="c-46-components-richtext-info" class="badge info as-toggle">1 info</label>
+        <label for="c-46-components-richtext-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -22412,9 +22236,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-47-components-richtext-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-47-components-richtext-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-47-components-richtext-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-46-components-richtext-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-46-components-richtext-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-46-components-richtext-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -22708,9 +22532,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Search</h2>
       <div class="badges">
-        <label for="c-48-snippets-search-err" class="badge err as-toggle">API error</label>
-        <label for="c-48-snippets-search-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-48-snippets-search-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-47-snippets-search-err" class="badge err as-toggle">API error</label>
+        <label for="c-47-snippets-search-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-47-snippets-search-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -22722,9 +22546,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-48-snippets-search-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-48-snippets-search-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-48-snippets-search-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-47-snippets-search-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-47-snippets-search-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-47-snippets-search-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -22894,9 +22718,9 @@ export const SearchWithOptions = (args) =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Select</h2>
       <div class="badges">
-        <label for="c-49-components-select-err" class="badge err as-toggle">API error</label>
-        <label for="c-49-components-select-info" class="badge info as-toggle">1 info</label>
-        <label for="c-49-components-select-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-48-components-select-err" class="badge err as-toggle">API error</label>
+        <label for="c-48-components-select-info" class="badge info as-toggle">1 info</label>
+        <label for="c-48-components-select-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -22908,9 +22732,9 @@ export const SearchWithOptions = (args) =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-49-components-select-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-49-components-select-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-49-components-select-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-48-components-select-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-48-components-select-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-48-components-select-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -23212,9 +23036,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> SelectChips</h2>
       <div class="badges">
-        <label for="c-50-components-select-chips-err" class="badge err as-toggle">API error</label>
-        <label for="c-50-components-select-chips-info" class="badge info as-toggle">1 info</label>
-        <label for="c-50-components-select-chips-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-49-components-select-chips-err" class="badge err as-toggle">API error</label>
+        <label for="c-49-components-select-chips-info" class="badge info as-toggle">1 info</label>
+        <label for="c-49-components-select-chips-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -23226,9 +23050,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-50-components-select-chips-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-50-components-select-chips-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-50-components-select-chips-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-49-components-select-chips-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-49-components-select-chips-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-49-components-select-chips-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -23569,9 +23393,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Selects</h2>
       <div class="badges">
-        <label for="c-51-snippets-selects-err" class="badge err as-toggle">API error</label>
-        <label for="c-51-snippets-selects-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-51-snippets-selects-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-50-snippets-selects-err" class="badge err as-toggle">API error</label>
+        <label for="c-50-snippets-selects-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-50-snippets-selects-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -23583,9 +23407,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-51-snippets-selects-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-51-snippets-selects-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-51-snippets-selects-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-50-snippets-selects-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-50-snippets-selects-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-50-snippets-selects-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -23945,9 +23769,9 @@ export const CompleteSelectOption = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Sidebar</h2>
       <div class="badges">
-        <label for="c-52-components-sidebar-err" class="badge err as-toggle">API error</label>
-        <label for="c-52-components-sidebar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-52-components-sidebar-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-51-components-sidebar-err" class="badge err as-toggle">API error</label>
+        <label for="c-51-components-sidebar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-51-components-sidebar-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -23959,9 +23783,9 @@ export const CompleteSelectOption = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-52-components-sidebar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-52-components-sidebar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-52-components-sidebar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-51-components-sidebar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-51-components-sidebar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-51-components-sidebar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -24335,9 +24159,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Sidebar+Content</h2>
       <div class="badges">
-        <label for="c-53-templates-portal-sidebar-content-err" class="badge err as-toggle">API error</label>
-        <label for="c-53-templates-portal-sidebar-content-info" class="badge info as-toggle">1 info</label>
-        <label for="c-53-templates-portal-sidebar-content-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-52-templates-portal-sidebar-content-err" class="badge err as-toggle">API error</label>
+        <label for="c-52-templates-portal-sidebar-content-info" class="badge info as-toggle">1 info</label>
+        <label for="c-52-templates-portal-sidebar-content-stories" class="badge ok as-toggle">1 story</label>
         
         
       </div>
@@ -24349,9 +24173,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-53-templates-portal-sidebar-content-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-53-templates-portal-sidebar-content-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-53-templates-portal-sidebar-content-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-52-templates-portal-sidebar-content-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-52-templates-portal-sidebar-content-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-52-templates-portal-sidebar-content-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -24618,9 +24442,9 @@ export const SidebarContent = (args) =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Skeleton</h2>
       <div class="badges">
-        <label for="c-54-components-skeleton-err" class="badge err as-toggle">API error</label>
-        <label for="c-54-components-skeleton-info" class="badge info as-toggle">1 info</label>
-        <label for="c-54-components-skeleton-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-53-components-skeleton-err" class="badge err as-toggle">API error</label>
+        <label for="c-53-components-skeleton-info" class="badge info as-toggle">1 info</label>
+        <label for="c-53-components-skeleton-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -24632,9 +24456,9 @@ export const SidebarContent = (args) =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-54-components-skeleton-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-54-components-skeleton-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-54-components-skeleton-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-53-components-skeleton-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-53-components-skeleton-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-53-components-skeleton-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -24800,9 +24624,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Slider</h2>
       <div class="badges">
-        <label for="c-55-components-slider-err" class="badge err as-toggle">API error</label>
-        <label for="c-55-components-slider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-55-components-slider-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-54-components-slider-err" class="badge err as-toggle">API error</label>
+        <label for="c-54-components-slider-info" class="badge info as-toggle">1 info</label>
+        <label for="c-54-components-slider-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -24814,9 +24638,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-55-components-slider-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-55-components-slider-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-55-components-slider-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-54-components-slider-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-54-components-slider-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-54-components-slider-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -25094,9 +24918,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Stepper</h2>
       <div class="badges">
-        <label for="c-56-components-stepper-err" class="badge err as-toggle">API error</label>
-        <label for="c-56-components-stepper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-56-components-stepper-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-55-components-stepper-err" class="badge err as-toggle">API error</label>
+        <label for="c-55-components-stepper-info" class="badge info as-toggle">1 info</label>
+        <label for="c-55-components-stepper-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -25108,9 +24932,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-56-components-stepper-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-56-components-stepper-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-56-components-stepper-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-55-components-stepper-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-55-components-stepper-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-55-components-stepper-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -25614,9 +25438,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Switch</h2>
       <div class="badges">
-        <label for="c-57-components-switch-err" class="badge err as-toggle">API error</label>
-        <label for="c-57-components-switch-info" class="badge info as-toggle">1 info</label>
-        <label for="c-57-components-switch-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-56-components-switch-err" class="badge err as-toggle">API error</label>
+        <label for="c-56-components-switch-info" class="badge info as-toggle">1 info</label>
+        <label for="c-56-components-switch-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -25628,9 +25452,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-57-components-switch-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-57-components-switch-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-57-components-switch-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-56-components-switch-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-56-components-switch-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-56-components-switch-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -25820,9 +25644,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Table</h2>
       <div class="badges">
-        <label for="c-58-components-table-err" class="badge err as-toggle">API error</label>
-        <label for="c-58-components-table-info" class="badge info as-toggle">1 info</label>
-        <label for="c-58-components-table-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-57-components-table-err" class="badge err as-toggle">API error</label>
+        <label for="c-57-components-table-info" class="badge info as-toggle">1 info</label>
+        <label for="c-57-components-table-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -25834,9 +25658,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-58-components-table-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-58-components-table-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-58-components-table-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-57-components-table-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-57-components-table-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-57-components-table-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -26487,9 +26311,9 @@ export const TableSorting = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Tables</h2>
       <div class="badges">
-        <label for="c-59-snippets-tables-err" class="badge err as-toggle">API error</label>
-        <label for="c-59-snippets-tables-info" class="badge info as-toggle">1 info</label>
-        <label for="c-59-snippets-tables-stories" class="badge ok as-toggle">9 stories</label>
+        <label for="c-58-snippets-tables-err" class="badge err as-toggle">API error</label>
+        <label for="c-58-snippets-tables-info" class="badge info as-toggle">1 info</label>
+        <label for="c-58-snippets-tables-stories" class="badge ok as-toggle">9 stories</label>
         
         
       </div>
@@ -26501,9 +26325,9 @@ export const TableSorting = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-59-snippets-tables-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-59-snippets-tables-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-59-snippets-tables-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-58-snippets-tables-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-58-snippets-tables-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-58-snippets-tables-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -28386,9 +28210,9 @@ export const TableSelected = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Tabs</h2>
       <div class="badges">
-        <label for="c-60-components-tabs-err" class="badge err as-toggle">API error</label>
-        <label for="c-60-components-tabs-info" class="badge info as-toggle">1 info</label>
-        <label for="c-60-components-tabs-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-59-components-tabs-err" class="badge err as-toggle">API error</label>
+        <label for="c-59-components-tabs-info" class="badge info as-toggle">1 info</label>
+        <label for="c-59-components-tabs-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -28400,9 +28224,9 @@ export const TableSelected = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-60-components-tabs-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-60-components-tabs-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-60-components-tabs-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-59-components-tabs-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-59-components-tabs-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-59-components-tabs-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -28954,9 +28778,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Themeprovider</h2>
       <div class="badges">
-        <label for="c-61-components-theme-provider-err" class="badge err as-toggle">API error</label>
-        <label for="c-61-components-theme-provider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-61-components-theme-provider-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-60-components-theme-provider-err" class="badge err as-toggle">API error</label>
+        <label for="c-60-components-theme-provider-info" class="badge info as-toggle">1 info</label>
+        <label for="c-60-components-theme-provider-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -28968,9 +28792,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-61-components-theme-provider-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-61-components-theme-provider-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-61-components-theme-provider-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-60-components-theme-provider-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-60-components-theme-provider-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-60-components-theme-provider-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -29184,9 +29008,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Toast</h2>
       <div class="badges">
-        <label for="c-62-components-toast-err" class="badge err as-toggle">API error</label>
-        <label for="c-62-components-toast-info" class="badge info as-toggle">1 info</label>
-        <label for="c-62-components-toast-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-61-components-toast-err" class="badge err as-toggle">API error</label>
+        <label for="c-61-components-toast-info" class="badge info as-toggle">1 info</label>
+        <label for="c-61-components-toast-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -29198,9 +29022,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-62-components-toast-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-62-components-toast-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-62-components-toast-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-61-components-toast-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-61-components-toast-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-61-components-toast-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -29521,9 +29345,9 @@ export const Methods = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Tooltip</h2>
       <div class="badges">
-        <label for="c-63-components-tooltip-err" class="badge err as-toggle">API error</label>
-        <label for="c-63-components-tooltip-info" class="badge info as-toggle">1 info</label>
-        <label for="c-63-components-tooltip-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-62-components-tooltip-err" class="badge err as-toggle">API error</label>
+        <label for="c-62-components-tooltip-info" class="badge info as-toggle">1 info</label>
+        <label for="c-62-components-tooltip-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -29535,9 +29359,9 @@ export const Methods = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-63-components-tooltip-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-63-components-tooltip-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-63-components-tooltip-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-62-components-tooltip-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-62-components-tooltip-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-62-components-tooltip-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -29766,9 +29590,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Typo</h2>
       <div class="badges">
-        <label for="c-64-components-typo-err" class="badge err as-toggle">API error</label>
-        <label for="c-64-components-typo-info" class="badge info as-toggle">1 info</label>
-        <label for="c-64-components-typo-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-63-components-typo-err" class="badge err as-toggle">API error</label>
+        <label for="c-63-components-typo-info" class="badge info as-toggle">1 info</label>
+        <label for="c-63-components-typo-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -29780,9 +29604,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-64-components-typo-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-64-components-typo-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-64-components-typo-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-63-components-typo-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-63-components-typo-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-63-components-typo-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -29956,9 +29780,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> UaiAvatar</h2>
       <div class="badges">
-        <label for="c-65-uai-avatar-err" class="badge err as-toggle">API error</label>
-        <label for="c-65-uai-avatar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-65-uai-avatar-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-64-uai-avatar-err" class="badge err as-toggle">API error</label>
+        <label for="c-64-uai-avatar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-64-uai-avatar-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -29970,9 +29794,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-65-uai-avatar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-65-uai-avatar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-65-uai-avatar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-64-uai-avatar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-64-uai-avatar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-64-uai-avatar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -31132,9 +30956,9 @@ export const UaiTypo = createComponent({
     <div class="title">
       <h2><span class="status-dot dot-err"></span> UaiButton</h2>
       <div class="badges">
-        <label for="c-66-uai-button-err" class="badge err as-toggle">API error</label>
-        <label for="c-66-uai-button-info" class="badge info as-toggle">1 info</label>
-        <label for="c-66-uai-button-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-65-uai-button-err" class="badge err as-toggle">API error</label>
+        <label for="c-65-uai-button-info" class="badge info as-toggle">1 info</label>
+        <label for="c-65-uai-button-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -31146,9 +30970,9 @@ export const UaiTypo = createComponent({
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-66-uai-button-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-66-uai-button-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-66-uai-button-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-65-uai-button-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-65-uai-button-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-65-uai-button-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -32380,9 +32204,9 @@ import { UaiButton, UaiThemeProvider } from 'blip-ds-react';</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> UaiGrid</h2>
       <div class="badges">
-        <label for="c-67-uai-grid-err" class="badge err as-toggle">API error</label>
-        <label for="c-67-uai-grid-info" class="badge info as-toggle">1 info</label>
-        <label for="c-67-uai-grid-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-66-uai-grid-err" class="badge err as-toggle">API error</label>
+        <label for="c-66-uai-grid-info" class="badge info as-toggle">1 info</label>
+        <label for="c-66-uai-grid-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -32394,9 +32218,9 @@ import { UaiButton, UaiThemeProvider } from 'blip-ds-react';</code></pre>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-67-uai-grid-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-67-uai-grid-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-67-uai-grid-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-66-uai-grid-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-66-uai-grid-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-66-uai-grid-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -33613,9 +33437,9 @@ export const UaiTypo = createComponent({
     <div class="title">
       <h2><span class="status-dot dot-err"></span> UaiIcon</h2>
       <div class="badges">
-        <label for="c-68-uai-icon-err" class="badge err as-toggle">API error</label>
-        <label for="c-68-uai-icon-info" class="badge info as-toggle">1 info</label>
-        <label for="c-68-uai-icon-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-67-uai-icon-err" class="badge err as-toggle">API error</label>
+        <label for="c-67-uai-icon-info" class="badge info as-toggle">1 info</label>
+        <label for="c-67-uai-icon-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -33627,9 +33451,9 @@ export const UaiTypo = createComponent({
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-68-uai-icon-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-68-uai-icon-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-68-uai-icon-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-67-uai-icon-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-67-uai-icon-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-67-uai-icon-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -34853,9 +34677,9 @@ export const UaiTypo = createComponent({
     <div class="title">
       <h2><span class="status-dot dot-err"></span> UaiNavbar</h2>
       <div class="badges">
-        <label for="c-69-uai-navbar-err" class="badge err as-toggle">API error</label>
-        <label for="c-69-uai-navbar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-69-uai-navbar-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-68-uai-navbar-err" class="badge err as-toggle">API error</label>
+        <label for="c-68-uai-navbar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-68-uai-navbar-stories" class="badge ok as-toggle">1 story</label>
         
         
       </div>
@@ -34867,9 +34691,9 @@ export const UaiTypo = createComponent({
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-69-uai-navbar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-69-uai-navbar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-69-uai-navbar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-68-uai-navbar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-68-uai-navbar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-68-uai-navbar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -35970,6 +35794,1132 @@ export const UaiTypo = createComponent({
         &lt;BdsAvatar name=&quot;Dwight Schrute&quot; size=&quot;small&quot; /&gt;
     &lt;/UaiNavbarContent&gt;
 &lt;/UaiNavbar&gt;;</code></pre>
+              
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
+<article
+  id="uai-paper"
+  class="card 
+  has-error
+  has-info
+  no-story-error
+  no-story-warning
+  
+  no-doc-error"
+  role="listitem"
+  aria-label="UaiPaper">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-err"></span> UaiPaper</h2>
+      <div class="badges">
+        <label for="c-69-uai-paper-err" class="badge err as-toggle">API error</label>
+        <label for="c-69-uai-paper-info" class="badge info as-toggle">1 info</label>
+        <label for="c-69-uai-paper-stories" class="badge ok as-toggle">1 story</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/uai-paper/uai-paper.stories.jsx">uai-paper · ./src/components/uai-paper/uai-paper.stories.jsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  <input id="c-69-uai-paper-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-69-uai-paper-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-69-uai-paper-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  
+
+  <div class="panels">
+    
+        <div class="panel panel-err">
+          
+    <div class="note err">
+      <div class="note-title">API error</div>
+      <div class="note-body"><pre><code>File: /home/runner/work/blip-ds/blip-ds/blip-ds-react/dist/components.js
+Error:
+No suitable component definition found.
+You can debug your component file in this playground: https://react-docgen.dev/playground
+Code:
+&#39;use client&#39;;
+import { createComponent } from &#39;@stencil/react-output-target/runtime&#39;;
+import React from &#39;react&#39;;
+import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from &quot;blip-ds/dist/components/bds-accordion-body.js&quot;;
+import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from &quot;blip-ds/dist/components/bds-accordion-group.js&quot;;
+import { BdsAccordionHeader as BdsAccordionHeaderElement, defineCustomElement as defineBdsAccordionHeader } from &quot;blip-ds/dist/components/bds-accordion-header.js&quot;;
+import { BdsAccordion as BdsAccordionElement, defineCustomElement as defineBdsAccordion } from &quot;blip-ds/dist/components/bds-accordion.js&quot;;
+import { BdsAlertActions as BdsAlertActionsElement, defineCustomElement as defineBdsAlertActions } from &quot;blip-ds/dist/components/bds-alert-actions.js&quot;;
+import { BdsAlertBody as BdsAlertBodyElement, defineCustomElement as defineBdsAlertBody } from &quot;blip-ds/dist/components/bds-alert-body.js&quot;;
+import { BdsAlertHeader as BdsAlertHeaderElement, defineCustomElement as defineBdsAlertHeader } from &quot;blip-ds/dist/components/bds-alert-header.js&quot;;
+import { BdsAlert as BdsAlertElement, defineCustomElement as defineBdsAlert } from &quot;blip-ds/dist/components/bds-alert.js&quot;;
+import { BdsAutocomplete as BdsAutocompleteElement, defineCustomElement as defineBdsAutocomplete } from &quot;blip-ds/dist/components/bds-autocomplete.js&quot;;
+import { BdsAvatarGroup as BdsAvatarGroupElement, defineCustomElement as defineBdsAvatarGroup } from &quot;blip-ds/dist/components/bds-avatar-group.js&quot;;
+import { BdsAvatar as BdsAvatarElement, defineCustomElement as defineBdsAvatar } from &quot;blip-ds/dist/components/bds-avatar.js&quot;;
+import { BdsBadge as BdsBadgeElement, defineCustomElement as defineBdsBadge } from &quot;blip-ds/dist/components/bds-badge.js&quot;;
+import { BdsBannerLink as BdsBannerLinkElement, defineCustomElement as defineBdsBannerLink } from &quot;blip-ds/dist/components/bds-banner-link.js&quot;;
+import { BdsBanner as BdsBannerElement, defineCustomElement as defineBdsBanner } from &quot;blip-ds/dist/components/bds-banner.js&quot;;
+import { BdsBreadcrumb as BdsBreadcrumbElement, defineCustomElement as defineBdsBreadcrumb } from &quot;blip-ds/dist/components/bds-breadcrumb.js&quot;;
+import { BdsButtonGroup as BdsButtonGroupElement, defineCustomElement as defineBdsButtonGroup } from &quot;blip-ds/dist/components/bds-button-group.js&quot;;
+import { BdsButtonIcon as BdsButtonIconElement, defineCustomElement as defineBdsButtonIcon } from &quot;blip-ds/dist/components/bds-button-icon.js&quot;;
+import { BdsButton as BdsButtonElement, defineCustomElement as defineBdsButton } from &quot;blip-ds/dist/components/bds-button.js&quot;;
+import { BdsCardBody as BdsCardBodyElement, defineCustomElement as defineBdsCardBody } from &quot;blip-ds/dist/components/bds-card-body.js&quot;;
+import { BdsCardColor as BdsCardColorElement, defineCustomElement as defineBdsCardColor } from &quot;blip-ds/dist/components/bds-card-color.js&quot;;
+import { BdsCardFooter as BdsCardFooterElement, defineCustomElement as defineBdsCardFooter } from &quot;blip-ds/dist/components/bds-card-footer.js&quot;;
+import { BdsCardHeader as BdsCardHeaderElement, defineCustomElement as defineBdsCardHeader } from &quot;blip-ds/dist/components/bds-card-header.js&quot;;
+import { BdsCardSubtitle as BdsCardSubtitleElement, defineCustomElement as defineBdsCardSubtitle } from &quot;blip-ds/dist/components/bds-card-subtitle.js&quot;;
+import { BdsCardTitle as BdsCardTitleElement, defineCustomElement as defineBdsCardTitle } from &quot;blip-ds/dist/components/bds-card-title.js&quot;;
+import { BdsCard as BdsCardElement, defineCustomElement as defineBdsCard } from &quot;blip-ds/dist/components/bds-card.js&quot;;
+import { BdsCarouselItem as BdsCarouselItemElement, defineCustomElement as defineBdsCarouselItem } from &quot;blip-ds/dist/components/bds-carousel-item.js&quot;;
+import { BdsCarousel as BdsCarouselElement, defineCustomElement as defineBdsCarousel } from &quot;blip-ds/dist/components/bds-carousel.js&quot;;
+import { BdsCheckbox as BdsCheckboxElement, defineCustomElement as defineBdsCheckbox } from &quot;blip-ds/dist/components/bds-checkbox.js&quot;;
+import { BdsChipClickable as BdsChipClickableElement, defineCustomElement as defineBdsChipClickable } from &quot;blip-ds/dist/components/bds-chip-clickable.js&quot;;
+import { BdsChipSelected as BdsChipSelectedElement, defineCustomElement as defineBdsChipSelected } from &quot;blip-ds/dist/components/bds-chip-selected.js&quot;;
+import { BdsChipTag as BdsChipTagElement, defineCustomElement as defineBdsChipTag } from &quot;blip-ds/dist/components/bds-chip-tag.js&quot;;
+import { BdsChip as BdsChipElement, defineCustomElement as defineBdsChip } from &quot;blip-ds/dist/components/bds-chip.js&quot;;
+import { BdsCounterText as BdsCounterTextElement, defineCustomElement as defineBdsCounterText } from &quot;blip-ds/dist/components/bds-counter-text.js&quot;;
+import { BdsDataTable as BdsDataTableElement, defineCustomElement as defineBdsDataTable } from &quot;blip-ds/dist/components/bds-data-table.js&quot;;
+import { BdsDatepickerPeriod as BdsDatepickerPeriodElement, defineCustomElement as defineBdsDatepickerPeriod } from &quot;blip-ds/dist/components/bds-datepicker-period.js&quot;;
+import { BdsDatepickerSingle as BdsDatepickerSingleElement, defineCustomElement as defineBdsDatepickerSingle } from &quot;blip-ds/dist/components/bds-datepicker-single.js&quot;;
+import { BdsDatepicker as BdsDatepickerElement, defineCustomElement as defineBdsDatepicker } from &quot;blip-ds/dist/components/bds-datepicker.js&quot;;
+import { BdsDivider as BdsDividerElement, defineCustomElement as defineBdsDivider } from &quot;blip-ds/dist/components/bds-divider.js&quot;;
+import { BdsDropdown as BdsDropdownElement, defineCustomElement as defineBdsDropdown } from &quot;blip-ds/dist/components/bds-dropdown.js&quot;;
+import { BdsExpansionPanelBody as BdsExpansionPanelBodyElement, defineCustomElement as defineBdsExpansionPanelBody } from &quot;blip-ds/dist/components/bds-expansion-panel-body.js&quot;;
+import { BdsExpansionPanelHeader as BdsExpansionPanelHeaderElement, defineCustomElement as defineBdsExpansionPanelHeader } from &quot;blip-ds/dist/components/bds-expansion-panel-header.js&quot;;
+import { BdsExpansionPanel as BdsExpansionPanelElement, defineCustomElement as defineBdsExpansionPanel } from &quot;blip-ds/dist/components/bds-expansion-panel.js&quot;;
+import { BdsGrid as BdsGridElement, defineCustomElement as defineBdsGrid } from &quot;blip-ds/dist/components/bds-grid.js&quot;;
+import { BdsIcon as BdsIconElement, defineCustomElement as defineBdsIcon } from &quot;blip-ds/dist/components/bds-icon.js&quot;;
+import { BdsIllustration as BdsIllustrationElement, defineCustomElement as defineBdsIllustration } from &quot;blip-ds/dist/components/bds-illustration.js&quot;;
+import { BdsImage as BdsImageElement, defineCustomElement as defineBdsImage } from &quot;blip-ds/dist/components/bds-image.js&quot;;
+import { BdsInputChips as BdsInputChipsElement, defineCustomElement as defineBdsInputChips } from &quot;blip-ds/dist/components/bds-input-chips.js&quot;;
+import { BdsInputEditable as BdsInputEditableElement, defineCustomElement as defineBdsInputEditable } from &quot;blip-ds/dist/components/bds-input-editable.js&quot;;
+import { BdsInputPassword as BdsInputPasswordElement, defineCustomElement as defineBdsInputPassword } from &quot;blip-ds/dist/components/bds-input-password.js&quot;;
+import { BdsInputPhoneNumber as BdsInputPhoneNumberElement, defineCustomElement as defineBdsInputPhoneNumber } from &quot;blip-ds/dist/components/bds-input-phone-number.js&quot;;
+import { BdsInput as BdsInputElement, defineCustomElement as defineBdsInput } from &quot;blip-ds/dist/components/bds-input.js&quot;;
+import { BdsListItemContent as BdsListItemContentElement, defineCustomElement as defineBdsListItemContent } from &quot;blip-ds/dist/components/bds-list-item-content.js&quot;;
+import { BdsListItem as BdsListItemElement, defineCustomElement as defineBdsListItem } from &quot;blip-ds/dist/components/bds-list-item.js&quot;;
+import { BdsList as BdsListElement, defineCustomElement as defineBdsList } from &quot;blip-ds/dist/components/bds-list.js&quot;;
+import { BdsLoadingBar as BdsLoadingBarElement, defineCustomElement as defineBdsLoadingBar } from &quot;blip-ds/dist/components/bds-loading-bar.js&quot;;
+import { BdsLoadingPage as BdsLoadingPageElement, defineCustomElement as defineBdsLoadingPage } from &quot;blip-ds/dist/components/bds-loading-page.js&quot;;
+import { BdsLoadingSpinner as BdsLoadingSpinnerElement, defineCustomElement as defineBdsLoadingSpinner } from &quot;blip-ds/dist/components/bds-loading-spinner.js&quot;;
+import { BdsMenuAction as BdsMenuActionElement, defineCustomElement as defineBdsMenuAction } from &quot;blip-ds/dist/components/bds-menu-action.js&quot;;
+import { BdsMenuExibition as BdsMenuExibitionElement, defineCustomElement as defineBdsMenuExibition } from &quot;blip-ds/dist/components/bds-menu-exibition.js&quot;;
+import { BdsMenuListItem as BdsMenuListItemElement, defineCustomElement as defineBdsMenuListItem } from &quot;blip-ds/dist/components/bds-menu-list-item.js&quot;;
+import { BdsMenuList as BdsMenuListElement, defineCustomElement as defineBdsMenuList } from &quot;blip-ds/dist/components/bds-menu-list.js&quot;;
+import { BdsMenuSeparation as BdsMenuSeparationElement, defineCustomElement as defineBdsMenuSeparation } from &quot;blip-ds/dist/components/bds-menu-separation.js&quot;;
+import { BdsMenu as BdsMenuElement, defineCustomElement as defineBdsMenu } from &quot;blip-ds/dist/components/bds-menu.js&quot;;
+import { BdsModalAction as BdsModalActionElement, defineCustomElement as defineBdsModalAction } from &quot;blip-ds/dist/components/bds-modal-action.js&quot;;
+import { BdsModalCloseButton as BdsModalCloseButtonElement, defineCustomElement as defineBdsModalCloseButton } from &quot;blip-ds/dist/components/bds-modal-close-button.js&quot;;
+import { BdsModal as BdsModalElement, defineCustomElement as defineBdsModal } from &quot;blip-ds/dist/components/bds-modal.js&quot;;
+import { BdsNavTreeGroup as BdsNavTreeGroupElement, defineCustomElement as defineBdsNavTreeGroup } from &quot;blip-ds/dist/components/bds-nav-tree-group.js&quot;;
+import { BdsNavTreeItem as BdsNavTreeItemElement, defineCustomElement as defineBdsNavTreeItem } from &quot;blip-ds/dist/components/bds-nav-tree-item.js&quot;;
+import { BdsNavTree as BdsNavTreeElement, defineCustomElement as defineBdsNavTree } from &quot;blip-ds/dist/components/bds-nav-tree.js&quot;;
+import { BdsNavbarContent as BdsNavbarContentElement, defineCustomElement as defineBdsNavbarContent } from &quot;blip-ds/dist/components/bds-navbar-content.js&quot;;
+import { BdsNavbar as BdsNavbarElement, defineCustomElement as defineBdsNavbar } from &quot;blip-ds/dist/components/bds-navbar.js&quot;;
+import { BdsPagination as BdsPaginationElement, defineCustomElement as defineBdsPagination } from &quot;blip-ds/dist/components/bds-pagination.js&quot;;
+import { BdsPaper as BdsPaperElement, defineCustomElement as defineBdsPaper } from &quot;blip-ds/dist/components/bds-paper.js&quot;;
+import { BdsProgressBar as BdsProgressBarElement, defineCustomElement as defineBdsProgressBar } from &quot;blip-ds/dist/components/bds-progress-bar.js&quot;;
+import { BdsRadioGroup as BdsRadioGroupElement, defineCustomElement as defineBdsRadioGroup } from &quot;blip-ds/dist/components/bds-radio-group.js&quot;;
+import { BdsRadio as BdsRadioElement, defineCustomElement as defineBdsRadio } from &quot;blip-ds/dist/components/bds-radio.js&quot;;
+import { BdsRichText as BdsRichTextElement, defineCustomElement as defineBdsRichText } from &quot;blip-ds/dist/components/bds-rich-text.js&quot;;
+import { BdsSelectChips as BdsSelectChipsElement, defineCustomElement as defineBdsSelectChips } from &quot;blip-ds/dist/components/bds-select-chips.js&quot;;
+import { BdsSelectOption as BdsSelectOptionElement, defineCustomElement as defineBdsSelectOption } from &quot;blip-ds/dist/components/bds-select-option.js&quot;;
+import { BdsSelect as BdsSelectElement, defineCustomElement as defineBdsSelect } from &quot;blip-ds/dist/components/bds-select.js&quot;;
+import { BdsSidebar as BdsSidebarElement, defineCustomElement as defineBdsSidebar } from &quot;blip-ds/dist/components/bds-sidebar.js&quot;;
+import { BdsSkeleton as BdsSkeletonElement, defineCustomElement as defineBdsSkeleton } from &quot;blip-ds/dist/components/bds-skeleton.js&quot;;
+import { BdsSlider as BdsSliderElement, defineCustomElement as defineBdsSlider } from &quot;blip-ds/dist/components/bds-slider.js&quot;;
+import { BdsStep as BdsStepElement, defineCustomElement as defineBdsStep } from &quot;blip-ds/dist/components/bds-step.js&quot;;
+import { BdsStepper as BdsStepperElement, defineCustomElement as defineBdsStepper } from &quot;blip-ds/dist/components/bds-stepper.js&quot;;
+import { BdsSwitch as BdsSwitchElement, defineCustomElement as defineBdsSwitch } from &quot;blip-ds/dist/components/bds-switch.js&quot;;
+import { BdsTabGroup as BdsTabGroupElement, defineCustomElement as defineBdsTabGroup } from &quot;blip-ds/dist/components/bds-tab-group.js&quot;;
+import { BdsTabItem as BdsTabItemElement, defineCustomElement as defineBdsTabItem } from &quot;blip-ds/dist/components/bds-tab-item.js&quot;;
+import { BdsTabPanel as BdsTabPanelElement, defineCustomElement as defineBdsTabPanel } from &quot;blip-ds/dist/components/bds-tab-panel.js&quot;;
+import { BdsTab as BdsTabElement, defineCustomElement as defineBdsTab } from &quot;blip-ds/dist/components/bds-tab.js&quot;;
+import { BdsTableBody as BdsTableBodyElement, defineCustomElement as defineBdsTableBody } from &quot;blip-ds/dist/components/bds-table-body.js&quot;;
+import { BdsTableCell as BdsTableCellElement, defineCustomElement as defineBdsTableCell } from &quot;blip-ds/dist/components/bds-table-cell.js&quot;;
+import { BdsTableHeader as BdsTableHeaderElement, defineCustomElement as defineBdsTableHeader } from &quot;blip-ds/dist/components/bds-table-header.js&quot;;
+import { BdsTableRow as BdsTableRowElement, defineCustomElement as defineBdsTableRow } from &quot;blip-ds/dist/components/bds-table-row.js&quot;;
+import { BdsTableTh as BdsTableThElement, defineCustomElement as defineBdsTableTh } from &quot;blip-ds/dist/components/bds-table-th.js&quot;;
+import { BdsTable as BdsTableElement, defineCustomElement as defineBdsTable } from &quot;blip-ds/dist/components/bds-table.js&quot;;
+import { BdsTabs as BdsTabsElement, defineCustomElement as defineBdsTabs } from &quot;blip-ds/dist/components/bds-tabs.js&quot;;
+import { BdsTestComponent as BdsTestComponentElement, defineCustomElement as defineBdsTestComponent } from &quot;blip-ds/dist/components/bds-test-component.js&quot;;
+import { BdsThemeProvider as BdsThemeProviderElement, defineCustomElement as defineBdsThemeProvider } from &quot;blip-ds/dist/components/bds-theme-provider.js&quot;;
+import { BdsToastContainer as BdsToastContainerElement, defineCustomElement as defineBdsToastContainer } from &quot;blip-ds/dist/components/bds-toast-container.js&quot;;
+import { BdsToast as BdsToastElement, defineCustomElement as defineBdsToast } from &quot;blip-ds/dist/components/bds-toast.js&quot;;
+import { BdsTooltip as BdsTooltipElement, defineCustomElement as defineBdsTooltip } from &quot;blip-ds/dist/components/bds-tooltip.js&quot;;
+import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from &quot;blip-ds/dist/components/bds-typo.js&quot;;
+import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from &quot;blip-ds/dist/components/bds-upload.js&quot;;
+import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from &quot;blip-ds/dist/components/bds-warning.js&quot;;
+import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from &quot;blip-ds/dist/components/uai-avatar.js&quot;;
+import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from &quot;blip-ds/dist/components/uai-button.js&quot;;
+import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from &quot;blip-ds/dist/components/uai-grid.js&quot;;
+import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from &quot;blip-ds/dist/components/uai-icon.js&quot;;
+import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from &quot;blip-ds/dist/components/uai-navbar-content.js&quot;;
+import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from &quot;blip-ds/dist/components/uai-navbar.js&quot;;
+import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from &quot;blip-ds/dist/components/uai-paper.js&quot;;
+import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from &quot;blip-ds/dist/components/uai-theme-provider.js&quot;;
+import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from &quot;blip-ds/dist/components/uai-typo.js&quot;;
+export const BdsAccordion = createComponent({
+    tagName: &#39;bds-accordion&#39;,
+    elementClass: BdsAccordionElement,
+    react: React,
+    events: {
+        onBdsToggle: &#39;bdsToggle&#39;,
+        onBdsAccordionOpen: &#39;bdsAccordionOpen&#39;,
+        onBdsAccordionClose: &#39;bdsAccordionClose&#39;
+    },
+    defineCustomElement: defineBdsAccordion
+});
+export const BdsAccordionBody = createComponent({
+    tagName: &#39;bds-accordion-body&#39;,
+    elementClass: BdsAccordionBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAccordionBody
+});
+export const BdsAccordionGroup = createComponent({
+    tagName: &#39;bds-accordion-group&#39;,
+    elementClass: BdsAccordionGroupElement,
+    react: React,
+    events: {
+        onBdsAccordionCloseAll: &#39;bdsAccordionCloseAll&#39;,
+        onBdsAccordionOpenAll: &#39;bdsAccordionOpenAll&#39;
+    },
+    defineCustomElement: defineBdsAccordionGroup
+});
+export const BdsAccordionHeader = createComponent({
+    tagName: &#39;bds-accordion-header&#39;,
+    elementClass: BdsAccordionHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAccordionHeader
+});
+export const BdsAlert = createComponent({
+    tagName: &#39;bds-alert&#39;,
+    elementClass: BdsAlertElement,
+    react: React,
+    events: { onBdsAlertChanged: &#39;bdsAlertChanged&#39; },
+    defineCustomElement: defineBdsAlert
+});
+export const BdsAlertActions = createComponent({
+    tagName: &#39;bds-alert-actions&#39;,
+    elementClass: BdsAlertActionsElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAlertActions
+});
+export const BdsAlertBody = createComponent({
+    tagName: &#39;bds-alert-body&#39;,
+    elementClass: BdsAlertBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAlertBody
+});
+export const BdsAlertHeader = createComponent({
+    tagName: &#39;bds-alert-header&#39;,
+    elementClass: BdsAlertHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAlertHeader
+});
+export const BdsAutocomplete = createComponent({
+    tagName: &#39;bds-autocomplete&#39;,
+    elementClass: BdsAutocompleteElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsSelectedChange: &#39;bdsSelectedChange&#39;,
+        onBdsMultiselectedChange: &#39;bdsMultiselectedChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;
+    },
+    defineCustomElement: defineBdsAutocomplete
+});
+export const BdsAvatar = createComponent({
+    tagName: &#39;bds-avatar&#39;,
+    elementClass: BdsAvatarElement,
+    react: React,
+    events: {
+        onBdsClickAvatar: &#39;bdsClickAvatar&#39;,
+        onBdsImageUpload: &#39;bdsImageUpload&#39;
+    },
+    defineCustomElement: defineBdsAvatar
+});
+export const BdsAvatarGroup = createComponent({
+    tagName: &#39;bds-avatar-group&#39;,
+    elementClass: BdsAvatarGroupElement,
+    react: React,
+    events: { onBdsClickAvatarGroup: &#39;bdsClickAvatarGroup&#39; },
+    defineCustomElement: defineBdsAvatarGroup
+});
+export const BdsBadge = createComponent({
+    tagName: &#39;bds-badge&#39;,
+    elementClass: BdsBadgeElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsBadge
+});
+export const BdsBanner = createComponent({
+    tagName: &#39;bds-banner&#39;,
+    elementClass: BdsBannerElement,
+    react: React,
+    events: { onBdsBannerClose: &#39;bdsBannerClose&#39; },
+    defineCustomElement: defineBdsBanner
+});
+export const BdsBannerLink = createComponent({
+    tagName: &#39;bds-banner-link&#39;,
+    elementClass: BdsBannerLinkElement,
+    react: React,
+    events: { onBdsBannerLink: &#39;bdsBannerLink&#39; },
+    defineCustomElement: defineBdsBannerLink
+});
+export const BdsBreadcrumb = createComponent({
+    tagName: &#39;bds-breadcrumb&#39;,
+    elementClass: BdsBreadcrumbElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsBreadcrumb
+});
+export const BdsButton = createComponent({
+    tagName: &#39;bds-button&#39;,
+    elementClass: BdsButtonElement,
+    react: React,
+    events: { onBdsClick: &#39;bdsClick&#39; },
+    defineCustomElement: defineBdsButton
+});
+export const BdsButtonGroup = createComponent({
+    tagName: &#39;bds-button-group&#39;,
+    elementClass: BdsButtonGroupElement,
+    react: React,
+    events: { onButtonSelected: &#39;buttonSelected&#39; },
+    defineCustomElement: defineBdsButtonGroup
+});
+export const BdsButtonIcon = createComponent({
+    tagName: &#39;bds-button-icon&#39;,
+    elementClass: BdsButtonIconElement,
+    react: React,
+    events: { onBdsClick: &#39;bdsClick&#39; },
+    defineCustomElement: defineBdsButtonIcon
+});
+export const BdsCard = createComponent({
+    tagName: &#39;bds-card&#39;,
+    elementClass: BdsCardElement,
+    react: React,
+    events: { onBdsClick: &#39;bdsClick&#39; },
+    defineCustomElement: defineBdsCard
+});
+export const BdsCardBody = createComponent({
+    tagName: &#39;bds-card-body&#39;,
+    elementClass: BdsCardBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardBody
+});
+export const BdsCardColor = createComponent({
+    tagName: &#39;bds-card-color&#39;,
+    elementClass: BdsCardColorElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardColor
+});
+export const BdsCardFooter = createComponent({
+    tagName: &#39;bds-card-footer&#39;,
+    elementClass: BdsCardFooterElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardFooter
+});
+export const BdsCardHeader = createComponent({
+    tagName: &#39;bds-card-header&#39;,
+    elementClass: BdsCardHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardHeader
+});
+export const BdsCardSubtitle = createComponent({
+    tagName: &#39;bds-card-subtitle&#39;,
+    elementClass: BdsCardSubtitleElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardSubtitle
+});
+export const BdsCardTitle = createComponent({
+    tagName: &#39;bds-card-title&#39;,
+    elementClass: BdsCardTitleElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardTitle
+});
+export const BdsCarousel = createComponent({
+    tagName: &#39;bds-carousel&#39;,
+    elementClass: BdsCarouselElement,
+    react: React,
+    events: { onBdsChangeCarousel: &#39;bdsChangeCarousel&#39; },
+    defineCustomElement: defineBdsCarousel
+});
+export const BdsCarouselItem = createComponent({
+    tagName: &#39;bds-carousel-item&#39;,
+    elementClass: BdsCarouselItemElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCarouselItem
+});
+export const BdsCheckbox = createComponent({
+    tagName: &#39;bds-checkbox&#39;,
+    elementClass: BdsCheckboxElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;
+    },
+    defineCustomElement: defineBdsCheckbox
+});
+export const BdsChip = createComponent({
+    tagName: &#39;bds-chip&#39;,
+    elementClass: BdsChipElement,
+    react: React,
+    events: { onBdsDelete: &#39;bdsDelete&#39; },
+    defineCustomElement: defineBdsChip
+});
+export const BdsChipClickable = createComponent({
+    tagName: &#39;bds-chip-clickable&#39;,
+    elementClass: BdsChipClickableElement,
+    react: React,
+    events: {
+        onChipClickableClose: &#39;chipClickableClose&#39;,
+        onChipClickableClick: &#39;chipClickableClick&#39;
+    },
+    defineCustomElement: defineBdsChipClickable
+});
+export const BdsChipSelected = createComponent({
+    tagName: &#39;bds-chip-selected&#39;,
+    elementClass: BdsChipSelectedElement,
+    react: React,
+    events: { onChipClick: &#39;chipClick&#39; },
+    defineCustomElement: defineBdsChipSelected
+});
+export const BdsChipTag = createComponent({
+    tagName: &#39;bds-chip-tag&#39;,
+    elementClass: BdsChipTagElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsChipTag
+});
+export const BdsCounterText = createComponent({
+    tagName: &#39;bds-counter-text&#39;,
+    elementClass: BdsCounterTextElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCounterText
+});
+export const BdsDataTable = createComponent({
+    tagName: &#39;bds-data-table&#39;,
+    elementClass: BdsDataTableElement,
+    react: React,
+    events: {
+        onBdsTableClick: &#39;bdsTableClick&#39;,
+        onBdsTableDelete: &#39;bdsTableDelete&#39;,
+        onBdsTableChange: &#39;bdsTableChange&#39;
+    },
+    defineCustomElement: defineBdsDataTable
+});
+export const BdsDatepicker = createComponent({
+    tagName: &#39;bds-datepicker&#39;,
+    elementClass: BdsDatepickerElement,
+    react: React,
+    events: {
+        onBdsStartDate: &#39;bdsStartDate&#39;,
+        onBdsEndDate: &#39;bdsEndDate&#39;,
+        onConcludeDatepicker: &#39;concludeDatepicker&#39;,
+        onEmptyConcludeDatepicker: &#39;emptyConcludeDatepicker&#39;
+    },
+    defineCustomElement: defineBdsDatepicker
+});
+export const BdsDatepickerPeriod = createComponent({
+    tagName: &#39;bds-datepicker-period&#39;,
+    elementClass: BdsDatepickerPeriodElement,
+    react: React,
+    events: {
+        onBdsStartDate: &#39;bdsStartDate&#39;,
+        onBdsEndDate: &#39;bdsEndDate&#39;,
+        onBdsClickDayButton: &#39;bdsClickDayButton&#39;
+    },
+    defineCustomElement: defineBdsDatepickerPeriod
+});
+export const BdsDatepickerSingle = createComponent({
+    tagName: &#39;bds-datepicker-single&#39;,
+    elementClass: BdsDatepickerSingleElement,
+    react: React,
+    events: { onBdsDateSelected: &#39;bdsDateSelected&#39; },
+    defineCustomElement: defineBdsDatepickerSingle
+});
+export const BdsDivider = createComponent({
+    tagName: &#39;bds-divider&#39;,
+    elementClass: BdsDividerElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsDivider
+});
+export const BdsDropdown = createComponent({
+    tagName: &#39;bds-dropdown&#39;,
+    elementClass: BdsDropdownElement,
+    react: React,
+    events: { onBdsToggle: &#39;bdsToggle&#39; },
+    defineCustomElement: defineBdsDropdown
+});
+export const BdsExpansionPanel = createComponent({
+    tagName: &#39;bds-expansion-panel&#39;,
+    elementClass: BdsExpansionPanelElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsExpansionPanel
+});
+export const BdsExpansionPanelBody = createComponent({
+    tagName: &#39;bds-expansion-panel-body&#39;,
+    elementClass: BdsExpansionPanelBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsExpansionPanelBody
+});
+export const BdsExpansionPanelHeader = createComponent({
+    tagName: &#39;bds-expansion-panel-header&#39;,
+    elementClass: BdsExpansionPanelHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsExpansionPanelHeader
+});
+export const BdsGrid = createComponent({
+    tagName: &#39;bds-grid&#39;,
+    elementClass: BdsGridElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsGrid
+});
+export const BdsIcon = createComponent({
+    tagName: &#39;bds-icon&#39;,
+    elementClass: BdsIconElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsIcon
+});
+export const BdsIllustration = createComponent({
+    tagName: &#39;bds-illustration&#39;,
+    elementClass: BdsIllustrationElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsIllustration
+});
+export const BdsImage = createComponent({
+    tagName: &#39;bds-image&#39;,
+    elementClass: BdsImageElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsImage
+});
+export const BdsInput = createComponent({
+    tagName: &#39;bds-input&#39;,
+    elementClass: BdsInputElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;,
+        onBdsOnBlur: &#39;bdsOnBlur&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsSubmit: &#39;bdsSubmit&#39;,
+        onBdsPatternValidation: &#39;bdsPatternValidation&#39;,
+        onBdsKeyDownBackspace: &#39;bdsKeyDownBackspace&#39;
+    },
+    defineCustomElement: defineBdsInput
+});
+export const BdsInputChips = createComponent({
+    tagName: &#39;bds-input-chips&#39;,
+    elementClass: BdsInputChipsElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsChangeChips: &#39;bdsChangeChips&#39;,
+        onBdsInputChipsFocus: &#39;bdsInputChipsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;,
+        onBdsInputChipsInput: &#39;bdsInputChipsInput&#39;,
+        onBdsExtendedQuantityInput: &#39;bdsExtendedQuantityInput&#39;,
+        onBdsSubmit: &#39;bdsSubmit&#39;
+    },
+    defineCustomElement: defineBdsInputChips
+});
+export const BdsInputEditable = createComponent({
+    tagName: &#39;bds-input-editable&#39;,
+    elementClass: BdsInputEditableElement,
+    react: React,
+    events: {
+        onBdsInputEditableSave: &#39;bdsInputEditableSave&#39;,
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;
+    },
+    defineCustomElement: defineBdsInputEditable
+});
+export const BdsInputPassword = createComponent({
+    tagName: &#39;bds-input-password&#39;,
+    elementClass: BdsInputPasswordElement,
+    react: React,
+    events: {
+        onBdsInputPasswordChange: &#39;bdsInputPasswordChange&#39;,
+        onBdsInputPasswordInput: &#39;bdsInputPasswordInput&#39;,
+        onBdsInputPasswordBlur: &#39;bdsInputPasswordBlur&#39;,
+        onBdsInputPasswordFocus: &#39;bdsInputPasswordFocus&#39;,
+        onBdsInputPasswordSubmit: &#39;bdsInputPasswordSubmit&#39;,
+        onBdsKeyDownBackspace: &#39;bdsKeyDownBackspace&#39;
+    },
+    defineCustomElement: defineBdsInputPassword
+});
+export const BdsInputPhoneNumber = createComponent({
+    tagName: &#39;bds-input-phone-number&#39;,
+    elementClass: BdsInputPhoneNumberElement,
+    react: React,
+    events: {
+        onBdsPhoneNumberChange: &#39;bdsPhoneNumberChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;
+    },
+    defineCustomElement: defineBdsInputPhoneNumber
+});
+export const BdsList = createComponent({
+    tagName: &#39;bds-list&#39;,
+    elementClass: BdsListElement,
+    react: React,
+    events: {
+        onBdsListCheckboxChange: &#39;bdsListCheckboxChange&#39;,
+        onBdsListRadioChange: &#39;bdsListRadioChange&#39;,
+        onBdsListSwitchChange: &#39;bdsListSwitchChange&#39;,
+        onBdsClickActionsButtons: &#39;bdsClickActionsButtons&#39;
+    },
+    defineCustomElement: defineBdsList
+});
+export const BdsListItem = createComponent({
+    tagName: &#39;bds-list-item&#39;,
+    elementClass: BdsListItemElement,
+    react: React,
+    events: {
+        onBdsChecked: &#39;bdsChecked&#39;,
+        onBdsClickActionButtom: &#39;bdsClickActionButtom&#39;
+    },
+    defineCustomElement: defineBdsListItem
+});
+export const BdsListItemContent = createComponent({
+    tagName: &#39;bds-list-item-content&#39;,
+    elementClass: BdsListItemContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsListItemContent
+});
+export const BdsLoadingBar = createComponent({
+    tagName: &#39;bds-loading-bar&#39;,
+    elementClass: BdsLoadingBarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsLoadingBar
+});
+export const BdsLoadingPage = createComponent({
+    tagName: &#39;bds-loading-page&#39;,
+    elementClass: BdsLoadingPageElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsLoadingPage
+});
+export const BdsLoadingSpinner = createComponent({
+    tagName: &#39;bds-loading-spinner&#39;,
+    elementClass: BdsLoadingSpinnerElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsLoadingSpinner
+});
+export const BdsMenu = createComponent({
+    tagName: &#39;bds-menu&#39;,
+    elementClass: BdsMenuElement,
+    react: React,
+    events: { onBdsToggle: &#39;bdsToggle&#39; },
+    defineCustomElement: defineBdsMenu
+});
+export const BdsMenuAction = createComponent({
+    tagName: &#39;bds-menu-action&#39;,
+    elementClass: BdsMenuActionElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuAction
+});
+export const BdsMenuExibition = createComponent({
+    tagName: &#39;bds-menu-exibition&#39;,
+    elementClass: BdsMenuExibitionElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuExibition
+});
+export const BdsMenuList = createComponent({
+    tagName: &#39;bds-menu-list&#39;,
+    elementClass: BdsMenuListElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuList
+});
+export const BdsMenuListItem = createComponent({
+    tagName: &#39;bds-menu-list-item&#39;,
+    elementClass: BdsMenuListItemElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuListItem
+});
+export const BdsMenuSeparation = createComponent({
+    tagName: &#39;bds-menu-separation&#39;,
+    elementClass: BdsMenuSeparationElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuSeparation
+});
+export const BdsModal = createComponent({
+    tagName: &#39;bds-modal&#39;,
+    elementClass: BdsModalElement,
+    react: React,
+    events: { onBdsModalChanged: &#39;bdsModalChanged&#39; },
+    defineCustomElement: defineBdsModal
+});
+export const BdsModalAction = createComponent({
+    tagName: &#39;bds-modal-action&#39;,
+    elementClass: BdsModalActionElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsModalAction
+});
+export const BdsModalCloseButton = createComponent({
+    tagName: &#39;bds-modal-close-button&#39;,
+    elementClass: BdsModalCloseButtonElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsModalCloseButton
+});
+export const BdsNavTree = createComponent({
+    tagName: &#39;bds-nav-tree&#39;,
+    elementClass: BdsNavTreeElement,
+    react: React,
+    events: { onBdsToogleChange: &#39;bdsToogleChange&#39; },
+    defineCustomElement: defineBdsNavTree
+});
+export const BdsNavTreeGroup = createComponent({
+    tagName: &#39;bds-nav-tree-group&#39;,
+    elementClass: BdsNavTreeGroupElement,
+    react: React,
+    events: {
+        onBdsNavTreeGroupCloseAll: &#39;bdsNavTreeGroupCloseAll&#39;,
+        onBdsNavTreeGroupOpenAll: &#39;bdsNavTreeGroupOpenAll&#39;
+    },
+    defineCustomElement: defineBdsNavTreeGroup
+});
+export const BdsNavTreeItem = createComponent({
+    tagName: &#39;bds-nav-tree-item&#39;,
+    elementClass: BdsNavTreeItemElement,
+    react: React,
+    events: { onBdsToogleChange: &#39;bdsToogleChange&#39; },
+    defineCustomElement: defineBdsNavTreeItem
+});
+export const BdsNavbar = createComponent({
+    tagName: &#39;bds-navbar&#39;,
+    elementClass: BdsNavbarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsNavbar
+});
+export const BdsNavbarContent = createComponent({
+    tagName: &#39;bds-navbar-content&#39;,
+    elementClass: BdsNavbarContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsNavbarContent
+});
+export const BdsPagination = createComponent({
+    tagName: &#39;bds-pagination&#39;,
+    elementClass: BdsPaginationElement,
+    react: React,
+    events: {
+        onBdsPaginationChange: &#39;bdsPaginationChange&#39;,
+        onBdsItemsPerPageChange: &#39;bdsItemsPerPageChange&#39;
+    },
+    defineCustomElement: defineBdsPagination
+});
+export const BdsPaper = createComponent({
+    tagName: &#39;bds-paper&#39;,
+    elementClass: BdsPaperElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsPaper
+});
+export const BdsProgressBar = createComponent({
+    tagName: &#39;bds-progress-bar&#39;,
+    elementClass: BdsProgressBarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsProgressBar
+});
+export const BdsRadio = createComponent({
+    tagName: &#39;bds-radio&#39;,
+    elementClass: BdsRadioElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsClickChange: &#39;bdsClickChange&#39;
+    },
+    defineCustomElement: defineBdsRadio
+});
+export const BdsRadioGroup = createComponent({
+    tagName: &#39;bds-radio-group&#39;,
+    elementClass: BdsRadioGroupElement,
+    react: React,
+    events: { onBdsRadioGroupChange: &#39;bdsRadioGroupChange&#39; },
+    defineCustomElement: defineBdsRadioGroup
+});
+export const BdsRichText = createComponent({
+    tagName: &#39;bds-rich-text&#39;,
+    elementClass: BdsRichTextElement,
+    react: React,
+    events: {
+        onBdsRichTextChange: &#39;bdsRichTextChange&#39;,
+        onBdsRichTextInput: &#39;bdsRichTextInput&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;
+    },
+    defineCustomElement: defineBdsRichText
+});
+export const BdsSelect = createComponent({
+    tagName: &#39;bds-select&#39;,
+    elementClass: BdsSelectElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;
+    },
+    defineCustomElement: defineBdsSelect
+});
+export const BdsSelectChips = createComponent({
+    tagName: &#39;bds-select-chips&#39;,
+    elementClass: BdsSelectChipsElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;,
+        onBdsChangeChips: &#39;bdsChangeChips&#39;,
+        onBdsSelectChipsInput: &#39;bdsSelectChipsInput&#39;,
+        onBdsSubmit: &#39;bdsSubmit&#39;
+    },
+    defineCustomElement: defineBdsSelectChips
+});
+export const BdsSelectOption = createComponent({
+    tagName: &#39;bds-select-option&#39;,
+    elementClass: BdsSelectOptionElement,
+    react: React,
+    events: {
+        onOptionSelected: &#39;optionSelected&#39;,
+        onOptionChecked: &#39;optionChecked&#39;
+    },
+    defineCustomElement: defineBdsSelectOption
+});
+export const BdsSidebar = createComponent({
+    tagName: &#39;bds-sidebar&#39;,
+    elementClass: BdsSidebarElement,
+    react: React,
+    events: { onBdsToggle: &#39;bdsToggle&#39; },
+    defineCustomElement: defineBdsSidebar
+});
+export const BdsSkeleton = createComponent({
+    tagName: &#39;bds-skeleton&#39;,
+    elementClass: BdsSkeletonElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsSkeleton
+});
+export const BdsSlider = createComponent({
+    tagName: &#39;bds-slider&#39;,
+    elementClass: BdsSliderElement,
+    react: React,
+    events: { onBdsChange: &#39;bdsChange&#39; },
+    defineCustomElement: defineBdsSlider
+});
+export const BdsStep = createComponent({
+    tagName: &#39;bds-step&#39;,
+    elementClass: BdsStepElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsStep
+});
+export const BdsStepper = createComponent({
+    tagName: &#39;bds-stepper&#39;,
+    elementClass: BdsStepperElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsStepper
+});
+export const BdsSwitch = createComponent({
+    tagName: &#39;bds-switch&#39;,
+    elementClass: BdsSwitchElement,
+    react: React,
+    events: { onBdsChange: &#39;bdsChange&#39; },
+    defineCustomElement: defineBdsSwitch
+});
+export const BdsTab = createComponent({
+    tagName: &#39;bds-tab&#39;,
+    elementClass: BdsTabElement,
+    react: React,
+    events: { onBdsTabChange: &#39;bdsTabChange&#39; },
+    defineCustomElement: defineBdsTab
+});
+export const BdsTabGroup = createComponent({
+    tagName: &#39;bds-tab-group&#39;,
+    elementClass: BdsTabGroupElement,
+    react: React,
+    events: {
+        onBdsTabChange: &#39;bdsTabChange&#39;,
+        onBdsTabDisabled: &#39;bdsTabDisabled&#39;
+    },
+    defineCustomElement: defineBdsTabGroup
+});
+export const BdsTabItem = createComponent({
+    tagName: &#39;bds-tab-item&#39;,
+    elementClass: BdsTabItemElement,
+    react: React,
+    events: { onTabDisabled: &#39;tabDisabled&#39; },
+    defineCustomElement: defineBdsTabItem
+});
+export const BdsTabPanel = createComponent({
+    tagName: &#39;bds-tab-panel&#39;,
+    elementClass: BdsTabPanelElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTabPanel
+});
+export const BdsTable = createComponent({
+    tagName: &#39;bds-table&#39;,
+    elementClass: BdsTableElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTable
+});
+export const BdsTableBody = createComponent({
+    tagName: &#39;bds-table-body&#39;,
+    elementClass: BdsTableBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableBody
+});
+export const BdsTableCell = createComponent({
+    tagName: &#39;bds-table-cell&#39;,
+    elementClass: BdsTableCellElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableCell
+});
+export const BdsTableHeader = createComponent({
+    tagName: &#39;bds-table-header&#39;,
+    elementClass: BdsTableHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableHeader
+});
+export const BdsTableRow = createComponent({
+    tagName: &#39;bds-table-row&#39;,
+    elementClass: BdsTableRowElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableRow
+});
+export const BdsTableTh = createComponent({
+    tagName: &#39;bds-table-th&#39;,
+    elementClass: BdsTableThElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableTh
+});
+export const BdsTabs = createComponent({
+    tagName: &#39;bds-tabs&#39;,
+    elementClass: BdsTabsElement,
+    react: React,
+    events: {
+        onScrollButtonClick: &#39;scrollButtonClick&#39;,
+        onBdsTabInit: &#39;bdsTabInit&#39;
+    },
+    defineCustomElement: defineBdsTabs
+});
+export const BdsTestComponent = createComponent({
+    tagName: &#39;bds-test-component&#39;,
+    elementClass: BdsTestComponentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTestComponent
+});
+export const BdsThemeProvider = createComponent({
+    tagName: &#39;bds-theme-provider&#39;,
+    elementClass: BdsThemeProviderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsThemeProvider
+});
+export const BdsToast = createComponent({
+    tagName: &#39;bds-toast&#39;,
+    elementClass: BdsToastElement,
+    react: React,
+    events: { onToastButtonClick: &#39;toastButtonClick&#39; },
+    defineCustomElement: defineBdsToast
+});
+export const BdsToastContainer = createComponent({
+    tagName: &#39;bds-toast-container&#39;,
+    elementClass: BdsToastContainerElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsToastContainer
+});
+export const BdsTooltip = createComponent({
+    tagName: &#39;bds-tooltip&#39;,
+    elementClass: BdsTooltipElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTooltip
+});
+export const BdsTypo = createComponent({
+    tagName: &#39;bds-typo&#39;,
+    elementClass: BdsTypoElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTypo
+});
+export const BdsUpload = createComponent({
+    tagName: &#39;bds-upload&#39;,
+    elementClass: BdsUploadElement,
+    react: React,
+    events: {
+        onBdsUploadDelete: &#39;bdsUploadDelete&#39;,
+        onBdsUploadChange: &#39;bdsUploadChange&#39;
+    },
+    defineCustomElement: defineBdsUpload
+});
+export const BdsWarning = createComponent({
+    tagName: &#39;bds-warning&#39;,
+    elementClass: BdsWarningElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsWarning
+});
+export const UaiAvatar = createComponent({
+    tagName: &#39;uai-avatar&#39;,
+    elementClass: UaiAvatarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiAvatar
+});
+export const UaiButton = createComponent({
+    tagName: &#39;uai-button&#39;,
+    elementClass: UaiButtonElement,
+    react: React,
+    events: { onUaiClick: &#39;uaiClick&#39; },
+    defineCustomElement: defineUaiButton
+});
+export const UaiGrid = createComponent({
+    tagName: &#39;uai-grid&#39;,
+    elementClass: UaiGridElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiGrid
+});
+export const UaiIcon = createComponent({
+    tagName: &#39;uai-icon&#39;,
+    elementClass: UaiIconElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiIcon
+});
+export const UaiNavbar = createComponent({
+    tagName: &#39;uai-navbar&#39;,
+    elementClass: UaiNavbarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiNavbar
+});
+export const UaiNavbarContent = createComponent({
+    tagName: &#39;uai-navbar-content&#39;,
+    elementClass: UaiNavbarContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiNavbarContent
+});
+export const UaiPaper = createComponent({
+    tagName: &#39;uai-paper&#39;,
+    elementClass: UaiPaperElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiPaper
+});
+export const UaiThemeProvider = createComponent({
+    tagName: &#39;uai-theme-provider&#39;,
+    elementClass: UaiThemeProviderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiThemeProvider
+});
+export const UaiTypo = createComponent({
+    tagName: &#39;uai-typo&#39;,
+    elementClass: UaiTypoElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTypo
+});
+//# sourceMappingURL=components.js.map</code></pre></div>
+    </div>
+        </div>
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { UaiPaper } from 'blip-ds-react';</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Properties</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Properties = () =&gt; &lt;UaiPaper
+    border={false}
+    elevation=&quot;primary&quot;
+    height=&quot;var(--uai-sizing-5xl)&quot;
+    width=&quot;calc(var(--uai-sizing-5xl) * 2)&quot; /&gt;;</code></pre>
               
             </div>
         </div>
@@ -38593,7 +39543,7 @@ export const FrameworkReact = () =&gt; {
           <label for="no-component-found-toggle" class="group-header">
             <span class="caret">▸</span>
             <span class="group-title">No component found</span>
-            <span class="group-count">66</span>
+            <span class="group-count">65</span>
           </label>
           <div class="group-cards">
 <article
@@ -59785,190 +60735,14 @@ export const ListWithPagination = () =&gt; {
   
   no-doc-error"
   role="listitem"
-  aria-label="Paper">
-  <div class="head">
-    <div class="title">
-      <h2><span class="status-dot dot-err"></span> Paper</h2>
-      <div class="badges">
-        <label for="c-error-44-uai-paper-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-44-uai-paper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-44-uai-paper-stories" class="badge ok as-toggle">2 stories</label>
-        
-        
-      </div>
-    </div>
-    <div class="meta" title="./src/components/uai-paper/uai-paper.stories.jsx">uai-paper · ./src/components/uai-paper/uai-paper.stories.jsx</div>
-    
-    
-    
-  </div>
-
-  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-44-uai-paper-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-44-uai-paper-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-44-uai-paper-stories" class="tg tg-stories" type="checkbox" hidden />
-  
-  
-  
-
-  <div class="panels">
-    
-        <div class="panel panel-err">
-          
-    <div class="note err">
-      <div class="note-title">API error</div>
-      <div class="note-body"><pre><code>We could not detect the component from your story file. Specify meta.component.
-   7 | const PAPER_WIDTH = &#39;calc(var(--uai-sizing-5xl) * 2)&#39;;
-   8 |
-&gt;  9 | export default {
-     | ^
-  10 |   title: &#39;UAI/Paper&#39;,
-  11 |   parameters: {
-  12 |     docs: {
-
-./src/components/uai-paper/uai-paper.stories.jsx:
-import React from &#39;react&#39;;
-import DocumentationTemplate from &#39;./uai-paper.mdx&#39;;
-import { UaiPaper } from &#39;../../../blip-ds-react/dist/components&#39;;
-
-// Sample dimensions built from UAI sizing tokens.
-const PAPER_HEIGHT = &#39;var(--uai-sizing-5xl)&#39;;
-const PAPER_WIDTH = &#39;calc(var(--uai-sizing-5xl) * 2)&#39;;
-
-export default {
-  title: &#39;UAI/Paper&#39;,
-  parameters: {
-    docs: {
-      page: DocumentationTemplate,
-    },
-  },
-};
-
-export const Properties = (args) =&gt; {
-  return (
-      &lt;uai-paper border={args.border} elevation={args.elevation} height={args.height} width={args.width}&gt;&lt;/uai-paper&gt;
-);
-} 
-
-Properties.args = {
-  border: false,
-  elevation: &#39;primary&#39;,
-  height: PAPER_HEIGHT,
-  width: PAPER_WIDTH,
-};
-
-Properties.argTypes = {
-  border: {
-    table: {
-      defaultValue: { summary: &#39;false&#39; },
-    },
-    control: &#39;boolean&#39;,
-  },
-  elevation: {
-    table: {
-      defaultValue: { summary: &#39;primary&#39; },
-    },
-    options: [&quot;primary&quot;, &quot;secondary&quot;, &quot;static&quot;, &quot;none&quot;],
-    control: &#39;select&#39;,
-  },
-  height: {
-    table: {
-      defaultValue: { summary: PAPER_HEIGHT },
-    },
-    control: &#39;text&#39;,
-  },
-  width: {
-    table: {
-      defaultValue: { summary: PAPER_WIDTH },
-    },
-    control: &#39;text&#39;,
-  },
-}
-
-export const FrameworkReact = () =&gt; {
-  return (
-      &lt;UaiPaper border={false} elevation=&quot;primary&quot; height={PAPER_HEIGHT} width={PAPER_WIDTH}&gt;&lt;/UaiPaper&gt;
-);
-} </code></pre></div>
-    </div>
-        </div>
-    
-        <div class="panel panel-info">
-          
-    <div class="note info">
-      <div class="note-title">Info</div>
-      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
-    </div>
-        </div>
-    
-    
-        <div class="panel panel-stories">
-          
-          
-          
-          <div class="note ok">
-                <div class="row">
-                  <span class="ex-name">Imports</span>
-                </div>
-                <pre><code>import { UaiPaper } from 'blip-ds';</code></pre>
-              </div>
-          
-          
-            <div class="note ok">
-              <div class="row">
-                <span class="ex-name">Properties</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const Properties = () =&gt; {
-    return (
-        &lt;uai-paper
-            border={false}
-            elevation=&quot;primary&quot;
-            height=&quot;var(--uai-sizing-5xl)&quot;
-            width=&quot;calc(var(--uai-sizing-5xl) * 2)&quot; /&gt;
-    );
-};</code></pre>
-              
-            </div>
-            <div class="note ok">
-              <div class="row">
-                <span class="ex-name">Framework React</span>
-                <span class="badge ok">story ok</span>
-              </div>
-              
-              
-              <pre><code>const FrameworkReact = () =&gt; {
-  return (
-      &lt;UaiPaper border={false} elevation=&quot;primary&quot; height={PAPER_HEIGHT} width={PAPER_WIDTH}&gt;&lt;/UaiPaper&gt;
-);
-};</code></pre>
-              
-            </div>
-        </div>
-    
-    
-  </div>
-</article>
-<article
-  
-  class="card 
-  has-error
-  has-info
-  no-story-error
-  no-story-warning
-  
-  no-doc-error"
-  role="listitem"
   aria-label="ProgressBar">
   <div class="head">
     <div class="title">
       <h2><span class="status-dot dot-err"></span> ProgressBar</h2>
       <div class="badges">
-        <label for="c-error-45-components-progress-bar-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-45-components-progress-bar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-45-components-progress-bar-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-44-components-progress-bar-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-44-components-progress-bar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-44-components-progress-bar-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -59980,9 +60754,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-45-components-progress-bar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-45-components-progress-bar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-45-components-progress-bar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-44-components-progress-bar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-44-components-progress-bar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-44-components-progress-bar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -60140,9 +60914,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> RadioButton</h2>
       <div class="badges">
-        <label for="c-error-46-components-radio-button-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-46-components-radio-button-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-46-components-radio-button-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-45-components-radio-button-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-45-components-radio-button-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-45-components-radio-button-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -60154,9 +60928,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-46-components-radio-button-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-46-components-radio-button-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-46-components-radio-button-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-45-components-radio-button-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-45-components-radio-button-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-45-components-radio-button-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -60358,9 +61132,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> RichText</h2>
       <div class="badges">
-        <label for="c-error-47-components-richtext-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-47-components-richtext-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-47-components-richtext-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-46-components-richtext-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-46-components-richtext-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-46-components-richtext-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -60372,9 +61146,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-47-components-richtext-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-47-components-richtext-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-47-components-richtext-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-46-components-richtext-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-46-components-richtext-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-46-components-richtext-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -60668,9 +61442,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Search</h2>
       <div class="badges">
-        <label for="c-error-48-snippets-search-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-48-snippets-search-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-error-48-snippets-search-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-47-snippets-search-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-47-snippets-search-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-error-47-snippets-search-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -60682,9 +61456,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-48-snippets-search-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-48-snippets-search-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-48-snippets-search-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-47-snippets-search-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-47-snippets-search-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-47-snippets-search-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -60854,9 +61628,9 @@ export const SearchWithOptions = (args) =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Select</h2>
       <div class="badges">
-        <label for="c-error-49-components-select-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-49-components-select-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-49-components-select-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-48-components-select-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-48-components-select-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-48-components-select-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -60868,9 +61642,9 @@ export const SearchWithOptions = (args) =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-49-components-select-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-49-components-select-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-49-components-select-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-48-components-select-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-48-components-select-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-48-components-select-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -61172,9 +61946,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> SelectChips</h2>
       <div class="badges">
-        <label for="c-error-50-components-select-chips-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-50-components-select-chips-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-50-components-select-chips-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-49-components-select-chips-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-49-components-select-chips-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-49-components-select-chips-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -61186,9 +61960,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-50-components-select-chips-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-50-components-select-chips-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-50-components-select-chips-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-49-components-select-chips-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-49-components-select-chips-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-49-components-select-chips-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -61529,9 +62303,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Selects</h2>
       <div class="badges">
-        <label for="c-error-51-snippets-selects-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-51-snippets-selects-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-error-51-snippets-selects-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-error-50-snippets-selects-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-50-snippets-selects-info" class="badge info as-toggle">2 infos</label>
+        <label for="c-error-50-snippets-selects-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -61543,9 +62317,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-51-snippets-selects-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-51-snippets-selects-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-51-snippets-selects-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-50-snippets-selects-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-50-snippets-selects-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-50-snippets-selects-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -61905,9 +62679,9 @@ export const CompleteSelectOption = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Sidebar</h2>
       <div class="badges">
-        <label for="c-error-52-components-sidebar-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-52-components-sidebar-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-52-components-sidebar-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-51-components-sidebar-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-51-components-sidebar-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-51-components-sidebar-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -61919,9 +62693,9 @@ export const CompleteSelectOption = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-52-components-sidebar-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-52-components-sidebar-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-52-components-sidebar-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-51-components-sidebar-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-51-components-sidebar-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-51-components-sidebar-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -62295,9 +63069,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Sidebar+Content</h2>
       <div class="badges">
-        <label for="c-error-53-templates-portal-sidebar-content-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-53-templates-portal-sidebar-content-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-53-templates-portal-sidebar-content-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-error-52-templates-portal-sidebar-content-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-52-templates-portal-sidebar-content-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-52-templates-portal-sidebar-content-stories" class="badge ok as-toggle">1 story</label>
         
         
       </div>
@@ -62309,9 +63083,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-53-templates-portal-sidebar-content-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-53-templates-portal-sidebar-content-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-53-templates-portal-sidebar-content-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-52-templates-portal-sidebar-content-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-52-templates-portal-sidebar-content-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-52-templates-portal-sidebar-content-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -62578,9 +63352,9 @@ export const SidebarContent = (args) =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Skeleton</h2>
       <div class="badges">
-        <label for="c-error-54-components-skeleton-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-54-components-skeleton-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-54-components-skeleton-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-53-components-skeleton-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-53-components-skeleton-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-53-components-skeleton-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -62592,9 +63366,9 @@ export const SidebarContent = (args) =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-54-components-skeleton-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-54-components-skeleton-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-54-components-skeleton-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-53-components-skeleton-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-53-components-skeleton-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-53-components-skeleton-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -62760,9 +63534,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Slider</h2>
       <div class="badges">
-        <label for="c-error-55-components-slider-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-55-components-slider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-55-components-slider-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-54-components-slider-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-54-components-slider-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-54-components-slider-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -62774,9 +63548,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-55-components-slider-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-55-components-slider-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-55-components-slider-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-54-components-slider-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-54-components-slider-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-54-components-slider-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -63054,9 +63828,9 @@ export const FrameworkReact = () =&gt; (
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Stepper</h2>
       <div class="badges">
-        <label for="c-error-56-components-stepper-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-56-components-stepper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-56-components-stepper-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-55-components-stepper-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-55-components-stepper-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-55-components-stepper-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -63068,9 +63842,9 @@ export const FrameworkReact = () =&gt; (
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-56-components-stepper-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-56-components-stepper-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-56-components-stepper-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-55-components-stepper-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-55-components-stepper-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-55-components-stepper-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -63574,9 +64348,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Switch</h2>
       <div class="badges">
-        <label for="c-error-57-components-switch-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-57-components-switch-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-57-components-switch-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-56-components-switch-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-56-components-switch-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-56-components-switch-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -63588,9 +64362,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-57-components-switch-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-57-components-switch-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-57-components-switch-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-56-components-switch-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-56-components-switch-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-56-components-switch-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -63780,9 +64554,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Table</h2>
       <div class="badges">
-        <label for="c-error-58-components-table-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-58-components-table-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-58-components-table-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-57-components-table-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-57-components-table-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-57-components-table-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -63794,9 +64568,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-58-components-table-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-58-components-table-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-58-components-table-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-57-components-table-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-57-components-table-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-57-components-table-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -64447,9 +65221,9 @@ export const TableSorting = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Tables</h2>
       <div class="badges">
-        <label for="c-error-59-snippets-tables-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-59-snippets-tables-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-59-snippets-tables-stories" class="badge ok as-toggle">9 stories</label>
+        <label for="c-error-58-snippets-tables-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-58-snippets-tables-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-58-snippets-tables-stories" class="badge ok as-toggle">9 stories</label>
         
         
       </div>
@@ -64461,9 +65235,9 @@ export const TableSorting = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-59-snippets-tables-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-59-snippets-tables-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-59-snippets-tables-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-58-snippets-tables-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-58-snippets-tables-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-58-snippets-tables-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -66346,9 +67120,9 @@ export const TableSelected = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Tabs</h2>
       <div class="badges">
-        <label for="c-error-60-components-tabs-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-60-components-tabs-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-60-components-tabs-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-59-components-tabs-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-59-components-tabs-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-59-components-tabs-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -66360,9 +67134,9 @@ export const TableSelected = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-60-components-tabs-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-60-components-tabs-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-60-components-tabs-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-59-components-tabs-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-59-components-tabs-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-59-components-tabs-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -66914,9 +67688,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Themeprovider</h2>
       <div class="badges">
-        <label for="c-error-61-components-theme-provider-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-61-components-theme-provider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-61-components-theme-provider-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-60-components-theme-provider-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-60-components-theme-provider-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-60-components-theme-provider-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -66928,9 +67702,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-61-components-theme-provider-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-61-components-theme-provider-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-61-components-theme-provider-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-60-components-theme-provider-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-60-components-theme-provider-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-60-components-theme-provider-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -67144,9 +67918,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Toast</h2>
       <div class="badges">
-        <label for="c-error-62-components-toast-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-62-components-toast-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-62-components-toast-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-61-components-toast-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-61-components-toast-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-61-components-toast-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -67158,9 +67932,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-62-components-toast-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-62-components-toast-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-62-components-toast-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-61-components-toast-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-61-components-toast-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-61-components-toast-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -67481,9 +68255,9 @@ export const Methods = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Tooltip</h2>
       <div class="badges">
-        <label for="c-error-63-components-tooltip-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-63-components-tooltip-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-63-components-tooltip-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-error-62-components-tooltip-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-62-components-tooltip-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-62-components-tooltip-stories" class="badge ok as-toggle">3 stories</label>
         
         
       </div>
@@ -67495,9 +68269,9 @@ export const Methods = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-63-components-tooltip-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-63-components-tooltip-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-63-components-tooltip-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-62-components-tooltip-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-62-components-tooltip-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-62-components-tooltip-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -67726,9 +68500,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Typo</h2>
       <div class="badges">
-        <label for="c-error-64-components-typo-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-64-components-typo-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-64-components-typo-stories" class="badge ok as-toggle">2 stories</label>
+        <label for="c-error-63-components-typo-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-63-components-typo-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-63-components-typo-stories" class="badge ok as-toggle">2 stories</label>
         
         
       </div>
@@ -67740,9 +68514,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-64-components-typo-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-64-components-typo-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-64-components-typo-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-63-components-typo-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-63-components-typo-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-63-components-typo-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -67916,9 +68690,9 @@ export const FrameworkReact = () =&gt; {
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Upload</h2>
       <div class="badges">
-        <label for="c-error-65-components-upload-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-65-components-upload-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-65-components-upload-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-64-components-upload-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-64-components-upload-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-64-components-upload-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -67930,9 +68704,9 @@ export const FrameworkReact = () =&gt; {
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-65-components-upload-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-65-components-upload-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-65-components-upload-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-64-components-upload-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-64-components-upload-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-64-components-upload-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -68184,7 +68958,7 @@ export const FrameworkReact = () =&gt; {
           <label for="no-component-definition-found-toggle" class="group-header">
             <span class="caret">▸</span>
             <span class="group-title">No component definition found</span>
-            <span class="group-count">7</span>
+            <span class="group-count">8</span>
           </label>
           <div class="group-cards">
 <article
@@ -74233,14 +75007,1140 @@ export const UaiTypo = createComponent({
   
   no-doc-error"
   role="listitem"
+  aria-label="UaiPaper">
+  <div class="head">
+    <div class="title">
+      <h2><span class="status-dot dot-err"></span> UaiPaper</h2>
+      <div class="badges">
+        <label for="c-error-5-uai-paper-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-5-uai-paper-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-5-uai-paper-stories" class="badge ok as-toggle">1 story</label>
+        
+        
+      </div>
+    </div>
+    <div class="meta" title="./src/components/uai-paper/uai-paper.stories.jsx">uai-paper · ./src/components/uai-paper/uai-paper.stories.jsx</div>
+    
+    
+    
+  </div>
+
+  <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
+  <input id="c-error-5-uai-paper-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-5-uai-paper-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-5-uai-paper-stories" class="tg tg-stories" type="checkbox" hidden />
+  
+  
+  
+
+  <div class="panels">
+    
+        <div class="panel panel-err">
+          
+    <div class="note err">
+      <div class="note-title">API error</div>
+      <div class="note-body"><pre><code>File: /home/runner/work/blip-ds/blip-ds/blip-ds-react/dist/components.js
+Error:
+No suitable component definition found.
+You can debug your component file in this playground: https://react-docgen.dev/playground
+Code:
+&#39;use client&#39;;
+import { createComponent } from &#39;@stencil/react-output-target/runtime&#39;;
+import React from &#39;react&#39;;
+import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from &quot;blip-ds/dist/components/bds-accordion-body.js&quot;;
+import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from &quot;blip-ds/dist/components/bds-accordion-group.js&quot;;
+import { BdsAccordionHeader as BdsAccordionHeaderElement, defineCustomElement as defineBdsAccordionHeader } from &quot;blip-ds/dist/components/bds-accordion-header.js&quot;;
+import { BdsAccordion as BdsAccordionElement, defineCustomElement as defineBdsAccordion } from &quot;blip-ds/dist/components/bds-accordion.js&quot;;
+import { BdsAlertActions as BdsAlertActionsElement, defineCustomElement as defineBdsAlertActions } from &quot;blip-ds/dist/components/bds-alert-actions.js&quot;;
+import { BdsAlertBody as BdsAlertBodyElement, defineCustomElement as defineBdsAlertBody } from &quot;blip-ds/dist/components/bds-alert-body.js&quot;;
+import { BdsAlertHeader as BdsAlertHeaderElement, defineCustomElement as defineBdsAlertHeader } from &quot;blip-ds/dist/components/bds-alert-header.js&quot;;
+import { BdsAlert as BdsAlertElement, defineCustomElement as defineBdsAlert } from &quot;blip-ds/dist/components/bds-alert.js&quot;;
+import { BdsAutocomplete as BdsAutocompleteElement, defineCustomElement as defineBdsAutocomplete } from &quot;blip-ds/dist/components/bds-autocomplete.js&quot;;
+import { BdsAvatarGroup as BdsAvatarGroupElement, defineCustomElement as defineBdsAvatarGroup } from &quot;blip-ds/dist/components/bds-avatar-group.js&quot;;
+import { BdsAvatar as BdsAvatarElement, defineCustomElement as defineBdsAvatar } from &quot;blip-ds/dist/components/bds-avatar.js&quot;;
+import { BdsBadge as BdsBadgeElement, defineCustomElement as defineBdsBadge } from &quot;blip-ds/dist/components/bds-badge.js&quot;;
+import { BdsBannerLink as BdsBannerLinkElement, defineCustomElement as defineBdsBannerLink } from &quot;blip-ds/dist/components/bds-banner-link.js&quot;;
+import { BdsBanner as BdsBannerElement, defineCustomElement as defineBdsBanner } from &quot;blip-ds/dist/components/bds-banner.js&quot;;
+import { BdsBreadcrumb as BdsBreadcrumbElement, defineCustomElement as defineBdsBreadcrumb } from &quot;blip-ds/dist/components/bds-breadcrumb.js&quot;;
+import { BdsButtonGroup as BdsButtonGroupElement, defineCustomElement as defineBdsButtonGroup } from &quot;blip-ds/dist/components/bds-button-group.js&quot;;
+import { BdsButtonIcon as BdsButtonIconElement, defineCustomElement as defineBdsButtonIcon } from &quot;blip-ds/dist/components/bds-button-icon.js&quot;;
+import { BdsButton as BdsButtonElement, defineCustomElement as defineBdsButton } from &quot;blip-ds/dist/components/bds-button.js&quot;;
+import { BdsCardBody as BdsCardBodyElement, defineCustomElement as defineBdsCardBody } from &quot;blip-ds/dist/components/bds-card-body.js&quot;;
+import { BdsCardColor as BdsCardColorElement, defineCustomElement as defineBdsCardColor } from &quot;blip-ds/dist/components/bds-card-color.js&quot;;
+import { BdsCardFooter as BdsCardFooterElement, defineCustomElement as defineBdsCardFooter } from &quot;blip-ds/dist/components/bds-card-footer.js&quot;;
+import { BdsCardHeader as BdsCardHeaderElement, defineCustomElement as defineBdsCardHeader } from &quot;blip-ds/dist/components/bds-card-header.js&quot;;
+import { BdsCardSubtitle as BdsCardSubtitleElement, defineCustomElement as defineBdsCardSubtitle } from &quot;blip-ds/dist/components/bds-card-subtitle.js&quot;;
+import { BdsCardTitle as BdsCardTitleElement, defineCustomElement as defineBdsCardTitle } from &quot;blip-ds/dist/components/bds-card-title.js&quot;;
+import { BdsCard as BdsCardElement, defineCustomElement as defineBdsCard } from &quot;blip-ds/dist/components/bds-card.js&quot;;
+import { BdsCarouselItem as BdsCarouselItemElement, defineCustomElement as defineBdsCarouselItem } from &quot;blip-ds/dist/components/bds-carousel-item.js&quot;;
+import { BdsCarousel as BdsCarouselElement, defineCustomElement as defineBdsCarousel } from &quot;blip-ds/dist/components/bds-carousel.js&quot;;
+import { BdsCheckbox as BdsCheckboxElement, defineCustomElement as defineBdsCheckbox } from &quot;blip-ds/dist/components/bds-checkbox.js&quot;;
+import { BdsChipClickable as BdsChipClickableElement, defineCustomElement as defineBdsChipClickable } from &quot;blip-ds/dist/components/bds-chip-clickable.js&quot;;
+import { BdsChipSelected as BdsChipSelectedElement, defineCustomElement as defineBdsChipSelected } from &quot;blip-ds/dist/components/bds-chip-selected.js&quot;;
+import { BdsChipTag as BdsChipTagElement, defineCustomElement as defineBdsChipTag } from &quot;blip-ds/dist/components/bds-chip-tag.js&quot;;
+import { BdsChip as BdsChipElement, defineCustomElement as defineBdsChip } from &quot;blip-ds/dist/components/bds-chip.js&quot;;
+import { BdsCounterText as BdsCounterTextElement, defineCustomElement as defineBdsCounterText } from &quot;blip-ds/dist/components/bds-counter-text.js&quot;;
+import { BdsDataTable as BdsDataTableElement, defineCustomElement as defineBdsDataTable } from &quot;blip-ds/dist/components/bds-data-table.js&quot;;
+import { BdsDatepickerPeriod as BdsDatepickerPeriodElement, defineCustomElement as defineBdsDatepickerPeriod } from &quot;blip-ds/dist/components/bds-datepicker-period.js&quot;;
+import { BdsDatepickerSingle as BdsDatepickerSingleElement, defineCustomElement as defineBdsDatepickerSingle } from &quot;blip-ds/dist/components/bds-datepicker-single.js&quot;;
+import { BdsDatepicker as BdsDatepickerElement, defineCustomElement as defineBdsDatepicker } from &quot;blip-ds/dist/components/bds-datepicker.js&quot;;
+import { BdsDivider as BdsDividerElement, defineCustomElement as defineBdsDivider } from &quot;blip-ds/dist/components/bds-divider.js&quot;;
+import { BdsDropdown as BdsDropdownElement, defineCustomElement as defineBdsDropdown } from &quot;blip-ds/dist/components/bds-dropdown.js&quot;;
+import { BdsExpansionPanelBody as BdsExpansionPanelBodyElement, defineCustomElement as defineBdsExpansionPanelBody } from &quot;blip-ds/dist/components/bds-expansion-panel-body.js&quot;;
+import { BdsExpansionPanelHeader as BdsExpansionPanelHeaderElement, defineCustomElement as defineBdsExpansionPanelHeader } from &quot;blip-ds/dist/components/bds-expansion-panel-header.js&quot;;
+import { BdsExpansionPanel as BdsExpansionPanelElement, defineCustomElement as defineBdsExpansionPanel } from &quot;blip-ds/dist/components/bds-expansion-panel.js&quot;;
+import { BdsGrid as BdsGridElement, defineCustomElement as defineBdsGrid } from &quot;blip-ds/dist/components/bds-grid.js&quot;;
+import { BdsIcon as BdsIconElement, defineCustomElement as defineBdsIcon } from &quot;blip-ds/dist/components/bds-icon.js&quot;;
+import { BdsIllustration as BdsIllustrationElement, defineCustomElement as defineBdsIllustration } from &quot;blip-ds/dist/components/bds-illustration.js&quot;;
+import { BdsImage as BdsImageElement, defineCustomElement as defineBdsImage } from &quot;blip-ds/dist/components/bds-image.js&quot;;
+import { BdsInputChips as BdsInputChipsElement, defineCustomElement as defineBdsInputChips } from &quot;blip-ds/dist/components/bds-input-chips.js&quot;;
+import { BdsInputEditable as BdsInputEditableElement, defineCustomElement as defineBdsInputEditable } from &quot;blip-ds/dist/components/bds-input-editable.js&quot;;
+import { BdsInputPassword as BdsInputPasswordElement, defineCustomElement as defineBdsInputPassword } from &quot;blip-ds/dist/components/bds-input-password.js&quot;;
+import { BdsInputPhoneNumber as BdsInputPhoneNumberElement, defineCustomElement as defineBdsInputPhoneNumber } from &quot;blip-ds/dist/components/bds-input-phone-number.js&quot;;
+import { BdsInput as BdsInputElement, defineCustomElement as defineBdsInput } from &quot;blip-ds/dist/components/bds-input.js&quot;;
+import { BdsListItemContent as BdsListItemContentElement, defineCustomElement as defineBdsListItemContent } from &quot;blip-ds/dist/components/bds-list-item-content.js&quot;;
+import { BdsListItem as BdsListItemElement, defineCustomElement as defineBdsListItem } from &quot;blip-ds/dist/components/bds-list-item.js&quot;;
+import { BdsList as BdsListElement, defineCustomElement as defineBdsList } from &quot;blip-ds/dist/components/bds-list.js&quot;;
+import { BdsLoadingBar as BdsLoadingBarElement, defineCustomElement as defineBdsLoadingBar } from &quot;blip-ds/dist/components/bds-loading-bar.js&quot;;
+import { BdsLoadingPage as BdsLoadingPageElement, defineCustomElement as defineBdsLoadingPage } from &quot;blip-ds/dist/components/bds-loading-page.js&quot;;
+import { BdsLoadingSpinner as BdsLoadingSpinnerElement, defineCustomElement as defineBdsLoadingSpinner } from &quot;blip-ds/dist/components/bds-loading-spinner.js&quot;;
+import { BdsMenuAction as BdsMenuActionElement, defineCustomElement as defineBdsMenuAction } from &quot;blip-ds/dist/components/bds-menu-action.js&quot;;
+import { BdsMenuExibition as BdsMenuExibitionElement, defineCustomElement as defineBdsMenuExibition } from &quot;blip-ds/dist/components/bds-menu-exibition.js&quot;;
+import { BdsMenuListItem as BdsMenuListItemElement, defineCustomElement as defineBdsMenuListItem } from &quot;blip-ds/dist/components/bds-menu-list-item.js&quot;;
+import { BdsMenuList as BdsMenuListElement, defineCustomElement as defineBdsMenuList } from &quot;blip-ds/dist/components/bds-menu-list.js&quot;;
+import { BdsMenuSeparation as BdsMenuSeparationElement, defineCustomElement as defineBdsMenuSeparation } from &quot;blip-ds/dist/components/bds-menu-separation.js&quot;;
+import { BdsMenu as BdsMenuElement, defineCustomElement as defineBdsMenu } from &quot;blip-ds/dist/components/bds-menu.js&quot;;
+import { BdsModalAction as BdsModalActionElement, defineCustomElement as defineBdsModalAction } from &quot;blip-ds/dist/components/bds-modal-action.js&quot;;
+import { BdsModalCloseButton as BdsModalCloseButtonElement, defineCustomElement as defineBdsModalCloseButton } from &quot;blip-ds/dist/components/bds-modal-close-button.js&quot;;
+import { BdsModal as BdsModalElement, defineCustomElement as defineBdsModal } from &quot;blip-ds/dist/components/bds-modal.js&quot;;
+import { BdsNavTreeGroup as BdsNavTreeGroupElement, defineCustomElement as defineBdsNavTreeGroup } from &quot;blip-ds/dist/components/bds-nav-tree-group.js&quot;;
+import { BdsNavTreeItem as BdsNavTreeItemElement, defineCustomElement as defineBdsNavTreeItem } from &quot;blip-ds/dist/components/bds-nav-tree-item.js&quot;;
+import { BdsNavTree as BdsNavTreeElement, defineCustomElement as defineBdsNavTree } from &quot;blip-ds/dist/components/bds-nav-tree.js&quot;;
+import { BdsNavbarContent as BdsNavbarContentElement, defineCustomElement as defineBdsNavbarContent } from &quot;blip-ds/dist/components/bds-navbar-content.js&quot;;
+import { BdsNavbar as BdsNavbarElement, defineCustomElement as defineBdsNavbar } from &quot;blip-ds/dist/components/bds-navbar.js&quot;;
+import { BdsPagination as BdsPaginationElement, defineCustomElement as defineBdsPagination } from &quot;blip-ds/dist/components/bds-pagination.js&quot;;
+import { BdsPaper as BdsPaperElement, defineCustomElement as defineBdsPaper } from &quot;blip-ds/dist/components/bds-paper.js&quot;;
+import { BdsProgressBar as BdsProgressBarElement, defineCustomElement as defineBdsProgressBar } from &quot;blip-ds/dist/components/bds-progress-bar.js&quot;;
+import { BdsRadioGroup as BdsRadioGroupElement, defineCustomElement as defineBdsRadioGroup } from &quot;blip-ds/dist/components/bds-radio-group.js&quot;;
+import { BdsRadio as BdsRadioElement, defineCustomElement as defineBdsRadio } from &quot;blip-ds/dist/components/bds-radio.js&quot;;
+import { BdsRichText as BdsRichTextElement, defineCustomElement as defineBdsRichText } from &quot;blip-ds/dist/components/bds-rich-text.js&quot;;
+import { BdsSelectChips as BdsSelectChipsElement, defineCustomElement as defineBdsSelectChips } from &quot;blip-ds/dist/components/bds-select-chips.js&quot;;
+import { BdsSelectOption as BdsSelectOptionElement, defineCustomElement as defineBdsSelectOption } from &quot;blip-ds/dist/components/bds-select-option.js&quot;;
+import { BdsSelect as BdsSelectElement, defineCustomElement as defineBdsSelect } from &quot;blip-ds/dist/components/bds-select.js&quot;;
+import { BdsSidebar as BdsSidebarElement, defineCustomElement as defineBdsSidebar } from &quot;blip-ds/dist/components/bds-sidebar.js&quot;;
+import { BdsSkeleton as BdsSkeletonElement, defineCustomElement as defineBdsSkeleton } from &quot;blip-ds/dist/components/bds-skeleton.js&quot;;
+import { BdsSlider as BdsSliderElement, defineCustomElement as defineBdsSlider } from &quot;blip-ds/dist/components/bds-slider.js&quot;;
+import { BdsStep as BdsStepElement, defineCustomElement as defineBdsStep } from &quot;blip-ds/dist/components/bds-step.js&quot;;
+import { BdsStepper as BdsStepperElement, defineCustomElement as defineBdsStepper } from &quot;blip-ds/dist/components/bds-stepper.js&quot;;
+import { BdsSwitch as BdsSwitchElement, defineCustomElement as defineBdsSwitch } from &quot;blip-ds/dist/components/bds-switch.js&quot;;
+import { BdsTabGroup as BdsTabGroupElement, defineCustomElement as defineBdsTabGroup } from &quot;blip-ds/dist/components/bds-tab-group.js&quot;;
+import { BdsTabItem as BdsTabItemElement, defineCustomElement as defineBdsTabItem } from &quot;blip-ds/dist/components/bds-tab-item.js&quot;;
+import { BdsTabPanel as BdsTabPanelElement, defineCustomElement as defineBdsTabPanel } from &quot;blip-ds/dist/components/bds-tab-panel.js&quot;;
+import { BdsTab as BdsTabElement, defineCustomElement as defineBdsTab } from &quot;blip-ds/dist/components/bds-tab.js&quot;;
+import { BdsTableBody as BdsTableBodyElement, defineCustomElement as defineBdsTableBody } from &quot;blip-ds/dist/components/bds-table-body.js&quot;;
+import { BdsTableCell as BdsTableCellElement, defineCustomElement as defineBdsTableCell } from &quot;blip-ds/dist/components/bds-table-cell.js&quot;;
+import { BdsTableHeader as BdsTableHeaderElement, defineCustomElement as defineBdsTableHeader } from &quot;blip-ds/dist/components/bds-table-header.js&quot;;
+import { BdsTableRow as BdsTableRowElement, defineCustomElement as defineBdsTableRow } from &quot;blip-ds/dist/components/bds-table-row.js&quot;;
+import { BdsTableTh as BdsTableThElement, defineCustomElement as defineBdsTableTh } from &quot;blip-ds/dist/components/bds-table-th.js&quot;;
+import { BdsTable as BdsTableElement, defineCustomElement as defineBdsTable } from &quot;blip-ds/dist/components/bds-table.js&quot;;
+import { BdsTabs as BdsTabsElement, defineCustomElement as defineBdsTabs } from &quot;blip-ds/dist/components/bds-tabs.js&quot;;
+import { BdsTestComponent as BdsTestComponentElement, defineCustomElement as defineBdsTestComponent } from &quot;blip-ds/dist/components/bds-test-component.js&quot;;
+import { BdsThemeProvider as BdsThemeProviderElement, defineCustomElement as defineBdsThemeProvider } from &quot;blip-ds/dist/components/bds-theme-provider.js&quot;;
+import { BdsToastContainer as BdsToastContainerElement, defineCustomElement as defineBdsToastContainer } from &quot;blip-ds/dist/components/bds-toast-container.js&quot;;
+import { BdsToast as BdsToastElement, defineCustomElement as defineBdsToast } from &quot;blip-ds/dist/components/bds-toast.js&quot;;
+import { BdsTooltip as BdsTooltipElement, defineCustomElement as defineBdsTooltip } from &quot;blip-ds/dist/components/bds-tooltip.js&quot;;
+import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from &quot;blip-ds/dist/components/bds-typo.js&quot;;
+import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from &quot;blip-ds/dist/components/bds-upload.js&quot;;
+import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from &quot;blip-ds/dist/components/bds-warning.js&quot;;
+import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from &quot;blip-ds/dist/components/uai-avatar.js&quot;;
+import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from &quot;blip-ds/dist/components/uai-button.js&quot;;
+import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from &quot;blip-ds/dist/components/uai-grid.js&quot;;
+import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from &quot;blip-ds/dist/components/uai-icon.js&quot;;
+import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from &quot;blip-ds/dist/components/uai-navbar-content.js&quot;;
+import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from &quot;blip-ds/dist/components/uai-navbar.js&quot;;
+import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from &quot;blip-ds/dist/components/uai-paper.js&quot;;
+import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from &quot;blip-ds/dist/components/uai-theme-provider.js&quot;;
+import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from &quot;blip-ds/dist/components/uai-typo.js&quot;;
+export const BdsAccordion = createComponent({
+    tagName: &#39;bds-accordion&#39;,
+    elementClass: BdsAccordionElement,
+    react: React,
+    events: {
+        onBdsToggle: &#39;bdsToggle&#39;,
+        onBdsAccordionOpen: &#39;bdsAccordionOpen&#39;,
+        onBdsAccordionClose: &#39;bdsAccordionClose&#39;
+    },
+    defineCustomElement: defineBdsAccordion
+});
+export const BdsAccordionBody = createComponent({
+    tagName: &#39;bds-accordion-body&#39;,
+    elementClass: BdsAccordionBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAccordionBody
+});
+export const BdsAccordionGroup = createComponent({
+    tagName: &#39;bds-accordion-group&#39;,
+    elementClass: BdsAccordionGroupElement,
+    react: React,
+    events: {
+        onBdsAccordionCloseAll: &#39;bdsAccordionCloseAll&#39;,
+        onBdsAccordionOpenAll: &#39;bdsAccordionOpenAll&#39;
+    },
+    defineCustomElement: defineBdsAccordionGroup
+});
+export const BdsAccordionHeader = createComponent({
+    tagName: &#39;bds-accordion-header&#39;,
+    elementClass: BdsAccordionHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAccordionHeader
+});
+export const BdsAlert = createComponent({
+    tagName: &#39;bds-alert&#39;,
+    elementClass: BdsAlertElement,
+    react: React,
+    events: { onBdsAlertChanged: &#39;bdsAlertChanged&#39; },
+    defineCustomElement: defineBdsAlert
+});
+export const BdsAlertActions = createComponent({
+    tagName: &#39;bds-alert-actions&#39;,
+    elementClass: BdsAlertActionsElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAlertActions
+});
+export const BdsAlertBody = createComponent({
+    tagName: &#39;bds-alert-body&#39;,
+    elementClass: BdsAlertBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAlertBody
+});
+export const BdsAlertHeader = createComponent({
+    tagName: &#39;bds-alert-header&#39;,
+    elementClass: BdsAlertHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsAlertHeader
+});
+export const BdsAutocomplete = createComponent({
+    tagName: &#39;bds-autocomplete&#39;,
+    elementClass: BdsAutocompleteElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsSelectedChange: &#39;bdsSelectedChange&#39;,
+        onBdsMultiselectedChange: &#39;bdsMultiselectedChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;
+    },
+    defineCustomElement: defineBdsAutocomplete
+});
+export const BdsAvatar = createComponent({
+    tagName: &#39;bds-avatar&#39;,
+    elementClass: BdsAvatarElement,
+    react: React,
+    events: {
+        onBdsClickAvatar: &#39;bdsClickAvatar&#39;,
+        onBdsImageUpload: &#39;bdsImageUpload&#39;
+    },
+    defineCustomElement: defineBdsAvatar
+});
+export const BdsAvatarGroup = createComponent({
+    tagName: &#39;bds-avatar-group&#39;,
+    elementClass: BdsAvatarGroupElement,
+    react: React,
+    events: { onBdsClickAvatarGroup: &#39;bdsClickAvatarGroup&#39; },
+    defineCustomElement: defineBdsAvatarGroup
+});
+export const BdsBadge = createComponent({
+    tagName: &#39;bds-badge&#39;,
+    elementClass: BdsBadgeElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsBadge
+});
+export const BdsBanner = createComponent({
+    tagName: &#39;bds-banner&#39;,
+    elementClass: BdsBannerElement,
+    react: React,
+    events: { onBdsBannerClose: &#39;bdsBannerClose&#39; },
+    defineCustomElement: defineBdsBanner
+});
+export const BdsBannerLink = createComponent({
+    tagName: &#39;bds-banner-link&#39;,
+    elementClass: BdsBannerLinkElement,
+    react: React,
+    events: { onBdsBannerLink: &#39;bdsBannerLink&#39; },
+    defineCustomElement: defineBdsBannerLink
+});
+export const BdsBreadcrumb = createComponent({
+    tagName: &#39;bds-breadcrumb&#39;,
+    elementClass: BdsBreadcrumbElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsBreadcrumb
+});
+export const BdsButton = createComponent({
+    tagName: &#39;bds-button&#39;,
+    elementClass: BdsButtonElement,
+    react: React,
+    events: { onBdsClick: &#39;bdsClick&#39; },
+    defineCustomElement: defineBdsButton
+});
+export const BdsButtonGroup = createComponent({
+    tagName: &#39;bds-button-group&#39;,
+    elementClass: BdsButtonGroupElement,
+    react: React,
+    events: { onButtonSelected: &#39;buttonSelected&#39; },
+    defineCustomElement: defineBdsButtonGroup
+});
+export const BdsButtonIcon = createComponent({
+    tagName: &#39;bds-button-icon&#39;,
+    elementClass: BdsButtonIconElement,
+    react: React,
+    events: { onBdsClick: &#39;bdsClick&#39; },
+    defineCustomElement: defineBdsButtonIcon
+});
+export const BdsCard = createComponent({
+    tagName: &#39;bds-card&#39;,
+    elementClass: BdsCardElement,
+    react: React,
+    events: { onBdsClick: &#39;bdsClick&#39; },
+    defineCustomElement: defineBdsCard
+});
+export const BdsCardBody = createComponent({
+    tagName: &#39;bds-card-body&#39;,
+    elementClass: BdsCardBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardBody
+});
+export const BdsCardColor = createComponent({
+    tagName: &#39;bds-card-color&#39;,
+    elementClass: BdsCardColorElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardColor
+});
+export const BdsCardFooter = createComponent({
+    tagName: &#39;bds-card-footer&#39;,
+    elementClass: BdsCardFooterElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardFooter
+});
+export const BdsCardHeader = createComponent({
+    tagName: &#39;bds-card-header&#39;,
+    elementClass: BdsCardHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardHeader
+});
+export const BdsCardSubtitle = createComponent({
+    tagName: &#39;bds-card-subtitle&#39;,
+    elementClass: BdsCardSubtitleElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardSubtitle
+});
+export const BdsCardTitle = createComponent({
+    tagName: &#39;bds-card-title&#39;,
+    elementClass: BdsCardTitleElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCardTitle
+});
+export const BdsCarousel = createComponent({
+    tagName: &#39;bds-carousel&#39;,
+    elementClass: BdsCarouselElement,
+    react: React,
+    events: { onBdsChangeCarousel: &#39;bdsChangeCarousel&#39; },
+    defineCustomElement: defineBdsCarousel
+});
+export const BdsCarouselItem = createComponent({
+    tagName: &#39;bds-carousel-item&#39;,
+    elementClass: BdsCarouselItemElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCarouselItem
+});
+export const BdsCheckbox = createComponent({
+    tagName: &#39;bds-checkbox&#39;,
+    elementClass: BdsCheckboxElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;
+    },
+    defineCustomElement: defineBdsCheckbox
+});
+export const BdsChip = createComponent({
+    tagName: &#39;bds-chip&#39;,
+    elementClass: BdsChipElement,
+    react: React,
+    events: { onBdsDelete: &#39;bdsDelete&#39; },
+    defineCustomElement: defineBdsChip
+});
+export const BdsChipClickable = createComponent({
+    tagName: &#39;bds-chip-clickable&#39;,
+    elementClass: BdsChipClickableElement,
+    react: React,
+    events: {
+        onChipClickableClose: &#39;chipClickableClose&#39;,
+        onChipClickableClick: &#39;chipClickableClick&#39;
+    },
+    defineCustomElement: defineBdsChipClickable
+});
+export const BdsChipSelected = createComponent({
+    tagName: &#39;bds-chip-selected&#39;,
+    elementClass: BdsChipSelectedElement,
+    react: React,
+    events: { onChipClick: &#39;chipClick&#39; },
+    defineCustomElement: defineBdsChipSelected
+});
+export const BdsChipTag = createComponent({
+    tagName: &#39;bds-chip-tag&#39;,
+    elementClass: BdsChipTagElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsChipTag
+});
+export const BdsCounterText = createComponent({
+    tagName: &#39;bds-counter-text&#39;,
+    elementClass: BdsCounterTextElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsCounterText
+});
+export const BdsDataTable = createComponent({
+    tagName: &#39;bds-data-table&#39;,
+    elementClass: BdsDataTableElement,
+    react: React,
+    events: {
+        onBdsTableClick: &#39;bdsTableClick&#39;,
+        onBdsTableDelete: &#39;bdsTableDelete&#39;,
+        onBdsTableChange: &#39;bdsTableChange&#39;
+    },
+    defineCustomElement: defineBdsDataTable
+});
+export const BdsDatepicker = createComponent({
+    tagName: &#39;bds-datepicker&#39;,
+    elementClass: BdsDatepickerElement,
+    react: React,
+    events: {
+        onBdsStartDate: &#39;bdsStartDate&#39;,
+        onBdsEndDate: &#39;bdsEndDate&#39;,
+        onConcludeDatepicker: &#39;concludeDatepicker&#39;,
+        onEmptyConcludeDatepicker: &#39;emptyConcludeDatepicker&#39;
+    },
+    defineCustomElement: defineBdsDatepicker
+});
+export const BdsDatepickerPeriod = createComponent({
+    tagName: &#39;bds-datepicker-period&#39;,
+    elementClass: BdsDatepickerPeriodElement,
+    react: React,
+    events: {
+        onBdsStartDate: &#39;bdsStartDate&#39;,
+        onBdsEndDate: &#39;bdsEndDate&#39;,
+        onBdsClickDayButton: &#39;bdsClickDayButton&#39;
+    },
+    defineCustomElement: defineBdsDatepickerPeriod
+});
+export const BdsDatepickerSingle = createComponent({
+    tagName: &#39;bds-datepicker-single&#39;,
+    elementClass: BdsDatepickerSingleElement,
+    react: React,
+    events: { onBdsDateSelected: &#39;bdsDateSelected&#39; },
+    defineCustomElement: defineBdsDatepickerSingle
+});
+export const BdsDivider = createComponent({
+    tagName: &#39;bds-divider&#39;,
+    elementClass: BdsDividerElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsDivider
+});
+export const BdsDropdown = createComponent({
+    tagName: &#39;bds-dropdown&#39;,
+    elementClass: BdsDropdownElement,
+    react: React,
+    events: { onBdsToggle: &#39;bdsToggle&#39; },
+    defineCustomElement: defineBdsDropdown
+});
+export const BdsExpansionPanel = createComponent({
+    tagName: &#39;bds-expansion-panel&#39;,
+    elementClass: BdsExpansionPanelElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsExpansionPanel
+});
+export const BdsExpansionPanelBody = createComponent({
+    tagName: &#39;bds-expansion-panel-body&#39;,
+    elementClass: BdsExpansionPanelBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsExpansionPanelBody
+});
+export const BdsExpansionPanelHeader = createComponent({
+    tagName: &#39;bds-expansion-panel-header&#39;,
+    elementClass: BdsExpansionPanelHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsExpansionPanelHeader
+});
+export const BdsGrid = createComponent({
+    tagName: &#39;bds-grid&#39;,
+    elementClass: BdsGridElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsGrid
+});
+export const BdsIcon = createComponent({
+    tagName: &#39;bds-icon&#39;,
+    elementClass: BdsIconElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsIcon
+});
+export const BdsIllustration = createComponent({
+    tagName: &#39;bds-illustration&#39;,
+    elementClass: BdsIllustrationElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsIllustration
+});
+export const BdsImage = createComponent({
+    tagName: &#39;bds-image&#39;,
+    elementClass: BdsImageElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsImage
+});
+export const BdsInput = createComponent({
+    tagName: &#39;bds-input&#39;,
+    elementClass: BdsInputElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;,
+        onBdsOnBlur: &#39;bdsOnBlur&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsSubmit: &#39;bdsSubmit&#39;,
+        onBdsPatternValidation: &#39;bdsPatternValidation&#39;,
+        onBdsKeyDownBackspace: &#39;bdsKeyDownBackspace&#39;
+    },
+    defineCustomElement: defineBdsInput
+});
+export const BdsInputChips = createComponent({
+    tagName: &#39;bds-input-chips&#39;,
+    elementClass: BdsInputChipsElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsChangeChips: &#39;bdsChangeChips&#39;,
+        onBdsInputChipsFocus: &#39;bdsInputChipsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;,
+        onBdsInputChipsInput: &#39;bdsInputChipsInput&#39;,
+        onBdsExtendedQuantityInput: &#39;bdsExtendedQuantityInput&#39;,
+        onBdsSubmit: &#39;bdsSubmit&#39;
+    },
+    defineCustomElement: defineBdsInputChips
+});
+export const BdsInputEditable = createComponent({
+    tagName: &#39;bds-input-editable&#39;,
+    elementClass: BdsInputEditableElement,
+    react: React,
+    events: {
+        onBdsInputEditableSave: &#39;bdsInputEditableSave&#39;,
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;
+    },
+    defineCustomElement: defineBdsInputEditable
+});
+export const BdsInputPassword = createComponent({
+    tagName: &#39;bds-input-password&#39;,
+    elementClass: BdsInputPasswordElement,
+    react: React,
+    events: {
+        onBdsInputPasswordChange: &#39;bdsInputPasswordChange&#39;,
+        onBdsInputPasswordInput: &#39;bdsInputPasswordInput&#39;,
+        onBdsInputPasswordBlur: &#39;bdsInputPasswordBlur&#39;,
+        onBdsInputPasswordFocus: &#39;bdsInputPasswordFocus&#39;,
+        onBdsInputPasswordSubmit: &#39;bdsInputPasswordSubmit&#39;,
+        onBdsKeyDownBackspace: &#39;bdsKeyDownBackspace&#39;
+    },
+    defineCustomElement: defineBdsInputPassword
+});
+export const BdsInputPhoneNumber = createComponent({
+    tagName: &#39;bds-input-phone-number&#39;,
+    elementClass: BdsInputPhoneNumberElement,
+    react: React,
+    events: {
+        onBdsPhoneNumberChange: &#39;bdsPhoneNumberChange&#39;,
+        onBdsInput: &#39;bdsInput&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;
+    },
+    defineCustomElement: defineBdsInputPhoneNumber
+});
+export const BdsList = createComponent({
+    tagName: &#39;bds-list&#39;,
+    elementClass: BdsListElement,
+    react: React,
+    events: {
+        onBdsListCheckboxChange: &#39;bdsListCheckboxChange&#39;,
+        onBdsListRadioChange: &#39;bdsListRadioChange&#39;,
+        onBdsListSwitchChange: &#39;bdsListSwitchChange&#39;,
+        onBdsClickActionsButtons: &#39;bdsClickActionsButtons&#39;
+    },
+    defineCustomElement: defineBdsList
+});
+export const BdsListItem = createComponent({
+    tagName: &#39;bds-list-item&#39;,
+    elementClass: BdsListItemElement,
+    react: React,
+    events: {
+        onBdsChecked: &#39;bdsChecked&#39;,
+        onBdsClickActionButtom: &#39;bdsClickActionButtom&#39;
+    },
+    defineCustomElement: defineBdsListItem
+});
+export const BdsListItemContent = createComponent({
+    tagName: &#39;bds-list-item-content&#39;,
+    elementClass: BdsListItemContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsListItemContent
+});
+export const BdsLoadingBar = createComponent({
+    tagName: &#39;bds-loading-bar&#39;,
+    elementClass: BdsLoadingBarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsLoadingBar
+});
+export const BdsLoadingPage = createComponent({
+    tagName: &#39;bds-loading-page&#39;,
+    elementClass: BdsLoadingPageElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsLoadingPage
+});
+export const BdsLoadingSpinner = createComponent({
+    tagName: &#39;bds-loading-spinner&#39;,
+    elementClass: BdsLoadingSpinnerElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsLoadingSpinner
+});
+export const BdsMenu = createComponent({
+    tagName: &#39;bds-menu&#39;,
+    elementClass: BdsMenuElement,
+    react: React,
+    events: { onBdsToggle: &#39;bdsToggle&#39; },
+    defineCustomElement: defineBdsMenu
+});
+export const BdsMenuAction = createComponent({
+    tagName: &#39;bds-menu-action&#39;,
+    elementClass: BdsMenuActionElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuAction
+});
+export const BdsMenuExibition = createComponent({
+    tagName: &#39;bds-menu-exibition&#39;,
+    elementClass: BdsMenuExibitionElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuExibition
+});
+export const BdsMenuList = createComponent({
+    tagName: &#39;bds-menu-list&#39;,
+    elementClass: BdsMenuListElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuList
+});
+export const BdsMenuListItem = createComponent({
+    tagName: &#39;bds-menu-list-item&#39;,
+    elementClass: BdsMenuListItemElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuListItem
+});
+export const BdsMenuSeparation = createComponent({
+    tagName: &#39;bds-menu-separation&#39;,
+    elementClass: BdsMenuSeparationElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsMenuSeparation
+});
+export const BdsModal = createComponent({
+    tagName: &#39;bds-modal&#39;,
+    elementClass: BdsModalElement,
+    react: React,
+    events: { onBdsModalChanged: &#39;bdsModalChanged&#39; },
+    defineCustomElement: defineBdsModal
+});
+export const BdsModalAction = createComponent({
+    tagName: &#39;bds-modal-action&#39;,
+    elementClass: BdsModalActionElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsModalAction
+});
+export const BdsModalCloseButton = createComponent({
+    tagName: &#39;bds-modal-close-button&#39;,
+    elementClass: BdsModalCloseButtonElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsModalCloseButton
+});
+export const BdsNavTree = createComponent({
+    tagName: &#39;bds-nav-tree&#39;,
+    elementClass: BdsNavTreeElement,
+    react: React,
+    events: { onBdsToogleChange: &#39;bdsToogleChange&#39; },
+    defineCustomElement: defineBdsNavTree
+});
+export const BdsNavTreeGroup = createComponent({
+    tagName: &#39;bds-nav-tree-group&#39;,
+    elementClass: BdsNavTreeGroupElement,
+    react: React,
+    events: {
+        onBdsNavTreeGroupCloseAll: &#39;bdsNavTreeGroupCloseAll&#39;,
+        onBdsNavTreeGroupOpenAll: &#39;bdsNavTreeGroupOpenAll&#39;
+    },
+    defineCustomElement: defineBdsNavTreeGroup
+});
+export const BdsNavTreeItem = createComponent({
+    tagName: &#39;bds-nav-tree-item&#39;,
+    elementClass: BdsNavTreeItemElement,
+    react: React,
+    events: { onBdsToogleChange: &#39;bdsToogleChange&#39; },
+    defineCustomElement: defineBdsNavTreeItem
+});
+export const BdsNavbar = createComponent({
+    tagName: &#39;bds-navbar&#39;,
+    elementClass: BdsNavbarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsNavbar
+});
+export const BdsNavbarContent = createComponent({
+    tagName: &#39;bds-navbar-content&#39;,
+    elementClass: BdsNavbarContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsNavbarContent
+});
+export const BdsPagination = createComponent({
+    tagName: &#39;bds-pagination&#39;,
+    elementClass: BdsPaginationElement,
+    react: React,
+    events: {
+        onBdsPaginationChange: &#39;bdsPaginationChange&#39;,
+        onBdsItemsPerPageChange: &#39;bdsItemsPerPageChange&#39;
+    },
+    defineCustomElement: defineBdsPagination
+});
+export const BdsPaper = createComponent({
+    tagName: &#39;bds-paper&#39;,
+    elementClass: BdsPaperElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsPaper
+});
+export const BdsProgressBar = createComponent({
+    tagName: &#39;bds-progress-bar&#39;,
+    elementClass: BdsProgressBarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsProgressBar
+});
+export const BdsRadio = createComponent({
+    tagName: &#39;bds-radio&#39;,
+    elementClass: BdsRadioElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsClickChange: &#39;bdsClickChange&#39;
+    },
+    defineCustomElement: defineBdsRadio
+});
+export const BdsRadioGroup = createComponent({
+    tagName: &#39;bds-radio-group&#39;,
+    elementClass: BdsRadioGroupElement,
+    react: React,
+    events: { onBdsRadioGroupChange: &#39;bdsRadioGroupChange&#39; },
+    defineCustomElement: defineBdsRadioGroup
+});
+export const BdsRichText = createComponent({
+    tagName: &#39;bds-rich-text&#39;,
+    elementClass: BdsRichTextElement,
+    react: React,
+    events: {
+        onBdsRichTextChange: &#39;bdsRichTextChange&#39;,
+        onBdsRichTextInput: &#39;bdsRichTextInput&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;
+    },
+    defineCustomElement: defineBdsRichText
+});
+export const BdsSelect = createComponent({
+    tagName: &#39;bds-select&#39;,
+    elementClass: BdsSelectElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;
+    },
+    defineCustomElement: defineBdsSelect
+});
+export const BdsSelectChips = createComponent({
+    tagName: &#39;bds-select-chips&#39;,
+    elementClass: BdsSelectChipsElement,
+    react: React,
+    events: {
+        onBdsChange: &#39;bdsChange&#39;,
+        onBdsCancel: &#39;bdsCancel&#39;,
+        onBdsFocus: &#39;bdsFocus&#39;,
+        onBdsBlur: &#39;bdsBlur&#39;,
+        onBdsChangeChips: &#39;bdsChangeChips&#39;,
+        onBdsSelectChipsInput: &#39;bdsSelectChipsInput&#39;,
+        onBdsSubmit: &#39;bdsSubmit&#39;
+    },
+    defineCustomElement: defineBdsSelectChips
+});
+export const BdsSelectOption = createComponent({
+    tagName: &#39;bds-select-option&#39;,
+    elementClass: BdsSelectOptionElement,
+    react: React,
+    events: {
+        onOptionSelected: &#39;optionSelected&#39;,
+        onOptionChecked: &#39;optionChecked&#39;
+    },
+    defineCustomElement: defineBdsSelectOption
+});
+export const BdsSidebar = createComponent({
+    tagName: &#39;bds-sidebar&#39;,
+    elementClass: BdsSidebarElement,
+    react: React,
+    events: { onBdsToggle: &#39;bdsToggle&#39; },
+    defineCustomElement: defineBdsSidebar
+});
+export const BdsSkeleton = createComponent({
+    tagName: &#39;bds-skeleton&#39;,
+    elementClass: BdsSkeletonElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsSkeleton
+});
+export const BdsSlider = createComponent({
+    tagName: &#39;bds-slider&#39;,
+    elementClass: BdsSliderElement,
+    react: React,
+    events: { onBdsChange: &#39;bdsChange&#39; },
+    defineCustomElement: defineBdsSlider
+});
+export const BdsStep = createComponent({
+    tagName: &#39;bds-step&#39;,
+    elementClass: BdsStepElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsStep
+});
+export const BdsStepper = createComponent({
+    tagName: &#39;bds-stepper&#39;,
+    elementClass: BdsStepperElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsStepper
+});
+export const BdsSwitch = createComponent({
+    tagName: &#39;bds-switch&#39;,
+    elementClass: BdsSwitchElement,
+    react: React,
+    events: { onBdsChange: &#39;bdsChange&#39; },
+    defineCustomElement: defineBdsSwitch
+});
+export const BdsTab = createComponent({
+    tagName: &#39;bds-tab&#39;,
+    elementClass: BdsTabElement,
+    react: React,
+    events: { onBdsTabChange: &#39;bdsTabChange&#39; },
+    defineCustomElement: defineBdsTab
+});
+export const BdsTabGroup = createComponent({
+    tagName: &#39;bds-tab-group&#39;,
+    elementClass: BdsTabGroupElement,
+    react: React,
+    events: {
+        onBdsTabChange: &#39;bdsTabChange&#39;,
+        onBdsTabDisabled: &#39;bdsTabDisabled&#39;
+    },
+    defineCustomElement: defineBdsTabGroup
+});
+export const BdsTabItem = createComponent({
+    tagName: &#39;bds-tab-item&#39;,
+    elementClass: BdsTabItemElement,
+    react: React,
+    events: { onTabDisabled: &#39;tabDisabled&#39; },
+    defineCustomElement: defineBdsTabItem
+});
+export const BdsTabPanel = createComponent({
+    tagName: &#39;bds-tab-panel&#39;,
+    elementClass: BdsTabPanelElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTabPanel
+});
+export const BdsTable = createComponent({
+    tagName: &#39;bds-table&#39;,
+    elementClass: BdsTableElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTable
+});
+export const BdsTableBody = createComponent({
+    tagName: &#39;bds-table-body&#39;,
+    elementClass: BdsTableBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableBody
+});
+export const BdsTableCell = createComponent({
+    tagName: &#39;bds-table-cell&#39;,
+    elementClass: BdsTableCellElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableCell
+});
+export const BdsTableHeader = createComponent({
+    tagName: &#39;bds-table-header&#39;,
+    elementClass: BdsTableHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableHeader
+});
+export const BdsTableRow = createComponent({
+    tagName: &#39;bds-table-row&#39;,
+    elementClass: BdsTableRowElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableRow
+});
+export const BdsTableTh = createComponent({
+    tagName: &#39;bds-table-th&#39;,
+    elementClass: BdsTableThElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTableTh
+});
+export const BdsTabs = createComponent({
+    tagName: &#39;bds-tabs&#39;,
+    elementClass: BdsTabsElement,
+    react: React,
+    events: {
+        onScrollButtonClick: &#39;scrollButtonClick&#39;,
+        onBdsTabInit: &#39;bdsTabInit&#39;
+    },
+    defineCustomElement: defineBdsTabs
+});
+export const BdsTestComponent = createComponent({
+    tagName: &#39;bds-test-component&#39;,
+    elementClass: BdsTestComponentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTestComponent
+});
+export const BdsThemeProvider = createComponent({
+    tagName: &#39;bds-theme-provider&#39;,
+    elementClass: BdsThemeProviderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsThemeProvider
+});
+export const BdsToast = createComponent({
+    tagName: &#39;bds-toast&#39;,
+    elementClass: BdsToastElement,
+    react: React,
+    events: { onToastButtonClick: &#39;toastButtonClick&#39; },
+    defineCustomElement: defineBdsToast
+});
+export const BdsToastContainer = createComponent({
+    tagName: &#39;bds-toast-container&#39;,
+    elementClass: BdsToastContainerElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsToastContainer
+});
+export const BdsTooltip = createComponent({
+    tagName: &#39;bds-tooltip&#39;,
+    elementClass: BdsTooltipElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTooltip
+});
+export const BdsTypo = createComponent({
+    tagName: &#39;bds-typo&#39;,
+    elementClass: BdsTypoElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsTypo
+});
+export const BdsUpload = createComponent({
+    tagName: &#39;bds-upload&#39;,
+    elementClass: BdsUploadElement,
+    react: React,
+    events: {
+        onBdsUploadDelete: &#39;bdsUploadDelete&#39;,
+        onBdsUploadChange: &#39;bdsUploadChange&#39;
+    },
+    defineCustomElement: defineBdsUpload
+});
+export const BdsWarning = createComponent({
+    tagName: &#39;bds-warning&#39;,
+    elementClass: BdsWarningElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineBdsWarning
+});
+export const UaiAvatar = createComponent({
+    tagName: &#39;uai-avatar&#39;,
+    elementClass: UaiAvatarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiAvatar
+});
+export const UaiButton = createComponent({
+    tagName: &#39;uai-button&#39;,
+    elementClass: UaiButtonElement,
+    react: React,
+    events: { onUaiClick: &#39;uaiClick&#39; },
+    defineCustomElement: defineUaiButton
+});
+export const UaiGrid = createComponent({
+    tagName: &#39;uai-grid&#39;,
+    elementClass: UaiGridElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiGrid
+});
+export const UaiIcon = createComponent({
+    tagName: &#39;uai-icon&#39;,
+    elementClass: UaiIconElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiIcon
+});
+export const UaiNavbar = createComponent({
+    tagName: &#39;uai-navbar&#39;,
+    elementClass: UaiNavbarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiNavbar
+});
+export const UaiNavbarContent = createComponent({
+    tagName: &#39;uai-navbar-content&#39;,
+    elementClass: UaiNavbarContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiNavbarContent
+});
+export const UaiPaper = createComponent({
+    tagName: &#39;uai-paper&#39;,
+    elementClass: UaiPaperElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiPaper
+});
+export const UaiThemeProvider = createComponent({
+    tagName: &#39;uai-theme-provider&#39;,
+    elementClass: UaiThemeProviderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiThemeProvider
+});
+export const UaiTypo = createComponent({
+    tagName: &#39;uai-typo&#39;,
+    elementClass: UaiTypoElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTypo
+});
+//# sourceMappingURL=components.js.map</code></pre></div>
+    </div>
+        </div>
+    
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
+    
+    
+        <div class="panel panel-stories">
+          
+          
+          
+          <div class="note ok">
+                <div class="row">
+                  <span class="ex-name">Imports</span>
+                </div>
+                <pre><code>import { UaiPaper } from 'blip-ds-react';</code></pre>
+              </div>
+          
+          
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Properties</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Properties = () =&gt; &lt;UaiPaper
+    border={false}
+    elevation=&quot;primary&quot;
+    height=&quot;var(--uai-sizing-5xl)&quot;
+    width=&quot;calc(var(--uai-sizing-5xl) * 2)&quot; /&gt;;</code></pre>
+              
+            </div>
+        </div>
+    
+    
+  </div>
+</article>
+<article
+  
+  class="card 
+  has-error
+  has-info
+  no-story-error
+  no-story-warning
+  
+  no-doc-error"
+  role="listitem"
   aria-label="UaiThemeProvider">
   <div class="head">
     <div class="title">
       <h2><span class="status-dot dot-err"></span> UaiThemeProvider</h2>
       <div class="badges">
-        <label for="c-error-5-uai-theme-provider-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-5-uai-theme-provider-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-5-uai-theme-provider-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-error-6-uai-theme-provider-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-6-uai-theme-provider-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-6-uai-theme-provider-stories" class="badge ok as-toggle">1 story</label>
         
         
       </div>
@@ -74252,9 +76152,9 @@ export const UaiTypo = createComponent({
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-5-uai-theme-provider-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-5-uai-theme-provider-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-5-uai-theme-provider-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-6-uai-theme-provider-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-6-uai-theme-provider-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-6-uai-theme-provider-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
@@ -75374,9 +77274,9 @@ export const UaiTypo = createComponent({
     <div class="title">
       <h2><span class="status-dot dot-err"></span> UaiTypo</h2>
       <div class="badges">
-        <label for="c-error-6-uai-typo-err" class="badge err as-toggle">API error</label>
-        <label for="c-error-6-uai-typo-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-6-uai-typo-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-7-uai-typo-err" class="badge err as-toggle">API error</label>
+        <label for="c-error-7-uai-typo-info" class="badge info as-toggle">1 info</label>
+        <label for="c-error-7-uai-typo-stories" class="badge ok as-toggle">4 stories</label>
         
         
       </div>
@@ -75388,9 +77288,9 @@ export const UaiTypo = createComponent({
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
-  <input id="c-error-6-uai-typo-err" class="tg tg-err" type="checkbox" hidden />
-  <input id="c-error-6-uai-typo-info" class="tg tg-info" type="checkbox" hidden />
-  <input id="c-error-6-uai-typo-stories" class="tg tg-stories" type="checkbox" hidden />
+  <input id="c-error-7-uai-typo-err" class="tg tg-err" type="checkbox" hidden />
+  <input id="c-error-7-uai-typo-info" class="tg tg-info" type="checkbox" hidden />
+  <input id="c-error-7-uai-typo-stories" class="tg tg-stories" type="checkbox" hidden />
   
   
   
