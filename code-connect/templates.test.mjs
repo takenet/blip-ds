@@ -413,7 +413,7 @@ test('phone rejects a prefix value that is not a dialing code', () => {
 
 const dateDefaults = {
   Label: 'Data de entrega',
-  Text: 'DD-MM-YYYY',
+  Text: 'DD/MM/YYYY',
   'Helper Message': 'Escolha um dia útil.',
   'Error Message': 'Informe uma data válida.',
   'Success Message': 'Data confirmada.',
@@ -428,7 +428,7 @@ test('date covers every feedback and state with valid React', () => {
       assertJsx(example);
       assert.ok(example.startsWith('<UaiInputDate'));
       assert.ok(example.includes('label={"Data de entrega"}'));
-      assert.equal(example.includes('placeholder={"DD-MM-YYYY"}'), ['Default', 'Hover'].includes(State));
+      assert.equal(example.includes('placeholder={"DD/MM/YYYY"}'), ['Default', 'Hover'].includes(State));
       assert.ok(!example.includes('value='));
       assert.equal(example.includes(' danger'), Feedback === 'Error');
       assert.equal(example.includes(' success '), Feedback === 'Success');
@@ -440,9 +440,9 @@ test('date covers every feedback and state with valid React', () => {
 });
 
 test('date never maps the displayed Text to the ISO value and keeps the default label', () => {
-  const filled = evaluate(dateSource, { ...dateDefaults, Text: '25-12-2026', State: 'Filled' });
+  const filled = evaluate(dateSource, { ...dateDefaults, Text: '25/12/2026', State: 'Filled' });
   assertJsx(filled.example);
-  assert.ok(!filled.example.includes('25-12-2026'));
+  assert.ok(!filled.example.includes('25/12/2026'));
 
   const fallback = evaluate(dateSource, { ...dateDefaults, Label: ' ', Text: ' ', 'Helper Message': '' });
   assertJsx(fallback.example);

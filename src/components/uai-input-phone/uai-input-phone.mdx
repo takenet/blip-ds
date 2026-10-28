@@ -46,6 +46,7 @@ Um formulário de contato com o telefone controlado por estado, validação nati
 | Regra | Teste |
 | --- | --- |
 | O prefixo é um `<button>` com `aria-haspopup="listbox"` e `aria-expanded`; clique, Enter ou Espaço abrem a lista no top layer | `test/uai-input-phone.e2e.ts` |
+| A lista tem altura máxima de 200 px na escala padrão (cinco `control-height/medium`), reduzida ao espaço disponível em telas menores, com rolagem interna | `test/uai-input-phone.e2e.ts` |
 | Setas, Home e End movem a opção ativa; Enter ou Espaço selecionam, fecham a lista e devolvem o foco ao prefixo | `test/uai-input-phone.e2e.ts` |
 | Digitar uma letra ativa o primeiro país cujo nome começa com ela | `test/uai-input-phone.e2e.ts` |
 | Esc ou clique fora fecham sem trocar o país e emitem `uaiCancel`; Tab fecha a lista | `test/uai-input-phone.e2e.ts` |

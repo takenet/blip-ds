@@ -81,6 +81,26 @@ describe('uai-overlay e2e', () => {
     expect(p.bottom).toBeCloseTo(t.top - GAP, 0);
   });
 
+  it('preserves the panel CSS height limit on open, update and viewport resize', async () => {
+    const page = await setup(`
+      <style>#a-panel { max-height: 200px; }</style>
+      ${trigger('a', 'position: absolute; top: 20px; left: 20px')}
+      ${panel('a', '<div style="height: 1000px">Opção</div>')}`);
+    await open(page, 'a');
+    expect((await box(page, 'a-panel')).height).toBe(200);
+    await page.evaluate(() => (window as any).overlays.a.update());
+    expect((await box(page, 'a-panel')).height).toBe(200);
+
+    await page.setViewport({ width: 1000, height: 150 });
+    await page.waitForFunction(() => document.getElementById('a-panel').getBoundingClientRect().bottom <= 142);
+    const small = await box(page, 'a-panel');
+    expect(small.height).toBeLessThan(200);
+    expect(small.bottom).toBeLessThanOrEqual(150 - MARGIN);
+
+    await page.setViewport({ width: 1000, height: 800 });
+    await page.waitForFunction(() => document.getElementById('a-panel').getBoundingClientRect().height === 200);
+  });
+
   it('follows the trigger while its container scrolls and closes when the trigger is no longer visible', async () => {
     const page = await setup(`
       <div id="scroller" style="position: absolute; top: 50px; left: 50px; width: 300px; height: 300px; overflow: auto">

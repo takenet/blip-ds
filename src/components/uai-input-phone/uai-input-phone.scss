@@ -205,6 +205,7 @@
 
 .list {
   @include uai-overlay-panel;
+  max-height: calc(5 * var(--uai-control-height-medium, #{$uai-control-height-medium}));
   min-width: var(--uai-width-menu, #{$uai-width-menu});
   padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
   border: var(--uai-border-width-default, #{$uai-border-width-default}) solid

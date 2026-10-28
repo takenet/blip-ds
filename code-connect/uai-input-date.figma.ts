@@ -11,7 +11,7 @@ const errorMessage = instance.getString('Error Message');
 const successMessage = instance.getString('Success Message');
 const feedback = instance.getEnum('Feedback', { Default: 'default', Error: 'danger', Success: 'success' });
 // Hover and Focus are CSS states. In Default and Hover, Text is the placeholder. In Filled, Focus, Disabled and
-// Readonly, Text is the displayed date (for example "Value" or "25-12-2026"), not an ISO YYYY-MM-DD value, so it is
+// Readonly, Text is the displayed date (for example "Value" or "25/12/2026"), not an ISO YYYY-MM-DD value, so it is
 // not mapped to `value`: the example keeps the component's default placeholder and the developer sets `value`.
 const state = instance.getEnum('State', {
   Default: 'placeholder',

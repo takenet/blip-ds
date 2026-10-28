@@ -150,6 +150,45 @@ const containerStyle = (page: E2EPage, selector = TAG) =>
   });
 
 describe('uai-input-phone e2e', () => {
+  it('caps the country list at 200px and scrolls the last option into view', async () => {
+    const page = await setup('<uai-input-phone></uai-input-phone>');
+    await openWithKeyboard(page);
+    const dimensions = () =>
+      page.$eval(TAG, (el) => {
+        const list = el.shadowRoot.querySelector<HTMLElement>('[part="country-list"]');
+        const last = list.lastElementChild.getBoundingClientRect();
+        const bounds = list.getBoundingClientRect();
+        return {
+          height: bounds.height,
+          bottom: bounds.bottom,
+          scrollHeight: list.scrollHeight,
+          clientHeight: list.clientHeight,
+          lastTop: last.top,
+          lastBottom: last.bottom,
+          top: bounds.top,
+          viewportHeight: document.documentElement.clientHeight,
+        };
+      });
+    const opened = await dimensions();
+    expect(opened.height).toBeLessThanOrEqual(200);
+    expect(opened.height).toBeGreaterThan(0);
+    expect(opened.scrollHeight).toBeGreaterThan(opened.clientHeight);
+
+    await press(page, 'End');
+    const end = await dimensions();
+    expect(end.lastTop).toBeGreaterThanOrEqual(end.top);
+    expect(end.lastBottom).toBeLessThanOrEqual(end.bottom);
+
+    await page.setViewport({ width: 375, height: 180 });
+    await page.waitForFunction(() => {
+      const bounds = document.querySelector('uai-input-phone').shadowRoot
+        .querySelector('[part="country-list"]').getBoundingClientRect();
+      return bounds.bottom <= document.documentElement.clientHeight - 8;
+    });
+    const small = await dimensions();
+    expect(small.height).toBeLessThan(200);
+    expect(small.bottom).toBeLessThanOrEqual(small.viewportHeight - 8);
+  });
   describe('Requirement: Contrato herdado', () => {
     it('Scenario: Mudança do número — emits uaiInput with the InputEvent and uaiPhoneNumberChange', async () => {
       const page = await setup(`<uai-input-phone></uai-input-phone>`);

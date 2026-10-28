@@ -8,8 +8,11 @@ const PICKER = 'input.picker';
 const themed = (content: string, theme = 'light') =>
   `<uai-theme-provider theme="${theme}">${content}</uai-theme-provider>`;
 
-const setup = async (content: string, theme = 'light', { showPicker = true } = {}) => {
+const setup = async (content: string, theme = 'light', { showPicker = true, region = 'pt-BR' } = {}) => {
   const page = await newE2EPage();
+  await page.evaluateOnNewDocument((language: string) => {
+    Object.defineProperty(navigator, 'language', { configurable: true, value: language });
+  }, region);
   const warnings: string[] = [];
   page.on('console', (message) => {
     if (message.type() === 'warn' || (message.type() as string) === 'warning') warnings.push(message.text());
@@ -192,46 +195,52 @@ describe('uai-input-date e2e', () => {
   });
 
   describe('Requirement: Digitação localizada', () => {
-    it('Scenario: Digitação em pt_BR — "25122026" shows 25-12-2026 and value is 2026-12-25', async () => {
+    it('Scenario: Digitação em pt_BR — "25122026" shows 25/12/2026 and value is 2026-12-25', async () => {
       const page = await setup(`<uai-input-date></uai-input-date>`);
       await page.click(`${TAG} >>> ${INPUT}`);
       await typeInto(page, '25122026');
 
-      expect((await state(page)).inputValue).toBe('25-12-2026');
+      expect((await state(page)).inputValue).toBe('25/12/2026');
       expect(await prop(page, 'value')).toBe('2026-12-25');
     });
 
-    it('accepts only digits and inserts the hyphens', async () => {
+    it('accepts only digits and inserts the regional separators', async () => {
       const page = await setup(`<uai-input-date></uai-input-date>`);
       await page.click(`${TAG} >>> ${INPUT}`);
       await typeInto(page, '2a5');
       expect((await state(page)).inputValue).toBe('25');
       await typeInto(page, '1x2/');
-      expect((await state(page)).inputValue).toBe('25-12');
+      expect((await state(page)).inputValue).toBe('25/12');
       await typeInto(page, '2026999');
-      expect((await state(page)).inputValue).toBe('25-12-2026');
+      expect((await state(page)).inputValue).toBe('25/12/2026');
       expect(await prop(page, 'value')).toBe('2026-12-25');
     });
 
-    it('Scenario: Formato en_US — value 2026-12-25 shows 25-12-2026', async () => {
+    it('uses the US browser region independently of the component text language', async () => {
       const page = await setup(`
         <uai-input-date id="en" language="en_US" value="2026-12-25"></uai-input-date>
-        <uai-input-date id="typed" language="en_US"></uai-input-date>`);
-      expect((await state(page, '#en')).inputValue).toBe('25-12-2026');
+        <uai-input-date id="typed" language="pt_BR"></uai-input-date>`, 'light', { region: 'en-US' });
+      expect((await state(page, '#en')).inputValue).toBe('12/25/2026');
 
       await page.click(`#typed >>> ${INPUT}`);
-      await typeInto(page, '25122026', '#typed');
-      expect((await state(page, '#typed')).inputValue).toBe('25-12-2026');
+      await typeInto(page, '12252026', '#typed');
+      expect((await state(page, '#typed')).inputValue).toBe('12/25/2026');
       expect(await prop(page, 'value', '#typed')).toBe('2026-12-25');
+      expect((await state(page, '#typed')).placeholder).toBe('MM/DD/YYYY');
+
+      await page.$eval('#typed', (el) => el.setAttribute('language', 'es_ES'));
+      await page.waitForChanges();
+      expect((await state(page, '#typed')).label).toBe('Fecha');
+      expect((await state(page, '#typed')).inputValue).toBe('12/25/2026');
     });
 
-    it('shows DD-MM-YYYY in es_ES and formats value changes', async () => {
+    it('shows DD/MM/YYYY in es_ES and formats value changes', async () => {
       const page = await setup(`<uai-input-date language="es_ES" value="2026-12-25"></uai-input-date>`);
-      expect((await state(page)).inputValue).toBe('25-12-2026');
+      expect((await state(page)).inputValue).toBe('25/12/2026');
 
       await page.$eval(TAG, (el: any) => (el.value = '2026-01-05'));
       await page.waitForChanges();
-      expect((await state(page)).inputValue).toBe('05-01-2026');
+      expect((await state(page)).inputValue).toBe('05/01/2026');
     });
 
     it('uses the placeholder of each language and lets placeholder win', async () => {
@@ -240,9 +249,9 @@ describe('uai-input-date e2e', () => {
         <uai-input-date id="en" language="en_US"></uai-input-date>
         <uai-input-date id="es" language="es_ES"></uai-input-date>
         <uai-input-date id="custom" placeholder="Escolha"></uai-input-date>`);
-      expect((await state(page, '#pt')).placeholder).toBe('DD-MM-YYYY');
-      expect((await state(page, '#en')).placeholder).toBe('DD-MM-YYYY');
-      expect((await state(page, '#es')).placeholder).toBe('DD-MM-YYYY');
+      expect((await state(page, '#pt')).placeholder).toBe('DD/MM/YYYY');
+      expect((await state(page, '#en')).placeholder).toBe('DD/MM/YYYY');
+      expect((await state(page, '#es')).placeholder).toBe('DD/MM/YYYY');
       expect((await state(page, '#custom')).placeholder).toBe('Escolha');
     });
 
@@ -252,9 +261,9 @@ describe('uai-input-date e2e', () => {
       await page.waitForChanges();
 
       const current = await state(page);
-      expect(current.inputValue).toBe('24-12-2026');
+      expect(current.inputValue).toBe('24/12/2026');
       expect(current.label).toBe('Data');
-      expect(current.placeholder).toBe('DD-MM-YYYY');
+      expect(current.placeholder).toBe('DD/MM/YYYY');
       expect(current.buttonLabel).toBe('Abrir calendário');
       expect(warningsAbout(page, /language|fr_FR/i)).toHaveLength(1);
     });
@@ -283,14 +292,14 @@ describe('uai-input-date e2e', () => {
       expect((await state(page, '#es')).buttonLabel).toBe('Abrir calendario');
     });
 
-    it('Scenario: Escolher pelo calendário — the chosen date shows 25-12-2026, value is 2026-12-25 and uaiChange is emitted', async () => {
+    it('Scenario: Escolher pelo calendário — the chosen date shows 25/12/2026, value is 2026-12-25 and uaiChange is emitted', async () => {
       const page = await setup(`<uai-input-date></uai-input-date>`);
       await page.click(`${TAG} >>> ${BUTTON}`);
       await page.waitForChanges();
       expect(await picked(page)).toBe(1);
 
       await choose(page, '2026-12-25');
-      expect((await state(page)).inputValue).toBe('25-12-2026');
+      expect((await state(page)).inputValue).toBe('25/12/2026');
       expect(await prop(page, 'value')).toBe('2026-12-25');
       expect((await events(page, 'uaiChange')).pop()).toEqual(['uaiChange', { value: '2026-12-25' }]);
     });
@@ -323,7 +332,7 @@ describe('uai-input-date e2e', () => {
 
       const readonly = await state(page, '#ro');
       expect(readonly.button).toBe(false);
-      expect(readonly.inputValue).toBe('25-12-2026');
+      expect(readonly.inputValue).toBe('25/12/2026');
       expect(await page.find('#ro')).toHaveClass('uai-input-date--readonly');
 
       await page.click(`#ro >>> ${INPUT}`);
@@ -402,7 +411,7 @@ describe('uai-input-date e2e', () => {
 
       expect(await prop(page, 'value')).toBe('2026-01-10');
       const current = await state(page);
-      expect(current.inputValue).toBe('10-01-2026');
+      expect(current.inputValue).toBe('10/01/2026');
       expect(current.message).not.toBe('Data invalida.');
       expect(await page.find(TAG)).not.toHaveClass('uai-input-date--danger');
       expect(await isValid(page)).toBe(true);
@@ -435,14 +444,14 @@ describe('uai-input-date e2e', () => {
   });
 
   describe('Requirement: Validação', () => {
-    it('Scenario: Data inexistente — 31-02-2026 shows the error state, empties value and isValid() returns false', async () => {
+    it('Scenario: Data inexistente — 31/02/2026 shows the error state, empties value and isValid() returns false', async () => {
       const page = await setup(`<uai-input-date></uai-input-date><button id="outside">Fora</button>`);
       await page.click(`${TAG} >>> ${INPUT}`);
       await typeInto(page, '31022026');
       await blur(page);
 
       const current = await state(page);
-      expect(current.inputValue).toBe('31-02-2026');
+      expect(current.inputValue).toBe('31/02/2026');
       expect(current.message).toBe('Informe uma data válida.');
       expect(current.feedback).toBe(true);
       expect(await page.find(TAG)).toHaveClass('uai-input-date--danger');
@@ -490,7 +499,7 @@ describe('uai-input-date e2e', () => {
       expect(await isValid(page, '#custom')).toBe(false);
     });
 
-    it('Scenario: Antes do mínimo — 31-12-2025 with min 2026-01-01 shows the default message with the minimum date', async () => {
+    it('Scenario: Antes do mínimo — 31/12/2025 with min 2026-01-01 shows the default message with the minimum date', async () => {
       const page = await setup(`
         <uai-input-date id="default" min="2026-01-01"></uai-input-date>
         <uai-input-date id="custom" min="2026-01-01" min-error-message="Muito cedo."></uai-input-date>
@@ -498,7 +507,7 @@ describe('uai-input-date e2e', () => {
       await page.click(`#default >>> ${INPUT}`);
       await typeInto(page, '31122025', '#default');
       await blur(page);
-      expect((await state(page, '#default')).message).toBe('Informe uma data a partir de 01-01-2026.');
+      expect((await state(page, '#default')).message).toBe('Informe uma data a partir de 01/01/2026.');
       expect(await page.find('#default')).toHaveClass('uai-input-date--danger');
       expect(await isValid(page, '#default')).toBe(false);
 
@@ -508,7 +517,7 @@ describe('uai-input-date e2e', () => {
       expect((await state(page, '#custom')).message).toBe('Muito cedo.');
     });
 
-    it('shows the localized max message with a DD-MM-YYYY date', async () => {
+    it('shows the localized max message with a DD/MM/YYYY date', async () => {
       const page = await setup(`
         <uai-input-date id="pt" max="2026-12-31"></uai-input-date>
         <uai-input-date id="en" language="en_US" max="2026-12-31"></uai-input-date>
@@ -520,8 +529,8 @@ describe('uai-input-date e2e', () => {
         await blur(page);
         expect(await page.find(selector)).toHaveClass('uai-input-date--danger');
       }
-      expect((await state(page, '#pt')).message).toBe('Informe uma data até 31-12-2026.');
-      expect((await state(page, '#en')).message).toContain('31-12-2026');
+      expect((await state(page, '#pt')).message).toBe('Informe uma data até 31/12/2026.');
+      expect((await state(page, '#en')).message).toContain('31/12/2026');
       expect((await state(page, '#custom')).message).toBe('Muito tarde.');
     });
 

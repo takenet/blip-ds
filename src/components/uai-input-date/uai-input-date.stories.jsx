@@ -52,7 +52,7 @@ Playground.args = {
   language: 'pt_BR',
   placeholder: '',
   size: 'medium',
-  helperMessage: 'Digite só os números; os hifens entram sozinhas.',
+  helperMessage: 'Digite só os números; os separadores entram sozinhas.',
   errorMessage: 'Informe uma data válida.',
   successMessage: 'Data confirmada.',
   requiredErrorMessage: 'Informe a data.',
@@ -73,19 +73,19 @@ Playground.argTypes = {
     control: 'text',
   },
   value: {
-    description: 'Data em ISO `YYYY-MM-DD`. É exibida em `DD-MM-YYYY` e enviada em ISO no formulário.',
+    description: 'Data em ISO `YYYY-MM-DD`. A exibição segue a região do navegador; o envio usa ISO.',
     control: 'text',
   },
   min: { description: 'Data mínima aceita, em ISO `YYYY-MM-DD`. Também limita o calendário.', control: 'text' },
   max: { description: 'Data máxima aceita, em ISO `YYYY-MM-DD`. Também limita o calendário.', control: 'text' },
   language: {
     table: { defaultValue: { summary: 'pt_BR' } },
-    description: 'Idioma dos textos padrão. A exibição usa `DD-MM-YYYY` em todos os idiomas.',
+    description: 'Idioma dos textos padrão. O formato da data segue a região do navegador, não esta prop.',
     options: ['pt_BR', 'en_US', 'es_ES'],
     control: { type: 'select' },
   },
   placeholder: {
-    description: 'Texto de exemplo. Sem valor, mostra "DD-MM-YYYY".',
+    description: 'Texto de exemplo. Sem valor, mostra o formato regional do navegador.',
     control: 'text',
   },
   size: {
@@ -165,7 +165,7 @@ export const Sizes = () => (
 );
 
 /**
- * O mesmo `value` ISO nos três idiomas: muda os textos padrão, mantendo o formato DD-MM-YYYY.
+ * O mesmo `value` ISO nos três idiomas: muda os textos padrão, mantendo a região do navegador.
  */
 export const Languages = () => (
   <div style={grid}>
@@ -190,15 +190,15 @@ export const Range = () => (
       min="2026-01-01"
       max="2026-12-31"
       value="2025-12-31"
-      helperMessage="Entre 01-01-2026 e 31-12-2026."
+      helperMessage="Entre 01/01/2026 e 31/12/2026."
     />
     <UaiInputDate
       label="Com mensagens próprias"
       min="2026-01-01"
       max="2026-12-31"
       value="2027-01-15"
-      minErrorMessage="O check-in começa em 01-01-2026."
-      maxErrorMessage="O check-in termina em 31-12-2026."
+      minErrorMessage="O check-in começa em 01/01/2026."
+      maxErrorMessage="O check-in termina em 31/12/2026."
     />
   </div>
 );
@@ -224,7 +224,7 @@ export const Form = () => {
         required
         requiredErrorMessage="Informe a data de nascimento."
         dateErrorMessage="Essa data não existe."
-        maxErrorMessage="A data precisa ser anterior a 01-01-2026."
+        maxErrorMessage="A data precisa ser anterior a 01/01/2026."
       />
       <div style={row}>
         <UaiButton type="submit">Enviar</UaiButton>
@@ -287,8 +287,8 @@ export function ScheduleForm() {
           max="2026-06-30"
           required
           requiredErrorMessage="Informe a data da visita."
-          minErrorMessage="Escolha uma data a partir de 01-01-2026."
-          maxErrorMessage="Escolha uma data até 30-06-2026."
+          minErrorMessage="Escolha uma data a partir de 01/01/2026."
+          maxErrorMessage="Escolha uma data até 30/06/2026."
           onUaiChange={(event) => setDate(event.detail.value)}
         />
         <UaiButton type="submit">Agendar</UaiButton>
@@ -321,8 +321,8 @@ export const Usage = () => {
         max="2026-06-30"
         required
         requiredErrorMessage="Informe a data da visita."
-        minErrorMessage="Escolha uma data a partir de 01-01-2026."
-        maxErrorMessage="Escolha uma data até 30-06-2026."
+        minErrorMessage="Escolha uma data a partir de 01/01/2026."
+        maxErrorMessage="Escolha uma data até 30/06/2026."
         onUaiChange={(event) => setDate(event.detail.value)}
       />
       <UaiButton type="submit">Agendar</UaiButton>

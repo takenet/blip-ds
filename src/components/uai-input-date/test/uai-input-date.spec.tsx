@@ -3,7 +3,12 @@ import { UaiInputDate } from '../uai-input-date';
 import { displayToIso, groupDigits, isIsoDate, isoToDisplay } from '../uai-input-date-format';
 import { resetDeprecationWarnings } from '../../../utils/deprecation';
 
-const render = (html: string) => newSpecPage({ components: [UaiInputDate], html });
+const render = async (html: string) => {
+  const page = await newSpecPage({ components: [UaiInputDate], html: '' });
+  Object.defineProperty(window.navigator, 'language', { configurable: true, value: 'pt-BR' });
+  await page.setContent(html);
+  return page;
+};
 
 const shadow = (page) => page.root.shadowRoot as ShadowRoot;
 const native = (page) => shadow(page).querySelector('input[part="input"]') as HTMLInputElement;
@@ -23,31 +28,36 @@ describe('uai-input-date format', () => {
     expect(isIsoDate('2028-02-29')).toBe(true);
     expect(isIsoDate('2026-02-29')).toBe(false);
     expect(isIsoDate('2026-13-01')).toBe(false);
-    expect(isIsoDate('25-12-2026')).toBe(false);
+    expect(isIsoDate('25/12/2026')).toBe(false);
     expect(isIsoDate('')).toBe(false);
   });
 
-  it('groups typed digits as DD-MM-YYYY', () => {
-    expect(groupDigits('2', 'pt_BR')).toBe('2');
-    expect(groupDigits('251', 'pt_BR')).toBe('25-1');
-    expect(groupDigits('25122026', 'pt_BR')).toBe('25-12-2026');
-    expect(groupDigits('25122026', 'en_US')).toBe('25-12-2026');
+  it('groups typed digits according to the region', () => {
+    expect(groupDigits('2', 'pt-BR')).toBe('2');
+    expect(groupDigits('251', 'pt-BR')).toBe('25/1');
+    expect(groupDigits('25122026', 'pt-BR')).toBe('25/12/2026');
+    expect(groupDigits('12252026', 'en-US')).toBe('12/25/2026');
   });
 
   it('converts between the display and ISO', () => {
-    expect(displayToIso('25122026', 'pt_BR')).toBe('2026-12-25');
-    expect(displayToIso('25122026', 'en_US')).toBe('2026-12-25');
-    expect(displayToIso('31022026', 'pt_BR')).toBe('');
-    expect(displayToIso('2512', 'pt_BR')).toBe('');
-    expect(isoToDisplay('2026-12-25', 'es_ES')).toBe('25-12-2026');
-    expect(isoToDisplay('2026-12-25', 'en_US')).toBe('25-12-2026');
-    expect(isoToDisplay('2026-02-30', 'pt_BR')).toBe('');
+    expect(displayToIso('25122026', 'pt-BR')).toBe('2026-12-25');
+    expect(displayToIso('12252026', 'en-US')).toBe('2026-12-25');
+    expect(displayToIso('31022026', 'pt-BR')).toBe('');
+    expect(displayToIso('2512', 'pt-BR')).toBe('');
+    expect(isoToDisplay('2026-12-25', 'es-ES')).toBe('25/12/2026');
+    expect(isoToDisplay('2026-12-25', 'en-US')).toBe('12/25/2026');
+    expect(isoToDisplay('2026-02-30', 'pt-BR')).toBe('');
   });
 
-  it.each(['pt_BR', 'en_US', 'es_ES'] as const)('keeps day before month in %s, including ambiguous dates', (language) => {
-    expect(groupDigits('05122026', language)).toBe('05-12-2026');
-    expect(displayToIso('05122026', language)).toBe('2026-12-05');
-    expect(isoToDisplay('2026-12-05', language)).toBe('05-12-2026');
+  it.each([
+    ['pt-BR', '05122026', '05/12/2026'],
+    ['en-US', '12052026', '12/05/2026'],
+    ['de-DE', '05122026', '05.12.2026'],
+    ['ja-JP', '20261205', '2026/12/05'],
+  ])('round-trips an ambiguous date in %s', (region, digits, display) => {
+    expect(groupDigits(digits, region)).toBe(display);
+    expect(displayToIso(digits, region)).toBe('2026-12-05');
+    expect(isoToDisplay('2026-12-05', region)).toBe(display);
   });
 });
 
@@ -92,9 +102,9 @@ describe('uai-input-date', () => {
     });
 
     it.each([
-      ['pt_BR', 'Data', 'DD-MM-YYYY', 'Abrir calendário'],
-      ['en_US', 'Date', 'DD-MM-YYYY', 'Open calendar'],
-      ['es_ES', 'Fecha', 'DD-MM-YYYY', 'Abrir calendario'],
+      ['pt_BR', 'Data', 'DD/MM/YYYY', 'Abrir calendário'],
+      ['en_US', 'Date', 'DD/MM/YYYY', 'Open calendar'],
+      ['es_ES', 'Fecha', 'DD/MM/YYYY', 'Abrir calendario'],
     ])('uses the default texts of %s', async (language, label, placeholder, calendar) => {
       const page = await render(`<uai-input-date language="${language}"></uai-input-date>`);
 
@@ -106,16 +116,16 @@ describe('uai-input-date', () => {
     it('falls back to pt_BR for an unknown language', async () => {
       const page = await render(`<uai-input-date language="fr_FR"></uai-input-date>`);
 
-      expect(native(page).getAttribute('placeholder')).toBe('DD-MM-YYYY');
+      expect(native(page).getAttribute('placeholder')).toBe('DD/MM/YYYY');
       expect(warn).toHaveBeenCalledWith(expect.stringContaining('Unsupported language "fr_FR"'));
     });
   });
 
   describe('value', () => {
-    it('shows an ISO value as DD-MM-YYYY even in English', async () => {
+    it('uses the browser region even when component texts are in English', async () => {
       const page = await render(`<uai-input-date language="en_US" value="2026-12-25"></uai-input-date>`);
 
-      expect(native(page).value).toBe('25-12-2026');
+      expect(native(page).value).toBe('25/12/2026');
     });
 
     it('formats typed digits and emits the ISO value', async () => {
@@ -125,7 +135,7 @@ describe('uai-input-date', () => {
 
       await type(page, '25a12-2026');
 
-      expect(native(page).value).toBe('25-12-2026');
+      expect(native(page).value).toBe('25/12/2026');
       expect(page.root.value).toBe('2026-12-25');
       expect(change).toHaveBeenLastCalledWith({ value: '2026-12-25' });
     });
@@ -133,9 +143,9 @@ describe('uai-input-date', () => {
     it('keeps an incomplete date visible with an empty value', async () => {
       const page = await render(`<uai-input-date value="2026-12-25"></uai-input-date>`);
 
-      await type(page, '25-12-20');
+      await type(page, '25/12/20');
 
-      expect(native(page).value).toBe('25-12-20');
+      expect(native(page).value).toBe('25/12/20');
       expect(page.root.value).toBe('');
     });
 
@@ -146,7 +156,7 @@ describe('uai-input-date', () => {
       picker(page).dispatchEvent(new Event('change'));
       await page.waitForChanges();
 
-      expect(native(page).value).toBe('25-12-2026');
+      expect(native(page).value).toBe('25/12/2026');
       expect(page.root.value).toBe('2026-12-25');
     });
 
@@ -190,7 +200,7 @@ describe('uai-input-date', () => {
       native(page).dispatchEvent(new Event('blur'));
       await page.waitForChanges();
 
-      expect(message(page)).toBe('Informe uma data a partir de 01-01-2026.');
+      expect(message(page)).toBe('Informe uma data a partir de 01/01/2026.');
     });
 
     it('checks max with the custom message', async () => {
