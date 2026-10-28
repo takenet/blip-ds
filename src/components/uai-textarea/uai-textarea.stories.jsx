@@ -171,3 +171,74 @@ export const Events = () => {
     </div>
   );
 };
+
+const usageSource = `import React, { useState } from 'react';
+import { UaiButton, UaiTextarea, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+export function FeedbackForm() {
+  const [comment, setComment] = useState('');
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSent(true);
+  };
+
+  return (
+    <UaiThemeProvider theme="light">
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--uai-spacing-md)' }}>
+        <UaiTextarea
+          label="Comentário"
+          name="comment"
+          placeholder="Conte o que achou do atendimento"
+          helperMessage="Seu comentário ajuda a melhorar o atendimento."
+          value={comment}
+          maxlength={280}
+          counterLength
+          required
+          requiredErrorMessage="Escreva um comentário."
+          onUaiChange={(event) => setComment(event.detail.value)}
+        />
+        <UaiButton type="submit">Enviar comentário</UaiButton>
+        {sent && <span>Comentário enviado.</span>}
+      </form>
+    </UaiThemeProvider>
+  );
+}`;
+
+/**
+ * Exemplo completo em React: texto controlado com contador e validação nativa dentro de um formulário.
+ */
+export const Usage = () => {
+  const [comment, setComment] = useState('');
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSent(true);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={column}>
+      <UaiTextarea
+        label="Comentário"
+        name="comment"
+        placeholder="Conte o que achou do atendimento"
+        helperMessage="Seu comentário ajuda a melhorar o atendimento."
+        value={comment}
+        maxlength={280}
+        counterLength
+        required
+        requiredErrorMessage="Escreva um comentário."
+        onUaiChange={(event) => setComment(event.detail.value)}
+      />
+      <UaiButton type="submit">Enviar comentário</UaiButton>
+      {sent && <span style={caption}>Comentário enviado.</span>}
+    </form>
+  );
+};
+
+Usage.parameters = {
+  docs: { source: { code: usageSource, language: 'jsx' } },
+};

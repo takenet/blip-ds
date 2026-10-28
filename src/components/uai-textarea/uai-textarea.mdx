@@ -13,21 +13,9 @@ Campo para texto em várias linhas. Tem rótulo opcional acima, mensagem de ajud
 
 ## Como usar
 
-```jsx
-import { UaiTextarea, UaiThemeProvider } from 'blip-ds-react/dist/components';
-import 'blip-tokens/uai-icons/css';
+Um formulário de comentário com o campo controlado por estado, contador e validação nativa. O código abaixo pode ser copiado como ponto de partida.
 
-<UaiThemeProvider theme="light">
-  <UaiTextarea
-    label="Descrição"
-    name="description"
-    rows={3}
-    required
-    requiredErrorMessage="Informe a descrição."
-    onUaiChange={(event) => setDescription(event.detail.value)}
-  />
-</UaiThemeProvider>;
-```
+<Canvas of={UaiTextareaStories.Usage} sourceState="shown" />
 
 - Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
 - `size="medium"` é o padrão: inicia com três linhas. `size="short"` inicia com uma linha. `rows` explícito prevalece sobre esse padrão; ambos os tamanhos mantêm sua altura mínima tokenizada. Com `autoResize`, o campo cresce com o conteúdo; `minHeight` e `maxHeight` são limites opcionais em pixels.

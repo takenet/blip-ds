@@ -9,6 +9,17 @@ import 'blip-tokens/uai-icons/css';
 // Load the custom elements
 defineCustomElements();
 
+// The Stencil React wrappers use the tag name as displayName, so "Show code" would print
+// <uai-input>. Print the React component name (<UaiInput>) instead; host elements stay as they are.
+const isTagName = (name) => /^[a-z][a-z0-9]*(-[a-z0-9]+)+$/.test(name);
+const toPascalCase = (name) => name.replace(/(^|-)([a-z0-9])/g, (_match, _dash, char) => char.toUpperCase());
+const jsxDisplayName = ({ type }) => {
+  if (typeof type === 'string') return type;
+  if (typeof type === 'symbol') return type.description || 'Fragment';
+  const name = type.displayName || type.render?.displayName || type.type?.displayName || type.name || 'Component';
+  return isTagName(name) ? toPascalCase(name) : name;
+};
+
 export const globalTypes = {
   hasTheme: {
     name: 'Theme',

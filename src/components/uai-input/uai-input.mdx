@@ -13,21 +13,9 @@ Campo para texto curto: nome, e-mail, número ou busca. Tem rótulo opcional aci
 
 ## Como usar
 
-```jsx
-import { UaiInput, UaiThemeProvider } from 'blip-ds-react/dist/components';
-import 'blip-tokens/uai-icons/css';
+Um formulário de e-mail com o campo controlado por estado, validação nativa e envio. O código abaixo pode ser copiado como ponto de partida.
 
-<UaiThemeProvider theme="light">
-  <UaiInput
-    label="E-mail"
-    name="email"
-    type="email"
-    required
-    requiredErrorMessage="Informe o e-mail."
-    onUaiChange={(event) => setEmail(event.detail.value)}
-  />
-</UaiThemeProvider>;
-```
+<Canvas of={UaiInputStories.Usage} sourceState="shown" />
 
 - Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
 - O campo ocupa a largura do contêiner. Para fixar a largura, use `--uai-input-width`.

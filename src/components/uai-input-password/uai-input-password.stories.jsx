@@ -188,3 +188,94 @@ export const Events = () => {
     </div>
   );
 };
+
+const usageSource = `import React, { useState } from 'react';
+import { UaiButton, UaiInputPassword, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+// O componente não calcula a força: use a regra de senha do seu produto.
+const getStrength = (password) => {
+  if (!password) return 'none';
+  if (password.length < 8) return 'low';
+  if (password.length < 12) return 'medium';
+  return 'high';
+};
+
+export function NewPasswordForm() {
+  const [password, setPassword] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSaved(true);
+  };
+
+  return (
+    <UaiThemeProvider theme="light">
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--uai-spacing-md)' }}>
+        <UaiInputPassword
+          label="Nova senha"
+          name="password"
+          autoComplete="new-password"
+          helperMessage="Use pelo menos 8 caracteres."
+          value={password}
+          required
+          minlength={8}
+          requiredErrorMessage="Informe a senha."
+          minlengthErrorMessage="Use pelo menos 8 caracteres."
+          showStrength
+          strengthLevel={getStrength(password)}
+          onUaiInputPasswordChange={(event) => setPassword(event.detail.value)}
+        />
+        <UaiButton type="submit">Salvar senha</UaiButton>
+        {saved && <span>Senha salva.</span>}
+      </form>
+    </UaiThemeProvider>
+  );
+}`;
+
+// Same illustrative rule shown in the usage code; the component never evaluates the password.
+const getStrength = (password) => {
+  if (!password) return 'none';
+  if (password.length < 8) return 'low';
+  if (password.length < 12) return 'medium';
+  return 'high';
+};
+
+/**
+ * Exemplo completo em React: senha controlada com indicador de força calculado pelo consumidor.
+ */
+export const Usage = () => {
+  const [password, setPassword] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSaved(true);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={column}>
+      <UaiInputPassword
+        label="Nova senha"
+        name="password"
+        autoComplete="new-password"
+        helperMessage="Use pelo menos 8 caracteres."
+        value={password}
+        required
+        minlength={8}
+        requiredErrorMessage="Informe a senha."
+        minlengthErrorMessage="Use pelo menos 8 caracteres."
+        showStrength
+        strengthLevel={getStrength(password)}
+        onUaiInputPasswordChange={(event) => setPassword(event.detail.value)}
+      />
+      <UaiButton type="submit">Salvar senha</UaiButton>
+      {saved && <span style={caption}>Senha salva.</span>}
+    </form>
+  );
+};
+
+Usage.parameters = {
+  docs: { source: { code: usageSource, language: 'jsx' } },
+};

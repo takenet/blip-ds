@@ -239,3 +239,74 @@ export const Events = () => {
     </div>
   );
 };
+
+const usageSource = `import React, { useState } from 'react';
+import { UaiButton, UaiInput, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+export function NewsletterForm() {
+  const [email, setEmail] = useState('');
+  const [sentTo, setSentTo] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSentTo(email);
+  };
+
+  return (
+    <UaiThemeProvider theme="light">
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--uai-spacing-md)' }}>
+        <UaiInput
+          label="E-mail"
+          name="email"
+          type="email"
+          placeholder="nome@empresa.com"
+          helperMessage="Enviaremos as novidades para este e-mail."
+          value={email}
+          required
+          requiredErrorMessage="Informe o e-mail."
+          emailErrorMessage="Informe um e-mail válido."
+          onUaiChange={(event) => setEmail(event.detail.value)}
+        />
+        <UaiButton type="submit">Assinar</UaiButton>
+        {sentTo && <span>Inscrição feita para {sentTo}.</span>}
+      </form>
+    </UaiThemeProvider>
+  );
+}`;
+
+/**
+ * Exemplo completo em React: campo controlado com validação nativa dentro de um formulário.
+ */
+export const Usage = () => {
+  const [email, setEmail] = useState('');
+  const [sentTo, setSentTo] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSentTo(email);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={column}>
+      <UaiInput
+        label="E-mail"
+        name="email"
+        type="email"
+        placeholder="nome@empresa.com"
+        helperMessage="Enviaremos as novidades para este e-mail."
+        value={email}
+        required
+        requiredErrorMessage="Informe o e-mail."
+        emailErrorMessage="Informe um e-mail válido."
+        onUaiChange={(event) => setEmail(event.detail.value)}
+      />
+      <UaiButton type="submit">Assinar</UaiButton>
+      {sentTo && <span style={caption}>Inscrição feita para {sentTo}.</span>}
+    </form>
+  );
+};
+
+Usage.parameters = {
+  docs: { source: { code: usageSource, language: 'jsx' } },
+};
