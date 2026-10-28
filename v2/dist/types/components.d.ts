@@ -3867,9 +3867,9 @@ export namespace Components {
          */
         "lgOffset"?: breakpoint;
         /**
-          * Margin token alias retained for compatibility with bds-grid.
+          * Margin token aliases retained for compatibility with bds-grid. Accepts one value or a space-separated list, for example `"t-2 x-auto"`. Takes the same values as `padding`, plus `auto`. When values overlap, the more specific one wins: single side over axis, axis over all sides.
          */
-        "margin"?: margin;
+        "margin"?: string;
         /**
           * 12-column span from the legacy md breakpoint.
          */
@@ -3879,9 +3879,9 @@ export namespace Components {
          */
         "mdOffset"?: breakpoint;
         /**
-          * Padding token alias retained for compatibility with bds-grid.
+          * Padding token aliases retained for compatibility with bds-grid. Accepts one value or a space-separated list, for example `"t-2 x-3"`. Values: `none`, `half`, `1` to `12`, optionally prefixed by a side (`l-`, `r-`, `t-`, `b-`) or an axis (`x-`, `y-`). When values overlap, the more specific one wins: single side over axis, axis over all sides.
          */
-        "padding"?: padding;
+        "padding"?: string;
         /**
           * 12-column span from the legacy sm breakpoint.
          */
@@ -9769,9 +9769,9 @@ declare namespace LocalJSX {
          */
         "lgOffset"?: breakpoint;
         /**
-          * Margin token alias retained for compatibility with bds-grid.
+          * Margin token aliases retained for compatibility with bds-grid. Accepts one value or a space-separated list, for example `"t-2 x-auto"`. Takes the same values as `padding`, plus `auto`. When values overlap, the more specific one wins: single side over axis, axis over all sides.
          */
-        "margin"?: margin;
+        "margin"?: string;
         /**
           * 12-column span from the legacy md breakpoint.
          */
@@ -9781,9 +9781,9 @@ declare namespace LocalJSX {
          */
         "mdOffset"?: breakpoint;
         /**
-          * Padding token alias retained for compatibility with bds-grid.
+          * Padding token aliases retained for compatibility with bds-grid. Accepts one value or a space-separated list, for example `"t-2 x-3"`. Values: `none`, `half`, `1` to `12`, optionally prefixed by a side (`l-`, `r-`, `t-`, `b-`) or an axis (`x-`, `y-`). When values overlap, the more specific one wins: single side over axis, axis over all sides.
          */
-        "padding"?: padding;
+        "padding"?: string;
         /**
           * 12-column span from the legacy sm breakpoint.
          */
@@ -10886,8 +10886,8 @@ declare namespace LocalJSX {
         "lgOffset": breakpoint;
         "xgOffset": breakpoint;
         "gap": gap;
-        "padding": padding;
-        "margin": margin;
+        "padding": string;
+        "margin": string;
         "bgColor": Color;
     }
     interface UaiIconAttributes {

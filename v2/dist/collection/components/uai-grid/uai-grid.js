@@ -12,6 +12,9 @@ export class UaiGrid {
             if (value)
                 classes[`${prefix}${value}`] = true;
         };
+        const addValueClasses = (prefix, values) => {
+            values === null || values === void 0 ? void 0 : values.split(/\s+/).forEach((value) => addValueClass(prefix, value));
+        };
         addValueClass('direction--', this.direction);
         addValueClass('justify_content--', this.justifyContent);
         addValueClass('flex_wrap--', this.flexWrap);
@@ -29,15 +32,15 @@ export class UaiGrid {
         addValueClass('lgoffset--', this.lgOffset);
         addValueClass('xgoffset--', this.xgOffset);
         addValueClass('gap--', this.gap);
-        addValueClass('padding--', this.padding);
-        addValueClass('margin--', this.margin);
+        addValueClasses('padding--', this.padding);
+        addValueClasses('margin--', this.margin);
         if (this.container)
             classes.container = true;
         if (this.containerFluid)
             classes['container-fluid'] = true;
         if (this.bgColor)
             classes[`bg-color--${this.bgColor.slice(1)}`] = true;
-        return (h(Host, { key: 'f94c3b47d8c91d336248a70ff9e0d95d0916bfbb', class: classes, style: { height: this.height } }, h("slot", { key: 'a3873e1feaf377bbcecbfeb796666db7256c3444' })));
+        return (h(Host, { key: '79ab8134b6169e9fd377ff7a97e57e132609a711', class: classes, style: { height: this.height } }, h("slot", { key: '0743e0863c792011336fd15031c14dd9cc038f30' })));
     }
     static get is() { return "uai-grid"; }
     static get encapsulation() { return "shadow"; }
@@ -556,22 +559,15 @@ export class UaiGrid {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "padding",
-                    "resolved": "\"1\" | \"10\" | \"11\" | \"12\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"b-1\" | \"b-10\" | \"b-11\" | \"b-12\" | \"b-2\" | \"b-3\" | \"b-4\" | \"b-5\" | \"b-6\" | \"b-7\" | \"b-8\" | \"b-9\" | \"b-half\" | \"b-none\" | \"half\" | \"l-1\" | \"l-10\" | \"l-11\" | \"l-12\" | \"l-2\" | \"l-3\" | \"l-4\" | \"l-5\" | \"l-6\" | \"l-7\" | \"l-8\" | \"l-9\" | \"l-half\" | \"l-none\" | \"none\" | \"r-1\" | \"r-10\" | \"r-11\" | \"r-12\" | \"r-2\" | \"r-3\" | \"r-4\" | \"r-5\" | \"r-6\" | \"r-7\" | \"r-8\" | \"r-9\" | \"r-half\" | \"r-none\" | \"t-1\" | \"t-10\" | \"t-11\" | \"t-12\" | \"t-2\" | \"t-3\" | \"t-4\" | \"t-5\" | \"t-6\" | \"t-7\" | \"t-8\" | \"t-9\" | \"t-half\" | \"t-none\" | \"x-1\" | \"x-10\" | \"x-11\" | \"x-12\" | \"x-2\" | \"x-3\" | \"x-4\" | \"x-5\" | \"x-6\" | \"x-7\" | \"x-8\" | \"x-9\" | \"x-half\" | \"x-none\" | \"y-1\" | \"y-10\" | \"y-11\" | \"y-12\" | \"y-2\" | \"y-3\" | \"y-4\" | \"y-5\" | \"y-6\" | \"y-7\" | \"y-8\" | \"y-9\" | \"y-half\" | \"y-none\"",
-                    "references": {
-                        "padding": {
-                            "location": "import",
-                            "path": "../grid/grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::padding",
-                            "referenceLocation": "padding"
-                        }
-                    }
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
                 },
                 "required": false,
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Padding token alias retained for compatibility with bds-grid."
+                    "text": "Padding token aliases retained for compatibility with bds-grid. Accepts one value or a\nspace-separated list, for example `\"t-2 x-3\"`. Values: `none`, `half`, `1` to `12`, optionally\nprefixed by a side (`l-`, `r-`, `t-`, `b-`) or an axis (`x-`, `y-`). When values overlap, the more\nspecific one wins: single side over axis, axis over all sides."
                 },
                 "getter": false,
                 "setter": false,
@@ -582,22 +578,15 @@ export class UaiGrid {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
-                    "original": "margin",
-                    "resolved": "\"1\" | \"10\" | \"11\" | \"12\" | \"2\" | \"3\" | \"4\" | \"5\" | \"6\" | \"7\" | \"8\" | \"9\" | \"b-1\" | \"b-10\" | \"b-11\" | \"b-2\" | \"b-3\" | \"b-4\" | \"b-5\" | \"b-6\" | \"b-7\" | \"b-8\" | \"b-9\" | \"b-half\" | \"b-none\" | \"half\" | \"l-1\" | \"l-10\" | \"l-11\" | \"l-12\" | \"l-2\" | \"l-3\" | \"l-4\" | \"l-5\" | \"l-6\" | \"l-7\" | \"l-8\" | \"l-9\" | \"l-half\" | \"l-none\" | \"none\" | \"r-1\" | \"r-10\" | \"r-11\" | \"r-12\" | \"r-2\" | \"r-3\" | \"r-4\" | \"r-5\" | \"r-6\" | \"r-7\" | \"r-8\" | \"r-9\" | \"r-half\" | \"r-none\" | \"t-1\" | \"t-10\" | \"t-11\" | \"t-12\" | \"t-2\" | \"t-3\" | \"t-4\" | \"t-5\" | \"t-6\" | \"t-7\" | \"t-8\" | \"t-9\" | \"t-half\" | \"t-none\" | \"x-1\" | \"x-10\" | \"x-11\" | \"x-12\" | \"x-2\" | \"x-3\" | \"x-4\" | \"x-5\" | \"x-6\" | \"x-7\" | \"x-8\" | \"x-9\" | \"x-half\" | \"x-none\" | \"y-1\" | \"y-10\" | \"y-11\" | \"y-12\" | \"y-2\" | \"y-3\" | \"y-4\" | \"y-5\" | \"y-6\" | \"y-7\" | \"y-8\" | \"y-9\" | \"y-half\" | \"y-none\"",
-                    "references": {
-                        "margin": {
-                            "location": "import",
-                            "path": "../grid/grid-interface",
-                            "id": "src/components/grid/grid-interface.ts::margin",
-                            "referenceLocation": "margin"
-                        }
-                    }
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
                 },
                 "required": false,
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Margin token alias retained for compatibility with bds-grid."
+                    "text": "Margin token aliases retained for compatibility with bds-grid. Accepts one value or a\nspace-separated list, for example `\"t-2 x-auto\"`. Takes the same values as `padding`, plus `auto`.\nWhen values overlap, the more specific one wins: single side over axis, axis over all sides."
                 },
                 "getter": false,
                 "setter": false,

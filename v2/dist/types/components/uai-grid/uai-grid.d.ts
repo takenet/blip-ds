@@ -1,5 +1,5 @@
 import type { Color } from '../grid/color-grid-interface';
-import type { alignItems, breakpoint, direction, flexWrap, gap, justifyContent, margin, padding } from '../grid/grid-interface';
+import type { alignItems, breakpoint, direction, flexWrap, gap, justifyContent } from '../grid/grid-interface';
 /**
  * UAI layout grid. The legacy bds-grid remains available; this component keeps
  * its layout props while using UAI dimensions and theme-aware color tokens.
@@ -47,10 +47,19 @@ export declare class UaiGrid {
     xgOffset?: breakpoint;
     /** Gap token alias retained for compatibility with bds-grid. */
     gap?: gap;
-    /** Padding token alias retained for compatibility with bds-grid. */
-    padding?: padding;
-    /** Margin token alias retained for compatibility with bds-grid. */
-    margin?: margin;
+    /**
+     * Padding token aliases retained for compatibility with bds-grid. Accepts one value or a
+     * space-separated list, for example `"t-2 x-3"`. Values: `none`, `half`, `1` to `12`, optionally
+     * prefixed by a side (`l-`, `r-`, `t-`, `b-`) or an axis (`x-`, `y-`). When values overlap, the more
+     * specific one wins: single side over axis, axis over all sides.
+     */
+    padding?: string;
+    /**
+     * Margin token aliases retained for compatibility with bds-grid. Accepts one value or a
+     * space-separated list, for example `"t-2 x-auto"`. Takes the same values as `padding`, plus `auto`.
+     * When values overlap, the more specific one wins: single side over axis, axis over all sides.
+     */
+    margin?: string;
     /**
      * Legacy color name mapped to the closest semantic UAI background token.
      * Prefer surface tokens in new UAI usage.
