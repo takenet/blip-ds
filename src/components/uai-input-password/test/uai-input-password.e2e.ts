@@ -206,6 +206,51 @@ describe('uai-input-password e2e', () => {
     expect(await submissions(page)).toEqual([[['password', 'abcde']]]);
   });
 
+  it('renders every provided strength level with distinct theme colors in light and dark', async () => {
+    const meter = (page: E2EPage) =>
+      page.$eval('uai-input-password', (el) => {
+        const node = el.shadowRoot.querySelector('[role="meter"]');
+        const segments = [...node.querySelectorAll('.password__segment')];
+        return {
+          valueNow: node.getAttribute('aria-valuenow'),
+          valueText: node.getAttribute('aria-valuetext'),
+          active: segments.filter((segment) => segment.classList.contains('password__segment--active')).length,
+          colors: segments.map((segment) => getComputedStyle(segment).borderTopColor),
+        };
+      });
+    const levels = [
+      ['none', '0', 'Não informada', 0],
+      ['low', '1', 'Baixa', 1],
+      ['medium', '2', 'Média', 2],
+      ['high', '3', 'Alta', 3],
+    ] as const;
+    const activeColors: Record<string, Record<string, string>> = { light: {}, dark: {} };
+
+    for (const theme of ['light', 'dark']) {
+      const page = await setup('<uai-input-password label="Senha" show-strength></uai-input-password>', theme);
+      for (const [level, valueNow, valueText, active] of levels) {
+        await page.$eval('uai-input-password', (el, value) => el.setAttribute('strength-level', value), level);
+        await page.waitForChanges();
+        const state = await meter(page);
+
+        expect(state).toMatchObject({ valueNow, valueText, active });
+        const inactiveColor = state.colors[2];
+        expect(new Set(state.colors.slice(active)).size).toBeLessThanOrEqual(1);
+        if (active) {
+          activeColors[theme][level] = state.colors[0];
+          expect(new Set(state.colors.slice(0, active))).toEqual(new Set([state.colors[0]]));
+          if (active < 3) expect(state.colors[0]).not.toBe(inactiveColor);
+        }
+      }
+    }
+
+    for (const theme of ['light', 'dark']) {
+      expect(new Set(Object.values(activeColors[theme])).size).toBe(3);
+    }
+    expect(activeColors.dark.low).not.toBe(activeColors.light.low);
+    expect(activeColors.dark.high).not.toBe(activeColors.light.high);
+  });
+
   it('uses theme tokens and respects forced colors and reduced motion', async () => {
     const light = await setup('<uai-input-password label="Senha"></uai-input-password>');
     const background = (page: E2EPage) =>
