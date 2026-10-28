@@ -1,1 +1,0 @@
-import{r as a,h as o}from"./p-BnSR_zce.js";const s=class{constructor(o){a(this,o)}render(){return o("div",{key:"035fc5035aa3360c22b0cbf08ace277be70b5903",class:"modal__action"},o("slot",{key:"488434e623b0ad49f99239721b468c8193551e05"}))}};s.style=".modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}";export{s as bds_modal_action}
