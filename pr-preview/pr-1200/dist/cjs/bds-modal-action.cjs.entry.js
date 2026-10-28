@@ -1,0 +1,17 @@
+'use strict';
+
+var index = require('./index-BqjYThoc.js');
+
+const modalActionCss = () => `.modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}`;
+
+const BdsModalAction = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+    }
+    render() {
+        return (index.h("div", { key: '035fc5035aa3360c22b0cbf08ace277be70b5903', class: "modal__action" }, index.h("slot", { key: '488434e623b0ad49f99239721b468c8193551e05' })));
+    }
+};
+BdsModalAction.style = modalActionCss();
+
+exports.bds_modal_action = BdsModalAction;
