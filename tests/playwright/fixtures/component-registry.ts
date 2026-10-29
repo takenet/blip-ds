@@ -276,9 +276,27 @@ export const WAVE_4: ComponentEntry[] = [
   },
   {
     tag: 'bds-breadcrumb',
-    name: 'Breadcrumb',
-    primaryStory: 'components-breadcrumb--properties',
-    stories: [{ storyId: 'components-breadcrumb--properties', label: 'Properties' }],
+    name: '[deprecated] Breadcrumb',
+    primaryStory: 'components-deprecated-breadcrumb--properties',
+    stories: [{ storyId: 'components-deprecated-breadcrumb--properties', label: 'Properties' }],
+  },
+  {
+    tag: 'uai-breadcrumb',
+    name: 'UAI Breadcrumb',
+    primaryStory: 'uai-breadcrumb--playground',
+    stories: [
+      { storyId: 'uai-breadcrumb--playground', label: 'Playground' },
+      { storyId: 'uai-breadcrumb--usage', label: 'Usage' },
+    ],
+  },
+  {
+    tag: 'uai-page-header',
+    name: 'UAI Page Header',
+    primaryStory: 'uai-page-header--playground',
+    stories: [
+      { storyId: 'uai-page-header--playground', label: 'Playground' },
+      { storyId: 'uai-page-header--usage', label: 'Usage' },
+    ],
   },
   {
     tag: 'bds-pagination',

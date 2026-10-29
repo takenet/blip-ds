@@ -42,6 +42,7 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
 
  - [uai-avatar](../uai-avatar)
  - [uai-badge](../uai-badge)
+ - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-button](../uai-button)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
@@ -57,6 +58,7 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
 graph TD;
   uai-avatar --> uai-icon
   uai-badge --> uai-icon
+  uai-breadcrumb --> uai-icon
   uai-button --> uai-icon
   uai-input --> uai-icon
   uai-input-chips --> uai-icon

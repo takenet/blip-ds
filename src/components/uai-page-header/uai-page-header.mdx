@@ -1,0 +1,148 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiPageHeaderStories from './uai-page-header.stories';
+
+<Meta isTemplate />
+
+# Page Header
+
+## Visão geral
+
+Cabeçalho de página com título ou breadcrumb e ações configuráveis. Use `primary` na entrada da página e `secondary` para contexto hierárquico; o nível visual não limita a profundidade. Para navegação sem ações/título de página, use apenas `UaiBreadcrumb`; para navegação global, use navbar.
+
+### Como usar
+
+React controlado: o header recebe `items`, deixa os eventos do breadcrumb atravessarem por bubbling/composed e o consumidor atualiza o rótulo. As ações continuam funcionando durante a edição.
+
+<Canvas of={UaiPageHeaderStories.Usage} sourceState="shown" />
+
+Envolva a aplicação em `UaiThemeProvider` e carregue **Figtree** e `blip-tokens/uai-icons/css` uma vez. Em custom elements:
+
+```html
+<uai-theme-provider theme="light">
+  <uai-page-header
+    level="secondary"
+    items='[{"label":"Início","href":"#inicio"},{"label":"Relatórios"},{"label":"Mensal"}]'
+    wrap-items="false"
+    editable
+    language="pt_BR">
+    <uai-button slot="actions" variant="outline" color="content">Exportar</uai-button>
+    <uai-button slot="actions">Criar relatório</uai-button>
+  </uai-page-header>
+</uai-theme-provider>
+```
+
+Use propriedades do elemento para arrays/`labels`, e `addEventListener('uaiBreadcrumbItemEdit', handler)` para receber `detail`. Ações usam `uaiClick` (`onUaiClick` em React).
+
+## Playground
+
+<Canvas of={UaiPageHeaderStories.Playground} />
+<Controls of={UaiPageHeaderStories.Playground} />
+
+| Prop / slot | Contrato |
+| --- | --- |
+| `level` | `'primary'` (padrão) ou `'secondary'` |
+| `title` | `string`, padrão `''`; usado somente em primary |
+| `items` | `string` JSON ou `Array<{ label: string; href?: string }>`, padrão `[]` |
+| `wrapItems` | `boolean`, padrão `true`; repassado ao breadcrumb |
+| `editable` | `boolean`, padrão `false`; somente atual do secondary |
+| `language` | `'pt_BR'` (padrão), `'en_US'`, `'es_ES'`; repassado |
+| `labels` | `Partial<UaiBreadcrumbLabels>`; sobrescritas parciais repassadas |
+| `actions` | Slot de ações fornecidas pelo consumidor com `UaiButton` |
+
+Primary usa `title` mesmo com `items`; secondary usa `items` mesmo com `title`. Secondary vazio não usa título como fallback. Não há prop pública `state` nem edição do título primary.
+
+### Edição opcional no secondary
+
+A edição é opcional e fica desligada por padrão (`editable={false}`). Sem `editable`, o secondary mostra navegação e ações, sem gatilho de edição. Com `editable`, somente o item atual pode ser renomeado; a aplicação trata `uaiBreadcrumbItemEdit` e atualiza `items`.
+
+```jsx
+<UaiPageHeader level="secondary" items={items} />
+<UaiPageHeader level="secondary" items={items} editable onUaiBreadcrumbItemEdit={handleEdit} />
+```
+
+<Canvas of={UaiPageHeaderStories.EditingOptional} />
+
+## Estados
+
+<Canvas of={UaiPageHeaderStories.States} />
+
+Primary sem ações não cria botões vazios. Secondary pode estar em leitura, painel aberto, edição, erro de obrigatório ou vazio. Use o gatilho para editar; confirme vazio/só espaços para ver o feedback, Enter para confirmar e Escape para cancelar. Use Tab para inspecionar foco e ponteiro para hover.
+
+`disabled` e `loading` pertencem aos botões das ações, não ao header. Os contratos/listeners desses botões são preservados enquanto o breadcrumb está em edição.
+
+<Canvas of={UaiPageHeaderStories.Hierarchy} />
+<Canvas of={UaiPageHeaderStories.Themes} />
+
+Mais de três itens recolhem somente com `wrapItems=true`. Sem recolhimento, todos continuam acessíveis inclusive em largura estreita; o layout quebra linhas sem ocultar ações nem mudar a prop.
+
+## Comportamento
+
+### Composição e ações divididas
+
+O header compõe `UaiBreadcrumb`, sem duplicar parsing, painel ou editor. Não descobre hero, não controla scroller/sticky e não faz chamadas de persistência nem roteamento.
+
+<Canvas of={UaiPageHeaderStories.SplitActions} sourceState="shown" />
+
+Para ações divididas, use **dois botões UAI separados em grupo acessível**, cada um com listener e nome próprio. O exemplo executa duas ações reais distintas; não finge abrir um menu. Não é um novo split-button/dropdown. Não copie controles nativos, estilos de botão, parts ou Shadow DOM para unir os botões. Se precisar de um menu, a composição e seu estado pertencem ao consumidor.
+
+### Navegação, edição e eventos
+
+| React no header | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiBreadcrumbItemClick` | `uaiBreadcrumbItemClick` | Link visível ou recolhido é ativado | `{ label: string; href?: string }` |
+| `onUaiBreadcrumbItemEdit` | `uaiBreadcrumbItemEdit` | Atual é renomeado com valor válido | `{ index: number; oldValue: string; value: string }` |
+
+São os eventos originais do filho, bubbling/composed: o header não reemite nem duplica. O índice é o original em `items`, não o índice da apresentação recolhida. Clique é notificação sem evento DOM no payload: não oferece cancelamento para roteadores SPA; `href` navega nativamente. Só itens com `href` são links e têm hover (fundo `overlay-hover`, sem sublinhado); itens sem `href`, inclusive o atual, são texto de contexto sem hover para não simular clique e não emitem clique. Editar é ação separada e opcional (`editable`), nunca o clique no rótulo.
+
+Edição é opt-in, somente no último item, com gatilho separado do link. O campo `UaiInput` short recebe foco, não tem `name` e não envia rascunho em formulário externo. Enter/Confirmar fecha e emite uma vez; composição IME não confirma. Escape/Cancelar descarta e devolve foco ao gatilho quando presente. Blur não salva nem cancela.
+
+Vazio/só espaços mantém o editor aberto com `danger`/`errorMessage`; valores válidos preservam espaços. Confirmar valor idêntico fecha sem evento. Mudar `items` durante a edição cancela o rascunho. O componente não muta o array; a aplicação persiste, trata erros e atualiza `items`.
+
+Painel fecha com Escape/clique fora por `UaiOverlay`; alterações de hierarquia/recolhimento removem painéis obsoletos. As regras são o contrato dos testes `test/uai-page-header.spec.tsx` (composição, precedência e eventos) e `test/uai-page-header.e2e.ts` (ações durante edição, semântica, teclado, responsividade e temas), junto aos testes do breadcrumb; execute-os para verificar a implementação.
+
+### Idioma
+
+`language` e `labels` são repassados ao breadcrumb. As chaves de `Partial<UaiBreadcrumbLabels>` são `navigation`, `hiddenItems`, `edit`, `input`, `confirm`, `cancel`, `required` e `empty`: respectivamente navegação, intermediários, editar, campo, confirmar, cancelar, validação e vazio. Sobrescritas preservam os outros textos do idioma escolhido. O header não traduz `title`, rótulos dos itens ou ações do consumidor.
+
+<Canvas of={UaiPageHeaderStories.Localization} />
+
+## Acessibilidade
+
+- Primary usa `UaiTypo variant="title-md" bold="semibold" tag="h1"`. Secondary repassa `currentHeadingLevel={1}` ao breadcrumb: `role="heading"`/`aria-level="1"` fica no texto atual, não na navegação inteira nem nos ancestrais.
+- Garanta um título de página significativo. Os vários headers nas galerias são comparações, não uma recomendação de vários `h1` na mesma página.
+- Breadcrumb usa navegação nomeada, lista e `aria-current="page"` apenas no atual. Separadores são decorativos. O painel é lista comum, não menu ARIA.
+- Tab percorre links, gatilhos, editor e ações; Enter ativa links, Enter/Espaço ativa botões. Foco retorna via API pública `UaiButton.setFocus()`, sem inspecionar controles filhos.
+- Ações só com ícone exigem `aria-label`. Grupos de ações precisam de nome acessível; mantenha a ordem de leitura/foco.
+- Erro tem texto associado ao campo e sinal de inválido. Foco usa `border/ring`; `prefers-reduced-motion: reduce` elimina transições.
+
+### Tokens
+
+| Parte | Tokens / composição |
+| --- | --- |
+| Superfície e borda inferior | `surface-paper`, `border-default`, `border-width-default` |
+| Layout | `spacing-md` no padding e grupos; `spacing-xs` entre ações; altura derivada do conteúdo |
+| Título primary | `UaiTypo title-md`, semibold, `content-primary` |
+| Secondary | `UaiTypo body-base`, `content-primary`, `content-secondary`, `UaiIcon` x-small |
+| Editor / ações | Controles UAI short / medium; `control-height-short`, `control-height-medium` |
+| Painel, hover e foco | `radius-lg`, `overlay-hover`, `border-ring` |
+| Movimento | `duration-fast`, `easing-standard`, sem transição com movimento reduzido |
+
+Use somente contratos públicos e tokens; não use espaçamento como altura fixa nem sobrescreva internos dos componentes compostos.
+
+## Migração
+
+Componente novo, sem equivalente `bds-*` direto. Substitua composições de título, `bds-breadcrumb` e botões legados por:
+
+| Composição anterior | UAI |
+| --- | --- |
+| Título manual | `UaiPageHeader level="primary" title="…"` |
+| `BdsBreadcrumb` com ações ao lado | `level="secondary"`, `items`, slot `actions` |
+| `items` / `wrapItems` do breadcrumb | Mesmos formatos/defaults, sem limite de profundidade |
+| Botões legados | `UaiButton` em `actions`; variantes `solid`, `outline`, `text` |
+| Persistência/roteamento da tela | Continua no consumidor; eventos `uaiBreadcrumbItemClick` / `uaiBreadcrumbItemEdit` |
+
+Não há props deprecated ou métodos públicos de navegação/persistência no header.
+
+### Design e origem dos textos
+
+Adaptação visual delegada, sem alegar paridade com UAI Core. Não foi identificado alvo UAI Core adequado: Code Connect está pendente, sem mapear seletor de contexto ou outro componente. Content UAI MCP estava indisponível; não há alegação de conformidade oficial dos textos.

@@ -15,6 +15,7 @@ The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProv
 
 | Property            | Attribute             | Description                                                                                                                                                                                                                  | Type                                                            | Default     |
 | ------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------- |
+| `ariaExpanded`      | `aria-expanded`       | Expansion state of a controlled panel. Use on disclosure actions; pair with an overlay; avoid on unrelated buttons.                                                                                                          | `"false" \| "true"`                                             | `null`      |
 | `ariaLabel`         | `aria-label`          | Accessible name of the button. Required when the button has no visible label.                                                                                                                                                | `string`                                                        | `null`      |
 | `arrow`             | `arrow`               | If true, renders an 'arrow-right' icon after the label.                                                                                                                                                                      | `boolean`                                                       | `false`     |
 | `bdsLoadingColor`   | `bds-loading-color`   | <span style="color:red">**[DEPRECATED]**</span> The spinner follows the button variant and color. This prop has no effect.<br/><br/>                                                                                         | `"content" \| "light" \| "main" \| "negative" \| "positive"`    | `undefined` |
@@ -94,6 +95,16 @@ Type: `Promise<void>`
 
 
 
+### `setFocus() => Promise<void>`
+
+Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setPosition(position: UaiButtonPosition) => Promise<void>`
 
 Sets the position of the button inside a group.
@@ -161,6 +172,7 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-tab-group](../uai-tab-group)
 
 ### Depends on
@@ -175,6 +187,7 @@ graph TD;
   uai-button --> uai-icon
   uai-button --> bds-icon
   uai-button --> uai-typo
+  uai-breadcrumb --> uai-button
   uai-tab-group --> uai-button
   style uai-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

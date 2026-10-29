@@ -45,6 +45,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 ### Used by
 
  - [uai-badge](../uai-badge)
+ - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-button](../uai-button)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
@@ -52,6 +53,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
  - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
+ - [uai-page-header](../uai-page-header)
  - [uai-tab-group](../uai-tab-group)
  - [uai-textarea](../uai-textarea)
 
@@ -59,6 +61,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 ```mermaid
 graph TD;
   uai-badge --> uai-typo
+  uai-breadcrumb --> uai-typo
   uai-button --> uai-typo
   uai-input --> uai-typo
   uai-input-chips --> uai-typo
@@ -66,6 +69,7 @@ graph TD;
   uai-input-editable --> uai-typo
   uai-input-password --> uai-typo
   uai-input-phone --> uai-typo
+  uai-page-header --> uai-typo
   uai-tab-group --> uai-typo
   uai-textarea --> uai-typo
   style uai-typo fill:#f9f,stroke:#333,stroke-width:4px

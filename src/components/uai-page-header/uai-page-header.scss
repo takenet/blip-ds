@@ -1,0 +1,39 @@
+@use 'blip-tokens/build/scss/uai-colors-light' as *;
+@use 'blip-tokens/build/scss/uai-dimensions' as *;
+
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  box-sizing: border-box;
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}
+
+.header__main {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  max-width: 100%;
+  margin-inline-start: auto;
+}

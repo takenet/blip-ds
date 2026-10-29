@@ -17,6 +17,17 @@ describe('uai-button', () => {
   });
 
   describe('defaults', () => {
+    it('forwards disclosure semantics and focuses through its public method', async () => {
+      const page = await render('<uai-button aria-label="Show pages" aria-expanded="false"></uai-button>');
+      expect(innerButton(page).getAttribute('aria-expanded')).toBe('false');
+      page.root.ariaExpanded = 'true';
+      await page.waitForChanges();
+      expect(innerButton(page).getAttribute('aria-expanded')).toBe('true');
+      const focus = jest.spyOn(innerButton(page), 'focus');
+      await page.root.setFocus();
+      expect(focus).toHaveBeenCalledTimes(1);
+    });
+
     it('renders a native button with solid, primary and medium classes', async () => {
       const page = await render(`<uai-button>Save</uai-button>`);
       const button = innerButton(page);
