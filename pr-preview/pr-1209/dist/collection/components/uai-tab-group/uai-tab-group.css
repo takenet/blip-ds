@@ -56,7 +56,7 @@
   max-width: 100%;
   padding: var(--uai-spacing-2xs, 0.25rem);
   border-radius: var(--uai-radius-xl, 1rem);
-  background: var(--uai-surface-background, #f2f3f3);
+  background: var(--uai-surface-contrast, #e4e6e7);
 }
 .uai-tabs__navigation--overflow {
   width: 100%;
@@ -67,6 +67,8 @@
 
 .uai-tabs__viewport {
   min-width: 0;
+  padding: var(--uai-spacing-xs, 0.5rem);
+  margin: calc(-1 * var(--uai-spacing-xs, 0.5rem));
   overflow: auto hidden;
   scrollbar-width: none;
 }

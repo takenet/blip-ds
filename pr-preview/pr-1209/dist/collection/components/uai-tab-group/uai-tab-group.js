@@ -227,10 +227,13 @@ export class UaiTabGroup {
             return;
         const view = this.viewport.getBoundingClientRect();
         const rect = tab.getBoundingClientRect();
-        if (rect.left < view.left)
-            this.viewport.scrollLeft -= view.left - rect.left;
-        else if (rect.right > view.right)
-            this.viewport.scrollLeft += rect.right - view.right;
+        const style = getComputedStyle(this.viewport);
+        const left = view.left + parseFloat(style.paddingLeft);
+        const right = view.right - parseFloat(style.paddingRight);
+        if (rect.left < left)
+            this.viewport.scrollLeft -= left - rect.left;
+        else if (rect.right > right)
+            this.viewport.scrollLeft += rect.right - right;
     }
     styles(value) {
         const style = document.createElement('div').style;
@@ -261,7 +264,7 @@ export class UaiTabGroup {
         const labels = LABELS[language];
         const selected = this.items.find((item) => item.open);
         const overflow = this.canScrollPrev || this.canScrollNext;
-        return (h(Host, { key: 'a32614b88405f63bc05987e2cd391f0337d93a63' }, h("div", { key: '5dbefc6063e18ffdbc6c2bb9637973ab26376805', class: "uai-tabs" }, h("div", { key: 'edb839489eac1afddb9faac358be5638953b47aa', class: { 'uai-tabs__header': true, [`uai-tabs__header--${align}`]: true }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.headerStyle) }, h("div", { key: '1290d4deebb73c64ce93c176ef85cb5e121bd8be', class: { 'uai-tabs__navigation': true, 'uai-tabs__navigation--overflow': overflow } }, overflow && h("uai-button", { key: 'cc11b3dfd7bb3bfc318daed157724e7892f1de10', variant: "text", color: "content", size: "short", icon: "arrow-left", "aria-label": labels.previous, disabled: !this.canScrollPrev, dataTest: this.dtButtonPrev, onUaiClick: () => this.scroll(-1) }), h("div", { key: '2b7e88225c08e7a807128d68136ba30c29453e5c', class: "uai-tabs__viewport", ref: (el) => this.viewport = el, onScroll: this.updateOverflow }, h("div", { key: '7810812ddc6193fcf4911411a96a5547c2674e5d', class: "uai-tabs__list", role: "tablist", "aria-label": this.ariaLabel || undefined, "aria-labelledby": this.ariaLabelledBy || undefined, ref: (el) => this.track = el }, this.items.map((item, index) => {
+        return (h(Host, { key: '142a67eb63c7899dfc7ea2de7e9ef4f55f8ea41f' }, h("div", { key: '2ba1b53228811544a75c8d3d677821dc128780f6', class: "uai-tabs" }, h("div", { key: '304c742c57ac90c879a9a992d96f33523f4660c7', class: { 'uai-tabs__header': true, [`uai-tabs__header--${align}`]: true }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.headerStyle) }, h("div", { key: '73d891aff768a5cc0aecfcb9a9897b761aa1a1da', class: { 'uai-tabs__navigation': true, 'uai-tabs__navigation--overflow': overflow } }, overflow && h("uai-button", { key: '9b247eea3715dc833c975c37c07a38f0d9492cb9', variant: "text", color: "content", size: "short", icon: "arrow-left", "aria-label": labels.previous, disabled: !this.canScrollPrev, dataTest: this.dtButtonPrev, onUaiClick: () => this.scroll(-1) }), h("div", { key: '491bd45b603778bfa2e20b7d96a054db96fb3845', class: "uai-tabs__viewport", ref: (el) => this.viewport = el, onScroll: this.updateOverflow }, h("div", { key: 'bc3c945af37308bd5feb95b75e3dcc8673e643c0', class: "uai-tabs__list", role: "tablist", "aria-label": this.ariaLabel || undefined, "aria-labelledby": this.ariaLabelledBy || undefined, ref: (el) => this.track = el }, this.items.map((item, index) => {
             var _a;
             if (!((_a = (item.ariaLabel || item.label)) === null || _a === void 0 ? void 0 : _a.trim())) {
                 warnOnce('uai-tab-group', `unnamed:${item.element.id}`, 'Each tab requires label or aria-label, including icon-only tabs.');
@@ -272,7 +275,7 @@ export class UaiTabGroup {
                     if (!item.disable)
                         this.focusedItem = item.element;
                 }, onClick: () => this.activate(item), onKeyDown: (event) => this.handleKeyDown(event, item) }, item.icon && item.iconPosition === 'left' && this.renderIcon(item.icon, item.iconTheme), item.badge && item.badgePosition === 'left' && this.renderBadge(item), !item.iconOnly && h("uai-typo", { tag: "span", variant: "body-base", bold: "medium", margin: false, noWrap: true }, item.label), item.error && h("uai-icon", { class: "uai-tabs__icon", name: "warning", size: "small", "aria-hidden": "true" }), item.icon && item.iconPosition === 'right' && this.renderIcon(item.icon, item.iconTheme), item.badge && item.badgePosition === 'right' && this.renderBadge(item)));
-        }))), overflow && h("uai-button", { key: '1caaabee2d28a0c151e98f32b00304a6c894ba4d', variant: "text", color: "content", size: "short", icon: "arrow-right", "aria-label": labels.next, disabled: !this.canScrollNext, dataTest: this.dtButtonNext, onUaiClick: () => this.scroll(1) }))), h("div", { key: '748ef8084f6ca1ec0e27c515ebe00e4dc3ac504d', class: { 'uai-tabs__content': true, 'uai-tabs__content--scrollable': this.contentScrollable }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.contentStyle) }, h("slot", { key: '93e170072d9aef303aca24abcaf2ada4354f421b', onSlotchange: () => this.loaded && this.syncItems() })))));
+        }))), overflow && h("uai-button", { key: 'fded2957ae0f67b902ac7420d47d120b5f5cc2e4', variant: "text", color: "content", size: "short", icon: "arrow-right", "aria-label": labels.next, disabled: !this.canScrollNext, dataTest: this.dtButtonNext, onUaiClick: () => this.scroll(1) }))), h("div", { key: '3643d7fa72094d20446a1c7c8532e55f15be4dd8', class: { 'uai-tabs__content': true, 'uai-tabs__content--scrollable': this.contentScrollable }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.contentStyle) }, h("slot", { key: 'b488020aa340bd3d03aec265c26c07205e3b1ccc', onSlotchange: () => this.loaded && this.syncItems() })))));
     }
     static get is() { return "uai-tab-group"; }
     static get encapsulation() { return "scoped"; }
