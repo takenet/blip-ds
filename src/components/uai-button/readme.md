@@ -159,6 +159,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [uai-tab-group](../uai-tab-group)
+
 ### Depends on
 
 - [uai-icon](../uai-icon)
@@ -171,6 +175,7 @@ graph TD;
   uai-button --> uai-icon
   uai-button --> bds-icon
   uai-button --> uai-typo
+  uai-tab-group --> uai-button
   style uai-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

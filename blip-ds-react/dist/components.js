@@ -107,6 +107,7 @@ import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from 
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
+import { UaiBadge as UaiBadgeElement, defineCustomElement as defineUaiBadge } from "blip-ds/dist/components/uai-badge.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
@@ -123,6 +124,8 @@ import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } fr
 import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUaiRadioGroup } from "blip-ds/dist/components/uai-radio-group.js";
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
 import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
+import { UaiTabGroup as UaiTabGroupElement, defineCustomElement as defineUaiTabGroup } from "blip-ds/dist/components/uai-tab-group.js";
+import { UaiTabItem as UaiTabItemElement, defineCustomElement as defineUaiTabItem } from "blip-ds/dist/components/uai-tab-item.js";
 import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
@@ -991,6 +994,13 @@ export const UaiAvatar = createComponent({
     },
     defineCustomElement: defineUaiAvatar
 });
+export const UaiBadge = createComponent({
+    tagName: 'uai-badge',
+    elementClass: UaiBadgeElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiBadge
+});
 export const UaiButton = createComponent({
     tagName: 'uai-button',
     elementClass: UaiButtonElement,
@@ -1149,6 +1159,23 @@ export const UaiSwitch = createComponent({
     react: React,
     events: { onUaiChange: 'uaiChange' },
     defineCustomElement: defineUaiSwitch
+});
+export const UaiTabGroup = createComponent({
+    tagName: 'uai-tab-group',
+    elementClass: UaiTabGroupElement,
+    react: React,
+    events: {
+        onUaiTabChange: 'uaiTabChange',
+        onUaiTabDisabled: 'uaiTabDisabled'
+    },
+    defineCustomElement: defineUaiTabGroup
+});
+export const UaiTabItem = createComponent({
+    tagName: 'uai-tab-item',
+    elementClass: UaiTabItemElement,
+    react: React,
+    events: { onUaiDisabled: 'uaiDisabled' },
+    defineCustomElement: defineUaiTabItem
 });
 export const UaiTextarea = createComponent({
     tagName: 'uai-textarea',

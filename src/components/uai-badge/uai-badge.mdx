@@ -1,0 +1,165 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiBadgeStories from './uai-badge.stories';
+
+<Meta isTemplate />
+
+# Badge
+
+Indicador passivo de status, ícone ou contagem. Use junto de conteúdo que explique seu significado; para disparar uma ação, use um botão, não um badge.
+
+## Visão geral
+
+No React, importe `UaiBadge` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Declare o tema na raiz e carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+
+```jsx
+import { UaiBadge, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+<UaiThemeProvider theme="light">
+  <UaiBadge number={12} ariaLabel="12 tarefas pendentes" />
+</UaiThemeProvider>
+```
+
+Como custom element, use a tag `uai-badge` dentro de `uai-theme-provider`; atributos compostos usam kebab-case:
+
+```html
+<uai-theme-provider theme="light">
+  <uai-badge number="12" aria-label="12 tarefas pendentes"></uai-badge>
+</uai-theme-provider>
+```
+
+### API
+
+As seis props herdadas mantêm nomes, tipos e defaults. `ariaLabel` é uma extensão aditiva; não há eventos, métodos públicos, slots ou parts públicos.
+
+| Prop React | Atributo HTML | Tipo / valores documentados | Default |
+| --- | --- | --- | --- |
+| `color` | `color` | `string`: `system`, `danger`, `warning`, `success`, `neutral` | `'system'` |
+| `shape` | `shape` | `circle`, `triangle`, `triangle-reverse`, `polygon`, `square` | `'circle'` |
+| `icon` | `icon` | `string`: nome UAI conhecido ou nome legado | `null` |
+| `number` | `number` | `number`; `null` também é tratado como ausência | `undefined` |
+| `animation` | `animation` | `boolean` | `false` |
+| `dataTest` | `data-test` | `string`; aplicado ao objeto visual interno | `null` |
+| `ariaLabel` | `aria-label` | `string`; descrição acessível opcional | `null` |
+
+## Playground
+
+<Canvas of={UaiBadgeStories.Playground} />
+
+<Controls of={UaiBadgeStories.Playground} />
+
+### Uso controlado
+
+A aplicação controla o conteúdo por props. Altere a seleção para atualizar a mesma instância: número, zero, ícone e ausência não dependem da ordem anterior. O seletor pertence ao exemplo; o badge continua passivo.
+
+<Canvas of={UaiBadgeStories.Usage} sourceState="shown" />
+
+## Estados
+
+Sem número nem ícone, o modo é status. Zero produz vazio, inclusive com ícone; outro número produz contagem; sem número, um ícone preenchido produz modo ícone. Use rótulos e contexto além da cor para explicar status.
+
+Não há hover, foco, pressed, disabled ou loading próprios: não é um controle.
+
+<Canvas of={UaiBadgeStories.States} />
+
+### Cores
+
+Selecione Light e Dark na barra do Storybook para conferir os pares semânticos aprovados para a implementação independente.
+
+<Canvas of={UaiBadgeStories.Colors} />
+
+### Formas
+
+Todas as cinco formas se aplicam a status, ícone e vazio. O número sempre mantém a cápsula, independentemente de `shape`; o fundo não deve recortar texto nem glyph.
+
+<Canvas of={UaiBadgeStories.Shapes} />
+
+### Limites da contagem
+
+`998` permanece `998`; `999` já aparece como `999+`, assim como `1000`. Negativos e decimais não recebem clamp nem arredondamento adicional. O ícone do exemplo permanece informado para tornar visível a precedência do número e a exceção do zero.
+
+<Canvas of={UaiBadgeStories.NumberLimits} />
+
+### Movimento
+
+`animation` ativa um pulso decorativo. Com `prefers-reduced-motion: reduce`, a informação permanece sem animação contínua. O pulso não indica carregamento e não substitui a descrição do status.
+
+<Canvas of={UaiBadgeStories.Animation} />
+
+## Comportamento
+
+O contrato abaixo é coberto por `test/uai-badge.spec.ts` e `test/uai-badge.e2e.ts`. A integração nas tabs e as baselines de regressão visual permanecem separadas da validação do componente independente.
+
+| Regra | Verificação de contrato prevista |
+| --- | --- |
+| `number=0` sempre produz vazio, mesmo com `icon` | Unitário: carga inicial e transição para zero com ícone |
+| Outro número precede `icon`; `number>=999` mostra `999+`, inclusive em `999` | Unitário: limites `998`, `999`, `1000`, negativos e decimais |
+| Sem número, ícone preenchido produz ícone; sem ambos, status | Unitário: defaults e ausência por `null` / `undefined` |
+| Atualizações usam os valores atuais, sem modo interno obsoleto | Unitário e e2e: alternância entre status, ícone, número e vazio na mesma instância |
+| `shape` afeta status, ícone e vazio; contagem sempre é cápsula | Unitário e e2e: cinco formas e conteúdo íntegro |
+| Ícone conhecido usa UAI; nome legado usa `fallbackBdsIcon` | Unitário e e2e: fonte UAI e fallback legado explícito |
+| Cor desconhecida cai em `system`; forma desconhecida cai em `circle`, com aviso em desenvolvimento | Unitário: fallback e aviso de valor desconhecido |
+| `dataTest` chega ao objeto visual interno | Unitário: atributo `data-test` |
+| Pulso respeita movimento reduzido e não remove conteúdo | E2e: `prefers-reduced-motion: reduce` |
+| Não há foco, teclado próprio, live region ou eventos de ação | Unitário e e2e: semântica passiva e navegação por Tab |
+| Cores de sistema preservam forma, limite e conteúdo em alto contraste | E2e: `forced-colors` |
+
+Não há posicionamento flutuante, abrir/fechar, validação de formulário ou payload de evento. A aplicação posiciona o indicador com layout e tokens de espaçamento. Valores não finitos e dados fora do tipo não têm política adicional definida neste contrato.
+
+## Acessibilidade
+
+- Indicador passivo, sem botão interno, `tabindex` automático ou atalhos. Não é uma região `role="status"` e não possui `aria-live` automático.
+- Quando significativo, passe `ariaLabel` com o significado, por exemplo, a contagem completa e seu contexto. O nome acessível deve ser exposto uma única vez, com semântica de imagem/indicador, sem duplicar o conteúdo interno.
+- Sem `ariaLabel`, o número permanece texto acessível. Para `999+`, a aplicação pode informar a quantidade real no rótulo.
+- Status, ícone e vazio significativos precisam de descrição pelo consumidor. Para decoração já explicada pelo contexto, use explicitamente `aria-hidden="true"`.
+- Nunca dependa somente da cor ou do pulso para comunicar significado. Inclua contexto textual e não crie anúncios duplicados no elemento que contém o badge.
+- O contrato exige contraste de texto pequeno de pelo menos 4.5:1 e de ícone significativo de pelo menos 3:1 em ambos os temas; limite e indicador também precisam ser conferidos contra a superfície de uso.
+- Movimento reduzido e `forced-colors` são requisitos de validação da integração, não comprovação de aceite visual.
+
+## Tokens
+
+Os exemplos usam somente tokens UAI para valores de design. Pares de cor aprovados em D-6:
+
+| `color` | Fundo | Conteúdo Light | Conteúdo Dark |
+| --- | --- | --- | --- |
+| `system` | `action/primary/default` | `action/primary/foreground` | `action/primary/foreground` |
+| `danger` | `feedback/error` | `content/inverse` | `content/inverse` |
+| `warning` | `feedback/warning` | `content/primary` | `content/inverse` |
+| `success` | `feedback/success` | `content/primary` | `content/inverse` |
+| `neutral` | `surface/inverse` | `content/inverse` | `content/inverse` |
+
+| Parte | Tokens do contrato |
+| --- | --- |
+| Status / ocupação externa | `sizing/2xs`, `sizing/lg` |
+| Ícone e vazio | `sizing/lg`; glyph `sizing/sm` ou `sizing/xs` para encaixe em triângulo/losango |
+| Cápsula numérica | `sizing/lg`, `spacing/xs`, `radius/full` |
+| Círculo / quadrado | `radius/full`, `radius/none` |
+| Número | `caption/font-size`, `caption/line-height`, `font-weight/bold` |
+| Pulso decorativo separado | `duration/loop`, `easing/standard`; fases e geometria ainda pendentes de comparação visual com a fonte |
+
+O tema vem do provider; warning/success combinam os dois tokens de conteúdo via `light-dark()`. Não use cores literais, overrides de internals ou foregrounds de ações por coincidência visual. O mapa dimensional e o movimento ainda não constituem paridade visual comprovada.
+
+## Migração do `bds-badge`
+
+| Legado | `UaiBadge` |
+| --- | --- |
+| `BdsBadge` / `bds-badge` | `UaiBadge` / `uai-badge` |
+| `color`, `shape`, `icon`, `number`, `animation`, `dataTest` | Mesmos nomes, tipos e defaults |
+| Ícones legados | Mantidos por fallback explícito; nomes UAI conhecidos usam UAI |
+| Zero com ícone podia escolher ícone na carga inicial | Zero sempre é vazio, na carga e em updates (D-1) |
+| Updates podiam preservar o modo anterior | Render determinado pelas props atuais (D-1) |
+| Vazio não aplicava todas as formas | As cinco formas se aplicam ao vazio (D-2) |
+| Contagem em cápsula | Continua em cápsula independentemente de `shape` |
+| Sem prop de nome acessível | `ariaLabel` opcional e aditiva, default `null` (D-3) |
+| Valores desconhecidos sem aparência garantida | Fallback para `system` / `circle` com aviso em desenvolvimento |
+| Sem eventos, métodos ou slots públicos | Continua sem esses membros |
+
+Nenhuma prop herdada é depreciada nesta documentação. Esta entrega não depreca nem altera `bds-badge`, não integra o badge às tabs e não muda nomes de props de badges nas tabs.
+
+## Design
+
+Implementação independente autorizada por D-5/D-6/D-7 da change `w2-uai-badge`. A [instância real observada no Intelligence, 3548:8720](https://www.figma.com/design/J9sL59g1hQEPBhTqy8F644/-DS--Blip-Inteligence?node-id=3548-8720) é um Badge Status/Circle/System oculto de biblioteca remota; não é um component set UAI Core.
+
+O link [Arquitetura, 468:6242](https://www.figma.com/design/J9sL59g1hQEPBhTqy8F644/-DS--Blip-Inteligence?node-id=468-6242) não identifica o badge. A captura do set remoto falhou por seleção inválida em página não visível; o Core consultado não forneceu um badge.
+
+**Paridade Core, Code Connect e aceite visual Light/Dark permanecem pendentes.** Não há alvo Core confirmado nem mapeamento Code Connect publicado. Dimensões, encaixe e movimento exigem comparação visual futura; a autorização de implementação independente não encerra esses portões.

@@ -41,6 +41,7 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
 ### Used by
 
  - [uai-avatar](../uai-avatar)
+ - [uai-badge](../uai-badge)
  - [uai-button](../uai-button)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
@@ -48,12 +49,14 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
  - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
+ - [uai-tab-group](../uai-tab-group)
  - [uai-textarea](../uai-textarea)
 
 ### Graph
 ```mermaid
 graph TD;
   uai-avatar --> uai-icon
+  uai-badge --> uai-icon
   uai-button --> uai-icon
   uai-input --> uai-icon
   uai-input-chips --> uai-icon
@@ -61,6 +64,7 @@ graph TD;
   uai-input-editable --> uai-icon
   uai-input-password --> uai-icon
   uai-input-phone --> uai-icon
+  uai-tab-group --> uai-icon
   uai-textarea --> uai-icon
   style uai-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

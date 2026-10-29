@@ -1,0 +1,139 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiTabGroupStories from './uai-tab-group.stories';
+
+<Meta isTemplate />
+
+# Tab Group
+
+Abas organizam painéis relacionados no mesmo contexto. Use `UaiTabGroup` com `UaiTabItem` para alternar conteúdo local; para navegar entre páginas, prefira links ou a navegação do produto.
+
+## Visão geral
+
+No React, importe `UaiTabGroup`, `UaiTabItem`, `UaiThemeProvider` e `UaiTypo` de `blip-ds-react/dist/components`. Declare o tema na raiz, carregue a fonte **Figtree** e importe `blip-tokens/uai-icons/css` uma vez na aplicação.
+
+O slot default do grupo recebe itens; o slot default de cada item contém seu painel. O visual é uma pílula flutuante, sem variantes ou tamanhos adicionais. Não há composição com page header nesta entrega.
+
+```html
+<uai-theme-provider theme="light">
+  <uai-tab-group aria-label="Seções do projeto">
+    <uai-tab-item label="Resumo" open>
+      <uai-typo>Visão geral do projeto.</uai-typo>
+    </uai-tab-item>
+    <uai-tab-item label="Atividade">
+      <uai-typo>Atividades recentes do projeto.</uai-typo>
+    </uai-tab-item>
+  </uai-tab-group>
+</uai-theme-provider>
+```
+
+### Uso com estado em React
+
+O exemplo mantém a aba selecionada no estado e atualiza o texto após a interação. `event.detail` é o **elemento item**; leia `label` ou `numberElement` nesse elemento, não `detail.value`.
+
+<Canvas of={UaiTabGroupStories.Usage} sourceState="shown" />
+
+## Playground
+
+Os controles do grupo preservam `align="center"`, `contentScrollable=true`, `dtButtonPrev=null` e `dtButtonNext=null`. `ariaLabel` e `ariaLabelledBy` são aditivos para nomear o conjunto; `language="pt_BR"` também aceita `en_US` e `es_ES`, alterando somente os nomes dos controles de rolagem. No HTML, use `aria-label`, `aria-labelledby`, `content-scrollable`, `dt-button-prev` e `dt-button-next`.
+
+Os controles de item atuam no primeiro item, exceto `disable`, que controla “Configurações”. `iconOnly=false` e `ariaLabel` são aditivos; o restante preserva o contrato do item legado. As props opcionais `badge*` compõem o componente público `UaiBadge`, sem alteração dos nomes, tipos ou defaults do item; `badgePosition` continua responsabilidade do grupo.
+
+<Canvas of={UaiTabGroupStories.Playground} />
+<Controls of={UaiTabGroupStories.Playground} />
+
+## Estados
+
+Selecionado usa pílula, elevação e `aria-selected`, além da cor. O foco por teclado usa anel; hover e pressed não selecionam por si só. Desabilitado é anunciado por `aria-disabled` e não abre painel. Erro adiciona sinal acessível e visual à cor. Não há estado de carregamento próprio.
+
+<Canvas of={UaiTabGroupStories.States} />
+
+O exemplo inclui ícones sem rótulo visual, nomes acessíveis e indicadores com zero e contagem acima do limite (`999+`). Use Tab para entrar e as setas para inspecionar o foco; clique e mantenha pressionado para inspecionar pressed. Alterne Light/Dark na barra do Storybook.
+
+## Comportamento
+
+O contrato é validado pelas suítes de tabs: `src/components/uai-tab-group/test/uai-tab-group.spec.tsx`, `src/components/uai-tab-group/test/uai-tab-group.e2e.ts` e `src/components/uai-tab-item/test/uai-tab-item.spec.tsx`. A referência visual usa `tests/playwright/visual/uai-tab-group.visual.spec.ts`; a presença de uma referência não substitui a execução e o aceite visual.
+
+| Regra | Referência de teste |
+| --- | --- |
+| Clique, Enter ou Espaço ativam uma aba habilitada; reativar a aberta também emite uma vez | Grupo: unitário e e2e |
+| Setas circulam pelas habilitadas; Home/End vão à primeira/última; não selecionam nem emitem mudança | Grupo: e2e |
+| Sem `open`, abre a primeira habilitada; múltiplas abertas são normalizadas para a primeira aberta habilitada | Grupo: unitário |
+| Remover ou desabilitar a ativa escolhe a primeira habilitada restante; grupo vazio ou todo desabilitado não mostra painel inválido | Grupo: unitário e e2e |
+| Adicionar, remover ou alterar itens atualiza cabeçalhos, índices e painéis sem interferir em outros grupos | Grupo: unitário e e2e |
+| Overflow e resize atualizam controles e mantêm o foco visível, sem polling ou listeners acumulados | Grupo: e2e |
+| `reciveNumber(number)` atualiza `numberElement`; preservar essa grafia | Item: unitário |
+| `headerStyle`/`contentStyle` acompanham o item aberto; aceitos, mas deprecated | Grupo: unitário |
+| Movimento reduzido elimina transições, rolagem suave e animação contínua do indicador | Grupo: e2e e visual |
+
+### Eventos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiTabChange` | `uaiTabChange` | Ativação de uma aba habilitada, inclusive reativação | O próprio `HTMLUaiTabItemElement` |
+| `onUaiTabDisabled` | `uaiTabDisabled` | Tentativa de ativar uma aba desabilitada por clique | O próprio `HTMLUaiTabItemElement` desabilitado |
+| `onUaiDisabled` no item | `uaiDisabled` | A prop `disable` do item muda depois da inicialização | `{ item: numberElement, disable: boolean }` |
+
+Os eventos são bubbling, composed e cancelable, como os defaults Stencil do legado. `uaiDisabled` não é uma tentativa de seleção nem equivale ao evento do grupo. Inicialização e normalização não fabricam eventos de ativação.
+
+### Overflow e movimento
+
+Os controles anterior/próximo aparecem conforme o espaço disponível e não deslocam além dos limites. `dtButtonPrev`/`dtButtonNext` preservam os marcadores legados; prefira nomes e roles nos testes.
+
+<Canvas of={UaiTabGroupStories.Overflow} />
+
+As transições usam `duration/fast` e `easing/standard`. `prefers-reduced-motion: reduce` elimina a rolagem suave e as transições e interrompe animações contínuas, inclusive `badgeAnimation`.
+
+## Acessibilidade
+
+- O grupo expõe `tablist`, os cabeçalhos usam botões com `role="tab"` e cada host `uai-tab-item` é um `tabpanel`.
+- O grupo usa scoped/light DOM para manter `aria-controls`/`aria-labelledby` entre aba e painel no mesmo escopo. O item conserva shadow DOM, com o papel de painel no host.
+- Nomeie o conjunto com `ariaLabel` ou `ariaLabelledBy` apontando para um título visível. No React, são props camelCase; no HTML, atributos ARIA usuais.
+- `label` nomeia a aba. `ariaLabel` do item permite um nome específico; `iconOnly` oculta apenas o texto visual e mantém `label` como fallback. Nunca deixe uma aba só com ícone sem nome.
+- Apenas uma aba habilitada entra na ordem de Tab. As setas e Home/End movem o foco, Enter/Espaço selecionam e Tab sai do conjunto: ativação **manual**.
+- Painéis inativos ficam ocultos. Desabilitado é anunciado e ignorado pelo percurso de setas; erro não depende só de cor. Foco usa `border/ring` com `:focus-visible`, sem anel persistente após clique.
+- Nos testes, procure `getByRole('tablist', { name })`, `getByRole('tab', { name })` e `getByRole('tabpanel', { name })`, sem acessar shadow roots ou classes internas.
+
+## Tokens
+
+| Parte | Tokens UAI |
+| --- | --- |
+| Grupo e item | `control-height/medium`, `control-height/short`, `radius/xl`, `radius/lg` |
+| Espaçamento | `spacing/2xs`, `spacing/xs`, `spacing/sm` |
+| Fundo e seleção | `surface/background`, `action/outline/default`, `elevation/tab-active` |
+| Texto e desabilitado | `content/primary`, `content/secondary`, `content/disabled` |
+| Erro e foco | `feedback/error`, `border/ring`, `border-width/thick` |
+| Tipografia e ícone | `body/base`, `font-weight/medium`, `font-family/sans`, `sizing/md` |
+| Movimento | `duration/fast`, `easing/standard` |
+
+Não sobrescreva internals, `::part` ou shadow DOM. Componha conteúdo com componentes UAI e tokens publicados.
+
+## Migração das cinco tags `bds-*`
+
+Nenhuma tag legada é removida nem muda de comportamento. O par atual tem substitutos; o trio mais antigo requer reorganização de conteúdo e eventos, não uma troca cega de prefixo.
+
+| Legado | Destino / ação |
+| --- | --- |
+| `bds-tab-group` / `BdsTabGroup` | `uai-tab-group` / `UaiTabGroup`: mesmas props e defaults de alinhamento, rolagem e marcadores; slot default preservado |
+| `bds-tab-item` / `BdsTabItem` | `uai-tab-item` / `UaiTabItem`: preserve `label`, `icon`, `iconPosition`, `iconTheme`, `badge*`, `disable`, `error`, `open`, `numberElement`, `dataTest`, slot default e `reciveNumber` |
+| `bds-tabs` | Substitua o contêiner por `uai-tab-group`; `align` mantém o significado. `bdsTabInit: string` e `scrollButtonClick: { direction?, distance? }` não têm alias direto |
+| `bds-tab` | Converta cada cabeçalho em `uai-tab-item`; `active` vira `open`. `group` string não é `numberElement`; deixe o grupo atribuir índices |
+| `bds-tab-panel` | Mova seu conteúdo para o slot default do item correspondente; remova a associação global por `group` |
+
+| Evento legado | Evento UAI | Payload |
+| --- | --- | --- |
+| `bdsTabChange` do **par atual** | `uaiTabChange` | Elemento item, não string |
+| `bdsTabDisabled` do grupo atual | `uaiTabDisabled` | Elemento item desabilitado |
+| `tabDisabled` do item atual | `uaiDisabled` | `{ item: numberElement, disable }` |
+| `bdsTabInit` / `bdsTabChange` do **trio antigo** | Refaça a associação com itens e `uaiTabChange` | Antes: string `group` e comunicação global no body; agora: elemento do item no grupo |
+
+`disable` não vira `disabled`, `open` não vira `selected`, e `reciveNumber` não é corrigido para outro nome. `headerStyle`/`contentStyle` continuam aplicados conforme o item aberto, mas são deprecated e avisam em desenvolvimento, orientando composição com tokens; não use novos overrides internos.
+
+O item preserva os defaults: `numberElement`, `label`, `icon`, `badgeIcon`, `badgeNumber`, `headerStyle`, `contentStyle` e `dataTest` nulos; `iconPosition`/`badgePosition="left"`, `iconTheme="outline"`, `badgeShape="circle"`, `badgeColor="system"`; `badge`, `badgeAnimation`, `disable`, `error` e `open` falsos. Os aditivos são `iconOnly=false` e `ariaLabel`.
+
+Há melhorias explícitas de acessibilidade: ativação manual por teclado, primeira habilitada na inicialização, normalização de múltiplas abertas e recuperação após remoção/desabilitação da ativa. Não são aliases comportamentais do trio antigo. Ícones usam UAI quando disponíveis e preservam o fallback de compatibilidade de nomes/temas legados; indicadores compõem `UaiBadge`, sem depender de `bds-badge`. O padrão `system` acompanha o par neutro do botão nos dois temas; as demais cores mantêm os pares de feedback. O nome acessível da aba continua definido por `ariaLabel` ou `label`, sem anúncios live automáticos do badge.
+
+## Design
+
+Referência provisória aprovada: [grupo no Intelligence](https://www.figma.com/design/J9sL59g1hQEPBhTqy8F644/-DS--Blip-Inteligence?node-id=3184-7197) e [itens no Intelligence](https://www.figma.com/design/J9sL59g1hQEPBhTqy8F644/-DS--Blip-Inteligence?node-id=3173-7191), adaptados aos tokens UAI.
+
+O alvo no UAI Core não foi localizado. **Não há declaração de paridade Core nem Code Connect nesta entrega.** A pílula flutuante usa `radius/xl` e `elevation/tab-active` publicados; a sombra ativa difere do desenho, não há sombra inativa literal e desabilitado segue `content/disabled`. Comparação Core e mapeamentos permanecem pendentes de um alvo real.

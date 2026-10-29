@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-tab-item com uai-tab-group. Consulte UAI/Tab Group para a migração.
+
 ## Properties
 
 | Property         | Attribute         | Description                                                                                                         | Type      | Default     |

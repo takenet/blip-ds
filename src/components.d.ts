@@ -77,6 +77,7 @@ import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
 import { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
+import { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -164,6 +165,7 @@ export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
 export { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
+export { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -3293,6 +3295,9 @@ export namespace Components {
          */
         "label": string;
     }
+    /**
+     * @deprecated Use uai-tab-group. Consulte UAI/Tab Group para a migração de props e eventos.
+     */
     interface BdsTabGroup {
         /**
           * @default 'center'
@@ -3313,6 +3318,9 @@ export namespace Components {
          */
         "dtButtonPrev"?: string;
     }
+    /**
+     * @deprecated Use uai-tab-item com uai-tab-group. Consulte UAI/Tab Group para a migração.
+     */
     interface BdsTabItem {
         /**
           * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
@@ -3764,6 +3772,46 @@ export namespace Components {
           * @default false
          */
         "upload"?: boolean;
+    }
+    /**
+     * Passive status, icon or count indicator. Use for supplementary information;
+     * pair with an explanatory label; avoid using color alone to convey meaning.
+     */
+    interface UaiBadge {
+        /**
+          * Enables a pulse unless reduced motion is requested. Use sparingly; pair with meaningful status; avoid continuous distraction.
+          * @default false
+         */
+        "animation"?: boolean;
+        /**
+          * Accessible indicator description, mapped to aria-label. Use for standalone meaning; pair with status or icon; avoid duplicate announcements.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Semantic color: system, danger, warning, success or neutral. Use for status; pair with a label; avoid arbitrary colors.
+          * @default 'system'
+         */
+        "color"?: string;
+        /**
+          * Inner visual element data-test marker. Use for automation; pair with semantic queries; avoid treating it as an accessible label.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * UAI or legacy icon name. Use when no count is supplied; pair with ariaLabel; avoid relying on an unnamed icon for meaning.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Count, visually capped at 999+ inclusively. Use zero for an empty indicator; pair with a label; avoid using counts as actions.
+         */
+        "number"?: number;
+        /**
+          * Indicator shape. Use for status, icon or empty badges; pair with color; avoid expecting numeric capsules to change shape.
+          * @default 'circle'
+         */
+        "shape"?: UaiBadgeShape;
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
@@ -5315,6 +5363,159 @@ export namespace Components {
         "value": string;
     }
     /**
+     * Floating tabs with manual keyboard activation. Use for alternate views of related content;
+     * pair with UaiTabItem; avoid using tabs as links to unrelated pages.
+     */
+    interface UaiTabGroup {
+        /**
+          * Header alignment: left, center or right. Use to fit the surrounding layout; pair with floating tabs; avoid unsupported values.
+          * @default 'center'
+         */
+        "align": 'left' | 'center' | 'right';
+        /**
+          * Accessible tablist name. Use for distinguishing groups; pair with item labels; avoid unnamed groups when several are present.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Accessible tablist name references. Use for an existing heading; pair with that heading's ID; avoid broken references.
+          * @default null
+         */
+        "ariaLabelledBy": string;
+        /**
+          * Enables scrolling of panel content. Use for constrained containers; pair with container height; avoid nested scrolling without need.
+          * @default true
+         */
+        "contentScrollable": boolean;
+        /**
+          * Next scroll button data-test. Use for automation; pair with dtButtonPrev; avoid using it as an accessible label.
+          * @default null
+         */
+        "dtButtonNext": string;
+        /**
+          * Previous scroll button data-test. Use for automation; pair with dtButtonNext; avoid using it as an accessible label.
+          * @default null
+         */
+        "dtButtonPrev": string;
+        /**
+          * Scroll control language, pt_BR, en_US or es_ES. Use for built-in labels; pair with translated item labels; avoid translating consumer content implicitly.
+          * @default 'pt_BR'
+         */
+        "language": 'pt_BR' | 'en_US' | 'es_ES';
+    }
+    /**
+     * Content panel and configuration of one tab. Use inside UaiTabGroup. Pair with a label;
+     * avoid using open panels as independent navigation controls.
+     */
+    interface UaiTabItem {
+        /**
+          * Accessible tab name overriding label. Use for icon-only tabs; pair with iconOnly; avoid empty names.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Shows an optional internal indicator. Use for status or counts; pair with badge props; avoid mandatory decoration.
+          * @default false
+         */
+        "badge": boolean;
+        /**
+          * Animates the indicator unless reduced motion is requested. Use sparingly; pair with badge; avoid continuous distraction.
+          * @default false
+         */
+        "badgeAnimation": boolean;
+        /**
+          * Indicator color: system, danger, warning, success or neutral. Use semantic status; pair with a label; avoid arbitrary colors.
+          * @default 'system'
+         */
+        "badgeColor": string;
+        /**
+          * Optional indicator icon. Use for status; pair with badge; avoid relying on an unnamed icon for meaning.
+          * @default null
+         */
+        "badgeIcon": string;
+        /**
+          * Indicator count, capped visually at 999+. Use null for status and zero for an empty indicator; pair with badge; avoid negative counts.
+          * @default null
+         */
+        "badgeNumber": number;
+        /**
+          * Indicator side, left or right. Use to preserve layout; pair with badge; avoid unsupported positions.
+          * @default 'left'
+         */
+        "badgePosition": string;
+        /**
+          * Indicator shape: circle, square, triangle, triangle-reverse or polygon. Use for status; pair with badge; avoid color-only meaning.
+          * @default 'circle'
+         */
+        "badgeShape": string;
+        /**
+          * Custom group content styles when this item is open. Use token-based declarations for compatibility; pair with headerStyle; avoid overriding component internals.
+          * @deprecated Prefer token-based composition around the group. The inherited style string remains functional.
+          * @default null
+         */
+        "contentStyle": string;
+        /**
+          * Panel data-test marker. Use in automated tests; pair with dtButtonPrev/Next on the group; avoid using it as an accessible name.
+          * @default null
+         */
+        "dataTest": string;
+        /**
+          * Disables activation. Use for unavailable tabs; pair with a meaningful label; avoid renaming this inherited prop to disabled.
+          * @default false
+         */
+        "disable": boolean;
+        /**
+          * Marks an error with a semantic color and icon. Use for a panel requiring attention; pair with explanatory panel content; avoid color alone.
+          * @default false
+         */
+        "error": boolean;
+        /**
+          * Custom group header styles when this item is open. Use token-based declarations for compatibility; pair with contentStyle; avoid overriding component internals.
+          * @deprecated Prefer token-based composition around the group. The inherited style string remains functional.
+          * @default null
+         */
+        "headerStyle": string;
+        /**
+          * Optional tab icon. Use a UAI icon name; pair with label; avoid using an icon as the only accessible name.
+          * @default null
+         */
+        "icon": string;
+        /**
+          * Hides the visible label, not its accessible name. Use for the Intelligence icon layout; pair with icon and label; avoid unnamed actions.
+          * @default false
+         */
+        "iconOnly": boolean;
+        /**
+          * Icon side, left or right. Use to preserve layout; pair with icon; avoid unsupported positions.
+          * @default 'left'
+         */
+        "iconPosition": string;
+        /**
+          * Icon theme, outline, solid, emoji or logos. Use UAI themes first; pair with icon; avoid new legacy icon names.
+          * @default 'outline'
+         */
+        "iconTheme": string;
+        /**
+          * Tab label. Use a short name; pair with panel content; avoid unnamed tabs.
+          * @default null
+         */
+        "label": string;
+        /**
+          * Position assigned by the group. Use for event correlation; pair with reciveNumber; avoid treating it as a stable ID.
+          * @default null
+         */
+        "numberElement": number;
+        /**
+          * Selects this tab. Use for initial or controlled selection; pair with uaiTabChange; avoid opening multiple items.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Assigns the item index, preserving the legacy spelling. Use for compatibility; pair with numberElement; avoid using the index as a persistent identifier.
+         */
+        "reciveNumber": (number: number) => Promise<void>;
+    }
+    /**
      * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
      * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
      * Wrap the app in UaiThemeProvider.
@@ -5855,6 +6056,14 @@ export interface UaiRadioGroupCustomEvent<T> extends CustomEvent<T> {
 export interface UaiSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiSwitchElement;
+}
+export interface UaiTabGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiTabGroupElement;
+}
+export interface UaiTabItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiTabItemElement;
 }
 export interface UaiTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -7024,6 +7233,9 @@ declare global {
         "bdsTabChange": HTMLBdsTabItemElement;
         "bdsTabDisabled": HTMLBdsTabItemElement;
     }
+    /**
+     * @deprecated Use uai-tab-group. Consulte UAI/Tab Group para a migração de props e eventos.
+     */
     interface HTMLBdsTabGroupElement extends Components.BdsTabGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsTabGroupElementEventMap>(type: K, listener: (this: HTMLBdsTabGroupElement, ev: BdsTabGroupCustomEvent<HTMLBdsTabGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7041,6 +7253,9 @@ declare global {
     interface HTMLBdsTabItemElementEventMap {
         "tabDisabled": { item: number; disable: boolean };
     }
+    /**
+     * @deprecated Use uai-tab-item com uai-tab-group. Consulte UAI/Tab Group para a migração.
+     */
     interface HTMLBdsTabItemElement extends Components.BdsTabItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsTabItemElementEventMap>(type: K, listener: (this: HTMLBdsTabItemElement, ev: BdsTabItemCustomEvent<HTMLBdsTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7209,6 +7424,16 @@ declare global {
     var HTMLUaiAvatarElement: {
         prototype: HTMLUaiAvatarElement;
         new (): HTMLUaiAvatarElement;
+    };
+    /**
+     * Passive status, icon or count indicator. Use for supplementary information;
+     * pair with an explanatory label; avoid using color alone to convey meaning.
+     */
+    interface HTMLUaiBadgeElement extends Components.UaiBadge, HTMLStencilElement {
+    }
+    var HTMLUaiBadgeElement: {
+        prototype: HTMLUaiBadgeElement;
+        new (): HTMLUaiBadgeElement;
     };
     interface HTMLUaiButtonElementEventMap {
         "uaiClick": MouseEvent;
@@ -7534,6 +7759,49 @@ declare global {
         prototype: HTMLUaiSwitchElement;
         new (): HTMLUaiSwitchElement;
     };
+    interface HTMLUaiTabGroupElementEventMap {
+        "uaiTabChange": HTMLUaiTabItemElement;
+        "uaiTabDisabled": HTMLUaiTabItemElement;
+    }
+    /**
+     * Floating tabs with manual keyboard activation. Use for alternate views of related content;
+     * pair with UaiTabItem; avoid using tabs as links to unrelated pages.
+     */
+    interface HTMLUaiTabGroupElement extends Components.UaiTabGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiTabGroupElementEventMap>(type: K, listener: (this: HTMLUaiTabGroupElement, ev: UaiTabGroupCustomEvent<HTMLUaiTabGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiTabGroupElementEventMap>(type: K, listener: (this: HTMLUaiTabGroupElement, ev: UaiTabGroupCustomEvent<HTMLUaiTabGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiTabGroupElement: {
+        prototype: HTMLUaiTabGroupElement;
+        new (): HTMLUaiTabGroupElement;
+    };
+    interface HTMLUaiTabItemElementEventMap {
+        "uaiDisabled": { item: number; disable: boolean };
+    }
+    /**
+     * Content panel and configuration of one tab. Use inside UaiTabGroup. Pair with a label;
+     * avoid using open panels as independent navigation controls.
+     */
+    interface HTMLUaiTabItemElement extends Components.UaiTabItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiTabItemElementEventMap>(type: K, listener: (this: HTMLUaiTabItemElement, ev: UaiTabItemCustomEvent<HTMLUaiTabItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiTabItemElementEventMap>(type: K, listener: (this: HTMLUaiTabItemElement, ev: UaiTabItemCustomEvent<HTMLUaiTabItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiTabItemElement: {
+        prototype: HTMLUaiTabItemElement;
+        new (): HTMLUaiTabItemElement;
+    };
     interface HTMLUaiTextareaElementEventMap {
         "uaiChange": { value: string };
         "uaiInput": InputEvent;
@@ -7689,6 +7957,7 @@ declare global {
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
         "uai-avatar": HTMLUaiAvatarElement;
+        "uai-badge": HTMLUaiBadgeElement;
         "uai-button": HTMLUaiButtonElement;
         "uai-checkbox": HTMLUaiCheckboxElement;
         "uai-grid": HTMLUaiGridElement;
@@ -7705,6 +7974,8 @@ declare global {
         "uai-radio": HTMLUaiRadioElement;
         "uai-radio-group": HTMLUaiRadioGroupElement;
         "uai-switch": HTMLUaiSwitchElement;
+        "uai-tab-group": HTMLUaiTabGroupElement;
+        "uai-tab-item": HTMLUaiTabItemElement;
         "uai-textarea": HTMLUaiTextareaElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
         "uai-typo": HTMLUaiTypoElement;
@@ -11108,6 +11379,9 @@ declare namespace LocalJSX {
          */
         "onBdsTabChange"?: (event: BdsTabCustomEvent<string>) => void;
     }
+    /**
+     * @deprecated Use uai-tab-group. Consulte UAI/Tab Group para a migração de props e eventos.
+     */
     interface BdsTabGroup {
         /**
           * @default 'center'
@@ -11136,6 +11410,9 @@ declare namespace LocalJSX {
          */
         "onBdsTabDisabled"?: (event: BdsTabGroupCustomEvent<HTMLBdsTabItemElement>) => void;
     }
+    /**
+     * @deprecated Use uai-tab-item com uai-tab-group. Consulte UAI/Tab Group para a migração.
+     */
     interface BdsTabItem {
         /**
           * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
@@ -11585,6 +11862,46 @@ declare namespace LocalJSX {
           * @default false
          */
         "upload"?: boolean;
+    }
+    /**
+     * Passive status, icon or count indicator. Use for supplementary information;
+     * pair with an explanatory label; avoid using color alone to convey meaning.
+     */
+    interface UaiBadge {
+        /**
+          * Enables a pulse unless reduced motion is requested. Use sparingly; pair with meaningful status; avoid continuous distraction.
+          * @default false
+         */
+        "animation"?: boolean;
+        /**
+          * Accessible indicator description, mapped to aria-label. Use for standalone meaning; pair with status or icon; avoid duplicate announcements.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Semantic color: system, danger, warning, success or neutral. Use for status; pair with a label; avoid arbitrary colors.
+          * @default 'system'
+         */
+        "color"?: string;
+        /**
+          * Inner visual element data-test marker. Use for automation; pair with semantic queries; avoid treating it as an accessible label.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * UAI or legacy icon name. Use when no count is supplied; pair with ariaLabel; avoid relying on an unnamed icon for meaning.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Count, visually capped at 999+ inclusively. Use zero for an empty indicator; pair with a label; avoid using counts as actions.
+         */
+        "number"?: number;
+        /**
+          * Indicator shape. Use for status, icon or empty badges; pair with color; avoid expecting numeric capsules to change shape.
+          * @default 'circle'
+         */
+        "shape"?: UaiBadgeShape;
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
@@ -13160,6 +13477,167 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * Floating tabs with manual keyboard activation. Use for alternate views of related content;
+     * pair with UaiTabItem; avoid using tabs as links to unrelated pages.
+     */
+    interface UaiTabGroup {
+        /**
+          * Header alignment: left, center or right. Use to fit the surrounding layout; pair with floating tabs; avoid unsupported values.
+          * @default 'center'
+         */
+        "align"?: 'left' | 'center' | 'right';
+        /**
+          * Accessible tablist name. Use for distinguishing groups; pair with item labels; avoid unnamed groups when several are present.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Accessible tablist name references. Use for an existing heading; pair with that heading's ID; avoid broken references.
+          * @default null
+         */
+        "ariaLabelledBy"?: string;
+        /**
+          * Enables scrolling of panel content. Use for constrained containers; pair with container height; avoid nested scrolling without need.
+          * @default true
+         */
+        "contentScrollable"?: boolean;
+        /**
+          * Next scroll button data-test. Use for automation; pair with dtButtonPrev; avoid using it as an accessible label.
+          * @default null
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Previous scroll button data-test. Use for automation; pair with dtButtonNext; avoid using it as an accessible label.
+          * @default null
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Scroll control language, pt_BR, en_US or es_ES. Use for built-in labels; pair with translated item labels; avoid translating consumer content implicitly.
+          * @default 'pt_BR'
+         */
+        "language"?: 'pt_BR' | 'en_US' | 'es_ES';
+        /**
+          * Activated item element, including reactivation. Use for controlled selection; pair with item.open; avoid expecting a string group ID.
+         */
+        "onUaiTabChange"?: (event: UaiTabGroupCustomEvent<HTMLUaiTabItemElement>) => void;
+        /**
+          * Item element whose disabled header was activated. Use for unavailable-action feedback; pair with disable; avoid treating it as a disable prop change.
+         */
+        "onUaiTabDisabled"?: (event: UaiTabGroupCustomEvent<HTMLUaiTabItemElement>) => void;
+    }
+    /**
+     * Content panel and configuration of one tab. Use inside UaiTabGroup. Pair with a label;
+     * avoid using open panels as independent navigation controls.
+     */
+    interface UaiTabItem {
+        /**
+          * Accessible tab name overriding label. Use for icon-only tabs; pair with iconOnly; avoid empty names.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Shows an optional internal indicator. Use for status or counts; pair with badge props; avoid mandatory decoration.
+          * @default false
+         */
+        "badge"?: boolean;
+        /**
+          * Animates the indicator unless reduced motion is requested. Use sparingly; pair with badge; avoid continuous distraction.
+          * @default false
+         */
+        "badgeAnimation"?: boolean;
+        /**
+          * Indicator color: system, danger, warning, success or neutral. Use semantic status; pair with a label; avoid arbitrary colors.
+          * @default 'system'
+         */
+        "badgeColor"?: string;
+        /**
+          * Optional indicator icon. Use for status; pair with badge; avoid relying on an unnamed icon for meaning.
+          * @default null
+         */
+        "badgeIcon"?: string;
+        /**
+          * Indicator count, capped visually at 999+. Use null for status and zero for an empty indicator; pair with badge; avoid negative counts.
+          * @default null
+         */
+        "badgeNumber"?: number;
+        /**
+          * Indicator side, left or right. Use to preserve layout; pair with badge; avoid unsupported positions.
+          * @default 'left'
+         */
+        "badgePosition"?: string;
+        /**
+          * Indicator shape: circle, square, triangle, triangle-reverse or polygon. Use for status; pair with badge; avoid color-only meaning.
+          * @default 'circle'
+         */
+        "badgeShape"?: string;
+        /**
+          * Custom group content styles when this item is open. Use token-based declarations for compatibility; pair with headerStyle; avoid overriding component internals.
+          * @deprecated Prefer token-based composition around the group. The inherited style string remains functional.
+          * @default null
+         */
+        "contentStyle"?: string;
+        /**
+          * Panel data-test marker. Use in automated tests; pair with dtButtonPrev/Next on the group; avoid using it as an accessible name.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Disables activation. Use for unavailable tabs; pair with a meaningful label; avoid renaming this inherited prop to disabled.
+          * @default false
+         */
+        "disable"?: boolean;
+        /**
+          * Marks an error with a semantic color and icon. Use for a panel requiring attention; pair with explanatory panel content; avoid color alone.
+          * @default false
+         */
+        "error"?: boolean;
+        /**
+          * Custom group header styles when this item is open. Use token-based declarations for compatibility; pair with contentStyle; avoid overriding component internals.
+          * @deprecated Prefer token-based composition around the group. The inherited style string remains functional.
+          * @default null
+         */
+        "headerStyle"?: string;
+        /**
+          * Optional tab icon. Use a UAI icon name; pair with label; avoid using an icon as the only accessible name.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Hides the visible label, not its accessible name. Use for the Intelligence icon layout; pair with icon and label; avoid unnamed actions.
+          * @default false
+         */
+        "iconOnly"?: boolean;
+        /**
+          * Icon side, left or right. Use to preserve layout; pair with icon; avoid unsupported positions.
+          * @default 'left'
+         */
+        "iconPosition"?: string;
+        /**
+          * Icon theme, outline, solid, emoji or logos. Use UAI themes first; pair with icon; avoid new legacy icon names.
+          * @default 'outline'
+         */
+        "iconTheme"?: string;
+        /**
+          * Tab label. Use a short name; pair with panel content; avoid unnamed tabs.
+          * @default null
+         */
+        "label"?: string;
+        /**
+          * Position assigned by the group. Use for event correlation; pair with reciveNumber; avoid treating it as a stable ID.
+          * @default null
+         */
+        "numberElement"?: number;
+        /**
+          * Availability change with the current index. Use for observing disable changes; pair with uaiTabDisabled on the group; avoid confusing it with activation.
+         */
+        "onUaiDisabled"?: (event: UaiTabItemCustomEvent<{ item: number; disable: boolean }>) => void;
+        /**
+          * Selects this tab. Use for initial or controlled selection; pair with uaiTabChange; avoid opening multiple items.
+          * @default false
+         */
+        "open"?: boolean;
+    }
+    /**
      * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
      * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
      * Wrap the app in UaiThemeProvider.
@@ -14327,6 +14805,15 @@ declare namespace LocalJSX {
         "label": string;
         "initials": string;
     }
+    interface UaiBadgeAttributes {
+        "color": string;
+        "shape": UaiBadgeShape;
+        "icon": string;
+        "number": number;
+        "animation": boolean;
+        "dataTest": string;
+        "ariaLabel": string;
+    }
     interface UaiButtonAttributes {
         "block": boolean;
         "fullWidth": boolean;
@@ -14626,6 +15113,37 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiTabGroupAttributes {
+        "contentScrollable": boolean;
+        "align": 'left' | 'center' | 'right';
+        "dtButtonPrev": string;
+        "dtButtonNext": string;
+        "ariaLabel": string;
+        "ariaLabelledBy": string;
+        "language": 'pt_BR' | 'en_US' | 'es_ES';
+    }
+    interface UaiTabItemAttributes {
+        "numberElement": number;
+        "label": string;
+        "icon": string;
+        "iconPosition": string;
+        "iconTheme": string;
+        "badge": boolean;
+        "badgeShape": string;
+        "badgeColor": string;
+        "badgeIcon": string;
+        "badgeAnimation": boolean;
+        "badgePosition": string;
+        "badgeNumber": number;
+        "disable": boolean;
+        "error": boolean;
+        "headerStyle": string;
+        "contentStyle": string;
+        "open": boolean;
+        "dataTest": string;
+        "ariaLabel": string;
+        "iconOnly": boolean;
+    }
     interface UaiTextareaAttributes {
         "name": string;
         "inputName": string;
@@ -14794,6 +15312,7 @@ declare namespace LocalJSX {
         "bds-upload": Omit<BdsUpload, keyof BdsUploadAttributes> & { [K in keyof BdsUpload & keyof BdsUploadAttributes]?: BdsUpload[K] } & { [K in keyof BdsUpload & keyof BdsUploadAttributes as `attr:${K}`]?: BdsUploadAttributes[K] } & { [K in keyof BdsUpload & keyof BdsUploadAttributes as `prop:${K}`]?: BdsUpload[K] };
         "bds-warning": BdsWarning;
         "uai-avatar": Omit<UaiAvatar, keyof UaiAvatarAttributes> & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes]?: UaiAvatar[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `attr:${K}`]?: UaiAvatarAttributes[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `prop:${K}`]?: UaiAvatar[K] };
+        "uai-badge": Omit<UaiBadge, keyof UaiBadgeAttributes> & { [K in keyof UaiBadge & keyof UaiBadgeAttributes]?: UaiBadge[K] } & { [K in keyof UaiBadge & keyof UaiBadgeAttributes as `attr:${K}`]?: UaiBadgeAttributes[K] } & { [K in keyof UaiBadge & keyof UaiBadgeAttributes as `prop:${K}`]?: UaiBadge[K] };
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
@@ -14810,6 +15329,8 @@ declare namespace LocalJSX {
         "uai-radio": Omit<UaiRadio, keyof UaiRadioAttributes> & { [K in keyof UaiRadio & keyof UaiRadioAttributes]?: UaiRadio[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `attr:${K}`]?: UaiRadioAttributes[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `prop:${K}`]?: UaiRadio[K] } & OneOf<"value", UaiRadio["value"], UaiRadioAttributes["value"]>;
         "uai-radio-group": Omit<UaiRadioGroup, keyof UaiRadioGroupAttributes> & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes]?: UaiRadioGroup[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `attr:${K}`]?: UaiRadioGroupAttributes[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `prop:${K}`]?: UaiRadioGroup[K] };
         "uai-switch": Omit<UaiSwitch, keyof UaiSwitchAttributes> & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes]?: UaiSwitch[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `attr:${K}`]?: UaiSwitchAttributes[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `prop:${K}`]?: UaiSwitch[K] };
+        "uai-tab-group": Omit<UaiTabGroup, keyof UaiTabGroupAttributes> & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes]?: UaiTabGroup[K] } & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes as `attr:${K}`]?: UaiTabGroupAttributes[K] } & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes as `prop:${K}`]?: UaiTabGroup[K] };
+        "uai-tab-item": Omit<UaiTabItem, keyof UaiTabItemAttributes> & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes]?: UaiTabItem[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `attr:${K}`]?: UaiTabItemAttributes[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `prop:${K}`]?: UaiTabItem[K] };
         "uai-textarea": Omit<UaiTextarea, keyof UaiTextareaAttributes> & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes]?: UaiTextarea[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `attr:${K}`]?: UaiTextareaAttributes[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `prop:${K}`]?: UaiTextarea[K] };
         "uai-theme-provider": Omit<UaiThemeProvider, keyof UaiThemeProviderAttributes> & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes]?: UaiThemeProvider[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `attr:${K}`]?: UaiThemeProviderAttributes[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `prop:${K}`]?: UaiThemeProvider[K] };
         "uai-typo": Omit<UaiTypo, keyof UaiTypoAttributes> & { [K in keyof UaiTypo & keyof UaiTypoAttributes]?: UaiTypo[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `attr:${K}`]?: UaiTypoAttributes[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `prop:${K}`]?: UaiTypo[K] };
@@ -14939,7 +15460,13 @@ declare module "@stencil/core" {
              */
             "bds-switch": LocalJSX.IntrinsicElements["bds-switch"] & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
             "bds-tab": LocalJSX.IntrinsicElements["bds-tab"] & JSXBase.HTMLAttributes<HTMLBdsTabElement>;
+            /**
+             * @deprecated Use uai-tab-group. Consulte UAI/Tab Group para a migração de props e eventos.
+             */
             "bds-tab-group": LocalJSX.IntrinsicElements["bds-tab-group"] & JSXBase.HTMLAttributes<HTMLBdsTabGroupElement>;
+            /**
+             * @deprecated Use uai-tab-item com uai-tab-group. Consulte UAI/Tab Group para a migração.
+             */
             "bds-tab-item": LocalJSX.IntrinsicElements["bds-tab-item"] & JSXBase.HTMLAttributes<HTMLBdsTabItemElement>;
             "bds-tab-panel": LocalJSX.IntrinsicElements["bds-tab-panel"] & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
             "bds-table": LocalJSX.IntrinsicElements["bds-table"] & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
@@ -14964,6 +15491,11 @@ declare module "@stencil/core" {
              * or `openUpload` only when the avatar itself changes the photo. Wrap the app in UaiThemeProvider.
              */
             "uai-avatar": LocalJSX.IntrinsicElements["uai-avatar"] & JSXBase.HTMLAttributes<HTMLUaiAvatarElement>;
+            /**
+             * Passive status, icon or count indicator. Use for supplementary information;
+             * pair with an explanatory label; avoid using color alone to convey meaning.
+             */
+            "uai-badge": LocalJSX.IntrinsicElements["uai-badge"] & JSXBase.HTMLAttributes<HTMLUaiBadgeElement>;
             /**
              * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
              * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
@@ -15056,6 +15588,16 @@ declare module "@stencil/core" {
              * Avoid switches for submitting a form or choosing mutually exclusive options.
              */
             "uai-switch": LocalJSX.IntrinsicElements["uai-switch"] & JSXBase.HTMLAttributes<HTMLUaiSwitchElement>;
+            /**
+             * Floating tabs with manual keyboard activation. Use for alternate views of related content;
+             * pair with UaiTabItem; avoid using tabs as links to unrelated pages.
+             */
+            "uai-tab-group": LocalJSX.IntrinsicElements["uai-tab-group"] & JSXBase.HTMLAttributes<HTMLUaiTabGroupElement>;
+            /**
+             * Content panel and configuration of one tab. Use inside UaiTabGroup. Pair with a label;
+             * avoid using open panels as independent navigation controls.
+             */
+            "uai-tab-item": LocalJSX.IntrinsicElements["uai-tab-item"] & JSXBase.HTMLAttributes<HTMLUaiTabItemElement>;
             /**
              * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
              * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.

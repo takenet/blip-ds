@@ -1,6 +1,9 @@
 import { Component, h, Host, Element, State, Prop, EventEmitter, Event } from '@stencil/core';
 import { Itens } from './tab-group-interface';
 
+/**
+ * @deprecated Use uai-tab-group. Consulte UAI/Tab Group para a migração de props e eventos.
+ */
 @Component({
   tag: 'bds-tab-group',
   styleUrl: 'tab-group.scss',
