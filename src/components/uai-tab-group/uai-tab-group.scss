@@ -30,7 +30,7 @@
   max-width: 100%;
   padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
   border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
-  background: var(--uai-surface-background, #{$uai-surface-background});
+  background: var(--uai-surface-contrast, #{$uai-surface-contrast});
 
   &--overflow { width: 100%; }
 
@@ -39,6 +39,9 @@
 
 .uai-tabs__viewport {
   min-width: 0;
+  // Keep the shadow and focus inside the scroll clip without changing the pill's dimensions.
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  margin: calc(-1 * var(--uai-spacing-xs, #{$uai-spacing-xs}));
   overflow: auto hidden;
   scrollbar-width: none;
 

@@ -99,13 +99,15 @@ As transições usam `duration/fast` e `easing/standard`. `prefers-reduced-motio
 | --- | --- |
 | Grupo e item | `control-height/medium`, `control-height/short`, `radius/xl`, `radius/lg` |
 | Espaçamento | `spacing/2xs`, `spacing/xs`, `spacing/sm` |
-| Fundo e seleção | `surface/background`, `action/outline/default`, `elevation/tab-active` |
+| Fundo e seleção | `surface/contrast`, `action/outline/default`, `elevation/tab-active` |
 | Texto e desabilitado | `content/primary`, `content/secondary`, `content/disabled` |
 | Erro e foco | `feedback/error`, `border/ring`, `border-width/thick` |
 | Tipografia e ícone | `body/base`, `font-weight/medium`, `font-family/sans`, `sizing/md` |
 | Movimento | `duration/fast`, `easing/standard` |
 
 Não sobrescreva internals, `::part` ou shadow DOM. Componha conteúdo com componentes UAI e tokens publicados.
+
+O fundo do grupo usa `surface/contrast`, conforme o componente e sua aplicação no Intelligence. A aba selecionada mantém `action/outline/default` e `elevation/tab-active`. O viewport reserva espaço para a sombra e o anel de foco, inclusive nas extremidades com rolagem, sem aumentar a altura visual da pílula.
 
 ## Migração das cinco tags `bds-*`
 

@@ -62,6 +62,61 @@ async function state(page: E2EPage) {
 }
 
 describe('uai-tab-group e2e — contrato w2-uai-tabs', () => {
+  for (const [theme, background, selected] of [
+    ['light', 'rgb(228, 230, 231)', 'rgb(255, 255, 255)'],
+    ['dark', 'rgb(47, 52, 55)', 'rgb(36, 39, 41)'],
+  ] as const) {
+    it(`Tokens / ${theme}: fundo contrastante e seleção seguem o Intelligence`, async () => {
+      const page = await createGroup();
+      await page.evaluate(value => document.querySelector('uai-theme-provider').theme = value, theme);
+      await page.waitForChanges();
+      await page.waitForFunction(color =>
+        getComputedStyle(document.querySelector('[aria-selected="true"]')).backgroundColor === color, {}, selected);
+      expect(await page.evaluate(() => ({
+        background: getComputedStyle(document.querySelector('.uai-tabs__navigation')).backgroundColor,
+        selected: getComputedStyle(document.querySelector('[aria-selected="true"]')).backgroundColor,
+        shadow: getComputedStyle(document.querySelector('[aria-selected="true"]')).boxShadow,
+      }))).toEqual({
+        background, selected, shadow: 'rgba(0, 0, 0, 0.1) 0px 1px 4px 0px',
+      });
+    });
+  }
+
+  for (const overflow of [false, true]) {
+    it(`Tokens / sombra e foco sem recorte nas extremidades ${overflow ? 'com' : 'sem'} overflow`, async () => {
+      const page = await createGroup(Array.from({ length: overflow ? 12 : 2 }, (_, index) =>
+        `<uai-tab-item id="tab-${index}" label="Relatório ${index}">Painel ${index}</uai-tab-item>`,
+      ).join(''), overflow ? 'style="display:block;width:320px"' : '');
+      await page.focus('[role="tab"]');
+      for (const key of ['End', 'Home']) {
+        await page.keyboard.press(key);
+        await page.keyboard.press('Enter');
+        await page.waitForChanges();
+        const bounds = await page.evaluate(() => {
+          const tab = document.querySelector<HTMLElement>('[role="tab"]:focus');
+          const rect = tab.getBoundingClientRect();
+          const viewport = document.querySelector('.uai-tabs__viewport').getBoundingClientRect();
+          const style = getComputedStyle(tab);
+          const shadow = style.boxShadow.replace(/rgba?\([^)]+\)/, '').trim().split(/\s+/).map(parseFloat);
+          const [x, y, blur, spread] = shadow;
+          const focus = parseFloat(style.outlineWidth) + parseFloat(style.outlineOffset);
+          const extent = blur * 1.5 + spread;
+          return {
+            available: [rect.left - viewport.left, viewport.right - rect.right,
+              rect.top - viewport.top, viewport.bottom - rect.bottom],
+            required: [Math.max(focus, extent - x), Math.max(focus, extent + x),
+              Math.max(focus, extent - y), Math.max(focus, extent + y)],
+            height: document.querySelector('.uai-tabs__navigation').getBoundingClientRect().height,
+            selected: tab.getAttribute('aria-selected'),
+          };
+        });
+        expect(bounds.selected).toBe('true');
+        expect(bounds.height).toBe(40);
+        bounds.available.forEach((space, index) => expect(space + 1).toBeGreaterThanOrEqual(bounds.required[index]));
+      }
+    });
+  }
+
   it('Contrato herdado / API e defaults: conserva props, reciveNumber e conteúdo do slot', async () => {
     const page = await createGroup();
     expect(await page.evaluate(() => {

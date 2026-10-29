@@ -251,8 +251,11 @@ export class UaiTabGroup {
     if (!tab) return;
     const view = this.viewport.getBoundingClientRect();
     const rect = tab.getBoundingClientRect();
-    if (rect.left < view.left) this.viewport.scrollLeft -= view.left - rect.left;
-    else if (rect.right > view.right) this.viewport.scrollLeft += rect.right - view.right;
+    const style = getComputedStyle(this.viewport);
+    const left = view.left + parseFloat(style.paddingLeft);
+    const right = view.right - parseFloat(style.paddingRight);
+    if (rect.left < left) this.viewport.scrollLeft -= left - rect.left;
+    else if (rect.right > right) this.viewport.scrollLeft += rect.right - right;
   }
 
   private styles(value: string): { [key: string]: string } {
