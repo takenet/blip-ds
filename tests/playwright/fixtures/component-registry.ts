@@ -124,8 +124,8 @@ export const WAVE_2: ComponentEntry[] = [
   {
     tag: 'bds-tabs',
     name: 'Tabs',
-    primaryStory: 'components-tabs--properties',
-    stories: [{ storyId: 'components-tabs--properties', label: 'Properties' }],
+    primaryStory: 'components-deprecated-tabs--properties',
+    stories: [{ storyId: 'components-deprecated-tabs--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-accordion',

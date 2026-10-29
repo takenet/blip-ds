@@ -81,6 +81,7 @@ export default [
   // Ignore patterns (replaces .eslintignore)
   {
     ignores: [
+      '.worktrees/**',
       'node_modules/**',
       'dist/**',
       'www/**',

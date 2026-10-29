@@ -42,7 +42,7 @@ export const parameters = {
   options: {
     storySort: {
       method: 'alphabetical',
-      order: ["Welcome", "Vamos Começar", "Integrações", "Tokens", "UAI", ["Foundation", ["Tokens", "Colors", "Typography", "Layout", "Motion", "Elevation", "Icons"], "*"], "Components", ["[deprecated] Navbar", "[deprecated] Button", "[deprecated] Breadcrumb", "[deprecated] Icon", "[deprecated] Grid", "[deprecated] Paper", "[deprecated] Input", "[deprecated] Input Password", "[deprecated] Input Phone Number", "[deprecated] Input Chips", "[deprecated] Input Editable", "[deprecated] Checkbox", "[deprecated] Radio Button", "[deprecated] Switch", "NavTree", "*"], "Snippets", "Templates"]
+      order: ["Welcome", "Vamos Começar", "Integrações", "Tokens", "UAI", ["Foundation", ["Tokens", "Colors", "Typography", "Layout", "Motion", "Elevation", "Icons"], "*"], "Components", ["[deprecated] Navbar", "[deprecated] Button", "[deprecated] Breadcrumb", "[deprecated] Icon", "[deprecated] Grid", "[deprecated] Paper", "[deprecated] Input", "[deprecated] Input Password", "[deprecated] Input Phone Number", "[deprecated] Input Chips", "[deprecated] Input Editable", "[deprecated] Checkbox", "[deprecated] Radio Button", "[deprecated] Switch", "[deprecated] Tabs", "NavTree", "*"], "Snippets", "Templates"]
     }
   },
   controls: {

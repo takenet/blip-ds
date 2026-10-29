@@ -1,8 +1,8 @@
-import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
+import { test, expect } from '../fixtures/storybook.fixture';
 
 test.describe('Tabs - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-tabs--properties');
+    await storybook.goto('components-deprecated-tabs--properties');
   });
 
   test('renders tab items', async ({ page }) => {

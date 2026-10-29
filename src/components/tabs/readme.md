@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-tab-group. Consulte UAI/Tab Group para a migração de props e eventos.
+
 ## Properties
 
 | Property            | Attribute            | Description                                                                                                           | Type                            | Default    |

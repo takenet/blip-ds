@@ -1,5 +1,8 @@
 import { Component, h, Host, Prop, Method, Watch, Event, EventEmitter } from '@stencil/core';
 
+/**
+ * @deprecated Use uai-tab-item com uai-tab-group. Consulte UAI/Tab Group para a migração.
+ */
 @Component({
   tag: 'bds-tab-item',
   styleUrl: 'tab-item.scss',
