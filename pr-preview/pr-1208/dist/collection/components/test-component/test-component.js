@@ -1,0 +1,17 @@
+import { h } from "@stencil/core";
+export class TestComponent {
+    render() {
+        return (h("bds-grid", { key: '8fed041191d094ac43e2511a2be24c5d170fbfc1', xxs: "12", padding: "x-2", "flex-wrap": "wrap" }, h("bds-grid", { key: 'ca8ef77efc81d7fcf0592c4df689af12a1e42c3a', xxs: "12", margin: "t-2" }, h("div", { key: 'de8ad0add92c8c5187ec144cd9ad1b2a09ac0437', class: "titulo" }, h("bds-typo", { key: 'bf0741e83ea4bf8eb675a59153ea9a4e2c825789', variant: "fs-40", bold: "bold" }, "Titulo de teste fora de temas"))), h("bds-grid", { key: '415ab8b324ee357b00d442ca9f4618530278d150', xxs: "6", padding: "r-1" }, h("bds-theme-provider", { key: '7e43062afc5aa158b4a756c505227da3a7efdb97', theme: "light" }, h("bds-paper", { key: '413f447bb182815656129eef7c53898e5db36c74', elevation: "none", border: true }, h("bds-grid", { key: 'd10dd1398578b84ea5ba9638bc125f4595dff722', padding: "2" })))), h("bds-grid", { key: 'a7ded9f834b2e8c73257de3dc1b34ae7bb7b5cb4', xxs: "6", padding: "l-1" }, h("bds-theme-provider", { key: 'fe5b833b62486723261e35509e3da5bcd0f58d28', theme: "dark" }, h("bds-paper", { key: '1a4bcad55068eace0653342e5c9200599bf691f9', elevation: "none", border: true }, h("bds-grid", { key: '88bc47e2ed168b6a41e3b2a3e770b0b3be13ad56', padding: "2" }))))));
+    }
+    static get is() { return "bds-test-component"; }
+    static get originalStyleUrls() {
+        return {
+            "$": ["test-component.scss"]
+        };
+    }
+    static get styleUrls() {
+        return {
+            "$": ["test-component.css"]
+        };
+    }
+}
