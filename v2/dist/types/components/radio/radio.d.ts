@@ -1,4 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
+/** @deprecated Use uai-radio for new work. */
 export declare class Radio {
     private nativeInput?;
     radioId?: string;

@@ -1,1 +1,1 @@
-import{B as o,d as s}from"./p-Kt5k76P7.js";const t=o,p=s;export{t as BdsDatepickerSingle,p as defineCustomElement}
+import{B as o,d as s}from"./p-BTPa4ikc.js";const a=o,p=s;export{a as BdsDatepickerSingle,p as defineCustomElement}

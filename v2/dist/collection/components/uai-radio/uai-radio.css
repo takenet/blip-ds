@@ -1,0 +1,172 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  display: inline-flex;
+  color: var(--uai-content-primary, #242729);
+  font-family: var(--uai-font-family-sans, Figtree), sans-serif;
+}
+
+.radio {
+  display: inline-flex;
+  min-height: var(--uai-control-height-short, 2rem);
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  cursor: pointer;
+  user-select: none;
+}
+
+.radio__control {
+  position: relative;
+  display: grid;
+  flex: none;
+  width: var(--uai-sizing-md, 1.25rem);
+  height: var(--uai-sizing-md, 1.25rem);
+  place-items: center;
+}
+
+.radio__control::before {
+  position: absolute;
+  inset: calc(var(--uai-spacing-3xs, 0.125rem) - var(--uai-spacing-xs, 0.5rem));
+  border-radius: var(--uai-radius-full, 624.9375rem);
+  background: var(--uai-overlay-hover, rgba(0, 0, 0, 0.08));
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.75);
+  transition: opacity var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .radio__control::before {
+    transition: none;
+  }
+}
+
+.radio__input {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: var(--uai-border-width-default, 1px) solid var(--uai-border-input, #adb4b8);
+  border-radius: 50%;
+  appearance: none;
+  background: var(--uai-surface-paper, #ffffff);
+  cursor: inherit;
+  place-content: center;
+  transition: border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .radio__input {
+    transition: none;
+  }
+}
+.radio__input:checked {
+  border-width: var(--uai-border-width-thick, 2px);
+  border-color: var(--uai-action-primary-default, #242729);
+}
+.radio__input:focus-visible {
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline-offset: var(--uai-spacing-2xs, 0.25rem);
+}
+.radio__input:disabled {
+  border-color: var(--uai-content-disabled, #848e94);
+  background: var(--uai-surface-paper, #ffffff);
+  cursor: not-allowed;
+}
+.radio__input:checked:disabled {
+  border-color: var(--uai-content-disabled, #848e94);
+}
+
+.radio__dot {
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: var(--uai-action-primary-default, #242729);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0);
+  transition: transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), opacity var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .radio__dot {
+    transition: none;
+  }
+}
+
+:host(.uai-radio--short) .radio__control {
+  width: var(--uai-sizing-sm, 1rem);
+  height: var(--uai-sizing-sm, 1rem);
+}
+
+:host(.uai-radio--tall) .radio__control {
+  width: var(--uai-sizing-lg, 1.5rem);
+  height: var(--uai-sizing-lg, 1.5rem);
+}
+
+.radio__input:checked + .radio__dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.radio__input:disabled:checked + .radio__dot {
+  background: var(--uai-content-disabled, #848e94);
+}
+
+.radio__text {
+  color: inherit;
+  font-size: var(--uai-body-base-font-size, 0.875rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  line-height: var(--uai-body-base-line-height, 1.375rem);
+}
+
+:host(:not(.uai-radio--disabled):hover) .radio__control::before,
+.radio__control:has(.radio__input:focus-visible:not(:disabled))::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+:host(.uai-radio--disabled) .radio {
+  cursor: not-allowed;
+}
+
+:host(.uai-radio--disabled) .radio__text {
+  color: var(--uai-content-disabled, #848e94);
+}
+
+@media (forced-colors: active) {
+  .radio__input:checked {
+    border-color: SelectedItem;
+    background: SelectedItem;
+  }
+  .radio__input:checked + .radio__dot {
+    background: SelectedItemText;
+  }
+  .radio__input:disabled {
+    border-color: GrayText;
+  }
+}

@@ -149,7 +149,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./bds-warning.entry.js").then(u,consoleError);case"uai-button":return import(
 /* webpackMode: "lazy" */
-"./uai-button.entry.js").then(u,consoleError);case"uai-grid":return import(
+"./uai-button.entry.js").then(u,consoleError);case"uai-checkbox":return import(
+/* webpackMode: "lazy" */
+"./uai-checkbox.entry.js").then(u,consoleError);case"uai-grid":return import(
 /* webpackMode: "lazy" */
 "./uai-grid.entry.js").then(u,consoleError);case"uai-input":return import(
 /* webpackMode: "lazy" */
@@ -165,7 +167,13 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-navbar-content.entry.js").then(u,consoleError);case"uai-paper":return import(
 /* webpackMode: "lazy" */
-"./uai-paper.entry.js").then(u,consoleError);case"uai-textarea":return import(
+"./uai-paper.entry.js").then(u,consoleError);case"uai-radio":return import(
+/* webpackMode: "lazy" */
+"./uai-radio.entry.js").then(u,consoleError);case"uai-radio-group":return import(
+/* webpackMode: "lazy" */
+"./uai-radio-group.entry.js").then(u,consoleError);case"uai-switch":return import(
+/* webpackMode: "lazy" */
+"./uai-switch.entry.js").then(u,consoleError);case"uai-textarea":return import(
 /* webpackMode: "lazy" */
 "./uai-textarea.entry.js").then(u,consoleError);case"uai-theme-provider":return import(
 /* webpackMode: "lazy" */

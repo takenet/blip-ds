@@ -1,5 +1,8 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 export type SwitchSize = 'tall' | 'standard' | 'short';
+/**
+ * @deprecated Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
+ */
 export declare class Switch {
     private nativeInput?;
     /**

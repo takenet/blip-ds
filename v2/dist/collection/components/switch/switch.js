@@ -1,5 +1,8 @@
 import { h } from "@stencil/core";
 let switchIds = 0;
+/**
+ * @deprecated Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
+ */
 export class Switch {
     constructor() {
         /**
@@ -72,7 +75,7 @@ export class Switch {
         const sizeClass = this.getSizeClass();
         const sizeSliderClass = this.getSizeSliderClass();
         const styleState = this.getStyleState();
-        return (h("label", { key: '386962722fc475d36ce199a774abe18472bd2177', class: { [sizeClass]: true } }, h("div", { key: '0923ca851a54f552ab9ea2e491d18cb1524ec7d3', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), h("input", { key: '334fd8adc31c9661f890971f72cadcfcaef1cbf7', type: "checkbox", ref: this.refNativeInput, id: this.switchId, name: this.name, onClick: this.onClick, checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("span", { key: '2b51b12e18c3649a935919cb9627a63706da3e67', class: { [sizeSliderClass]: true, [styleState]: true } })));
+        return (h("label", { key: '2baf589e554795b6f04f4b9d8094f9f969a19e27', class: { [sizeClass]: true } }, h("div", { key: 'a646bdb9ab65c46df56e8a27233c26805beae5f6', tabindex: "0", onKeyDown: (ev) => this.handleClick(ev), class: "focus" }), h("input", { key: 'c8ed7a9a0fecd5292993f8b3bf50e3a7d4f9410f', type: "checkbox", ref: this.refNativeInput, id: this.switchId, name: this.name, onClick: this.onClick, checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("span", { key: '0276c4d3dd0f3c66d4ac43100e0bb27a1c835c78', class: { [sizeSliderClass]: true, [styleState]: true } })));
     }
     static get is() { return "bds-switch"; }
     static get encapsulation() { return "shadow"; }

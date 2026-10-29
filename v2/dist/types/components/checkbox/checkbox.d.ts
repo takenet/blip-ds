@@ -1,4 +1,5 @@
 import { EventEmitter } from '../../stencil-public-runtime';
+/** @deprecated Use uai-checkbox for new work. */
 export declare class Checkbox {
     private nativeInput?;
     checkBoxId?: string;

@@ -148,7 +148,7 @@ const UaiTypo = class {
         const bold = supported('bold', this.bold, BOLDS, 'regular');
         const letterSpacing = supported('letterSpacing', this.letterSpacing, LETTER_SPACINGS, 'normal');
         const Tag = supported('tag', this.tag, TAGS, 'p');
-        return (index.h(Tag, { key: '0a4ea88a93ba0c3db5b3c3754a569bcb23e14d68', class: {
+        return (index.h(Tag, { key: 'e34505b237b9b57307312d0d3d239949465b4a02', class: {
                 typo: true,
                 [`typo--variant-${variant}`]: true,
                 [`typo--bold-${bold}`]: true,
@@ -157,7 +157,7 @@ const UaiTypo = class {
                 'typo--paragraph': this.paragraph,
                 'typo--italic': this.italic,
                 'typo--no-wrap': this.noWrap,
-            }, part: "uai-typo__text", "data-test": this.dataTest }, index.h("slot", { key: 'be5516de1b8d6d33e4e2025bd2a9f7d9dac843a8' })));
+            }, part: "uai-typo__text", "data-test": this.dataTest }, index.h("slot", { key: '37051b4758274ee24912e33d9d3e36d6c0f0c32a' })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

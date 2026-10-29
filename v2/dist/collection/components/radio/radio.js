@@ -1,5 +1,6 @@
 import { h, Host } from "@stencil/core";
 let radioButtonIds = 0;
+/** @deprecated Use uai-radio for new work. */
 export class Radio {
     constructor() {
         /**
@@ -43,7 +44,7 @@ export class Radio {
         }
     }
     render() {
-        return (h(Host, { key: '4b0f38140dba33d7287a23def92e759306f5b356' }, h("label", { key: '59cc02b509388f48871249897e6600db24bbad37', class: "radio", htmlFor: this.radioId }, h("input", { key: '7fe15c70dd35cf74cc6e2f24c370123aa951bfcc', class: "radio__input", type: "radio", ref: this.refNativeInput, id: this.radioId, onClick: this.onClick, disabled: this.disabled, checked: this.checked, value: this.value, name: this.name, "data-test": this.dataTest }), h("div", { key: '307ee9d5577e6c3e7db6763eb887fbce8f94933a', class: "radio__circle" }, !this.disabled ? h("div", { class: "focus", tabindex: "0", onKeyDown: this.handleClickKey.bind(this) }) : '', !this.disabled ? h("div", { class: "hover" }) : '', h("div", { key: '149062881b4cdf33bcc08f038d1203917e5bbe65', class: "radio__circle__pointer" })), this.label && (h("bds-typo", { key: '36c42d93b0c17e5305b420623b9dc4476f76c6cb', class: "radio__text", variant: "fs-14", bold: this.checked ? 'bold' : 'regular', tag: "span" }, this.label)), h("slot", { key: '19968d0044b7b993ed372be30d9a6bae38d810d8' }))));
+        return (h(Host, { key: 'ba48ef7b7e825624f57011f7a2c4f3d03fa97f70' }, h("label", { key: '150c600c67ff037491b67354de45d9a89d98b6d6', class: "radio", htmlFor: this.radioId }, h("input", { key: '86406350368dfdb4e1b459a5f3c0ec2065348f7f', class: "radio__input", type: "radio", ref: this.refNativeInput, id: this.radioId, onClick: this.onClick, disabled: this.disabled, checked: this.checked, value: this.value, name: this.name, "data-test": this.dataTest }), h("div", { key: '42a078ca2285a32e8f1766ea709d6e341fdee30f', class: "radio__circle" }, !this.disabled ? h("div", { class: "focus", tabindex: "0", onKeyDown: this.handleClickKey.bind(this) }) : '', !this.disabled ? h("div", { class: "hover" }) : '', h("div", { key: '34a1bcfaf3b26540568540c0a52828dda240fce1', class: "radio__circle__pointer" })), this.label && (h("bds-typo", { key: 'a3c3d0816b99a827623550728b972ec372955573', class: "radio__text", variant: "fs-14", bold: this.checked ? 'bold' : 'regular', tag: "span" }, this.label)), h("slot", { key: 'b80a934dc306119b9e7310b12269ccc3552af082' }))));
     }
     static get is() { return "bds-radio"; }
     static get encapsulation() { return "shadow"; }

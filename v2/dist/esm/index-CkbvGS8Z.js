@@ -395,6 +395,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-button.entry.js').then(processMod, consoleError);
+                case 'uai-checkbox':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-checkbox.entry.js').then(processMod, consoleError);
                 case 'uai-grid':
                     return import(
                       /* webpackMode: "lazy" */
@@ -427,6 +431,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-paper.entry.js').then(processMod, consoleError);
+                case 'uai-radio':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-radio.entry.js').then(processMod, consoleError);
+                case 'uai-radio-group':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-radio-group.entry.js').then(processMod, consoleError);
+                case 'uai-switch':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-switch.entry.js').then(processMod, consoleError);
                 case 'uai-textarea':
                     return import(
                       /* webpackMode: "lazy" */

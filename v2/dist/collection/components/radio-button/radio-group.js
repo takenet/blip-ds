@@ -1,4 +1,5 @@
 import { h, Host } from "@stencil/core";
+/** @deprecated Use uai-radio-group for new work. */
 export class RadioGroup {
     constructor() {
         this.radioGroupElement = null;
@@ -29,7 +30,7 @@ export class RadioGroup {
         }
     }
     render() {
-        return (h(Host, { key: '50b37a8dcbcf75e45071fd2908cda1a15258438d' }, h("slot", { key: '161e0a0dc2ef79edb375e988cc883fd14107c25f' })));
+        return (h(Host, { key: '2480e0597b2afc5379fb5dac09ca0df7ffbe472d' }, h("slot", { key: '472412afec99d2f022c2e3d4e2fb25367b01ecdf' })));
     }
     static get is() { return "bds-radio-group"; }
     static get encapsulation() { return "scoped"; }

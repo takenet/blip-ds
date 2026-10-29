@@ -1,5 +1,6 @@
 import { h } from "@stencil/core";
 let checkBoxIds = 0;
+/** @deprecated Use uai-checkbox for new work. */
 export class Checkbox {
     constructor() {
         /**
@@ -108,10 +109,10 @@ export class Checkbox {
     }
     render() {
         const styleState = this.getStyleState();
-        return (h("div", { key: '448d42763ac4e6415d34633866e1eafda51f98a3', class: {
+        return (h("div", { key: '530d1c775d99f806bff0fcef61c9ca1cc2ec1706', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, h("input", { key: '5a1c198fa20fa82803007a6a135e923d1ed55594', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: '6d74e290d319414232b2666e0ca5f5b227111c6b', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: 'd10a0ce2e988a60a82f5dddaa5db4be9e7066541', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: '192149dfba1e322cb3d868a3c22e401c4a5443f4', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: 'e0f04d743017532abd673c0ab67a52cc110ff8f7', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, h("input", { key: 'a734348524cf381761df0563f189f0ca3e653516', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: 'a148309a6a8ddf741a3a80c13b88e91aa3dceb17', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: 'e74f5d5ea6cca02fc1a0505b71c433d7d2adfb35', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: '94705217e1ae4f8da0b4b964eb620157214e3d75', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: 'c085c3ad8f04f95f940f6609cdc65c93f76f019a', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
     static get is() { return "bds-checkbox"; }
     static get encapsulation() { return "shadow"; }

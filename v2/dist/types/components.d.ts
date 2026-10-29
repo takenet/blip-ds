@@ -89,6 +89,7 @@ import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-in
 import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
+import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 import { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export { collapses } from "./components/accordion/accordion-group";
@@ -175,6 +176,7 @@ export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-in
 export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
+export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 export { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export namespace Components {
@@ -877,6 +879,9 @@ export namespace Components {
          */
         "theme"?: Themes;
     }
+    /**
+     * @deprecated Use uai-checkbox for new work.
+     */
     interface BdsCheckbox {
         /**
           * If `true`, the checkbox is selected.
@@ -2676,6 +2681,9 @@ export namespace Components {
          */
         "text"?: string;
     }
+    /**
+     * @deprecated Use uai-radio for new work.
+     */
     interface BdsRadio {
         /**
           * If `true`, the checkbox is selected.
@@ -2711,6 +2719,9 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @deprecated Use uai-radio-group for new work.
+     */
     interface BdsRadioGroup {
         /**
           * The value of the selected radio
@@ -3232,6 +3243,9 @@ export namespace Components {
          */
         "setCompletedStep": (index: number) => Promise<void>;
     }
+    /**
+     * @deprecated Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
+     */
     interface BdsSwitch {
         /**
           * If `true`, the switch is selected.
@@ -3878,6 +3892,80 @@ export namespace Components {
           * @default 'solid'
          */
         "variant"?: UaiButtonVariant;
+    }
+    /**
+     * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
+     * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.
+     */
+    interface UaiCheckbox {
+        /**
+          * Accessible name used when no visible label is provided.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * If true, the checkbox is selected.
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * Value of the data-test attribute on the native checkbox.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the user cannot interact with the checkbox.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native checkbox input.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Returns whether the checkbox is selected.
+         */
+        "getValue": () => Promise<boolean>;
+        /**
+          * If true, the checkbox represents a partially selected set of child options.
+          * @default false
+         */
+        "indeterminate": boolean;
+        /**
+          * Visible label for the checkbox. Use aria-label when no visible label is appropriate.
+         */
+        "label"?: string;
+        /**
+          * Name used in submitted form data. Without a name, the checkbox is not submitted.
+         */
+        "name"?: string;
+        /**
+          * ID applied to the native checkbox. Kept for compatibility with bds-checkbox.
+         */
+        "refer"?: string;
+        /**
+          * If true, an unchecked checkbox blocks form submission.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Message announced when required validation fails. Defaults to the browser's localized message.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Control size. Use standard by default; pair with equally sized selection controls. Avoid changing label typography to compensate for the control size.
+          * @default 'standard'
+         */
+        "size": 'short' | 'standard' | 'tall';
+        /**
+          * Toggles the checkbox. When indeterminate, the next state is checked.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Value submitted when the checkbox is selected.
+          * @default 'on'
+         */
+        "value": string;
     }
     /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
@@ -5063,6 +5151,170 @@ export namespace Components {
         "width"?: string;
     }
     /**
+     * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface UaiRadio {
+        /**
+          * Selects this option from a user-driven group action.
+         */
+        "activate": () => Promise<void>;
+        /**
+          * Accessible name used when no visible label or slotted content is provided.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * If true, the radio is selected.
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * Value of the data-test attribute on the native radio.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the user cannot interact with the radio.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native radio input.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Returns whether the radio is selected.
+         */
+        "getValue": () => Promise<boolean>;
+        /**
+          * Visible label for the radio.
+         */
+        "label"?: string;
+        /**
+          * Name used in submitted form data when the radio is not inside a UaiRadioGroup.
+         */
+        "name"?: string;
+        /**
+          * ID applied to the native radio. Kept for compatibility with bds-radio.
+         */
+        "refer"?: string;
+        /**
+          * Moves focus to the native radio input.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Applies the disabled state inherited from a UaiRadioGroup.
+         */
+        "setGroupDisabled": (value: boolean) => Promise<void>;
+        /**
+          * Sets this option's position in the group's tab sequence.
+         */
+        "setTabIndex": (value: number) => Promise<void>;
+        /**
+          * Control size. Use standard by default; pair with equally sized selection controls. Avoid changing label typography to compensate for the control size.
+          * @default 'standard'
+         */
+        "size": 'short' | 'standard' | 'tall';
+        /**
+          * Value submitted when this radio is selected.
+         */
+        "value": string;
+    }
+    /**
+     * Coordinates a mutually exclusive set of UaiRadio options. Provide an accessible group name with
+     * aria-label or aria-labelledby. The group owns the submitted name and value.
+     */
+    interface UaiRadioGroup {
+        /**
+          * Accessible name of the radio group. Use this or aria-labelledby.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * ID references for the accessible name of the radio group.
+         */
+        "ariaLabelledBy"?: string;
+        /**
+          * If true, all options are disabled.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Name used for the selected value in submitted form data.
+         */
+        "name"?: string;
+        /**
+          * If true, a selection is required before form submission.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Message announced when required validation fails. Defaults to the browser's localized message.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Selected radio value.
+         */
+        "value"?: string;
+    }
+    /**
+     * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
+     * Avoid switches for submitting a form or choosing mutually exclusive options.
+     */
+    interface UaiSwitch {
+        /**
+          * Accessible setting name when no visible label is provided. Avoid unnamed switches.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Current on/off state. Use for controlled settings; pair with uaiChange. Avoid treating it as an action.
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * Test selector on the native input. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Prevents interaction. Use for unavailable settings; pair with explanatory text. Avoid hiding restrictions.
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * Returns the native input. Use for focus; pair with accessible naming. Avoid modifying its visual styles.
+         */
+        "getInputElement": () => Promise<HTMLInputElement>;
+        /**
+          * Returns the on/off state. Use for imperative consumers; pair with uaiChange. Avoid polling.
+         */
+        "getValue": () => Promise<boolean>;
+        /**
+          * Visible setting name. Use with the control; pair with checked. Avoid unnamed settings.
+         */
+        "label"?: string;
+        /**
+          * Submitted field name. Use inside forms; pair with value. Avoid duplicate names for unrelated settings.
+         */
+        "name"?: string;
+        /**
+          * Native input ID. Use for integration; pair with getInputElement. Avoid duplicate IDs.
+         */
+        "refer"?: string;
+        /**
+          * Relative control size. Use standard by default; pair with adjacent controls. Avoid custom dimensions.
+          * @default 'standard'
+         */
+        "size": UaiSwitchSize;
+        /**
+          * Submitted value when on. Use with name; pair with form association. Avoid depending on unchecked submission.
+          * @default 'on'
+         */
+        "value": string;
+    }
+    /**
      * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
      * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
      * Wrap the app in UaiThemeProvider.
@@ -5564,6 +5816,10 @@ export interface UaiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiButtonElement;
 }
+export interface UaiCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiCheckboxElement;
+}
 export interface UaiInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputElement;
@@ -5587,6 +5843,18 @@ export interface UaiInputPasswordCustomEvent<T> extends CustomEvent<T> {
 export interface UaiInputPhoneCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputPhoneElement;
+}
+export interface UaiRadioCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiRadioElement;
+}
+export interface UaiRadioGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiRadioGroupElement;
+}
+export interface UaiSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiSwitchElement;
 }
 export interface UaiTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -5915,6 +6183,9 @@ declare global {
         "bdsChange": any;
         "bdsInput": KeyboardEvent;
     }
+    /**
+     * @deprecated Use uai-checkbox for new work.
+     */
     interface HTMLBdsCheckboxElement extends Components.BdsCheckbox, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsCheckboxElementEventMap>(type: K, listener: (this: HTMLBdsCheckboxElement, ev: BdsCheckboxCustomEvent<HTMLBdsCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6542,6 +6813,9 @@ declare global {
         "bdsChange": { checked: boolean };
         "bdsClickChange": { checked: boolean };
     }
+    /**
+     * @deprecated Use uai-radio for new work.
+     */
     interface HTMLBdsRadioElement extends Components.BdsRadio, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsRadioElementEventMap>(type: K, listener: (this: HTMLBdsRadioElement, ev: BdsRadioCustomEvent<HTMLBdsRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6559,6 +6833,9 @@ declare global {
     interface HTMLBdsRadioGroupElementEventMap {
         "bdsRadioGroupChange": { value?: string };
     }
+    /**
+     * @deprecated Use uai-radio-group for new work.
+     */
     interface HTMLBdsRadioGroupElement extends Components.BdsRadioGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsRadioGroupElementEventMap>(type: K, listener: (this: HTMLBdsRadioGroupElement, ev: BdsRadioGroupCustomEvent<HTMLBdsRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6709,6 +6986,9 @@ declare global {
     interface HTMLBdsSwitchElementEventMap {
         "bdsChange": { checked: boolean };
     }
+    /**
+     * @deprecated Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
+     */
     interface HTMLBdsSwitchElement extends Components.BdsSwitch, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSwitchElementEventMap>(type: K, listener: (this: HTMLBdsSwitchElement, ev: BdsSwitchCustomEvent<HTMLBdsSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6952,6 +7232,28 @@ declare global {
         prototype: HTMLUaiButtonElement;
         new (): HTMLUaiButtonElement;
     };
+    interface HTMLUaiCheckboxElementEventMap {
+        "uaiChange": { checked: boolean; indeterminate: boolean };
+        "uaiInput": KeyboardEvent;
+    }
+    /**
+     * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
+     * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiCheckboxElement extends Components.UaiCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiCheckboxElementEventMap>(type: K, listener: (this: HTMLUaiCheckboxElement, ev: UaiCheckboxCustomEvent<HTMLUaiCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiCheckboxElementEventMap>(type: K, listener: (this: HTMLUaiCheckboxElement, ev: UaiCheckboxCustomEvent<HTMLUaiCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiCheckboxElement: {
+        prototype: HTMLUaiCheckboxElement;
+        new (): HTMLUaiCheckboxElement;
+    };
     /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
@@ -7168,6 +7470,70 @@ declare global {
         prototype: HTMLUaiPaperElement;
         new (): HTMLUaiPaperElement;
     };
+    interface HTMLUaiRadioElementEventMap {
+        "uaiChange": { checked: boolean };
+        "uaiClickChange": { checked: boolean };
+    }
+    /**
+     * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiRadioElement extends Components.UaiRadio, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiRadioElementEventMap>(type: K, listener: (this: HTMLUaiRadioElement, ev: UaiRadioCustomEvent<HTMLUaiRadioElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiRadioElementEventMap>(type: K, listener: (this: HTMLUaiRadioElement, ev: UaiRadioCustomEvent<HTMLUaiRadioElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiRadioElement: {
+        prototype: HTMLUaiRadioElement;
+        new (): HTMLUaiRadioElement;
+    };
+    interface HTMLUaiRadioGroupElementEventMap {
+        "uaiRadioGroupChange": { value?: string };
+    }
+    /**
+     * Coordinates a mutually exclusive set of UaiRadio options. Provide an accessible group name with
+     * aria-label or aria-labelledby. The group owns the submitted name and value.
+     */
+    interface HTMLUaiRadioGroupElement extends Components.UaiRadioGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiRadioGroupElementEventMap>(type: K, listener: (this: HTMLUaiRadioGroupElement, ev: UaiRadioGroupCustomEvent<HTMLUaiRadioGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiRadioGroupElementEventMap>(type: K, listener: (this: HTMLUaiRadioGroupElement, ev: UaiRadioGroupCustomEvent<HTMLUaiRadioGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiRadioGroupElement: {
+        prototype: HTMLUaiRadioGroupElement;
+        new (): HTMLUaiRadioGroupElement;
+    };
+    interface HTMLUaiSwitchElementEventMap {
+        "uaiChange": { checked: boolean };
+    }
+    /**
+     * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
+     * Avoid switches for submitting a form or choosing mutually exclusive options.
+     */
+    interface HTMLUaiSwitchElement extends Components.UaiSwitch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiSwitchElementEventMap>(type: K, listener: (this: HTMLUaiSwitchElement, ev: UaiSwitchCustomEvent<HTMLUaiSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiSwitchElementEventMap>(type: K, listener: (this: HTMLUaiSwitchElement, ev: UaiSwitchCustomEvent<HTMLUaiSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiSwitchElement: {
+        prototype: HTMLUaiSwitchElement;
+        new (): HTMLUaiSwitchElement;
+    };
     interface HTMLUaiTextareaElementEventMap {
         "uaiChange": { value: string };
         "uaiInput": InputEvent;
@@ -7324,6 +7690,7 @@ declare global {
         "bds-warning": HTMLBdsWarningElement;
         "uai-avatar": HTMLUaiAvatarElement;
         "uai-button": HTMLUaiButtonElement;
+        "uai-checkbox": HTMLUaiCheckboxElement;
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-input": HTMLUaiInputElement;
@@ -7335,6 +7702,9 @@ declare global {
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-paper": HTMLUaiPaperElement;
+        "uai-radio": HTMLUaiRadioElement;
+        "uai-radio-group": HTMLUaiRadioGroupElement;
+        "uai-switch": HTMLUaiSwitchElement;
         "uai-textarea": HTMLUaiTextareaElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
         "uai-typo": HTMLUaiTypoElement;
@@ -8074,6 +8444,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Themes;
     }
+    /**
+     * @deprecated Use uai-checkbox for new work.
+     */
     interface BdsCheckbox {
         /**
           * If `true`, the checkbox is selected.
@@ -10083,6 +10456,9 @@ declare namespace LocalJSX {
          */
         "text"?: string;
     }
+    /**
+     * @deprecated Use uai-radio for new work.
+     */
     interface BdsRadio {
         /**
           * If `true`, the checkbox is selected.
@@ -10124,6 +10500,9 @@ declare namespace LocalJSX {
          */
         "value": string;
     }
+    /**
+     * @deprecated Use uai-radio-group for new work.
+     */
     interface BdsRadioGroup {
         /**
           * Emitted when the value has changed due to a click event.
@@ -10673,6 +11052,9 @@ declare namespace LocalJSX {
     }
     interface BdsStepper {
     }
+    /**
+     * @deprecated Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
+     */
     interface BdsSwitch {
         /**
           * If `true`, the switch is selected.
@@ -11311,6 +11693,80 @@ declare namespace LocalJSX {
           * @default 'solid'
          */
         "variant"?: UaiButtonVariant;
+    }
+    /**
+     * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
+     * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.
+     */
+    interface UaiCheckbox {
+        /**
+          * Accessible name used when no visible label is provided.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, the checkbox is selected.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Value of the data-test attribute on the native checkbox.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the user cannot interact with the checkbox.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * If true, the checkbox represents a partially selected set of child options.
+          * @default false
+         */
+        "indeterminate"?: boolean;
+        /**
+          * Visible label for the checkbox. Use aria-label when no visible label is appropriate.
+         */
+        "label"?: string;
+        /**
+          * Name used in submitted form data. Without a name, the checkbox is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted on a user-initiated change. detail: { checked, indeterminate }.
+         */
+        "onUaiChange"?: (event: UaiCheckboxCustomEvent<{ checked: boolean; indeterminate: boolean }>) => void;
+        /**
+          * @deprecated This event was never emitted by bds-checkbox. Listen to uaiChange instead.
+         */
+        "onUaiInput"?: (event: UaiCheckboxCustomEvent<KeyboardEvent>) => void;
+        /**
+          * ID applied to the native checkbox. Kept for compatibility with bds-checkbox.
+         */
+        "refer"?: string;
+        /**
+          * If true, an unchecked checkbox blocks form submission.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Message announced when required validation fails. Defaults to the browser's localized message.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Control size. Use standard by default; pair with equally sized selection controls. Avoid changing label typography to compensate for the control size.
+          * @default 'standard'
+         */
+        "size"?: 'short' | 'standard' | 'tall';
+        /**
+          * Value submitted when the checkbox is selected.
+          * @default 'on'
+         */
+        "value"?: string;
     }
     /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
@@ -12544,6 +13000,166 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     /**
+     * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface UaiRadio {
+        /**
+          * Accessible name used when no visible label or slotted content is provided.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, the radio is selected.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Value of the data-test attribute on the native radio.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the user cannot interact with the radio.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Visible label for the radio.
+         */
+        "label"?: string;
+        /**
+          * Name used in submitted form data when the radio is not inside a UaiRadioGroup.
+         */
+        "name"?: string;
+        /**
+          * Emitted whenever checked changes. detail: { checked }.
+         */
+        "onUaiChange"?: (event: UaiRadioCustomEvent<{ checked: boolean }>) => void;
+        /**
+          * Emitted once when the radio is activated, including reselecting it. detail: { checked }.
+         */
+        "onUaiClickChange"?: (event: UaiRadioCustomEvent<{ checked: boolean }>) => void;
+        /**
+          * ID applied to the native radio. Kept for compatibility with bds-radio.
+         */
+        "refer"?: string;
+        /**
+          * Control size. Use standard by default; pair with equally sized selection controls. Avoid changing label typography to compensate for the control size.
+          * @default 'standard'
+         */
+        "size"?: 'short' | 'standard' | 'tall';
+        /**
+          * Value submitted when this radio is selected.
+         */
+        "value": string;
+    }
+    /**
+     * Coordinates a mutually exclusive set of UaiRadio options. Provide an accessible group name with
+     * aria-label or aria-labelledby. The group owns the submitted name and value.
+     */
+    interface UaiRadioGroup {
+        /**
+          * Accessible name of the radio group. Use this or aria-labelledby.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * ID references for the accessible name of the radio group.
+         */
+        "ariaLabelledBy"?: string;
+        /**
+          * If true, all options are disabled.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Name used for the selected value in submitted form data.
+         */
+        "name"?: string;
+        /**
+          * Emitted whenever the selected value changes. detail: { value }.
+         */
+        "onUaiRadioGroupChange"?: (event: UaiRadioGroupCustomEvent<{ value?: string }>) => void;
+        /**
+          * If true, a selection is required before form submission.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Message announced when required validation fails. Defaults to the browser's localized message.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Selected radio value.
+         */
+        "value"?: string;
+    }
+    /**
+     * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
+     * Avoid switches for submitting a form or choosing mutually exclusive options.
+     */
+    interface UaiSwitch {
+        /**
+          * Accessible setting name when no visible label is provided. Avoid unnamed switches.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Current on/off state. Use for controlled settings; pair with uaiChange. Avoid treating it as an action.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Test selector on the native input. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Prevents interaction. Use for unavailable settings; pair with explanatory text. Avoid hiding restrictions.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Visible setting name. Use with the control; pair with checked. Avoid unnamed settings.
+         */
+        "label"?: string;
+        /**
+          * Submitted field name. Use inside forms; pair with value. Avoid duplicate names for unrelated settings.
+         */
+        "name"?: string;
+        /**
+          * State change, including programmatic changes. Use detail.checked; pair with checked. Avoid duplicate handlers.
+         */
+        "onUaiChange"?: (event: UaiSwitchCustomEvent<{ checked: boolean }>) => void;
+        /**
+          * Native input ID. Use for integration; pair with getInputElement. Avoid duplicate IDs.
+         */
+        "refer"?: string;
+        /**
+          * Relative control size. Use standard by default; pair with adjacent controls. Avoid custom dimensions.
+          * @default 'standard'
+         */
+        "size"?: UaiSwitchSize;
+        /**
+          * Submitted value when on. Use with name; pair with form association. Avoid depending on unchecked submission.
+          * @default 'on'
+         */
+        "value"?: string;
+    }
+    /**
      * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
      * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
      * Wrap the app in UaiThemeProvider.
@@ -13733,6 +14349,20 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiCheckboxAttributes {
+        "refer": string;
+        "label": string;
+        "size": 'short' | 'standard' | 'tall';
+        "name": string;
+        "checked": boolean;
+        "indeterminate": boolean;
+        "value": string;
+        "required": boolean;
+        "requiredErrorMessage": string;
+        "disabled": boolean;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
     interface UaiGridAttributes {
         "height": string;
         "direction": direction;
@@ -13965,6 +14595,37 @@ declare namespace LocalJSX {
         "bgColor": PaperBackground;
         "borderColor": BorderColor;
     }
+    interface UaiRadioAttributes {
+        "refer": string;
+        "label": string;
+        "size": 'short' | 'standard' | 'tall';
+        "value": string;
+        "name": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
+    interface UaiRadioGroupAttributes {
+        "value": string;
+        "name": string;
+        "required": boolean;
+        "requiredErrorMessage": string;
+        "disabled": boolean;
+        "ariaLabel": string;
+        "ariaLabelledBy": string;
+    }
+    interface UaiSwitchAttributes {
+        "refer": string;
+        "label": string;
+        "size": UaiSwitchSize;
+        "name": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "value": string;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
     interface UaiTextareaAttributes {
         "name": string;
         "inputName": string;
@@ -14134,6 +14795,7 @@ declare namespace LocalJSX {
         "bds-warning": BdsWarning;
         "uai-avatar": Omit<UaiAvatar, keyof UaiAvatarAttributes> & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes]?: UaiAvatar[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `attr:${K}`]?: UaiAvatarAttributes[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `prop:${K}`]?: UaiAvatar[K] };
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
+        "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
@@ -14145,6 +14807,9 @@ declare namespace LocalJSX {
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
         "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
+        "uai-radio": Omit<UaiRadio, keyof UaiRadioAttributes> & { [K in keyof UaiRadio & keyof UaiRadioAttributes]?: UaiRadio[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `attr:${K}`]?: UaiRadioAttributes[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `prop:${K}`]?: UaiRadio[K] } & OneOf<"value", UaiRadio["value"], UaiRadioAttributes["value"]>;
+        "uai-radio-group": Omit<UaiRadioGroup, keyof UaiRadioGroupAttributes> & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes]?: UaiRadioGroup[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `attr:${K}`]?: UaiRadioGroupAttributes[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `prop:${K}`]?: UaiRadioGroup[K] };
+        "uai-switch": Omit<UaiSwitch, keyof UaiSwitchAttributes> & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes]?: UaiSwitch[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `attr:${K}`]?: UaiSwitchAttributes[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `prop:${K}`]?: UaiSwitch[K] };
         "uai-textarea": Omit<UaiTextarea, keyof UaiTextareaAttributes> & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes]?: UaiTextarea[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `attr:${K}`]?: UaiTextareaAttributes[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `prop:${K}`]?: UaiTextarea[K] };
         "uai-theme-provider": Omit<UaiThemeProvider, keyof UaiThemeProviderAttributes> & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes]?: UaiThemeProvider[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `attr:${K}`]?: UaiThemeProviderAttributes[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `prop:${K}`]?: UaiThemeProvider[K] };
         "uai-typo": Omit<UaiTypo, keyof UaiTypoAttributes> & { [K in keyof UaiTypo & keyof UaiTypoAttributes]?: UaiTypo[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `attr:${K}`]?: UaiTypoAttributes[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `prop:${K}`]?: UaiTypo[K] };
@@ -14184,6 +14849,9 @@ declare module "@stencil/core" {
             "bds-card-title": LocalJSX.IntrinsicElements["bds-card-title"] & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
             "bds-carousel": LocalJSX.IntrinsicElements["bds-carousel"] & JSXBase.HTMLAttributes<HTMLBdsCarouselElement>;
             "bds-carousel-item": LocalJSX.IntrinsicElements["bds-carousel-item"] & JSXBase.HTMLAttributes<HTMLBdsCarouselItemElement>;
+            /**
+             * @deprecated Use uai-checkbox for new work.
+             */
             "bds-checkbox": LocalJSX.IntrinsicElements["bds-checkbox"] & JSXBase.HTMLAttributes<HTMLBdsCheckboxElement>;
             "bds-chip": LocalJSX.IntrinsicElements["bds-chip"] & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-chip-clickable": LocalJSX.IntrinsicElements["bds-chip-clickable"] & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;
@@ -14249,7 +14917,13 @@ declare module "@stencil/core" {
             "bds-pagination": LocalJSX.IntrinsicElements["bds-pagination"] & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.IntrinsicElements["bds-paper"] & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.IntrinsicElements["bds-progress-bar"] & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
+            /**
+             * @deprecated Use uai-radio for new work.
+             */
             "bds-radio": LocalJSX.IntrinsicElements["bds-radio"] & JSXBase.HTMLAttributes<HTMLBdsRadioElement>;
+            /**
+             * @deprecated Use uai-radio-group for new work.
+             */
             "bds-radio-group": LocalJSX.IntrinsicElements["bds-radio-group"] & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
             "bds-rich-text": LocalJSX.IntrinsicElements["bds-rich-text"] & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
             "bds-select": LocalJSX.IntrinsicElements["bds-select"] & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
@@ -14260,6 +14934,9 @@ declare module "@stencil/core" {
             "bds-slider": LocalJSX.IntrinsicElements["bds-slider"] & JSXBase.HTMLAttributes<HTMLBdsSliderElement>;
             "bds-step": LocalJSX.IntrinsicElements["bds-step"] & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
             "bds-stepper": LocalJSX.IntrinsicElements["bds-stepper"] & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
+            /**
+             * @deprecated Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
+             */
             "bds-switch": LocalJSX.IntrinsicElements["bds-switch"] & JSXBase.HTMLAttributes<HTMLBdsSwitchElement>;
             "bds-tab": LocalJSX.IntrinsicElements["bds-tab"] & JSXBase.HTMLAttributes<HTMLBdsTabElement>;
             "bds-tab-group": LocalJSX.IntrinsicElements["bds-tab-group"] & JSXBase.HTMLAttributes<HTMLBdsTabGroupElement>;
@@ -14293,6 +14970,11 @@ declare module "@stencil/core" {
              * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
              */
             "uai-button": LocalJSX.IntrinsicElements["uai-button"] & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
+            /**
+             * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
+             * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.
+             */
+            "uai-checkbox": LocalJSX.IntrinsicElements["uai-checkbox"] & JSXBase.HTMLAttributes<HTMLUaiCheckboxElement>;
             /**
              * UAI layout grid. The legacy bds-grid remains available; this component keeps
              * its layout props while using UAI dimensions and theme-aware color tokens.
@@ -14359,6 +15041,21 @@ declare module "@stencil/core" {
              */
             "uai-navbar-content": LocalJSX.IntrinsicElements["uai-navbar-content"] & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
             "uai-paper": LocalJSX.IntrinsicElements["uai-paper"] & JSXBase.HTMLAttributes<HTMLUaiPaperElement>;
+            /**
+             * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.
+             * Wrap the app in UaiThemeProvider.
+             */
+            "uai-radio": LocalJSX.IntrinsicElements["uai-radio"] & JSXBase.HTMLAttributes<HTMLUaiRadioElement>;
+            /**
+             * Coordinates a mutually exclusive set of UaiRadio options. Provide an accessible group name with
+             * aria-label or aria-labelledby. The group owns the submitted name and value.
+             */
+            "uai-radio-group": LocalJSX.IntrinsicElements["uai-radio-group"] & JSXBase.HTMLAttributes<HTMLUaiRadioGroupElement>;
+            /**
+             * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
+             * Avoid switches for submitting a form or choosing mutually exclusive options.
+             */
+            "uai-switch": LocalJSX.IntrinsicElements["uai-switch"] & JSXBase.HTMLAttributes<HTMLUaiSwitchElement>;
             /**
              * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
              * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
