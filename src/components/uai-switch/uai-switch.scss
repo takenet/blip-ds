@@ -1,0 +1,164 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.switch__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+  cursor: pointer;
+  user-select: none;
+}
+
+.switch__text {
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+}
+
+:host([aria-disabled='true']) .switch__label {
+  color: var(--uai-content-disabled, #{$uai-content-disabled});
+  cursor: not-allowed;
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  width: var(--uai-sizing-2xl, #{$uai-sizing-2xl});
+  height: var(--uai-sizing-md, #{$uai-sizing-md});
+  cursor: pointer;
+  flex: none;
+
+  &--short {
+    width: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    height: var(--uai-sizing-sm, #{$uai-sizing-sm});
+  }
+
+  &--tall {
+    width: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
+    height: var(--uai-sizing-lg, #{$uai-sizing-lg});
+  }
+}
+
+.switch__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.switch__track {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background: var(--uai-border-input, #{$uai-border-input});
+  pointer-events: none;
+  @include uai-transition(background-color);
+}
+
+.switch__handle {
+  position: relative;
+  width: var(--uai-sizing-sm, #{$uai-sizing-sm});
+  height: 100%;
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+  @include uai-transition(transform);
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--uai-radius-full, #{$uai-radius-full});
+    box-shadow: 0 0 0 calc(4 * var(--uai-border-width-thick, #{$uai-border-width-thick}))
+      var(--uai-overlay-hover, #{$uai-overlay-hover});
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.75);
+    @include uai-transition(opacity transform);
+  }
+}
+
+.switch--short .switch__handle {
+  width: var(--uai-sizing-xs, #{$uai-sizing-xs});
+}
+
+.switch--tall .switch__handle {
+  width: var(--uai-sizing-md, #{$uai-sizing-md});
+}
+
+.switch__input:checked + .switch__track {
+  background: var(--uai-action-primary-default, #{$uai-action-primary-default});
+
+  .switch__handle {
+    transform: translateX(calc(var(--uai-sizing-md, #{$uai-sizing-md})));
+  }
+}
+
+.switch--short .switch__input:checked + .switch__track .switch__handle {
+  transform: translateX(var(--uai-sizing-sm, #{$uai-sizing-sm}));
+}
+
+.switch--tall .switch__input:checked + .switch__track .switch__handle {
+  transform: translateX(var(--uai-sizing-lg, #{$uai-sizing-lg}));
+}
+
+.switch__input:focus-visible + .switch__track {
+  outline: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-ring, #{$uai-border-ring});
+  outline-offset: var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+}
+
+.switch__label:hover .switch__input:not(:disabled) + .switch__track .switch__handle::before,
+.switch__input:focus-visible:not(:disabled) + .switch__track .switch__handle::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.switch__input:disabled {
+  cursor: not-allowed;
+}
+
+.switch__input:disabled + .switch__track {
+  background: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+@media (forced-colors: active) {
+  .switch__track {
+    border: var(--uai-border-width-default, #{$uai-border-width-default}) solid ButtonText;
+    background: Canvas;
+    forced-color-adjust: none;
+  }
+
+  .switch__handle {
+    background: ButtonText;
+  }
+
+  .switch__input:checked + .switch__track {
+    background: Highlight;
+
+    .switch__handle {
+      background: HighlightText;
+    }
+  }
+
+  .switch__input:disabled + .switch__track {
+    border-color: GrayText;
+    background: Canvas;
+
+    .switch__handle {
+      background: GrayText;
+    }
+  }
+}

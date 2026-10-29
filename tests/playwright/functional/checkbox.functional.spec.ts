@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Checkbox - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-checkbox--properties');
+    await storybook.goto('components-deprecated-checkbox--properties');
   });
 
   test('toggles checked state on click', async ({ page }) => {
@@ -36,7 +36,7 @@ test.describe('Checkbox - Functional Tests', () => {
   });
 
   test('does not toggle when disabled', async ({ page }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=components-checkbox--properties&args=disabled:true');
+    await gotoStoryUrl(page, '/iframe.html?id=components-deprecated-checkbox--properties&args=disabled:true');
 
     const toggled = await page.evaluate(() => {
       const checkbox = document.querySelector('bds-checkbox') as any;
@@ -49,7 +49,7 @@ test.describe('Checkbox - Functional Tests', () => {
   });
 
   test('supports indeterminate state', async ({ storybook, page }) => {
-    await storybook.goto('components-checkbox--indeterminate-example');
+    await storybook.goto('components-deprecated-checkbox--indeterminate-example');
 
     const hasIndeterminate = await page.evaluate(() => {
       const checkboxes = document.querySelectorAll('bds-checkbox');

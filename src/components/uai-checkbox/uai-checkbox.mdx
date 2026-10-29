@@ -1,0 +1,77 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiCheckboxStories from './uai-checkbox.stories';
+
+<Meta isTemplate />
+
+# Checkbox
+
+Permite selecionar uma ou mais opções. Use `indeterminate` para representar a seleção parcial dos itens filhos; ao interagir, esse estado passa a marcado.
+
+<Canvas of={UaiCheckboxStories.Playground} />
+
+<Controls of={UaiCheckboxStories.Playground} />
+
+## Estados
+
+O controle tem estados desmarcado, marcado e indeterminado, cada um habilitado ou desabilitado. Hover e foco usam os estilos do componente.
+
+<Canvas of={UaiCheckboxStories.States} />
+
+## Tamanhos
+
+`size` aceita `short`, `standard` (padrão) e `tall`: controles de 16, 20 e 24 px com tokens `sizing-sm`, `sizing-md` e `sizing-lg`. As marcas acompanham o tamanho; a tipografia do rótulo permanece igual. O halo circular usa `overlay-hover` no hover do controle ou rótulo e no foco por teclado, mas não aparece quando desabilitado.
+
+O halo entra com fade e expansão sutil, e sai com fade e contração usando `duration-fast` e `easing-standard`. A transição pode inverter suavemente se a interação mudar; `prefers-reduced-motion: reduce` torna a mudança imediata.
+
+<Canvas of={UaiCheckboxStories.Sizes} />
+
+## Formulários
+
+`name` e `value` participam do `FormData` somente quando o checkbox está marcado. Sem `name`, o valor não é enviado. `required` bloqueia o envio quando desmarcado; `requiredErrorMessage` substitui a mensagem nativa do navegador. Reset restaura os valores iniciais e o componente acompanha `fieldset disabled`.
+
+<Canvas of={UaiCheckboxStories.Form} />
+
+## API e eventos
+
+| Propriedade ou método | Descrição |
+| --- | --- |
+| `label` | Rótulo visível associado ao input nativo. |
+| `size` | `short`, `standard` (padrão) ou `tall`; extensão aditiva ao contrato BDS. |
+| `aria-label` | Nome acessível quando não há rótulo visível. |
+| `name`, `value` | Nome e valor enviados quando marcado. |
+| `checked`, `indeterminate`, `disabled`, `required` | Estado e regras do controle. |
+| `requiredErrorMessage` | Mensagem exibida pelo navegador quando a regra `required` falha. |
+| `getInputElement()`, `getValue()`, `toggle()` | Acesso ao input nativo, leitura do estado e alternância programática. |
+| `uaiChange` | Emitido uma vez após interação do usuário; `detail` contém `{ checked, indeterminate }`. |
+
+`uaiInput` é deprecated e não é emitido. Para controlar o estado por código, altere as propriedades em vez de depender de um evento de input.
+
+`toggle()` emite `uaiChange`, assim como no BDS. Por segurança, no UAI o método não altera um controle desabilitado; o legado permitia essa alteração programática. Atribuir `checked` diretamente continua disponível e não emite `uaiChange`.
+
+## Acessibilidade
+
+- O rótulo envolve o checkbox nativo, preservando clique, foco e semântica de teclado.
+- `indeterminate` é exposto como `aria-checked="mixed"`.
+- Sem rótulo visível, informe `aria-label`; o componente avisa no console quando ambos faltam.
+- A aparência preserva o indicador nativo em modo de cores forçadas.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Controle e rótulo | `sizing-sm`, `sizing-md`, `sizing-lg`, `control-height-short`, `spacing-xs`, `body-base`, `font-weight-regular` |
+| Forma e borda | `radius-sm` em short, `radius-md` nos demais, `border-width-default`, `border-width-thick`, `border-input`, `border-ring` |
+| Seleção | `action-primary-default`, `action-primary-hover`, `action-primary-foreground` |
+| Desabilitado | `content-disabled`, `surface-muted`, `border-input` |
+| Halo de hover e foco | `overlay-hover`, `radius-full`, expansão `spacing-xs - spacing-3xs` |
+| Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-checkbox`
+
+Use `uai-checkbox` em novos desenvolvimentos. A API preserva `label`, `name`, `value`, `checked`, `indeterminate`, `disabled`, `dataTest`, `getInputElement()`, `getValue()` e `toggle()`. O evento passa de `bdsChange` para `uaiChange`; o componente UAI também participa de formulários nativos e fornece `required`.
+
+## Design
+
+[Checkbox no Figma (DS Intelligence)](https://www.figma.com/design/J9sL59g1hQEPBhTqy8F644/-DS--Blip-Inteligence?node-id=3261-7957)
+
+[Checkbox tokenizado no UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5?node-id=4168-14647). O indicador usa um elemento visual separado do input para evitar o colapso do check em pseudoelementos de controles nativos.

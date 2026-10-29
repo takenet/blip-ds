@@ -3,6 +3,9 @@ export type SwitchSize = 'tall' | 'standard' | 'short';
 
 let switchIds = 0;
 
+/**
+ * @deprecated Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
+ */
 @Component({
   tag: 'bds-switch',
   styleUrl: 'switch.scss',

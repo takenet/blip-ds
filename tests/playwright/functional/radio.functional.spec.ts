@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Radio Button - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-radio-button--properties');
+    await storybook.goto('components-deprecated-radio-button--properties');
   });
 
   test('selects on click', async ({ page }) => {
@@ -41,7 +41,7 @@ test.describe('Radio Button - Functional Tests', () => {
   });
 
   test('does not select when disabled', async ({ page }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=components-radio-button--properties&args=disabled:true');
+    await gotoStoryUrl(page, '/iframe.html?id=components-deprecated-radio-button--properties&args=disabled:true');
 
     const selected = await page.evaluate(() => {
       const radio = document.querySelector('bds-radio') as any;

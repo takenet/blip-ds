@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-radio-group for new work.
+
 ## Properties
 
 | Property | Attribute | Description                     | Type     | Default     |

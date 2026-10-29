@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-checkbox for new work.
+
 ## Properties
 
 | Property             | Attribute       | Description                                                                                                                                                                                                                                         | Type      | Default     |

@@ -1,6 +1,7 @@
 import { Component, h, Prop, State, Method, Event, EventEmitter } from '@stencil/core';
 
 let checkBoxIds = 0;
+/** @deprecated Use uai-checkbox for new work. */
 @Component({
   tag: 'bds-checkbox',
   styleUrl: 'checkbox.scss',

@@ -3,7 +3,7 @@ import DocumentationTemplate from './radio-button.mdx';
 import { BdsRadioGroup, BdsRadio, BdsTypo, BdsGrid } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Radio Button',
+  title: 'Components/[deprecated] Radio Button',
   parameters: {
     docs: {
       page: DocumentationTemplate,

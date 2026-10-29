@@ -11,7 +11,7 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAvatarCustomEvent, type UaiButtonCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiPhoneNumberChange, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAvatarCustomEvent, type UaiButtonCustomEvent, type UaiCheckboxCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiPhoneNumberChange, type UaiRadioCustomEvent, type UaiRadioGroupCustomEvent, type UaiSwitchCustomEvent, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
 import type { Components } from "blip-ds/dist/components";
 import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from "blip-ds/dist/components/bds-accordion-group.js";
@@ -120,6 +120,7 @@ import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload }
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
+import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement, defineCustomElement as defineUaiInputChips } from "blip-ds/dist/components/uai-input-chips.js";
@@ -131,6 +132,9 @@ import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } fr
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
+import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUaiRadioGroup } from "blip-ds/dist/components/uai-radio-group.js";
+import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
+import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
 import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
@@ -1558,6 +1562,23 @@ export const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents,
     defineCustomElement: defineUaiButton
 });
 
+export type UaiCheckboxEvents = {
+    onUaiChange: EventName<UaiCheckboxCustomEvent<{ checked: boolean; indeterminate: boolean }>>,
+    onUaiInput: EventName<UaiCheckboxCustomEvent<KeyboardEvent>>
+};
+
+export const UaiCheckbox: StencilReactComponent<UaiCheckboxElement, UaiCheckboxEvents, Components.UaiCheckbox> = /*@__PURE__*/ createComponent<UaiCheckboxElement, UaiCheckboxEvents, Components.UaiCheckbox>({
+    tagName: 'uai-checkbox',
+    elementClass: UaiCheckboxElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput'
+    } as UaiCheckboxEvents,
+    defineCustomElement: defineUaiCheckbox
+});
+
 export type UaiGridEvents = NonNullable<unknown>;
 
 export const UaiGrid: StencilReactComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid> = /*@__PURE__*/ createComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid>({
@@ -1759,6 +1780,45 @@ export const UaiPaper: StencilReactComponent<UaiPaperElement, UaiPaperEvents, Co
     react: React,
     events: {} as UaiPaperEvents,
     defineCustomElement: defineUaiPaper
+});
+
+export type UaiRadioEvents = {
+    onUaiChange: EventName<UaiRadioCustomEvent<{ checked: boolean }>>,
+    onUaiClickChange: EventName<UaiRadioCustomEvent<{ checked: boolean }>>
+};
+
+export const UaiRadio: StencilReactComponent<UaiRadioElement, UaiRadioEvents, Components.UaiRadio, 'value'> = /*@__PURE__*/ createComponent<UaiRadioElement, UaiRadioEvents, Components.UaiRadio, 'value'>({
+    tagName: 'uai-radio',
+    elementClass: UaiRadioElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiClickChange: 'uaiClickChange'
+    } as UaiRadioEvents,
+    defineCustomElement: defineUaiRadio
+});
+
+export type UaiRadioGroupEvents = { onUaiRadioGroupChange: EventName<UaiRadioGroupCustomEvent<{ value?: string }>> };
+
+export const UaiRadioGroup: StencilReactComponent<UaiRadioGroupElement, UaiRadioGroupEvents, Components.UaiRadioGroup> = /*@__PURE__*/ createComponent<UaiRadioGroupElement, UaiRadioGroupEvents, Components.UaiRadioGroup>({
+    tagName: 'uai-radio-group',
+    elementClass: UaiRadioGroupElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onUaiRadioGroupChange: 'uaiRadioGroupChange' } as UaiRadioGroupEvents,
+    defineCustomElement: defineUaiRadioGroup
+});
+
+export type UaiSwitchEvents = { onUaiChange: EventName<UaiSwitchCustomEvent<{ checked: boolean }>> };
+
+export const UaiSwitch: StencilReactComponent<UaiSwitchElement, UaiSwitchEvents, Components.UaiSwitch> = /*@__PURE__*/ createComponent<UaiSwitchElement, UaiSwitchEvents, Components.UaiSwitch>({
+    tagName: 'uai-switch',
+    elementClass: UaiSwitchElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onUaiChange: 'uaiChange' } as UaiSwitchEvents,
+    defineCustomElement: defineUaiSwitch
 });
 
 export type UaiTextareaEvents = {

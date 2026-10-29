@@ -16,7 +16,23 @@ const phoneSource = readFileSync(new URL('./uai-input-phone.figma.ts', import.me
 const dateSource = readFileSync(new URL('./uai-input-date.figma.ts', import.meta.url), 'utf8');
 const chipsSource = readFileSync(new URL('./uai-input-chips.figma.ts', import.meta.url), 'utf8');
 const editableSource = readFileSync(new URL('./uai-input-editable.figma.ts', import.meta.url), 'utf8');
+const checkboxSource = readFileSync(new URL('./uai-checkbox.figma.ts', import.meta.url), 'utf8');
+const radioSource = readFileSync(new URL('./uai-radio.figma.ts', import.meta.url), 'utf8');
+const switchSource = readFileSync(new URL('./uai-switch.figma.ts', import.meta.url), 'utf8');
 const imports = ['import { UaiIcon } from "blip-ds-react/dist/components"'];
+
+test('switch maps every UAI Core variant and focus state to its existing contract', () => {
+  for (const Variant of ['Unchecked', 'Checked']) {
+    for (const State of ['Default', 'Focus']) {
+      const result = evaluate(switchSource, { Variant, State });
+      assert.equal(result.id, 'uai-switch');
+      assert.equal(result.example.includes(' checked'), Variant === 'Checked');
+      assert.equal(result.example.includes('aria-label='), true);
+      assert.equal(result.example.includes('state='), false);
+      assertJsx(result.example);
+    }
+  }
+});
 
 const evaluate = (source, properties = {}, swaps = {}, instances = {}) => {
   const figma = {
@@ -651,4 +667,49 @@ test('avatar turns at most two initials into name words and omits an empty name'
 test('avatar rejects unmapped size and type', () => {
   assert.throws(() => evaluate(avatarSource, { ...avatarDefaults, Size: 'huge' }), /Unmapped Size/);
   assert.throws(() => evaluate(avatarSource, { ...avatarDefaults, Type: 'Icon' }), /Unmapped Type/);
+});
+
+test('checkbox maps the Intelligence variants and keeps an accessible name', () => {
+  const defaults = { Variant: 'Unchecked', State: 'Default' };
+  for (const Variant of ['Unchecked', 'Checked', 'Indeterminate'])
+    for (const State of ['Default', 'Focus', 'Disabled']) {
+      const { example } = evaluate(checkboxSource, { ...defaults, Variant, State });
+      assertJsx(example);
+      assert.equal(example.includes(' checked'), Variant === 'Checked');
+      assert.equal(example.includes(' indeterminate'), Variant === 'Indeterminate');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+    }
+
+  const result = evaluate(checkboxSource, defaults);
+  assert.equal(result.example, '<UaiCheckbox aria-label="Opção" />');
+  assert.deepEqual(Array.from(result.imports), ['import { UaiCheckbox } from "blip-ds-react/dist/components"']);
+  assert.equal(result.id, 'uai-checkbox');
+  assert.equal(result.metadata.nestable, true);
+});
+
+test('checkbox rejects an unmapped state or variant', () => {
+  assert.throws(() => evaluate(checkboxSource, { Variant: 'Partial', State: 'Default' }), /Unmapped Variant/);
+  assert.throws(() => evaluate(checkboxSource, { Variant: 'Checked', State: 'Hover' }), /Unmapped State/);
+});
+
+test('radio maps the Intelligence variants and keeps an accessible name', () => {
+  const defaults = { Variant: 'Unchecked', State: 'Default' };
+  for (const Variant of ['Unchecked', 'Checked'])
+    for (const State of ['Default', 'Focus', 'Disabled']) {
+      const { example } = evaluate(radioSource, { ...defaults, Variant, State });
+      assertJsx(example);
+      assert.equal(example.includes(' checked'), Variant === 'Checked');
+      assert.equal(example.includes(' disabled'), State === 'Disabled');
+    }
+
+  const result = evaluate(radioSource, defaults);
+  assert.equal(result.example, '<UaiRadio aria-label="Opção" value="option" />');
+  assert.deepEqual(Array.from(result.imports), ['import { UaiRadio } from "blip-ds-react/dist/components"']);
+  assert.equal(result.id, 'uai-radio');
+  assert.equal(result.metadata.nestable, true);
+});
+
+test('radio rejects an unmapped state or variant', () => {
+  assert.throws(() => evaluate(radioSource, { Variant: 'Unknown', State: 'Default' }), /Unmapped Variant/);
+  assert.throws(() => evaluate(radioSource, { Variant: 'Checked', State: 'Hover' }), /Unmapped State/);
 });

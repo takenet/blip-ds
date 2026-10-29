@@ -1,0 +1,56 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as SwitchStories from './uai-switch.stories';
+
+<Meta isTemplate />
+
+# Switch
+
+## Visão geral
+
+Alterna uma configuração binária. Use quando a alteração entra em vigor imediatamente; para seleção de itens, use Checkbox.
+
+## Playground
+
+<Canvas of={SwitchStories.Playground} />
+<Controls of={SwitchStories.Playground} />
+
+## Como usar
+
+Controle `checked` com estado React e leia `event.detail.checked`.
+
+<Canvas of={SwitchStories.Usage} sourceState="shown" />
+
+## Estados
+
+O tamanho `standard` segue o Switch do DS Intelligence. `short` e `tall` preservam as opções do contrato legado, com dimensões tokenizadas.
+
+O halo circular `overlay-hover` aparece ao redor do handle no hover e no foco por teclado, acompanhando sua posição. Não aparece quando o controle está desabilitado.
+
+O halo entra com fade e expansão sutil e sai com fade e contração usando `duration-fast` e `easing-standard`. O contorno de foco é imediato; `prefers-reduced-motion: reduce` remove a animação do halo e do handle.
+
+<Canvas of={SwitchStories.States} />
+<Canvas of={SwitchStories.Sizes} />
+
+## Comportamento
+
+| Regra                                                                               | Cobertura                                  |
+| ----------------------------------------------------------------------------------- | ------------------------------------------ |
+| Space e Enter alternam uma vez; disabled bloqueia interação                         | `uai-switch.e2e.ts`: teclado e eventos     |
+| `uaiChange` acompanha mudanças de checked, inclusive programáticas                  | `uai-switch.spec.ts`: mudança programática |
+| FormData inclui somente o switch marcado; reset restaura o estado inicial           | `uai-switch.e2e.ts`: formulário            |
+| `fieldset disabled` desabilita o controle e remove o valor enviado                  | `uai-switch.e2e.ts`: formulário            |
+| Temas preservam dimensões e usam cores semânticas; reduced-motion remove transições | `uai-switch.e2e.ts`: geometria e movimento |
+
+<Canvas of={SwitchStories.Form} />
+
+## Acessibilidade
+
+Um input nativo com `role="switch"` fornece o único ponto de foco. Use `label` para o nome visível da configuração: clicar no texto também alterna o controle e recebe o halo. Sem texto visível, informe `aria-label`. O foco acompanha o handle com halo e possui indicador de contorno; o estado também é comunicado pela posição do handle.
+
+## Migração do bds-switch
+
+Troque `BdsSwitch` por `UaiSwitch`, `onBdsChange` por `onUaiChange` e envolva a aplicação em `UaiThemeProvider`. Props `refer`, `size`, `name`, `checked`, `disabled`, `dataTest` e métodos `getInputElement()`/`getValue()` são preservados. `label`, `value`, `aria-label` e associação a formulário são extensões aditivas. O foco duplicado legado não é reproduzido.
+
+Tokens: `sizing-2xl`, `sizing-md`, `sizing-sm`, `spacing-3xs`, `radius-full`, `border-input`, `action-primary-default`, `action-primary-foreground`, `content-disabled`, `overlay-hover`, `border-ring`, `duration-fast` e `easing-standard`.
+
+[Componente no UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5?node-id=4168-14678).

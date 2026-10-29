@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Switch - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-switch--properties');
+    await storybook.goto('components-deprecated-switch--properties');
   });
 
   test('toggles state on click', async ({ page }) => {
@@ -34,7 +34,7 @@ test.describe('Switch - Functional Tests', () => {
   });
 
   test('does not toggle when disabled', async ({ page }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=components-switch--properties&args=disabled:true');
+    await gotoStoryUrl(page, '/iframe.html?id=components-deprecated-switch--properties&args=disabled:true');
 
     const toggled = await page.evaluate(() => {
       const sw = document.querySelector('bds-switch') as any;
