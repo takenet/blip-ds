@@ -1,0 +1,221 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+/**
+ * @prop --uai-input-editable-width: Width of the field. Defaults to the full width of the container.
+ */
+:host {
+  --input-height: var(--uai-control-height-medium, 2.5rem);
+  --input-background: var(--uai-surface-paper, #ffffff);
+  --input-border: var(--uai-border-input, #adb4b8);
+  --input-content: var(--uai-content-primary, #242729);
+  --input-label: var(--uai-content-primary, #242729);
+  --input-message: var(--uai-content-secondary, #5f676d);
+  --input-feedback: var(--input-content);
+  --input-halo: color-mix(
+    in srgb,
+    var(--uai-border-ring, #242729) calc(var(--uai-opacity-focus-ring, 0.3) * 100%),
+    transparent
+  );
+  display: block;
+  width: var(--uai-input-editable-width, 100%);
+}
+
+:host(.uai-input-editable--size-short) {
+  --input-height: var(--uai-control-height-short, 2rem);
+}
+
+:host(.uai-input-editable--size-tall) {
+  --input-height: var(--uai-control-height-large, 3.5rem);
+}
+
+:host(.uai-input-editable--danger) {
+  --input-border: var(--uai-feedback-error, #cf0022);
+  --input-label: var(--uai-feedback-error, #cf0022);
+  --input-message: var(--uai-feedback-error, #cf0022);
+  --input-feedback: var(--uai-feedback-error, #cf0022);
+}
+
+:host(.uai-input-editable--success) {
+  --input-border: var(--uai-feedback-success, #3da329);
+  --input-message: var(--uai-feedback-success, #3da329);
+  --input-feedback: var(--uai-feedback-success, #3da329);
+}
+
+:host(.uai-input-editable--disabled) {
+  --input-background: var(--uai-surface-muted, #f2f3f3);
+  --input-border: var(--uai-border-default, #e4e6e7);
+  --input-content: var(--uai-content-disabled, #848e94);
+  --input-label: var(--uai-content-disabled, #848e94);
+  --input-message: var(--uai-content-disabled, #848e94);
+  --input-feedback: var(--uai-content-disabled, #848e94);
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, 0.25rem);
+}
+
+.input__label,
+.input__message {
+  --uai-typo-color: currentColor;
+}
+
+.input__label {
+  color: var(--input-label);
+}
+
+.input__message {
+  padding: 0 var(--uai-spacing-xs, 0.5rem);
+  color: var(--input-message);
+}
+
+.input__control {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  height: var(--input-height);
+  padding: 0 var(--uai-spacing-xs, 0.5rem);
+  border: var(--uai-border-width-default, 1px) solid var(--input-border);
+  border-radius: var(--uai-radius-lg, 0.75rem);
+  background-color: var(--input-background);
+  color: var(--input-content);
+  transition: border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .input__control {
+    transition: none;
+  }
+}
+.input__control:focus-within {
+  --input-border: var(--uai-border-ring, #242729);
+  box-shadow: 0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo);
+}
+@media (forced-colors: active) {
+  .input__control:focus-within {
+    box-shadow: none;
+    outline: var(--uai-border-width-thick, 2px) solid CanvasText;
+  }
+}
+
+:host(:not(.uai-input-editable--disabled):not(.uai-input-editable--readonly):not(.uai-input-editable--danger):not(.uai-input-editable--success)) .input__control:hover:not(:focus-within) {
+  --input-border: var(--uai-content-secondary, #5f676d);
+}
+
+:host(.uai-input-editable--disabled) .input__control {
+  cursor: not-allowed;
+}
+
+.input__field {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.input__native {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--uai-font-family-sans, Figtree), sans-serif;
+  font-size: var(--uai-body-base-font-size, 0.875rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  line-height: var(--uai-body-base-line-height, 1.375rem);
+  text-overflow: ellipsis;
+  appearance: none;
+}
+.input__native::placeholder {
+  color: var(--uai-content-placeholder, #adb4b8);
+  opacity: 1;
+}
+.input__native:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+  -webkit-text-fill-color: currentColor;
+}
+.input__native:disabled::placeholder {
+  color: var(--uai-content-disabled, #848e94);
+}
+
+.view__value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--input-content);
+  font-family: var(--uai-font-family-sans, Figtree), sans-serif;
+  font-size: var(--uai-body-base-font-size, 0.875rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  line-height: var(--uai-body-base-line-height, 1.375rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: text;
+}
+.view__value--placeholder {
+  color: var(--uai-content-placeholder, #adb4b8);
+}
+
+:host(.uai-input-editable--disabled) .view__value {
+  cursor: not-allowed;
+}
+
+.action {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--uai-radius-md, 0.5rem);
+  background: transparent;
+  color: var(--input-content);
+  cursor: pointer;
+  transition: background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .action {
+    transition: none;
+  }
+}
+.action:focus-visible {
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline-offset: var(--uai-spacing-3xs, 0.125rem);
+}
+.action:hover {
+  background: var(--uai-overlay-hover, rgba(0, 0, 0, 0.08));
+}
+@media (forced-colors: active) {
+  .action {
+    border: var(--uai-border-width-default, 1px) solid ButtonText;
+  }
+}
