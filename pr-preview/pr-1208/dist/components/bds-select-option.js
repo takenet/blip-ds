@@ -1,1 +1,0 @@
-import{S as s,d as o}from"./p-C4smAsRr.js";const r=s,m=o;export{r as BdsSelectOption,m as defineCustomElement}
