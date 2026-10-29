@@ -1,1 +1,0 @@
-import{U as o,d as r}from"./p-DiFeWrgD.js";const s=o,p=r;export{s as UaiIcon,p as defineCustomElement}

@@ -1,1 +1,0 @@
-import{C as o,d as s}from"./p-RQcqHY8-.js";const p=o,r=s;export{p as BdsCheckbox,r as defineCustomElement}
