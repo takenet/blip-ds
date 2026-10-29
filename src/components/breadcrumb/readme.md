@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-breadcrumb for UAI tokens and optional current-item editing.
+
 ## Properties
 
 | Property    | Attribute    | Description | Type                                            | Default |

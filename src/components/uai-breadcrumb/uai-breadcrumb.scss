@@ -1,0 +1,114 @@
+@use 'blip-tokens/build/scss/uai-colors-light' as *;
+@use 'blip-tokens/build/scss/uai-dimensions' as *;
+@use '../../globals/uai-mixins' as *;
+
+:host {
+  display: block;
+  min-width: 0;
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+.breadcrumb__list,
+.breadcrumb__hidden-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb__list,
+.breadcrumb__item,
+.breadcrumb__content,
+.breadcrumb__editor {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  min-width: 0;
+}
+
+.breadcrumb__list {
+  flex-wrap: wrap;
+}
+
+.breadcrumb__editor {
+  align-items: flex-start;
+}
+
+.breadcrumb__item {
+  max-width: 100%;
+}
+
+.breadcrumb__content {
+  overflow-wrap: anywhere;
+}
+
+.breadcrumb__label {
+  min-width: 0;
+}
+
+.breadcrumb__item--current {
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.breadcrumb__link,
+.breadcrumb__text {
+  display: inline-flex;
+  min-width: 0;
+  padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs}) var(--uai-spacing-xs, #{$uai-spacing-xs});
+  overflow-wrap: anywhere;
+}
+
+.breadcrumb__link {
+  @include uai-focus-visible;
+  @include uai-transition(background-color);
+  color: inherit;
+  text-decoration: none;
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  overflow-wrap: anywhere;
+
+  &:hover {
+    background: var(--uai-overlay-hover, #{$uai-overlay-hover});
+  }
+}
+
+.breadcrumb__separator,
+uai-button {
+  flex-shrink: 0;
+}
+
+.breadcrumb__editor uai-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.breadcrumb__panel {
+  @include uai-overlay-panel;
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.breadcrumb__hidden-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.breadcrumb__item--popup {
+  padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  overflow-wrap: anywhere;
+
+  .breadcrumb__content,
+  .breadcrumb__label {
+    width: 100%;
+  }
+
+  .breadcrumb__link,
+  .breadcrumb__text {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
