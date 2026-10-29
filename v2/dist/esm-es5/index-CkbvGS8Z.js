@@ -147,15 +147,11 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./bds-toast.entry.js").then(u,consoleError);case"bds-warning":return import(
 /* webpackMode: "lazy" */
-"./bds-warning.entry.js").then(u,consoleError);case"uai-button":return import(
-/* webpackMode: "lazy" */
-"./uai-button.entry.js").then(u,consoleError);case"uai-checkbox":return import(
+"./bds-warning.entry.js").then(u,consoleError);case"uai-checkbox":return import(
 /* webpackMode: "lazy" */
 "./uai-checkbox.entry.js").then(u,consoleError);case"uai-grid":return import(
 /* webpackMode: "lazy" */
-"./uai-grid.entry.js").then(u,consoleError);case"uai-input":return import(
-/* webpackMode: "lazy" */
-"./uai-input.entry.js").then(u,consoleError);case"uai-input-chips":return import(
+"./uai-grid.entry.js").then(u,consoleError);case"uai-input-chips":return import(
 /* webpackMode: "lazy" */
 "./uai-input-chips.entry.js").then(u,consoleError);case"uai-input-editable":return import(
 /* webpackMode: "lazy" */
@@ -165,7 +161,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-navbar.entry.js").then(u,consoleError);case"uai-navbar-content":return import(
 /* webpackMode: "lazy" */
-"./uai-navbar-content.entry.js").then(u,consoleError);case"uai-paper":return import(
+"./uai-navbar-content.entry.js").then(u,consoleError);case"uai-page-header":return import(
+/* webpackMode: "lazy" */
+"./uai-page-header.entry.js").then(u,consoleError);case"uai-paper":return import(
 /* webpackMode: "lazy" */
 "./uai-paper.entry.js").then(u,consoleError);case"uai-radio":return import(
 /* webpackMode: "lazy" */
@@ -191,7 +189,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./bds-table-cell.entry.js").then(u,consoleError);case"bds-toast-container":return import(
 /* webpackMode: "lazy" */
-"./bds-toast-container.entry.js").then(u,consoleError);case"bds-banner":return import(
+"./bds-toast-container.entry.js").then(u,consoleError);case"uai-breadcrumb":return import(
+/* webpackMode: "lazy" */
+"./uai-breadcrumb.entry.js").then(u,consoleError);case"bds-banner":return import(
 /* webpackMode: "lazy" */
 "./bds-banner.entry.js").then(u,consoleError);case"bds-dropdown":return import(
 /* webpackMode: "lazy" */
@@ -213,19 +213,21 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-avatar.entry.js").then(u,consoleError);case"uai-input-date":return import(
 /* webpackMode: "lazy" */
-"./uai-input-date.entry.js").then(u,consoleError);case"bds-counter-text":return import(
+"./uai-input-date.entry.js").then(u,consoleError);case"uai-input-phone":return import(
+/* webpackMode: "lazy" */
+"./uai-input-phone.entry.js").then(u,consoleError);case"bds-counter-text":return import(
 /* webpackMode: "lazy" */
 "./bds-counter-text.entry.js").then(u,consoleError);case"bds-icon":return import(
 /* webpackMode: "lazy" */
-"./bds-icon.entry.js").then(u,consoleError);case"uai-input-phone":return import(
-/* webpackMode: "lazy" */
-"./uai-input-phone.entry.js").then(u,consoleError);case"bds-datepicker-period_2":return import(
+"./bds-icon.entry.js").then(u,consoleError);case"bds-datepicker-period_2":return import(
 /* webpackMode: "lazy" */
 "./bds-datepicker-period_2.entry.js").then(u,consoleError);case"bds-illustration_2":return import(
 /* webpackMode: "lazy" */
 "./bds-illustration_2.entry.js").then(u,consoleError);case"bds-radio_2":return import(
 /* webpackMode: "lazy" */
-"./bds-radio_2.entry.js").then(u,consoleError);case"bds-chip-clickable_2":return import(
+"./bds-radio_2.entry.js").then(u,consoleError);case"uai-button_2":return import(
+/* webpackMode: "lazy" */
+"./uai-button_2.entry.js").then(u,consoleError);case"bds-chip-clickable_2":return import(
 /* webpackMode: "lazy" */
 "./bds-chip-clickable_2.entry.js").then(u,consoleError);case"bds-checkbox_2":return import(
 /* webpackMode: "lazy" */

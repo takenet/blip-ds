@@ -1,7 +1,7 @@
 import { h, Host } from "@stencil/core";
 export class Grid {
     render() {
-        return (h(Host, { key: 'db1055a2cb02f501dc17fc6722bc2b7b5fb15887', class: {
+        return (h(Host, { key: '2ed82c78481315df46421a86446d295cc14f8c25', class: {
                 host: true,
                 [`direction--${this.direction}`]: true,
                 [`justify_content--${this.justifyContent}`]: true,
@@ -25,7 +25,7 @@ export class Grid {
                 [`padding--${this.padding}`]: true,
                 [`margin--${this.margin}`]: true,
                 [this.bgColor || '']: true,
-            }, style: { height: this.height } }, h("slot", { key: 'c838aea591c8f6b4ea7e0c528f2c727f319ad517' })));
+            }, style: { height: this.height } }, h("slot", { key: '08ec169c3d6f06c2482165b427fa7584752e2ddb' })));
     }
     static get is() { return "bds-grid"; }
     static get encapsulation() { return "shadow"; }

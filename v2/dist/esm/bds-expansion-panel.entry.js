@@ -7,7 +7,7 @@ const ExpansionPanel = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: 'c9245ccb1fd11c5aee28c4d827f37a5477112047' }, h("slot", { key: '018db0340a879e0ec77338aa6a5e63e256878633' })));
+        return (h(Host, { key: 'ec5c583667b207cee7f5f9f9faa6c0b652e12ffa' }, h("slot", { key: '6674ad92527127e9ac6f05b01a470ac7931943fb' })));
     }
 };
 ExpansionPanel.style = expansionPanelCss();

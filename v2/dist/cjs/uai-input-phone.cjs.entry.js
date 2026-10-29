@@ -3,6 +3,7 @@
 var index = require('./index-BuAR9UTp.js');
 var assetLoader = require('./asset-loader-7VlbCeFu.js');
 var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
+var uaiOverlay = require('./uai-overlay-PZQC57dM.js');
 var countriesEs_ES = require('./countries-es_ES-BrZr75bu.js');
 
 // Country keys whose official flag artwork (blip-tokens) is published under another name.
@@ -32,169 +33,6 @@ function flagUrl(country) {
     }
     catch (_a) {
         return null;
-    }
-}
-
-/**
- * Internal overlay primitive (w0-primitivas-internas). Opens a floating panel next to its trigger in the top layer
- * (Popover API, with a `position: fixed` fallback), keeps it inside the viewport, follows scroll and resize, and closes
- * it with Escape, a click outside or when the trigger leaves the visible area. Not a public component: listbox, menu,
- * datepicker, tooltip and other UAI components build on it. The panel must include the `uai-overlay-panel` mixin,
- * which provides the spacing/2xs gap, the spacing/xs viewport margin and the duration/moderate fade.
- */
-const OPEN_CLASS = 'uai-overlay--open';
-const clamp = (value, min, max) => Math.min(Math.max(value, min), Math.max(min, max));
-function computeOverlayLayout(input) {
-    const { trigger, panel, viewport, gap, margin } = input;
-    const maxWidth = Math.max(0, viewport.width - 2 * margin);
-    const minWidth = input.matchTriggerWidth ? Math.min(trigger.width, maxWidth) : 0;
-    const width = clamp(panel.width, minWidth, maxWidth);
-    const below = viewport.height - trigger.bottom - gap - margin;
-    const above = trigger.top - gap - margin;
-    const side = panel.height > below && above > below ? 'top' : 'bottom';
-    const maxHeight = Math.max(0, side === 'top' ? above : below);
-    const height = Math.min(panel.height, maxHeight);
-    const top = side === 'top' ? trigger.top - gap - height : trigger.bottom + gap;
-    const inRightHalf = trigger.left + trigger.width / 2 > viewport.width / 2;
-    const fitsFromStart = trigger.left + width <= viewport.width - margin;
-    const align = inRightHalf || !fitsFromStart ? 'end' : 'start';
-    const preferredLeft = align === 'end' ? trigger.right - width : trigger.left;
-    const left = clamp(preferredLeft, margin, viewport.width - margin - width);
-    return { top, left, minWidth, maxWidth, maxHeight, side, align };
-}
-const supportsPopover = () => typeof HTMLElement !== 'undefined' && 'popover' in HTMLElement.prototype;
-// Resolves a length custom property (rem or px) set by the uai-overlay-panel mixin.
-function readLength(element, property) {
-    const value = getComputedStyle(element).getPropertyValue(property).trim();
-    const amount = parseFloat(value);
-    if (Number.isNaN(amount))
-        return 0;
-    if (value.endsWith('rem'))
-        return amount * parseFloat(getComputedStyle(document.documentElement).fontSize);
-    return amount;
-}
-// Open overlays, oldest first. Escape and outside clicks act on the most recent one.
-const stack = [];
-function onKeydown(event) {
-    if (event.key !== 'Escape' || !stack.length)
-        return;
-    event.stopPropagation();
-    event.preventDefault();
-    stack[stack.length - 1].close('escape');
-}
-function onPointerdown(event) {
-    const path = event.composedPath();
-    for (const overlay of [...stack].reverse()) {
-        if (overlay.contains(path))
-            break;
-        overlay.close('outside');
-    }
-}
-function listen(active) {
-    const method = active ? 'addEventListener' : 'removeEventListener';
-    document[method]('keydown', onKeydown, true);
-    document[method]('pointerdown', onPointerdown, true);
-}
-class UaiOverlay {
-    constructor(options) {
-        this.popover = supportsPopover();
-        this.frame = 0;
-        this.opened = false;
-        this.schedule = () => {
-            cancelAnimationFrame(this.frame);
-            this.frame = requestAnimationFrame(() => this.update());
-        };
-        this.options = options;
-        if (this.popover)
-            options.panel.setAttribute('popover', 'manual');
-    }
-    get isOpen() {
-        return this.opened;
-    }
-    open() {
-        if (this.opened)
-            return;
-        const { panel, trigger } = this.options;
-        this.opened = true;
-        panel.classList.add(OPEN_CLASS);
-        if (this.popover)
-            panel.showPopover();
-        this.update();
-        if (!stack.length)
-            listen(true);
-        stack.push(this);
-        window.addEventListener('scroll', this.schedule, { capture: true, passive: true });
-        window.addEventListener('resize', this.schedule, { passive: true });
-        if (typeof IntersectionObserver !== 'undefined') {
-            this.observer = new IntersectionObserver((entries) => {
-                if (entries.some((entry) => !entry.isIntersecting))
-                    this.close('trigger-hidden');
-            });
-            this.observer.observe(trigger);
-        }
-    }
-    close(reason = 'api') {
-        var _a;
-        if (!this.opened)
-            return;
-        const { panel, trigger, onClose } = this.options;
-        this.opened = false;
-        stack.splice(stack.indexOf(this), 1);
-        if (!stack.length)
-            listen(false);
-        window.removeEventListener('scroll', this.schedule, { capture: true });
-        window.removeEventListener('resize', this.schedule);
-        cancelAnimationFrame(this.frame);
-        (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
-        this.observer = undefined;
-        panel.classList.remove(OPEN_CLASS);
-        if (this.popover && panel.matches(':popover-open'))
-            panel.hidePopover();
-        if (reason === 'escape')
-            trigger.focus({ preventScroll: true });
-        onClose === null || onClose === void 0 ? void 0 : onClose(reason);
-    }
-    toggle() {
-        if (this.opened)
-            this.close();
-        else
-            this.open();
-    }
-    /** Recomputes the position, for example after the panel content changes. */
-    update() {
-        if (!this.opened)
-            return;
-        const { panel, trigger, matchTriggerWidth } = this.options;
-        const style = panel.style;
-        // Measure the natural size from the viewport origin, without the limits of the previous position.
-        style.minWidth = style.maxWidth = style.maxHeight = '';
-        const maxHeight = getComputedStyle(panel).maxHeight;
-        style.top = style.left = '0';
-        const size = panel.getBoundingClientRect();
-        const layout = computeOverlayLayout({
-            trigger: trigger.getBoundingClientRect(),
-            panel: { width: size.width, height: size.height },
-            viewport: { width: document.documentElement.clientWidth, height: document.documentElement.clientHeight },
-            gap: readLength(panel, '--uai-overlay-gap'),
-            margin: readLength(panel, '--uai-overlay-margin'),
-            matchTriggerWidth,
-        });
-        style.top = `${layout.top}px`;
-        style.left = `${layout.left}px`;
-        style.minWidth = `${layout.minWidth}px`;
-        style.maxWidth = `${layout.maxWidth}px`;
-        style.maxHeight =
-            maxHeight === 'none' ? `${layout.maxHeight}px` : `min(${layout.maxHeight}px, ${maxHeight})`;
-        panel.dataset.side = layout.side;
-        panel.dataset.align = layout.align;
-    }
-    /** True when the event path goes through this overlay's panel or trigger. */
-    contains(path) {
-        return path.includes(this.options.panel) || path.includes(this.options.trigger);
-    }
-    destroy() {
-        this.close();
-        this.options.panel.removeAttribute('popover');
     }
 }
 
@@ -492,7 +330,7 @@ const UaiInputPhone = class {
     }
     componentDidLoad() {
         if (this.button && this.list) {
-            this.overlay = new UaiOverlay({
+            this.overlay = new uaiOverlay.UaiOverlay({
                 trigger: this.button,
                 panel: this.list,
                 matchTriggerWidth: false,
@@ -692,14 +530,14 @@ const UaiInputPhone = class {
         const label = (_a = this.label) !== null && _a !== void 0 ? _a : this.texts.label;
         const country = this.countries[this.selectedCountry];
         const countryName = country ? `${country.name} ${this.value}` : this.value;
-        return (index.h(index.Host, { key: '36a928ada9517deadb95d2c88eabc4a89c8bf005', "aria-disabled": disabled ? 'true' : null, class: {
+        return (index.h(index.Host, { key: '236edfb621f7267d76cb7202588d37da54b2ce9b', "aria-disabled": disabled ? 'true' : null, class: {
                 [`uai-input-phone--size-${this.sizeValue}`]: true,
                 'uai-input-phone--danger': invalid,
                 'uai-input-phone--success': success,
                 'uai-input-phone--disabled': disabled,
                 'uai-input-phone--readonly': this.readonly && !disabled,
                 'uai-input-phone--open': this.isOpen,
-            } }, index.h("div", { key: '64552c7eb5695d3c795acba1e1b9ecc671a659a3', class: "input" }, label && (index.h("label", { key: '4fdda3921e3634e9d2552b91f4db1d36e49dfc6f', class: "input__label", for: this.id }, index.h("uai-typo", { key: '536e9b224a38fce5ad35dc0f0db8aa3c67f325eb', variant: "caption", bold: "semibold", tag: "span", margin: false }, label))), index.h("div", { key: 'a7bd8fd5f0c13e40fc10bb00cb483f89b6236c19', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && index.h("uai-icon", { key: '5ff45d9e0e53971082a8372d95074f460146f0aa', class: "input__icon", name: this.icon, size: "medium" }), index.h("button", { key: '791b225b007ef2dc9a05e4cf43550d2ae4cfd462', type: "button", ref: (button) => (this.button = button), class: "prefix", part: "country-button", "aria-haspopup": "listbox", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-controls": `${this.id}-list`, "aria-label": `${this.texts.country}: ${countryName}`, disabled: !this.canPick, "data-test": this.dtSelectFlag, onClick: this.onButtonClick, onKeyDown: this.onButtonKeyDown }, this.renderFlag(this.selectedCountry, 'prefix__flag'), index.h("uai-typo", { key: '30c6a2225d7abb92fe88984566bae33a33989f27', class: "prefix__code", variant: "body-base", tag: "span", margin: false }, this.value), !this.readonly && index.h("uai-icon", { key: '68c5d92b080d090a2473a3737749f4adfe3a9ae6', class: "prefix__arrow", name: "arrow-down", size: "medium" })), index.h("div", { key: 'b75f5eeb2b7e298f10dfd31bb33991f1a16becc3', class: "input__field" }, index.h("input", { key: '7949e60bd812753b7e8bcb61cbea66fb4d60f246', id: this.id, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "tel", inputMode: "tel", autocomplete: "tel-national", value: this.text || '', placeholder: this.placeholder, required: this.required, readOnly: this.readonly, disabled: disabled, maxLength: this.value === '+55' ? 25 : undefined, "aria-label": this.ariaLabel || null, "aria-invalid": invalid ? 'true' : null, "aria-describedby": message ? `${this.id}-message` : null, "data-test": this.dataTest, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onKeyDown: this.onKeyDown })), invalid && index.h("uai-icon", { key: '1f1317079f40b76097fd3215d291f26f5492f909', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && index.h("uai-icon", { key: '21431c6ca466118dc794adc115d9f384b77f6df6', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), index.h("slot", { key: '8049cb80021d5f392ffef0beda2a0c552c468d7f', name: "input-right" })), message && (index.h("div", { key: 'de3a6c7b2daedc0b49a92bf667c74eebda4981ff', id: `${this.id}-message`, class: "input__message", part: "input__message" }, index.h("uai-typo", { key: '47583d84e75056bf863406388e9c5411e369301f', variant: "caption", tag: "span", margin: false }, message)))), index.h("ul", { key: '0fc505605d6e325577be36368581179d08561ea1', id: `${this.id}-list`, ref: (list) => (this.list = list), class: "list", part: "country-list", role: "listbox", tabindex: "-1", "aria-label": this.texts.list, "aria-activedescendant": this.isOpen && this.activeIndex >= 0 ? `${this.id}-option-${this.activeIndex}` : null, onKeyDown: this.onListKeyDown }, this.renderOptions())));
+            } }, index.h("div", { key: '31841c02f06c0d5d8e655616b6343c3e6b6289f5', class: "input" }, label && (index.h("label", { key: '5d7c2e8b3aa1607d37fc8cfbf7005f15758cad07', class: "input__label", for: this.id }, index.h("uai-typo", { key: 'e7cd6e283e6a77a03c28cddd8f181b837272d3a2', variant: "caption", bold: "semibold", tag: "span", margin: false }, label))), index.h("div", { key: 'bd8fa63832d97f3b8a82d8e89c8824e53074c123', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && index.h("uai-icon", { key: 'd35aad2ea45b854074337f3598514c5339c006a4', class: "input__icon", name: this.icon, size: "medium" }), index.h("button", { key: 'fd5fa6b753b89fcfcd3a18bbe67c8897c965d63a', type: "button", ref: (button) => (this.button = button), class: "prefix", part: "country-button", "aria-haspopup": "listbox", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-controls": `${this.id}-list`, "aria-label": `${this.texts.country}: ${countryName}`, disabled: !this.canPick, "data-test": this.dtSelectFlag, onClick: this.onButtonClick, onKeyDown: this.onButtonKeyDown }, this.renderFlag(this.selectedCountry, 'prefix__flag'), index.h("uai-typo", { key: '082b8d8a13c6cd3da38a2a60413bbcf0613d5acc', class: "prefix__code", variant: "body-base", tag: "span", margin: false }, this.value), !this.readonly && index.h("uai-icon", { key: 'e79979866c66ba4283a67fbfdb649137ab8a0f4f', class: "prefix__arrow", name: "arrow-down", size: "medium" })), index.h("div", { key: '24ff3774db1e91ab59dd1050a253fb1a47d08821', class: "input__field" }, index.h("input", { key: 'fa89020c2cf15745dc0bb59ff90415840d9c0015', id: this.id, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "tel", inputMode: "tel", autocomplete: "tel-national", value: this.text || '', placeholder: this.placeholder, required: this.required, readOnly: this.readonly, disabled: disabled, maxLength: this.value === '+55' ? 25 : undefined, "aria-label": this.ariaLabel || null, "aria-invalid": invalid ? 'true' : null, "aria-describedby": message ? `${this.id}-message` : null, "data-test": this.dataTest, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onKeyDown: this.onKeyDown })), invalid && index.h("uai-icon", { key: 'e86418ef8cd3fd0b5bbde48744a1c0ba72b5e267', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && index.h("uai-icon", { key: 'a530bf57c2e0b915f755cf8764e8d2b90d4bb573', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), index.h("slot", { key: '8bc6b5f4d14de8de6043542887ff0eeb5528eb65', name: "input-right" })), message && (index.h("div", { key: '5d1c10c100a848cbe8b1f3130cafb3dfa6a85ec2', id: `${this.id}-message`, class: "input__message", part: "input__message" }, index.h("uai-typo", { key: '331969a9a75fc5ac3f18f6d3c6477aedfeabce70', variant: "caption", tag: "span", margin: false }, message)))), index.h("ul", { key: '7f140d149eb46a3ab0d049bc9122361be8bb10b5', id: `${this.id}-list`, ref: (list) => (this.list = list), class: "list", part: "country-list", role: "listbox", tabindex: "-1", "aria-label": this.texts.list, "aria-activedescendant": this.isOpen && this.activeIndex >= 0 ? `${this.id}-option-${this.activeIndex}` : null, onKeyDown: this.onListKeyDown }, this.renderOptions())));
     }
     static get delegatesFocus() { return true; }
     static get formAssociated() { return true; }

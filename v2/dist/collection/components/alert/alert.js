@@ -39,11 +39,11 @@ export class BdsAlert {
             document.removeEventListener('keydown', this.listener, false);
     }
     render() {
-        return (h("div", { key: 'c5ef3f0fc33baa0e1733e6f175d07efa9b2712b3', class: {
+        return (h("div", { key: '923027ffe8447d1a28d3f9cb254d4ef37d1ded6b', class: {
                 alert__dialog: true,
                 'alert__dialog--open': this.open,
                 [`alert__dialog--${this.position}`]: true,
-            } }, h("div", { key: '5b1709a59898f0e729169fb53ce9ace11eef5a05', class: "alert", "data-test": this.dataTest }, h("slot", { key: '29bd522f9606a46af736acdc9e793b75190251ea' }))));
+            } }, h("div", { key: '83d88be3e5847bc5c59c25ecf23bb505c4b9d5d3', class: "alert", "data-test": this.dataTest }, h("slot", { key: '95091e7d0546d0a76f494fd078f7ebee354a23f0' }))));
     }
     static get is() { return "bds-alert"; }
     static get encapsulation() { return "shadow"; }

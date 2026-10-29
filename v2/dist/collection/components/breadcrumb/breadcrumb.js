@@ -1,4 +1,7 @@
 import { h } from "@stencil/core";
+/**
+ * @deprecated Use uai-breadcrumb for UAI tokens and optional current-item editing.
+ */
 export class Breadcrumb {
     constructor() {
         this.items = [];

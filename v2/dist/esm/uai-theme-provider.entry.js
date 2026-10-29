@@ -19,7 +19,7 @@ const UaiThemeProvider = class {
     }
     render() {
         const theme = THEMES.includes(this.theme) ? this.theme : 'light';
-        return (h(Host, { key: '35d97873713465afdca2107f92f45a7cd494950e', "data-uai-theme": theme }, h("slot", { key: '616d2f87bb372f63eec36bfaf08a6b178b49c82c' })));
+        return (h(Host, { key: '2a6a7d66a93657b0b3a732775013c19270f9759f', "data-uai-theme": theme }, h("slot", { key: '6fb02ea2f509f69b37987fdf5d05b550bdf2da50' })));
     }
     static get watchers() { return {
         "theme": [{

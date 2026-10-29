@@ -108,6 +108,10 @@ export declare class UaiButton {
      */
     ariaLabel: string;
     /**
+     * Expansion state of a controlled panel. Use on disclosure actions; pair with an overlay; avoid on unrelated buttons.
+     */
+    ariaExpanded: 'true' | 'false';
+    /**
      * Data test is the prop to specifically test the component action object.
      */
     dataTest?: string;
@@ -116,6 +120,10 @@ export declare class UaiButton {
      * Not emitted while the button is disabled or loading.
      */
     uaiClick: EventEmitter<MouseEvent>;
+    /**
+     * Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+     */
+    setFocus(): Promise<void>;
     /**
      * Sets the active (pressed) state of the button.
      */

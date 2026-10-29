@@ -27,7 +27,7 @@ const BdsIllustration = class {
         }
     }
     render() {
-        return (h(Host, { key: '13a37beb99d9c568296079f46234f4e7bd0cc156', role: "img", class: {
+        return (h(Host, { key: '230dfb985243057a8fdcac03a393c468aa95a727', role: "img", class: {
                 'bds-illustration': true,
             } }, this.IllustrationContent ? (h("img", { draggable: false, src: this.IllustrationContent, onError: () => { this.IllustrationContent = undefined; }, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
     }

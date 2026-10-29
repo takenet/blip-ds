@@ -9,7 +9,7 @@ const TableHeader = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '6b98ca7d42ace8cbcd6f8482de2f6b0b27e36944' }, index.h("slot", { key: '4b8890b910b1afc763f85c0ba931a325f6bf9a54' })));
+        return (index.h(index.Host, { key: '4a7d6b430cb9f45fc4f44542f297f27db41088f5' }, index.h("slot", { key: 'adb1f62dfd906403f320f8f031c8de5281f1502a' })));
     }
 };
 TableHeader.style = tableHeaderCss();

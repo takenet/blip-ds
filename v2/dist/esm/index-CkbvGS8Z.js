@@ -391,10 +391,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-warning.entry.js').then(processMod, consoleError);
-                case 'uai-button':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './uai-button.entry.js').then(processMod, consoleError);
                 case 'uai-checkbox':
                     return import(
                       /* webpackMode: "lazy" */
@@ -403,10 +399,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-grid.entry.js').then(processMod, consoleError);
-                case 'uai-input':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './uai-input.entry.js').then(processMod, consoleError);
                 case 'uai-input-chips':
                     return import(
                       /* webpackMode: "lazy" */
@@ -427,6 +419,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-navbar-content.entry.js').then(processMod, consoleError);
+                case 'uai-page-header':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-page-header.entry.js').then(processMod, consoleError);
                 case 'uai-paper':
                     return import(
                       /* webpackMode: "lazy" */
@@ -479,6 +475,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-toast-container.entry.js').then(processMod, consoleError);
+                case 'uai-breadcrumb':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-breadcrumb.entry.js').then(processMod, consoleError);
                 case 'bds-banner':
                     return import(
                       /* webpackMode: "lazy" */
@@ -523,6 +523,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-input-date.entry.js').then(processMod, consoleError);
+                case 'uai-input-phone':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-input-phone.entry.js').then(processMod, consoleError);
                 case 'bds-counter-text':
                     return import(
                       /* webpackMode: "lazy" */
@@ -531,10 +535,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-icon.entry.js').then(processMod, consoleError);
-                case 'uai-input-phone':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './uai-input-phone.entry.js').then(processMod, consoleError);
                 case 'bds-datepicker-period_2':
                     return import(
                       /* webpackMode: "lazy" */
@@ -547,6 +547,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-radio_2.entry.js').then(processMod, consoleError);
+                case 'uai-button_2':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-button_2.entry.js').then(processMod, consoleError);
                 case 'bds-chip-clickable_2':
                     return import(
                       /* webpackMode: "lazy" */

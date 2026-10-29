@@ -110,6 +110,10 @@ export class UaiButton {
          */
         this.ariaLabel = null;
         /**
+         * Expansion state of a controlled panel. Use on disclosure actions; pair with an overlay; avoid on unrelated buttons.
+         */
+        this.ariaExpanded = null;
+        /**
          * Data test is the prop to specifically test the component action object.
          */
         this.dataTest = null;
@@ -125,6 +129,13 @@ export class UaiButton {
             this.uaiClick.emit(ev);
             this.actOnForm();
         };
+    }
+    /**
+     * Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+     */
+    async setFocus() {
+        var _a, _b;
+        (_b = (_a = this.el.shadowRoot) === null || _a === void 0 ? void 0 : _a.querySelector('button')) === null || _b === void 0 ? void 0 : _b.focus();
     }
     /**
      * Sets the active (pressed) state of the button.
@@ -219,12 +230,12 @@ export class UaiButton {
         }
         const left = this.loading ? (h("span", { class: "button__spinner", "aria-hidden": "true" })) : leftIconName ? (this.renderIcon(leftIconName, size, 'left')) : null;
         const right = rightIconName && !(iconOnly && this.loading) ? this.renderIcon(rightIconName, size, 'right') : null;
-        const label = (h("span", { key: 'dd8c5136d64e810150e6c99c0116be49f47a3352', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: '3dce69f6a25a6ab2d7ea493d29d4e52471badaf2', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: 'eef48aba09ca27f9747cb367d36749e917bce7cc', onSlotchange: this.updateHasLabel }))));
+        const label = (h("span", { key: 'ea88699acfae5d5c76fc5d9b8d6fb6f830e1b4e9', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: 'd44ab64b475fb319fa0479285121c72fdfeae894', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: '7df9571e7d630e628c602dde95e0c2ff680ce595', onSlotchange: this.updateHasLabel }))));
         const grouped = this.groupIcon && justify === 'space-between' && left;
-        return (h(Host, { key: '22c03199307f9255e9631308a8f4f0dbb5c4b2c6', class: {
+        return (h(Host, { key: '7b90678edf61c01d790313853a283429582536e6', class: {
                 'uai-button--block': this.block || this.fullWidth,
                 'uai-button--group': !!this.position,
-            } }, h("button", { key: 'fe905c828ec5c6f0c53e3d1af592acc6802c6be9', class: {
+            } }, h("button", { key: '6664a4a4e141a10358d07b19fbf167fda668a401', class: {
                 button: true,
                 [`button--${variant}`]: true,
                 [`button--color-${color}`]: true,
@@ -234,7 +245,7 @@ export class UaiButton {
                 'button--icon-only': iconOnly,
                 'button--active': !!this.active,
                 'button--loading': this.loading,
-            }, part: "button", type: "button", disabled: this.disabled, "aria-disabled": this.loading ? 'true' : undefined, "aria-busy": this.loading ? 'true' : undefined, "aria-label": this.ariaLabel || undefined, "aria-pressed": this.active === undefined ? undefined : String(this.active), "data-test": this.dataTest, onClick: this.handleClick }, grouped ? (h("span", { class: "button__group" }, left, label)) : ([left, label]), right)));
+            }, part: "button", type: "button", disabled: this.disabled, "aria-disabled": this.loading ? 'true' : undefined, "aria-busy": this.loading ? 'true' : undefined, "aria-label": this.ariaLabel || undefined, "aria-expanded": this.ariaExpanded, "aria-pressed": this.active === undefined ? undefined : String(this.active), "data-test": this.dataTest, onClick: this.handleClick }, grouped ? (h("span", { class: "button__group" }, left, label)) : ([left, label]), right)));
     }
     static get is() { return "uai-button"; }
     static get encapsulation() { return "shadow"; }
@@ -692,6 +703,26 @@ export class UaiButton {
                 "attribute": "aria-label",
                 "defaultValue": "null"
             },
+            "ariaExpanded": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "'true' | 'false'",
+                    "resolved": "\"false\" | \"true\"",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Expansion state of a controlled panel. Use on disclosure actions; pair with an overlay; avoid on unrelated buttons."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "aria-expanded",
+                "defaultValue": "null"
+            },
             "dataTest": {
                 "type": "string",
                 "mutable": false,
@@ -747,6 +778,23 @@ export class UaiButton {
     }
     static get methods() {
         return {
+            "setFocus": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.",
+                    "tags": []
+                }
+            },
             "isActive": {
                 "complexType": {
                     "signature": "(value: boolean) => Promise<void>",

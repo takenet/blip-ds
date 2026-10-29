@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use uai-breadcrumb for UAI tokens and optional current-item editing.
+ */
 export declare class Breadcrumb {
     items: string | Array<{
         label: string;

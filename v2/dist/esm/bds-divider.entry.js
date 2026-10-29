@@ -20,7 +20,7 @@ const BdsDivider = class {
     }
     render() {
         const orientationClass = `${this.orientation} ${this.styleType} color-${this.color} `;
-        return (h(Host, { key: '454076d58108e9cee49d4d2ce0a507a2d99384f4', class: orientationClass }, h("hr", { key: 'b5e9b779c95f259926dd8892aeeb9b41062e222f', class: `${this.orientation} ${this.styleType} color-${this.color}` })));
+        return (h(Host, { key: '07725a8ae00ca5eda63ede24dacca4b456602b73', class: orientationClass }, h("hr", { key: '700a3e7766773072b5d56ddc00b8cd5f09b96983', class: `${this.orientation} ${this.styleType} color-${this.color}` })));
     }
 };
 BdsDivider.style = dividerCss();
