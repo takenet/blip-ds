@@ -1,5 +1,8 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
+/**
+ * @deprecated Use uai-breadcrumb for UAI tokens and optional current-item editing.
+ */
 @Component({
   tag: 'bds-breadcrumb',
   styleUrl: 'breadcrumb.scss',

@@ -3,7 +3,7 @@ import DocumentationTemplate from './breadcrumb.mdx';
 import { BdsBreadcrumb } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Breadcrumb',
+  title: 'Components/[deprecated] Breadcrumb',
   tags: ['autodocs'],
   parameters: {
     docs: {

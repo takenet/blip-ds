@@ -41,6 +41,7 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
 ### Used by
 
  - [uai-avatar](../uai-avatar)
+ - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-button](../uai-button)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
@@ -54,6 +55,7 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
 ```mermaid
 graph TD;
   uai-avatar --> uai-icon
+  uai-breadcrumb --> uai-icon
   uai-button --> uai-icon
   uai-input --> uai-icon
   uai-input-chips --> uai-icon

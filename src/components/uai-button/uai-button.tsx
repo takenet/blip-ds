@@ -166,6 +166,11 @@ export class UaiButton {
   @Prop({ attribute: 'aria-label' }) ariaLabel: string = null;
 
   /**
+   * Expansion state of a controlled panel. Use on disclosure actions; pair with an overlay; avoid on unrelated buttons.
+   */
+  @Prop({ attribute: 'aria-expanded' }) ariaExpanded: 'true' | 'false' = null;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -175,6 +180,14 @@ export class UaiButton {
    * Not emitted while the button is disabled or loading.
    */
   @Event() uaiClick: EventEmitter<MouseEvent>;
+
+  /**
+   * Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+   */
+  @Method()
+  async setFocus(): Promise<void> {
+    this.el.shadowRoot?.querySelector('button')?.focus();
+  }
 
   /**
    * Sets the active (pressed) state of the button.
@@ -367,6 +380,7 @@ export class UaiButton {
           aria-disabled={this.loading ? 'true' : undefined}
           aria-busy={this.loading ? 'true' : undefined}
           aria-label={this.ariaLabel || undefined}
+          aria-expanded={this.ariaExpanded}
           aria-pressed={this.active === undefined ? undefined : String(this.active)}
           data-test={this.dataTest}
           onClick={this.handleClick}

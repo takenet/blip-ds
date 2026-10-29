@@ -73,6 +73,8 @@ Nomes que não existem na fonte UAI, e `typeIcon` `logo` ou `emoji`, usam o `bds
 - `type="submit"` e `type="reset"` agem sobre o `<form>` que envolve o botão.
 - Em `loading`, o botão recebe `aria-busy` e `aria-disabled`.
 - Botões só com ícone precisam de `aria-label`.
+- Ações que abrem painéis podem informar `ariaExpanded="true"` ou `"false"`; o estado chega ao botão nativo.
+- Use o método público `setFocus()` para devolver o foco ao botão após fechar um painel, sem acessar seu Shadow DOM.
 
 ## Tokens
 

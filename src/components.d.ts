@@ -77,6 +77,7 @@ import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
 import { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
+import { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -88,6 +89,8 @@ import { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditable
 import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
+import { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
+import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
@@ -164,6 +167,7 @@ export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
 export { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
+export { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -175,6 +179,8 @@ export { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditable
 export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
+export { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
+export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
@@ -527,6 +533,9 @@ export namespace Components {
          */
         "target": targets;
     }
+    /**
+     * @deprecated Use uai-breadcrumb for UAI tokens and optional current-item editing.
+     */
     interface BdsBreadcrumb {
         /**
           * @default []
@@ -3766,11 +3775,50 @@ export namespace Components {
         "upload"?: boolean;
     }
     /**
+     * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
+     * avoid using it as an organization or flow context switcher.
+     */
+    interface UaiBreadcrumb {
+        /**
+          * Optional heading level for the current label. Use inside page headers; pair with page semantics; avoid headings on ancestors.
+         */
+        "currentHeadingLevel"?: 1 | 2 | 3 | 4 | 5 | 6;
+        /**
+          * Allows renaming the last item. Use with the edit event; pair with UaiInput; avoid assuming the component persists changes.
+          * @default false
+         */
+        "editable": boolean;
+        /**
+          * Ordered page items as an array or JSON. Use label and optional href; pair with wrapItems; avoid context-selector data.
+          * @default []
+         */
+        "items": string | UaiBreadcrumbItem[];
+        /**
+          * Partial overrides for built-in text. Use for accessible names and validation; pair with language; avoid empty action names.
+         */
+        "labels"?: Partial<UaiBreadcrumbLabels>;
+        /**
+          * Language for built-in messages. Use pt_BR, en_US or es_ES; pair with labels; avoid translating item labels implicitly.
+          * @default 'pt_BR'
+         */
+        "language": UaiBreadcrumbLanguage;
+        /**
+          * Collapses intermediate items above three entries. Use false to show all; pair with items; avoid treating it as a depth limit.
+          * @default true
+         */
+        "wrapItems": boolean;
+    }
+    /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
      * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
      * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
      */
     interface UaiButton {
+        /**
+          * Expansion state of a controlled panel. Use on disclosure actions; pair with an overlay; avoid on unrelated buttons.
+          * @default null
+         */
+        "ariaExpanded": 'true' | 'false';
         /**
           * Accessible name of the button. Required when the button has no visible label.
           * @default null
@@ -3860,6 +3908,10 @@ export namespace Components {
           * Sets the direction of the group the button belongs to.
          */
         "setDirection": (direction: UaiButtonDirection) => Promise<void>;
+        /**
+          * Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+         */
+        "setFocus": () => Promise<void>;
         /**
           * Sets the position of the button inside a group.
          */
@@ -5113,6 +5165,46 @@ export namespace Components {
      */
     interface UaiNavbarContent {
     }
+    /**
+     * Page title or hierarchical navigation with consumer-owned actions. Use one per page; pair with UaiButton;
+     * avoid embedding product persistence or global application navigation.
+     */
+    interface UaiPageHeader {
+        /**
+          * Enables editing of the secondary breadcrumb's current item. Use with the edit event; pair with items; avoid editing primary title.
+          * @default false
+         */
+        "editable": boolean;
+        /**
+          * Secondary breadcrumb items, as JSON or array. Use ancestor-to-current order; pair with level secondary; avoid context selectors.
+          * @default []
+         */
+        "items": string | UaiBreadcrumbItem1[];
+        /**
+          * Partial breadcrumb text overrides. Use for accessible names; pair with language; avoid empty action names.
+         */
+        "labels"?: Partial<UaiBreadcrumbLabels1>;
+        /**
+          * Language for breadcrumb messages. Use a supported locale; pair with labels; avoid translating consumer-provided titles implicitly.
+          * @default 'pt_BR'
+         */
+        "language": UaiBreadcrumbLanguage1;
+        /**
+          * Visual composition. Use primary for title and secondary for breadcrumb; pair with items; avoid treating it as a depth limit.
+          * @default 'primary'
+         */
+        "level": UaiPageHeaderLevel;
+        /**
+          * Primary page title. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
+          * @default ''
+         */
+        "title": string;
+        /**
+          * Collapses intermediate breadcrumb items above three. Use false to show all; pair with items; avoid imposing a depth limit.
+          * @default true
+         */
+        "wrapItems": boolean;
+    }
     interface UaiPaper {
         /**
           * Prop for set the background color.
@@ -5812,6 +5904,10 @@ export interface UaiAvatarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiAvatarElement;
 }
+export interface UaiBreadcrumbCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiBreadcrumbElement;
+}
 export interface UaiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiButtonElement;
@@ -5843,6 +5939,10 @@ export interface UaiInputPasswordCustomEvent<T> extends CustomEvent<T> {
 export interface UaiInputPhoneCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputPhoneElement;
+}
+export interface UaiPageHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiPageHeaderElement;
 }
 export interface UaiRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -6046,6 +6146,9 @@ declare global {
         prototype: HTMLBdsBannerLinkElement;
         new (): HTMLBdsBannerLinkElement;
     };
+    /**
+     * @deprecated Use uai-breadcrumb for UAI tokens and optional current-item editing.
+     */
     interface HTMLBdsBreadcrumbElement extends Components.BdsBreadcrumb, HTMLStencilElement {
     }
     var HTMLBdsBreadcrumbElement: {
@@ -7210,6 +7313,28 @@ declare global {
         prototype: HTMLUaiAvatarElement;
         new (): HTMLUaiAvatarElement;
     };
+    interface HTMLUaiBreadcrumbElementEventMap {
+        "uaiBreadcrumbItemClick": UaiBreadcrumbItem;
+        "uaiBreadcrumbItemEdit": UaiBreadcrumbEditDetail;
+    }
+    /**
+     * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
+     * avoid using it as an organization or flow context switcher.
+     */
+    interface HTMLUaiBreadcrumbElement extends Components.UaiBreadcrumb, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiBreadcrumbElementEventMap>(type: K, listener: (this: HTMLUaiBreadcrumbElement, ev: UaiBreadcrumbCustomEvent<HTMLUaiBreadcrumbElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiBreadcrumbElementEventMap>(type: K, listener: (this: HTMLUaiBreadcrumbElement, ev: UaiBreadcrumbCustomEvent<HTMLUaiBreadcrumbElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiBreadcrumbElement: {
+        prototype: HTMLUaiBreadcrumbElement;
+        new (): HTMLUaiBreadcrumbElement;
+    };
     interface HTMLUaiButtonElementEventMap {
         "uaiClick": MouseEvent;
     }
@@ -7464,6 +7589,28 @@ declare global {
         prototype: HTMLUaiNavbarContentElement;
         new (): HTMLUaiNavbarContentElement;
     };
+    interface HTMLUaiPageHeaderElementEventMap {
+        "uaiBreadcrumbItemClick": UaiBreadcrumbItem1;
+        "uaiBreadcrumbItemEdit": UaiBreadcrumbEditDetail1;
+    }
+    /**
+     * Page title or hierarchical navigation with consumer-owned actions. Use one per page; pair with UaiButton;
+     * avoid embedding product persistence or global application navigation.
+     */
+    interface HTMLUaiPageHeaderElement extends Components.UaiPageHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiPageHeaderElementEventMap>(type: K, listener: (this: HTMLUaiPageHeaderElement, ev: UaiPageHeaderCustomEvent<HTMLUaiPageHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiPageHeaderElementEventMap>(type: K, listener: (this: HTMLUaiPageHeaderElement, ev: UaiPageHeaderCustomEvent<HTMLUaiPageHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiPageHeaderElement: {
+        prototype: HTMLUaiPageHeaderElement;
+        new (): HTMLUaiPageHeaderElement;
+    };
     interface HTMLUaiPaperElement extends Components.UaiPaper, HTMLStencilElement {
     }
     var HTMLUaiPaperElement: {
@@ -7689,6 +7836,7 @@ declare global {
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
         "uai-avatar": HTMLUaiAvatarElement;
+        "uai-breadcrumb": HTMLUaiBreadcrumbElement;
         "uai-button": HTMLUaiButtonElement;
         "uai-checkbox": HTMLUaiCheckboxElement;
         "uai-grid": HTMLUaiGridElement;
@@ -7701,6 +7849,7 @@ declare global {
         "uai-input-phone": HTMLUaiInputPhoneElement;
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
+        "uai-page-header": HTMLUaiPageHeaderElement;
         "uai-paper": HTMLUaiPaperElement;
         "uai-radio": HTMLUaiRadioElement;
         "uai-radio-group": HTMLUaiRadioGroupElement;
@@ -8088,6 +8237,9 @@ declare namespace LocalJSX {
          */
         "target"?: targets;
     }
+    /**
+     * @deprecated Use uai-breadcrumb for UAI tokens and optional current-item editing.
+     */
     interface BdsBreadcrumb {
         /**
           * @default []
@@ -11587,11 +11739,58 @@ declare namespace LocalJSX {
         "upload"?: boolean;
     }
     /**
+     * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
+     * avoid using it as an organization or flow context switcher.
+     */
+    interface UaiBreadcrumb {
+        /**
+          * Optional heading level for the current label. Use inside page headers; pair with page semantics; avoid headings on ancestors.
+         */
+        "currentHeadingLevel"?: 1 | 2 | 3 | 4 | 5 | 6;
+        /**
+          * Allows renaming the last item. Use with the edit event; pair with UaiInput; avoid assuming the component persists changes.
+          * @default false
+         */
+        "editable"?: boolean;
+        /**
+          * Ordered page items as an array or JSON. Use label and optional href; pair with wrapItems; avoid context-selector data.
+          * @default []
+         */
+        "items"?: string | UaiBreadcrumbItem[];
+        /**
+          * Partial overrides for built-in text. Use for accessible names and validation; pair with language; avoid empty action names.
+         */
+        "labels"?: Partial<UaiBreadcrumbLabels>;
+        /**
+          * Language for built-in messages. Use pt_BR, en_US or es_ES; pair with labels; avoid translating item labels implicitly.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiBreadcrumbLanguage;
+        /**
+          * Link activation with { label, href? }. Use to observe native navigation; pair with href; avoid duplicate router navigation.
+         */
+        "onUaiBreadcrumbItemClick"?: (event: UaiBreadcrumbCustomEvent<UaiBreadcrumbItem>) => void;
+        /**
+          * Rename request with original index and old/new value. Use to update items; pair with editable; avoid mutating input data.
+         */
+        "onUaiBreadcrumbItemEdit"?: (event: UaiBreadcrumbCustomEvent<UaiBreadcrumbEditDetail>) => void;
+        /**
+          * Collapses intermediate items above three entries. Use false to show all; pair with items; avoid treating it as a depth limit.
+          * @default true
+         */
+        "wrapItems"?: boolean;
+    }
+    /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
      * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
      * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
      */
     interface UaiButton {
+        /**
+          * Expansion state of a controlled panel. Use on disclosure actions; pair with an overlay; avoid on unrelated buttons.
+          * @default null
+         */
+        "ariaExpanded"?: 'true' | 'false';
         /**
           * Accessible name of the button. Required when the button has no visible label.
           * @default null
@@ -12962,6 +13161,54 @@ declare namespace LocalJSX {
      */
     interface UaiNavbarContent {
     }
+    /**
+     * Page title or hierarchical navigation with consumer-owned actions. Use one per page; pair with UaiButton;
+     * avoid embedding product persistence or global application navigation.
+     */
+    interface UaiPageHeader {
+        /**
+          * Enables editing of the secondary breadcrumb's current item. Use with the edit event; pair with items; avoid editing primary title.
+          * @default false
+         */
+        "editable"?: boolean;
+        /**
+          * Secondary breadcrumb items, as JSON or array. Use ancestor-to-current order; pair with level secondary; avoid context selectors.
+          * @default []
+         */
+        "items"?: string | UaiBreadcrumbItem1[];
+        /**
+          * Partial breadcrumb text overrides. Use for accessible names; pair with language; avoid empty action names.
+         */
+        "labels"?: Partial<UaiBreadcrumbLabels1>;
+        /**
+          * Language for breadcrumb messages. Use a supported locale; pair with labels; avoid translating consumer-provided titles implicitly.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiBreadcrumbLanguage1;
+        /**
+          * Visual composition. Use primary for title and secondary for breadcrumb; pair with items; avoid treating it as a depth limit.
+          * @default 'primary'
+         */
+        "level"?: UaiPageHeaderLevel;
+        /**
+          * Native link activation bubbling from the breadcrumb. Use to observe navigation; pair with items; avoid re-emitting it.
+         */
+        "onUaiBreadcrumbItemClick"?: (event: UaiPageHeaderCustomEvent<UaiBreadcrumbItem1>) => void;
+        /**
+          * Rename request bubbling from the breadcrumb. Use to update items; pair with editable; avoid assuming persistence succeeded.
+         */
+        "onUaiBreadcrumbItemEdit"?: (event: UaiPageHeaderCustomEvent<UaiBreadcrumbEditDetail1>) => void;
+        /**
+          * Primary page title. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
+          * @default ''
+         */
+        "title"?: string;
+        /**
+          * Collapses intermediate breadcrumb items above three. Use false to show all; pair with items; avoid imposing a depth limit.
+          * @default true
+         */
+        "wrapItems"?: boolean;
+    }
     interface UaiPaper {
         /**
           * Prop for set the background color.
@@ -14327,6 +14574,13 @@ declare namespace LocalJSX {
         "label": string;
         "initials": string;
     }
+    interface UaiBreadcrumbAttributes {
+        "items": string | UaiBreadcrumbItem[];
+        "wrapItems": boolean;
+        "editable": boolean;
+        "language": UaiBreadcrumbLanguage;
+        "currentHeadingLevel": 1 | 2 | 3 | 4 | 5 | 6;
+    }
     interface UaiButtonAttributes {
         "block": boolean;
         "fullWidth": boolean;
@@ -14347,6 +14601,7 @@ declare namespace LocalJSX {
         "bdsLoadingVariant": LoadingSpinnerVariant;
         "bdsLoadingColor": colorsVariants;
         "ariaLabel": string;
+        "ariaExpanded": 'true' | 'false';
         "dataTest": string;
     }
     interface UaiCheckboxAttributes {
@@ -14586,6 +14841,14 @@ declare namespace LocalJSX {
         "justifyContent": uaiNavbarJustifyContent;
         "dataTest": string;
     }
+    interface UaiPageHeaderAttributes {
+        "level": UaiPageHeaderLevel;
+        "title": string;
+        "items": string | UaiBreadcrumbItem[];
+        "wrapItems": boolean;
+        "editable": boolean;
+        "language": UaiBreadcrumbLanguage;
+    }
     interface UaiPaperAttributes {
         "elevation": PaperElevation;
         "dataTest": string;
@@ -14794,6 +15057,7 @@ declare namespace LocalJSX {
         "bds-upload": Omit<BdsUpload, keyof BdsUploadAttributes> & { [K in keyof BdsUpload & keyof BdsUploadAttributes]?: BdsUpload[K] } & { [K in keyof BdsUpload & keyof BdsUploadAttributes as `attr:${K}`]?: BdsUploadAttributes[K] } & { [K in keyof BdsUpload & keyof BdsUploadAttributes as `prop:${K}`]?: BdsUpload[K] };
         "bds-warning": BdsWarning;
         "uai-avatar": Omit<UaiAvatar, keyof UaiAvatarAttributes> & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes]?: UaiAvatar[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `attr:${K}`]?: UaiAvatarAttributes[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `prop:${K}`]?: UaiAvatar[K] };
+        "uai-breadcrumb": Omit<UaiBreadcrumb, keyof UaiBreadcrumbAttributes> & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes]?: UaiBreadcrumb[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `attr:${K}`]?: UaiBreadcrumbAttributes[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `prop:${K}`]?: UaiBreadcrumb[K] };
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
@@ -14806,6 +15070,7 @@ declare namespace LocalJSX {
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
+        "uai-page-header": Omit<UaiPageHeader, keyof UaiPageHeaderAttributes> & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes]?: UaiPageHeader[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `attr:${K}`]?: UaiPageHeaderAttributes[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `prop:${K}`]?: UaiPageHeader[K] };
         "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
         "uai-radio": Omit<UaiRadio, keyof UaiRadioAttributes> & { [K in keyof UaiRadio & keyof UaiRadioAttributes]?: UaiRadio[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `attr:${K}`]?: UaiRadioAttributes[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `prop:${K}`]?: UaiRadio[K] } & OneOf<"value", UaiRadio["value"], UaiRadioAttributes["value"]>;
         "uai-radio-group": Omit<UaiRadioGroup, keyof UaiRadioGroupAttributes> & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes]?: UaiRadioGroup[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `attr:${K}`]?: UaiRadioGroupAttributes[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `prop:${K}`]?: UaiRadioGroup[K] };
@@ -14836,6 +15101,9 @@ declare module "@stencil/core" {
             "bds-badge": LocalJSX.IntrinsicElements["bds-badge"] & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
             "bds-banner": LocalJSX.IntrinsicElements["bds-banner"] & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.IntrinsicElements["bds-banner-link"] & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
+            /**
+             * @deprecated Use uai-breadcrumb for UAI tokens and optional current-item editing.
+             */
             "bds-breadcrumb": LocalJSX.IntrinsicElements["bds-breadcrumb"] & JSXBase.HTMLAttributes<HTMLBdsBreadcrumbElement>;
             "bds-button": LocalJSX.IntrinsicElements["bds-button"] & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
             "bds-button-group": LocalJSX.IntrinsicElements["bds-button-group"] & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
@@ -14965,6 +15233,11 @@ declare module "@stencil/core" {
              */
             "uai-avatar": LocalJSX.IntrinsicElements["uai-avatar"] & JSXBase.HTMLAttributes<HTMLUaiAvatarElement>;
             /**
+             * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
+             * avoid using it as an organization or flow context switcher.
+             */
+            "uai-breadcrumb": LocalJSX.IntrinsicElements["uai-breadcrumb"] & JSXBase.HTMLAttributes<HTMLUaiBreadcrumbElement>;
+            /**
              * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
              * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
              * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
@@ -15040,6 +15313,11 @@ declare module "@stencil/core" {
              * Group of items inside a uai-navbar.
              */
             "uai-navbar-content": LocalJSX.IntrinsicElements["uai-navbar-content"] & JSXBase.HTMLAttributes<HTMLUaiNavbarContentElement>;
+            /**
+             * Page title or hierarchical navigation with consumer-owned actions. Use one per page; pair with UaiButton;
+             * avoid embedding product persistence or global application navigation.
+             */
+            "uai-page-header": LocalJSX.IntrinsicElements["uai-page-header"] & JSXBase.HTMLAttributes<HTMLUaiPageHeaderElement>;
             "uai-paper": LocalJSX.IntrinsicElements["uai-paper"] & JSXBase.HTMLAttributes<HTMLUaiPaperElement>;
             /**
              * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.

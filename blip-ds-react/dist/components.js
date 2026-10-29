@@ -107,6 +107,7 @@ import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from 
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
+import { UaiBreadcrumb as UaiBreadcrumbElement, defineCustomElement as defineUaiBreadcrumb } from "blip-ds/dist/components/uai-breadcrumb.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
@@ -119,6 +120,7 @@ import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUai
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
+import { UaiPageHeader as UaiPageHeaderElement, defineCustomElement as defineUaiPageHeader } from "blip-ds/dist/components/uai-page-header.js";
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
 import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUaiRadioGroup } from "blip-ds/dist/components/uai-radio-group.js";
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
@@ -991,6 +993,16 @@ export const UaiAvatar = createComponent({
     },
     defineCustomElement: defineUaiAvatar
 });
+export const UaiBreadcrumb = createComponent({
+    tagName: 'uai-breadcrumb',
+    elementClass: UaiBreadcrumbElement,
+    react: React,
+    events: {
+        onUaiBreadcrumbItemClick: 'uaiBreadcrumbItemClick',
+        onUaiBreadcrumbItemEdit: 'uaiBreadcrumbItemEdit'
+    },
+    defineCustomElement: defineUaiBreadcrumb
+});
 export const UaiButton = createComponent({
     tagName: 'uai-button',
     elementClass: UaiButtonElement,
@@ -1118,6 +1130,16 @@ export const UaiNavbarContent = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiNavbarContent
+});
+export const UaiPageHeader = createComponent({
+    tagName: 'uai-page-header',
+    elementClass: UaiPageHeaderElement,
+    react: React,
+    events: {
+        onUaiBreadcrumbItemClick: 'uaiBreadcrumbItemClick',
+        onUaiBreadcrumbItemEdit: 'uaiBreadcrumbItemEdit'
+    },
+    defineCustomElement: defineUaiPageHeader
 });
 export const UaiPaper = createComponent({
     tagName: 'uai-paper',
