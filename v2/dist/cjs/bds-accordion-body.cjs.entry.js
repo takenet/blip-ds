@@ -45,11 +45,11 @@ const AccordionBody = class {
         }
     }
     render() {
-        return (index.h("div", { key: 'c19f8d50deef0a02e4a258d95191dcef6f015540', class: {
+        return (index.h("div", { key: '3498d3527fa4a658342aba4a5e3ea42c566d637d', class: {
                 accordion_body: true,
                 accordion_body_divisor: this.hasDivisor,
                 accordion_body_isOpen: this.isOpenAftAnimation,
-            }, style: { height: `${this.heightContainer}px` }, "data-test": this.dataTest }, index.h("div", { key: '5f68b6bda1c775e8f7b058c6105223c91d49cf52', class: "container", ref: (el) => this.refContainer(el) }, index.h("slot", { key: 'd0fce1319c050f66d428d183e226b779f04fe572' }))));
+            }, style: { height: `${this.heightContainer}px` }, "data-test": this.dataTest }, index.h("div", { key: '9a5d31a870f1ce1c3c61c0c70277e604d38390b4', class: "container", ref: (el) => this.refContainer(el) }, index.h("slot", { key: '2d50838ab90133ad17900a1b7444f7c3cbf250d5' }))));
     }
     static get watchers() { return {
         "isOpen": [{

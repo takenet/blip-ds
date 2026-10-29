@@ -37,7 +37,7 @@ const UaiPageHeader = class {
         if (level !== 'primary' && level !== 'secondary') {
             level = 'primary';
         }
-        return (h("header", { key: '22bbca7ccd9ba829be1db89e3194023b00cac5de', class: "header" }, h("div", { key: '6fd8bdd1f4ad7bc17ce616833059100f72ea518b', class: "header__main" }, level === 'primary' ? (h("uai-typo", { class: "header__title", tag: "h1", variant: "title-md", bold: "semibold", margin: false }, this.title)) : (h("uai-breadcrumb", { items: this.items, wrapItems: this.wrapItems, editable: this.editable, language: this.language, labels: this.labels, currentHeadingLevel: 1 }))), h("div", { key: '6f1beaedac3f7af5a12c497491352049ae317d44', class: "header__actions" }, h("slot", { key: '12d6122f0341eb7e47195fdf5dd08da2fecc29d7', name: "actions" }))));
+        return (h("header", { key: 'dbe6f35b31fe5f5db1fa4d2b2b1e20bbbaff5be9', class: "header" }, h("div", { key: 'c6f248a8fad36ff8eebef6a7f0666b9cf7aa9571', class: "header__main" }, level === 'primary' ? (h("uai-typo", { class: "header__title", tag: "h1", variant: "title-md", bold: "semibold", margin: false }, this.title)) : (h("uai-breadcrumb", { items: this.items, wrapItems: this.wrapItems, editable: this.editable, language: this.language, labels: this.labels, currentHeadingLevel: 1 }))), h("div", { key: '8b91396c36166ca6c0745ec5fbd2152c2e3c6b45', class: "header__actions" }, h("slot", { key: '3cfe2a33763cbadaf8df92e6f8a786cc63cb823e', name: "actions" }))));
     }
 };
 UaiPageHeader.style = uaiPageHeaderCss();

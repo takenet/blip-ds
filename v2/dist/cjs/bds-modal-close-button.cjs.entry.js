@@ -13,10 +13,10 @@ const BdsModalCloseButton = class {
         this.active = true;
     }
     render() {
-        return (index.h("div", { key: '4eb7551a92a39ce3af4d3311aea7d6efffc7574e', class: {
+        return (index.h("div", { key: 'eafae665342dd3be0a25557b59a34ace833ed939', class: {
                 'modal__close__button-icon': true,
                 'modal__close__button-icon--active': this.active,
-            } }, index.h("bds-icon", { key: 'e33e6ea167dc724834cb39bbdad4829e98d89551', size: "medium", name: "close" })));
+            } }, index.h("bds-icon", { key: 'a12e5413ba67d14950ed8308a10555bcfe70a46d', size: "medium", name: "close" })));
     }
 };
 BdsModalCloseButton.style = modalCloseButtonCss();

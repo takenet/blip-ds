@@ -45,12 +45,12 @@ const UaiPaper = class {
         this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
     }
     render() {
-        return (index.h(index.Host, { key: '64759aaafca524f34e93f32e7627259c46a588b7', class: {
+        return (index.h(index.Host, { key: 'b0be8627c509c3ac053d2563602baeb407f17184', class: {
                 [`paper__elevation--${this.elevation}`]: this.hasBorder,
                 border: this.border,
                 [`bg-${this.bgColor}`]: true,
                 [`border-${this.borderColor}`]: true,
-            }, style: { height: `${this.height}`, width: `${this.width}` } }, index.h("div", { key: '5c1366c979decdc512f656156219e5384f065b5e', class: "paper__display", "data-test": this.dataTest }, index.h("slot", { key: '98b517464a951db8e426879dbe8533c449974888' }))));
+            }, style: { height: `${this.height}`, width: `${this.width}` } }, index.h("div", { key: '681b3dc49aa90a99c2c97dea05fd1eb0f9426a7f', class: "paper__display", "data-test": this.dataTest }, index.h("slot", { key: 'eaf872ccfc4a51054cc0a5d4fcb7333598e88bc9' }))));
     }
     static get watchers() { return {
         "border": [{

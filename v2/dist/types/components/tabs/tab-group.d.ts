@@ -1,5 +1,8 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { Itens } from './tab-group-interface';
+/**
+ * @deprecated Use uai-tab-group. Consulte UAI/Tab Group para a migração de props e eventos.
+ */
 export declare class BdsTabGroup {
     private tabItensElement?;
     private tabItensSlideElement?;

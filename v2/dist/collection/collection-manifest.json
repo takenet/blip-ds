@@ -46,6 +46,7 @@
     "components/table/table-header-cell/table-header-cell.js",
     "components/tooltip/tooltip.js",
     "components/uai-avatar/uai-avatar.js",
+    "components/uai-badge/uai-badge.js",
     "components/uai-breadcrumb/uai-breadcrumb.js",
     "components/uai-button/uai-button.js",
     "components/uai-icon/uai-icon.js",
@@ -124,6 +125,8 @@
     "components/uai-paper/uai-paper.js",
     "components/uai-radio/uai-radio.js",
     "components/uai-radio-group/uai-radio-group.js",
+    "components/uai-tab-group/uai-tab-group.js",
+    "components/uai-tab-item/uai-tab-item.js",
     "components/uai-textarea/uai-textarea.js",
     "components/upload/bds-upload.js",
     "components/warning/warning.js"

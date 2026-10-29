@@ -1,4 +1,7 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use uai-tab-item com uai-tab-group. Consulte UAI/Tab Group para a migração.
+ */
 export class BdsTabItem {
     constructor() {
         /**
@@ -81,7 +84,7 @@ export class BdsTabItem {
         this.tabDisabled.emit({ item: this.numberElement, disable: this.disable });
     }
     render() {
-        return (h(Host, { key: '1ee2b5c1e71d695c89eae167eed8459a2c79e770', class: { [`is-open`]: this.disable === true ? false : this.open } }, h("div", { key: '208535033526361a731b13128b8cf439dac3696c', class: { tab_item: true }, "data-test": this.dataTest }, h("div", { key: 'e36be21044104220b3584c4792325960af95d39d', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, h("slot", { key: '05f482f7c584b9823981548e5bb7f45e027cc6e8' })))));
+        return (h(Host, { key: 'caec281cb531784f3089eaa3a6a4d283f7374b38', class: { [`is-open`]: this.disable === true ? false : this.open } }, h("div", { key: 'ab64d0cf1e63b0bc259095c0f3cd2e405862ed23', class: { tab_item: true }, "data-test": this.dataTest }, h("div", { key: '0bb67e9996dc06f001c922266aa9a6b62c91d974', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, h("slot", { key: 'e30d0274f08c682aabe153917c86f6d4be7db346' })))));
     }
     static get is() { return "bds-tab-item"; }
     static get encapsulation() { return "shadow"; }

@@ -1,7 +1,0 @@
-System.register(["./p-CLAYiqZ6.system.js"],(function(e){"use strict";var t,a;return{setters:[function(e){t=e.r;a=e.h}],execute:function(){var i=function(){return".menuseparation{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:0 16px}.menuseparation__small{margin:8px 0}.menuseparation__default{margin:12px 0}.menuseparation__large{margin:16px 0}.menuseparation .dividor-item{height:1px;width:100%;background-color:#d4d4d4}.menuseparation .title-item{margin-right:8px;margin-top:-4px;color:#6e7b91}"};var n=e("bds_menu_separation",/** @class */function(){function e(e){t(this,e);
-/**
-                     * Value. Used to insert a title to the divider.
-                     */this.value=null;
-/**
-                     * Size. Used to set the size of the divider.
-                     */this.size=null}e.prototype.render=function(){var e;return a("div",{key:"6f6a31b68bdb405c752dd805ea9ad800119ea813",class:(e={menuseparation:true},e["menuseparation__".concat(this.size)]=true,e)},this.value&&a("bds-typo",{key:"71f8987699b40de9347beebda9fa3c04e3cf68bf",class:"title-item",variant:"fs-10",tag:"span"},this.value),a("div",{key:"1ea4d909438b752de7938961457826966f3ace33",class:"dividor-item"}))};return e}());n.style=i()}}}));

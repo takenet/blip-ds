@@ -116,10 +116,10 @@ const Checkbox = class {
     }
     render() {
         const styleState = this.getStyleState();
-        return (index.h("div", { key: '8119d7ba570a39674c2fda7c0400f0b21beb8b28', class: {
+        return (index.h("div", { key: '29fd33c644bb7234b413b379f4a52ec9fc26db76', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, index.h("input", { key: '7013484dedc4e61a55018c1437938382b3cd5ced', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), index.h("label", { key: '3caa92b8e660cb489c7421d50d9ab303f19249bb', class: "checkbox__label", htmlFor: this.checkBoxId }, index.h("div", { key: '69ed5adab7f35f5de9f2152e6c279bab093c4de9', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, index.h("bds-icon", { key: '6a67b1f310f564781d96ac28ff411cd9ab03103d', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (index.h("bds-typo", { key: '65f766e12e6727e8074cd404ac69901409dbb296', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, index.h("input", { key: 'ad310884c5a0b7afae2a7d604dee9d2fa41ffc7f', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), index.h("label", { key: '780627c47e38248a10af7bd151de89121cdc0e50', class: "checkbox__label", htmlFor: this.checkBoxId }, index.h("div", { key: '35bde6ab230eb5d518db144d58fa86716c2a45af', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, index.h("bds-icon", { key: '8bf31a65021f53912cc9cf72dba2968df3787a3e', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (index.h("bds-typo", { key: 'f98c74da6829b4646a3a9ed21e0e11c1a9fd356e', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
 };
 Checkbox.style = checkboxCss();

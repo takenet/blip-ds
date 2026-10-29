@@ -1,4 +1,7 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
+/**
+ * @deprecated Use uai-tab-item com uai-tab-group. Consulte UAI/Tab Group para a migração.
+ */
 export declare class BdsTabItem {
     /**
      * Use to set number of tabItem.

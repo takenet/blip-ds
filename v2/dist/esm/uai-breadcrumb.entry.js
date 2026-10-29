@@ -224,7 +224,7 @@ const UaiBreadcrumb = class {
     render() {
         const collapsed = this.wrapItems && this.parsedItems.length > 3;
         const last = this.parsedItems.length - 1;
-        return (h(Host, { key: 'e0fd848948ec88350f313efdc434b60d7ec9b77f' }, this.parsedItems.length === 0 ? (h("uai-typo", { class: "breadcrumb__empty", variant: "body-base", margin: false }, this.texts.empty)) : (h("nav", { "aria-label": this.texts.navigation }, h("ol", { class: "breadcrumb__list" }, collapsed
+        return (h(Host, { key: 'db88009aaec56f6051c927049235c3d181e01373' }, this.parsedItems.length === 0 ? (h("uai-typo", { class: "breadcrumb__empty", variant: "body-base", margin: false }, this.texts.empty)) : (h("nav", { "aria-label": this.texts.navigation }, h("ol", { class: "breadcrumb__list" }, collapsed
             ? [
                 this.renderItem(this.parsedItems[0], 0),
                 this.renderCollapsed(),

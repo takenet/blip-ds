@@ -16,7 +16,7 @@ export class BdsDivider {
     }
     render() {
         const orientationClass = `${this.orientation} ${this.styleType} color-${this.color} `;
-        return (h(Host, { key: '07725a8ae00ca5eda63ede24dacca4b456602b73', class: orientationClass }, h("hr", { key: '700a3e7766773072b5d56ddc00b8cd5f09b96983', class: `${this.orientation} ${this.styleType} color-${this.color}` })));
+        return (h(Host, { key: '995cbc88701728302e4e7be6297c14992d030d5b', class: orientationClass }, h("hr", { key: '78e47013d07bd6bad50637879c8eefd39e2910e7', class: `${this.orientation} ${this.styleType} color-${this.color}` })));
     }
     static get is() { return "bds-divider"; }
     static get encapsulation() { return "shadow"; }

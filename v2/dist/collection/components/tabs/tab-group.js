@@ -1,4 +1,7 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use uai-tab-group. Consulte UAI/Tab Group para a migração de props e eventos.
+ */
 export class BdsTabGroup {
     constructor() {
         this.tabItensElement = null;
@@ -160,7 +163,7 @@ export class BdsTabGroup {
         const openTab = (_a = this.internalItens) === null || _a === void 0 ? void 0 : _a.find(item => item.open);
         const headerStyle = (openTab === null || openTab === void 0 ? void 0 : openTab.headerStyle) ? this.parseInlineStyle(openTab.headerStyle) : {};
         const contentStyle = (openTab === null || openTab === void 0 ? void 0 : openTab.contentStyle) ? this.parseInlineStyle(openTab.contentStyle) : {};
-        return (h(Host, { key: 'b6129d2287360c2bdecd234a2a7bee5d7f4d6087' }, h("div", { key: 'accb655ff00555437100b4c7eac143eea63bef6a', class: { tab_group: true } }, this.isSlideTabs && this.alignTab != 'left' && (h("bds-button-icon", { key: '0668f2881b12136687cf3f8a734f69a45978b5f1', class: "tab_group__slide-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.prevSlide(), dataTest: this.dtButtonPrev, variant: "secondary" })), h("div", { key: 'e74e2347f58f5f29f6a76c66a54a1329ccc966b5', class: { tab_group__header: true, tab_group__slide: this.isSlideTabs }, ref: this.refHeaderElement, style: headerStyle }, h("div", { key: '3956867b4a0dbfdac6209d93d509b98988a5aec5', class: {
+        return (h(Host, { key: '76342e247991f161346e0a1decc09779045a7fb2' }, h("div", { key: 'ad43d5afbc958e424d5b54b35260363c5a37563f', class: { tab_group: true } }, this.isSlideTabs && this.alignTab != 'left' && (h("bds-button-icon", { key: '411f608625617748939dab96853501bf63314c7a', class: "tab_group__slide-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.prevSlide(), dataTest: this.dtButtonPrev, variant: "secondary" })), h("div", { key: '793dcfaae5b3530af66c8c61ddf3ce77cf227181', class: { tab_group__header: true, tab_group__slide: this.isSlideTabs }, ref: this.refHeaderElement, style: headerStyle }, h("div", { key: '797f163390b7ed684145005272592e9b12c969bc', class: {
                 tab_group__header__itens: true,
                 tab_group__slide__itens: this.isSlideTabs,
                 [`tab_group__header__itens__${this.align}`]: !this.isSlideTabs,
@@ -183,7 +186,7 @@ export class BdsTabGroup {
                     : '', item.badgePosition === 'right' && item.badge
                     ? this.renderBadge(item.badgeShape, item.badgeColor, item.badgeIcon, item.badgeAnimation, item.badgeNumber)
                     : ''));
-            }))), this.isSlideTabs && this.alignTab != 'right' && (h("bds-button-icon", { key: '9ff71819a4d916dacf14d617bb9fe1d844104406', class: "tab_group__slide-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.nextSlide(), dataTest: this.dtButtonNext, variant: "secondary" })), h("div", { key: '210811d05e2969fa54e217a9758d8e18fd2820b9', class: { tab_group__content: true, tab_group__scrolled: this.contentScrollable }, style: contentStyle }, h("slot", { key: '2e2565f0894ec67bb912fa7a3b8f94a11eff2fd8' })))));
+            }))), this.isSlideTabs && this.alignTab != 'right' && (h("bds-button-icon", { key: '96d31d3a42b23c15d862b807711c6caebcd0eb5b', class: "tab_group__slide-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.nextSlide(), dataTest: this.dtButtonNext, variant: "secondary" })), h("div", { key: '23fe8459d3c1baae8ccd9ccbbcb78dcdd008f441', class: { tab_group__content: true, tab_group__scrolled: this.contentScrollable }, style: contentStyle }, h("slot", { key: 'd7445c2f1ef05d89e7e34457340fd3010ab56b3a' })))));
     }
     static get is() { return "bds-tab-group"; }
     static get encapsulation() { return "shadow"; }

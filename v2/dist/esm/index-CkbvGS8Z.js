@@ -439,6 +439,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-switch.entry.js').then(processMod, consoleError);
+                case 'uai-tab-item':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-tab-item.entry.js').then(processMod, consoleError);
                 case 'uai-textarea':
                     return import(
                       /* webpackMode: "lazy" */
@@ -475,6 +479,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-toast-container.entry.js').then(processMod, consoleError);
+                case 'uai-badge':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-badge.entry.js').then(processMod, consoleError);
                 case 'uai-breadcrumb':
                     return import(
                       /* webpackMode: "lazy" */
@@ -527,6 +535,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-input-phone.entry.js').then(processMod, consoleError);
+                case 'uai-tab-group':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-tab-group.entry.js').then(processMod, consoleError);
                 case 'bds-counter-text':
                     return import(
                       /* webpackMode: "lazy" */

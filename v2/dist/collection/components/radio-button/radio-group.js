@@ -30,7 +30,7 @@ export class RadioGroup {
         }
     }
     render() {
-        return (h(Host, { key: '6c9102b9e43dc22a0ceac9765b7ff437db5cace1' }, h("slot", { key: 'c427ab6f266d28f9edc726e8c6b0c575f342f99d' })));
+        return (h(Host, { key: '140cef822ee9b81f0ceaf492708335bea5114895' }, h("slot", { key: '6c571b36156127ed7e5a1664d0f630b662592cef' })));
     }
     static get is() { return "bds-radio-group"; }
     static get encapsulation() { return "scoped"; }
