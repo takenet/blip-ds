@@ -1,5 +1,6 @@
 import { Component, h, Host, Element, Prop, Watch, Event, EventEmitter, ComponentInterface } from '@stencil/core';
 
+/** @deprecated Use uai-radio-group for new work. */
 @Component({
   tag: 'bds-radio-group',
   scoped: true,

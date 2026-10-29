@@ -1,6 +1,7 @@
 import { Component, h, Prop, Event, EventEmitter, Watch, State, Method, Host } from '@stencil/core';
 
 let radioButtonIds = 0;
+/** @deprecated Use uai-radio for new work. */
 @Component({
   tag: 'bds-radio',
   styleUrl: 'radio.scss',

@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
+
 ## Properties
 
 | Property             | Attribute   | Description                                                                   | Type                              | Default      |

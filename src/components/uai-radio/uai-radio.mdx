@@ -1,0 +1,78 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiRadioStories from './uai-radio.stories';
+
+<Meta isTemplate />
+
+# Radio
+
+Permite escolher uma única opção. Use `uai-radio-group` para coordenar opções, navegação por teclado, nome acessível, validação e envio de formulários.
+
+<Canvas of={UaiRadioStories.Playground} />
+
+<Controls of={UaiRadioStories.Playground} />
+
+## Estados
+
+O halo de hover e foco por teclado entra com fade e expansão sutil e sai com fade e contração. As duas direções usam `duration-fast` e `easing-standard`; com `prefers-reduced-motion: reduce`, a mudança é imediata. O contorno de foco permanece independente da animação.
+
+<Canvas of={UaiRadioStories.States} />
+
+## Tamanhos
+
+`size` aceita `short`, `standard` (padrão) e `tall`: controles de 16, 20 e 24 px com tokens `sizing-sm`, `sizing-md` e `sizing-lg`. O ponto ocupa metade do controle; o halo acompanha o tamanho e a tipografia do rótulo permanece igual. Defina `size` em cada opção do grupo.
+
+<Canvas of={UaiRadioStories.Sizes} />
+
+## Grupo e formulário
+
+No grupo, defina `name` e o valor inicial em `uai-radio-group`; o grupo envia uma única entrada de formulário e os filhos não devem declarar `name`. Opções podem estar envolvidas por elementos de layout, como no template de formulário do DS. Fora do grupo, radios com o mesmo `name` e proprietário de formulário mantêm seleção exclusiva; use `uai-radio-group` quando precisar de nome acessível e navegação por setas.
+
+As setas para cima/baixo e esquerda/direita selecionam a próxima opção habilitada e percorrem o grupo em ciclo. Space seleciona a opção focada. O grupo mantém apenas uma opção na sequência de Tab.
+
+<Canvas of={UaiRadioStories.Group} />
+
+## API e eventos
+
+| Propriedade ou método | Descrição |
+| --- | --- |
+| `label` | Rótulo visível associado ao input nativo. |
+| `size` | `short`, `standard` (padrão) ou `tall`; extensão aditiva ao contrato BDS. |
+| `aria-label` | Nome acessível da opção quando não há conteúdo visível. |
+| `value`, `name` | Valor e nome enviados quando selecionado fora do grupo. |
+| `checked`, `disabled` | Estado e disponibilidade da opção. |
+| `getInputElement()`, `getValue()`, `setFocus()` | Acesso ao input, leitura do estado e foco. |
+| `uaiChange` | Emitido quando a propriedade `checked` muda; `detail` contém `{ checked }`. |
+| `uaiClickChange` | Emitido uma vez por ativação, inclusive ao clicar na opção já selecionada; `detail` contém `{ checked }`. |
+
+### `uai-radio-group`
+
+O grupo aceita `value`, `name`, `required`, `requiredErrorMessage`, `disabled`, `aria-label` e `aria-labelledby`. `uaiRadioGroupChange` emite `{ value }` quando a seleção muda. O grupo exige nome acessível e avisa no console quando `aria-label` e `aria-labelledby` estão ausentes.
+
+`required` bloqueia o envio sem seleção e `requiredErrorMessage` define a mensagem nativa. Reset restaura o valor inicial; o grupo também acompanha `fieldset disabled`.
+
+## Acessibilidade
+
+- Use um nome acessível para o grupo e um rótulo para cada opção.
+- O grupo expõe `role="radiogroup"` e cada opção usa um input radio nativo.
+- A navegação por setas ignora opções desabilitadas; Tab entra no grupo pela opção selecionada ou pela primeira habilitada.
+- A aparência preserva os indicadores do sistema em modo de cores forçadas.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Controle e rótulo | `sizing-sm`, `sizing-md`, `sizing-lg`, metade do controle para o ponto, `control-height-short`, `spacing-xs`, `body-base`, `font-weight-regular` |
+| Forma e borda | `border-width-default`, `border-width-thick`, `border-input`, `border-ring` |
+| Seleção e hover | `action-primary-default`, `overlay-hover` |
+| Desabilitado | `content-disabled`, `surface-paper` |
+| Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
+
+## Migração do `bds-radio` e `bds-radio-group`
+
+Use `uai-radio` e `uai-radio-group` em novos desenvolvimentos. As propriedades `label`, `value`, `name`, `checked`, `disabled`, `dataTest`, `getInputElement()` e `getValue()` continuam disponíveis. Os eventos passam de `bdsChange`, `bdsClickChange` e `bdsRadioGroupChange` para `uaiChange`, `uaiClickChange` e `uaiRadioGroupChange`. O grupo UAI coordena formulário, navegação por teclado e acessibilidade.
+
+O UAI mantém um único ponto de foco nativo e corrige a emissão duplicada do evento por teclado no Radio BDS: cada ativação emite apenas um `uaiClickChange`. Radios standalone com mesmo nome e formulário passam a coordenar a seleção exclusiva entre shadow roots. O grupo ignora opções de grupos aninhados e limpa valores sem opção habilitada correspondente.
+
+## Design
+
+[Radio no Figma (DS Intelligence)](https://www.figma.com/design/J9sL59g1hQEPBhTqy8F644/-DS--Blip-Inteligence?node-id=3261-7479)

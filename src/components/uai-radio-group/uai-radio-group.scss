@@ -1,0 +1,28 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+}
+
+:host([aria-disabled='true']) {
+  cursor: not-allowed;
+}
+
+.validation-proxy {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (forced-colors: active) {
+  :host(:focus-within) {
+    outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid CanvasText;
+  }
+}

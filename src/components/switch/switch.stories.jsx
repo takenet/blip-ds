@@ -3,7 +3,7 @@ import DocumentationTemplate from './switch.mdx';
 import { BdsSwitch } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Switch',
+  title: 'Components/[deprecated] Switch',
   parameters: {
     docs: {
       page: DocumentationTemplate,
