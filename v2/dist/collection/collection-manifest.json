@@ -47,6 +47,7 @@
     "components/tooltip/tooltip.js",
     "components/uai-avatar/uai-avatar.js",
     "components/uai-badge/uai-badge.js",
+    "components/uai-banner/uai-banner.js",
     "components/uai-breadcrumb/uai-breadcrumb.js",
     "components/uai-button/uai-button.js",
     "components/uai-icon/uai-icon.js",

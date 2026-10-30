@@ -391,6 +391,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-warning.entry.js').then(processMod, consoleError);
+                case 'uai-banner':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-banner.entry.js').then(processMod, consoleError);
                 case 'uai-checkbox':
                     return import(
                       /* webpackMode: "lazy" */

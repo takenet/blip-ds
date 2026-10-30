@@ -4,6 +4,9 @@ export type BannerAlign = 'left' | 'right' | 'center';
 export type ButtonClose = 'true' | 'false';
 export type Link = 'true' | 'false';
 export type Context = 'inside' | 'outside';
+/**
+ * @deprecated Use uai-banner with UaiThemeProvider for tokenized styling and accessible roles.
+ */
 export declare class Banner implements ComponentInterface {
     el: HTMLBdsBannerElement;
     visible: boolean;

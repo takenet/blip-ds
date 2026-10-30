@@ -32,7 +32,7 @@ const RadioGroup = class {
         }
     }
     render() {
-        return (h(Host, { key: 'b6eb895371cbefddbc47aaa58dae151f4d6f9683' }, h("slot", { key: '4ff649e2fe5771d2066eb59929a47417a33a2b60' })));
+        return (h(Host, { key: 'bf592d7db50feca1f864de8f4e206f40f296466f' }, h("slot", { key: '0158b944f4b4364965df77cb7e3b732fd5221304' })));
     }
     get element() { return getElement(this); }
     static get watchers() { return {

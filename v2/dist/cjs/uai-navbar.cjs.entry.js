@@ -17,12 +17,12 @@ const UaiNavbar = class {
         this.dataTest = null;
     }
     render() {
-        return (index.h(index.Host, { key: 'ff0fee1b31a792a73df26d234c4530443394e776', class: { [`${this.orientation}`]: true } }, index.h("div", { key: '61b47408526b60e518ac85e80e5bdafd2b0555ab', class: {
+        return (index.h(index.Host, { key: 'b21ba095925e5f2e1ab15c36a858b85c89e84ea1', class: { [`${this.orientation}`]: true } }, index.h("div", { key: '2a97b102c8fa02536a7fc3f78079f631415d4cea', class: {
                 navbar: true,
                 [`navbar__justify-content__${this.justifyContent}`]: true,
                 [`navbar__orientation__${this.orientation}`]: true,
                 [`navbar__background-color__${this.backgroundColor}`]: true,
-            }, "data-test": this.dataTest }, index.h("slot", { key: 'f04abcc4e5d8aa63bb1018dd1c5996439ed9cb94' }))));
+            }, "data-test": this.dataTest }, index.h("slot", { key: '0af17f81bad533aa3aa0799d78fff01bd92e3c9e' }))));
     }
     get hostElement() { return index.getElement(this); }
 };

@@ -16,7 +16,7 @@ const TableBody = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '3ba841aa3bb1256057068d488f40c616976433af', class: { host: true, multiple: this.multipleRows } }, index.h("slot", { key: '625395a2a111d3175b77a36ea78c3f7803ddf77d' })));
+        return (index.h(index.Host, { key: 'e99e1c8f890579b66685381a30eaa0a0ca26db73', class: { host: true, multiple: this.multipleRows } }, index.h("slot", { key: '88dc9fda65c1e610dbfecbbc854831f5b5c16f39' })));
     }
     get element() { return index.getElement(this); }
 };

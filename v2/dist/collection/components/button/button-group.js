@@ -112,7 +112,7 @@ export class ButtonGroup {
         button.setColor(this.color);
     }
     render() {
-        return (h(Host, { key: '8697b8571555ed9a0df57c48c0f0b8c8ea6f4554', class: "button_group" }, h("bds-grid", { key: '754ec800f7b354560f8e0704a313a4402931aeae', direction: this.direction }, h("slot", { key: '269dcb5fcb33dfe1a8bf86da404764207f6ddcff' }))));
+        return (h(Host, { key: '625b0880bb23b9872732db1b7a6120d1de6dcf05', class: "button_group" }, h("bds-grid", { key: 'b5662e5a5446c9ef7fa548eee3e094b8c1297c39', direction: this.direction }, h("slot", { key: 'f54cba72d9ab0dedb59769188cac4a7e9a7db74a' }))));
     }
     static get is() { return "bds-button-group"; }
     static get encapsulation() { return "shadow"; }

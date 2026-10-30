@@ -10,7 +10,7 @@ const MenuListItem = class {
     }
     render() {
         const color = this.color || 'currentColor';
-        return (index.h(index.Host, { key: 'b52d026f5f4d77e9a0644d3122c4d166b08bee11', role: "button" }, index.h("div", { key: '3e11c2f1dcfd951a1d79c0a17ffec4e8a01db086', class: "menu-list-item" }, index.h("bds-icon", { key: '0bd6394932211164856e41882bf224b008557fea', color: color, name: this.icon }), index.h("bds-typo", { key: 'faaaeec58b70bd0683fa8c50b1fdd0f617b812f1', class: "menu-list-item__text", variant: "fs-10" }, index.h("slot", { key: 'a86dd2d13e6c838c0c23f35cdfa3c627e58144e4' })))));
+        return (index.h(index.Host, { key: 'bfba6d0a27ae3d377d219915a42635a0a6dec4dd', role: "button" }, index.h("div", { key: 'a4dc63537aea408326ea57155571fb467b478758', class: "menu-list-item" }, index.h("bds-icon", { key: '0bcaca5157f068e4a607d617b09534b66bc109f9', color: color, name: this.icon }), index.h("bds-typo", { key: 'fb9f3ac1f23c6b7c35e894eb89aac65355108a8f', class: "menu-list-item__text", variant: "fs-10" }, index.h("slot", { key: '9c549e4430fc662f571fad9e71ebb434399e1404' })))));
     }
 };
 MenuListItem.style = menuListItemCss();

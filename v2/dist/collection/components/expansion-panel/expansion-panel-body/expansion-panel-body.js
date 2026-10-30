@@ -5,7 +5,7 @@ export class ExpansionPanelBody {
         this.text = null;
     }
     render() {
-        return (h(Host, { key: '3baaa89579f2e848c9f37dc151e094e2ad4d783f' }, h("div", { key: '24e9c5b59c640c618815c8897a49c14de308ef0c', class: "expansion-content", hidden: this.open }, h("div", { key: '378415e3739760fc9ce13f97f56b024da003dac3', class: "with-line" }, h("slot", { key: '9fe3f3b523213988099c734b0455649f409f4acc' }), this.text ? (h("div", { class: "text" }, h("p", null, this.text))) : (h("div", { class: "circle" }))))));
+        return (h(Host, { key: '7c2b442bb5a692446e41c1568dcaf9c58c18efed' }, h("div", { key: 'e8598f074955f4da3295025cc7c1c79d579ba120', class: "expansion-content", hidden: this.open }, h("div", { key: '044872fc74d845d6a68c234b6cf15c9d877bc2ec', class: "with-line" }, h("slot", { key: '251c1ffce0938ac1d6e82996d2bc0afe987087bf' }), this.text ? (h("div", { class: "text" }, h("p", null, this.text))) : (h("div", { class: "circle" }))))));
     }
     static get is() { return "bds-expansion-panel-body"; }
     static get encapsulation() { return "shadow"; }

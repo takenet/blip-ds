@@ -9,7 +9,7 @@ const UaiNavbarContent = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '217c36ff695197870327cff26298a2aad680cf26', class: { NavbarContent: true } }, index.h("slot", { key: '9cedf65370a95e01666ca9ce0c388f12fecc53b9' })));
+        return (index.h(index.Host, { key: '750a0e962220a90e2ed7599e3c1ed2d6e24e573c', class: { NavbarContent: true } }, index.h("slot", { key: '16351fa0319cbf4000843063f41dacd3bfc6cd0b' })));
     }
     get hostElement() { return index.getElement(this); }
 };
