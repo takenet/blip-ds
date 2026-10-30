@@ -1,0 +1,1 @@
+import{S as p,d as o}from"./p-CYpdSp4c.js";const s=p,r=o;export{s as BdsSelectOption,r as defineCustomElement}

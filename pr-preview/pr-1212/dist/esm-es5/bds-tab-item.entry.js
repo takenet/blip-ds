@@ -1,0 +1,55 @@
+var __awaiter=this&&this.__awaiter||function(t,e,n,i){function s(t){return t instanceof n?t:new n((function(e){e(t)}))}return new(n||(n=Promise))((function(n,a){function r(t){try{o(i.next(t))}catch(t){a(t)}}function c(t){try{o(i["throw"](t))}catch(t){a(t)}}function o(t){t.done?n(t.value):s(t.value).then(r,c)}o((i=i.apply(t,e||[])).next())}))};var __generator=this&&this.__generator||function(t,e){var n={label:0,sent:function(){if(a[0]&1)throw a[1];return a[1]},trys:[],ops:[]},i,s,a,r=Object.create((typeof Iterator==="function"?Iterator:Object).prototype);return r.next=c(0),r["throw"]=c(1),r["return"]=c(2),typeof Symbol==="function"&&(r[Symbol.iterator]=function(){return this}),r;function c(t){return function(e){return o([t,e])}}function o(c){if(i)throw new TypeError("Generator is already executing.");while(r&&(r=0,c[0]&&(n=0)),n)try{if(i=1,s&&(a=c[0]&2?s["return"]:c[0]?s["throw"]||((a=s["return"])&&a.call(s),0):s.next)&&!(a=a.call(s,c[1])).done)return a;if(s=0,a)c=[c[0]&2,a.value];switch(c[0]){case 0:case 1:a=c;break;case 4:n.label++;return{value:c[1],done:false};case 5:n.label++;s=c[1];c=[0];continue;case 7:c=n.ops.pop();n.trys.pop();continue;default:if(!(a=n.trys,a=a.length>0&&a[a.length-1])&&(c[0]===6||c[0]===2)){n=0;continue}if(c[0]===3&&(!a||c[1]>a[0]&&c[1]<a[3])){n.label=c[1];break}if(c[0]===6&&n.label<a[1]){n.label=a[1];a=c;break}if(a&&n.label<a[2]){n.label=a[2];n.ops.push(c);break}if(a[2])n.ops.pop();n.trys.pop();continue}c=e.call(t,n)}catch(t){c=[6,t];s=0}finally{i=a=0}if(c[0]&5)throw c[1];return{value:c[0]?c[1]:void 0,done:true}}};import{r as registerInstance,c as createEvent,h,H as Host}from"./index-CkbvGS8Z.js";var tabItemCss=function(){return":host{display:none}:host(.is-open){display:block;height:100%}.tab_item{height:100%}.tab_item_content{display:none;height:100%}.tab_item_content--open{display:block}"};var BdsTabItem=/** @class */function(){function t(t){registerInstance(this,t);this.tabDisabled=createEvent(this,"tabDisabled");
+/**
+         * Use to set number of tabItem.
+         */this.numberElement=null;
+/**
+         * The text to be shown at the Tab item.
+         */this.label=null;
+/**
+         * The icon to be shown at the Tab item.
+         */this.icon=null;
+/**
+         * The position of the icon at the Tab item ('left', 'right').
+         */this.iconPosition="left";
+/**
+         * The theme of the icon at the Tab item ('solid', 'outline', 'emoji', 'logos').
+         */this.iconTheme="outline";
+/**
+         * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */this.badge=false;
+/**
+         * The shape of the badge to be shown at the Tab item ('circle', 'square', 'triangle', 'triangle-reverse', 'polygon').
+         */this.badgeShape="circle";
+/**
+         * The color of the badge to be shown at the Tab item.
+         */this.badgeColor="system";
+/**
+         * The icon to be shown inside the badge at the Tab item ('system', 'danger', 'warning', 'success', 'neutral')
+         */this.badgeIcon=null;
+/**
+         * The animation of the badge to be shown at the Tab item.
+         */this.badgeAnimation=false;
+/**
+         * The animation of the badge to be shown at the Tab item.
+         */this.badgePosition="left";
+/**
+         * The number to be shown inside the badge at the Tab item.
+         */this.badgeNumber=null;
+/**
+         * Prop for disable the especific tab.
+         */this.disable=false;
+/**
+         * Prop to indicate an error state for the tab.
+         */this.error=false;
+/**
+         * Inline styles to be applied to the tab group header element.
+         */this.headerStyle=null;
+/**
+         * Inline styles to be applied to the tab group content element.
+         */this.contentStyle=null;
+/**
+         * Used to open/close the Tab item.
+         */this.open=false;
+/**
+         * Data test is the prop to specifically test the component action object.
+         */this.dataTest=null}t.prototype.reciveNumber=function(t){return __awaiter(this,void 0,void 0,(function(){return __generator(this,(function(e){this.numberElement=t;return[2/*return*/]}))}))};t.prototype.disableChanged=function(){this.tabDisabled.emit({item:this.numberElement,disable:this.disable})};t.prototype.render=function(){var t,e;return h(Host,{key:"eaed3b610d8f46b5bf7d6ceab0e45889ffa55ff1",class:(t={},t["is-open"]=this.disable===true?false:this.open,t)},h("div",{key:"066c32b0a2c26ce85856be44d21593d915b78581",class:{tab_item:true},"data-test":this.dataTest},h("div",{key:"29c3d2586252586de451d1a759299d715ef5d330",class:(e={tab_item_content:true},e["tab_item_content--open"]=this.open,e)},h("slot",{key:"4a57ada68ca5e5ed8b8d0169dc23a8b8fb59d92c"}))))};Object.defineProperty(t,"watchers",{get:function(){return{disable:[{disableChanged:0}]}},enumerable:false,configurable:true});return t}();BdsTabItem.style=tabItemCss();export{BdsTabItem as bds_tab_item};
