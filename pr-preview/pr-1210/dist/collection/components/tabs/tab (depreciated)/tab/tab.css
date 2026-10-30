@@ -1,0 +1,69 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+.bds-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  min-width: fit-content;
+  max-width: 270px;
+  height: 46px;
+  max-height: 48px;
+  cursor: pointer;
+  text-align: center;
+  color: var(--color-content-disable, rgb(89, 89, 89));
+  border-bottom: 2px solid transparent;
+}
+.bds-tab:not(:last-child) {
+  margin-right: 32px;
+}
+.bds-tab:hover {
+  color: var(--color-content-default, rgb(40, 40, 40));
+}
+.bds-tab--selected {
+  animation-name: selectFade;
+  animation-duration: 0.75s;
+  animation-fill-mode: forwards;
+}
+.bds-tab__text {
+  min-width: 90px;
+  max-width: 270px;
+}
+@keyframes selectFade {
+  from {
+    border-bottom: 2px solid transparent;
+    color: var(--color-content-default, rgb(40, 40, 40));
+  }
+  to {
+    border-bottom: 2px solid var(--color-brand, rgb(0, 150, 250));
+    color: var(--color-content-default, rgb(40, 40, 40));
+  }
+}
+
+@media (max-width: 599px) {
+  .bds-tab {
+    min-width: 110px;
+    text-overflow: ellipsis;
+  }
+}

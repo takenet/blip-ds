@@ -1,0 +1,1 @@
+import{r,h as a,H as e}from"./p-CkbvGS8Z.js";const b=class{constructor(a){r(this,a)}render(){return a(e,{key:"ba34df2bc454317c8a29badaf4818143cae53f33"},a("slot",{key:"9b46751927984075ced46acb0f39f9f736c27cf0"}))}};b.style=".sc-bds-table-header-h{display:table-header-group;border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}";export{b as bds_table_header}

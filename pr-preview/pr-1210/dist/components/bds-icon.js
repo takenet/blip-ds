@@ -1,0 +1,1 @@
+import{I as o,d as s}from"./p-DQuanvz_.js";const a=o,p=s;export{a as BdsIcon,p as defineCustomElement}

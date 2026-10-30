@@ -1,0 +1,1 @@
+import{S as r,d as o}from"./p-CrIRrCET.js";const s=r,p=o;export{s as BdsSelectOption,p as defineCustomElement}

@@ -1,0 +1,1 @@
+import{U as o,d as r}from"./p-MnlMriao.js";const s=o,a=r;export{s as UaiBreadcrumb,a as defineCustomElement}
