@@ -198,9 +198,9 @@ export const WAVE_3: ComponentEntry[] = [
   },
   {
     tag: 'bds-tooltip',
-    name: 'Tooltip',
-    primaryStory: 'components-tooltip--properties',
-    stories: [{ storyId: 'components-tooltip--properties', label: 'Properties' }],
+    name: '[deprecated] Tooltip',
+    primaryStory: 'components-deprecated-tooltip--properties',
+    stories: [{ storyId: 'components-deprecated-tooltip--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-skeleton',

@@ -130,6 +130,7 @@ import { UaiTabGroup as UaiTabGroupElement } from "blip-ds/dist/components/uai-t
 import { UaiTabItem as UaiTabItemElement } from "blip-ds/dist/components/uai-tab-item.js";
 import { UaiTextarea as UaiTextareaElement } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement } from "blip-ds/dist/components/uai-theme-provider.js";
+import { UaiTooltip as UaiTooltipElement } from "blip-ds/dist/components/uai-tooltip.js";
 import { UaiTypo as UaiTypoElement } from "blip-ds/dist/components/uai-typo.js";
 export type BdsAccordionEvents = {
     onBdsToggle: EventName<BdsAccordionCustomEvent<{
@@ -814,5 +815,7 @@ export type UaiTextareaEvents = {
 export declare const UaiTextarea: StencilReactComponent<UaiTextareaElement, UaiTextareaEvents, Components.UaiTextarea>;
 export type UaiThemeProviderEvents = NonNullable<unknown>;
 export declare const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, UaiThemeProviderEvents, Components.UaiThemeProvider>;
+export type UaiTooltipEvents = NonNullable<unknown>;
+export declare const UaiTooltip: StencilReactComponent<UaiTooltipElement, UaiTooltipEvents, Components.UaiTooltip>;
 export type UaiTypoEvents = NonNullable<unknown>;
 export declare const UaiTypo: StencilReactComponent<UaiTypoElement, UaiTypoEvents, Components.UaiTypo>;

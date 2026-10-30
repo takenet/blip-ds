@@ -142,6 +142,7 @@ import { UaiTabGroup as UaiTabGroupElement, defineCustomElement as defineUaiTabG
 import { UaiTabItem as UaiTabItemElement, defineCustomElement as defineUaiTabItem } from "blip-ds/dist/components/uai-tab-item.js";
 import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
+import { UaiTooltip as UaiTooltipElement, defineCustomElement as defineUaiTooltip } from "blip-ds/dist/components/uai-tooltip.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
 
 export type BdsAccordionEvents = {
@@ -1935,6 +1936,17 @@ export const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, Ua
     react: React,
     events: {} as UaiThemeProviderEvents,
     defineCustomElement: defineUaiThemeProvider
+});
+
+export type UaiTooltipEvents = NonNullable<unknown>;
+
+export const UaiTooltip: StencilReactComponent<UaiTooltipElement, UaiTooltipEvents, Components.UaiTooltip> = /*@__PURE__*/ createComponent<UaiTooltipElement, UaiTooltipEvents, Components.UaiTooltip>({
+    tagName: 'uai-tooltip',
+    elementClass: UaiTooltipElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiTooltipEvents,
+    defineCustomElement: defineUaiTooltip
 });
 
 export type UaiTypoEvents = NonNullable<unknown>;

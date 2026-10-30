@@ -3,7 +3,7 @@ import DocumentationTemplate from './tooltip.mdx';
 import { BdsGrid, BdsIcon, BdsTooltip } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Tooltip',
+  title: 'Components/[deprecated] Tooltip',
   parameters: {
     docs: {
       page: DocumentationTemplate,

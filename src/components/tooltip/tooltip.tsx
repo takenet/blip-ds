@@ -14,6 +14,9 @@ export type TooltipPostionType =
   | 'right-top'
   | 'right-bottom';
 
+/**
+ * @deprecated Use uai-tooltip with UaiThemeProvider for tokenized styling and keyboard focus support.
+ */
 @Component({
   tag: 'bds-tooltip',
   styleUrl: 'tooltip.scss',
