@@ -1,1 +1,0 @@
-import{G as o,d as s}from"./p-BXNWaiLC.js";const a=o,p=s;export{a as BdsGrid,p as defineCustomElement}
