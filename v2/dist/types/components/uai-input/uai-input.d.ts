@@ -25,7 +25,11 @@ export declare class UaiInput {
     private nativeInput?;
     private formControl?;
     private defaultValue;
-    private readonly id;
+    /**
+     * Not `id`: that is the native element property, and in the custom elements build the component class is the
+     * element, so assigning it in the constructor writes an `id` attribute and `document.createElement` throws.
+     */
+    private readonly inputId;
     /**
      * Name of the value in the submitted form data. Without name (or inputName), the field is not submitted.
      */
