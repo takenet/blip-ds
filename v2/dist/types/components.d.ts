@@ -95,6 +95,7 @@ import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem 
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
+import { UaiTooltipPositionType } from "./components/uai-tooltip/uai-tooltip";
 import { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export { collapses } from "./components/accordion/accordion-group";
 export { AlertHeaderVariannt } from "./components/alert/alert-header/alert-header";
@@ -186,6 +187,7 @@ export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem 
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
+export { UaiTooltipPositionType } from "./components/uai-tooltip/uai-tooltip";
 export { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export namespace Components {
     interface BdsAccordion {
@@ -3578,6 +3580,9 @@ export namespace Components {
     }
     interface BdsToastContainer {
     }
+    /**
+     * @deprecated Use uai-tooltip with UaiThemeProvider for tokenized styling and keyboard focus support.
+     */
     interface BdsTooltip {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -5846,6 +5851,45 @@ export namespace Components {
         "theme"?: UaiTheme;
     }
     /**
+     * Short supplementary text shown on hover or keyboard focus of the wrapped element.
+     * Use for brief hints; pair with UaiThemeProvider; avoid essential information or interactive content.
+     */
+    interface UaiTooltip {
+        /**
+          * Test selector on the trigger wrapper. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Prevents the tooltip from showing. Use when the wrapped element is unavailable; pair with explanatory text elsewhere.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Hides the tooltip. Use for imperative control; pair with visible. Avoid leaving it open after the task ends.
+         */
+        "invisible": () => Promise<void>;
+        /**
+          * Maximum tooltip width as a CSS length. Defaults to the width/tooltip token; use for long text; avoid widths narrower than the content needs.
+          * @default null
+         */
+        "maxWidth"?: string;
+        /**
+          * Placement relative to the wrapped element. Use the side with free space; avoid covering related content.
+          * @default 'left-center'
+         */
+        "position": UaiTooltipPositionType;
+        /**
+          * Tooltip text; <br> breaks the line. Use short hints; pair with the wrapped element; avoid essential information.
+          * @default 'Tooltip'
+         */
+        "tooltipText": string;
+        /**
+          * Shows the tooltip. Use for imperative control; pair with invisible. Avoid calling it while disabled.
+         */
+        "visible": () => Promise<void>;
+    }
+    /**
      * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
      * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
      */
@@ -7468,6 +7512,9 @@ declare global {
         prototype: HTMLBdsToastContainerElement;
         new (): HTMLBdsToastContainerElement;
     };
+    /**
+     * @deprecated Use uai-tooltip with UaiThemeProvider for tokenized styling and keyboard focus support.
+     */
     interface HTMLBdsTooltipElement extends Components.BdsTooltip, HTMLStencilElement {
     }
     var HTMLBdsTooltipElement: {
@@ -7988,6 +8035,16 @@ declare global {
         new (): HTMLUaiThemeProviderElement;
     };
     /**
+     * Short supplementary text shown on hover or keyboard focus of the wrapped element.
+     * Use for brief hints; pair with UaiThemeProvider; avoid essential information or interactive content.
+     */
+    interface HTMLUaiTooltipElement extends Components.UaiTooltip, HTMLStencilElement {
+    }
+    var HTMLUaiTooltipElement: {
+        prototype: HTMLUaiTooltipElement;
+        new (): HTMLUaiTooltipElement;
+    };
+    /**
      * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
      * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
      */
@@ -8127,6 +8184,7 @@ declare global {
         "uai-tab-item": HTMLUaiTabItemElement;
         "uai-textarea": HTMLUaiTextareaElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
+        "uai-tooltip": HTMLUaiTooltipElement;
         "uai-typo": HTMLUaiTypoElement;
     }
 }
@@ -11811,6 +11869,9 @@ declare namespace LocalJSX {
     }
     interface BdsToastContainer {
     }
+    /**
+     * @deprecated Use uai-tooltip with UaiThemeProvider for tokenized styling and keyboard focus support.
+     */
     interface BdsTooltip {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -14135,6 +14196,37 @@ declare namespace LocalJSX {
         "theme"?: UaiTheme;
     }
     /**
+     * Short supplementary text shown on hover or keyboard focus of the wrapped element.
+     * Use for brief hints; pair with UaiThemeProvider; avoid essential information or interactive content.
+     */
+    interface UaiTooltip {
+        /**
+          * Test selector on the trigger wrapper. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Prevents the tooltip from showing. Use when the wrapped element is unavailable; pair with explanatory text elsewhere.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Maximum tooltip width as a CSS length. Defaults to the width/tooltip token; use for long text; avoid widths narrower than the content needs.
+          * @default null
+         */
+        "maxWidth"?: string;
+        /**
+          * Placement relative to the wrapped element. Use the side with free space; avoid covering related content.
+          * @default 'left-center'
+         */
+        "position"?: UaiTooltipPositionType;
+        /**
+          * Tooltip text; <br> breaks the line. Use short hints; pair with the wrapped element; avoid essential information.
+          * @default 'Tooltip'
+         */
+        "tooltipText"?: string;
+    }
+    /**
      * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
      * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
      */
@@ -15455,6 +15547,13 @@ declare namespace LocalJSX {
     interface UaiThemeProviderAttributes {
         "theme": UaiTheme;
     }
+    interface UaiTooltipAttributes {
+        "tooltipText": string;
+        "disabled": boolean;
+        "position": UaiTooltipPositionType;
+        "maxWidth": string;
+        "dataTest": string;
+    }
     interface UaiTypoAttributes {
         "variant": UaiTypoVariant;
         "bold": UaiTypoBold;
@@ -15598,6 +15697,7 @@ declare namespace LocalJSX {
         "uai-tab-item": Omit<UaiTabItem, keyof UaiTabItemAttributes> & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes]?: UaiTabItem[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `attr:${K}`]?: UaiTabItemAttributes[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `prop:${K}`]?: UaiTabItem[K] };
         "uai-textarea": Omit<UaiTextarea, keyof UaiTextareaAttributes> & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes]?: UaiTextarea[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `attr:${K}`]?: UaiTextareaAttributes[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `prop:${K}`]?: UaiTextarea[K] };
         "uai-theme-provider": Omit<UaiThemeProvider, keyof UaiThemeProviderAttributes> & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes]?: UaiThemeProvider[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `attr:${K}`]?: UaiThemeProviderAttributes[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `prop:${K}`]?: UaiThemeProvider[K] };
+        "uai-tooltip": Omit<UaiTooltip, keyof UaiTooltipAttributes> & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes]?: UaiTooltip[K] } & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes as `attr:${K}`]?: UaiTooltipAttributes[K] } & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes as `prop:${K}`]?: UaiTooltip[K] };
         "uai-typo": Omit<UaiTypo, keyof UaiTypoAttributes> & { [K in keyof UaiTypo & keyof UaiTypoAttributes]?: UaiTypo[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `attr:${K}`]?: UaiTypoAttributes[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `prop:${K}`]?: UaiTypo[K] };
     }
 }
@@ -15748,6 +15848,9 @@ declare module "@stencil/core" {
             "bds-theme-provider": LocalJSX.IntrinsicElements["bds-theme-provider"] & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;
             "bds-toast": LocalJSX.IntrinsicElements["bds-toast"] & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
             "bds-toast-container": LocalJSX.IntrinsicElements["bds-toast-container"] & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
+            /**
+             * @deprecated Use uai-tooltip with UaiThemeProvider for tokenized styling and keyboard focus support.
+             */
             "bds-tooltip": LocalJSX.IntrinsicElements["bds-tooltip"] & JSXBase.HTMLAttributes<HTMLBdsTooltipElement>;
             "bds-typo": LocalJSX.IntrinsicElements["bds-typo"] & JSXBase.HTMLAttributes<HTMLBdsTypoElement>;
             "bds-upload": LocalJSX.IntrinsicElements["bds-upload"] & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
@@ -15887,6 +15990,11 @@ declare module "@stencil/core" {
              * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
              */
             "uai-theme-provider": LocalJSX.IntrinsicElements["uai-theme-provider"] & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;
+            /**
+             * Short supplementary text shown on hover or keyboard focus of the wrapped element.
+             * Use for brief hints; pair with UaiThemeProvider; avoid essential information or interactive content.
+             */
+            "uai-tooltip": LocalJSX.IntrinsicElements["uai-tooltip"] & JSXBase.HTMLAttributes<HTMLUaiTooltipElement>;
             /**
              * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
              * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.

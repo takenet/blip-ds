@@ -76,7 +76,7 @@ const UaiTabItem = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: 'bb0ec9da678dfb6b6c07e41810b015dffdec1e44', class: { 'is-open': this.open && !this.disable }, hidden: !this.open || this.disable }, index.h("div", { key: '07e560e9b0893dc1c3c655361353144341d0c871', class: "uai-tab-item__content", "data-test": this.dataTest }, index.h("slot", { key: '4cba4deb2e7185d10c08d704fe139004992544f0' }))));
+        return (index.h(index.Host, { key: '45aaef1d92af83eb869cdf5d192617872822e08b', class: { 'is-open': this.open && !this.disable }, hidden: !this.open || this.disable }, index.h("div", { key: '691490aec0da31053bfc8dcd45fe09ad01821f9c', class: "uai-tab-item__content", "data-test": this.dataTest }, index.h("slot", { key: '55f9104f7d3915ebbf5e769546f90370942ed5de' }))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

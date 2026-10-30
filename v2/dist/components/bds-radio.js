@@ -1,1 +1,1 @@
-import{R as o,d as s}from"./p-BH8FQhgq.js";const p=o,r=s;export{p as BdsRadio,r as defineCustomElement}
+import{R as o,d as s}from"./p-B9Cvf_fM.js";const f=o,p=s;export{f as BdsRadio,p as defineCustomElement}

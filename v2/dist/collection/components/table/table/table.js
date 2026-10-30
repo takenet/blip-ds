@@ -1,7 +1,7 @@
 import { h, Host } from "@stencil/core";
 export class Table {
     render() {
-        return (h(Host, { key: '8663ab70520625def0dfac266097041e5aed85e6', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, h("div", { key: '466669e42d46434e57b56800fed286134cd0e9c3', class: "bds-table" }, h("slot", { key: 'd549a227708a406b30b76531bcaac47e4885f2d8' }))));
+        return (h(Host, { key: '335391e452ebc481926217d7dbbbe166bf743290', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, h("div", { key: '3155b4f14b8acb41d7ecdeb94e16e6b7ef21e337', class: "bds-table" }, h("slot", { key: '5d4b079f0c65be749a298fb5d3b6342c99a8d94f' }))));
     }
     static get is() { return "bds-table"; }
     static get encapsulation() { return "scoped"; }

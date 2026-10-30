@@ -9,7 +9,7 @@ const AlertBody = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h("div", { key: '42a725278676da0877658f460f666b542c567aa7', class: "alert__body" }, index.h("bds-typo", { key: '7707331ac3e75a37ebe376785bf607b6f0a34334', variant: "fs-14", bold: "regular", slot: "body" }, index.h("slot", { key: '839bced36600ebcf36a15e487da56ab4c9967463' }))));
+        return (index.h("div", { key: '307afe7132d915fc2d77f3a019d1cae19adfb841', class: "alert__body" }, index.h("bds-typo", { key: 'c63101671eb641c1e00745d38c5390be7d400c8b', variant: "fs-14", bold: "regular", slot: "body" }, index.h("slot", { key: '3701467c91988b68df69c01099389c1e57025b48' }))));
     }
 };
 AlertBody.style = alertBodyCss();

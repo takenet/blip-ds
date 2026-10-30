@@ -177,7 +177,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-textarea.entry.js").then(u,consoleError);case"uai-theme-provider":return import(
 /* webpackMode: "lazy" */
-"./uai-theme-provider.entry.js").then(u,consoleError);case"bds-badge":return import(
+"./uai-theme-provider.entry.js").then(u,consoleError);case"uai-tooltip":return import(
+/* webpackMode: "lazy" */
+"./uai-tooltip.entry.js").then(u,consoleError);case"bds-badge":return import(
 /* webpackMode: "lazy" */
 "./bds-badge.entry.js").then(u,consoleError);case"bds-chip-tag":return import(
 /* webpackMode: "lazy" */

@@ -1,1 +1,1 @@
-import{C as o,d as s}from"./p-CIeOPVJv.js";const p=o,r=s;export{p as BdsCounterText,r as defineCustomElement}
+import{C as m,d as o}from"./p-5inD0mVm.js";const s=m,p=o;export{s as BdsCounterText,p as defineCustomElement}

@@ -451,6 +451,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-theme-provider.entry.js').then(processMod, consoleError);
+                case 'uai-tooltip':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-tooltip.entry.js').then(processMod, consoleError);
                 case 'bds-badge':
                     return import(
                       /* webpackMode: "lazy" */

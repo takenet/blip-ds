@@ -7,7 +7,7 @@ const Warning = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: 'c46051adf48d837214adfc5fec87740c040bdb86' }, h("div", { key: '4a1388a0b499e0b93adbf13396c8e21f8e3d0a07', class: "warning__body" }, h("bds-icon", { key: '7d7569897f365c2f410e64d8ec97be584b25fbd8', class: "warning__icon", theme: "solid", size: "small", name: "warning" }), h("bds-typo", { key: '87aeb566aeaffe521141fa218e2d47499ff90254', variant: "fs-14", tag: "span", class: "warning__message" }, h("slot", { key: '6b2f1a65e166a69034b0fa85e9febecc55e9b521' })))));
+        return (h(Host, { key: '6bb75bb059f8376e73a4d98aa47f652ecce83d1b' }, h("div", { key: '3c17da7baa66c6fd089ebb1cff7f4057a1846983', class: "warning__body" }, h("bds-icon", { key: '52ac18bf0130c7fba6f29daf7e7c43adcae48007', class: "warning__icon", theme: "solid", size: "small", name: "warning" }), h("bds-typo", { key: 'e07a4c930c53cd728663b342955f6b4a8de63bb4', variant: "fs-14", tag: "span", class: "warning__message" }, h("slot", { key: '55ffabb602bb99821018258b7919fe3493573bfa' })))));
     }
 };
 Warning.style = warningCss();

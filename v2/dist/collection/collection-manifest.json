@@ -60,6 +60,7 @@
     "components/uai-page-header/uai-page-header.js",
     "components/uai-switch/uai-switch.js",
     "components/uai-theme-provider/uai-theme-provider.js",
+    "components/uai-tooltip/uai-tooltip.js",
     "components/uai-typo/uai-typo.js",
     "components/accordion/accordion-body.js",
     "components/accordion/accordion-header.js",

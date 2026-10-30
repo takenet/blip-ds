@@ -1,4 +1,7 @@
 export type TooltipPostionType = 'top-center' | 'top-left' | 'top-right' | 'left-center' | 'left-top' | 'left-bottom' | 'bottom-center' | 'bottom-right' | 'bottom-left' | 'right-center' | 'right-top' | 'right-bottom';
+/**
+ * @deprecated Use uai-tooltip with UaiThemeProvider for tokenized styling and keyboard focus support.
+ */
 export declare class Tooltip {
     /**
      * Used to set tooltip visibility
