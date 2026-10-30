@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/storybook.fixture';
 
 test.describe('Banner - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-banner--properties');
+    await storybook.goto('components-deprecated-banner--properties');
   });
 
   test('renders correctly', async ({ page }) => {

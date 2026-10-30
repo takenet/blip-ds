@@ -10,6 +10,7 @@ const contracts = [
   ['radio-button/radio-group.tsx', 'uai-radio-group/uai-radio-group.tsx'],
   ['switch/switch.tsx', 'uai-switch/uai-switch.tsx'],
   ['tooltip/tooltip.tsx', 'uai-tooltip/uai-tooltip.tsx'],
+  ['banner/banner.tsx', 'uai-banner/uai-banner.tsx'],
 ];
 
 // Defaults replaced on purpose by a UAI token (the literal would fail the token lint).

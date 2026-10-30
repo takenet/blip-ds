@@ -1,0 +1,75 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as BannerStories from './uai-banner.stories';
+
+<Meta isTemplate />
+
+# Banner
+
+## Visão geral
+
+Barra de notificação para mensagens de sistema, informação, sucesso, alerta ou erro. Use para avisos da página ou de uma seção; para retornos passageiros, use um toast.
+
+No React, importe `UaiBanner` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Declare o tema na raiz e carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+
+```jsx
+import { UaiBanner, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+<UaiThemeProvider theme="light">
+  <UaiBanner variant="warning" context="inside" button-close="true" heading="Instabilidade na plataforma">
+    Já estamos resolvendo.
+    <a slot="link" href="https://status.blip.ai">
+      Acompanhe aqui
+    </a>
+  </UaiBanner>
+</UaiThemeProvider>;
+```
+
+## Playground
+
+<Canvas of={BannerStories.Playground} />
+<Controls of={BannerStories.Playground} />
+
+## Variantes
+
+Cada variante tem um ícone próprio e usa tokens semânticos: `system` (superfície de ação invertida), `info`, `success`, `warning` e `error`. O significado nunca depende só da cor: o ícone acompanha a variante.
+
+<Canvas of={BannerStories.Variants} />
+
+## Título e texto
+
+`heading` é opcional: use um título curto e objetivo, sem ponto final, informando o motivo da notificação. O texto vai no slot padrão, preferencialmente em uma linha.
+
+<Canvas of={BannerStories.WithoutHeading} />
+
+## Contexto
+
+`outside` (padrão) é uma barra de largura total, sem cantos arredondados. `inside` arredonda os cantos para uso dentro de um contêiner e corresponde ao desenho do UAI Core.
+
+<Canvas of={BannerStories.Contexts} />
+
+## Link e fechar
+
+O slot `link` recebe um link ou ação exibido antes do botão de fechar; use um `<a>` ou `<button>` com texto curto. `button-close="true"` mostra o botão de fechar, que emite `uaiBannerClose` e oculta o banner. `closeLabel` define o nome acessível do botão.
+
+## Métodos
+
+`toggle()` alterna a visibilidade do banner.
+
+<Canvas of={BannerStories.Methods} sourceState="shown" />
+
+## Acessibilidade
+
+Variantes `error` e `warning` usam `role="alert"`; as demais, `role="status"`. O ícone é decorativo. O botão de fechar é um `<button>` nativo com `aria-label`, foco visível e alvo de 40px.
+
+## Migração do bds-banner
+
+Troque `BdsBanner` por `UaiBanner`, `onBdsBannerClose` por `onUaiBannerClose` e envolva a aplicação em `UaiThemeProvider`. `bannerAlign`, `buttonClose`, `context`, `variant`, `dtButtonClose` e o método `toggle()` são preservados. Diferenças:
+
+- Ícones das variantes seguem o UAI Core: `system` usa o balão e `info` usa o "i" (no legado estavam invertidos).
+- O link vai no slot `link`, não em `bds-banner-link`. `bannerAlign` é mantido só por compatibilidade, sem efeito visual.
+- `heading`, `closeLabel` e os papéis ARIA são adições.
+
+Tokens: `action-primary-default`, `action-primary-foreground`, `surface-paper`, `content-primary`, `feedback-info`, `feedback-success`, `feedback-warning`, `feedback-error`, `border-width-default`, `radius-md`, `radius-lg`, `radius-xl`, `spacing-md`, `spacing-sm`, `sizing-xl`, `sizing-3xl`, `control-height-medium`, `elevation-dialog`, `body-base`, `font-weight-medium`, `border-ring`, `duration-fast` e `easing-standard`.
+
+[Componente no UAI Core](https://www.figma.com/design/J9sL59g1hQEPBhTqy8F644/-DS--Blip-Inteligence?node-id=2827-6304).
