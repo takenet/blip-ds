@@ -1,1 +1,0 @@
-import{C as o,d as p}from"./p-DfpHZ_0M.js";const s=o,r=p;export{s as BdsChipClickable,r as defineCustomElement}

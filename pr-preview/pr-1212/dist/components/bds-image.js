@@ -1,1 +1,0 @@
-import{I as o,d as r}from"./p-CRBreqn_.js";const s=o,p=r;export{s as BdsImage,p as defineCustomElement}
