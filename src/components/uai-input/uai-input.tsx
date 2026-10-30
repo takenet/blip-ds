@@ -92,7 +92,11 @@ export class UaiInput {
   private nativeInput?: HTMLInputElement;
   private formControl?: UaiFormControl;
   private defaultValue = '';
-  private readonly id = `uai-input-${++instances}`;
+  /**
+   * Not `id`: that is the native element property, and in the custom elements build the component class is the
+   * element, so assigning it in the constructor writes an `id` attribute and `document.createElement` throws.
+   */
+  private readonly inputId = `uai-input-${++instances}`;
 
   /**
    * Name of the value in the submitted form data. Without name (or inputName), the field is not submitted.
@@ -570,7 +574,7 @@ export class UaiInput {
           : this.helperMessage;
     const length = (this.value || '').length;
     const counterState = this.counterState(length);
-    const describedBy = [message && `${this.id}-message`, this.counterLength && `${this.id}-counter`]
+    const describedBy = [message && `${this.inputId}-message`, this.counterLength && `${this.inputId}-counter`]
       .filter(Boolean)
       .join(' ');
 
@@ -587,7 +591,7 @@ export class UaiInput {
       >
         <div class="input">
           {this.label && (
-            <label class="input__label" {...{ for: this.id }}>
+            <label class="input__label" {...{ for: this.inputId }}>
               <uai-typo variant="caption" bold="semibold" tag="span" margin={false}>
                 {this.label}
               </uai-typo>
@@ -599,7 +603,7 @@ export class UaiInput {
             <div class="input__field">
               <slot name="inside-input-left"></slot>
               <input
-                id={this.id}
+                id={this.inputId}
                 ref={(input) => (this.nativeInput = input)}
                 class="input__native"
                 part="input"
@@ -628,7 +632,7 @@ export class UaiInput {
             </div>
             {this.counterLength && (
               <uai-typo
-                id={`${this.id}-counter`}
+                id={`${this.inputId}-counter`}
                 class={{ input__counter: true, [`input__counter--${counterState}`]: !!counterState }}
                 variant="caption"
                 tag="span"
@@ -642,7 +646,7 @@ export class UaiInput {
             <slot name="input-right"></slot>
           </div>
           {message && (
-            <div id={`${this.id}-message`} class="input__message" part="input__message">
+            <div id={`${this.inputId}-message`} class="input__message" part="input__message">
               <uai-typo variant="caption" tag="span" margin={false}>
                 {message}
               </uai-typo>
