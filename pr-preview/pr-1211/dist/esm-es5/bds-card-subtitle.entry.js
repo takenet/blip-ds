@@ -1,0 +1,1 @@
+import{r as registerInstance,h}from"./index-CkbvGS8Z.js";var CardSubtitle=/** @class */function(){function t(t){registerInstance(this,t)}t.prototype.render=function(){return h("bds-typo",{key:"0a4479497969f9b79c5ddd4fe3309372cabbe31d",variant:"fs-12",tag:"p",bold:"regular",margin:false},this.text)};return t}();export{CardSubtitle as bds_card_subtitle};

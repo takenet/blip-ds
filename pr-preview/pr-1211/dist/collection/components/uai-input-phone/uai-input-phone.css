@@ -1,0 +1,312 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+/**
+ * @prop --uai-input-phone-width: Width of the field. Defaults to the full width of the container.
+ */
+:host {
+  --input-height: var(--uai-control-height-medium, 2.5rem);
+  --input-background: var(--uai-surface-paper, #ffffff);
+  --input-border: var(--uai-border-input, #adb4b8);
+  --input-content: var(--uai-content-primary, #242729);
+  --input-label: var(--uai-content-primary, #242729);
+  --input-message: var(--uai-content-secondary, #5f676d);
+  --input-feedback: var(--input-content);
+  --prefix-background: var(--uai-surface-muted, #f2f3f3);
+  --input-halo: color-mix(
+    in srgb,
+    var(--uai-border-ring, #242729) calc(var(--uai-opacity-focus-ring, 0.3) * 100%),
+    transparent
+  );
+  display: block;
+  width: var(--uai-input-phone-width, 100%);
+}
+
+:host(.uai-input-phone--size-short) {
+  --input-height: var(--uai-control-height-short, 2rem);
+}
+
+:host(.uai-input-phone--danger) {
+  --input-border: var(--uai-feedback-error, #cf0022);
+  --input-label: var(--uai-feedback-error, #cf0022);
+  --input-message: var(--uai-feedback-error, #cf0022);
+  --input-feedback: var(--uai-feedback-error, #cf0022);
+}
+
+:host(.uai-input-phone--success) {
+  --input-border: var(--uai-feedback-success, #3da329);
+  --input-message: var(--uai-feedback-success, #3da329);
+  --input-feedback: var(--uai-feedback-success, #3da329);
+}
+
+:host(.uai-input-phone--disabled) {
+  --input-background: var(--uai-surface-muted, #f2f3f3);
+  --input-border: var(--uai-border-default, #e4e6e7);
+  --input-content: var(--uai-content-disabled, #848e94);
+  --input-label: var(--uai-content-disabled, #848e94);
+  --input-message: var(--uai-content-disabled, #848e94);
+  --input-feedback: var(--uai-content-disabled, #848e94);
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, 0.25rem);
+}
+
+.input__label,
+.input__message,
+.prefix__code {
+  --uai-typo-color: currentColor;
+}
+
+.input__label {
+  color: var(--input-label);
+}
+
+.input__message {
+  padding: 0 var(--uai-spacing-xs, 0.5rem);
+  color: var(--input-message);
+}
+
+.input__control {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  height: var(--input-height);
+  padding: 0 var(--uai-spacing-xs, 0.5rem) 0 var(--uai-spacing-2xs, 0.25rem);
+  border: var(--uai-border-width-default, 1px) solid var(--input-border);
+  border-radius: var(--uai-radius-lg, 0.75rem);
+  background-color: var(--input-background);
+  color: var(--input-content);
+  cursor: text;
+  transition: border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .input__control {
+    transition: none;
+  }
+}
+.input__control:focus-within {
+  --input-border: var(--uai-border-ring, #242729);
+  box-shadow: 0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo);
+}
+@media (forced-colors: active) {
+  .input__control:focus-within {
+    box-shadow: none;
+    outline: var(--uai-border-width-thick, 2px) solid CanvasText;
+  }
+}
+
+:host(:not(.uai-input-phone--disabled):not(.uai-input-phone--readonly):not(.uai-input-phone--danger):not(.uai-input-phone--success)) .input__control:hover:not(:focus-within) {
+  --input-border: var(--uai-content-secondary, #5f676d);
+}
+
+:host(.uai-input-phone--disabled) .input__control {
+  cursor: not-allowed;
+}
+
+.input__icon {
+  flex: none;
+  margin-left: var(--uai-spacing-2xs, 0.25rem);
+  color: var(--input-content);
+}
+
+.input__feedback {
+  flex: none;
+  color: var(--input-feedback);
+}
+
+.prefix {
+  display: inline-flex;
+  flex: none;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-2xs, 0.25rem);
+  margin: 0;
+  padding: var(--uai-spacing-2xs, 0.25rem);
+  border: 0;
+  border-radius: var(--uai-radius-md, 0.5rem);
+  background-color: var(--prefix-background);
+  color: var(--input-content);
+  font: inherit;
+  cursor: pointer;
+}
+.prefix:focus-visible {
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline-offset: var(--uai-spacing-3xs, 0.125rem);
+}
+.prefix:disabled {
+  cursor: inherit;
+}
+@media (forced-colors: active) {
+  .prefix {
+    border: var(--uai-border-width-default, 1px) solid ButtonText;
+  }
+}
+
+.prefix__flag,
+.option__flag-image {
+  display: block;
+  width: var(--uai-sizing-sm, 1rem);
+  height: var(--uai-sizing-sm, 1rem);
+  object-fit: contain;
+}
+
+.prefix__arrow {
+  transition: transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .prefix__arrow {
+    transition: none;
+  }
+}
+
+:host(.uai-input-phone--open) .prefix__arrow {
+  transform: rotate(180deg);
+}
+
+.input__field {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.input__native {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--uai-font-family-sans, Figtree), sans-serif;
+  font-size: var(--uai-body-base-font-size, 0.875rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  line-height: var(--uai-body-base-line-height, 1.375rem);
+  text-overflow: ellipsis;
+  appearance: none;
+}
+.input__native::placeholder {
+  color: var(--uai-content-placeholder, #adb4b8);
+  opacity: 1;
+}
+.input__native:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+  -webkit-text-fill-color: currentColor;
+}
+.input__native:disabled::placeholder {
+  color: var(--uai-content-disabled, #848e94);
+}
+
+.list {
+  --uai-overlay-gap: var(--uai-spacing-2xs, 0.25rem);
+  --uai-overlay-margin: var(--uai-spacing-xs, 0.5rem);
+  position: fixed;
+  inset: auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: auto;
+  background: transparent;
+  color: inherit;
+  opacity: 0;
+  transition: opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, overlay var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete;
+}
+.list:not(.uai-overlay--open) {
+  display: none;
+}
+.list.uai-overlay--open {
+  opacity: 1;
+}
+@starting-style {
+  .list.uai-overlay--open {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .list {
+    transition: none;
+  }
+}
+.list {
+  max-height: calc(5 * var(--uai-control-height-medium, 2.5rem));
+  min-width: var(--uai-width-menu, 14rem);
+  padding: var(--uai-spacing-2xs, 0.25rem);
+  border: var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7);
+  border-radius: var(--uai-radius-lg, 0.75rem);
+  background: var(--uai-surface-paper, #ffffff);
+  box-shadow: var(--uai-elevation-2, 0px 6px 16px -4px rgba(0, 0, 0, 0.16));
+  color: var(--uai-content-primary, #242729);
+  list-style: none;
+  outline: none;
+}
+@media (forced-colors: active) {
+  .list {
+    border-color: CanvasText;
+  }
+}
+
+.option {
+  --uai-typo-color: currentColor;
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  padding: var(--uai-spacing-xs, 0.5rem);
+  border-radius: var(--uai-radius-md, 0.5rem);
+  cursor: pointer;
+}
+.option[aria-selected=true] {
+  background: var(--uai-overlay-selected, rgba(0, 0, 0, 0.06));
+}
+.option--active {
+  background: var(--uai-overlay-hover, rgba(0, 0, 0, 0.08));
+}
+@media (forced-colors: active) {
+  .option--active {
+    outline: var(--uai-border-width-thick, 2px) solid Highlight;
+  }
+}
+
+.option__flag {
+  flex: none;
+  width: var(--uai-sizing-sm, 1rem);
+}
+
+.option__name {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.option__code {
+  flex: none;
+  color: var(--uai-content-secondary, #5f676d);
+}
