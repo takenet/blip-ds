@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-banner with UaiThemeProvider for tokenized styling and accessible roles.
+
 ## Properties
 
 | Property        | Attribute         | Description                                                                                                             | Type                                                      | Default     |

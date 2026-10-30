@@ -45,6 +45,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 ### Used by
 
  - [uai-badge](../uai-badge)
+ - [uai-banner](../uai-banner)
  - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-button](../uai-button)
  - [uai-input](../uai-input)
@@ -62,6 +63,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 ```mermaid
 graph TD;
   uai-badge --> uai-typo
+  uai-banner --> uai-typo
   uai-breadcrumb --> uai-typo
   uai-button --> uai-typo
   uai-input --> uai-typo

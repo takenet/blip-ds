@@ -108,6 +108,7 @@ import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload }
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
 import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiBadge as UaiBadgeElement, defineCustomElement as defineUaiBadge } from "blip-ds/dist/components/uai-badge.js";
+import { UaiBanner as UaiBannerElement, defineCustomElement as defineUaiBanner } from "blip-ds/dist/components/uai-banner.js";
 import { UaiBreadcrumb as UaiBreadcrumbElement, defineCustomElement as defineUaiBreadcrumb } from "blip-ds/dist/components/uai-breadcrumb.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
@@ -1003,6 +1004,13 @@ export const UaiBadge = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiBadge
+});
+export const UaiBanner = createComponent({
+    tagName: 'uai-banner',
+    elementClass: UaiBannerElement,
+    react: React,
+    events: { onUaiBannerClose: 'uaiBannerClose' },
+    defineCustomElement: defineUaiBanner
 });
 export const UaiBreadcrumb = createComponent({
     tagName: 'uai-breadcrumb',

@@ -78,6 +78,7 @@ import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
 import { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 import { UaiBadgeShape } from "./components/uai-badge/uai-badge";
+import { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
 import { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiIconTheme } from "./globals/uai-icons";
@@ -170,6 +171,7 @@ export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
 export { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 export { UaiBadgeShape } from "./components/uai-badge/uai-badge";
+export { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
 export { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiIconTheme } from "./globals/uai-icons";
@@ -493,6 +495,9 @@ export namespace Components {
          */
         "shape"?: Shape;
     }
+    /**
+     * @deprecated Use uai-banner with UaiThemeProvider for tokenized styling and accessible roles.
+     */
     interface BdsBanner {
         /**
           * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
@@ -3828,6 +3833,51 @@ export namespace Components {
         "shape"?: UaiBadgeShape;
     }
     /**
+     * Notification bar for a system, informational, success, warning or error message.
+     * Use for page or section level notices; pair with UaiThemeProvider and a short text; avoid it for transient feedback.
+     */
+    interface UaiBanner {
+        /**
+          * Kept for compatibility; the content always fills the available width. Avoid relying on it for layout.
+          * @default 'center'
+         */
+        "bannerAlign"?: UaiBannerAlign;
+        /**
+          * Shows the close button when 'true'. Use for dismissible notices; pair with uaiBannerClose; avoid it for critical errors.
+          * @default 'false'
+         */
+        "buttonClose"?: UaiBannerButtonClose;
+        /**
+          * Accessible name of the close button. Use a translated label; pair with buttonClose. Avoid leaving it generic.
+          * @default 'Fechar'
+         */
+        "closeLabel"?: string;
+        /**
+          * Rounds the banner when 'inside' a container. Use 'outside' for a full-width bar; avoid mixing both in one page.
+          * @default 'outside'
+         */
+        "context"?: UaiBannerContext;
+        /**
+          * Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Optional short title shown above the text, without a final period. Use for the reason of the notice; avoid long titles.
+          * @default null
+         */
+        "heading"?: string;
+        /**
+          * Toggles the banner visibility. Use for imperative control; pair with uaiBannerClose. Avoid hiding critical errors.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Semantic variant: system, info, success, warning or error. Use the one that matches the message; avoid color alone to convey meaning.
+          * @default 'system'
+         */
+        "variant"?: UaiBannerVariant;
+    }
+    /**
      * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
      * avoid using it as an organization or flow context switcher.
      */
@@ -6149,6 +6199,10 @@ export interface UaiAvatarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiAvatarElement;
 }
+export interface UaiBannerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiBannerElement;
+}
 export interface UaiBreadcrumbCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiBreadcrumbElement;
@@ -6368,6 +6422,9 @@ declare global {
     interface HTMLBdsBannerElementEventMap {
         "bdsBannerClose": void;
     }
+    /**
+     * @deprecated Use uai-banner with UaiThemeProvider for tokenized styling and accessible roles.
+     */
     interface HTMLBdsBannerElement extends Components.BdsBanner, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsBannerElementEventMap>(type: K, listener: (this: HTMLBdsBannerElement, ev: BdsBannerCustomEvent<HTMLBdsBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7585,6 +7642,27 @@ declare global {
         prototype: HTMLUaiBadgeElement;
         new (): HTMLUaiBadgeElement;
     };
+    interface HTMLUaiBannerElementEventMap {
+        "uaiBannerClose": void;
+    }
+    /**
+     * Notification bar for a system, informational, success, warning or error message.
+     * Use for page or section level notices; pair with UaiThemeProvider and a short text; avoid it for transient feedback.
+     */
+    interface HTMLUaiBannerElement extends Components.UaiBanner, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiBannerElementEventMap>(type: K, listener: (this: HTMLUaiBannerElement, ev: UaiBannerCustomEvent<HTMLUaiBannerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiBannerElementEventMap>(type: K, listener: (this: HTMLUaiBannerElement, ev: UaiBannerCustomEvent<HTMLUaiBannerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiBannerElement: {
+        prototype: HTMLUaiBannerElement;
+        new (): HTMLUaiBannerElement;
+    };
     interface HTMLUaiBreadcrumbElementEventMap {
         "uaiBreadcrumbItemClick": UaiBreadcrumbItem;
         "uaiBreadcrumbItemEdit": UaiBreadcrumbEditDetail;
@@ -8162,6 +8240,7 @@ declare global {
         "bds-warning": HTMLBdsWarningElement;
         "uai-avatar": HTMLUaiAvatarElement;
         "uai-badge": HTMLUaiBadgeElement;
+        "uai-banner": HTMLUaiBannerElement;
         "uai-breadcrumb": HTMLUaiBreadcrumbElement;
         "uai-button": HTMLUaiButtonElement;
         "uai-checkbox": HTMLUaiCheckboxElement;
@@ -8515,6 +8594,9 @@ declare namespace LocalJSX {
          */
         "shape"?: Shape;
     }
+    /**
+     * @deprecated Use uai-banner with UaiThemeProvider for tokenized styling and accessible roles.
+     */
     interface BdsBanner {
         /**
           * Set the banner aligment, it can be one of: 'center', 'right' or 'left'.
@@ -12117,6 +12199,51 @@ declare namespace LocalJSX {
         "shape"?: UaiBadgeShape;
     }
     /**
+     * Notification bar for a system, informational, success, warning or error message.
+     * Use for page or section level notices; pair with UaiThemeProvider and a short text; avoid it for transient feedback.
+     */
+    interface UaiBanner {
+        /**
+          * Kept for compatibility; the content always fills the available width. Avoid relying on it for layout.
+          * @default 'center'
+         */
+        "bannerAlign"?: UaiBannerAlign;
+        /**
+          * Shows the close button when 'true'. Use for dismissible notices; pair with uaiBannerClose; avoid it for critical errors.
+          * @default 'false'
+         */
+        "buttonClose"?: UaiBannerButtonClose;
+        /**
+          * Accessible name of the close button. Use a translated label; pair with buttonClose. Avoid leaving it generic.
+          * @default 'Fechar'
+         */
+        "closeLabel"?: string;
+        /**
+          * Rounds the banner when 'inside' a container. Use 'outside' for a full-width bar; avoid mixing both in one page.
+          * @default 'outside'
+         */
+        "context"?: UaiBannerContext;
+        /**
+          * Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Optional short title shown above the text, without a final period. Use for the reason of the notice; avoid long titles.
+          * @default null
+         */
+        "heading"?: string;
+        /**
+          * Emitted when the banner is closed with the close button. Use to persist the dismissal; avoid duplicate handlers.
+         */
+        "onUaiBannerClose"?: (event: UaiBannerCustomEvent<void>) => void;
+        /**
+          * Semantic variant: system, info, success, warning or error. Use the one that matches the message; avoid color alone to convey meaning.
+          * @default 'system'
+         */
+        "variant"?: UaiBannerVariant;
+    }
+    /**
      * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
      * avoid using it as an organization or flow context switcher.
      */
@@ -15153,6 +15280,15 @@ declare namespace LocalJSX {
         "dataTest": string;
         "ariaLabel": string;
     }
+    interface UaiBannerAttributes {
+        "bannerAlign": UaiBannerAlign;
+        "buttonClose": UaiBannerButtonClose;
+        "context": UaiBannerContext;
+        "variant": UaiBannerVariant;
+        "heading": string;
+        "closeLabel": string;
+        "dtButtonClose": string;
+    }
     interface UaiBreadcrumbAttributes {
         "items": string | UaiBreadcrumbItem[];
         "wrapItems": boolean;
@@ -15675,6 +15811,7 @@ declare namespace LocalJSX {
         "bds-warning": BdsWarning;
         "uai-avatar": Omit<UaiAvatar, keyof UaiAvatarAttributes> & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes]?: UaiAvatar[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `attr:${K}`]?: UaiAvatarAttributes[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `prop:${K}`]?: UaiAvatar[K] };
         "uai-badge": Omit<UaiBadge, keyof UaiBadgeAttributes> & { [K in keyof UaiBadge & keyof UaiBadgeAttributes]?: UaiBadge[K] } & { [K in keyof UaiBadge & keyof UaiBadgeAttributes as `attr:${K}`]?: UaiBadgeAttributes[K] } & { [K in keyof UaiBadge & keyof UaiBadgeAttributes as `prop:${K}`]?: UaiBadge[K] };
+        "uai-banner": Omit<UaiBanner, keyof UaiBannerAttributes> & { [K in keyof UaiBanner & keyof UaiBannerAttributes]?: UaiBanner[K] } & { [K in keyof UaiBanner & keyof UaiBannerAttributes as `attr:${K}`]?: UaiBannerAttributes[K] } & { [K in keyof UaiBanner & keyof UaiBannerAttributes as `prop:${K}`]?: UaiBanner[K] };
         "uai-breadcrumb": Omit<UaiBreadcrumb, keyof UaiBreadcrumbAttributes> & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes]?: UaiBreadcrumb[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `attr:${K}`]?: UaiBreadcrumbAttributes[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `prop:${K}`]?: UaiBreadcrumb[K] };
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
@@ -15720,6 +15857,9 @@ declare module "@stencil/core" {
             "bds-avatar": LocalJSX.IntrinsicElements["bds-avatar"] & JSXBase.HTMLAttributes<HTMLBdsAvatarElement>;
             "bds-avatar-group": LocalJSX.IntrinsicElements["bds-avatar-group"] & JSXBase.HTMLAttributes<HTMLBdsAvatarGroupElement>;
             "bds-badge": LocalJSX.IntrinsicElements["bds-badge"] & JSXBase.HTMLAttributes<HTMLBdsBadgeElement>;
+            /**
+             * @deprecated Use uai-banner with UaiThemeProvider for tokenized styling and accessible roles.
+             */
             "bds-banner": LocalJSX.IntrinsicElements["bds-banner"] & JSXBase.HTMLAttributes<HTMLBdsBannerElement>;
             "bds-banner-link": LocalJSX.IntrinsicElements["bds-banner-link"] & JSXBase.HTMLAttributes<HTMLBdsBannerLinkElement>;
             /**
@@ -15867,6 +16007,11 @@ declare module "@stencil/core" {
              * pair with an explanatory label; avoid using color alone to convey meaning.
              */
             "uai-badge": LocalJSX.IntrinsicElements["uai-badge"] & JSXBase.HTMLAttributes<HTMLUaiBadgeElement>;
+            /**
+             * Notification bar for a system, informational, success, warning or error message.
+             * Use for page or section level notices; pair with UaiThemeProvider and a short text; avoid it for transient feedback.
+             */
+            "uai-banner": LocalJSX.IntrinsicElements["uai-banner"] & JSXBase.HTMLAttributes<HTMLUaiBannerElement>;
             /**
              * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
              * avoid using it as an organization or flow context switcher.

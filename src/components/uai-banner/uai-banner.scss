@@ -1,0 +1,138 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+:host(.banner--hide) {
+  display: none;
+}
+
+.banner__holder {
+  // Feedback variants tint the semantic color over the paper surface, as in the UAI Core banner.
+  --banner-tint: var(--uai-feedback-info, #{$uai-feedback-info});
+  --banner-base: var(--uai-surface-paper, #{$uai-surface-paper});
+  --banner-fg: var(--uai-content-primary, #{$uai-content-primary});
+  --banner-bg: color-mix(in srgb, var(--banner-tint) 20%, var(--banner-base));
+  --banner-border: color-mix(in srgb, var(--banner-tint) 50%, var(--banner-base));
+  --banner-box-bg: color-mix(in srgb, var(--banner-tint) 40%, var(--banner-base));
+  --banner-box-border: color-mix(in srgb, var(--banner-tint) 60%, var(--banner-base));
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  width: 100%;
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--banner-border);
+  background: var(--banner-bg);
+  box-shadow: var(--uai-elevation-dialog, #{$uai-elevation-dialog});
+  color: var(--banner-fg);
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+
+  &--inside {
+    border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+  }
+
+  &--info {
+    --banner-tint: var(--uai-feedback-info, #{$uai-feedback-info});
+  }
+
+  &--success {
+    --banner-tint: var(--uai-feedback-success, #{$uai-feedback-success});
+  }
+
+  &--warning {
+    --banner-tint: var(--uai-feedback-warning, #{$uai-feedback-warning});
+  }
+
+  &--error {
+    --banner-tint: var(--uai-feedback-error, #{$uai-feedback-error});
+  }
+
+  // System uses the inverted action surface: a lighter step of its own foreground for border and icon box.
+  &--system {
+    --banner-base: var(--uai-action-primary-default, #{$uai-action-primary-default});
+    --banner-tint: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+    --banner-fg: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+    --banner-bg: var(--banner-base);
+    --banner-border: color-mix(in srgb, var(--banner-tint) 10%, var(--banner-base));
+    --banner-box-bg: color-mix(in srgb, var(--banner-tint) 20%, var(--banner-base));
+    --banner-box-border: var(--banner-border);
+  }
+}
+
+.banner__icon-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
+  height: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--banner-box-border);
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background: var(--banner-box-bg);
+}
+
+.banner__icon {
+  --uai-icon-size: var(--uai-sizing-xl, #{$uai-sizing-xl});
+
+  color: var(--banner-fg);
+}
+
+.banner__text {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.banner__title,
+.banner__message {
+  --uai-typo-color: var(--banner-fg);
+
+  display: block;
+}
+
+::slotted([slot='link']) {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  min-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  padding: 0 var(--uai-spacing-sm, #{$uai-spacing-sm});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  color: inherit;
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.banner__close {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  @include uai-transition(background-color);
+
+  &:hover {
+    background: color-mix(in srgb, var(--banner-fg) 10%, transparent);
+  }
+
+  @include uai-focus-visible;
+}

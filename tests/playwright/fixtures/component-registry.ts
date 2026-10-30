@@ -186,9 +186,9 @@ export const WAVE_3: ComponentEntry[] = [
   },
   {
     tag: 'bds-banner',
-    name: 'Banner',
-    primaryStory: 'components-banner--properties',
-    stories: [{ storyId: 'components-banner--properties', label: 'Properties' }],
+    name: '[deprecated] Banner',
+    primaryStory: 'components-deprecated-banner--properties',
+    stories: [{ storyId: 'components-deprecated-banner--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-alert',
