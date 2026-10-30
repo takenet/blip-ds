@@ -9,7 +9,11 @@ const contracts = [
   ['radio/radio.tsx', 'uai-radio/uai-radio.tsx'],
   ['radio-button/radio-group.tsx', 'uai-radio-group/uai-radio-group.tsx'],
   ['switch/switch.tsx', 'uai-switch/uai-switch.tsx'],
+  ['tooltip/tooltip.tsx', 'uai-tooltip/uai-tooltip.tsx'],
 ];
+
+// Defaults replaced on purpose by a UAI token (the literal would fail the token lint).
+const tokenDefaults = new Set(['tooltip/tooltip.tsx:Prop:maxWidth']);
 
 function publicMembers(path) {
   const url = new URL(`../../src/components/${path}`, import.meta.url);
@@ -40,7 +44,7 @@ for (const [legacyPath, uaiPath] of contracts) {
     for (const [key, member] of legacy) {
       const mapped = key.startsWith('Event:') ? key.replace('Event:bds', 'Event:uai') : key;
       assert.ok(uai.has(mapped), `${uaiPath} missing ${mapped}`);
-      if (key.startsWith('Prop:') && member.defaultValue !== undefined) {
+      if (key.startsWith('Prop:') && member.defaultValue !== undefined && !tokenDefaults.has(`${legacyPath}:${key}`)) {
         assert.equal(uai.get(mapped).defaultValue, member.defaultValue, `${mapped} default changed`);
       }
       if (key.startsWith('Method:')) {

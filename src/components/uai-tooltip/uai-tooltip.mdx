@@ -1,0 +1,49 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as TooltipStories from './uai-tooltip.stories';
+
+<Meta isTemplate />
+
+# Tooltip
+
+## Visão geral
+
+Exibe um texto curto de apoio quando o usuário passa o cursor ou foca por teclado o elemento envolvido. Use para dicas breves; informação essencial ou conteúdo interativo não deve ficar em um tooltip.
+
+No React, importe `UaiTooltip` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Declare o tema na raiz e carregue a fonte **Figtree** uma vez na aplicação.
+
+```jsx
+import { UaiButton, UaiThemeProvider, UaiTooltip } from 'blip-ds-react/dist/components';
+
+<UaiThemeProvider theme="light">
+  <UaiTooltip tooltipText="Salvar alterações" position="top-center">
+    <UaiButton>Salvar</UaiButton>
+  </UaiTooltip>
+</UaiThemeProvider>;
+```
+
+## Playground
+
+<Canvas of={TooltipStories.Playground} />
+<Controls of={TooltipStories.Playground} />
+
+## Posições
+
+São doze posições, as mesmas do `bds-tooltip`: `top|bottom` com `left|center|right` e `left|right` com `top|center|bottom`. Um valor desconhecido cai em `left-center`.
+
+<Canvas of={TooltipStories.Positions} />
+
+## Métodos
+
+`visible()` e `invisible()` controlam a exibição por código. Com `disabled`, o tooltip não aparece por hover ou foco.
+
+<Canvas of={TooltipStories.Methods} sourceState="shown" />
+
+## Acessibilidade
+
+O texto fica em um elemento com `role="tooltip"` associado ao gatilho por `aria-describedby`. Ele também aparece ao focar o conteúdo envolvido por teclado e fecha com `Escape`. Não use o tooltip como único nome de um controle: informe `aria-label` no próprio elemento.
+
+## Migração do bds-tooltip
+
+Troque `BdsTooltip` por `UaiTooltip` e envolva a aplicação em `UaiThemeProvider`. As props `tooltipText`, `position`, `maxWidth`, `disabled`, `dataTest` e os métodos `visible()`/`invisible()` são preservados. O texto agora usa `uai-typo` (`caption`) e o aparecimento por foco de teclado é adicional.
+
+Tokens: `surface-inverse`, `content-inverse`, `radius-md`, `spacing-xs`, `sizing-lg`, `elevation-2`, `font-family-sans`, `duration-fast` e `easing-standard`.

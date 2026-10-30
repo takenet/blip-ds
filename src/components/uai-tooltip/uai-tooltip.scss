@@ -1,0 +1,190 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tooltip {
+  &__wrapper {
+    display: inline-block;
+    position: relative;
+  }
+
+  &__trigger {
+    display: inline-block;
+  }
+
+  &__tip {
+    --tooltip-bg: var(--uai-surface-inverse, #{$uai-surface-inverse});
+    --tooltip-arrow-size: var(--uai-sizing-2xs, #{$uai-sizing-2xs});
+    --tooltip-hairline: var(--uai-border-width-default, #{$uai-border-width-default});
+    --tooltip-gap: calc(var(--tooltip-arrow-size) + var(--uai-spacing-3xs, #{$uai-spacing-3xs}));
+
+    position: absolute;
+    left: 50%;
+    box-sizing: border-box;
+    width: max-content;
+    min-width: var(--uai-sizing-lg, #{$uai-sizing-lg});
+    max-width: var(--uai-width-tooltip, #{$uai-width-tooltip});
+    padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+    border-radius: var(--uai-radius-md, #{$uai-radius-md});
+    background: var(--tooltip-bg);
+    box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+    color: var(--uai-content-inverse, #{$uai-content-inverse});
+    font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+    white-space: break-spaces;
+    cursor: default;
+    z-index: 9000;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    @include uai-transition(opacity visibility);
+
+    &--visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &::before {
+      content: '';
+      left: 50%;
+      border: solid transparent;
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      margin-left: calc(-1 * var(--tooltip-arrow-size));
+      border-width: var(--tooltip-arrow-size);
+    }
+
+    &--top-center,
+    &--top-left,
+    &--top-right {
+      bottom: calc(100% + var(--tooltip-gap));
+      &::before {
+        top: 100%;
+        border-top-color: var(--tooltip-bg);
+      }
+    }
+
+    &--top-left {
+      left: 0;
+      transform: translateX(-15%);
+      &::before {
+        left: calc(15% + var(--tooltip-arrow-size));
+      }
+    }
+
+    &--top-right {
+      left: initial;
+      right: 0;
+      transform: translateX(15%);
+      &::before {
+        left: calc(85% - var(--tooltip-arrow-size));
+      }
+    }
+
+    &--bottom-center,
+    &--top-center {
+      transform: translateX(-50%);
+    }
+
+    &--left-center,
+    &--right-center {
+      transform: translateX(0) translateY(-50%);
+    }
+
+    &--right-center,
+    &--right-top,
+    &--right-bottom {
+      left: calc(100% + var(--tooltip-gap));
+      top: 50%;
+      &::before {
+        left: calc(var(--tooltip-hairline) - var(--tooltip-arrow-size));
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+        border-right-color: var(--tooltip-bg);
+      }
+    }
+
+    &--right-top {
+      top: 0;
+      &::before {
+        top: 40%;
+      }
+    }
+
+    &--right-bottom {
+      top: initial;
+      bottom: 0;
+      &::before {
+        top: 60%;
+      }
+    }
+
+    &--bottom-center,
+    &--bottom-right,
+    &--bottom-left {
+      top: calc(100% + var(--tooltip-gap));
+      &::before {
+        bottom: 100%;
+        border-bottom-color: var(--tooltip-bg);
+      }
+    }
+
+    &--bottom-right {
+      left: initial;
+      right: 0;
+      transform: translateX(15%);
+      &::before {
+        left: calc(85% - var(--tooltip-arrow-size));
+      }
+    }
+
+    &--bottom-left {
+      left: 0;
+      transform: translateX(-15%);
+      &::before {
+        left: calc(15% + var(--tooltip-arrow-size));
+      }
+    }
+
+    &--left-center,
+    &--left-top,
+    &--left-bottom {
+      left: auto;
+      right: calc(100% + var(--tooltip-gap));
+      top: 50%;
+      &::before {
+        left: auto;
+        right: calc(var(--tooltip-hairline) - 2 * var(--tooltip-arrow-size));
+        top: 50%;
+        transform: translateX(0) translateY(-50%);
+        border-left-color: var(--tooltip-bg);
+      }
+    }
+
+    &--left-top {
+      top: 0;
+      &::before {
+        top: 40%;
+      }
+    }
+
+    &--left-bottom {
+      top: initial;
+      bottom: 0;
+      &::before {
+        top: 60%;
+      }
+    }
+  }
+
+  &__text {
+    --uai-typo-color: currentColor;
+
+    display: block;
+    white-space: break-spaces;
+  }
+}

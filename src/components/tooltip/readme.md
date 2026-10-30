@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-tooltip with UaiThemeProvider for tokenized styling and keyboard focus support.
+
 ## Properties
 
 | Property      | Attribute      | Description                                                             | Type                                                                                                                                                                                                 | Default         |

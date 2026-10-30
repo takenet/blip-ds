@@ -130,6 +130,7 @@ import { UaiTabGroup as UaiTabGroupElement, defineCustomElement as defineUaiTabG
 import { UaiTabItem as UaiTabItemElement, defineCustomElement as defineUaiTabItem } from "blip-ds/dist/components/uai-tab-item.js";
 import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
+import { UaiTooltip as UaiTooltipElement, defineCustomElement as defineUaiTooltip } from "blip-ds/dist/components/uai-tooltip.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
 export const BdsAccordion = createComponent({
     tagName: 'bds-accordion',
@@ -1220,6 +1221,13 @@ export const UaiThemeProvider = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiThemeProvider
+});
+export const UaiTooltip = createComponent({
+    tagName: 'uai-tooltip',
+    elementClass: UaiTooltipElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTooltip
 });
 export const UaiTypo = createComponent({
     tagName: 'uai-typo',
