@@ -1,1 +1,0 @@
-import{T as o,d as p}from"./p-DApxFR7K.js";const s=o,r=p;export{s as BdsTypo,r as defineCustomElement}
