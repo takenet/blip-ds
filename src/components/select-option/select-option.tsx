@@ -3,6 +3,9 @@ import { Keyboard } from '../../utils/enums';
 
 export type TypeOption = 'checkbox' | 'default';
 
+/**
+ * @deprecated Use uai-select-option with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+ */
 @Component({
   tag: 'bds-select-option',
   styleUrl: 'select-option.scss',

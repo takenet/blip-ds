@@ -46,11 +46,11 @@ export const WAVE_1: ComponentEntry[] = [
   },
   {
     tag: 'bds-select',
-    name: 'Select',
-    primaryStory: 'components-select--properties',
+    name: '[deprecated] Select',
+    primaryStory: 'components-deprecated-select--properties',
     stories: [
-      { storyId: 'components-select--properties', label: 'Properties' },
-      { storyId: 'components-select--events', label: 'Events' },
+      { storyId: 'components-deprecated-select--properties', label: 'Properties' },
+      { storyId: 'components-deprecated-select--events', label: 'Events' },
     ],
   },
   {

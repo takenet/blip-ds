@@ -3,7 +3,7 @@ import DocumentationTemplate from './select.mdx';
 import { BdsSelect, BdsSelectOption } from '../../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Select',
+  title: 'Components/[deprecated] Select',
   parameters: {
     docs: {
       page: DocumentationTemplate,

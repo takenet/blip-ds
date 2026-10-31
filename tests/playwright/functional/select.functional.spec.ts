@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Select - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-select--properties');
+    await storybook.goto('components-deprecated-select--properties');
   });
 
   test('opens dropdown on click', async ({ page }) => {
@@ -65,7 +65,7 @@ test.describe('Select - Functional Tests', () => {
   });
 
   test('does not open when disabled', async ({ page }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=components-select--properties&args=disabled:true');
+    await gotoStoryUrl(page, '/iframe.html?id=components-deprecated-select--properties&args=disabled:true');
 
     await page.locator('bds-select').first().click({ force: true });
     await page.waitForTimeout(300);

@@ -1,0 +1,230 @@
+@use '../../globals/helpers' as *;
+
+/**
+ * @prop --uai-select-width: Width of the field. Defaults to the full width of the container.
+ */
+:host {
+  --select-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  --select-background: var(--uai-surface-paper, #{$uai-surface-paper});
+  --select-border: var(--uai-border-input, #{$uai-border-input});
+  --select-content: var(--uai-content-primary, #{$uai-content-primary});
+  --select-label: var(--uai-content-primary, #{$uai-content-primary});
+  --select-message: var(--uai-content-secondary, #{$uai-content-secondary});
+  --select-feedback: var(--select-content);
+  // Focus halo: border/ring at opacity/focus-ring, as published for the UAI input.
+  --select-halo: color-mix(
+    in srgb,
+    var(--uai-border-ring, #{$uai-border-ring}) calc(var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring}) * 100%),
+    transparent
+  );
+  display: block;
+  width: var(--uai-select-width, 100%);
+}
+
+:host(.uai-select--size-short) {
+  --select-height: var(--uai-control-height-short, #{$uai-control-height-short});
+}
+
+:host(.uai-select--danger) {
+  --select-border: var(--uai-feedback-error, #{$uai-feedback-error});
+  --select-label: var(--uai-feedback-error, #{$uai-feedback-error});
+  --select-message: var(--uai-feedback-error, #{$uai-feedback-error});
+  --select-feedback: var(--uai-feedback-error, #{$uai-feedback-error});
+  --select-halo: color-mix(
+    in srgb,
+    var(--uai-feedback-error, #{$uai-feedback-error}) calc(var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring}) * 100%),
+    transparent
+  );
+}
+
+:host(.uai-select--success) {
+  --select-border: var(--uai-feedback-success, #{$uai-feedback-success});
+  --select-message: var(--uai-feedback-success, #{$uai-feedback-success});
+  --select-feedback: var(--uai-feedback-success, #{$uai-feedback-success});
+}
+
+:host(.uai-select--disabled) {
+  --select-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  --select-border: var(--uai-border-default, #{$uai-border-default});
+  --select-content: var(--uai-content-disabled, #{$uai-content-disabled});
+  --select-label: var(--uai-content-disabled, #{$uai-content-disabled});
+  --select-message: var(--uai-content-disabled, #{$uai-content-disabled});
+  --select-feedback: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+}
+
+.select__label,
+.select__message,
+.select__value,
+.option {
+  --uai-typo-color: currentColor;
+}
+
+.select__label {
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--select-label);
+}
+
+.select__message {
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--select-message);
+}
+
+.select__control {
+  display: flex;
+  box-sizing: border-box;
+  height: var(--select-height);
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--select-border);
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background-color: var(--select-background);
+  color: var(--select-content);
+  @include uai-transition(border-color box-shadow);
+
+  &:focus-within,
+  :host(.uai-select--open) & {
+    --select-border: var(--uai-action-primary-default, #{$uai-action-primary-default});
+    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--select-halo);
+  }
+
+  @media (forced-colors: active) {
+    &:focus-within {
+      box-shadow: none;
+      outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid CanvasText;
+    }
+  }
+}
+
+:host(.uai-select--danger) .select__control:focus-within,
+:host(.uai-select--danger.uai-select--open) .select__control {
+  --select-border: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+:host(:not(.uai-select--disabled):not(.uai-select--danger):not(.uai-select--success)) .select__control:hover:not(:focus-within) {
+  --select-border: var(--uai-action-primary-default, #{$uai-action-primary-default});
+}
+
+.select__button {
+  display: flex;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  min-width: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: 0;
+  border-radius: inherit;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.select__icon,
+.select__feedback,
+.select__arrow {
+  flex: none;
+}
+
+.select__icon {
+  color: var(--select-content);
+}
+
+.select__feedback {
+  color: var(--select-feedback);
+}
+
+.select__value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &--placeholder {
+    color: var(--uai-content-placeholder, #{$uai-content-placeholder});
+  }
+}
+
+:host(.uai-select--disabled) .select__value--placeholder {
+  color: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+.select__arrow {
+  @include uai-transition(transform);
+}
+
+:host(.uai-select--open) .select__arrow {
+  transform: rotate(180deg);
+}
+
+.list {
+  @include uai-overlay-panel;
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  max-height: calc(5 * var(--uai-control-height-medium, #{$uai-control-height-medium}));
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  list-style: none;
+  outline: none;
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+.option {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  cursor: pointer;
+
+  &[aria-selected='true'] {
+    background: var(--uai-overlay-selected, #{$uai-overlay-selected});
+  }
+
+  &--active {
+    background: var(--uai-overlay-hover, #{$uai-overlay-hover});
+  }
+
+  &--disabled {
+    color: var(--uai-content-disabled, #{$uai-content-disabled});
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+    &--active {
+      outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid Highlight;
+    }
+  }
+}
+
+.option__icon {
+  flex: none;
+}
+
+.option__label {
+  flex: 1 1 auto;
+  min-width: 0;
+}

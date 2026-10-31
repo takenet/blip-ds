@@ -1,0 +1,48 @@
+import { Meta, Controls, Canvas, Source } from '@storybook/addon-docs/blocks';
+import * as SelectStories from './uai-select.stories';
+
+<Meta of={SelectStories} />
+
+# Select
+
+Campo para escolher uma opção de uma lista. Mostra o rótulo da opção escolhida e abre um `listbox` abaixo ou acima do campo, com teclado completo (setas, Home, End, Enter, Espaço, Esc e digitação da primeira letra) e papéis ARIA `combobox` e `listbox`. Participa de formulários nativos: com `name`, envia o valor escolhido.
+
+<Canvas of={SelectStories.Playground} />
+
+<Controls of={SelectStories.Playground} />
+
+## Opções
+
+Passe `options` como array de `{ value, label, icon?, disabled? }`, ou escreva `uai-select-option` como filhos. Se houver os dois, vale `options`. Strings JSON não são mais aceitas.
+
+<Canvas of={SelectStories.DeclarativeOptions} />
+
+## Valor controlado
+
+`value` define a opção escolhida e `uaiChange` (`detail: { value, label }`) dispara só por ação da pessoa, nunca ao carregar.
+
+<Canvas of={SelectStories.Controlled} />
+
+## Estados
+
+<Canvas of={SelectStories.States} />
+
+## Ícone e opção desabilitada
+
+<Canvas of={SelectStories.WithIconAndDisabledOption} />
+
+## Formulário
+
+<Canvas of={SelectStories.InsideForm} />
+
+## Migração de `bds-select`
+
+| `bds-select` | `uai-select` |
+| --- | --- |
+| `options` (string JSON ou array) | `options` só como array, ou `uai-select-option` filhos |
+| `bdsChange` | `uaiChange` com `{ value, label }` |
+| `bdsCancel`, `bdsFocus`, `bdsBlur` | `uaiCancel`, `uaiFocus`, `uaiBlur` |
+| `optionsPosition` | automático: abre para o lado com espaço |
+| `bds-select-option` com `typeOption`, `bulkOption`, `status` | fora de escopo (`bds-select-chips` segue no legado) |
+
+Fora de escopo: multisseleção (`bds-select-chips`) e busca em listas longas.
