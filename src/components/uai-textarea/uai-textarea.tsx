@@ -60,7 +60,7 @@ export class UaiTextarea {
   private nativeTextarea?: HTMLTextAreaElement;
   private formControl?: UaiFormControl;
   private defaultValue = '';
-  private readonly id = `uai-textarea-${++instances}`;
+  private readonly textareaId = `uai-textarea-${++instances}`;
   private resizeTimer?: number;
   private resizeObserver?: ResizeObserver;
   private observedWidth?: number;
@@ -656,7 +656,7 @@ export class UaiTextarea {
           : this.helperMessage;
     const length = (this.value || '').length;
     const counterState = this.counterState(length);
-    const describedBy = [message && `${this.id}-message`, this.counterLength && `${this.id}-counter`]
+    const describedBy = [message && `${this.textareaId}-message`, this.counterLength && `${this.textareaId}-counter`]
       .filter(Boolean)
       .join(' ');
 
@@ -675,7 +675,7 @@ export class UaiTextarea {
       >
         <div class="textarea">
           {this.label && (
-            <label class="textarea__label" {...{ for: this.id }}>
+            <label class="textarea__label" {...{ for: this.textareaId }}>
               <uai-typo variant="caption" bold="semibold" tag="span" margin={false}>
                 {this.label}
               </uai-typo>
@@ -687,7 +687,7 @@ export class UaiTextarea {
             <div class="textarea__field">
               <slot name="inside-input-left"></slot>
               <textarea
-                id={this.id}
+                id={this.textareaId}
                 ref={(textarea) => (this.nativeTextarea = textarea)}
                 class="textarea__native"
                 part="input"
@@ -717,7 +717,7 @@ export class UaiTextarea {
             </div>
             {this.counterLength && (
               <uai-typo
-                id={`${this.id}-counter`}
+                id={`${this.textareaId}-counter`}
                 class={{ textarea__counter: true, [`textarea__counter--${counterState}`]: !!counterState }}
                 variant="caption"
                 tag="span"
@@ -733,7 +733,7 @@ export class UaiTextarea {
             <slot name="input-right"></slot>
           </div>
           {message && (
-            <div id={`${this.id}-message`} class="textarea__message" part="input__message">
+            <div id={`${this.textareaId}-message`} class="textarea__message" part="input__message">
               <uai-typo variant="caption" tag="span" margin={false}>
                 {message}
               </uai-typo>
