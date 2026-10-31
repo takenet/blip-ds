@@ -1,0 +1,79 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--uai-spacing-sm, 0.75rem) var(--uai-spacing-md, 1rem);
+}
+
+:host([justify-content=center]) {
+  justify-content: center;
+}
+
+:host([justify-content=right]) {
+  justify-content: flex-end;
+}
+
+.th__button {
+  display: inline-flex;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  align-items: center;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 var(--uai-spacing-2xs, 0.25rem);
+  border: 0;
+  border-radius: var(--uai-radius-sm, 0.25rem);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.th__button:focus-visible {
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline-offset: var(--uai-spacing-3xs, 0.125rem);
+}
+.th__icon {
+  display: inline-flex;
+  flex: none;
+  opacity: 0;
+  transform: rotate(0deg);
+  transition: opacity var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .th__icon {
+    transition: none;
+  }
+}
+.th__icon--active {
+  opacity: 1;
+}
+.th__icon--descending {
+  transform: rotate(180deg);
+}
+.th__button:hover .th__icon, .th__button:focus-visible .th__icon {
+  opacity: 1;
+}
