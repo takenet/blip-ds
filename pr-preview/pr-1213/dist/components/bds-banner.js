@@ -1,1 +1,0 @@
-import{B as o,d as s}from"./p-BtcXR3uc.js";const t=o,c=s;export{t as BdsBanner,c as defineCustomElement}

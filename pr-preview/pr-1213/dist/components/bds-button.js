@@ -1,1 +1,0 @@
-import{B as s,d as o}from"./p-D_ul1psb.js";const p=s,r=o;export{p as BdsButton,r as defineCustomElement}
