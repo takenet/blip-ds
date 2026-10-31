@@ -13,7 +13,7 @@ import {
 import DocumentationTemplate from './table.mdx';
 
 export default {
-  title: 'Components/Table',
+  title: 'Components/[deprecated] Table',
   parameters: {
     docs: {
       page: DocumentationTemplate,

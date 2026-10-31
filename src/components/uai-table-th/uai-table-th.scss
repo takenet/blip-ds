@@ -1,0 +1,57 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--uai-spacing-sm, #{$uai-spacing-sm}) var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+:host([justify-content='center']) {
+  justify-content: center;
+}
+
+:host([justify-content='right']) {
+  justify-content: flex-end;
+}
+
+.th {
+  &__button {
+    display: inline-flex;
+    gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+    align-items: center;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+    border: 0;
+    border-radius: var(--uai-radius-sm, #{$uai-radius-sm});
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    @include uai-focus-visible;
+  }
+
+  &__icon {
+    display: inline-flex;
+    flex: none;
+    opacity: 0;
+    transform: rotate(0deg);
+    @include uai-transition(opacity transform);
+
+    &--active {
+      opacity: 1;
+    }
+
+    &--descending {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__button:hover &__icon,
+  &__button:focus-visible &__icon {
+    opacity: 1;
+  }
+}

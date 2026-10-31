@@ -1,0 +1,53 @@
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Source, Canvas } from '@storybook/addon-docs/blocks';
+import * as TableStories from './uai-table.stories';
+
+<Meta of={TableStories} />
+
+# Table
+
+Tabela de dados composta por primitivas: `uai-table`, `uai-table-header`, `uai-table-body`, `uai-table-row`, `uai-table-th` e `uai-table-cell`.
+A tabela cuida de layout, tokens `--uai-*` e semântica (`role="table"`, `row`, `columnheader`, `cell`). Controles como checkbox, avatar e botões ficam por conta de quem usa, compostos dentro das células.
+
+<Canvas of={TableStories.Playground} />
+
+<Controls of={TableStories.Playground} />
+
+## Colunas
+
+A prop `columns` do `uai-table` recebe um `grid-template-columns` compartilhado por todas as linhas, então cabeçalho e linhas alinham sem JS. Por exemplo, `var(--uai-spacing-8xl) repeat(4, 1fr) var(--uai-spacing-8xl)` reserva colunas fixas para seleção e ações.
+
+## Ordenação
+
+Com `sortable`, `uai-table-th` vira um botão e emite `uaiTableSort` com a próxima direção. Quem usa ordena os dados e atualiza `sortDirection` (`none`, `ascending` ou `descending`, que define `aria-sort`).
+
+<Canvas of={TableStories.Sortable} />
+
+## Linhas clicáveis
+
+`clickable` dá hover, foco por teclado e ativação com Enter ou Espaço. O evento é o `click` nativo da linha.
+
+<Canvas of={TableStories.Clickable} />
+
+## Seleção em massa
+
+A coluna de checkbox é um `uai-table-cell` com `uai-checkbox`. Quem usa controla `selected` na linha e a contagem. A barra de ações é um `uai-table-row` com `variant="bar"` dentro do header.
+
+<Canvas of={TableStories.WithSelection} />
+
+Sem a barra, a seleção aparece só nos checkboxes e em `aria-selected`.
+
+<Canvas of={TableStories.WithSelectionNoBulkBar} />
+
+<Source of={TableStories.WithSelection} />
+
+## Migração de `bds-table`
+
+| `bds-*` | `uai-*` |
+| --- | --- |
+| `bds-table` | `uai-table` (use `columns` no lugar de larguras por célula) |
+| `bds-table-header` / `bds-table-body` | `uai-table-header` / `uai-table-body` |
+| `bds-table-row` | `uai-table-row` (`selected`, `clickable`, `variant`) |
+| `bds-table-th` | `uai-table-th` (`sortable`, `sortDirection`, `justifyContent`) |
+| `bds-table-cell` | `uai-table-cell` (o conteúdo é livre, sem `type`) |
+
+Fora de escopo: `collapse`, `denseTable` e `bds-data-table`, que seguem no componente legado.

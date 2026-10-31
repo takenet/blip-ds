@@ -129,6 +129,12 @@ import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } fr
 import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
 import { UaiTabGroup as UaiTabGroupElement, defineCustomElement as defineUaiTabGroup } from "blip-ds/dist/components/uai-tab-group.js";
 import { UaiTabItem as UaiTabItemElement, defineCustomElement as defineUaiTabItem } from "blip-ds/dist/components/uai-tab-item.js";
+import { UaiTableBody as UaiTableBodyElement, defineCustomElement as defineUaiTableBody } from "blip-ds/dist/components/uai-table-body.js";
+import { UaiTableCell as UaiTableCellElement, defineCustomElement as defineUaiTableCell } from "blip-ds/dist/components/uai-table-cell.js";
+import { UaiTableHeader as UaiTableHeaderElement, defineCustomElement as defineUaiTableHeader } from "blip-ds/dist/components/uai-table-header.js";
+import { UaiTableRow as UaiTableRowElement, defineCustomElement as defineUaiTableRow } from "blip-ds/dist/components/uai-table-row.js";
+import { UaiTableTh as UaiTableThElement, defineCustomElement as defineUaiTableTh } from "blip-ds/dist/components/uai-table-th.js";
+import { UaiTable as UaiTableElement, defineCustomElement as defineUaiTable } from "blip-ds/dist/components/uai-table.js";
 import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTooltip as UaiTooltipElement, defineCustomElement as defineUaiTooltip } from "blip-ds/dist/components/uai-tooltip.js";
@@ -1207,6 +1213,48 @@ export const UaiTabItem = createComponent({
     react: React,
     events: { onUaiDisabled: 'uaiDisabled' },
     defineCustomElement: defineUaiTabItem
+});
+export const UaiTable = createComponent({
+    tagName: 'uai-table',
+    elementClass: UaiTableElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTable
+});
+export const UaiTableBody = createComponent({
+    tagName: 'uai-table-body',
+    elementClass: UaiTableBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTableBody
+});
+export const UaiTableCell = createComponent({
+    tagName: 'uai-table-cell',
+    elementClass: UaiTableCellElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTableCell
+});
+export const UaiTableHeader = createComponent({
+    tagName: 'uai-table-header',
+    elementClass: UaiTableHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTableHeader
+});
+export const UaiTableRow = createComponent({
+    tagName: 'uai-table-row',
+    elementClass: UaiTableRowElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiTableRow
+});
+export const UaiTableTh = createComponent({
+    tagName: 'uai-table-th',
+    elementClass: UaiTableThElement,
+    react: React,
+    events: { onUaiTableSort: 'uaiTableSort' },
+    defineCustomElement: defineUaiTableTh
 });
 export const UaiTextarea = createComponent({
     tagName: 'uai-textarea',

@@ -1,0 +1,11 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+}

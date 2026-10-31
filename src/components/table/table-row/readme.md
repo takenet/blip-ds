@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-table-row with UaiThemeProvider for tokenized styling and table semantics.
+
 ## Properties
 
 | Property       | Attribute       | Description                         | Type      | Default     |
