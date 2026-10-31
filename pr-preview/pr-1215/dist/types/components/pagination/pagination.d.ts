@@ -1,5 +1,8 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
+/**
+ * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+ */
 export declare class Pagination {
     private el;
     /**

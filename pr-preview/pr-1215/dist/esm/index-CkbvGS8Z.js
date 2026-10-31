@@ -427,6 +427,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-page-header.entry.js').then(processMod, consoleError);
+                case 'uai-pagination':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-pagination.entry.js').then(processMod, consoleError);
                 case 'uai-paper':
                     return import(
                       /* webpackMode: "lazy" */
@@ -439,10 +443,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-radio-group.entry.js').then(processMod, consoleError);
-                case 'uai-select':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './uai-select.entry.js').then(processMod, consoleError);
                 case 'uai-select-option':
                     return import(
                       /* webpackMode: "lazy" */
@@ -527,6 +527,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-breadcrumb.entry.js').then(processMod, consoleError);
+                case 'uai-select':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-select.entry.js').then(processMod, consoleError);
                 case 'bds-banner':
                     return import(
                       /* webpackMode: "lazy" */
@@ -539,6 +543,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-input.entry.js').then(processMod, consoleError);
+                case 'uai-input':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-input.entry.js').then(processMod, consoleError);
+                case 'uai-button':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-button.entry.js').then(processMod, consoleError);
                 case 'bds-button':
                     return import(
                       /* webpackMode: "lazy" */
@@ -599,10 +611,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-radio_2.entry.js').then(processMod, consoleError);
-                case 'uai-button_2':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './uai-button_2.entry.js').then(processMod, consoleError);
                 case 'bds-chip-clickable_2':
                     return import(
                       /* webpackMode: "lazy" */

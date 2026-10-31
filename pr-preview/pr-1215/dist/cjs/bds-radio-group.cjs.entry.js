@@ -34,7 +34,7 @@ const RadioGroup = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '3bd992946c062d9db514feb427dac366c58aef6b' }, index.h("slot", { key: '6b7eabdb73aaea42bcd98d470557fb30d8f73268' })));
+        return (index.h(index.Host, { key: 'c6860c487dbb4fe486eab38197bc8ff37e7cf34a' }, index.h("slot", { key: 'f01cff75a0244fb7dc557efc8e2916a6b086f440' })));
     }
     get element() { return index.getElement(this); }
     static get watchers() { return {

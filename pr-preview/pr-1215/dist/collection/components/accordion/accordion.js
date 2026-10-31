@@ -72,7 +72,7 @@ export class Accordion {
         }
     }
     render() {
-        return (h("div", { key: '9abdf8a04b867db7f4a155e1e0734958c6150cb9', class: "accordion_group" }, h("slot", { key: 'b202263c9bc229094c129f0a1614ef1ca89bfabd' })));
+        return (h("div", { key: 'f1ebbcd47284ac6cca365cd578bb9fa11479908f', class: "accordion_group" }, h("slot", { key: 'cc36fd5284a56324068fe56ee37bec28e7c8f483' })));
     }
     static get is() { return "bds-accordion"; }
     static get encapsulation() { return "shadow"; }

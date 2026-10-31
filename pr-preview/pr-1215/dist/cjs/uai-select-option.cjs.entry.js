@@ -13,7 +13,7 @@ const UaiSelectOption = class {
         this.icon = null;
     }
     render() {
-        return (index.h(index.Host, { key: '50fd404ec677c86b6417e79377f1b4068f229eeb', hidden: true }, index.h("slot", { key: '0ed87af4e0c8e122b30969b8bf47f7b65ab22e99' })));
+        return (index.h(index.Host, { key: 'ebe1c2bad8d904d5c4c6c8ff486161d2f4c050ab', hidden: true }, index.h("slot", { key: '9667e02322d0e177dbd2b6aa3a1cff9ca64faed4' })));
     }
 };
 UaiSelectOption.style = uaiSelectOptionCss();

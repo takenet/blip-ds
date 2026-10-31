@@ -7,7 +7,7 @@ const AlertActions = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h("div", { key: '7ff1c0697f39b5300fcf12e9ae22bbc10448f580', class: "alert__actions" }, h("slot", { key: '2b282f74e86e18f6c6223c40c4d756bd5930c9e1' })));
+        return (h("div", { key: 'd8404441e025e97eb7cc52c5ecc4d7aa09c2b99f', class: "alert__actions" }, h("slot", { key: 'f3a27d0408dcd3be94278657329304b92d030ce2' })));
     }
 };
 AlertActions.style = alertActionsCss();

@@ -25,14 +25,14 @@
  * @prop --uai-select-width: Width of the field. Defaults to the full width of the container.
  */
 :host {
-  --select-height: var(--uai-control-height-medium, 2.5rem);
-  --select-background: var(--uai-surface-paper, #ffffff);
-  --select-border: var(--uai-border-input, #adb4b8);
-  --select-content: var(--uai-content-primary, #242729);
-  --select-label: var(--uai-content-primary, #242729);
-  --select-message: var(--uai-content-secondary, #5f676d);
-  --select-feedback: var(--select-content);
-  --select-halo: color-mix(
+  --input-height: var(--uai-control-height-medium, 2.5rem);
+  --input-background: var(--uai-surface-paper, #ffffff);
+  --input-border: var(--uai-border-input, #adb4b8);
+  --input-content: var(--uai-content-primary, #242729);
+  --input-label: var(--uai-content-primary, #242729);
+  --input-message: var(--uai-content-secondary, #5f676d);
+  --input-feedback: var(--input-content);
+  --input-halo: color-mix(
     in srgb,
     var(--uai-border-ring, #242729) calc(var(--uai-opacity-focus-ring, 0.3) * 100%),
     transparent
@@ -42,15 +42,15 @@
 }
 
 :host(.uai-select--size-short) {
-  --select-height: var(--uai-control-height-short, 2rem);
+  --input-height: var(--uai-control-height-short, 2rem);
 }
 
 :host(.uai-select--danger) {
-  --select-border: var(--uai-feedback-error, #cf0022);
-  --select-label: var(--uai-feedback-error, #cf0022);
-  --select-message: var(--uai-feedback-error, #cf0022);
-  --select-feedback: var(--uai-feedback-error, #cf0022);
-  --select-halo: color-mix(
+  --input-border: var(--uai-feedback-error, #cf0022);
+  --input-label: var(--uai-feedback-error, #cf0022);
+  --input-message: var(--uai-feedback-error, #cf0022);
+  --input-feedback: var(--uai-feedback-error, #cf0022);
+  --input-halo: color-mix(
     in srgb,
     var(--uai-feedback-error, #cf0022) calc(var(--uai-opacity-focus-ring, 0.3) * 100%),
     transparent
@@ -58,18 +58,18 @@
 }
 
 :host(.uai-select--success) {
-  --select-border: var(--uai-feedback-success, #3da329);
-  --select-message: var(--uai-feedback-success, #3da329);
-  --select-feedback: var(--uai-feedback-success, #3da329);
+  --input-border: var(--uai-feedback-success, #3da329);
+  --input-message: var(--uai-feedback-success, #3da329);
+  --input-feedback: var(--uai-feedback-success, #3da329);
 }
 
 :host(.uai-select--disabled) {
-  --select-background: var(--uai-surface-muted, #f2f3f3);
-  --select-border: var(--uai-border-default, #e4e6e7);
-  --select-content: var(--uai-content-disabled, #848e94);
-  --select-label: var(--uai-content-disabled, #848e94);
-  --select-message: var(--uai-content-disabled, #848e94);
-  --select-feedback: var(--uai-content-disabled, #848e94);
+  --input-background: var(--uai-surface-muted, #f2f3f3);
+  --input-border: var(--uai-border-default, #e4e6e7);
+  --input-content: var(--uai-content-disabled, #848e94);
+  --input-label: var(--uai-content-disabled, #848e94);
+  --input-message: var(--uai-content-disabled, #848e94);
+  --input-feedback: var(--uai-content-disabled, #848e94);
 }
 
 .select {
@@ -87,22 +87,22 @@
 
 .select__label {
   padding: 0 var(--uai-spacing-xs, 0.5rem);
-  color: var(--select-label);
+  color: var(--input-label);
 }
 
 .select__message {
   padding: 0 var(--uai-spacing-xs, 0.5rem);
-  color: var(--select-message);
+  color: var(--input-message);
 }
 
 .select__control {
   display: flex;
   box-sizing: border-box;
-  height: var(--select-height);
-  border: var(--uai-border-width-default, 1px) solid var(--select-border);
+  height: var(--input-height);
+  border: var(--uai-border-width-default, 1px) solid var(--input-border);
   border-radius: var(--uai-radius-lg, 0.75rem);
-  background-color: var(--select-background);
-  color: var(--select-content);
+  background-color: var(--input-background);
+  color: var(--input-content);
   transition: border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
 }
 @media (prefers-reduced-motion: reduce) {
@@ -111,8 +111,8 @@
   }
 }
 .select__control:focus-within, :host(.uai-select--open) .select__control {
-  --select-border: var(--uai-action-primary-default, #242729);
-  box-shadow: 0 0 0 var(--uai-border-width-thick, 2px) var(--select-halo);
+  --input-border: var(--uai-action-primary-default, #242729);
+  box-shadow: 0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo);
 }
 @media (forced-colors: active) {
   .select__control:focus-within {
@@ -123,11 +123,11 @@
 
 :host(.uai-select--danger) .select__control:focus-within,
 :host(.uai-select--danger.uai-select--open) .select__control {
-  --select-border: var(--uai-feedback-error, #cf0022);
+  --input-border: var(--uai-feedback-error, #cf0022);
 }
 
 :host(:not(.uai-select--disabled):not(.uai-select--danger):not(.uai-select--success)) .select__control:hover:not(:focus-within) {
-  --select-border: var(--uai-action-primary-default, #242729);
+  --input-border: var(--uai-action-primary-default, #242729);
 }
 
 .select__button {
@@ -160,11 +160,11 @@
 }
 
 .select__icon {
-  color: var(--select-content);
+  color: var(--input-content);
 }
 
 .select__feedback {
-  color: var(--select-feedback);
+  color: var(--input-feedback);
 }
 
 .select__value {

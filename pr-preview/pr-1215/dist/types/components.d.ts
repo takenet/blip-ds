@@ -93,6 +93,7 @@ import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
 import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
+import { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
 import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
@@ -190,6 +191,7 @@ export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
 export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
+export { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
 export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
@@ -2593,6 +2595,9 @@ export namespace Components {
     }
     interface BdsNavbarContent {
     }
+    /**
+     * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+     */
     interface BdsPagination {
         /**
           * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
@@ -5340,6 +5345,79 @@ export namespace Components {
          */
         "wrapItems": boolean;
     }
+    /**
+     * Navigation between pages of a list or table, with optional items per page and range. Use it below tables and lists
+     * that are split into pages; the page is controlled with page and changes only on user action, announced by
+     * uaiPaginationChange. Pair with UaiTable. Avoid it for infinite scrolling or for fewer than two pages. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiPagination {
+        /**
+          * Test selector on the last page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonEnd"?: string;
+        /**
+          * Test selector on the first page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonInitial"?: string;
+        /**
+          * Test selector on the next page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Test selector on the previous page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Test selector on the page selector. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtSelectNumber"?: string;
+        /**
+          * Test selector on the items per page selector. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtSelectSize"?: string;
+        /**
+          * Language of the texts: pt_BR, en_US or es_MX. Use the language of the interface; avoid mixing languages.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiPaginationLanguage;
+        /**
+          * Current page, starting at 1. Use it to control the page; pair with uaiPaginationChange; values outside 1..pages are clamped.
+          * @default 1
+         */
+        "page"?: number;
+        /**
+          * Shows "of N pages" next to the page selector. Use when the total of pages matters; avoid it in tight spaces.
+          * @default false
+         */
+        "pageCounter"?: boolean;
+        /**
+          * Items per page. Use with total and pageSizeOptions; pair with uaiPageSizeChange; avoid values missing from pageSizeOptions.
+          * @default null
+         */
+        "pageSize"?: number;
+        /**
+          * Choices of items per page, such as [10, 20, 50]. Use to let people pick; leave empty to hide the selector.
+          * @default []
+         */
+        "pageSizeOptions"?: number[];
+        /**
+          * Total number of pages. Use it when the server returns pages; ignored when total and pageSize are set.
+          * @default 0
+         */
+        "pages"?: number;
+        /**
+          * Total number of items. Use with pageSize to derive the pages and show the "1-10 of 100" range; avoid it together with pages.
+          * @default null
+         */
+        "total"?: number;
+    }
     interface UaiPaper {
         /**
           * Prop for set the background color.
@@ -6485,6 +6563,10 @@ export interface UaiPageHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiPageHeaderElement;
 }
+export interface UaiPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiPaginationElement;
+}
 export interface UaiRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiRadioElement;
@@ -7446,6 +7528,9 @@ declare global {
         "bdsPaginationChange": number;
         "bdsItemsPerPageChange": number;
     }
+    /**
+     * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+     */
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsPaginationElementEventMap>(type: K, listener: (this: HTMLBdsPaginationElement, ev: BdsPaginationCustomEvent<HTMLBdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8235,6 +8320,30 @@ declare global {
         prototype: HTMLUaiPageHeaderElement;
         new (): HTMLUaiPageHeaderElement;
     };
+    interface HTMLUaiPaginationElementEventMap {
+        "uaiPaginationChange": number;
+        "uaiPageSizeChange": number;
+    }
+    /**
+     * Navigation between pages of a list or table, with optional items per page and range. Use it below tables and lists
+     * that are split into pages; the page is controlled with page and changes only on user action, announced by
+     * uaiPaginationChange. Pair with UaiTable. Avoid it for infinite scrolling or for fewer than two pages. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface HTMLUaiPaginationElement extends Components.UaiPagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiPaginationElementEventMap>(type: K, listener: (this: HTMLUaiPaginationElement, ev: UaiPaginationCustomEvent<HTMLUaiPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiPaginationElementEventMap>(type: K, listener: (this: HTMLUaiPaginationElement, ev: UaiPaginationCustomEvent<HTMLUaiPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiPaginationElement: {
+        prototype: HTMLUaiPaginationElement;
+        new (): HTMLUaiPaginationElement;
+    };
     interface HTMLUaiPaperElement extends Components.UaiPaper, HTMLStencilElement {
     }
     var HTMLUaiPaperElement: {
@@ -8635,6 +8744,7 @@ declare global {
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-page-header": HTMLUaiPageHeaderElement;
+        "uai-pagination": HTMLUaiPaginationElement;
         "uai-paper": HTMLUaiPaperElement;
         "uai-radio": HTMLUaiRadioElement;
         "uai-radio-group": HTMLUaiRadioGroupElement;
@@ -11285,6 +11395,9 @@ declare namespace LocalJSX {
     }
     interface BdsNavbarContent {
     }
+    /**
+     * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+     */
     interface BdsPagination {
         /**
           * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
@@ -14126,6 +14239,87 @@ declare namespace LocalJSX {
          */
         "wrapItems"?: boolean;
     }
+    /**
+     * Navigation between pages of a list or table, with optional items per page and range. Use it below tables and lists
+     * that are split into pages; the page is controlled with page and changes only on user action, announced by
+     * uaiPaginationChange. Pair with UaiTable. Avoid it for infinite scrolling or for fewer than two pages. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiPagination {
+        /**
+          * Test selector on the last page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonEnd"?: string;
+        /**
+          * Test selector on the first page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonInitial"?: string;
+        /**
+          * Test selector on the next page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Test selector on the previous page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Test selector on the page selector. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtSelectNumber"?: string;
+        /**
+          * Test selector on the items per page selector. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtSelectSize"?: string;
+        /**
+          * Language of the texts: pt_BR, en_US or es_MX. Use the language of the interface; avoid mixing languages.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiPaginationLanguage;
+        /**
+          * Emitted when the person changes the items per page. detail: the new size. The page goes back to 1.
+         */
+        "onUaiPageSizeChange"?: (event: UaiPaginationCustomEvent<number>) => void;
+        /**
+          * Emitted when the person changes the page. detail: the new page number.
+         */
+        "onUaiPaginationChange"?: (event: UaiPaginationCustomEvent<number>) => void;
+        /**
+          * Current page, starting at 1. Use it to control the page; pair with uaiPaginationChange; values outside 1..pages are clamped.
+          * @default 1
+         */
+        "page"?: number;
+        /**
+          * Shows "of N pages" next to the page selector. Use when the total of pages matters; avoid it in tight spaces.
+          * @default false
+         */
+        "pageCounter"?: boolean;
+        /**
+          * Items per page. Use with total and pageSizeOptions; pair with uaiPageSizeChange; avoid values missing from pageSizeOptions.
+          * @default null
+         */
+        "pageSize"?: number;
+        /**
+          * Choices of items per page, such as [10, 20, 50]. Use to let people pick; leave empty to hide the selector.
+          * @default []
+         */
+        "pageSizeOptions"?: number[];
+        /**
+          * Total number of pages. Use it when the server returns pages; ignored when total and pageSize are set.
+          * @default 0
+         */
+        "pages"?: number;
+        /**
+          * Total number of items. Use with pageSize to derive the pages and show the "1-10 of 100" range; avoid it together with pages.
+          * @default null
+         */
+        "total"?: number;
+    }
     interface UaiPaper {
         /**
           * Prop for set the background color.
@@ -16202,6 +16396,20 @@ declare namespace LocalJSX {
         "editable": boolean;
         "language": UaiBreadcrumbLanguage;
     }
+    interface UaiPaginationAttributes {
+        "page": number;
+        "pages": number;
+        "total": number;
+        "pageSize": number;
+        "pageCounter": boolean;
+        "language": UaiPaginationLanguage;
+        "dtButtonInitial": string;
+        "dtButtonPrev": string;
+        "dtSelectNumber": string;
+        "dtButtonNext": string;
+        "dtButtonEnd": string;
+        "dtSelectSize": string;
+    }
     interface UaiPaperAttributes {
         "elevation": PaperElevation;
         "dataTest": string;
@@ -16506,6 +16714,7 @@ declare namespace LocalJSX {
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
         "uai-page-header": Omit<UaiPageHeader, keyof UaiPageHeaderAttributes> & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes]?: UaiPageHeader[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `attr:${K}`]?: UaiPageHeaderAttributes[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `prop:${K}`]?: UaiPageHeader[K] };
+        "uai-pagination": Omit<UaiPagination, keyof UaiPaginationAttributes> & { [K in keyof UaiPagination & keyof UaiPaginationAttributes]?: UaiPagination[K] } & { [K in keyof UaiPagination & keyof UaiPaginationAttributes as `attr:${K}`]?: UaiPaginationAttributes[K] } & { [K in keyof UaiPagination & keyof UaiPaginationAttributes as `prop:${K}`]?: UaiPagination[K] };
         "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
         "uai-radio": Omit<UaiRadio, keyof UaiRadioAttributes> & { [K in keyof UaiRadio & keyof UaiRadioAttributes]?: UaiRadio[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `attr:${K}`]?: UaiRadioAttributes[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `prop:${K}`]?: UaiRadio[K] } & OneOf<"value", UaiRadio["value"], UaiRadioAttributes["value"]>;
         "uai-radio-group": Omit<UaiRadioGroup, keyof UaiRadioGroupAttributes> & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes]?: UaiRadioGroup[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `attr:${K}`]?: UaiRadioGroupAttributes[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `prop:${K}`]?: UaiRadioGroup[K] };
@@ -16631,6 +16840,9 @@ declare module "@stencil/core" {
             "bds-nav-tree-item": LocalJSX.IntrinsicElements["bds-nav-tree-item"] & JSXBase.HTMLAttributes<HTMLBdsNavTreeItemElement>;
             "bds-navbar": LocalJSX.IntrinsicElements["bds-navbar"] & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
             "bds-navbar-content": LocalJSX.IntrinsicElements["bds-navbar-content"] & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
+            /**
+             * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+             */
             "bds-pagination": LocalJSX.IntrinsicElements["bds-pagination"] & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.IntrinsicElements["bds-paper"] & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.IntrinsicElements["bds-progress-bar"] & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
@@ -16810,6 +17022,13 @@ declare module "@stencil/core" {
              * avoid embedding product persistence or global application navigation.
              */
             "uai-page-header": LocalJSX.IntrinsicElements["uai-page-header"] & JSXBase.HTMLAttributes<HTMLUaiPageHeaderElement>;
+            /**
+             * Navigation between pages of a list or table, with optional items per page and range. Use it below tables and lists
+             * that are split into pages; the page is controlled with page and changes only on user action, announced by
+             * uaiPaginationChange. Pair with UaiTable. Avoid it for infinite scrolling or for fewer than two pages. Wrap the app in
+             * UaiThemeProvider.
+             */
+            "uai-pagination": LocalJSX.IntrinsicElements["uai-pagination"] & JSXBase.HTMLAttributes<HTMLUaiPaginationElement>;
             "uai-paper": LocalJSX.IntrinsicElements["uai-paper"] & JSXBase.HTMLAttributes<HTMLUaiPaperElement>;
             /**
              * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.

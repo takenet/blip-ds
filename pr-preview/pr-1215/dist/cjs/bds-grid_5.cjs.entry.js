@@ -9,7 +9,7 @@ const Grid = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: 'c6834a598fc5689af287c8f0e3c7cf0e41dac3fe', class: {
+        return (index.h(index.Host, { key: '2fb2e3dd637aee06ed8f6dc04b313ce78f08a72c', class: {
                 host: true,
                 [`direction--${this.direction}`]: true,
                 [`justify_content--${this.justifyContent}`]: true,
@@ -33,7 +33,7 @@ const Grid = class {
                 [`padding--${this.padding}`]: true,
                 [`margin--${this.margin}`]: true,
                 [this.bgColor || '']: true,
-            }, style: { height: this.height } }, index.h("slot", { key: '8b71a287254dc0e4bdeb39e0dc34ad26fe31e31a' })));
+            }, style: { height: this.height } }, index.h("slot", { key: 'e54ed8683ccf5e34ad06cfb45c0ff0359585f5d9' })));
     }
 };
 Grid.style = gridCss();
@@ -78,12 +78,12 @@ const Paper = class {
         this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
     }
     render() {
-        return (index.h(index.Host, { key: '366dfae781e8f3694e6b422b758dff5399861d21', class: {
+        return (index.h(index.Host, { key: 'd34b545f790a630a163335ce570217db2c97f016', class: {
                 [`paper__elevation--${this.elevation}`]: this.hasBorder,
                 border: this.border,
                 [`bg-${this.bgColor}`]: true,
                 [`border-${this.borderColor}`]: true,
-            }, style: { height: `${this.height}`, width: `${this.width}` } }, index.h("div", { key: 'e14b979042c23d160b29ccee30ebc71b6b3738ba', class: "paper__display", "data-test": this.dataTest }, index.h("slot", { key: '3a82b3852d0abe2817718f0c5a8698d5d3c24705' }))));
+            }, style: { height: `${this.height}`, width: `${this.width}` } }, index.h("div", { key: '77a7dbed8f57c913cd8e732a593da009e537f815', class: "paper__display", "data-test": this.dataTest }, index.h("slot", { key: 'd83b426ea52b162c8226cf56a54a9a0076362b0a' }))));
     }
 };
 Paper.style = paperCss();
@@ -95,7 +95,7 @@ const TestComponent = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h("bds-grid", { key: 'cd7f467fca973bfe0cd7f034d49ea40853ddc940', xxs: "12", padding: "x-2", "flex-wrap": "wrap" }, index.h("bds-grid", { key: '8a112715c86335655c067d24bed377a3c91efd36', xxs: "12", margin: "t-2" }, index.h("div", { key: 'ca62d19a2f3a2274c0b6c5222c48a3fca51f4d0e', class: "titulo" }, index.h("bds-typo", { key: '2657fc5e3bc78f237bf51d483013f9a7adb1f664', variant: "fs-40", bold: "bold" }, "Titulo de teste fora de temas"))), index.h("bds-grid", { key: 'd63188caaf37780f0c6f29d85620898cc8d3e25e', xxs: "6", padding: "r-1" }, index.h("bds-theme-provider", { key: '80ba73ff75d25f88b5cc2883afbb830f379c7b7a', theme: "light" }, index.h("bds-paper", { key: '9bfdca9f2206e4323ebf562430b9129842c1429b', elevation: "none", border: true }, index.h("bds-grid", { key: '916d0f55e501885835e36704f2b76645b9f4140f', padding: "2" })))), index.h("bds-grid", { key: '1f1580fec10f65307c6e1dc0c05d40a060475cc6', xxs: "6", padding: "l-1" }, index.h("bds-theme-provider", { key: '7b61c316ecc4fb30266db93a5a9d692b3efde19e', theme: "dark" }, index.h("bds-paper", { key: '9012da0369a46ce930a60ef368cf40a6753f0ffe', elevation: "none", border: true }, index.h("bds-grid", { key: 'cc57393b5bdc077c99532ff9462653a8ac6b586e', padding: "2" }))))));
+        return (index.h("bds-grid", { key: 'ec44099d7a9ed0c136ec5b9347028e571c316dd2', xxs: "12", padding: "x-2", "flex-wrap": "wrap" }, index.h("bds-grid", { key: '77cce9054980f8e1750f7d29550188c406e09976', xxs: "12", margin: "t-2" }, index.h("div", { key: 'd95607c606b29f81ec9fce2f22499acb32e7be94', class: "titulo" }, index.h("bds-typo", { key: 'fac026857fe9c4b9e7751b6f8c1b5710be147a7d', variant: "fs-40", bold: "bold" }, "Titulo de teste fora de temas"))), index.h("bds-grid", { key: 'be0fe88e4b3400930ef35ffa9079ab945eb0c05f', xxs: "6", padding: "r-1" }, index.h("bds-theme-provider", { key: '5b97b298f95061453a8d25032e3079474c9a7c10', theme: "light" }, index.h("bds-paper", { key: '119658f46c4a55f9fe3ed49dcc5780a58d0da066', elevation: "none", border: true }, index.h("bds-grid", { key: '7743978f7a1278284a7540c5d7328275178d7161', padding: "2" })))), index.h("bds-grid", { key: '3945bdc77c3ecec258cedde2b67f2b05e1a3017d', xxs: "6", padding: "l-1" }, index.h("bds-theme-provider", { key: '4173555023fe7babf6c1f064a767a8e03e3b50fa', theme: "dark" }, index.h("bds-paper", { key: '45ba57ce0e4d40b42fa9ab185fc22a52e9993970', elevation: "none", border: true }, index.h("bds-grid", { key: '86f8df872a07039102b99b5667eaf09c4d08001f', padding: "2" }))))));
     }
 };
 TestComponent.style = testComponentCss();

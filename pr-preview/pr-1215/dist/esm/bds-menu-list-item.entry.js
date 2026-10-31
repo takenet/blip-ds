@@ -8,7 +8,7 @@ const MenuListItem = class {
     }
     render() {
         const color = this.color || 'currentColor';
-        return (h(Host, { key: 'dc0d07287b8e43880e58e76be69e3ef79a598297', role: "button" }, h("div", { key: 'a1742fd9c066822a9b0ae8ce135444e77dc2f9b8', class: "menu-list-item" }, h("bds-icon", { key: 'a60dbfd6b2b89a4469d06e2b9da004f2b64f2cac', color: color, name: this.icon }), h("bds-typo", { key: '254d512691337454b781437cc3b4efdc7901a6ce', class: "menu-list-item__text", variant: "fs-10" }, h("slot", { key: 'c65ab0f637edad37386018d95e9b55c4d77f3868' })))));
+        return (h(Host, { key: 'd9275d4c9c8fc20a788c94d6132bec321b479e48', role: "button" }, h("div", { key: '4949bf161a872df77cde5068ea64ea8dfcc3b46f', class: "menu-list-item" }, h("bds-icon", { key: '9897657eec20cc6fc6a1798d11ff7b87b7f7b785', color: color, name: this.icon }), h("bds-typo", { key: 'a6021e2570680f24d539ebac2576d504deb598d5', class: "menu-list-item__text", variant: "fs-10" }, h("slot", { key: '43ac7e8e82418a06ca7b99b0b2ee3c8f930b5492' })))));
     }
 };
 MenuListItem.style = menuListItemCss();

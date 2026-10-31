@@ -1,7 +1,7 @@
 import { Host, h } from "@stencil/core";
 export class Warning {
     render() {
-        return (h(Host, { key: '896b1c74919d9ef6c333b12db9834e97f2467195' }, h("div", { key: 'd785258433921b4c530be69e5076649b8adaec06', class: "warning__body" }, h("bds-icon", { key: '609a263bbd4df122a5f30943c3ff9f86966f108b', class: "warning__icon", theme: "solid", size: "small", name: "warning" }), h("bds-typo", { key: '939f65933ee5d3f4d6e8115c623b21f66d0e0c42', variant: "fs-14", tag: "span", class: "warning__message" }, h("slot", { key: 'a93ec321d8a36c87a50278248647736520ba1744' })))));
+        return (h(Host, { key: '534bae9453ef03d6329dbc6c6582ba3d4dfb282a' }, h("div", { key: '47bba595dc0ef40de01618c6bd2a1e8d237ba4e4', class: "warning__body" }, h("bds-icon", { key: '26f42883bb30a948362237f1c4801f296af8b46a', class: "warning__icon", theme: "solid", size: "small", name: "warning" }), h("bds-typo", { key: '7dab75ace867302c5ec72f80c6ab409323b50722', variant: "fs-14", tag: "span", class: "warning__message" }, h("slot", { key: '9a65d03cb72cf6de8fd390d18a07a783786a1a8d' })))));
     }
     static get is() { return "bds-warning"; }
     static get encapsulation() { return "shadow"; }

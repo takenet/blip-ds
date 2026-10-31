@@ -1,0 +1,1 @@
+import{r as d,h as e}from"./p-CkbvGS8Z.js";const r=class{constructor(e){d(this,e)}render(){return e("bds-grid",{key:"679bdee1f8227e0bd923818c12c20faf980d7d3a"},e("slot",{key:"c14c3e676ad351179601d5ef0a93e8568ed491af"}))}};export{r as bds_card_body}

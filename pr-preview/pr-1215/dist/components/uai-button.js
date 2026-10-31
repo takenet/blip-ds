@@ -1,1 +1,1 @@
-import{U as o,d as s}from"./p-Ot4I26je.js";const t=o,p=s;export{t as UaiButton,p as defineCustomElement}
+import{U as s,d as o}from"./p-d42rlkps.js";const p=s,r=o;export{p as UaiButton,r as defineCustomElement}

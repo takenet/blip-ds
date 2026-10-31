@@ -63,7 +63,7 @@ export class AccordionHeader {
         }
     }
     render() {
-        return (h("div", { key: '00ac90eeb8cf460cb01e3fa8bf296464da0dcda2', onClick: this.toggleHeader, class: { accordion_header: true }, "data-test": this.dataTest }, this.avatarName || this.avatarThumb ? (h("bds-avatar", { name: this.avatarName, thumbnail: this.avatarThumb, size: "extra-small" })) : (this.icon && h("bds-icon", { size: "x-large", name: this.icon, color: this.iconColor })), this.accordionTitle && (h("bds-typo", { key: '3d59ff4f10dcd67bf3e2ee0cc559180e272cde95', bold: "bold", variant: "fs-16", "line-height": "double" }, this.accordionTitle)), h("slot", { key: 'e1580a9ec6539e0c1de54ef0d58b942aa94465b0' }), h("bds-icon", { key: 'f9585761a36de541ba0d114cc86d22b8c38c7b29', class: {
+        return (h("div", { key: 'd685ac96364398e1028ed15ed87a776cf39c179f', onClick: this.toggleHeader, class: { accordion_header: true }, "data-test": this.dataTest }, this.avatarName || this.avatarThumb ? (h("bds-avatar", { name: this.avatarName, thumbnail: this.avatarThumb, size: "extra-small" })) : (this.icon && h("bds-icon", { size: "x-large", name: this.icon, color: this.iconColor })), this.accordionTitle && (h("bds-typo", { key: 'c412c5740b092458297d9c05576b131ee59b74f2', bold: "bold", variant: "fs-16", "line-height": "double" }, this.accordionTitle)), h("slot", { key: '5c395ed63f2e6b31ba943490960bb494de9bdd2d' }), h("bds-icon", { key: '2f1965535b92d98dcfe7f48e0b6acb3f4ec8d55d', class: {
                 accButton: true,
                 accButton__isopen: this.isOpen,
                 accButton__isfocus: this.btToggleIsfocus,

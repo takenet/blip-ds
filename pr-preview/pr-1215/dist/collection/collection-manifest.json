@@ -60,6 +60,7 @@
     "components/uai-navbar/uai-navbar.js",
     "components/uai-page-header/uai-page-header.js",
     "components/uai-select/uai-select.js",
+    "components/uai-pagination/uai-pagination.js",
     "components/uai-switch/uai-switch.js",
     "components/uai-table-cell/uai-table-cell.js",
     "components/uai-table-row/uai-table-row.js",

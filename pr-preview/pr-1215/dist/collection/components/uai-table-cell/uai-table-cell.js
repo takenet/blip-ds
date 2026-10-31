@@ -16,7 +16,7 @@ export class UaiTableCell {
         const justify = JUSTIFY.find((candidate) => candidate === this.justifyContent) || 'left';
         if (justify !== this.justifyContent)
             warnLegacyValue('uai-table-cell', 'justifyContent', this.justifyContent, justify);
-        return (h(Host, { key: '21d463de2acbdb460ba39feddc352706218b7d1a', role: "cell" }, h("uai-typo", { key: 'a5bbe599ef1c51d86986bef61dea86e360ed5b25', tag: "span", variant: "body-base", margin: false }, h("slot", { key: 'bfe9097e0b4a3983e3965fe4fc18d17434985d22' }))));
+        return (h(Host, { key: '14ba4ead2db9751645ccac1ab2e45a53f47a9dfe', role: "cell" }, h("uai-typo", { key: 'c7f19232bdd6039f6064b0299997802125f8f757', tag: "span", variant: "body-base", margin: false }, h("slot", { key: '98c1de660fec846ea419dab308a15b35d4640cd3' }))));
     }
     static get is() { return "uai-table-cell"; }
     static get encapsulation() { return "shadow"; }
