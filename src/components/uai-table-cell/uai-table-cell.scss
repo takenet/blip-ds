@@ -18,14 +18,10 @@
   justify-content: flex-end;
 }
 
-.cell__text {
-  --uai-typo-color: var(--uai-content-primary, #{$uai-content-primary});
-
+// No overflow clipping here: controls such as the checkbox draw their hover halo outside their own box.
+uai-typo {
   display: flex;
   gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
   align-items: center;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }

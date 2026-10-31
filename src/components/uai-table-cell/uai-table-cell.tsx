@@ -26,7 +26,7 @@ export class UaiTableCell {
 
     return (
       <Host role="cell">
-        <uai-typo class="cell__text" tag="span" variant="body-base" margin={false}>
+        <uai-typo tag="span" variant="body-base" margin={false}>
           <slot />
         </uai-typo>
       </Host>
