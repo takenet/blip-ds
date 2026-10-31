@@ -39,13 +39,9 @@
   justify-content: flex-end;
 }
 
-.cell__text {
-  --uai-typo-color: var(--uai-content-primary, #242729);
+uai-typo {
   display: flex;
   gap: var(--uai-spacing-xs, 0.5rem);
   align-items: center;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
