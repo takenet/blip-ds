@@ -123,6 +123,7 @@ import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } fr
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiPageHeader as UaiPageHeaderElement, defineCustomElement as defineUaiPageHeader } from "blip-ds/dist/components/uai-page-header.js";
+import { UaiPagination as UaiPaginationElement, defineCustomElement as defineUaiPagination } from "blip-ds/dist/components/uai-pagination.js";
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
 import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUaiRadioGroup } from "blip-ds/dist/components/uai-radio-group.js";
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
@@ -1167,6 +1168,16 @@ export const UaiPageHeader = createComponent({
         onUaiBreadcrumbItemEdit: 'uaiBreadcrumbItemEdit'
     },
     defineCustomElement: defineUaiPageHeader
+});
+export const UaiPagination = createComponent({
+    tagName: 'uai-pagination',
+    elementClass: UaiPaginationElement,
+    react: React,
+    events: {
+        onUaiPaginationChange: 'uaiPaginationChange',
+        onUaiPageSizeChange: 'uaiPageSizeChange'
+    },
+    defineCustomElement: defineUaiPagination
 });
 export const UaiPaper = createComponent({
     tagName: 'uai-paper',

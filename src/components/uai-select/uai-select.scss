@@ -4,15 +4,15 @@
  * @prop --uai-select-width: Width of the field. Defaults to the full width of the container.
  */
 :host {
-  --select-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
-  --select-background: var(--uai-surface-paper, #{$uai-surface-paper});
-  --select-border: var(--uai-border-input, #{$uai-border-input});
-  --select-content: var(--uai-content-primary, #{$uai-content-primary});
-  --select-label: var(--uai-content-primary, #{$uai-content-primary});
-  --select-message: var(--uai-content-secondary, #{$uai-content-secondary});
-  --select-feedback: var(--select-content);
+  --input-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  --input-background: var(--uai-surface-paper, #{$uai-surface-paper});
+  --input-border: var(--uai-border-input, #{$uai-border-input});
+  --input-content: var(--uai-content-primary, #{$uai-content-primary});
+  --input-label: var(--uai-content-primary, #{$uai-content-primary});
+  --input-message: var(--uai-content-secondary, #{$uai-content-secondary});
+  --input-feedback: var(--input-content);
   // Focus halo: border/ring at opacity/focus-ring, as published for the UAI input.
-  --select-halo: color-mix(
+  --input-halo: color-mix(
     in srgb,
     var(--uai-border-ring, #{$uai-border-ring}) calc(var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring}) * 100%),
     transparent
@@ -22,15 +22,15 @@
 }
 
 :host(.uai-select--size-short) {
-  --select-height: var(--uai-control-height-short, #{$uai-control-height-short});
+  --input-height: var(--uai-control-height-short, #{$uai-control-height-short});
 }
 
 :host(.uai-select--danger) {
-  --select-border: var(--uai-feedback-error, #{$uai-feedback-error});
-  --select-label: var(--uai-feedback-error, #{$uai-feedback-error});
-  --select-message: var(--uai-feedback-error, #{$uai-feedback-error});
-  --select-feedback: var(--uai-feedback-error, #{$uai-feedback-error});
-  --select-halo: color-mix(
+  --input-border: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-label: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-message: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-feedback: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-halo: color-mix(
     in srgb,
     var(--uai-feedback-error, #{$uai-feedback-error}) calc(var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring}) * 100%),
     transparent
@@ -38,18 +38,18 @@
 }
 
 :host(.uai-select--success) {
-  --select-border: var(--uai-feedback-success, #{$uai-feedback-success});
-  --select-message: var(--uai-feedback-success, #{$uai-feedback-success});
-  --select-feedback: var(--uai-feedback-success, #{$uai-feedback-success});
+  --input-border: var(--uai-feedback-success, #{$uai-feedback-success});
+  --input-message: var(--uai-feedback-success, #{$uai-feedback-success});
+  --input-feedback: var(--uai-feedback-success, #{$uai-feedback-success});
 }
 
 :host(.uai-select--disabled) {
-  --select-background: var(--uai-surface-muted, #{$uai-surface-muted});
-  --select-border: var(--uai-border-default, #{$uai-border-default});
-  --select-content: var(--uai-content-disabled, #{$uai-content-disabled});
-  --select-label: var(--uai-content-disabled, #{$uai-content-disabled});
-  --select-message: var(--uai-content-disabled, #{$uai-content-disabled});
-  --select-feedback: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  --input-border: var(--uai-border-default, #{$uai-border-default});
+  --input-content: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-label: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-message: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-feedback: var(--uai-content-disabled, #{$uai-content-disabled});
 }
 
 .select {
@@ -67,28 +67,28 @@
 
 .select__label {
   padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
-  color: var(--select-label);
+  color: var(--input-label);
 }
 
 .select__message {
   padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
-  color: var(--select-message);
+  color: var(--input-message);
 }
 
 .select__control {
   display: flex;
   box-sizing: border-box;
-  height: var(--select-height);
-  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--select-border);
+  height: var(--input-height);
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--input-border);
   border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
-  background-color: var(--select-background);
-  color: var(--select-content);
+  background-color: var(--input-background);
+  color: var(--input-content);
   @include uai-transition(border-color box-shadow);
 
   &:focus-within,
   :host(.uai-select--open) & {
-    --select-border: var(--uai-action-primary-default, #{$uai-action-primary-default});
-    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--select-halo);
+    --input-border: var(--uai-action-primary-default, #{$uai-action-primary-default});
+    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--input-halo);
   }
 
   @media (forced-colors: active) {
@@ -101,11 +101,11 @@
 
 :host(.uai-select--danger) .select__control:focus-within,
 :host(.uai-select--danger.uai-select--open) .select__control {
-  --select-border: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-border: var(--uai-feedback-error, #{$uai-feedback-error});
 }
 
 :host(:not(.uai-select--disabled):not(.uai-select--danger):not(.uai-select--success)) .select__control:hover:not(:focus-within) {
-  --select-border: var(--uai-action-primary-default, #{$uai-action-primary-default});
+  --input-border: var(--uai-action-primary-default, #{$uai-action-primary-default});
 }
 
 .select__button {
@@ -139,11 +139,11 @@
 }
 
 .select__icon {
-  color: var(--select-content);
+  color: var(--input-content);
 }
 
 .select__feedback {
-  color: var(--select-feedback);
+  color: var(--input-feedback);
 }
 
 .select__value {

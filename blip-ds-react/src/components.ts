@@ -11,7 +11,7 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAvatarCustomEvent, type UaiBannerCustomEvent, type UaiBreadcrumbCustomEvent, type UaiBreadcrumbEditDetail, type UaiBreadcrumbItem, type UaiButtonCustomEvent, type UaiCheckboxCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiPageHeaderCustomEvent, type UaiPhoneNumberChange, type UaiRadioCustomEvent, type UaiRadioGroupCustomEvent, type UaiSelectChange, type UaiSelectCustomEvent, type UaiSwitchCustomEvent, type UaiTabGroupCustomEvent, type UaiTabItemCustomEvent, type UaiTableSortDirection, type UaiTableThCustomEvent, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAvatarCustomEvent, type UaiBannerCustomEvent, type UaiBreadcrumbCustomEvent, type UaiBreadcrumbEditDetail, type UaiBreadcrumbItem, type UaiButtonCustomEvent, type UaiCheckboxCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiPageHeaderCustomEvent, type UaiPaginationCustomEvent, type UaiPhoneNumberChange, type UaiRadioCustomEvent, type UaiRadioGroupCustomEvent, type UaiSelectChange, type UaiSelectCustomEvent, type UaiSwitchCustomEvent, type UaiTabGroupCustomEvent, type UaiTabItemCustomEvent, type UaiTableSortDirection, type UaiTableThCustomEvent, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
 import type { Components } from "blip-ds/dist/components";
 import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from "blip-ds/dist/components/bds-accordion-group.js";
@@ -135,6 +135,7 @@ import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } fr
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiPageHeader as UaiPageHeaderElement, defineCustomElement as defineUaiPageHeader } from "blip-ds/dist/components/uai-page-header.js";
+import { UaiPagination as UaiPaginationElement, defineCustomElement as defineUaiPagination } from "blip-ds/dist/components/uai-pagination.js";
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
 import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUaiRadioGroup } from "blip-ds/dist/components/uai-radio-group.js";
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
@@ -1840,6 +1841,23 @@ export const UaiPageHeader: StencilReactComponent<UaiPageHeaderElement, UaiPageH
         onUaiBreadcrumbItemEdit: 'uaiBreadcrumbItemEdit'
     } as UaiPageHeaderEvents,
     defineCustomElement: defineUaiPageHeader
+});
+
+export type UaiPaginationEvents = {
+    onUaiPaginationChange: EventName<UaiPaginationCustomEvent<number>>,
+    onUaiPageSizeChange: EventName<UaiPaginationCustomEvent<number>>
+};
+
+export const UaiPagination: StencilReactComponent<UaiPaginationElement, UaiPaginationEvents, Components.UaiPagination> = /*@__PURE__*/ createComponent<UaiPaginationElement, UaiPaginationEvents, Components.UaiPagination>({
+    tagName: 'uai-pagination',
+    elementClass: UaiPaginationElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {
+        onUaiPaginationChange: 'uaiPaginationChange',
+        onUaiPageSizeChange: 'uaiPageSizeChange'
+    } as UaiPaginationEvents,
+    defineCustomElement: defineUaiPagination
 });
 
 export type UaiPaperEvents = NonNullable<unknown>;

@@ -300,9 +300,9 @@ export const WAVE_4: ComponentEntry[] = [
   },
   {
     tag: 'bds-pagination',
-    name: 'Pagination',
-    primaryStory: 'components-pagination--properties',
-    stories: [{ storyId: 'components-pagination--properties', label: 'Properties' }],
+    name: '[deprecated] Pagination',
+    primaryStory: 'components-deprecated-pagination--properties',
+    stories: [{ storyId: 'components-deprecated-pagination--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-navbar',

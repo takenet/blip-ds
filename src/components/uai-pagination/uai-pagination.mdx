@@ -1,0 +1,48 @@
+import { Meta, Controls, Canvas } from '@storybook/addon-docs/blocks';
+import * as PaginationStories from './uai-pagination.stories';
+
+<Meta of={PaginationStories} />
+
+# Pagination
+
+Navegação entre páginas de uma lista ou tabela: botões de primeira, anterior, próxima e última página, seletor da página atual e, opcionalmente, itens por página com o intervalo (`1-10 de 100`). É um `nav` com nome acessível, e os botões de ícone têm `aria-label` no idioma escolhido. Usa `uai-button` e `uai-select`.
+
+<Canvas of={PaginationStories.Playground} />
+
+<Controls of={PaginationStories.Playground} />
+
+## Página controlada
+
+`page` define a página atual, começando em 1, e valores fora de `1..pages` são ajustados. `uaiPaginationChange` (`detail`: o número da página) dispara só por ação da pessoa, nunca ao carregar nem quando `page` muda por fora.
+
+<Canvas of={PaginationStories.Controlled} />
+
+## Itens por página
+
+Passe `total`, `pageSize` e `pageSizeOptions`. O número de páginas é calculado (`ceil(total / pageSize)`) e `pages` é ignorado. Ao trocar o tamanho, `uaiPageSizeChange` dispara e a página volta para 1. Sem `pageSizeOptions` o seletor e o intervalo não aparecem.
+
+<Canvas of={PaginationStories.WithItemsPerPage} />
+
+## Página única e idiomas
+
+Com uma página ou menos, os botões ficam desabilitados.
+
+<Canvas of={PaginationStories.SinglePage} />
+
+<Canvas of={PaginationStories.Languages} />
+
+## Migração de `bds-pagination`
+
+| `bds-pagination` | `uai-pagination` |
+| --- | --- |
+| `startedPage` (só no carregamento) | `page` (controlada) |
+| `pages` | `pages`, ou calculado a partir de `total` e `pageSize` |
+| `numberItems` | `total` |
+| `itemsPage` (array ou string JSON) | `pageSizeOptions` (só array) |
+| `pageCounter` (também mudava a lógica de itens) | `pageCounter` só mostra "de N páginas" |
+| `bdsPaginationChange` | `uaiPaginationChange` |
+| `bdsItemsPerPageChange` (disparava ao carregar) | `uaiPageSizeChange` (só por ação da pessoa) |
+| `optionsPosition` | automático |
+| `dtButtonInitial`, `dtButtonPrev`, `dtSelectNumber`, `dtButtonNext`, `dtButtonEnd` | os mesmos, mais `dtSelectSize` |
+
+Em telas estreitas os blocos quebram de linha em vez de esconder os itens por página.
