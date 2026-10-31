@@ -11,7 +11,7 @@ import type { EventName, StencilReactComponent } from '@stencil/react-output-tar
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
 
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAvatarCustomEvent, type UaiBannerCustomEvent, type UaiBreadcrumbCustomEvent, type UaiBreadcrumbEditDetail, type UaiBreadcrumbItem, type UaiButtonCustomEvent, type UaiCheckboxCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiPageHeaderCustomEvent, type UaiPhoneNumberChange, type UaiRadioCustomEvent, type UaiRadioGroupCustomEvent, type UaiSwitchCustomEvent, type UaiTabGroupCustomEvent, type UaiTabItemCustomEvent, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAvatarCustomEvent, type UaiBannerCustomEvent, type UaiBreadcrumbCustomEvent, type UaiBreadcrumbEditDetail, type UaiBreadcrumbItem, type UaiButtonCustomEvent, type UaiCheckboxCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiPageHeaderCustomEvent, type UaiPhoneNumberChange, type UaiRadioCustomEvent, type UaiRadioGroupCustomEvent, type UaiSwitchCustomEvent, type UaiTabGroupCustomEvent, type UaiTabItemCustomEvent, type UaiTableSortDirection, type UaiTableThCustomEvent, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
 import type { Components } from "blip-ds/dist/components";
 import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from "blip-ds/dist/components/bds-accordion-group.js";
@@ -141,6 +141,12 @@ import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } fr
 import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
 import { UaiTabGroup as UaiTabGroupElement, defineCustomElement as defineUaiTabGroup } from "blip-ds/dist/components/uai-tab-group.js";
 import { UaiTabItem as UaiTabItemElement, defineCustomElement as defineUaiTabItem } from "blip-ds/dist/components/uai-tab-item.js";
+import { UaiTableBody as UaiTableBodyElement, defineCustomElement as defineUaiTableBody } from "blip-ds/dist/components/uai-table-body.js";
+import { UaiTableCell as UaiTableCellElement, defineCustomElement as defineUaiTableCell } from "blip-ds/dist/components/uai-table-cell.js";
+import { UaiTableHeader as UaiTableHeaderElement, defineCustomElement as defineUaiTableHeader } from "blip-ds/dist/components/uai-table-header.js";
+import { UaiTableRow as UaiTableRowElement, defineCustomElement as defineUaiTableRow } from "blip-ds/dist/components/uai-table-row.js";
+import { UaiTableTh as UaiTableThElement, defineCustomElement as defineUaiTableTh } from "blip-ds/dist/components/uai-table-th.js";
+import { UaiTable as UaiTableElement, defineCustomElement as defineUaiTable } from "blip-ds/dist/components/uai-table.js";
 import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
 import { UaiTooltip as UaiTooltipElement, defineCustomElement as defineUaiTooltip } from "blip-ds/dist/components/uai-tooltip.js";
@@ -1910,6 +1916,72 @@ export const UaiTabItem: StencilReactComponent<UaiTabItemElement, UaiTabItemEven
     react: React,
     events: { onUaiDisabled: 'uaiDisabled' } as UaiTabItemEvents,
     defineCustomElement: defineUaiTabItem
+});
+
+export type UaiTableEvents = NonNullable<unknown>;
+
+export const UaiTable: StencilReactComponent<UaiTableElement, UaiTableEvents, Components.UaiTable> = /*@__PURE__*/ createComponent<UaiTableElement, UaiTableEvents, Components.UaiTable>({
+    tagName: 'uai-table',
+    elementClass: UaiTableElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiTableEvents,
+    defineCustomElement: defineUaiTable
+});
+
+export type UaiTableBodyEvents = NonNullable<unknown>;
+
+export const UaiTableBody: StencilReactComponent<UaiTableBodyElement, UaiTableBodyEvents, Components.UaiTableBody> = /*@__PURE__*/ createComponent<UaiTableBodyElement, UaiTableBodyEvents, Components.UaiTableBody>({
+    tagName: 'uai-table-body',
+    elementClass: UaiTableBodyElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiTableBodyEvents,
+    defineCustomElement: defineUaiTableBody
+});
+
+export type UaiTableCellEvents = NonNullable<unknown>;
+
+export const UaiTableCell: StencilReactComponent<UaiTableCellElement, UaiTableCellEvents, Components.UaiTableCell> = /*@__PURE__*/ createComponent<UaiTableCellElement, UaiTableCellEvents, Components.UaiTableCell>({
+    tagName: 'uai-table-cell',
+    elementClass: UaiTableCellElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiTableCellEvents,
+    defineCustomElement: defineUaiTableCell
+});
+
+export type UaiTableHeaderEvents = NonNullable<unknown>;
+
+export const UaiTableHeader: StencilReactComponent<UaiTableHeaderElement, UaiTableHeaderEvents, Components.UaiTableHeader> = /*@__PURE__*/ createComponent<UaiTableHeaderElement, UaiTableHeaderEvents, Components.UaiTableHeader>({
+    tagName: 'uai-table-header',
+    elementClass: UaiTableHeaderElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiTableHeaderEvents,
+    defineCustomElement: defineUaiTableHeader
+});
+
+export type UaiTableRowEvents = NonNullable<unknown>;
+
+export const UaiTableRow: StencilReactComponent<UaiTableRowElement, UaiTableRowEvents, Components.UaiTableRow> = /*@__PURE__*/ createComponent<UaiTableRowElement, UaiTableRowEvents, Components.UaiTableRow>({
+    tagName: 'uai-table-row',
+    elementClass: UaiTableRowElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiTableRowEvents,
+    defineCustomElement: defineUaiTableRow
+});
+
+export type UaiTableThEvents = { onUaiTableSort: EventName<UaiTableThCustomEvent<UaiTableSortDirection>> };
+
+export const UaiTableTh: StencilReactComponent<UaiTableThElement, UaiTableThEvents, Components.UaiTableTh> = /*@__PURE__*/ createComponent<UaiTableThElement, UaiTableThEvents, Components.UaiTableTh>({
+    tagName: 'uai-table-th',
+    elementClass: UaiTableThElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: { onUaiTableSort: 'uaiTableSort' } as UaiTableThEvents,
+    defineCustomElement: defineUaiTableTh
 });
 
 export type UaiTextareaEvents = {

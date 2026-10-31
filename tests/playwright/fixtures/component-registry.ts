@@ -108,9 +108,9 @@ export const WAVE_1: ComponentEntry[] = [
 export const WAVE_2: ComponentEntry[] = [
   {
     tag: 'bds-table',
-    name: 'Table',
-    primaryStory: 'components-table--properties',
-    stories: [{ storyId: 'components-table--properties', label: 'Properties' }],
+    name: '[deprecated] Table',
+    primaryStory: 'components-deprecated-table--properties',
+    stories: [{ storyId: 'components-deprecated-table--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-datepicker',
