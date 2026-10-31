@@ -1,0 +1,17 @@
+'use strict';
+
+var index = require('./index-BuAR9UTp.js');
+
+const expansionPanelHeaderCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.header{width:70px;padding-right:6px}`;
+
+const ExpansionPanelHeader = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+    }
+    render() {
+        return (index.h(index.Host, { key: '039746a27f3e79119a3c3cd2a80af307c98ec4fd' }, index.h("div", { key: '85e1e19b019b42b06e3f9a7b7d046bb429323a96', class: "header" }, index.h("slot", { key: 'a648a90239e2bf9aaebd6cdf3d53b1bf2b51dec2' })), index.h("bds-typo", { key: '5fa30ca0fe7095821cae2634edbfa7461aa4c1ff', tag: "p", variant: "fs-12" }, this.text)));
+    }
+};
+ExpansionPanelHeader.style = expansionPanelHeaderCss();
+
+exports.bds_expansion_panel_header = ExpansionPanelHeader;

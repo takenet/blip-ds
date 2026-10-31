@@ -1,0 +1,1 @@
+import{S as o,d as r}from"./p-DEUrfOac.js";const s=o,a=r;export{s as BdsSelectOption,a as defineCustomElement}

@@ -1,0 +1,1 @@
+import{S as o,d as p}from"./p-DcJLpIBN.js";const s=o,r=p;export{s as BdsSelect,r as defineCustomElement}

@@ -1,0 +1,1 @@
+import{R as p,d as o}from"./p-BFgpalbp.js";const s=p,a=o;export{s as BdsRadio,a as defineCustomElement}
