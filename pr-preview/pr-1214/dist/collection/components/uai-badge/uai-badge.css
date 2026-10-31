@@ -1,0 +1,162 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.badge {
+  --badge-bg: var(--uai-action-primary-default, #242729);
+  --badge-fg: var(--uai-content-inverse, #ffffff);
+  --badge-radius: var(--uai-radius-full, 624.9375rem);
+  --badge-icon-size: var(--uai-sizing-sm, 1rem);
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--uai-sizing-lg, 1.5rem);
+  min-height: var(--uai-sizing-lg, 1.5rem);
+  box-sizing: border-box;
+  color: var(--badge-fg);
+}
+.badge--system {
+  --badge-fg: var(--uai-action-primary-foreground, #ffffff);
+}
+.badge--danger {
+  --badge-bg: var(--uai-feedback-error, #cf0022);
+}
+.badge--warning, .badge--success {
+  --badge-fg: light-dark(
+    var(--uai-content-primary, #242729),
+    var(--uai-content-inverse, #181a1b)
+  );
+}
+.badge--warning {
+  --badge-bg: var(--uai-feedback-warning, #ff8000);
+}
+.badge--success {
+  --badge-bg: var(--uai-feedback-success, #3da329);
+}
+.badge--neutral {
+  --badge-bg: var(--uai-surface-inverse, #242729);
+}
+.badge--status {
+  min-height: var(--uai-sizing-2xs, 0.5rem);
+  height: var(--uai-sizing-2xs, 0.5rem);
+}
+.badge--status .badge__shape,
+.badge--status .badge__pulse {
+  width: var(--uai-sizing-2xs, 0.5rem);
+}
+.badge--number {
+  padding: 0 var(--uai-spacing-xs, 0.5rem);
+}
+.badge--square, .badge--triangle, .badge--triangle-reverse, .badge--polygon {
+  --badge-radius: var(--uai-radius-none, 0rem);
+}
+.badge--triangle, .badge--triangle-reverse, .badge--polygon {
+  --badge-icon-size: var(--uai-sizing-xs, 0.75rem);
+}
+.badge--triangle .badge__shape,
+.badge--triangle .badge__pulse {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.badge--triangle .badge__content {
+  align-self: flex-end;
+}
+.badge--triangle-reverse .badge__shape,
+.badge--triangle-reverse .badge__pulse {
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+}
+.badge--triangle-reverse .badge__content {
+  align-self: flex-start;
+}
+.badge--polygon .badge__shape,
+.badge--polygon .badge__pulse {
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+.badge--animated .badge__pulse {
+  animation: uai-badge-pulse var(--uai-duration-loop, 800ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .badge--animated .badge__pulse {
+    animation: none;
+    display: none;
+  }
+}
+
+.badge__shape,
+.badge__pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--badge-radius);
+  background-color: var(--badge-bg);
+  pointer-events: none;
+}
+
+.badge__pulse {
+  opacity: 0;
+}
+
+.badge__content {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge__content > uai-typo {
+  --uai-typo-color: currentColor;
+}
+
+.badge__icon {
+  --uai-icon-size: var(--badge-icon-size);
+  display: inline-flex;
+  width: var(--badge-icon-size);
+  height: var(--badge-icon-size);
+  color: inherit;
+}
+
+@keyframes uai-badge-pulse {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+@media (forced-colors: active) {
+  .badge {
+    --badge-bg: CanvasText;
+    --badge-fg: Canvas;
+    forced-color-adjust: none;
+  }
+  .badge__pulse {
+    display: none;
+  }
+}

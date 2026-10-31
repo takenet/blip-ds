@@ -1,0 +1,59 @@
+'use strict';
+
+var index = require('./index-BuAR9UTp.js');
+
+const uaiBannerCss = () => `:host{display:block;width:100%}:host(.banner--hide){display:none}.banner__holder{--banner-tint:var(--uai-feedback-info, #0073e5);--banner-base:var(--uai-surface-paper, #ffffff);--banner-fg:var(--uai-content-primary, #242729);--banner-bg:color-mix(in srgb, var(--banner-tint) 20%, var(--banner-base));--banner-border:color-mix(in srgb, var(--banner-tint) 50%, var(--banner-base));--banner-box-bg:color-mix(in srgb, var(--banner-tint) 40%, var(--banner-base));--banner-box-border:color-mix(in srgb, var(--banner-tint) 60%, var(--banner-base));-webkit-box-sizing:border-box;box-sizing:border-box;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-md, 1rem);width:100%;padding:var(--uai-spacing-md, 1rem);border:var(--uai-border-width-default, 1px) solid var(--banner-border);background:var(--banner-bg);-webkit-box-shadow:var(--uai-elevation-dialog, 0px 32px 32px -20px rgba(0, 0, 0, 0.1));box-shadow:var(--uai-elevation-dialog, 0px 32px 32px -20px rgba(0, 0, 0, 0.1));color:var(--banner-fg);font-family:var(--uai-font-family-sans, Figtree), sans-serif}.banner__holder--inside{border-radius:var(--uai-radius-xl, 1rem)}.banner__holder--info{--banner-tint:var(--uai-feedback-info, #0073e5)}.banner__holder--success{--banner-tint:var(--uai-feedback-success, #3da329)}.banner__holder--warning{--banner-tint:var(--uai-feedback-warning, #ff8000)}.banner__holder--error{--banner-tint:var(--uai-feedback-error, #cf0022)}.banner__holder--system{--banner-base:var(--uai-action-primary-default, #242729);--banner-tint:var(--uai-action-primary-foreground, #ffffff);--banner-fg:var(--uai-action-primary-foreground, #ffffff);--banner-bg:var(--banner-base);--banner-border:color-mix(in srgb, var(--banner-tint) 10%, var(--banner-base));--banner-box-bg:color-mix(in srgb, var(--banner-tint) 20%, var(--banner-base));--banner-box-border:var(--banner-border)}.banner__icon-box{-webkit-box-sizing:border-box;box-sizing:border-box;display:-ms-flexbox;display:flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:var(--uai-sizing-3xl, 3rem);height:var(--uai-sizing-3xl, 3rem);border:var(--uai-border-width-default, 1px) solid var(--banner-box-border);border-radius:var(--uai-radius-md, 0.5rem);background:var(--banner-box-bg)}.banner__icon{--uai-icon-size:var(--uai-sizing-xl, 2rem);color:var(--banner-fg)}.banner__text{display:-ms-flexbox;display:flex;-ms-flex:1 1 0px;flex:1 1 0;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;min-width:0;word-break:break-word}.banner__title,.banner__message{--uai-typo-color:var(--banner-fg);display:block}::slotted([slot=link]){display:-ms-inline-flexbox;display:inline-flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;min-height:var(--uai-control-height-medium, 2.5rem);padding:0 var(--uai-spacing-sm, 0.75rem);border-radius:var(--uai-radius-lg, 0.75rem);color:inherit;font-size:var(--uai-body-base-font-size, 0.875rem);font-weight:var(--uai-font-weight-medium, 500);line-height:var(--uai-body-base-line-height, 1.375rem);text-decoration:none;white-space:nowrap;cursor:pointer}.banner__close{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:var(--uai-control-height-medium, 2.5rem);height:var(--uai-control-height-medium, 2.5rem);margin:0;padding:0;border:0;border-radius:var(--uai-radius-lg, 0.75rem);background:transparent;color:inherit;cursor:pointer;-webkit-transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.banner__close{-webkit-transition:none;transition:none}}.banner__close:hover{background:color-mix(in srgb, var(--banner-fg) 10%, transparent)}.banner__close:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}`;
+
+const VARIANTS = ['system', 'warning', 'info', 'error', 'success'];
+const ICONS = {
+    system: 'message-ballon',
+    info: 'info',
+    success: 'checkball',
+    warning: 'warning',
+    error: 'error',
+};
+const UaiBanner = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        this.uaiBannerClose = index.createEvent(this, "uaiBannerClose");
+        this.visible = true;
+        /** Kept for compatibility; the content always fills the available width. Avoid relying on it for layout. */
+        this.bannerAlign = 'center';
+        /** Shows the close button when 'true'. Use for dismissible notices; pair with uaiBannerClose; avoid it for critical errors. */
+        this.buttonClose = 'false';
+        /** Rounds the banner when 'inside' a container. Use 'outside' for a full-width bar; avoid mixing both in one page. */
+        this.context = 'outside';
+        /** Semantic variant: system, info, success, warning or error. Use the one that matches the message; avoid color alone to convey meaning. */
+        this.variant = 'system';
+        /** Optional short title shown above the text, without a final period. Use for the reason of the notice; avoid long titles. */
+        this.heading = null;
+        /** Accessible name of the close button. Use a translated label; pair with buttonClose. Avoid leaving it generic. */
+        this.closeLabel = 'Fechar';
+        /** Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it. */
+        this.dtButtonClose = null;
+        this.close = () => {
+            this.uaiBannerClose.emit();
+            this.visible = false;
+        };
+    }
+    /** Toggles the banner visibility. Use for imperative control; pair with uaiBannerClose. Avoid hiding critical errors. */
+    async toggle() {
+        this.visible = !this.visible;
+    }
+    componentWillLoad() {
+    }
+    render() {
+        const known = VARIANTS.find((candidate) => candidate === this.variant);
+        const variant = known || 'system';
+        const urgent = variant === 'error' || variant === 'warning';
+        return (index.h(index.Host, { key: '054a4981c1beb491540e31ebc23587d0e9cf1223', class: { banner: true, 'banner--hide': !this.visible } }, index.h("div", { key: 'eff5d8dc3fc7cd470d3d48dbfec17f022c9414ac', class: {
+                banner__holder: true,
+                [`banner__holder--${variant}`]: true,
+                'banner__holder--inside': this.context === 'inside',
+            }, part: "holder", role: urgent ? 'alert' : 'status' }, index.h("div", { key: '31110b872471d5782feca91ce14f415d79f08e56', class: "banner__icon-box", part: "icon-box", "aria-hidden": "true" }, index.h("uai-icon", { key: '94104fc38e23439fbb89f5531628bde5472021b7', class: "banner__icon", name: ICONS[variant], size: "medium" })), index.h("div", { key: 'efba12151e37960520163e190c4d697de839c534', class: "banner__text" }, this.heading && (index.h("uai-typo", { key: '43bb8cca4a59002c044ea05bb369db64b6848046', class: "banner__title", tag: "p", variant: "body-base", bold: "medium", margin: false }, this.heading)), index.h("uai-typo", { key: '44bcebaee1a9be332e71353721b4df93143deddc', class: "banner__message", tag: "span", variant: "body-base", margin: false }, index.h("slot", { key: '52c935ea68face352e49312eb9d65c745c76e657' }))), index.h("slot", { key: '720da10bd311b11ef1b01dcd2ea936aeb7f39c3c', name: "link" }), String(this.buttonClose) === 'true' && (index.h("button", { key: '8d2a3cf39a42022d9aa71cdbd9484ef0b9ff8cd8', type: "button", class: "banner__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: this.close }, index.h("uai-icon", { key: '96220fbb474ed7be55b75871dcc269afc9a2d5ad', name: "close", size: "medium", "aria-hidden": "true" }))))));
+    }
+    get el() { return index.getElement(this); }
+};
+UaiBanner.style = uaiBannerCss();
+
+exports.uai_banner = UaiBanner;
