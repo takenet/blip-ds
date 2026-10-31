@@ -447,6 +447,30 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-tab-item.entry.js').then(processMod, consoleError);
+                case 'uai-table':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-table.entry.js').then(processMod, consoleError);
+                case 'uai-table-body':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-table-body.entry.js').then(processMod, consoleError);
+                case 'uai-table-cell':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-table-cell.entry.js').then(processMod, consoleError);
+                case 'uai-table-header':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-table-header.entry.js').then(processMod, consoleError);
+                case 'uai-table-row':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-table-row.entry.js').then(processMod, consoleError);
+                case 'uai-table-th':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-table-th.entry.js').then(processMod, consoleError);
                 case 'uai-textarea':
                     return import(
                       /* webpackMode: "lazy" */

@@ -1,4 +1,7 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use uai-table-th with UaiThemeProvider for tokenized styling and table semantics.
+ */
 export class TableHeaderCell {
     constructor() {
         this.isDense = false;
@@ -13,12 +16,12 @@ export class TableHeaderCell {
         }
     }
     render() {
-        return (h(Host, { key: 'a286b5a66d8d1e4dd575078f8fcdc83af79ab7f1' }, h("div", { key: 'c6119fde2c112323965af9699cbeca148395b48a', class: {
+        return (h(Host, { key: 'bbcea9e8a5c806b0589c12908dae6fd6952ebb21' }, h("div", { key: '3ecdc6b971056b7a001a8b59d11ecf2eba31f5fd', class: {
                 th_cell: true,
                 [`th_cell--sortable-${this.sortable}`]: true,
                 'dense-th': this.isDense,
                 [`justify--${this.justifyContent}`]: true
-            } }, h("bds-typo", { key: '4bc06f86385f02e753ee782ed26e7e41757e52ec', bold: this.sortable ? 'bold' : 'semi-bold', variant: "fs-14" }, h("slot", { key: 'd29b72133c440bbf490de15901ded6b78b7aad09' })), this.sortable ? (h("bds-icon", { size: "small", name: this.arrow === 'asc' ? 'arrow-down' : this.arrow === 'dsc' ? 'arrow-up' : '' })) : ''
+            } }, h("bds-typo", { key: '9041cb2f67f310736323c851394f5ef9f9f5638b', bold: this.sortable ? 'bold' : 'semi-bold', variant: "fs-14" }, h("slot", { key: '9458c9eb2e927bcf05e6bcfd42152945846011c0' })), this.sortable ? (h("bds-icon", { size: "small", name: this.arrow === 'asc' ? 'arrow-down' : this.arrow === 'dsc' ? 'arrow-up' : '' })) : ''
         // <div style={{ width: '20px' }}></div>
         )));
     }

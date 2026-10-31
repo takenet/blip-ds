@@ -11,10 +11,10 @@ const BdsModalCloseButton = class {
         this.active = true;
     }
     render() {
-        return (h("div", { key: '5c722e74f59bc5702ae8ab666ff2cc16c95bcb5c', class: {
+        return (h("div", { key: '936f7d086f6bc6401262d20263151000e925d6f2', class: {
                 'modal__close__button-icon': true,
                 'modal__close__button-icon--active': this.active,
-            } }, h("bds-icon", { key: 'b57c04f2c63d1614df6aa0a4b15cd381db6650ed', size: "medium", name: "close" })));
+            } }, h("bds-icon", { key: 'dba05e941ef0112e79baed2991cd256483b96207', size: "medium", name: "close" })));
     }
 };
 BdsModalCloseButton.style = modalCloseButtonCss();

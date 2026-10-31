@@ -467,6 +467,30 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-tab-item.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-table.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-table.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-table-body.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-table-body.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-table-cell.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-table-cell.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-table-header.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-table-header.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-table-row.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-table-row.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-table-th.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-table-th.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-textarea.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

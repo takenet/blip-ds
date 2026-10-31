@@ -95,6 +95,9 @@ import { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header
 import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
+import { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
+import { UaiTableRowVariant } from "./components/uai-table-row/uai-table-row";
+import { UaiTableSortDirection, UaiTableThJustify } from "./components/uai-table-th/uai-table-th";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 import { UaiTooltipPositionType } from "./components/uai-tooltip/uai-tooltip";
 import { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
@@ -188,6 +191,9 @@ export { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header
 export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
+export { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
+export { UaiTableRowVariant } from "./components/uai-table-row/uai-table-row";
+export { UaiTableSortDirection, UaiTableThJustify } from "./components/uai-table-th/uai-table-th";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
 export { UaiTooltipPositionType } from "./components/uai-tooltip/uai-tooltip";
 export { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
@@ -3436,6 +3442,9 @@ export namespace Components {
          */
         "group": string;
     }
+    /**
+     * @deprecated Use uai-table with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTable {
         /**
           * Specifies whether the table is scrollable or not.
@@ -3450,8 +3459,14 @@ export namespace Components {
          */
         "scrollable"?: boolean;
     }
+    /**
+     * @deprecated Use uai-table-body with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableBody {
     }
+    /**
+     * @deprecated Use uai-table-cell with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableCell {
         /**
           * @default 'left'
@@ -3466,8 +3481,14 @@ export namespace Components {
          */
         "type"?: string;
     }
+    /**
+     * @deprecated Use uai-table-header with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableHeader {
     }
+    /**
+     * @deprecated Use uai-table-row with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableRow {
         "bodyCollapse"?: string;
         /**
@@ -3482,6 +3503,9 @@ export namespace Components {
          */
         "selected"?: boolean;
     }
+    /**
+     * @deprecated Use uai-table-th with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableTh {
         /**
           * @default ''
@@ -5663,6 +5687,95 @@ export namespace Components {
         "reciveNumber": (number: number) => Promise<void>;
     }
     /**
+     * Container of a data table. Use it with UaiTableHeader, UaiTableBody, UaiTableRow, UaiTableTh and UaiTableCell;
+     * pair with UaiThemeProvider and compose selection controls inside the cells; avoid using it for page layout.
+     */
+    interface UaiTable {
+        /**
+          * Column widths as a CSS grid-template-columns value, shared by every row. Use to align header and rows, such as "auto repeat(4, 1fr) auto"; avoid sizing cells one by one.
+          * @default null
+         */
+        "columns"?: string;
+        /**
+          * Accessible name of the table. Use a short description of the data; pair with a visible title; avoid repeating the column names.
+          * @default null
+         */
+        "label"?: string;
+    }
+    /**
+     * Table body group. Use it inside UaiTable; pair with UaiTableRow; avoid placing other content here.
+     */
+    interface UaiTableBody {
+    }
+    /**
+     * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
+     * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+     */
+    interface UaiTableCell {
+        /**
+          * Horizontal alignment of the content. Use right for numbers and center for controls; avoid mixing alignments in one column.
+          * @default 'left'
+         */
+        "justifyContent"?: UaiTableJustify;
+    }
+    /**
+     * Table header group. Use it inside UaiTable; pair with UaiTableRow; avoid placing other content here.
+     */
+    interface UaiTableHeader {
+    }
+    /**
+     * Table row laid out on the columns of UaiTable. Use it for header, data and bulk-action rows; pair with
+     * UaiTableCell or UaiTableTh; avoid nesting rows.
+     */
+    interface UaiTableRow {
+        /**
+          * Makes the whole row interactive: hover style, keyboard focus and Enter or Space activation. Use for rows that open details; avoid it when the cells already hold controls.
+          * @default false
+         */
+        "clickable"?: boolean;
+        /**
+          * Test selector on the row. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Marks the row as selected and sets aria-selected, with no visual change of its own. Use when the row's selection control is checked; pair with that control; avoid using it as the only selection signal.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Row appearance. row is a data or header row; bar is a full-width strip for bulk actions. Use bar above the rows; avoid bar for data.
+          * @default 'row'
+         */
+        "variant"?: UaiTableRowVariant;
+    }
+    /**
+     * Column header of UaiTableRow. Use it in the header row; pair with sortable and sortDirection for sortable
+     * columns; avoid sortable on columns the consumer cannot sort.
+     */
+    interface UaiTableTh {
+        /**
+          * Horizontal alignment of the title. Use right for numbers and center for controls; avoid mixing alignments in one column.
+          * @default 'left'
+         */
+        "justifyContent"?: UaiTableThJustify;
+        /**
+          * Current sort of the column, sets aria-sort. Use none, ascending or descending; pair with sortable; avoid setting it on several columns.
+          * @default 'none'
+         */
+        "sortDirection"?: UaiTableSortDirection;
+        /**
+          * Accessible name of the sort button when the title is not enough. Use a short action; pair with sortable; avoid repeating the direction.
+          * @default null
+         */
+        "sortLabel"?: string;
+        /**
+          * Turns the title into a button that asks for sorting. Use only when the consumer sorts on uaiTableSort; pair with sortDirection; avoid it without a handler.
+          * @default false
+         */
+        "sortable"?: boolean;
+    }
+    /**
      * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
      * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
      * Wrap the app in UaiThemeProvider.
@@ -6262,6 +6375,10 @@ export interface UaiTabGroupCustomEvent<T> extends CustomEvent<T> {
 export interface UaiTabItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiTabItemElement;
+}
+export interface UaiTableThCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiTableThElement;
 }
 export interface UaiTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -7480,36 +7597,54 @@ declare global {
         prototype: HTMLBdsTabPanelElement;
         new (): HTMLBdsTabPanelElement;
     };
+    /**
+     * @deprecated Use uai-table with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface HTMLBdsTableElement extends Components.BdsTable, HTMLStencilElement {
     }
     var HTMLBdsTableElement: {
         prototype: HTMLBdsTableElement;
         new (): HTMLBdsTableElement;
     };
+    /**
+     * @deprecated Use uai-table-body with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface HTMLBdsTableBodyElement extends Components.BdsTableBody, HTMLStencilElement {
     }
     var HTMLBdsTableBodyElement: {
         prototype: HTMLBdsTableBodyElement;
         new (): HTMLBdsTableBodyElement;
     };
+    /**
+     * @deprecated Use uai-table-cell with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface HTMLBdsTableCellElement extends Components.BdsTableCell, HTMLStencilElement {
     }
     var HTMLBdsTableCellElement: {
         prototype: HTMLBdsTableCellElement;
         new (): HTMLBdsTableCellElement;
     };
+    /**
+     * @deprecated Use uai-table-header with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface HTMLBdsTableHeaderElement extends Components.BdsTableHeader, HTMLStencilElement {
     }
     var HTMLBdsTableHeaderElement: {
         prototype: HTMLBdsTableHeaderElement;
         new (): HTMLBdsTableHeaderElement;
     };
+    /**
+     * @deprecated Use uai-table-row with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface HTMLBdsTableRowElement extends Components.BdsTableRow, HTMLStencilElement {
     }
     var HTMLBdsTableRowElement: {
         prototype: HTMLBdsTableRowElement;
         new (): HTMLBdsTableRowElement;
     };
+    /**
+     * @deprecated Use uai-table-th with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface HTMLBdsTableThElement extends Components.BdsTableTh, HTMLStencilElement {
     }
     var HTMLBdsTableThElement: {
@@ -8074,6 +8209,75 @@ declare global {
         prototype: HTMLUaiTabItemElement;
         new (): HTMLUaiTabItemElement;
     };
+    /**
+     * Container of a data table. Use it with UaiTableHeader, UaiTableBody, UaiTableRow, UaiTableTh and UaiTableCell;
+     * pair with UaiThemeProvider and compose selection controls inside the cells; avoid using it for page layout.
+     */
+    interface HTMLUaiTableElement extends Components.UaiTable, HTMLStencilElement {
+    }
+    var HTMLUaiTableElement: {
+        prototype: HTMLUaiTableElement;
+        new (): HTMLUaiTableElement;
+    };
+    /**
+     * Table body group. Use it inside UaiTable; pair with UaiTableRow; avoid placing other content here.
+     */
+    interface HTMLUaiTableBodyElement extends Components.UaiTableBody, HTMLStencilElement {
+    }
+    var HTMLUaiTableBodyElement: {
+        prototype: HTMLUaiTableBodyElement;
+        new (): HTMLUaiTableBodyElement;
+    };
+    /**
+     * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
+     * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+     */
+    interface HTMLUaiTableCellElement extends Components.UaiTableCell, HTMLStencilElement {
+    }
+    var HTMLUaiTableCellElement: {
+        prototype: HTMLUaiTableCellElement;
+        new (): HTMLUaiTableCellElement;
+    };
+    /**
+     * Table header group. Use it inside UaiTable; pair with UaiTableRow; avoid placing other content here.
+     */
+    interface HTMLUaiTableHeaderElement extends Components.UaiTableHeader, HTMLStencilElement {
+    }
+    var HTMLUaiTableHeaderElement: {
+        prototype: HTMLUaiTableHeaderElement;
+        new (): HTMLUaiTableHeaderElement;
+    };
+    /**
+     * Table row laid out on the columns of UaiTable. Use it for header, data and bulk-action rows; pair with
+     * UaiTableCell or UaiTableTh; avoid nesting rows.
+     */
+    interface HTMLUaiTableRowElement extends Components.UaiTableRow, HTMLStencilElement {
+    }
+    var HTMLUaiTableRowElement: {
+        prototype: HTMLUaiTableRowElement;
+        new (): HTMLUaiTableRowElement;
+    };
+    interface HTMLUaiTableThElementEventMap {
+        "uaiTableSort": UaiTableSortDirection;
+    }
+    /**
+     * Column header of UaiTableRow. Use it in the header row; pair with sortable and sortDirection for sortable
+     * columns; avoid sortable on columns the consumer cannot sort.
+     */
+    interface HTMLUaiTableThElement extends Components.UaiTableTh, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiTableThElementEventMap>(type: K, listener: (this: HTMLUaiTableThElement, ev: UaiTableThCustomEvent<HTMLUaiTableThElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiTableThElementEventMap>(type: K, listener: (this: HTMLUaiTableThElement, ev: UaiTableThCustomEvent<HTMLUaiTableThElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiTableThElement: {
+        prototype: HTMLUaiTableThElement;
+        new (): HTMLUaiTableThElement;
+    };
     interface HTMLUaiTextareaElementEventMap {
         "uaiChange": { value: string };
         "uaiInput": InputEvent;
@@ -8261,6 +8465,12 @@ declare global {
         "uai-switch": HTMLUaiSwitchElement;
         "uai-tab-group": HTMLUaiTabGroupElement;
         "uai-tab-item": HTMLUaiTabItemElement;
+        "uai-table": HTMLUaiTableElement;
+        "uai-table-body": HTMLUaiTableBodyElement;
+        "uai-table-cell": HTMLUaiTableCellElement;
+        "uai-table-header": HTMLUaiTableHeaderElement;
+        "uai-table-row": HTMLUaiTableRowElement;
+        "uai-table-th": HTMLUaiTableThElement;
         "uai-textarea": HTMLUaiTextareaElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
         "uai-tooltip": HTMLUaiTooltipElement;
@@ -11804,6 +12014,9 @@ declare namespace LocalJSX {
          */
         "group": string;
     }
+    /**
+     * @deprecated Use uai-table with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTable {
         /**
           * Specifies whether the table is scrollable or not.
@@ -11818,8 +12031,14 @@ declare namespace LocalJSX {
          */
         "scrollable"?: boolean;
     }
+    /**
+     * @deprecated Use uai-table-body with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableBody {
     }
+    /**
+     * @deprecated Use uai-table-cell with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableCell {
         /**
           * @default 'left'
@@ -11834,8 +12053,14 @@ declare namespace LocalJSX {
          */
         "type"?: string;
     }
+    /**
+     * @deprecated Use uai-table-header with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableHeader {
     }
+    /**
+     * @deprecated Use uai-table-row with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableRow {
         "bodyCollapse"?: string;
         /**
@@ -11850,6 +12075,9 @@ declare namespace LocalJSX {
          */
         "selected"?: boolean;
     }
+    /**
+     * @deprecated Use uai-table-th with UaiThemeProvider for tokenized styling and table semantics.
+     */
     interface BdsTableTh {
         /**
           * @default ''
@@ -14073,6 +14301,99 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     /**
+     * Container of a data table. Use it with UaiTableHeader, UaiTableBody, UaiTableRow, UaiTableTh and UaiTableCell;
+     * pair with UaiThemeProvider and compose selection controls inside the cells; avoid using it for page layout.
+     */
+    interface UaiTable {
+        /**
+          * Column widths as a CSS grid-template-columns value, shared by every row. Use to align header and rows, such as "auto repeat(4, 1fr) auto"; avoid sizing cells one by one.
+          * @default null
+         */
+        "columns"?: string;
+        /**
+          * Accessible name of the table. Use a short description of the data; pair with a visible title; avoid repeating the column names.
+          * @default null
+         */
+        "label"?: string;
+    }
+    /**
+     * Table body group. Use it inside UaiTable; pair with UaiTableRow; avoid placing other content here.
+     */
+    interface UaiTableBody {
+    }
+    /**
+     * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
+     * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+     */
+    interface UaiTableCell {
+        /**
+          * Horizontal alignment of the content. Use right for numbers and center for controls; avoid mixing alignments in one column.
+          * @default 'left'
+         */
+        "justifyContent"?: UaiTableJustify;
+    }
+    /**
+     * Table header group. Use it inside UaiTable; pair with UaiTableRow; avoid placing other content here.
+     */
+    interface UaiTableHeader {
+    }
+    /**
+     * Table row laid out on the columns of UaiTable. Use it for header, data and bulk-action rows; pair with
+     * UaiTableCell or UaiTableTh; avoid nesting rows.
+     */
+    interface UaiTableRow {
+        /**
+          * Makes the whole row interactive: hover style, keyboard focus and Enter or Space activation. Use for rows that open details; avoid it when the cells already hold controls.
+          * @default false
+         */
+        "clickable"?: boolean;
+        /**
+          * Test selector on the row. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Marks the row as selected and sets aria-selected, with no visual change of its own. Use when the row's selection control is checked; pair with that control; avoid using it as the only selection signal.
+          * @default false
+         */
+        "selected"?: boolean;
+        /**
+          * Row appearance. row is a data or header row; bar is a full-width strip for bulk actions. Use bar above the rows; avoid bar for data.
+          * @default 'row'
+         */
+        "variant"?: UaiTableRowVariant;
+    }
+    /**
+     * Column header of UaiTableRow. Use it in the header row; pair with sortable and sortDirection for sortable
+     * columns; avoid sortable on columns the consumer cannot sort.
+     */
+    interface UaiTableTh {
+        /**
+          * Horizontal alignment of the title. Use right for numbers and center for controls; avoid mixing alignments in one column.
+          * @default 'left'
+         */
+        "justifyContent"?: UaiTableThJustify;
+        /**
+          * Emitted when the sort button is activated. detail: the next direction, ascending or descending. The consumer updates sortDirection.
+         */
+        "onUaiTableSort"?: (event: UaiTableThCustomEvent<UaiTableSortDirection>) => void;
+        /**
+          * Current sort of the column, sets aria-sort. Use none, ascending or descending; pair with sortable; avoid setting it on several columns.
+          * @default 'none'
+         */
+        "sortDirection"?: UaiTableSortDirection;
+        /**
+          * Accessible name of the sort button when the title is not enough. Use a short action; pair with sortable; avoid repeating the direction.
+          * @default null
+         */
+        "sortLabel"?: string;
+        /**
+          * Turns the title into a button that asks for sorting. Use only when the consumer sorts on uaiTableSort; pair with sortDirection; avoid it without a handler.
+          * @default false
+         */
+        "sortable"?: boolean;
+    }
+    /**
      * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
      * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.
      * Wrap the app in UaiThemeProvider.
@@ -15635,6 +15956,25 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "iconOnly": boolean;
     }
+    interface UaiTableAttributes {
+        "columns": string;
+        "label": string;
+    }
+    interface UaiTableCellAttributes {
+        "justifyContent": UaiTableJustify;
+    }
+    interface UaiTableRowAttributes {
+        "selected": boolean;
+        "clickable": boolean;
+        "variant": UaiTableRowVariant;
+        "dataTest": string;
+    }
+    interface UaiTableThAttributes {
+        "sortable": boolean;
+        "sortDirection": UaiTableSortDirection;
+        "justifyContent": UaiTableThJustify;
+        "sortLabel": string;
+    }
     interface UaiTextareaAttributes {
         "name": string;
         "inputName": string;
@@ -15832,6 +16172,12 @@ declare namespace LocalJSX {
         "uai-switch": Omit<UaiSwitch, keyof UaiSwitchAttributes> & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes]?: UaiSwitch[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `attr:${K}`]?: UaiSwitchAttributes[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `prop:${K}`]?: UaiSwitch[K] };
         "uai-tab-group": Omit<UaiTabGroup, keyof UaiTabGroupAttributes> & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes]?: UaiTabGroup[K] } & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes as `attr:${K}`]?: UaiTabGroupAttributes[K] } & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes as `prop:${K}`]?: UaiTabGroup[K] };
         "uai-tab-item": Omit<UaiTabItem, keyof UaiTabItemAttributes> & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes]?: UaiTabItem[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `attr:${K}`]?: UaiTabItemAttributes[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `prop:${K}`]?: UaiTabItem[K] };
+        "uai-table": Omit<UaiTable, keyof UaiTableAttributes> & { [K in keyof UaiTable & keyof UaiTableAttributes]?: UaiTable[K] } & { [K in keyof UaiTable & keyof UaiTableAttributes as `attr:${K}`]?: UaiTableAttributes[K] } & { [K in keyof UaiTable & keyof UaiTableAttributes as `prop:${K}`]?: UaiTable[K] };
+        "uai-table-body": UaiTableBody;
+        "uai-table-cell": Omit<UaiTableCell, keyof UaiTableCellAttributes> & { [K in keyof UaiTableCell & keyof UaiTableCellAttributes]?: UaiTableCell[K] } & { [K in keyof UaiTableCell & keyof UaiTableCellAttributes as `attr:${K}`]?: UaiTableCellAttributes[K] } & { [K in keyof UaiTableCell & keyof UaiTableCellAttributes as `prop:${K}`]?: UaiTableCell[K] };
+        "uai-table-header": UaiTableHeader;
+        "uai-table-row": Omit<UaiTableRow, keyof UaiTableRowAttributes> & { [K in keyof UaiTableRow & keyof UaiTableRowAttributes]?: UaiTableRow[K] } & { [K in keyof UaiTableRow & keyof UaiTableRowAttributes as `attr:${K}`]?: UaiTableRowAttributes[K] } & { [K in keyof UaiTableRow & keyof UaiTableRowAttributes as `prop:${K}`]?: UaiTableRow[K] };
+        "uai-table-th": Omit<UaiTableTh, keyof UaiTableThAttributes> & { [K in keyof UaiTableTh & keyof UaiTableThAttributes]?: UaiTableTh[K] } & { [K in keyof UaiTableTh & keyof UaiTableThAttributes as `attr:${K}`]?: UaiTableThAttributes[K] } & { [K in keyof UaiTableTh & keyof UaiTableThAttributes as `prop:${K}`]?: UaiTableTh[K] };
         "uai-textarea": Omit<UaiTextarea, keyof UaiTextareaAttributes> & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes]?: UaiTextarea[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `attr:${K}`]?: UaiTextareaAttributes[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `prop:${K}`]?: UaiTextarea[K] };
         "uai-theme-provider": Omit<UaiThemeProvider, keyof UaiThemeProviderAttributes> & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes]?: UaiThemeProvider[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `attr:${K}`]?: UaiThemeProviderAttributes[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `prop:${K}`]?: UaiThemeProvider[K] };
         "uai-tooltip": Omit<UaiTooltip, keyof UaiTooltipAttributes> & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes]?: UaiTooltip[K] } & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes as `attr:${K}`]?: UaiTooltipAttributes[K] } & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes as `prop:${K}`]?: UaiTooltip[K] };
@@ -15977,11 +16323,29 @@ declare module "@stencil/core" {
              */
             "bds-tab-item": LocalJSX.IntrinsicElements["bds-tab-item"] & JSXBase.HTMLAttributes<HTMLBdsTabItemElement>;
             "bds-tab-panel": LocalJSX.IntrinsicElements["bds-tab-panel"] & JSXBase.HTMLAttributes<HTMLBdsTabPanelElement>;
+            /**
+             * @deprecated Use uai-table with UaiThemeProvider for tokenized styling and table semantics.
+             */
             "bds-table": LocalJSX.IntrinsicElements["bds-table"] & JSXBase.HTMLAttributes<HTMLBdsTableElement>;
+            /**
+             * @deprecated Use uai-table-body with UaiThemeProvider for tokenized styling and table semantics.
+             */
             "bds-table-body": LocalJSX.IntrinsicElements["bds-table-body"] & JSXBase.HTMLAttributes<HTMLBdsTableBodyElement>;
+            /**
+             * @deprecated Use uai-table-cell with UaiThemeProvider for tokenized styling and table semantics.
+             */
             "bds-table-cell": LocalJSX.IntrinsicElements["bds-table-cell"] & JSXBase.HTMLAttributes<HTMLBdsTableCellElement>;
+            /**
+             * @deprecated Use uai-table-header with UaiThemeProvider for tokenized styling and table semantics.
+             */
             "bds-table-header": LocalJSX.IntrinsicElements["bds-table-header"] & JSXBase.HTMLAttributes<HTMLBdsTableHeaderElement>;
+            /**
+             * @deprecated Use uai-table-row with UaiThemeProvider for tokenized styling and table semantics.
+             */
             "bds-table-row": LocalJSX.IntrinsicElements["bds-table-row"] & JSXBase.HTMLAttributes<HTMLBdsTableRowElement>;
+            /**
+             * @deprecated Use uai-table-th with UaiThemeProvider for tokenized styling and table semantics.
+             */
             "bds-table-th": LocalJSX.IntrinsicElements["bds-table-th"] & JSXBase.HTMLAttributes<HTMLBdsTableThElement>;
             "bds-tabs": LocalJSX.IntrinsicElements["bds-tabs"] & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-test-component": LocalJSX.IntrinsicElements["bds-test-component"] & JSXBase.HTMLAttributes<HTMLBdsTestComponentElement>;
@@ -16124,6 +16488,34 @@ declare module "@stencil/core" {
              * avoid using open panels as independent navigation controls.
              */
             "uai-tab-item": LocalJSX.IntrinsicElements["uai-tab-item"] & JSXBase.HTMLAttributes<HTMLUaiTabItemElement>;
+            /**
+             * Container of a data table. Use it with UaiTableHeader, UaiTableBody, UaiTableRow, UaiTableTh and UaiTableCell;
+             * pair with UaiThemeProvider and compose selection controls inside the cells; avoid using it for page layout.
+             */
+            "uai-table": LocalJSX.IntrinsicElements["uai-table"] & JSXBase.HTMLAttributes<HTMLUaiTableElement>;
+            /**
+             * Table body group. Use it inside UaiTable; pair with UaiTableRow; avoid placing other content here.
+             */
+            "uai-table-body": LocalJSX.IntrinsicElements["uai-table-body"] & JSXBase.HTMLAttributes<HTMLUaiTableBodyElement>;
+            /**
+             * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
+             * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+             */
+            "uai-table-cell": LocalJSX.IntrinsicElements["uai-table-cell"] & JSXBase.HTMLAttributes<HTMLUaiTableCellElement>;
+            /**
+             * Table header group. Use it inside UaiTable; pair with UaiTableRow; avoid placing other content here.
+             */
+            "uai-table-header": LocalJSX.IntrinsicElements["uai-table-header"] & JSXBase.HTMLAttributes<HTMLUaiTableHeaderElement>;
+            /**
+             * Table row laid out on the columns of UaiTable. Use it for header, data and bulk-action rows; pair with
+             * UaiTableCell or UaiTableTh; avoid nesting rows.
+             */
+            "uai-table-row": LocalJSX.IntrinsicElements["uai-table-row"] & JSXBase.HTMLAttributes<HTMLUaiTableRowElement>;
+            /**
+             * Column header of UaiTableRow. Use it in the header row; pair with sortable and sortDirection for sortable
+             * columns; avoid sortable on columns the consumer cannot sort.
+             */
+            "uai-table-th": LocalJSX.IntrinsicElements["uai-table-th"] & JSXBase.HTMLAttributes<HTMLUaiTableThElement>;
             /**
              * Multiline text field. Use it for longer free text with an optional label, helper, error or success message.
              * Pair with UaiInput for single-line values in the same form. Avoid it for selecting from a list.

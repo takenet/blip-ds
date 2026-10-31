@@ -79,7 +79,7 @@ const BdsStepper = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '4d3135e11bd0e21ee71d9e7c9795604dd82848b9', class: "stepper__container" }, index.h("slot", { key: '0cec6d3d46cd254a29718f9815856ea70be2cbda' })));
+        return (index.h(index.Host, { key: '0852cc00ddf1c991c9ddfd90f5f7c7885b7578ba', class: "stepper__container" }, index.h("slot", { key: '74c95e762714f918781120e2bd752a55434ae35c' })));
     }
     get el() { return index.getElement(this); }
 };

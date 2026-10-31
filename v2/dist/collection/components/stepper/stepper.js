@@ -71,7 +71,7 @@ export class BdsStepper {
         });
     }
     render() {
-        return (h(Host, { key: '4d3135e11bd0e21ee71d9e7c9795604dd82848b9', class: "stepper__container" }, h("slot", { key: '0cec6d3d46cd254a29718f9815856ea70be2cbda' })));
+        return (h(Host, { key: '0852cc00ddf1c991c9ddfd90f5f7c7885b7578ba', class: "stepper__container" }, h("slot", { key: '74c95e762714f918781120e2bd752a55434ae35c' })));
     }
     static get is() { return "bds-stepper"; }
     static get encapsulation() { return "shadow"; }

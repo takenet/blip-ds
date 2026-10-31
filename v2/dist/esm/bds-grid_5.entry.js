@@ -7,7 +7,7 @@ const Grid = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: 'b2e2f8f47bcae697c10c6c2d731ba61061233cfe', class: {
+        return (h(Host, { key: 'e43aedf98ef83840d22e6d171fe8ae362fb2411d', class: {
                 host: true,
                 [`direction--${this.direction}`]: true,
                 [`justify_content--${this.justifyContent}`]: true,
@@ -31,7 +31,7 @@ const Grid = class {
                 [`padding--${this.padding}`]: true,
                 [`margin--${this.margin}`]: true,
                 [this.bgColor || '']: true,
-            }, style: { height: this.height } }, h("slot", { key: '46f1eae26d6de23ff37dfc9b7203df3ef63da100' })));
+            }, style: { height: this.height } }, h("slot", { key: 'fa2f315f06937043741e6900ea743557119627b4' })));
     }
 };
 Grid.style = gridCss();
@@ -76,12 +76,12 @@ const Paper = class {
         this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
     }
     render() {
-        return (h(Host, { key: '6edc188c453a14d1ec5241392200c60163bea548', class: {
+        return (h(Host, { key: 'fd45dea6f9b31833d9737cea5733587c9e8a2fbe', class: {
                 [`paper__elevation--${this.elevation}`]: this.hasBorder,
                 border: this.border,
                 [`bg-${this.bgColor}`]: true,
                 [`border-${this.borderColor}`]: true,
-            }, style: { height: `${this.height}`, width: `${this.width}` } }, h("div", { key: 'f394f167b9c6b36a7d8799b3e8d8a9ca4420dad1', class: "paper__display", "data-test": this.dataTest }, h("slot", { key: '5def42e36c62c05b4af0cbe7eb626c598332dea1' }))));
+            }, style: { height: `${this.height}`, width: `${this.width}` } }, h("div", { key: '102eca49a4fcafd6087dde5142ac90ec30af98d0', class: "paper__display", "data-test": this.dataTest }, h("slot", { key: '30c3db708350e6f44c796324077731f7332e6c2a' }))));
     }
 };
 Paper.style = paperCss();
@@ -93,7 +93,7 @@ const TestComponent = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h("bds-grid", { key: 'a9313f42ddd9c2e6b36f7bcf063846bde1f90798', xxs: "12", padding: "x-2", "flex-wrap": "wrap" }, h("bds-grid", { key: '2eabe172df19a77e3a240fcb44a1d44e70c758c1', xxs: "12", margin: "t-2" }, h("div", { key: 'b5e766bb78ce32437e197f5191b477782ee8fc65', class: "titulo" }, h("bds-typo", { key: '34f6cbf4fef15b2b44d2a5bf6d40e07686609594', variant: "fs-40", bold: "bold" }, "Titulo de teste fora de temas"))), h("bds-grid", { key: '890086edbff8229596f5f54e50ba5b8211f23307', xxs: "6", padding: "r-1" }, h("bds-theme-provider", { key: '1735510f549a7b75834dd14455e62c536f281a97', theme: "light" }, h("bds-paper", { key: '4e57658f26f4c950f4c27d3878ff95ffee391ba3', elevation: "none", border: true }, h("bds-grid", { key: '058f8e6c6ad51d04fce55d4e695068d2e3daad9a', padding: "2" })))), h("bds-grid", { key: '4cff18b116f3e34d7f21063f5490c1a502edf141', xxs: "6", padding: "l-1" }, h("bds-theme-provider", { key: '7ce5725bb25bfb0782406127d8098c91a4659b0b', theme: "dark" }, h("bds-paper", { key: '2b13b5a33e940629456273ec4f2d660fc809e5c0', elevation: "none", border: true }, h("bds-grid", { key: '0c5a75399fc5ca51ae226eb238c59bbda423efc8', padding: "2" }))))));
+        return (h("bds-grid", { key: '7f3368fb65fffbbe67a8336c4e6a0b824129884f', xxs: "12", padding: "x-2", "flex-wrap": "wrap" }, h("bds-grid", { key: 'd67643359a25d9d274f52b464c1ce44309981e91', xxs: "12", margin: "t-2" }, h("div", { key: '728581e5240e6f5a7255bcde59d091517be68984', class: "titulo" }, h("bds-typo", { key: '5697e8fb2c305dd836d8ae84bf521c5c7b9278e9', variant: "fs-40", bold: "bold" }, "Titulo de teste fora de temas"))), h("bds-grid", { key: '72923bccd0ddbb1fb67499752d825304604d1003', xxs: "6", padding: "r-1" }, h("bds-theme-provider", { key: '88c1d356120dd114d20f0006a8b6d507b2f7150b', theme: "light" }, h("bds-paper", { key: 'd9f1616bf4435554eb1a1d5ff7c655ad89c89453', elevation: "none", border: true }, h("bds-grid", { key: '8eb3821ec362c87c3e334f2fd72b1281398ea3c9', padding: "2" })))), h("bds-grid", { key: '331e01d0803b7b4286a95b17abfa0f6a3ab8997b', xxs: "6", padding: "l-1" }, h("bds-theme-provider", { key: '3da23d94e7f6c4f9154e85607ca664f51ddac96e', theme: "dark" }, h("bds-paper", { key: '1116b63f227558e29dfe1f6e95cb1320aebc34da', elevation: "none", border: true }, h("bds-grid", { key: 'e74081e42be45b924ddb75690e06649f68871175', padding: "2" }))))));
     }
 };
 TestComponent.style = testComponentCss();

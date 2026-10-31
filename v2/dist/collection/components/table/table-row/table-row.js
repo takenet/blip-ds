@@ -1,4 +1,7 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use uai-table-row with UaiThemeProvider for tokenized styling and table semantics.
+ */
 export class TableRow {
     constructor() {
         this.isDense = false;

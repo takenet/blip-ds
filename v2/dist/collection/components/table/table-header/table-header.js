@@ -1,7 +1,10 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use uai-table-header with UaiThemeProvider for tokenized styling and table semantics.
+ */
 export class TableHeader {
     render() {
-        return (h(Host, { key: 'b9004081729a361abf5165aa716ad05eaaee113c' }, h("slot", { key: '1cbbb403a306f11d89d2e38f7f13cd279305d2d2' })));
+        return (h(Host, { key: 'c1a98fbedf51f016a28239432fb9bfc4b3e09081' }, h("slot", { key: 'ae48f2476f85649d4d4c06cb73c2b5b490fcd03b' })));
     }
     static get is() { return "bds-table-header"; }
     static get encapsulation() { return "scoped"; }

@@ -1,4 +1,7 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use uai-table-cell with UaiThemeProvider for tokenized styling and table semantics.
+ */
 export class TableCell {
     constructor() {
         this.isDense = false;
@@ -16,7 +19,7 @@ export class TableCell {
         }
     }
     render() {
-        return h(Host, { key: 'ba735fa86a88afee2b1b000c424c61cee0ff38a5' }, this.renderContent());
+        return h(Host, { key: '4f8eaa8eb0744b7a1ee01ff12bc2bd9f6ed7a04d' }, this.renderContent());
     }
     static get is() { return "bds-table-cell"; }
     static get encapsulation() { return "scoped"; }

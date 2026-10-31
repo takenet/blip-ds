@@ -119,7 +119,7 @@ const ButtonGroup = class {
         button.setColor(this.color);
     }
     render() {
-        return (index.h(index.Host, { key: '625b0880bb23b9872732db1b7a6120d1de6dcf05', class: "button_group" }, index.h("bds-grid", { key: 'b5662e5a5446c9ef7fa548eee3e094b8c1297c39', direction: this.direction }, index.h("slot", { key: 'f54cba72d9ab0dedb59769188cac4a7e9a7db74a' }))));
+        return (index.h(index.Host, { key: 'ac47e7d9009c78ebad26622b1dddc73b9fddb9bd', class: "button_group" }, index.h("bds-grid", { key: '13b6982061e59666eb39a3b0ab063c93d74e7f03', direction: this.direction }, index.h("slot", { key: '896d423a942123ab5eac85392a5d25b58ac7397e' }))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

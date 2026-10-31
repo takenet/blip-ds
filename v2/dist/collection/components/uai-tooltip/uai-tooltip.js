@@ -71,11 +71,11 @@ export class UaiTooltip {
         const position = POSITIONS.find((candidate) => candidate === this.position) || 'left-center';
         if (position !== this.position)
             warnLegacyValue('uai-tooltip', 'position', this.position, position);
-        return (h(Host, { key: '5a6d1223929760dfbe8eb86535c1fb5f8753ace1' }, h("div", { key: '2b7068c766d669967a71d8fd9791794dbbdb4b68', class: "tooltip__wrapper" }, h("div", { key: '7b38a055c1765e712c6a53fb2d9761e084314c25', class: "tooltip__trigger", onMouseEnter: () => this.setVisibility(true), onMouseLeave: () => this.setVisibility(false), onFocusin: () => this.setVisibility(true), onFocusout: () => this.setVisibility(false), onKeyDown: this.onKeyDown, "data-test": this.dataTest, "aria-describedby": this.tipId }, h("slot", { key: '7e42976b579dc6ca016989cc7d9566b38ac7d3c6' })), h("div", { key: '2019111f5c0adb4ec052aafffc4cd1d3176d3677', id: this.tipId, part: "tip", role: "tooltip", class: {
+        return (h(Host, { key: '9ff9f63ae9e7360679f29db8ed17a748ad6adbfc' }, h("div", { key: '90a666741c1d28245c08ee415428a475278c4c44', class: "tooltip__wrapper" }, h("div", { key: '7393d94f2d8f2b47f8356fb309f71f8d95dbc16f', class: "tooltip__trigger", onMouseEnter: () => this.setVisibility(true), onMouseLeave: () => this.setVisibility(false), onFocusin: () => this.setVisibility(true), onFocusout: () => this.setVisibility(false), onKeyDown: this.onKeyDown, "data-test": this.dataTest, "aria-describedby": this.tipId }, h("slot", { key: 'ca6c198510a766a80b09295894b7c84e5d40fed0' })), h("div", { key: 'a920b1ec0a1bf4cf0642691a983039d7105f1469', id: this.tipId, part: "tip", role: "tooltip", class: {
                 tooltip__tip: true,
                 [`tooltip__tip--${position}`]: true,
                 'tooltip__tip--visible': this.isVisible,
-            }, style: { maxWidth: this.maxWidthTooltip } }, h("uai-typo", { key: '88bc3ed95d997412341055a682fe452ab55f1867', class: "tooltip__text", tag: "span", variant: "caption", margin: false }, this.textVerify)))));
+            }, style: { maxWidth: this.maxWidthTooltip } }, h("uai-typo", { key: 'b867522935af9f6095cb70312a43bc25dd454a84', class: "tooltip__text", tag: "span", variant: "caption", margin: false }, this.textVerify)))));
     }
     static get is() { return "uai-tooltip"; }
     static get encapsulation() { return "shadow"; }

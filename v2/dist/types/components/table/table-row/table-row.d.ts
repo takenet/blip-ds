@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use uai-table-row with UaiThemeProvider for tokenized styling and table semantics.
+ */
 export declare class TableRow {
     private element;
     isDense: boolean;

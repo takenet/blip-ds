@@ -39,12 +39,12 @@ export class UaiPaper {
         this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
     }
     render() {
-        return (h(Host, { key: '36e9f5ea2050822f594befb079b39e9ce8be815f', class: {
+        return (h(Host, { key: '55cd84b1b11c92e1abe284531b154cf1dde54404', class: {
                 [`paper__elevation--${this.elevation}`]: this.hasBorder,
                 border: this.border,
                 [`bg-${this.bgColor}`]: true,
                 [`border-${this.borderColor}`]: true,
-            }, style: { height: `${this.height}`, width: `${this.width}` } }, h("div", { key: 'ff6755b480f8515be82be04be514363846856b36', class: "paper__display", "data-test": this.dataTest }, h("slot", { key: '1be1c52baed728158a93bb7738009781e6e5b4f3' }))));
+            }, style: { height: `${this.height}`, width: `${this.width}` } }, h("div", { key: 'ec5108e6cf0ad579316659a08efb621a79a49de7', class: "paper__display", "data-test": this.dataTest }, h("slot", { key: 'a492abee874dc9d1ab1ac05df0fd5e28e1cd873f' }))));
     }
     static get is() { return "uai-paper"; }
     static get encapsulation() { return "shadow"; }

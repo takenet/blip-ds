@@ -1,4 +1,7 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use uai-table-body with UaiThemeProvider for tokenized styling and table semantics.
+ */
 export class TableBody {
     constructor() {
         this.multipleRows = false;
@@ -10,7 +13,7 @@ export class TableBody {
         }
     }
     render() {
-        return (h(Host, { key: 'e99e1c8f890579b66685381a30eaa0a0ca26db73', class: { host: true, multiple: this.multipleRows } }, h("slot", { key: '88dc9fda65c1e610dbfecbbc854831f5b5c16f39' })));
+        return (h(Host, { key: '3c80d6a167b44e7de8909515e4926b28560419a1', class: { host: true, multiple: this.multipleRows } }, h("slot", { key: '8b36af814d7b3aa07a0e16263df8bcc86dbdb591' })));
     }
     static get is() { return "bds-table-body"; }
     static get encapsulation() { return "scoped"; }

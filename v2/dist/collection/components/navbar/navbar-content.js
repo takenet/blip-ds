@@ -1,7 +1,7 @@
 import { h, Host } from "@stencil/core";
 export class NavbarContent {
     render() {
-        return (h(Host, { key: 'a84557b3e3c5a048d46263a7c0c3bf75722ee254', class: { NavbarContent: true } }, h("slot", { key: 'ca126bb9fa14fc951367a2887c0f08aaea4dcb41' })));
+        return (h(Host, { key: '28b52e926f0a4d1f611557bf0807e3c00ed8e151', class: { NavbarContent: true } }, h("slot", { key: 'a70da11070fe3c855cda54a6e44d93ce1f5b1d40' })));
     }
     static get is() { return "bds-navbar-content"; }
     static get encapsulation() { return "shadow"; }

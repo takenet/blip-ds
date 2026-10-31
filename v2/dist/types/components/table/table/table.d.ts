@@ -1,3 +1,6 @@
+/**
+ * @deprecated Use uai-table with UaiThemeProvider for tokenized styling and table semantics.
+ */
 export declare class Table {
     /**
      * Specifies whether the table is scrollable or not.

@@ -29,7 +29,7 @@ const BdsIllustration = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '177a6fbd2bdea5ce5b35b1ceb18003e8ebc16c66', role: "img", class: {
+        return (index.h(index.Host, { key: 'c4428782d1bfa2c8366bddc50de635a0deb7f920', role: "img", class: {
                 'bds-illustration': true,
             } }, this.IllustrationContent ? (index.h("img", { draggable: false, src: this.IllustrationContent, onError: () => { this.IllustrationContent = undefined; }, alt: this.alt, "data-test": this.dataTest })) : (index.h("div", { class: "default", "data-test": this.dataTest }))));
     }

@@ -1,7 +1,10 @@
 import { h, Host } from "@stencil/core";
+/**
+ * @deprecated Use uai-table with UaiThemeProvider for tokenized styling and table semantics.
+ */
 export class Table {
     render() {
-        return (h(Host, { key: '36271f1f5d82c61fbe1c08a5a61e9c7108c153bc', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, h("div", { key: '9de8cbb07f7778651af71f7a6fd998636565a6f8', class: "bds-table" }, h("slot", { key: 'ed8fd92954396a81a8f0ec465af1a10d63a86dd5' }))));
+        return (h(Host, { key: 'a5d3c97b7804f8c8f366ab4a6368e818717d61fb', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, h("div", { key: '7eed03b5564f44023363b9c7f9ef84be5363f219', class: "bds-table" }, h("slot", { key: 'cadb325dc945a03ecba2ca290f37e257303a7a7a' }))));
     }
     static get is() { return "bds-table"; }
     static get encapsulation() { return "scoped"; }

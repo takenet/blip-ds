@@ -7,7 +7,7 @@ const MenuList = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: 'a478240ac7684be570b63c46d586081185f67edc' }, h("div", { key: 'fb94f1fdc038e7613b0a25eb3fcb894cad54beea', class: "menu-list" }, h("div", { key: '72fd9bd5580eb9bbf497e7246b9b6dafd7d8780e', class: "menu-list__left" }), h("slot", { key: 'c26a9a331f11a73cb1253c83e09123e185d44e33' }), h("div", { key: '5a5ee0cb1eeb9047089d7b153800368580ca5651', class: "menu-list__right" }))));
+        return (h(Host, { key: '3772fb4ec0c587848172d832922b9d5e4596eba2' }, h("div", { key: '8d33e99dee4865567c61657c6e021291db0f3afe', class: "menu-list" }, h("div", { key: 'e002ac786e3540c85bdc95cef919800c6be00de5', class: "menu-list__left" }), h("slot", { key: '3e8f1b2b351923c653966ba99db0736a9ea6c428' }), h("div", { key: '604be0fde1b0254012dcc8043664611c699f5d26', class: "menu-list__right" }))));
     }
 };
 MenuList.style = menuListCss();

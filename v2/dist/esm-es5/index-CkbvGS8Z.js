@@ -175,7 +175,19 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-switch.entry.js").then(u,consoleError);case"uai-tab-item":return import(
 /* webpackMode: "lazy" */
-"./uai-tab-item.entry.js").then(u,consoleError);case"uai-textarea":return import(
+"./uai-tab-item.entry.js").then(u,consoleError);case"uai-table":return import(
+/* webpackMode: "lazy" */
+"./uai-table.entry.js").then(u,consoleError);case"uai-table-body":return import(
+/* webpackMode: "lazy" */
+"./uai-table-body.entry.js").then(u,consoleError);case"uai-table-cell":return import(
+/* webpackMode: "lazy" */
+"./uai-table-cell.entry.js").then(u,consoleError);case"uai-table-header":return import(
+/* webpackMode: "lazy" */
+"./uai-table-header.entry.js").then(u,consoleError);case"uai-table-row":return import(
+/* webpackMode: "lazy" */
+"./uai-table-row.entry.js").then(u,consoleError);case"uai-table-th":return import(
+/* webpackMode: "lazy" */
+"./uai-table-th.entry.js").then(u,consoleError);case"uai-textarea":return import(
 /* webpackMode: "lazy" */
 "./uai-textarea.entry.js").then(u,consoleError);case"uai-theme-provider":return import(
 /* webpackMode: "lazy" */
