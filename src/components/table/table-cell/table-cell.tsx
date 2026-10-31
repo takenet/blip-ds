@@ -4,6 +4,9 @@ export type IconType = 'text' | 'custom' | 'emoji' | 'collapse';
 
 export type JustifyContent = 'left' | 'center' | 'right';
 
+/**
+ * @deprecated Use uai-table-cell with UaiThemeProvider for tokenized styling and table semantics.
+ */
 @Component({
   tag: 'bds-table-cell',
   styleUrl: 'table-cell.scss',

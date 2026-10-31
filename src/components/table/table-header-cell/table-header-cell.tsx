@@ -1,6 +1,9 @@
 import { Component, h, Host, Prop, Element, State } from '@stencil/core';
 
 export type JustifyContent = 'left' | 'center' | 'right';
+/**
+ * @deprecated Use uai-table-th with UaiThemeProvider for tokenized styling and table semantics.
+ */
 @Component({
   tag: 'bds-table-th',
   styleUrl: 'table-header-cell.scss',

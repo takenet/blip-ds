@@ -1,5 +1,8 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @deprecated Use uai-table with UaiThemeProvider for tokenized styling and table semantics.
+ */
 @Component({
   tag: 'bds-table',
   styleUrl: 'table.scss',

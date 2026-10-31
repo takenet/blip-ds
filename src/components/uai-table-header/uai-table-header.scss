@@ -1,0 +1,10 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+}
+
+// Header rows take their height from the cells' padding, not from the data row's minimum.
+::slotted(uai-table-row:not([variant='bar'])) {
+  min-height: 0;
+}

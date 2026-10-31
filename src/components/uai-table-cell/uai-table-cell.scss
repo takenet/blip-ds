@@ -1,0 +1,31 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: flex;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--uai-spacing-lg, #{$uai-spacing-lg}) var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+:host([justify-content='center']) {
+  justify-content: center;
+}
+
+:host([justify-content='right']) {
+  justify-content: flex-end;
+}
+
+.cell__text {
+  --uai-typo-color: var(--uai-content-primary, #{$uai-content-primary});
+
+  display: flex;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

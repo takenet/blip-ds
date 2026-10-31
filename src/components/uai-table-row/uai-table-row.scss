@@ -1,0 +1,30 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: grid;
+  grid-template-columns: var(--uai-table-columns, repeat(auto-fit, minmax(0, 1fr)));
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--uai-sizing-5xl, #{$uai-sizing-5xl});
+  border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  @include uai-transition(background-color);
+}
+
+:host(:hover[clickable]) {
+  background-color: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+  cursor: pointer;
+}
+
+:host([clickable]) {
+  @include uai-focus-visible;
+}
+
+:host([variant='bar']) {
+  display: flex;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  align-items: center;
+  min-height: var(--uai-control-height-large, #{$uai-control-height-large});
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs}) var(--uai-spacing-lg, #{$uai-spacing-lg});
+  background-color: var(--uai-action-outline-pressed, #{$uai-action-outline-pressed});
+}
