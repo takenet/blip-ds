@@ -81,7 +81,7 @@ export class UaiSelect {
   private formControl?: UaiFormControl;
   private defaultValue: UaiSelectValue | null = null;
   private observer?: MutationObserver;
-  private readonly id = `uai-select-${++instances}`;
+  private readonly selectId = `uai-select-${++instances}`;
 
   /** Name of the value in the submitted form data. Without it the field is not submitted. */
   @Prop({ reflect: true, mutable: true }) name?: string;
@@ -401,7 +401,7 @@ export class UaiSelect {
       const selected = sameValue(item.value, this.value);
       return (
         <li
-          id={`${this.id}-option-${index}`}
+          id={`${this.selectId}-option-${index}`}
           key={`${item.value}`}
           role="option"
           part="select-option"
@@ -451,7 +451,7 @@ export class UaiSelect {
       >
         <div class="select">
           {this.label && (
-            <label class="select__label" {...{ for: this.id }}>
+            <label class="select__label" {...{ for: this.selectId }}>
               <uai-typo variant="caption" bold="semibold" tag="span" margin={false}>
                 {this.label}
               </uai-typo>
@@ -459,7 +459,7 @@ export class UaiSelect {
           )}
           <div class="select__control" part="select-container">
             <button
-              id={this.id}
+              id={this.selectId}
               type="button"
               ref={(button) => (this.button = button)}
               class="select__button"
@@ -467,11 +467,11 @@ export class UaiSelect {
               role="combobox"
               aria-haspopup="listbox"
               aria-expanded={this.isOpen ? 'true' : 'false'}
-              aria-controls={`${this.id}-list`}
+              aria-controls={`${this.selectId}-list`}
               aria-label={this.ariaLabel || null}
               aria-invalid={invalid ? 'true' : null}
               aria-required={this.required ? 'true' : null}
-              aria-describedby={message ? `${this.id}-message` : null}
+              aria-describedby={message ? `${this.selectId}-message` : null}
               disabled={disabled}
               data-test={this.dataTest}
               onClick={this.onButtonClick}
@@ -494,7 +494,7 @@ export class UaiSelect {
             </button>
           </div>
           {message && (
-            <div id={`${this.id}-message`} class="select__message" part="select-message">
+            <div id={`${this.selectId}-message`} class="select__message" part="select-message">
               <uai-typo variant="caption" tag="span" margin={false}>
                 {message}
               </uai-typo>
@@ -502,14 +502,14 @@ export class UaiSelect {
           )}
         </div>
         <ul
-          id={`${this.id}-list`}
+          id={`${this.selectId}-list`}
           ref={(list) => (this.list = list)}
           class="list"
           part="select-list"
           role="listbox"
           tabindex="-1"
           aria-label={this.label || this.ariaLabel || null}
-          aria-activedescendant={this.isOpen && this.activeIndex >= 0 ? `${this.id}-option-${this.activeIndex}` : null}
+          aria-activedescendant={this.isOpen && this.activeIndex >= 0 ? `${this.selectId}-option-${this.activeIndex}` : null}
           onKeyDown={this.onListKeyDown}
         >
           {this.renderOptions()}
