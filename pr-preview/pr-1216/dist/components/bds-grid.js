@@ -1,0 +1,1 @@
+import{G as o,d as s}from"./p-S5Yf9hDR.js";const p=o,r=s;export{p as BdsGrid,r as defineCustomElement}
