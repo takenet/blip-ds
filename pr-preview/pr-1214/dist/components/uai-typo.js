@@ -1,1 +1,0 @@
-import{U as o,d as s}from"./p-C3LM5mV6.js";const m=o,p=s;export{m as UaiTypo,p as defineCustomElement}

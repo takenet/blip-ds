@@ -1,1 +1,0 @@
-import{U as o,d as s}from"./p-D5jnuKPj.js";const j=o,p=s;export{j as UaiBreadcrumb,p as defineCustomElement}
