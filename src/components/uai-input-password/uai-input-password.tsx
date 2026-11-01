@@ -65,7 +65,7 @@ export class UaiInputPassword {
   private defaultValue = '';
   private hasExplicitName = false;
   private aliasName?: string;
-  private readonly id = `uai-input-password-${++instances}`;
+  private readonly inputId = `uai-input-password-${++instances}`;
 
   /**
    * Name of the value in submitted form data. Without name or inputName, the field is not submitted.
@@ -455,7 +455,7 @@ export class UaiInputPassword {
         : success
           ? this.successMessage
           : this.helperMessage;
-    const describedBy = [message && `${this.id}-message`, this.showStrength && `${this.id}-strength`]
+    const describedBy = [message && `${this.inputId}-message`, this.showStrength && `${this.inputId}-strength`]
       .filter(Boolean)
       .join(' ');
     const strengthLevel = this.strengthLevelValue;
@@ -474,7 +474,7 @@ export class UaiInputPassword {
       >
         <div class="password">
           {this.label && (
-            <label class="password__label" {...{ for: this.id }}>
+            <label class="password__label" {...{ for: this.inputId }}>
               <uai-typo variant="caption" bold="semibold" tag="span" margin={false}>
                 {this.label}
               </uai-typo>
@@ -486,7 +486,7 @@ export class UaiInputPassword {
             <div class="password__field">
               <slot name="inside-input-left"></slot>
               <input
-                id={this.id}
+                id={this.inputId}
                 ref={(input) => (this.nativeInput = input)}
                 class="password__native"
                 part="input"
@@ -529,7 +529,7 @@ export class UaiInputPassword {
             <slot name="input-right"></slot>
           </div>
           {message && (
-            <div id={`${this.id}-message`} class="password__message" part="input__message">
+            <div id={`${this.inputId}-message`} class="password__message" part="input__message">
               <uai-typo variant="caption" tag="span" margin={false}>
                 {message}
               </uai-typo>
@@ -541,7 +541,7 @@ export class UaiInputPassword {
                 Força
               </uai-typo>
               <div
-                id={`${this.id}-strength`}
+                id={`${this.inputId}-strength`}
                 class={{ password__meter: true, [`password__meter--${strengthLevel}`]: true }}
                 role="meter"
                 aria-label="Força da senha"
