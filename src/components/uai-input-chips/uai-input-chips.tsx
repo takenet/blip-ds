@@ -98,7 +98,7 @@ export class UaiInputChips {
   private defaultChips: string[] = [];
   private focusInputAfterRender = false;
   private reachedLimit = false;
-  private readonly id = `uai-input-chips-${++instances}`;
+  private readonly inputId = `uai-input-chips-${++instances}`;
 
   /**
    * Values shown as chips. Accepts an array or a JSON array string, for example '["ana@blip.ai", "bia@blip.ai"]'.
@@ -607,7 +607,7 @@ export class UaiInputChips {
           : this.helperMessage;
     const removable = !disabled && !this.readonly;
     const showInput = !this.isAtLimit();
-    const describedBy = [message && `${this.id}-message`, this.counterLength && `${this.id}-counter`]
+    const describedBy = [message && `${this.inputId}-message`, this.counterLength && `${this.inputId}-counter`]
       .filter(Boolean)
       .join(' ');
 
@@ -624,7 +624,7 @@ export class UaiInputChips {
       >
         <div class="input">
           {this.label && (
-            <label class="input__label" {...{ for: this.id }}>
+            <label class="input__label" {...{ for: this.inputId }}>
               <uai-typo variant="caption" bold="semibold" tag="span" margin={false}>
                 {this.label}
               </uai-typo>
@@ -638,7 +638,7 @@ export class UaiInputChips {
               </ul>
               {showInput && (
                 <input
-                  id={this.id}
+                  id={this.inputId}
                   ref={(input) => (this.nativeInput = input)}
                   class="input__native"
                   part="input"
@@ -660,7 +660,7 @@ export class UaiInputChips {
               )}
             </div>
             {this.counterLength && (
-              <uai-typo id={`${this.id}-counter`} class="input__counter" variant="caption" tag="span" margin={false}>
+              <uai-typo id={`${this.inputId}-counter`} class="input__counter" variant="caption" tag="span" margin={false}>
                 {this.maxChipsLength
                   ? `${this.internalChips.length}/${this.maxChipsLength}`
                   : `${this.internalChips.length}`}
@@ -671,7 +671,7 @@ export class UaiInputChips {
             <slot name="input-right"></slot>
           </div>
           {message && (
-            <div id={`${this.id}-message`} class="input__message" part="input__message">
+            <div id={`${this.inputId}-message`} class="input__message" part="input__message">
               <uai-typo variant="caption" tag="span" margin={false}>
                 {message}
               </uai-typo>
