@@ -21,7 +21,7 @@ export declare class UaiTextarea {
     private nativeTextarea?;
     private formControl?;
     private defaultValue;
-    private readonly id;
+    private readonly textareaId;
     private resizeTimer?;
     private resizeObserver?;
     private observedWidth?;
