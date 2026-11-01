@@ -3,6 +3,9 @@ import { getScrollParent } from '../../utils/position-element';
 import { pt_BR, en_US, es_MX } from './languages';
 
 export type PaginationOptionsPositionType = 'auto' | 'top' | 'bottom';
+/**
+ * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+ */
 @Component({
   tag: 'bds-pagination',
   styleUrl: 'pagination.scss',

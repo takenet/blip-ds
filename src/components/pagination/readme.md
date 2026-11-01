@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+
 ## Properties
 
 | Property          | Attribute           | Description                                                                                                                                        | Type                          | Default     |

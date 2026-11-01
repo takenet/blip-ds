@@ -1,6 +1,9 @@
 import { Component, h, State, Prop, EventEmitter, Event, Watch, Element, Listen } from '@stencil/core';
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
 import { getScrollParent, positionAbsoluteElement } from '../../../utils/position-element';
+/**
+ * @deprecated Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+ */
 @Component({
   tag: 'bds-select',
   styleUrl: '../select.scss',

@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+
 ## Properties
 
 | Property          | Attribute          | Description                                                                                                                                                                                                                                                                                   | Type                          | Default     |

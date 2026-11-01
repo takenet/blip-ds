@@ -123,9 +123,12 @@ import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } fr
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiPageHeader as UaiPageHeaderElement, defineCustomElement as defineUaiPageHeader } from "blip-ds/dist/components/uai-page-header.js";
+import { UaiPagination as UaiPaginationElement, defineCustomElement as defineUaiPagination } from "blip-ds/dist/components/uai-pagination.js";
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
 import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUaiRadioGroup } from "blip-ds/dist/components/uai-radio-group.js";
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
+import { UaiSelectOption as UaiSelectOptionElement, defineCustomElement as defineUaiSelectOption } from "blip-ds/dist/components/uai-select-option.js";
+import { UaiSelect as UaiSelectElement, defineCustomElement as defineUaiSelect } from "blip-ds/dist/components/uai-select.js";
 import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
 import { UaiTabGroup as UaiTabGroupElement, defineCustomElement as defineUaiTabGroup } from "blip-ds/dist/components/uai-tab-group.js";
 import { UaiTabItem as UaiTabItemElement, defineCustomElement as defineUaiTabItem } from "blip-ds/dist/components/uai-tab-item.js";
@@ -1166,6 +1169,16 @@ export const UaiPageHeader = createComponent({
     },
     defineCustomElement: defineUaiPageHeader
 });
+export const UaiPagination = createComponent({
+    tagName: 'uai-pagination',
+    elementClass: UaiPaginationElement,
+    react: React,
+    events: {
+        onUaiPaginationChange: 'uaiPaginationChange',
+        onUaiPageSizeChange: 'uaiPageSizeChange'
+    },
+    defineCustomElement: defineUaiPagination
+});
 export const UaiPaper = createComponent({
     tagName: 'uai-paper',
     elementClass: UaiPaperElement,
@@ -1189,6 +1202,25 @@ export const UaiRadioGroup = createComponent({
     react: React,
     events: { onUaiRadioGroupChange: 'uaiRadioGroupChange' },
     defineCustomElement: defineUaiRadioGroup
+});
+export const UaiSelect = createComponent({
+    tagName: 'uai-select',
+    elementClass: UaiSelectElement,
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiCancel: 'uaiCancel',
+        onUaiFocus: 'uaiFocus',
+        onUaiBlur: 'uaiBlur'
+    },
+    defineCustomElement: defineUaiSelect
+});
+export const UaiSelectOption = createComponent({
+    tagName: 'uai-select-option',
+    elementClass: UaiSelectOptionElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiSelectOption
 });
 export const UaiSwitch = createComponent({
     tagName: 'uai-switch',

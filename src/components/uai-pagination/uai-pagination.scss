@@ -1,0 +1,38 @@
+@use '../../globals/helpers' as *;
+
+/**
+ * @prop --uai-pagination-select-width: Width of the selectors. Defaults to the sizing/5xl token.
+ */
+:host {
+  display: block;
+  width: 100%;
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.pagination__size,
+.pagination__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.pagination__actions {
+  margin-left: auto;
+}
+
+.pagination__select {
+  --uai-select-width: var(--uai-pagination-select-width, var(--uai-sizing-5xl, #{$uai-sizing-5xl}));
+}
+
+.pagination__range,
+.pagination__counter {
+  white-space: nowrap;
+}

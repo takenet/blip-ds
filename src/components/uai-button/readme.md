@@ -173,6 +173,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [uai-breadcrumb](../uai-breadcrumb)
+ - [uai-pagination](../uai-pagination)
  - [uai-tab-group](../uai-tab-group)
 
 ### Depends on
@@ -188,6 +189,7 @@ graph TD;
   uai-button --> bds-icon
   uai-button --> uai-typo
   uai-breadcrumb --> uai-button
+  uai-pagination --> uai-button
   uai-tab-group --> uai-button
   style uai-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
