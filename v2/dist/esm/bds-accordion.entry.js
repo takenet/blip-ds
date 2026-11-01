@@ -79,7 +79,7 @@ const Accordion = class {
         }
     }
     render() {
-        return (h("div", { key: 'dd6dc41f977ea0bfe63a3eb843cb72725025297f', class: "accordion_group" }, h("slot", { key: '98981b4491e318cfcb4be2e7ad125859187397b9' })));
+        return (h("div", { key: 'f1ebbcd47284ac6cca365cd578bb9fa11479908f', class: "accordion_group" }, h("slot", { key: 'cc36fd5284a56324068fe56ee37bec28e7c8f483' })));
     }
     get element() { return getElement(this); }
     static get watchers() { return {

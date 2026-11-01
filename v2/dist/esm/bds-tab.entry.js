@@ -23,10 +23,10 @@ const Tab = class {
     }
     render() {
         const bold = this.isActive ? 'bold' : 'regular';
-        return (h(Host, { key: 'ccfc1c3e0cc2ffd95f6ca2176e10df8e4b1fcee5', class: {
+        return (h(Host, { key: '8d8a365493b8dd02024fe39e5e41a4df7819884a', class: {
                 'bds-tab': true,
                 ['bds-tab--selected']: this.isActive,
-            }, onClick: this.onClick.bind(this) }, h("div", { key: '90b375a9bcc7eb3ff8dc6041b499f056f9765134', class: "bds-tab__text" }, h("bds-typo", { key: 'bb290250d13afae406c6b9fccfa60545c821fe33', variant: "fs-16", bold: bold }, this.label))));
+            }, onClick: this.onClick.bind(this) }, h("div", { key: '7938d0df2be803a8e45b2f1ed4b966e815692375', class: "bds-tab__text" }, h("bds-typo", { key: '72b9b4e6d7362f9f8254ef87f249d0ebc2cfcf6a', variant: "fs-16", bold: bold }, this.label))));
     }
 };
 Tab.style = tabCss();

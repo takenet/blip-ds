@@ -93,7 +93,9 @@ import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
 import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
+import { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
+import { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
 import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 import { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
 import { UaiTableRowVariant } from "./components/uai-table-row/uai-table-row";
@@ -189,7 +191,9 @@ export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
 export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
+export { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
+export { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
 export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 export { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
 export { UaiTableRowVariant } from "./components/uai-table-row/uai-table-row";
@@ -2591,6 +2595,9 @@ export namespace Components {
     }
     interface BdsNavbarContent {
     }
+    /**
+     * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+     */
     interface BdsPagination {
         /**
           * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
@@ -2834,6 +2841,9 @@ export namespace Components {
          */
         "weightButton"?: boolean;
     }
+    /**
+     * @deprecated Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+     */
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -3037,6 +3047,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use uai-select-option with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+     */
     interface BdsSelectOption {
         /**
           * Quantity Description on option value, this item is locate to rigth in component.
@@ -5332,6 +5345,79 @@ export namespace Components {
          */
         "wrapItems": boolean;
     }
+    /**
+     * Navigation between pages of a list or table, with optional items per page and range. Use it below tables and lists
+     * that are split into pages; the page is controlled with page and changes only on user action, announced by
+     * uaiPaginationChange. Pair with UaiTable. Avoid it for infinite scrolling or for fewer than two pages. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiPagination {
+        /**
+          * Test selector on the last page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonEnd"?: string;
+        /**
+          * Test selector on the first page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonInitial"?: string;
+        /**
+          * Test selector on the next page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Test selector on the previous page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Test selector on the page selector. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtSelectNumber"?: string;
+        /**
+          * Test selector on the items per page selector. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtSelectSize"?: string;
+        /**
+          * Language of the texts: pt_BR, en_US or es_MX. Use the language of the interface; avoid mixing languages.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiPaginationLanguage;
+        /**
+          * Current page, starting at 1. Use it to control the page; pair with uaiPaginationChange; values outside 1..pages are clamped.
+          * @default 1
+         */
+        "page"?: number;
+        /**
+          * Shows "of N pages" next to the page selector. Use when the total of pages matters; avoid it in tight spaces.
+          * @default false
+         */
+        "pageCounter"?: boolean;
+        /**
+          * Items per page. Use with total and pageSizeOptions; pair with uaiPageSizeChange; avoid values missing from pageSizeOptions.
+          * @default null
+         */
+        "pageSize"?: number;
+        /**
+          * Choices of items per page, such as [10, 20, 50]. Use to let people pick; leave empty to hide the selector.
+          * @default []
+         */
+        "pageSizeOptions"?: number[];
+        /**
+          * Total number of pages. Use it when the server returns pages; ignored when total and pageSize are set.
+          * @default 0
+         */
+        "pages"?: number;
+        /**
+          * Total number of items. Use with pageSize to derive the pages and show the "1-10 of 100" range; avoid it together with pages.
+          * @default null
+         */
+        "total"?: number;
+    }
     interface UaiPaper {
         /**
           * Prop for set the background color.
@@ -5476,6 +5562,127 @@ export namespace Components {
           * Selected radio value.
          */
         "value"?: string;
+    }
+    /**
+     * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
+     * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
+     * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
+     * 4 options, multiple choice, or searching a long list. Wrap the app in UaiThemeProvider.
+     */
+    interface UaiSelect {
+        /**
+          * Accessible name when there is no visible label. Use a short noun; avoid repeating the placeholder.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Closes the list. Use for imperative control; pair with open.
+         */
+        "close": () => Promise<void>;
+        /**
+          * Error state. Use together with errorMessage; avoid color alone to explain the problem.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Test selector on the button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Prevents opening and changing the value. Use when the choice is unavailable; pair with explanatory text elsewhere.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Error text below the field while danger is set. Use to say how to fix the choice.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Helper text below the field. Use for format or context; avoid long text.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Optional UAI icon name before the chosen label. Use to reinforce the topic; avoid decorative icons.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Visible label above the field. Use a short noun; pair with helperMessage; avoid it only when aria-label names the field.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Name of the value in the submitted form data. Without it the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Opens the list. Use for imperative control; pair with close; avoid calling it while disabled.
+         */
+        "open": () => Promise<void>;
+        /**
+          * Options as an array of { value, label, icon?, disabled? }. Use for dynamic lists; takes precedence over uai-select-option children; avoid JSON strings.
+          * @default null
+         */
+        "options"?: UaiSelectOptionData[];
+        /**
+          * Text shown while no option is chosen. Use a short prompt such as "Selecione"; avoid repeating the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * Requires a chosen option before the form is valid. Use with a visible label; pair with requiredErrorMessage.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Error text when required and nothing is chosen. Use a short instruction.
+          * @default 'Selecione uma opção.'
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Field height. Use medium by default and short in dense areas such as table toolbars and pagination.
+          * @default 'medium'
+         */
+        "size"?: UaiSelectSize;
+        /**
+          * Success state. Use after a valid choice; pair with successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Success text below the field while success is set.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Chosen value. Use it to preselect or control the field; pair with the uaiChange event; avoid values missing from the options.
+          * @default null
+         */
+        "value"?: UaiSelectValue | null;
+    }
+    /**
+     * Declarative option of UaiSelect. Use it as a child of uai-select when the options are written in markup; the text
+     * is the visible label. Pair with value; avoid it together with the options prop, which takes precedence. It renders
+     * nothing by itself.
+     */
+    interface UaiSelectOption {
+        /**
+          * Prevents choosing the option. Use for unavailable choices; pair with explanatory text elsewhere; avoid hiding options by disabling them all.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Optional UAI icon name shown before the label. Use to reinforce the label; pair with the label text; avoid icons without meaning.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Value submitted and emitted when the option is chosen. Use a short stable string; pair with the label text; avoid duplicates inside one select.
+         */
+        "value": string;
     }
     /**
      * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
@@ -6356,6 +6563,10 @@ export interface UaiPageHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiPageHeaderElement;
 }
+export interface UaiPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiPaginationElement;
+}
 export interface UaiRadioCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiRadioElement;
@@ -6363,6 +6574,10 @@ export interface UaiRadioCustomEvent<T> extends CustomEvent<T> {
 export interface UaiRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiRadioGroupElement;
+}
+export interface UaiSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiSelectElement;
 }
 export interface UaiSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -7313,6 +7528,9 @@ declare global {
         "bdsPaginationChange": number;
         "bdsItemsPerPageChange": number;
     }
+    /**
+     * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+     */
     interface HTMLBdsPaginationElement extends Components.BdsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsPaginationElementEventMap>(type: K, listener: (this: HTMLBdsPaginationElement, ev: BdsPaginationCustomEvent<HTMLBdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7406,6 +7624,9 @@ declare global {
         "bdsFocus": void;
         "bdsBlur": void;
     }
+    /**
+     * @deprecated Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+     */
     interface HTMLBdsSelectElement extends Components.BdsSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSelectElementEventMap>(type: K, listener: (this: HTMLBdsSelectElement, ev: BdsSelectCustomEvent<HTMLBdsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7447,6 +7668,9 @@ declare global {
         "optionSelected": { value: any; label: string };
         "optionChecked": { value: string; label: string; checked: boolean };
     }
+    /**
+     * @deprecated Use uai-select-option with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+     */
     interface HTMLBdsSelectOptionElement extends Components.BdsSelectOption, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsSelectOptionElementEventMap>(type: K, listener: (this: HTMLBdsSelectOptionElement, ev: BdsSelectOptionCustomEvent<HTMLBdsSelectOptionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8096,6 +8320,30 @@ declare global {
         prototype: HTMLUaiPageHeaderElement;
         new (): HTMLUaiPageHeaderElement;
     };
+    interface HTMLUaiPaginationElementEventMap {
+        "uaiPaginationChange": number;
+        "uaiPageSizeChange": number;
+    }
+    /**
+     * Navigation between pages of a list or table, with optional items per page and range. Use it below tables and lists
+     * that are split into pages; the page is controlled with page and changes only on user action, announced by
+     * uaiPaginationChange. Pair with UaiTable. Avoid it for infinite scrolling or for fewer than two pages. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface HTMLUaiPaginationElement extends Components.UaiPagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiPaginationElementEventMap>(type: K, listener: (this: HTMLUaiPaginationElement, ev: UaiPaginationCustomEvent<HTMLUaiPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiPaginationElementEventMap>(type: K, listener: (this: HTMLUaiPaginationElement, ev: UaiPaginationCustomEvent<HTMLUaiPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiPaginationElement: {
+        prototype: HTMLUaiPaginationElement;
+        new (): HTMLUaiPaginationElement;
+    };
     interface HTMLUaiPaperElement extends Components.UaiPaper, HTMLStencilElement {
     }
     var HTMLUaiPaperElement: {
@@ -8144,6 +8392,43 @@ declare global {
     var HTMLUaiRadioGroupElement: {
         prototype: HTMLUaiRadioGroupElement;
         new (): HTMLUaiRadioGroupElement;
+    };
+    interface HTMLUaiSelectElementEventMap {
+        "uaiChange": UaiSelectChange;
+        "uaiCancel": void;
+        "uaiFocus": void;
+        "uaiBlur": void;
+    }
+    /**
+     * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
+     * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
+     * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
+     * 4 options, multiple choice, or searching a long list. Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiSelectElement extends Components.UaiSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiSelectElementEventMap>(type: K, listener: (this: HTMLUaiSelectElement, ev: UaiSelectCustomEvent<HTMLUaiSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiSelectElementEventMap>(type: K, listener: (this: HTMLUaiSelectElement, ev: UaiSelectCustomEvent<HTMLUaiSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiSelectElement: {
+        prototype: HTMLUaiSelectElement;
+        new (): HTMLUaiSelectElement;
+    };
+    /**
+     * Declarative option of UaiSelect. Use it as a child of uai-select when the options are written in markup; the text
+     * is the visible label. Pair with value; avoid it together with the options prop, which takes precedence. It renders
+     * nothing by itself.
+     */
+    interface HTMLUaiSelectOptionElement extends Components.UaiSelectOption, HTMLStencilElement {
+    }
+    var HTMLUaiSelectOptionElement: {
+        prototype: HTMLUaiSelectOptionElement;
+        new (): HTMLUaiSelectOptionElement;
     };
     interface HTMLUaiSwitchElementEventMap {
         "uaiChange": { checked: boolean };
@@ -8459,9 +8744,12 @@ declare global {
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-page-header": HTMLUaiPageHeaderElement;
+        "uai-pagination": HTMLUaiPaginationElement;
         "uai-paper": HTMLUaiPaperElement;
         "uai-radio": HTMLUaiRadioElement;
         "uai-radio-group": HTMLUaiRadioGroupElement;
+        "uai-select": HTMLUaiSelectElement;
+        "uai-select-option": HTMLUaiSelectOptionElement;
         "uai-switch": HTMLUaiSwitchElement;
         "uai-tab-group": HTMLUaiTabGroupElement;
         "uai-tab-item": HTMLUaiTabItemElement;
@@ -11107,6 +11395,9 @@ declare namespace LocalJSX {
     }
     interface BdsNavbarContent {
     }
+    /**
+     * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+     */
     interface BdsPagination {
         /**
           * Propriedade de teste para especificamente testar a ação do botão final. dtButtonEnd é o data-test para o botão final.
@@ -11384,6 +11675,9 @@ declare namespace LocalJSX {
          */
         "weightButton"?: boolean;
     }
+    /**
+     * @deprecated Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+     */
     interface BdsSelect {
         /**
           * Add state danger on input, use for use feedback.
@@ -11616,6 +11910,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use uai-select-option with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+     */
     interface BdsSelectOption {
         /**
           * Quantity Description on option value, this item is locate to rigth in component.
@@ -13942,6 +14239,87 @@ declare namespace LocalJSX {
          */
         "wrapItems"?: boolean;
     }
+    /**
+     * Navigation between pages of a list or table, with optional items per page and range. Use it below tables and lists
+     * that are split into pages; the page is controlled with page and changes only on user action, announced by
+     * uaiPaginationChange. Pair with UaiTable. Avoid it for infinite scrolling or for fewer than two pages. Wrap the app in
+     * UaiThemeProvider.
+     */
+    interface UaiPagination {
+        /**
+          * Test selector on the last page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonEnd"?: string;
+        /**
+          * Test selector on the first page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonInitial"?: string;
+        /**
+          * Test selector on the next page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Test selector on the previous page button. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Test selector on the page selector. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtSelectNumber"?: string;
+        /**
+          * Test selector on the items per page selector. Use for automation; pair with semantic queries.
+          * @default null
+         */
+        "dtSelectSize"?: string;
+        /**
+          * Language of the texts: pt_BR, en_US or es_MX. Use the language of the interface; avoid mixing languages.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiPaginationLanguage;
+        /**
+          * Emitted when the person changes the items per page. detail: the new size. The page goes back to 1.
+         */
+        "onUaiPageSizeChange"?: (event: UaiPaginationCustomEvent<number>) => void;
+        /**
+          * Emitted when the person changes the page. detail: the new page number.
+         */
+        "onUaiPaginationChange"?: (event: UaiPaginationCustomEvent<number>) => void;
+        /**
+          * Current page, starting at 1. Use it to control the page; pair with uaiPaginationChange; values outside 1..pages are clamped.
+          * @default 1
+         */
+        "page"?: number;
+        /**
+          * Shows "of N pages" next to the page selector. Use when the total of pages matters; avoid it in tight spaces.
+          * @default false
+         */
+        "pageCounter"?: boolean;
+        /**
+          * Items per page. Use with total and pageSizeOptions; pair with uaiPageSizeChange; avoid values missing from pageSizeOptions.
+          * @default null
+         */
+        "pageSize"?: number;
+        /**
+          * Choices of items per page, such as [10, 20, 50]. Use to let people pick; leave empty to hide the selector.
+          * @default []
+         */
+        "pageSizeOptions"?: number[];
+        /**
+          * Total number of pages. Use it when the server returns pages; ignored when total and pageSize are set.
+          * @default 0
+         */
+        "pages"?: number;
+        /**
+          * Total number of items. Use with pageSize to derive the pages and show the "1-10 of 100" range; avoid it together with pages.
+          * @default null
+         */
+        "total"?: number;
+    }
     interface UaiPaper {
         /**
           * Prop for set the background color.
@@ -14082,6 +14460,139 @@ declare namespace LocalJSX {
           * Selected radio value.
          */
         "value"?: string;
+    }
+    /**
+     * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
+     * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
+     * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
+     * 4 options, multiple choice, or searching a long list. Wrap the app in UaiThemeProvider.
+     */
+    interface UaiSelect {
+        /**
+          * Accessible name when there is no visible label. Use a short noun; avoid repeating the placeholder.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Error state. Use together with errorMessage; avoid color alone to explain the problem.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Test selector on the button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Prevents opening and changing the value. Use when the choice is unavailable; pair with explanatory text elsewhere.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Error text below the field while danger is set. Use to say how to fix the choice.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Helper text below the field. Use for format or context; avoid long text.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Optional UAI icon name before the chosen label. Use to reinforce the topic; avoid decorative icons.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Visible label above the field. Use a short noun; pair with helperMessage; avoid it only when aria-label names the field.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Name of the value in the submitted form data. Without it the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the button loses focus.
+         */
+        "onUaiBlur"?: (event: UaiSelectCustomEvent<void>) => void;
+        /**
+          * Emitted when the list closes with Escape or a click outside, without choosing.
+         */
+        "onUaiCancel"?: (event: UaiSelectCustomEvent<void>) => void;
+        /**
+          * Emitted when the person chooses an option. detail: { value, label }.
+         */
+        "onUaiChange"?: (event: UaiSelectCustomEvent<UaiSelectChange>) => void;
+        /**
+          * Emitted when the button receives focus.
+         */
+        "onUaiFocus"?: (event: UaiSelectCustomEvent<void>) => void;
+        /**
+          * Options as an array of { value, label, icon?, disabled? }. Use for dynamic lists; takes precedence over uai-select-option children; avoid JSON strings.
+          * @default null
+         */
+        "options"?: UaiSelectOptionData[];
+        /**
+          * Text shown while no option is chosen. Use a short prompt such as "Selecione"; avoid repeating the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * Requires a chosen option before the form is valid. Use with a visible label; pair with requiredErrorMessage.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Error text when required and nothing is chosen. Use a short instruction.
+          * @default 'Selecione uma opção.'
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Field height. Use medium by default and short in dense areas such as table toolbars and pagination.
+          * @default 'medium'
+         */
+        "size"?: UaiSelectSize;
+        /**
+          * Success state. Use after a valid choice; pair with successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Success text below the field while success is set.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Chosen value. Use it to preselect or control the field; pair with the uaiChange event; avoid values missing from the options.
+          * @default null
+         */
+        "value"?: UaiSelectValue | null;
+    }
+    /**
+     * Declarative option of UaiSelect. Use it as a child of uai-select when the options are written in markup; the text
+     * is the visible label. Pair with value; avoid it together with the options prop, which takes precedence. It renders
+     * nothing by itself.
+     */
+    interface UaiSelectOption {
+        /**
+          * Prevents choosing the option. Use for unavailable choices; pair with explanatory text elsewhere; avoid hiding options by disabling them all.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Optional UAI icon name shown before the label. Use to reinforce the label; pair with the label text; avoid icons without meaning.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Value submitted and emitted when the option is chosen. Use a short stable string; pair with the label text; avoid duplicates inside one select.
+         */
+        "value": string;
     }
     /**
      * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
@@ -15885,6 +16396,20 @@ declare namespace LocalJSX {
         "editable": boolean;
         "language": UaiBreadcrumbLanguage;
     }
+    interface UaiPaginationAttributes {
+        "page": number;
+        "pages": number;
+        "total": number;
+        "pageSize": number;
+        "pageCounter": boolean;
+        "language": UaiPaginationLanguage;
+        "dtButtonInitial": string;
+        "dtButtonPrev": string;
+        "dtSelectNumber": string;
+        "dtButtonNext": string;
+        "dtButtonEnd": string;
+        "dtSelectSize": string;
+    }
     interface UaiPaperAttributes {
         "elevation": PaperElevation;
         "dataTest": string;
@@ -15913,6 +16438,29 @@ declare namespace LocalJSX {
         "disabled": boolean;
         "ariaLabel": string;
         "ariaLabelledBy": string;
+    }
+    interface UaiSelectAttributes {
+        "name": string;
+        "value": string;
+        "label": string;
+        "placeholder": string;
+        "icon": string;
+        "size": UaiSelectSize;
+        "required": boolean;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "requiredErrorMessage": string;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
+    interface UaiSelectOptionAttributes {
+        "value": string;
+        "disabled": boolean;
+        "icon": string;
     }
     interface UaiSwitchAttributes {
         "refer": string;
@@ -16166,9 +16714,12 @@ declare namespace LocalJSX {
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
         "uai-page-header": Omit<UaiPageHeader, keyof UaiPageHeaderAttributes> & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes]?: UaiPageHeader[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `attr:${K}`]?: UaiPageHeaderAttributes[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `prop:${K}`]?: UaiPageHeader[K] };
+        "uai-pagination": Omit<UaiPagination, keyof UaiPaginationAttributes> & { [K in keyof UaiPagination & keyof UaiPaginationAttributes]?: UaiPagination[K] } & { [K in keyof UaiPagination & keyof UaiPaginationAttributes as `attr:${K}`]?: UaiPaginationAttributes[K] } & { [K in keyof UaiPagination & keyof UaiPaginationAttributes as `prop:${K}`]?: UaiPagination[K] };
         "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
         "uai-radio": Omit<UaiRadio, keyof UaiRadioAttributes> & { [K in keyof UaiRadio & keyof UaiRadioAttributes]?: UaiRadio[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `attr:${K}`]?: UaiRadioAttributes[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `prop:${K}`]?: UaiRadio[K] } & OneOf<"value", UaiRadio["value"], UaiRadioAttributes["value"]>;
         "uai-radio-group": Omit<UaiRadioGroup, keyof UaiRadioGroupAttributes> & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes]?: UaiRadioGroup[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `attr:${K}`]?: UaiRadioGroupAttributes[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `prop:${K}`]?: UaiRadioGroup[K] };
+        "uai-select": Omit<UaiSelect, keyof UaiSelectAttributes> & { [K in keyof UaiSelect & keyof UaiSelectAttributes]?: UaiSelect[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `attr:${K}`]?: UaiSelectAttributes[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `prop:${K}`]?: UaiSelect[K] };
+        "uai-select-option": Omit<UaiSelectOption, keyof UaiSelectOptionAttributes> & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes]?: UaiSelectOption[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `attr:${K}`]?: UaiSelectOptionAttributes[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `prop:${K}`]?: UaiSelectOption[K] } & OneOf<"value", UaiSelectOption["value"], UaiSelectOptionAttributes["value"]>;
         "uai-switch": Omit<UaiSwitch, keyof UaiSwitchAttributes> & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes]?: UaiSwitch[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `attr:${K}`]?: UaiSwitchAttributes[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `prop:${K}`]?: UaiSwitch[K] };
         "uai-tab-group": Omit<UaiTabGroup, keyof UaiTabGroupAttributes> & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes]?: UaiTabGroup[K] } & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes as `attr:${K}`]?: UaiTabGroupAttributes[K] } & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes as `prop:${K}`]?: UaiTabGroup[K] };
         "uai-tab-item": Omit<UaiTabItem, keyof UaiTabItemAttributes> & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes]?: UaiTabItem[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `attr:${K}`]?: UaiTabItemAttributes[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `prop:${K}`]?: UaiTabItem[K] };
@@ -16289,6 +16840,9 @@ declare module "@stencil/core" {
             "bds-nav-tree-item": LocalJSX.IntrinsicElements["bds-nav-tree-item"] & JSXBase.HTMLAttributes<HTMLBdsNavTreeItemElement>;
             "bds-navbar": LocalJSX.IntrinsicElements["bds-navbar"] & JSXBase.HTMLAttributes<HTMLBdsNavbarElement>;
             "bds-navbar-content": LocalJSX.IntrinsicElements["bds-navbar-content"] & JSXBase.HTMLAttributes<HTMLBdsNavbarContentElement>;
+            /**
+             * @deprecated Use uai-pagination with UaiThemeProvider for tokenized styling, accessible navigation and a controlled page.
+             */
             "bds-pagination": LocalJSX.IntrinsicElements["bds-pagination"] & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.IntrinsicElements["bds-paper"] & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
             "bds-progress-bar": LocalJSX.IntrinsicElements["bds-progress-bar"] & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
@@ -16301,8 +16855,14 @@ declare module "@stencil/core" {
              */
             "bds-radio-group": LocalJSX.IntrinsicElements["bds-radio-group"] & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
             "bds-rich-text": LocalJSX.IntrinsicElements["bds-rich-text"] & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
+            /**
+             * @deprecated Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+             */
             "bds-select": LocalJSX.IntrinsicElements["bds-select"] & JSXBase.HTMLAttributes<HTMLBdsSelectElement>;
             "bds-select-chips": LocalJSX.IntrinsicElements["bds-select-chips"] & JSXBase.HTMLAttributes<HTMLBdsSelectChipsElement>;
+            /**
+             * @deprecated Use uai-select-option with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+             */
             "bds-select-option": LocalJSX.IntrinsicElements["bds-select-option"] & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-sidebar": LocalJSX.IntrinsicElements["bds-sidebar"] & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
             "bds-skeleton": LocalJSX.IntrinsicElements["bds-skeleton"] & JSXBase.HTMLAttributes<HTMLBdsSkeletonElement>;
@@ -16462,6 +17022,13 @@ declare module "@stencil/core" {
              * avoid embedding product persistence or global application navigation.
              */
             "uai-page-header": LocalJSX.IntrinsicElements["uai-page-header"] & JSXBase.HTMLAttributes<HTMLUaiPageHeaderElement>;
+            /**
+             * Navigation between pages of a list or table, with optional items per page and range. Use it below tables and lists
+             * that are split into pages; the page is controlled with page and changes only on user action, announced by
+             * uaiPaginationChange. Pair with UaiTable. Avoid it for infinite scrolling or for fewer than two pages. Wrap the app in
+             * UaiThemeProvider.
+             */
+            "uai-pagination": LocalJSX.IntrinsicElements["uai-pagination"] & JSXBase.HTMLAttributes<HTMLUaiPaginationElement>;
             "uai-paper": LocalJSX.IntrinsicElements["uai-paper"] & JSXBase.HTMLAttributes<HTMLUaiPaperElement>;
             /**
              * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.
@@ -16473,6 +17040,19 @@ declare module "@stencil/core" {
              * aria-label or aria-labelledby. The group owns the submitted name and value.
              */
             "uai-radio-group": LocalJSX.IntrinsicElements["uai-radio-group"] & JSXBase.HTMLAttributes<HTMLUaiRadioGroupElement>;
+            /**
+             * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
+             * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
+             * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
+             * 4 options, multiple choice, or searching a long list. Wrap the app in UaiThemeProvider.
+             */
+            "uai-select": LocalJSX.IntrinsicElements["uai-select"] & JSXBase.HTMLAttributes<HTMLUaiSelectElement>;
+            /**
+             * Declarative option of UaiSelect. Use it as a child of uai-select when the options are written in markup; the text
+             * is the visible label. Pair with value; avoid it together with the options prop, which takes precedence. It renders
+             * nothing by itself.
+             */
+            "uai-select-option": LocalJSX.IntrinsicElements["uai-select-option"] & JSXBase.HTMLAttributes<HTMLUaiSelectOptionElement>;
             /**
              * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
              * Avoid switches for submitting a form or choosing mutually exclusive options.

@@ -9,7 +9,7 @@ const UaiTableHeader = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '536de2e90ced0d96c43c81f271cf0345549dc6f3', role: "rowgroup" }, index.h("slot", { key: '424e73ad2df0e8692f4047d6c4a94505628dae34' })));
+        return (index.h(index.Host, { key: '49acdc2b23e30ea92249f18f3f13dbfea509e404', role: "rowgroup" }, index.h("slot", { key: '903d5880d1d929d133e93aeba7da65acb6dc5297' })));
     }
 };
 UaiTableHeader.style = uaiTableHeaderCss();

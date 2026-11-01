@@ -1,5 +1,8 @@
 import { EventEmitter } from '../../../stencil-public-runtime';
 import { Option, SelectChangeEventDetail, SelectOptionsPositionType } from '../select-interface';
+/**
+ * @deprecated Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+ */
 export declare class Select {
     private nativeInput?;
     private dropElement?;

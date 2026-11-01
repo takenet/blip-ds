@@ -4,7 +4,7 @@ import { h, Host } from "@stencil/core";
  */
 export class TableHeader {
     render() {
-        return (h(Host, { key: 'c1a98fbedf51f016a28239432fb9bfc4b3e09081' }, h("slot", { key: 'ae48f2476f85649d4d4c06cb73c2b5b490fcd03b' })));
+        return (h(Host, { key: '2161654772847e325cadbba3041852ab3e955784' }, h("slot", { key: '800beb63833778ba58e0b8485f7572a2bcb2bc11' })));
     }
     static get is() { return "bds-table-header"; }
     static get encapsulation() { return "scoped"; }

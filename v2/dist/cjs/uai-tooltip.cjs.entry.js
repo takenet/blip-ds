@@ -67,11 +67,11 @@ const UaiTooltip = class {
     }
     render() {
         const position = POSITIONS.find((candidate) => candidate === this.position) || 'left-center';
-        return (index.h(index.Host, { key: '9ff9f63ae9e7360679f29db8ed17a748ad6adbfc' }, index.h("div", { key: '90a666741c1d28245c08ee415428a475278c4c44', class: "tooltip__wrapper" }, index.h("div", { key: '7393d94f2d8f2b47f8356fb309f71f8d95dbc16f', class: "tooltip__trigger", onMouseEnter: () => this.setVisibility(true), onMouseLeave: () => this.setVisibility(false), onFocusin: () => this.setVisibility(true), onFocusout: () => this.setVisibility(false), onKeyDown: this.onKeyDown, "data-test": this.dataTest, "aria-describedby": this.tipId }, index.h("slot", { key: 'ca6c198510a766a80b09295894b7c84e5d40fed0' })), index.h("div", { key: 'a920b1ec0a1bf4cf0642691a983039d7105f1469', id: this.tipId, part: "tip", role: "tooltip", class: {
+        return (index.h(index.Host, { key: 'e9b7b65e86067d0d4f7cf970c53c2b327ff4eb14' }, index.h("div", { key: '127b59859b8ac461943127bf0872e04a3632c168', class: "tooltip__wrapper" }, index.h("div", { key: '7d326578cf2e5389cb3296bbfa0711454de69e3c', class: "tooltip__trigger", onMouseEnter: () => this.setVisibility(true), onMouseLeave: () => this.setVisibility(false), onFocusin: () => this.setVisibility(true), onFocusout: () => this.setVisibility(false), onKeyDown: this.onKeyDown, "data-test": this.dataTest, "aria-describedby": this.tipId }, index.h("slot", { key: 'cfc4dd4833dfdc6805be365e3903048d214a4637' })), index.h("div", { key: 'a98f5b45eefb3ed77806d7e8b73dec9512fa8478', id: this.tipId, part: "tip", role: "tooltip", class: {
                 tooltip__tip: true,
                 [`tooltip__tip--${position}`]: true,
                 'tooltip__tip--visible': this.isVisible,
-            }, style: { maxWidth: this.maxWidthTooltip } }, index.h("uai-typo", { key: 'b867522935af9f6095cb70312a43bc25dd454a84', class: "tooltip__text", tag: "span", variant: "caption", margin: false }, this.textVerify)))));
+            }, style: { maxWidth: this.maxWidthTooltip } }, index.h("uai-typo", { key: '0844cd1a31d240293ed2007e9a45c31718fb5a87', class: "tooltip__text", tag: "span", variant: "caption", margin: false }, this.textVerify)))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

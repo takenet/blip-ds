@@ -1,5 +1,8 @@
 import { h } from "@stencil/core";
 import { getScrollParent, positionAbsoluteElement } from "../../../utils/position-element";
+/**
+ * @deprecated Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+ */
 export class Select {
     constructor() {
         this.intoView = null;
@@ -263,7 +266,7 @@ export class Select {
     }
     render() {
         const isPressed = this.isPressed && !this.disabled;
-        return (h("div", { key: 'ef42ea99e19e8fc9745848777e4d53efb82ce8c5', class: "select" }, h("div", { key: 'd4cad05289077fea2263d248232f3574f5d02340', class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'e2bfea1bb87fa80669500ab44e6f0645ebaaa6c8', class: {
+        return (h("div", { key: '0b4a2e1bd45663124afa044e7ff6698f10bc59a6', class: "select" }, h("div", { key: 'b3e43592cb3d403901c6c6c549ab99c7c7ed9547', class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: '8e35d1c3d619a9c5f9f8cecc6042d7f9cb921dc8', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -271,7 +274,7 @@ export class Select {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: 'af2cfd265221b5c1d46ccb308a5df8f44812d705', class: "input__container" }, this.renderLabel(), h("div", { key: '40be0645cbfe75893359fb2facf9bf97cf5bd852', class: { input__container__wrapper: true } }, h("input", { key: '19a80ed898fd533e5257b57f1dceba43e6b6d439', ref: this.refNativeInput, class: { input__container__text: true }, onFocus: this.onFocus, onBlur: this.onBlur, value: this.text, disabled: this.disabled, placeholder: this.placeholder, readonly: true, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: 'e7f3cd205c9d2e0394c95176ca93b8ae76bbcce5', class: "select__icon" }, h("bds-icon", { key: 'c4c57bc9f20555f2074a57d84f2fa360dd77b70d', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" })), this.success && h("bds-icon", { key: 'f34a4db01bcd5a0de7800b13260255d7eeaef4a8', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" })), this.renderMessage()), h("div", { key: '3ef1a56ab562e7ddf52d51af38d9e6f804f86f3e', ref: (el) => this.refDropdown(el), class: {
+            }, onClick: this.onClickWrapper, part: "input-container" }, this.renderIcon(), h("div", { key: '07b8b9f72cefb2d49d29fa92a0d32605941ad23c', class: "input__container" }, this.renderLabel(), h("div", { key: '76290fb6962eaca0179bfbdb7874847725674652', class: { input__container__wrapper: true } }, h("input", { key: 'f308b49b2d50d147f86020ce28676a5e6dcff6ac', ref: this.refNativeInput, class: { input__container__text: true }, onFocus: this.onFocus, onBlur: this.onBlur, value: this.text, disabled: this.disabled, placeholder: this.placeholder, readonly: true, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: 'c80af562845280d426df5420f3a032ce4a3d8e89', class: "select__icon" }, h("bds-icon", { key: '700d39f12d4066d03231e3eb5446b27766dcdc4b', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" })), this.success && h("bds-icon", { key: 'ae262c0753a88dc9d540c9397ee1f1b9b69c71c6', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" })), this.renderMessage()), h("div", { key: '78fea04639e025aeb51c0734779350d0c04762d6', ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
                 'select__options--open': this.isOpen,
             }, role: "application" }, this.internalOptions ? (this.internalOptions.map((option, idx) => option.icon || option.titleText ? (h("bds-select-option", { key: idx, value: option.value, "title-text": option.titleText, "slot-align": option.slotAlign, bulkOption: option.bulkOption, status: option.status }, option.icon && (h("bds-icon", { slot: "input-left", name: option.icon, size: "medium", color: option.iconColor })), option.label)) : (h("bds-select-option", { key: idx, value: option.value, bulkOption: option.bulkOption, status: option.status }, option.label)))) : (h("slot", null)))));

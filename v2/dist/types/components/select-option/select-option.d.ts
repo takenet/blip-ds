@@ -1,5 +1,8 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 export type TypeOption = 'checkbox' | 'default';
+/**
+ * @deprecated Use uai-select-option with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
+ */
 export declare class SelectOption {
     private nativeInput?;
     private element;

@@ -165,13 +165,17 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-navbar-content.entry.js").then(u,consoleError);case"uai-page-header":return import(
 /* webpackMode: "lazy" */
-"./uai-page-header.entry.js").then(u,consoleError);case"uai-paper":return import(
+"./uai-page-header.entry.js").then(u,consoleError);case"uai-pagination":return import(
+/* webpackMode: "lazy" */
+"./uai-pagination.entry.js").then(u,consoleError);case"uai-paper":return import(
 /* webpackMode: "lazy" */
 "./uai-paper.entry.js").then(u,consoleError);case"uai-radio":return import(
 /* webpackMode: "lazy" */
 "./uai-radio.entry.js").then(u,consoleError);case"uai-radio-group":return import(
 /* webpackMode: "lazy" */
-"./uai-radio-group.entry.js").then(u,consoleError);case"uai-switch":return import(
+"./uai-radio-group.entry.js").then(u,consoleError);case"uai-select-option":return import(
+/* webpackMode: "lazy" */
+"./uai-select-option.entry.js").then(u,consoleError);case"uai-switch":return import(
 /* webpackMode: "lazy" */
 "./uai-switch.entry.js").then(u,consoleError);case"uai-tab-item":return import(
 /* webpackMode: "lazy" */
@@ -211,13 +215,19 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-badge.entry.js").then(u,consoleError);case"uai-breadcrumb":return import(
 /* webpackMode: "lazy" */
-"./uai-breadcrumb.entry.js").then(u,consoleError);case"bds-banner":return import(
+"./uai-breadcrumb.entry.js").then(u,consoleError);case"uai-select":return import(
+/* webpackMode: "lazy" */
+"./uai-select.entry.js").then(u,consoleError);case"bds-banner":return import(
 /* webpackMode: "lazy" */
 "./bds-banner.entry.js").then(u,consoleError);case"bds-dropdown":return import(
 /* webpackMode: "lazy" */
 "./bds-dropdown.entry.js").then(u,consoleError);case"bds-input":return import(
 /* webpackMode: "lazy" */
-"./bds-input.entry.js").then(u,consoleError);case"bds-button":return import(
+"./bds-input.entry.js").then(u,consoleError);case"uai-input":return import(
+/* webpackMode: "lazy" */
+"./uai-input.entry.js").then(u,consoleError);case"uai-button":return import(
+/* webpackMode: "lazy" */
+"./uai-button.entry.js").then(u,consoleError);case"bds-button":return import(
 /* webpackMode: "lazy" */
 "./bds-button.entry.js").then(u,consoleError);case"bds-avatar":return import(
 /* webpackMode: "lazy" */
@@ -247,9 +257,7 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./bds-illustration_2.entry.js").then(u,consoleError);case"bds-radio_2":return import(
 /* webpackMode: "lazy" */
-"./bds-radio_2.entry.js").then(u,consoleError);case"uai-button_2":return import(
-/* webpackMode: "lazy" */
-"./uai-button_2.entry.js").then(u,consoleError);case"bds-chip-clickable_2":return import(
+"./bds-radio_2.entry.js").then(u,consoleError);case"bds-chip-clickable_2":return import(
 /* webpackMode: "lazy" */
 "./bds-chip-clickable_2.entry.js").then(u,consoleError);case"bds-checkbox_2":return import(
 /* webpackMode: "lazy" */

@@ -40,7 +40,7 @@ const UaiGrid = class {
             classes['container-fluid'] = true;
         if (this.bgColor)
             classes[`bg-color--${this.bgColor.slice(1)}`] = true;
-        return (h(Host, { key: '6fe9dbf5e80ea52c594d5a3aacb354078223ff49', class: classes, style: { height: this.height } }, h("slot", { key: '52c4a9dcd69b485cc1e8f9bd56efca6568511c35' })));
+        return (h(Host, { key: 'fb9afd574fbfcc4340048f4368b330db552704ce', class: classes, style: { height: this.height } }, h("slot", { key: 'f4aad678a799a225a3b5e8764395b8bae2c6b1b8' })));
     }
 };
 UaiGrid.style = uaiGridCss();

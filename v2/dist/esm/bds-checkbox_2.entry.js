@@ -114,10 +114,10 @@ const Checkbox = class {
     }
     render() {
         const styleState = this.getStyleState();
-        return (h("div", { key: '5b2e6f1a7083031728ebb6a598ea7923f5fadf8f', class: {
+        return (h("div", { key: 'ce71e216de7a1af2cc3092ee587e50fea8eef912', class: {
                 checkbox: true,
                 [styleState]: true,
-            } }, h("input", { key: '90ec8602597902581d3c85eb81d7b8f5117b1dff', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: '562aaa36722d2f50f12b009eb9667a940f503656', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: '0e0f2f50bbdd09755cf83bd6b0ad5983c1446397', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: '0aca50cc24839802ec75783513f84365e8698a8a', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: '10cc28db19bbb18a8313e3ed35dac54d3f22482b', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
+            } }, h("input", { key: '3ba2b01453330126914453ee5118c832ad19dce9', type: "checkbox", ref: this.refNativeInput, id: this.checkBoxId, name: this.name, onClick: (ev) => this.onClick(ev), checked: this.checked, disabled: this.disabled, "data-test": this.dataTest }), h("label", { key: '72a3f42a289aa3df2034d13690e82929c0a851ac', class: "checkbox__label", htmlFor: this.checkBoxId }, h("div", { key: '3f8817a65255bb159aa24c852d99f3a24c23d80f', class: "checkbox__icon", tabindex: "0", onKeyDown: this.handleKeyDown.bind(this) }, h("bds-icon", { key: 'd0a2afe0da158595c9ad8a209e16d49393eea20f', class: "checkbox__icon__svg", size: "x-small", name: this.getIconName(), color: "inherit" })), this.label && (h("bds-typo", { key: '2f14e0ec81ccac519365a05e08457af5dc99bbe7', class: "checkbox__text", variant: "fs-14", tag: "span" }, this.label)))));
     }
 };
 Checkbox.style = checkboxCss();
@@ -223,19 +223,19 @@ const SelectOption = class {
         this.checked = false;
     }
     render() {
-        return (h("div", { key: '744dfc8b5eb4e81d1f7bed416613f53ea3fc26de', id: `bds-select-option-${this.value}`, "data-event": "click", role: "button", onKeyDown: this.attachOptionKeyboardListeners, onClick: this.onClickSelectOption, "data-value": this.value, "data-test": this.dataTest, class: {
+        return (h("div", { key: '66ae6d2d9cb985369ab79562faa019e66f7e3dcd', id: `bds-select-option-${this.value}`, "data-event": "click", role: "button", onKeyDown: this.attachOptionKeyboardListeners, onClick: this.onClickSelectOption, "data-value": this.value, "data-test": this.dataTest, class: {
                 'select-option': this.typeOption != 'checkbox',
                 'select-option--selected': this.selected,
                 'select-option--disabled': this.disabled,
                 'select-option--invisible': this.invisible,
-            } }, h("div", { key: '4ec1e2edb8a4926b520a5dfdee48ec3725372f93', style: { alignSelf: this.slotAlign } }, h("slot", { key: '12776602e25fa22f298f104b0f18815da0183029', name: "input-left" })), h("div", { key: 'a39aaf24347005d40a6d7151aab354f30b2f197e', class: {
+            } }, h("div", { key: 'c466118f75c50da98b3c8b8570c7a2046f98069a', style: { alignSelf: this.slotAlign } }, h("slot", { key: '00463e8a8b6a1e319b91ae410ad1a3505d5f3951', name: "input-left" })), h("div", { key: '229ab16bc14d7b444cffd65a20d6ae6d32362dd9', class: {
                 'select-option__container': true,
                 'select-option__container__fill_space': !!this.status,
                 'select-option__container__checkbox': this.typeOption == 'checkbox',
-            }, onClick: () => this.checkedCurrent() }, this.titleText && (h("bds-typo", { key: 'fc9df687772d092eb1d7f52e56604e509ad51c49', class: "select-option__container--value", variant: "fs-16", bold: "semi-bold" }, this.titleText)), this.typeOption === 'checkbox' ? (h("bds-checkbox", { ref: this.refNativeInput, refer: `html-for-${this.value}`, label: this.element.innerHTML, name: this.value, checked: this.checked, onBdsChange: (ev) => this.optionHandle(ev) })) : (h("bds-typo", { class: {
+            }, onClick: () => this.checkedCurrent() }, this.titleText && (h("bds-typo", { key: '6bfe9b84ae846b7a5a0620f1b0d144df79e87388', class: "select-option__container--value", variant: "fs-16", bold: "semi-bold" }, this.titleText)), this.typeOption === 'checkbox' ? (h("bds-checkbox", { ref: this.refNativeInput, refer: `html-for-${this.value}`, label: this.element.innerHTML, name: this.value, checked: this.checked, onBdsChange: (ev) => this.optionHandle(ev) })) : (h("bds-typo", { class: {
                 'select-option__container--value': true,
                 'select-option__container__overflow': !!this.status,
-            }, noWrap: !!this.status, variant: "fs-14" }, h("slot", null)))), this.bulkOption && (h("bds-typo", { key: 'f88d6bfd5b97b47ffc2fafab4f5c4d3350ead36f', class: "select-option__container--bulk", variant: "fs-10" }, this.bulkOption)), this.status && (h("bds-typo", { key: '10ebfb2e16c2b6a0a26a2d4e4a0fdab3bb5757e7', class: "select-option__container--status", noWrap: true, variant: "fs-10" }, this.status))));
+            }, noWrap: !!this.status, variant: "fs-14" }, h("slot", null)))), this.bulkOption && (h("bds-typo", { key: '721f2d6034bda6ca10e35dc65bb873f9fa454727', class: "select-option__container--bulk", variant: "fs-10" }, this.bulkOption)), this.status && (h("bds-typo", { key: '054a9f7c820bb0c9abf95953d16c55ae068076bd', class: "select-option__container--status", noWrap: true, variant: "fs-10" }, this.status))));
     }
     get element() { return getElement(this); }
     static get watchers() { return {
