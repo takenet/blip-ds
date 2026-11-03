@@ -1,0 +1,48 @@
+import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
+import { i as isUaiIcon } from './uai-icons-BU-ELWpE.js';
+
+const uaiBadgeCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;vertical-align:middle}.badge{--badge-bg:var(--uai-action-primary-default, #242729);--badge-fg:var(--uai-content-inverse, #ffffff);--badge-radius:var(--uai-radius-full, 624.9375rem);--badge-icon-size:var(--uai-sizing-sm, 1rem);position:relative;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;min-width:var(--uai-sizing-lg, 1.5rem);min-height:var(--uai-sizing-lg, 1.5rem);-webkit-box-sizing:border-box;box-sizing:border-box;color:var(--badge-fg)}.badge--system{--badge-fg:var(--uai-action-primary-foreground, #ffffff)}.badge--danger{--badge-bg:var(--uai-feedback-error, #cf0022)}.badge--warning,.badge--success{--badge-fg:light-dark(     var(--uai-content-primary, #242729),     var(--uai-content-inverse, #181a1b)   )}.badge--warning{--badge-bg:var(--uai-feedback-warning, #ff8000)}.badge--success{--badge-bg:var(--uai-feedback-success, #3da329)}.badge--neutral{--badge-bg:var(--uai-surface-inverse, #242729)}.badge--status{min-height:var(--uai-sizing-2xs, 0.5rem);height:var(--uai-sizing-2xs, 0.5rem)}.badge--status .badge__shape,.badge--status .badge__pulse{width:var(--uai-sizing-2xs, 0.5rem)}.badge--number{padding:0 var(--uai-spacing-xs, 0.5rem)}.badge--square,.badge--triangle,.badge--triangle-reverse,.badge--polygon{--badge-radius:var(--uai-radius-none, 0rem)}.badge--triangle,.badge--triangle-reverse,.badge--polygon{--badge-icon-size:var(--uai-sizing-xs, 0.75rem)}.badge--triangle .badge__shape,.badge--triangle .badge__pulse{-webkit-clip-path:polygon(50% 0, 100% 100%, 0 100%);clip-path:polygon(50% 0, 100% 100%, 0 100%)}.badge--triangle .badge__content{-ms-flex-item-align:end;align-self:flex-end}.badge--triangle-reverse .badge__shape,.badge--triangle-reverse .badge__pulse{-webkit-clip-path:polygon(50% 100%, 0 0, 100% 0);clip-path:polygon(50% 100%, 0 0, 100% 0)}.badge--triangle-reverse .badge__content{-ms-flex-item-align:start;align-self:flex-start}.badge--polygon .badge__shape,.badge--polygon .badge__pulse{-webkit-clip-path:polygon(50% 0, 100% 50%, 50% 100%, 0 50%);clip-path:polygon(50% 0, 100% 50%, 50% 100%, 0 50%)}.badge--animated .badge__pulse{-webkit-animation:uai-badge-pulse var(--uai-duration-loop, 800ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite;animation:uai-badge-pulse var(--uai-duration-loop, 800ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) infinite}@media (prefers-reduced-motion: reduce){.badge--animated .badge__pulse{-webkit-animation:none;animation:none;display:none}}.badge__shape,.badge__pulse{position:absolute;width:100%;height:100%;border-radius:var(--badge-radius);background-color:var(--badge-bg);pointer-events:none}.badge__pulse{opacity:0}.badge__content{position:relative;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}.badge__content>uai-typo{--uai-typo-color:currentColor}.badge__icon{--uai-icon-size:var(--badge-icon-size);display:-ms-inline-flexbox;display:inline-flex;width:var(--badge-icon-size);height:var(--badge-icon-size);color:inherit}@-webkit-keyframes uai-badge-pulse{from{-webkit-transform:scale(1);transform:scale(1);opacity:1}to{-webkit-transform:scale(1.4);transform:scale(1.4);opacity:0}}@keyframes uai-badge-pulse{from{-webkit-transform:scale(1);transform:scale(1);opacity:1}to{-webkit-transform:scale(1.4);transform:scale(1.4);opacity:0}}@media (forced-colors: active){.badge{--badge-bg:CanvasText;--badge-fg:Canvas;forced-color-adjust:none}.badge__pulse{display:none}}`;
+
+const SHAPES = ['circle', 'triangle', 'triangle-reverse', 'polygon', 'square'];
+const COLORS = ['system', 'danger', 'warning', 'success', 'neutral'];
+const supported = (prop, value, values, fallback) => {
+    const known = values.find((candidate) => candidate === value);
+    if (known)
+        return known;
+    return fallback;
+};
+const UaiBadge = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+        /** Semantic color: system, danger, warning, success or neutral. Use for status; pair with a label; avoid arbitrary colors. */
+        this.color = 'system';
+        /** Indicator shape. Use for status, icon or empty badges; pair with color; avoid expecting numeric capsules to change shape. */
+        this.shape = 'circle';
+        /** UAI or legacy icon name. Use when no count is supplied; pair with ariaLabel; avoid relying on an unnamed icon for meaning. */
+        this.icon = null;
+        /** Enables a pulse unless reduced motion is requested. Use sparingly; pair with meaningful status; avoid continuous distraction. */
+        this.animation = false;
+        /** Inner visual element data-test marker. Use for automation; pair with semantic queries; avoid treating it as an accessible label. */
+        this.dataTest = null;
+        /** Accessible indicator description, mapped to aria-label. Use for standalone meaning; pair with status or icon; avoid duplicate announcements. */
+        this.ariaLabel = null;
+    }
+    render() {
+        const shape = supported('shape', this.shape, SHAPES, 'circle');
+        const color = supported('color', this.color, COLORS, 'system');
+        const hasNumber = this.number !== null && this.number !== undefined;
+        const type = hasNumber ? (this.number === 0 ? 'empty' : 'number') : this.icon ? 'icon' : 'status';
+        const compactIcon = shape === 'triangle' || shape === 'triangle-reverse' || shape === 'polygon';
+        return (h(Host, { key: 'f663f5076facfc8648d365d78f8424e89feac768', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel || undefined }, h("div", { key: '7da2c30e2946d975aa7b4a5a66e5beae64a26b89', class: {
+                badge: true,
+                [`badge--${color}`]: true,
+                [`badge--${type}`]: true,
+                [`badge--${type === 'number' ? 'circle' : shape}`]: true,
+                'badge--animated': this.animation,
+            }, "data-test": this.dataTest, "aria-hidden": this.ariaLabel ? 'true' : undefined }, h("span", { key: '717259bcf2e60e80c3b449772e9e04cc23483556', class: "badge__shape", "aria-hidden": "true" }), this.animation && h("span", { key: '0c20a87d23a5d73cd67166eb5552a00fe0fff999', class: "badge__pulse", "aria-hidden": "true" }), h("div", { key: '9d99f5ef118f7f90f58b02fbe24892cfa883267b', class: "badge__content" }, type === 'number' && (h("uai-typo", { key: '0be91c44e91227391ae3deda2c272550b64a256a', tag: "span", variant: "caption", bold: "bold", margin: false }, this.number >= 999 ? '999+' : this.number)), type === 'icon' &&
+            (isUaiIcon('outline', this.icon) ? (h("uai-icon", { class: "badge__icon", name: this.icon, size: "x-small", "aria-hidden": "true" })) : (h("bds-icon", { class: "badge__icon", name: this.icon, theme: "outline", size: compactIcon ? 'xx-small' : 'x-small', color: "currentColor", "aria-hidden": "true" })))))));
+    }
+};
+UaiBadge.style = uaiBadgeCss();
+
+export { UaiBadge as uai_badge };
