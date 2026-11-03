@@ -66,7 +66,11 @@ const List = class {
     updateData() {
         if (this.data) {
             if (typeof this.data === 'string') {
-                this.internalData = JSON.parse(this.data);
+                // Keep the current data if AngularJS has not interpolated the attribute yet; @Watch('data') reloads it.
+                try {
+                    this.internalData = JSON.parse(this.data);
+                }
+                catch (e) { }
             }
             else {
                 this.internalData = this.data;
@@ -125,7 +129,7 @@ const List = class {
         this.bdsListSwitchChange.emit(result);
     }
     render() {
-        return (h(Host, { key: '5152e56a0535ab14ac21a3ab99901d576adec70c' }, h("div", { key: '0a3d188f19396deb07fbd2bd8174a1a0386668a9', class: {
+        return (h(Host, { key: '9d5a287d38d1b86761b46daf49bd9503cebc684f' }, h("div", { key: '53c25dbfe3ed0e3243818f37786e2feaa7f3b90d', class: {
                 list: true,
             } }, this.internalData ? (this.internalData.map((item, idx) => (h("bds-list-item", { key: idx, value: item.value, text: item.text, "type-list": this.typeList ? this.typeList : item.typeList, "secondary-text": item.secondaryText, "avatar-name": item.avatarName, "avatar-thumbnail": item.avatarThumbnail, checked: item.checked, icon: item.icon, chips: item.chips, actionsButtons: item.actionsButtons, onBdsChecked: (ev) => this.chagedOptions(ev), onBdsClickActionButtom: (ev) => this.onClickActionsButtons(ev), dataTest: item.dataTest })))) : (h("slot", null)))));
     }

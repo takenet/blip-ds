@@ -101,7 +101,11 @@ const ListItem = class {
     chipsChanged() {
         if (this.chips) {
             if (typeof this.chips === 'string') {
-                this.internalChips = JSON.parse(this.chips);
+                // Keep the current chips if AngularJS has not interpolated the attribute yet; @Watch('chips') reloads it.
+                try {
+                    this.internalChips = JSON.parse(this.chips);
+                }
+                catch (e) { }
             }
             else {
                 this.internalChips = this.chips;
@@ -114,7 +118,11 @@ const ListItem = class {
     actionsButtonsChanged() {
         if (this.actionsButtons) {
             if (typeof this.actionsButtons === 'string') {
-                this.internalActionsButtons = JSON.parse(this.actionsButtons);
+                // Keep the current buttons if AngularJS has not interpolated the attribute yet; @Watch('actionsButtons') reloads it.
+                try {
+                    this.internalActionsButtons = JSON.parse(this.actionsButtons);
+                }
+                catch (e) { }
             }
             else {
                 this.internalActionsButtons = this.actionsButtons;
@@ -152,18 +160,18 @@ const ListItem = class {
         const hasInput = this.clickable == true || this.typeList == 'checkbox' || this.typeList == 'radio' || this.typeList == 'switch';
         const hasLeftInput = this.typeList == 'checkbox' || this.typeList == 'radio';
         const hasAvatar = this.avatarName || this.avatarThumbnail;
-        return (h(Host, { key: '1ed4b830af3dd04483c76b9eee2c6da7c8b3fe8d' }, h("div", { key: 'e2ba821790ddaca352cb4828938d78b0b20a7f76', onClick: this.handler, tabindex: "0", class: {
+        return (h(Host, { key: '5d0fc6dc496c1970b60cf906f0716829207a2acf' }, h("div", { key: '9e2dc4550ef33bbd2254d89c09474c3afbe49cf3', onClick: this.handler, tabindex: "0", class: {
                 list_item: true,
                 clickable: hasInput,
                 border_radius: this.borderRadius,
                 [`list_item_${this.size}`]: true,
-            }, "data-test": this.dataTest }, this.active && h("div", { key: 'e9c1425f04be56274f3370902bbf89ab8acd641d', class: "active" }), hasLeftInput && (h("div", { key: '371b856b19d43530b8a078f27569dbc7fcae7597', class: { input_list: true } }, this.typeList == 'radio' && h("bds-radio", { key: 'b3e42a0aacb5c98b8c9ae47ae57be3263930dab7', value: this.value, checked: this.checked }), this.typeList == 'checkbox' && (h("bds-checkbox", { key: '74fb757f1a39dcccc321ad6d980641c9d83ab947', refer: "", label: "", name: "cb1", disabled: false, checked: this.checked })))), hasAvatar ? (h("bds-avatar", { class: "avatar-item", name: this.avatarName, thumbnail: this.avatarThumbnail, size: "extra-small" })) : (this.icon && (h("bds-icon", { class: {
+            }, "data-test": this.dataTest }, this.active && h("div", { key: '26af8caac0c5e6b4f9a1d9f03308a483e7955c30', class: "active" }), hasLeftInput && (h("div", { key: 'b1b867d364f731dcf90e7ce9a700598b19ce794e', class: { input_list: true } }, this.typeList == 'radio' && h("bds-radio", { key: '89692771d61ef323cc04a002f9b6dc22a755b3e1', value: this.value, checked: this.checked }), this.typeList == 'checkbox' && (h("bds-checkbox", { key: '43ecf3976d1984dce20e25425f2f9fbbcaabf95e', refer: "", label: "", name: "cb1", disabled: false, checked: this.checked })))), hasAvatar ? (h("bds-avatar", { class: "avatar-item", name: this.avatarName, thumbnail: this.avatarThumbnail, size: "extra-small" })) : (this.icon && (h("bds-icon", { class: {
                 [`icon-item`]: true,
                 [`icon-item-active`]: this.active,
-            }, size: "medium", name: this.icon, color: "inherit", theme: this.active ? 'solid' : 'outline' }))), h("div", { key: '14c140c9b85bf34d24d62b4441490ed643f9ac5a', class: { [`content-slot`]: true } }, h("slot", { key: 'e3e19ff84b273cdb92b0314a25874448a90e7f5b' })), (this.text || this.secondaryText) && (h("div", { key: '0bf605242927c42fea67b5458b4a95ae7ef1e9cc', class: {
+            }, size: "medium", name: this.icon, color: "inherit", theme: this.active ? 'solid' : 'outline' }))), h("div", { key: 'c820ae9372e6a119c25bb266154549b888cafc48', class: { [`content-slot`]: true } }, h("slot", { key: '4f93ce728b872a1674b547d782f8809f2fc52f96' })), (this.text || this.secondaryText) && (h("div", { key: '600c2b3c47368fc4153712746d1dd3c7911cf29d', class: {
                 [`content-item`]: true,
                 [`grow-up`]: !this.hasActionAreaSlot && !this.hasContentAreaSlot && this.internalChips.length < 0,
-            } }, this.text && (h("bds-typo", { key: '31f16781d62bed4e6f03a5ed22cf80374d1a609e', class: "title-item", variant: "fs-16", tag: "span", bold: this.active ? 'bold' : 'regular' }, this.text)), this.secondaryText && (h("bds-typo", { key: '046abccf59e02adbf8122c70035df7fc4f3ae861', class: "subtitle-item", variant: "fs-12", "line-height": "small", tag: "span" }, this.secondaryText)))), h("div", { key: 'e4613e5a58dfb15d2233dd315962ad2df1ceb802', class: { [`content-area`]: true, [`grow-up`]: true } }, this.internalChips.length > 0 && h("div", { key: 'f5bfcd346c3fd79f3c9c9a7c53857e48120d3ed3', class: "internal-chips" }, this.renderChips()), h("slot", { key: 'f01fbff4e5f1b535df100bed164ffa546ac9143e', name: "content-area" })), (!this.typeList || this.typeList == 'default') && (h("div", { key: '5107410d455f396d847d2ca7bcda54bd188e564d', class: { [`action-area`]: true } }, this.internalActionsButtons.length > 0 && (h("div", { key: '89c5f5814f9778664adca036a1777466f2ac9a84', class: "internal-actions-buttons" }, this.renderActionsButtons())), h("slot", { key: 'a2bc58776b2adc934df95d5069724df5791fc30d', name: "action-area" }))), this.typeList == 'switch' && h("bds-switch", { key: '3d34ff527fa0507c463f154e0c133543c492ad69', refer: "", name: "", checked: this.checked }))));
+            } }, this.text && (h("bds-typo", { key: '23ee91b19335a8eae029b38ec77e02eeeb3976c8', class: "title-item", variant: "fs-16", tag: "span", bold: this.active ? 'bold' : 'regular' }, this.text)), this.secondaryText && (h("bds-typo", { key: 'ce84fa1cbd564bb41ac53b81102d25f3a162a8ba', class: "subtitle-item", variant: "fs-12", "line-height": "small", tag: "span" }, this.secondaryText)))), h("div", { key: '5db03a578eb118dfd4957d105dd4946cb88191e7', class: { [`content-area`]: true, [`grow-up`]: true } }, this.internalChips.length > 0 && h("div", { key: '70d22430305174f9f28a5c8f0b0ed7b00832227c', class: "internal-chips" }, this.renderChips()), h("slot", { key: '159f927eb3d8912f99cbe71411c536976b8deb46', name: "content-area" })), (!this.typeList || this.typeList == 'default') && (h("div", { key: '4a710862c532d7779ce46557919e3eec9cf54d45', class: { [`action-area`]: true } }, this.internalActionsButtons.length > 0 && (h("div", { key: 'd3bb5d236a98625843c330d38dd3219ca5a4b0b2', class: "internal-actions-buttons" }, this.renderActionsButtons())), h("slot", { key: '6f955de4081d3e80a06769e2b792ef383709bc59', name: "action-area" }))), this.typeList == 'switch' && h("bds-switch", { key: 'b64a0c1f2f0b909d149e089e734c181035a467db', refer: "", name: "", checked: this.checked }))));
     }
     get hostElement() { return getElement(this); }
     static get watchers() { return {
