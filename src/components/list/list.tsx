@@ -117,7 +117,10 @@ export class List {
   private updateData() {
     if (this.data) {
       if (typeof this.data === 'string') {
-        this.internalData = JSON.parse(this.data);
+        // Keep the current data if AngularJS has not interpolated the attribute yet; @Watch('data') reloads it.
+        try {
+          this.internalData = JSON.parse(this.data);
+        } catch (e) {}
       } else {
         this.internalData = this.data;
       }

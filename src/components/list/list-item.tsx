@@ -125,7 +125,10 @@ export class ListItem {
   protected chipsChanged(): void {
     if (this.chips) {
       if (typeof this.chips === 'string') {
-        this.internalChips = JSON.parse(this.chips);
+        // Keep the current chips if AngularJS has not interpolated the attribute yet; @Watch('chips') reloads it.
+        try {
+          this.internalChips = JSON.parse(this.chips);
+        } catch (e) {}
       } else {
         this.internalChips = this.chips;
       }
@@ -138,7 +141,10 @@ export class ListItem {
   protected actionsButtonsChanged(): void {
     if (this.actionsButtons) {
       if (typeof this.actionsButtons === 'string') {
-        this.internalActionsButtons = JSON.parse(this.actionsButtons);
+        // Keep the current buttons if AngularJS has not interpolated the attribute yet; @Watch('actionsButtons') reloads it.
+        try {
+          this.internalActionsButtons = JSON.parse(this.actionsButtons);
+        } catch (e) {}
       } else {
         this.internalActionsButtons = this.actionsButtons;
       }

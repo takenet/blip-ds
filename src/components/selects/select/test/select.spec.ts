@@ -47,6 +47,22 @@ describe('bds-select', () => {
       expect(component.options).toBeDefined();
     });
 
+    it('should not throw when options is an AngularJS template not yet interpolated', async () => {
+      const page = await newSpecPage({
+        components: [Select],
+        html: `<bds-select options="{{$ctrl.contentTypesSelect}}"></bds-select>`,
+      });
+
+      expect(page.root).toBeTruthy();
+      expect(page.rootInstance.internalOptions).toBeUndefined();
+
+      const resolved = [{ value: '1', label: 'Option 1' }];
+      page.root.options = resolved;
+      await page.waitForChanges();
+
+      expect(page.rootInstance.internalOptions).toBe(resolved);
+    });
+
     it('should accept placeholder text via HTML attributes', async () => {
       const page = await newSpecPage({
         components: [Select],

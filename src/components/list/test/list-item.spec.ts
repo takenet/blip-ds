@@ -543,16 +543,29 @@ describe('bds-list-item', () => {
       expect(component.internalActionsButtons).toEqual([]);
     });
 
-    it('should handle invalid JSON in chips', async () => {
+    it('should not throw on invalid JSON in chips', async () => {
       component.chips = 'invalid-json';
-      
-      expect(() => component.chipsChanged()).toThrow();
+
+      expect(() => component.chipsChanged()).not.toThrow();
     });
 
-    it('should handle invalid JSON in action buttons', async () => {
+    it('should not throw on invalid JSON in action buttons', async () => {
       component.actionsButtons = 'invalid-json';
-      
-      expect(() => component.actionsButtonsChanged()).toThrow();
+
+      expect(() => component.actionsButtonsChanged()).not.toThrow();
+    });
+
+    it('should not throw when chips and actionsButtons are AngularJS templates not yet interpolated', async () => {
+      component.chips = '{{$ctrl.chips}}';
+      component.actionsButtons = '{{$ctrl.actions}}';
+
+      expect(() => component.chipsChanged()).not.toThrow();
+      expect(() => component.actionsButtonsChanged()).not.toThrow();
+
+      const chips = ['a'];
+      component.chips = chips;
+      component.chipsChanged();
+      expect(component.internalChips).toBe(chips);
     });
 
     it('should handle empty arrays', async () => {
