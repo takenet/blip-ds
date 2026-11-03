@@ -39,6 +39,8 @@ export class Select {
 
   @State() internalOptions: Option[];
 
+  private lastParsedOptions?: string;
+
   /**
    * The options of the select
    * Should be passed this way:
@@ -221,8 +223,12 @@ export class Select {
       if (typeof this.options === 'string') {
         // AngularJS may render the attribute before interpolating it (e.g. "{{$ctrl.options}}").
         // Keep the current options and wait for @Watch('options') to receive the resolved value.
+        // updateOptions() also runs in componentWillRender: assigning a new array to the @State on every render
+        // schedules another render, so only parse again when the string actually changed.
+        if (this.lastParsedOptions === this.options) return;
         try {
           this.internalOptions = JSON.parse(this.options);
+          this.lastParsedOptions = this.options;
         } catch (e) {}
       } else {
         this.internalOptions = this.options;

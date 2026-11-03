@@ -63,6 +63,32 @@ describe('bds-select', () => {
       expect(page.rootInstance.internalOptions).toBe(resolved);
     });
 
+    it('should not re-render in a loop when options is a JSON string and the value changes', async () => {
+      const page = await newSpecPage({
+        components: [Select],
+        html: `<bds-select options='[{"value": "1", "label": "Option 1"}]'></bds-select>`,
+      });
+      const parsed = page.rootInstance.internalOptions;
+      expect(parsed).toEqual([{ value: '1', label: 'Option 1' }]);
+
+      page.root.value = '1';
+      await page.waitForChanges();
+
+      expect(page.rootInstance.internalOptions).toBe(parsed);
+    });
+
+    it('should parse again when the options string changes', async () => {
+      const page = await newSpecPage({
+        components: [Select],
+        html: `<bds-select options='[{"value": "1", "label": "Option 1"}]'></bds-select>`,
+      });
+
+      page.root.options = '[{"value": "2", "label": "Option 2"}]';
+      await page.waitForChanges();
+
+      expect(page.rootInstance.internalOptions).toEqual([{ value: '2', label: 'Option 2' }]);
+    });
+
     it('should accept placeholder text via HTML attributes', async () => {
       const page = await newSpecPage({
         components: [Select],
