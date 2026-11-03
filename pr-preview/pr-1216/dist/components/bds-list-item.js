@@ -1,1 +1,0 @@
-import{L as p,d as o}from"./p-IHIgB5pp.js";const s=p,r=o;export{s as BdsListItem,r as defineCustomElement}
