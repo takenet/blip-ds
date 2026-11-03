@@ -25,6 +25,7 @@ export declare class Select {
      */
     validationMesage?: string;
     internalOptions: Option[];
+    private lastParsedOptions?;
     /**
      * The options of the select
      * Should be passed this way:

@@ -204,8 +204,13 @@ const Select = class {
             if (typeof this.options === 'string') {
                 // AngularJS may render the attribute before interpolating it (e.g. "{{$ctrl.options}}").
                 // Keep the current options and wait for @Watch('options') to receive the resolved value.
+                // updateOptions() also runs in componentWillRender: assigning a new array to the @State on every render
+                // schedules another render, so only parse again when the string actually changed.
+                if (this.lastParsedOptions === this.options)
+                    return;
                 try {
                     this.internalOptions = JSON.parse(this.options);
+                    this.lastParsedOptions = this.options;
                 }
                 catch (e) { }
             }
@@ -278,7 +283,7 @@ const Select = class {
     }
     render() {
         const isPressed = this.isPressed && !this.disabled;
-        return (index.h("div", { key: '005b95c091b0116a42564b84cbdaa8a5d2bf016b', class: "select" }, index.h("div", { key: 'b6c7c628c62e10d2f24c6971915b4c5531a9df73', class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, index.h("div", { key: '7ccc92ac977c2ee488d402c9d2b238e46f77db23', class: {
+        return (index.h("div", { key: '60caeaa493927500deb80ee0b97c05ad7c580512', class: "select" }, index.h("div", { key: 'd55a58cf7a36fbf85e5a39758ce0afd1d3bd376c', class: { element_input: true }, "aria-disabled": this.disabled ? 'true' : null }, index.h("div", { key: '6168e26e05cd17aba873b4d6b87e0c0b0697da64', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -286,7 +291,7 @@ const Select = class {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
-            }, onClick: this.onClickWrapper, part: "input-container" }, this.renderIcon(), index.h("div", { key: 'e68b266a25ce3e8c9f7942295794987963bd025d', class: "input__container" }, this.renderLabel(), index.h("div", { key: '40bef0378f2ce894455222971826c218d8280f4f', class: { input__container__wrapper: true } }, index.h("input", { key: 'b3cbeefd987ee2b82fb9307e94dd77055baed1ea', ref: this.refNativeInput, class: { input__container__text: true }, onFocus: this.onFocus, onBlur: this.onBlur, value: this.text, disabled: this.disabled, placeholder: this.placeholder, readonly: true, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), index.h("div", { key: 'cca451fe917f2004393df325854603b9eb04e1bd', class: "select__icon" }, index.h("bds-icon", { key: 'c9db38a5819235eaa11359a69dd6ec7be1c58432', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" })), this.success && index.h("bds-icon", { key: 'bbec2bca9351905aa96b01b68c86fa3957f25bd9', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" })), this.renderMessage()), index.h("div", { key: '3ddda798dd42586111e5b174a317f3dafceb0d64', ref: (el) => this.refDropdown(el), class: {
+            }, onClick: this.onClickWrapper, part: "input-container" }, this.renderIcon(), index.h("div", { key: '97d80962cfbfb3bba1b781c5e6fe8c0f1e8b1649', class: "input__container" }, this.renderLabel(), index.h("div", { key: 'd03d985725c39f4ade566c2140955150c8bdc29c', class: { input__container__wrapper: true } }, index.h("input", { key: 'ea9044abba5a2c0d67b07b3d3931cc0ddc9b4587', ref: this.refNativeInput, class: { input__container__text: true }, onFocus: this.onFocus, onBlur: this.onBlur, value: this.text, disabled: this.disabled, placeholder: this.placeholder, readonly: true, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), index.h("div", { key: '303b3820061b6ed8a955e9d804782143ea1f8af7', class: "select__icon" }, index.h("bds-icon", { key: '7360cf3528add9981848b0a97343d838132033a3', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" })), this.success && index.h("bds-icon", { key: '326048fbb7cced494ed59a770f061bf191078b83', class: "icon-success", name: "check", theme: "outline", size: "xxx-small" })), this.renderMessage()), index.h("div", { key: '6e8f0a6591e2adfa885e15beca8f70693b3e01ff', ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
                 'select__options--open': this.isOpen,
             }, role: "application" }, this.internalOptions ? (this.internalOptions.map((option, idx) => option.icon || option.titleText ? (index.h("bds-select-option", { key: idx, value: option.value, "title-text": option.titleText, "slot-align": option.slotAlign, bulkOption: option.bulkOption, status: option.status }, option.icon && (index.h("bds-icon", { slot: "input-left", name: option.icon, size: "medium", color: option.iconColor })), option.label)) : (index.h("bds-select-option", { key: idx, value: option.value, bulkOption: option.bulkOption, status: option.status }, option.label)))) : (index.h("slot", null)))));
