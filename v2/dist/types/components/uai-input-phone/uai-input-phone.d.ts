@@ -38,7 +38,7 @@ export declare class UaiInputPhone {
     private overlay?;
     private formControl?;
     private defaults;
-    private readonly id;
+    private readonly inputId;
     /**
      * Name of the value in the submitted form data, which is "<code> <number>". Without name (or inputName), the field
      * is not submitted.

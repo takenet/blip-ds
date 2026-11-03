@@ -39,7 +39,7 @@ export declare class UaiSelect {
     private formControl?;
     private defaultValue;
     private observer?;
-    private readonly id;
+    private readonly selectId;
     /** Name of the value in the submitted form data. Without it the field is not submitted. */
     name?: string;
     /** Chosen value. Use it to preselect or control the field; pair with the uaiChange event; avoid values missing from the options. */

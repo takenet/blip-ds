@@ -25,7 +25,7 @@ export declare class UaiInputDate {
     private formControl?;
     private defaultValue;
     private typing;
-    private readonly id;
+    private readonly inputId;
     /**
      * Name of the value in the submitted form data, which is the ISO date. Without name (or inputName), the field is not
      * submitted.

@@ -24,7 +24,7 @@ export declare class UaiInputPassword {
     private defaultValue;
     private hasExplicitName;
     private aliasName?;
-    private readonly id;
+    private readonly inputId;
     /**
      * Name of the value in submitted form data. Without name or inputName, the field is not submitted.
      */

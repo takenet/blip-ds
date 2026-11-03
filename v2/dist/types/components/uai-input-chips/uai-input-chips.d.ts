@@ -33,7 +33,7 @@ export declare class UaiInputChips {
     private defaultChips;
     private focusInputAfterRender;
     private reachedLimit;
-    private readonly id;
+    private readonly inputId;
     /**
      * Values shown as chips. Accepts an array or a JSON array string, for example '["ana@blip.ai", "bia@blip.ai"]'.
      */

@@ -32,7 +32,7 @@ export declare class UaiInputEditable {
     private formControl?;
     private defaultValue;
     private focusTarget;
-    private readonly id;
+    private readonly inputId;
     /**
      * Saved value, shown in reading mode and submitted with the form.
      */

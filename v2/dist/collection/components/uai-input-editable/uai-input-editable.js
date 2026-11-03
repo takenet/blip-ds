@@ -51,7 +51,7 @@ export class UaiInputEditable {
         this.disabledByForm = false;
         this.defaultValue = '';
         this.focusTarget = null;
-        this.id = `uai-input-editable-${++instances}`;
+        this.inputId = `uai-input-editable-${++instances}`;
         /**
          * Saved value, shown in reading mode and submitted with the form.
          */
@@ -329,7 +329,7 @@ export class UaiInputEditable {
     renderEdit(invalid, describedBy) {
         const texts = this.texts;
         return [
-            h("input", { id: this.id, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "text", value: this.draft, placeholder: this.placeholder, minLength: this.minlength || undefined, maxLength: this.maxlength, required: true, "aria-label": this.label ? null : this.ariaLabel, "aria-invalid": invalid ? 'true' : null, "aria-describedby": describedBy, "data-test": this.dataTest, onInput: this.onInput, onKeyDown: this.onKeyDown, onFocus: this.onFocus, onBlur: this.onBlur }),
+            h("input", { id: this.inputId, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "text", value: this.draft, placeholder: this.placeholder, minLength: this.minlength || undefined, maxLength: this.maxlength, required: true, "aria-label": this.label ? null : this.ariaLabel, "aria-invalid": invalid ? 'true' : null, "aria-describedby": describedBy, "data-test": this.dataTest, onInput: this.onInput, onKeyDown: this.onKeyDown, onFocus: this.onFocus, onBlur: this.onBlur }),
             h("button", { type: "button", class: "action", part: "confirm-button", "aria-label": texts.save, "data-test": this.dtButtonConfirm, onClick: () => this.saveDraft() }, h("uai-icon", { name: "check", size: "medium" })),
             h("button", { type: "button", class: "action", part: "cancel-button", "aria-label": texts.cancel, "data-test": this.dtButtonClose, onClick: () => this.cancelEditing() }, h("uai-icon", { name: "close", size: "medium" })),
         ];
@@ -347,14 +347,14 @@ export class UaiInputEditable {
                 : success
                     ? this.successMessage
                     : this.helperMessage;
-        const describedBy = message ? `${this.id}-message` : null;
-        return (h(Host, { key: 'f7cbb9607e52d0f1b7c4a96af509edbc01c67cf2', "aria-disabled": disabled ? 'true' : null, class: {
+        const describedBy = message ? `${this.inputId}-message` : null;
+        return (h(Host, { key: 'fa60aa4fa47f8bd8ce83b41e13fe7857ea14df02', "aria-disabled": disabled ? 'true' : null, class: {
                 [`uai-input-editable--size-${this.sizeValue}`]: true,
                 'uai-input-editable--editing': editing,
                 'uai-input-editable--danger': invalid,
                 'uai-input-editable--success': success,
                 'uai-input-editable--disabled': disabled,
-            } }, h("div", { key: '4b64065ae309f6c1c1cdc81b93c55109bdcb4bba', class: "input" }, this.label && (h("label", Object.assign({ key: 'a025ffa4fc91602f6cb94101448b9421f5a6304a', class: "input__label" }, (editing ? { for: this.id } : {})), h("uai-typo", { key: '5392d82ad6d58df4ab655773e40c83650eda3947', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), h("div", { key: '38380bd6a0d76ac67a6eac9386ce8f94c1cca4bb', class: "input__control", part: "input-container" }, editing ? this.renderEdit(invalid, describedBy) : this.renderView(disabled)), message && (h("div", { key: '5d3aa35b7c4c3d59c567f9e7e00db8f352633cc4', id: `${this.id}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '1b4f3fcb24e2cdcb06702cf7a1072d61f19ded70', variant: "caption", tag: "span", margin: false }, message))))));
+            } }, h("div", { key: 'c28cb7c54354a67b161d3d81041ce6db7aae99e2', class: "input" }, this.label && (h("label", Object.assign({ key: 'e12116662f0bb5b25b6d4119e824b2f625f9f71d', class: "input__label" }, (editing ? { for: this.inputId } : {})), h("uai-typo", { key: 'f54dbf039e05e471e3909e990a0bca1efcdf0366', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), h("div", { key: 'bcd47ad672436ed2c29c8103cf1f1012f2614790', class: "input__control", part: "input-container" }, editing ? this.renderEdit(invalid, describedBy) : this.renderView(disabled)), message && (h("div", { key: '93f08c366cc6d78c36d4de9f46535f659b5b9239', id: `${this.inputId}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '00eebf603b8eae45cc04adea9ec514192d64e544', variant: "caption", tag: "span", margin: false }, message))))));
     }
     static get is() { return "uai-input-editable"; }
     static get encapsulation() { return "shadow"; }
