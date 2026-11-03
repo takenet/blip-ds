@@ -1,0 +1,4 @@
+import{r as registerInstance,h,H as Host}from"./index-CkbvGS8Z.js";var tabPanelCss=function(){return'.bds-tab-panel{display:none;font-family:"Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}'};var TabPanel=/** @class */function(){function a(a){registerInstance(this,a);
+/**
+         * State to control if a tab panel is current active
+         */this.isActive=false}a.prototype.handleTabChange=function(a){this.isActive=a.detail==this.group};a.prototype.render=function(){var a;return h(Host,{key:"74ca6ba23de0906d01d7bac0ef0f5ced3116db35",class:(a={"bds-tab-panel":true},a["bds-tab-panel--selected"]=this.isActive,a)},h("slot",{key:"7e25bae97852f50c354b4c533ce6950f35e09b48"}))};return a}();TabPanel.style=tabPanelCss();export{TabPanel as bds_tab_panel};
