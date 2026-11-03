@@ -124,7 +124,7 @@ export class UaiInputPhone {
   private overlay?: UaiOverlay;
   private formControl?: UaiFormControl;
   private defaults = { text: '', code: '+55', country: '', isoCode: '' };
-  private readonly id = `uai-input-phone-${++instances}`;
+  private readonly inputId = `uai-input-phone-${++instances}`;
 
   /**
    * Name of the value in the submitted form data, which is "<code> <number>". Without name (or inputName), the field
@@ -640,7 +640,7 @@ export class UaiInputPhone {
       const country = this.countries[key];
       return (
         <li
-          id={`${this.id}-option-${index}`}
+          id={`${this.inputId}-option-${index}`}
           key={key}
           role="option"
           part="country-option"
@@ -695,7 +695,7 @@ export class UaiInputPhone {
       >
         <div class="input">
           {label && (
-            <label class="input__label" {...{ for: this.id }}>
+            <label class="input__label" {...{ for: this.inputId }}>
               <uai-typo variant="caption" bold="semibold" tag="span" margin={false}>
                 {label}
               </uai-typo>
@@ -710,7 +710,7 @@ export class UaiInputPhone {
               part="country-button"
               aria-haspopup="listbox"
               aria-expanded={this.isOpen ? 'true' : 'false'}
-              aria-controls={`${this.id}-list`}
+              aria-controls={`${this.inputId}-list`}
               aria-label={`${this.texts.country}: ${countryName}`}
               disabled={!this.canPick}
               data-test={this.dtSelectFlag}
@@ -725,7 +725,7 @@ export class UaiInputPhone {
             </button>
             <div class="input__field">
               <input
-                id={this.id}
+                id={this.inputId}
                 ref={(input) => (this.nativeInput = input)}
                 class="input__native"
                 part="input"
@@ -740,7 +740,7 @@ export class UaiInputPhone {
                 maxLength={this.value === '+55' ? 25 : undefined}
                 aria-label={this.ariaLabel || null}
                 aria-invalid={invalid ? 'true' : null}
-                aria-describedby={message ? `${this.id}-message` : null}
+                aria-describedby={message ? `${this.inputId}-message` : null}
                 data-test={this.dataTest}
                 onInput={this.onInput}
                 onFocus={this.onFocus}
@@ -753,7 +753,7 @@ export class UaiInputPhone {
             <slot name="input-right"></slot>
           </div>
           {message && (
-            <div id={`${this.id}-message`} class="input__message" part="input__message">
+            <div id={`${this.inputId}-message`} class="input__message" part="input__message">
               <uai-typo variant="caption" tag="span" margin={false}>
                 {message}
               </uai-typo>
@@ -761,14 +761,14 @@ export class UaiInputPhone {
           )}
         </div>
         <ul
-          id={`${this.id}-list`}
+          id={`${this.inputId}-list`}
           ref={(list) => (this.list = list)}
           class="list"
           part="country-list"
           role="listbox"
           tabindex="-1"
           aria-label={this.texts.list}
-          aria-activedescendant={this.isOpen && this.activeIndex >= 0 ? `${this.id}-option-${this.activeIndex}` : null}
+          aria-activedescendant={this.isOpen && this.activeIndex >= 0 ? `${this.inputId}-option-${this.activeIndex}` : null}
           onKeyDown={this.onListKeyDown}
         >
           {this.renderOptions()}

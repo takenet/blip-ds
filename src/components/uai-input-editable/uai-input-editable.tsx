@@ -92,7 +92,7 @@ export class UaiInputEditable {
   private formControl?: UaiFormControl;
   private defaultValue = '';
   private focusTarget: 'input' | 'edit' | null = null;
-  private readonly id = `uai-input-editable-${++instances}`;
+  private readonly inputId = `uai-input-editable-${++instances}`;
 
   /**
    * Saved value, shown in reading mode and submitted with the form.
@@ -468,7 +468,7 @@ export class UaiInputEditable {
     const texts = this.texts;
     return [
       <input
-        id={this.id}
+        id={this.inputId}
         ref={(input) => (this.nativeInput = input)}
         class="input__native"
         part="input"
@@ -523,7 +523,7 @@ export class UaiInputEditable {
         : success
           ? this.successMessage
           : this.helperMessage;
-    const describedBy = message ? `${this.id}-message` : null;
+    const describedBy = message ? `${this.inputId}-message` : null;
 
     return (
       <Host
@@ -538,7 +538,7 @@ export class UaiInputEditable {
       >
         <div class="input">
           {this.label && (
-            <label class="input__label" {...(editing ? { for: this.id } : {})}>
+            <label class="input__label" {...(editing ? { for: this.inputId } : {})}>
               <uai-typo variant="caption" bold="semibold" tag="span" margin={false}>
                 {this.label}
               </uai-typo>
@@ -548,7 +548,7 @@ export class UaiInputEditable {
             {editing ? this.renderEdit(invalid, describedBy) : this.renderView(disabled)}
           </div>
           {message && (
-            <div id={`${this.id}-message`} class="input__message" part="input__message">
+            <div id={`${this.inputId}-message`} class="input__message" part="input__message">
               <uai-typo variant="caption" tag="span" margin={false}>
                 {message}
               </uai-typo>

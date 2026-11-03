@@ -66,7 +66,7 @@ export class UaiInputDate {
   private formControl?: UaiFormControl;
   private defaultValue = '';
   private typing = false;
-  private readonly id = `uai-input-date-${++instances}`;
+  private readonly inputId = `uai-input-date-${++instances}`;
 
   /**
    * Name of the value in the submitted form data, which is the ISO date. Without name (or inputName), the field is not
@@ -438,7 +438,7 @@ export class UaiInputDate {
       >
         <div class="input">
           {label && (
-            <label class="input__label" {...{ for: this.id }}>
+            <label class="input__label" {...{ for: this.inputId }}>
               <uai-typo variant="caption" bold="semibold" tag="span" margin={false}>
                 {label}
               </uai-typo>
@@ -448,7 +448,7 @@ export class UaiInputDate {
             {this.icon && <uai-icon class="input__icon" name={this.icon} size="medium"></uai-icon>}
             <div class="input__field">
               <input
-                id={this.id}
+                id={this.inputId}
                 ref={(input) => (this.nativeInput = input)}
                 class="input__native"
                 part="input"
@@ -463,7 +463,7 @@ export class UaiInputDate {
                 disabled={disabled}
                 aria-label={this.ariaLabel || null}
                 aria-invalid={invalid ? 'true' : null}
-                aria-describedby={message ? `${this.id}-message` : null}
+                aria-describedby={message ? `${this.inputId}-message` : null}
                 data-test={this.dataTest}
                 onInput={this.onInput}
                 onFocus={this.onFocus}
@@ -499,7 +499,7 @@ export class UaiInputDate {
             <slot name="input-right"></slot>
           </div>
           {message && (
-            <div id={`${this.id}-message`} class="input__message" part="input__message">
+            <div id={`${this.inputId}-message`} class="input__message" part="input__message">
               <uai-typo variant="caption" tag="span" margin={false}>
                 {message}
               </uai-typo>
