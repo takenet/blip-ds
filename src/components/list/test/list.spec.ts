@@ -515,10 +515,23 @@ describe('bds-list', () => {
       expect(listItems.length).toBe(0);
     });
 
-    it('should handle invalid JSON string data', async () => {
+    it('should not throw on invalid JSON string data and keep the current data', async () => {
+      component.internalData = [{ text: 'kept' }];
       component.data = 'invalid-json';
-      
-      expect(() => component.updateData()).toThrow();
+
+      expect(() => component.updateData()).not.toThrow();
+      expect(component.internalData).toEqual([{ text: 'kept' }]);
+    });
+
+    it('should not throw when data is an AngularJS template not yet interpolated', async () => {
+      component.data = '{{$ctrl.items}}';
+
+      expect(() => component.updateData()).not.toThrow();
+
+      const resolved = [{ text: 'resolved' }];
+      component.data = resolved;
+      component.updateData();
+      expect(component.internalData).toBe(resolved);
     });
 
     it('should handle null data', async () => {
