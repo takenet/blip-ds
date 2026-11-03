@@ -1,0 +1,22 @@
+export declare const ptTerms: {
+    bold: string;
+    italic: string;
+    strike: string;
+    underline: string;
+    link: string;
+    code: string;
+    align_left: string;
+    align_center: string;
+    align_right: string;
+    unordered_list: string;
+    ordered_list: string;
+    quote: string;
+    h1: string;
+    h2: string;
+    h3: string;
+    h4: string;
+    h5: string;
+    h6: string;
+    clear_formatting: string;
+    expand: string;
+}[];

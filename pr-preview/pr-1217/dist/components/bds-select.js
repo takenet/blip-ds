@@ -1,0 +1,1 @@
+import{S as o,d as s}from"./p-BafAzxJD.js";const a=o,p=s;export{a as BdsSelect,p as defineCustomElement}
