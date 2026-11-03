@@ -219,7 +219,11 @@ export class Select {
   private updateOptions() {
     if (this.options) {
       if (typeof this.options === 'string') {
-        this.internalOptions = JSON.parse(this.options);
+        // AngularJS may render the attribute before interpolating it (e.g. "{{$ctrl.options}}").
+        // Keep the current options and wait for @Watch('options') to receive the resolved value.
+        try {
+          this.internalOptions = JSON.parse(this.options);
+        } catch (e) {}
       } else {
         this.internalOptions = this.options;
       }
