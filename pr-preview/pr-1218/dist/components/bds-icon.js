@@ -1,1 +1,0 @@
-import{I as o,d as p}from"./p-DWWplBzr.js";const r=o,s=p;export{r as BdsIcon,s as defineCustomElement}
