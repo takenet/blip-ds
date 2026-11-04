@@ -1,5 +1,5 @@
 import { r as registerInstance, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
-import { l as loadAssetSvg } from './asset-loader-rO3zRdCx.js';
+import { l as loadAssetSvg } from './asset-loader-ByPjkgw2.js';
 
 const FILL_ELEMENTS = ['path', 'rect', 'circle', 'ellipse', 'polygon', 'polyline', 'line'];
 const getFilledElements = (svg) => {

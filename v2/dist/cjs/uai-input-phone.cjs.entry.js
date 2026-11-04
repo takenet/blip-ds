@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-BuAR9UTp.js');
-var assetLoader = require('./asset-loader-7VlbCeFu.js');
+var assetLoader = require('./asset-loader-BKRWIuxN.js');
 var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
 var uaiOverlay = require('./uai-overlay-PZQC57dM.js');
 var countriesEs_ES = require('./countries-es_ES-BrZr75bu.js');

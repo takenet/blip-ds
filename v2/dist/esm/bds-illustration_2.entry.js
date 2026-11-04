@@ -1,5 +1,5 @@
 import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
-import { g as getAssetUrl } from './asset-loader-rO3zRdCx.js';
+import { g as getAssetUrl } from './asset-loader-ByPjkgw2.js';
 
 const illustrationCss = () => `:host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}`;
 

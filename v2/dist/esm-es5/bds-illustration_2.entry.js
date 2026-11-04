@@ -1,4 +1,4 @@
-import{r as registerInstance,h,H as Host}from"./index-CkbvGS8Z.js";import{g as getAssetUrl}from"./asset-loader-rO3zRdCx.js";var illustrationCss=function(){return":host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}"};var BdsIllustration=/** @class */function(){function t(t){registerInstance(this,t);
+import{r as registerInstance,h,H as Host}from"./index-CkbvGS8Z.js";import{g as getAssetUrl}from"./asset-loader-ByPjkgw2.js";var illustrationCss=function(){return":host .illustration{display:-ms-flexbox;display:flex;height:100%;width:auto}:host(.bds-illustration) img{width:100%;height:100%}"};var BdsIllustration=/** @class */function(){function t(t){registerInstance(this,t);
 /**
          * Specifies the type to use. Can be: 'default'.
          */this.type="default";
