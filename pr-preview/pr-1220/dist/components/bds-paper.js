@@ -1,1 +1,0 @@
-import{P as o,d as s}from"./p-CFw-BUco.js";const p=o,r=s;export{p as BdsPaper,r as defineCustomElement}
