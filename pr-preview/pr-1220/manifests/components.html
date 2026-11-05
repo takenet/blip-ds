@@ -620,13 +620,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">93/93 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">93/93 infos</a><span class="filter-pill ok" aria-disabled="true">404 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/404 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">28 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">93/93 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">93/93 infos</a><span class="filter-pill ok" aria-disabled="true">405 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/405 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">28 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.7s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.9s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -31042,14 +31042,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -32657,14 +32657,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -34252,14 +34252,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -35774,14 +35774,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -37338,14 +37338,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -38893,14 +38893,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -40395,14 +40395,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -41935,14 +41935,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -43482,14 +43482,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -45131,14 +45131,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -46815,14 +46815,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -48484,14 +48484,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -50142,14 +50142,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -51764,14 +51764,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -53434,14 +53434,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -54880,14 +54880,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -56486,14 +56486,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -58049,14 +58049,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -59482,14 +59482,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -60971,14 +60971,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -61306,7 +61306,7 @@ Fora de escopo: multisseleção (`bds-select-chips`) e busca em listas longas.
       <div class="badges">
         <label for="c-84-uai-stepper-err" class="badge err as-toggle">API error</label>
         <label for="c-84-uai-stepper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-84-uai-stepper-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-84-uai-stepper-stories" class="badge ok as-toggle">5 stories</label>
         <label for="c-84-uai-stepper-docs" class="badge ok as-toggle">1 doc</label>
         
       </div>
@@ -62566,14 +62566,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -62699,7 +62699,7 @@ export const UaiTypo = createComponent({
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { UaiButton, UaiPaper, UaiStep, UaiStepper, UaiThemeProvider } from 'blip-ds-react';</code></pre>
+                <pre><code>import { UaiButton, UaiInput, UaiPaper, UaiStep, UaiStepper, UaiThemeProvider } from 'blip-ds-react';</code></pre>
               </div>
           
           
@@ -62759,20 +62759,20 @@ export const UaiTypo = createComponent({
               
               
               <pre><code>const Controlled = () =&gt; {
-  const stepper = useRef(null);
   const [current, setCurrent] = useState(0);
 
-  const go = async (next, complete) =&gt; {
-    if (complete) await stepper.current.setCompletedStep(current);
-    await stepper.current.setActiveStep(next);
-    setCurrent(next);
-  };
-
+  // React reapplies props on every render, so active/completed come from state instead of the stepper methods.
   return (
     &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: &#39;var(--uai-spacing-md)&#39; }}&gt;
-      &lt;UaiStepper ref={stepper}&gt;
+      &lt;UaiStepper&gt;
         {STEPS.map((step, index) =&gt; (
-          &lt;UaiStep key={step.heading} active={index === 0} heading={step.heading} description={step.description} /&gt;
+          &lt;UaiStep
+            key={step.heading}
+            active={index === current}
+            completed={index &lt; current}
+            heading={step.heading}
+            description={step.description}
+          /&gt;
         ))}
       &lt;/UaiStepper&gt;
       &lt;UaiPaper elevation=&quot;none&quot; border style={{ padding: &#39;var(--uai-spacing-md)&#39; }}&gt;
@@ -62780,18 +62780,68 @@ export const UaiTypo = createComponent({
       &lt;/UaiPaper&gt;
       &lt;div style={{ display: &#39;flex&#39;, gap: &#39;var(--uai-spacing-xs)&#39; }}&gt;
         {current &gt; 0 &amp;&amp; current &lt; STEPS.length &amp;&amp; (
-          &lt;UaiButton variant=&quot;secondary&quot; onClick={() =&gt; go(current - 1)}&gt;
+          &lt;UaiButton variant=&quot;secondary&quot; onClick={() =&gt; setCurrent(current - 1)}&gt;
             Voltar
           &lt;/UaiButton&gt;
         )}
-        {current &lt; STEPS.length - 1 &amp;&amp; &lt;UaiButton onClick={() =&gt; go(current + 1, true)}&gt;Próxima etapa&lt;/UaiButton&gt;}
-        {current === STEPS.length - 1 &amp;&amp; (
-          &lt;UaiButton
-            onClick={async () =&gt; {
-              await stepper.current.setCompletedStep(current);
-              setCurrent(STEPS.length);
-            }}
-          &gt;
+        {current &lt; STEPS.length &amp;&amp; (
+          &lt;UaiButton onClick={() =&gt; setCurrent(current + 1)}&gt;
+            {current === STEPS.length - 1 ? &#39;Concluir&#39; : &#39;Próxima etapa&#39;}
+          &lt;/UaiButton&gt;
+        )}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Navigable</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Navigable = () =&gt; {
+  const [current, setCurrent] = useState(0);
+  const [done, setDone] = useState([]);
+  const [values, setValues] = useState({ 0: &#39;&#39;, 1: &#39;&#39;, 2: &#39;&#39; });
+
+  // The stepper only reports the choice: step state and answers live here, so going back keeps everything.
+  const complete = () =&gt; setDone((prev) =&gt; (prev.includes(current) ? prev : [...prev, current]));
+
+  const advance = () =&gt; {
+    complete();
+    setCurrent(current + 1);
+  };
+
+  return (
+    &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: &#39;var(--uai-spacing-md)&#39; }}&gt;
+      &lt;UaiStepper navigable onUaiStepChange={(event) =&gt; setCurrent(event.detail.index)}&gt;
+        {STEPS.map((step, index) =&gt; (
+          &lt;UaiStep
+            key={step.heading}
+            active={index === current}
+            completed={done.includes(index)}
+            disabled={index &gt; 0 &amp;&amp; !done.includes(index - 1) &amp;&amp; index !== current}
+            heading={step.heading}
+            description={step.description}
+          /&gt;
+        ))}
+      &lt;/UaiStepper&gt;
+      &lt;UaiInput
+        key={current}
+        label={STEPS[current].heading}
+        value={values[current]}
+        onUaiChange={(event) =&gt; setValues((prev) =&gt; ({ ...prev, [current]: event.detail.value }))}
+      /&gt;
+      &lt;div&gt;
+        {current &lt; STEPS.length - 1 ? (
+          &lt;UaiButton disabled={!values[current]} onClick={advance}&gt;
+            Próxima etapa
+          &lt;/UaiButton&gt;
+        ) : (
+          &lt;UaiButton disabled={!values[current]} onClick={complete}&gt;
             Concluir
           &lt;/UaiButton&gt;
         )}
@@ -62838,13 +62888,21 @@ Use as props `heading` e `description` para texto simples ou os slots `heading` 
 
 ## Estados
 
-`completed` troca o número por um check, `active` destaca a etapa atual (e vence `completed` se os dois estiverem ligados) e `disabled` indica uma etapa ainda inacessível. `pointer` mostra o cursor de clique quando os passos são clicáveis.
+`completed` troca o número por um check, `active` destaca a etapa atual (e vence `completed` se os dois estiverem ligados) e `disabled` indica uma etapa ainda inacessível. `pointer` torna um passo clicável e focável (use `navigable` no stepper para aplicar a todos).
 
 &lt;Canvas of={StepperStories.States} /&gt;
 
+## Voltar para uma etapa
+
+Com `navigable`, qualquer passo habilitado vira um botão (clique, Enter ou Espaço), inclusive os já concluídos. O stepper dispara `uaiStepChange` (`detail`: `{ index, previousIndex }`) e ativa o passo escolhido; os passos concluídos continuam concluídos, então voltar não perde o progresso. Chame `event.preventDefault()` para impedir a troca, por exemplo se o passo atual for inválido, e marque `disabled` nos passos que ainda não podem ser acessados.
+
+O stepper só indica a etapa: os dados de cada etapa ficam no estado da sua tela. Mantenha-os fora do conteúdo do passo (ou deixe os painéis montados e apenas escondidos) para que continuem preenchidos ao voltar. No exemplo, voltar ao passo 1 mantém o que foi digitado no passo 2.
+
+&lt;Canvas of={StepperStories.Navigable} /&gt;
+
 ## Controlando as etapas
 
-O stepper não avança sozinho: use os métodos para refletir o estado do seu fluxo.
+O stepper não avança sozinho. Em HTML puro, use os métodos para refletir o estado do seu fluxo; em React, prefira props derivadas do estado (veja abaixo).
 
 | Método | Descrição |
 | --- | --- |
@@ -62853,6 +62911,8 @@ O stepper não avança sozinho: use os métodos para refletir o estado do seu fl
 | `getActiveStep()` | Índice do passo ativo, ou `-1` se nenhum estiver ativo. |
 | `resetActiveSteps()` | Remove o estado ativo de todos. |
 | `resetCompletedSteps()` | Remove o estado concluído de todos. |
+
+Em React (e em qualquer wrapper que reaplica as props a cada render), derive `active` e `completed` do estado em vez de misturar props fixas com os métodos: uma prop como `active={index === 0}` é regravada a cada render e desfaz o `setActiveStep`. O exemplo abaixo guia os passos só pelo estado.
 
 &lt;Canvas of={StepperStories.Controlled} /&gt;
 
@@ -64149,14 +64209,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -65662,14 +65722,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -67200,14 +67260,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -68819,14 +68879,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -70421,14 +70481,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -71864,14 +71924,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -73346,14 +73406,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -104551,14 +104611,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -106166,14 +106226,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -107761,14 +107821,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -109283,14 +109343,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -110847,14 +110907,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -112402,14 +112462,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -113904,14 +113964,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -115444,14 +115504,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -116991,14 +117051,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -118640,14 +118700,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -120324,14 +120384,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -121993,14 +122053,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -123651,14 +123711,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -125273,14 +125333,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -126943,14 +127003,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -128389,14 +128449,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -129995,14 +130055,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -131558,14 +131618,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -132991,14 +133051,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -134480,14 +134540,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -134815,7 +134875,7 @@ Fora de escopo: multisseleção (`bds-select-chips`) e busca em listas longas.
       <div class="badges">
         <label for="c-error-20-uai-stepper-err" class="badge err as-toggle">API error</label>
         <label for="c-error-20-uai-stepper-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-20-uai-stepper-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-20-uai-stepper-stories" class="badge ok as-toggle">5 stories</label>
         <label for="c-error-20-uai-stepper-docs" class="badge ok as-toggle">1 doc</label>
         
       </div>
@@ -136075,14 +136135,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -136208,7 +136268,7 @@ export const UaiTypo = createComponent({
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { UaiButton, UaiPaper, UaiStep, UaiStepper, UaiThemeProvider } from 'blip-ds-react';</code></pre>
+                <pre><code>import { UaiButton, UaiInput, UaiPaper, UaiStep, UaiStepper, UaiThemeProvider } from 'blip-ds-react';</code></pre>
               </div>
           
           
@@ -136268,20 +136328,20 @@ export const UaiTypo = createComponent({
               
               
               <pre><code>const Controlled = () =&gt; {
-  const stepper = useRef(null);
   const [current, setCurrent] = useState(0);
 
-  const go = async (next, complete) =&gt; {
-    if (complete) await stepper.current.setCompletedStep(current);
-    await stepper.current.setActiveStep(next);
-    setCurrent(next);
-  };
-
+  // React reapplies props on every render, so active/completed come from state instead of the stepper methods.
   return (
     &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: &#39;var(--uai-spacing-md)&#39; }}&gt;
-      &lt;UaiStepper ref={stepper}&gt;
+      &lt;UaiStepper&gt;
         {STEPS.map((step, index) =&gt; (
-          &lt;UaiStep key={step.heading} active={index === 0} heading={step.heading} description={step.description} /&gt;
+          &lt;UaiStep
+            key={step.heading}
+            active={index === current}
+            completed={index &lt; current}
+            heading={step.heading}
+            description={step.description}
+          /&gt;
         ))}
       &lt;/UaiStepper&gt;
       &lt;UaiPaper elevation=&quot;none&quot; border style={{ padding: &#39;var(--uai-spacing-md)&#39; }}&gt;
@@ -136289,18 +136349,68 @@ export const UaiTypo = createComponent({
       &lt;/UaiPaper&gt;
       &lt;div style={{ display: &#39;flex&#39;, gap: &#39;var(--uai-spacing-xs)&#39; }}&gt;
         {current &gt; 0 &amp;&amp; current &lt; STEPS.length &amp;&amp; (
-          &lt;UaiButton variant=&quot;secondary&quot; onClick={() =&gt; go(current - 1)}&gt;
+          &lt;UaiButton variant=&quot;secondary&quot; onClick={() =&gt; setCurrent(current - 1)}&gt;
             Voltar
           &lt;/UaiButton&gt;
         )}
-        {current &lt; STEPS.length - 1 &amp;&amp; &lt;UaiButton onClick={() =&gt; go(current + 1, true)}&gt;Próxima etapa&lt;/UaiButton&gt;}
-        {current === STEPS.length - 1 &amp;&amp; (
-          &lt;UaiButton
-            onClick={async () =&gt; {
-              await stepper.current.setCompletedStep(current);
-              setCurrent(STEPS.length);
-            }}
-          &gt;
+        {current &lt; STEPS.length &amp;&amp; (
+          &lt;UaiButton onClick={() =&gt; setCurrent(current + 1)}&gt;
+            {current === STEPS.length - 1 ? &#39;Concluir&#39; : &#39;Próxima etapa&#39;}
+          &lt;/UaiButton&gt;
+        )}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Navigable</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Navigable = () =&gt; {
+  const [current, setCurrent] = useState(0);
+  const [done, setDone] = useState([]);
+  const [values, setValues] = useState({ 0: &#39;&#39;, 1: &#39;&#39;, 2: &#39;&#39; });
+
+  // The stepper only reports the choice: step state and answers live here, so going back keeps everything.
+  const complete = () =&gt; setDone((prev) =&gt; (prev.includes(current) ? prev : [...prev, current]));
+
+  const advance = () =&gt; {
+    complete();
+    setCurrent(current + 1);
+  };
+
+  return (
+    &lt;div style={{ display: &#39;flex&#39;, flexDirection: &#39;column&#39;, gap: &#39;var(--uai-spacing-md)&#39; }}&gt;
+      &lt;UaiStepper navigable onUaiStepChange={(event) =&gt; setCurrent(event.detail.index)}&gt;
+        {STEPS.map((step, index) =&gt; (
+          &lt;UaiStep
+            key={step.heading}
+            active={index === current}
+            completed={done.includes(index)}
+            disabled={index &gt; 0 &amp;&amp; !done.includes(index - 1) &amp;&amp; index !== current}
+            heading={step.heading}
+            description={step.description}
+          /&gt;
+        ))}
+      &lt;/UaiStepper&gt;
+      &lt;UaiInput
+        key={current}
+        label={STEPS[current].heading}
+        value={values[current]}
+        onUaiChange={(event) =&gt; setValues((prev) =&gt; ({ ...prev, [current]: event.detail.value }))}
+      /&gt;
+      &lt;div&gt;
+        {current &lt; STEPS.length - 1 ? (
+          &lt;UaiButton disabled={!values[current]} onClick={advance}&gt;
+            Próxima etapa
+          &lt;/UaiButton&gt;
+        ) : (
+          &lt;UaiButton disabled={!values[current]} onClick={complete}&gt;
             Concluir
           &lt;/UaiButton&gt;
         )}
@@ -136347,13 +136457,21 @@ Use as props `heading` e `description` para texto simples ou os slots `heading` 
 
 ## Estados
 
-`completed` troca o número por um check, `active` destaca a etapa atual (e vence `completed` se os dois estiverem ligados) e `disabled` indica uma etapa ainda inacessível. `pointer` mostra o cursor de clique quando os passos são clicáveis.
+`completed` troca o número por um check, `active` destaca a etapa atual (e vence `completed` se os dois estiverem ligados) e `disabled` indica uma etapa ainda inacessível. `pointer` torna um passo clicável e focável (use `navigable` no stepper para aplicar a todos).
 
 &lt;Canvas of={StepperStories.States} /&gt;
 
+## Voltar para uma etapa
+
+Com `navigable`, qualquer passo habilitado vira um botão (clique, Enter ou Espaço), inclusive os já concluídos. O stepper dispara `uaiStepChange` (`detail`: `{ index, previousIndex }`) e ativa o passo escolhido; os passos concluídos continuam concluídos, então voltar não perde o progresso. Chame `event.preventDefault()` para impedir a troca, por exemplo se o passo atual for inválido, e marque `disabled` nos passos que ainda não podem ser acessados.
+
+O stepper só indica a etapa: os dados de cada etapa ficam no estado da sua tela. Mantenha-os fora do conteúdo do passo (ou deixe os painéis montados e apenas escondidos) para que continuem preenchidos ao voltar. No exemplo, voltar ao passo 1 mantém o que foi digitado no passo 2.
+
+&lt;Canvas of={StepperStories.Navigable} /&gt;
+
 ## Controlando as etapas
 
-O stepper não avança sozinho: use os métodos para refletir o estado do seu fluxo.
+O stepper não avança sozinho. Em HTML puro, use os métodos para refletir o estado do seu fluxo; em React, prefira props derivadas do estado (veja abaixo).
 
 | Método | Descrição |
 | --- | --- |
@@ -136362,6 +136480,8 @@ O stepper não avança sozinho: use os métodos para refletir o estado do seu fl
 | `getActiveStep()` | Índice do passo ativo, ou `-1` se nenhum estiver ativo. |
 | `resetActiveSteps()` | Remove o estado ativo de todos. |
 | `resetCompletedSteps()` | Remove o estado concluído de todos. |
+
+Em React (e em qualquer wrapper que reaplica as props a cada render), derive `active` e `completed` do estado em vez de misturar props fixas com os métodos: uma prop como `active={index === 0}` é regravada a cada render e desfaz o `setActiveStep`. O exemplo abaixo guia os passos só pelo estado.
 
 &lt;Canvas of={StepperStories.Controlled} /&gt;
 
@@ -137658,14 +137778,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -139171,14 +139291,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -140709,14 +140829,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -142328,14 +142448,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -143930,14 +144050,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -145373,14 +145493,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
@@ -146855,14 +146975,14 @@ export const UaiStep = createComponent({
     tagName: &#39;uai-step&#39;,
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: &#39;uaiStepSelect&#39; },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: &#39;uai-stepper&#39;,
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: &#39;uaiStepChange&#39; },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({

@@ -9,14 +9,32 @@ export class UaiStepper {
     constructor() {
         /** Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values. */
         this.orientation = 'horizontal';
+        /** Lets the person click any enabled step, completed or not, to go back or jump. Use for flows where earlier answers can be reviewed; pair with disabled on unreachable steps; avoid it when order is mandatory. */
+        this.navigable = false;
         this.syncSteps = () => {
             const steps = this.steps;
             steps.forEach((step, index) => {
                 step.index = index;
                 step.last = index === steps.length - 1;
+                if (this.navigable)
+                    step.pointer = true;
                 step.orientation = this.orientation === 'vertical' ? 'vertical' : 'horizontal';
             });
         };
+    }
+    navigableChanged() {
+        this.steps.forEach((step) => (step.pointer = this.navigable));
+    }
+    async stepSelected(event) {
+        if (!this.navigable || !this.steps.includes(event.target))
+            return;
+        event.stopPropagation();
+        const previousIndex = await this.getActiveStep();
+        if (event.detail === previousIndex)
+            return;
+        const change = this.uaiStepChange.emit({ index: event.detail, previousIndex });
+        if (!change.defaultPrevented)
+            await this.setActiveStep(event.detail);
     }
     orientationChanged() {
         this.syncSteps();
@@ -65,7 +83,7 @@ export class UaiStepper {
         this.steps.forEach((step) => (step.completed = false));
     }
     render() {
-        return (h(Host, { key: '2c81a4a7028fffddf3d405efb8ab770521b826a9', role: "list" }, h("slot", { key: 'd8a98934f143dda037f20e98e3d315109b4d6e99', onSlotchange: this.syncSteps })));
+        return (h(Host, { key: 'f1aefdb13b951240c0659ef5170dadd1531e6020', role: "list" }, h("slot", { key: 'a99cb6fb739f776b72db03438e82eec29ffedfc8', onSlotchange: this.syncSteps })));
     }
     static get is() { return "uai-stepper"; }
     static get encapsulation() { return "shadow"; }
@@ -100,8 +118,46 @@ export class UaiStepper {
                 "reflect": true,
                 "attribute": "orientation",
                 "defaultValue": "'horizontal'"
+            },
+            "navigable": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Lets the person click any enabled step, completed or not, to go back or jump. Use for flows where earlier answers can be reviewed; pair with disabled on unreachable steps; avoid it when order is mandatory."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": true,
+                "attribute": "navigable",
+                "defaultValue": "false"
             }
         };
+    }
+    static get events() {
+        return [{
+                "method": "uaiStepChange",
+                "name": "uaiStepChange",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Fires when the person selects a step other than the active one. detail: the new index and the previous one (-1 if none).\nCancelable: call preventDefault to veto the change, e.g. while the current step is invalid. Otherwise the stepper activates the step.\nCompleted steps keep their state, so going back never loses progress; keep the panels' data in your own state."
+                },
+                "complexType": {
+                    "original": "{ index: number; previousIndex: number }",
+                    "resolved": "{ index: number; previousIndex: number; }",
+                    "references": {}
+                }
+            }];
     }
     static get methods() {
         return {
@@ -209,8 +265,20 @@ export class UaiStepper {
     static get elementRef() { return "el"; }
     static get watchers() {
         return [{
+                "propName": "navigable",
+                "methodName": "navigableChanged"
+            }, {
                 "propName": "orientation",
                 "methodName": "orientationChanged"
+            }];
+    }
+    static get listeners() {
+        return [{
+                "name": "uaiStepSelect",
+                "method": "stepSelected",
+                "target": undefined,
+                "capture": false,
+                "passive": false
             }];
     }
 }

@@ -1,3 +1,4 @@
+import { EventEmitter } from '../../stencil-public-runtime';
 export type UaiStepOrientation = 'horizontal' | 'vertical';
 /**
  * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
@@ -23,10 +24,15 @@ export declare class UaiStep {
     disabled?: boolean;
     /** Position of the step, starting at 0. Set by the stepper; avoid setting it by hand. */
     index?: number;
-    /** Shows a pointer cursor. Use when steps are clickable; ignored on disabled steps. */
+    /** Makes the step clickable and focusable, announcing uaiStepSelect. Use for steps the person can go back to; set by the stepper when navigable; ignored on disabled steps. */
     pointer?: boolean;
     /** Data test is the prop to specifically test the component action object. */
     dataTest?: string;
+    /** Index of the step when the person selects it by click, Enter or Space. Only fires when the step is clickable (pointer) and not disabled. */
+    uaiStepSelect: EventEmitter<number>;
+    private get interactive();
+    private select;
+    private onKeyDown;
     private get state();
     render(): any;
 }

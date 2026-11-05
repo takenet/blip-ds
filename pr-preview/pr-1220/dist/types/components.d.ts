@@ -5743,7 +5743,7 @@ export namespace Components {
          */
         "orientation"?: UaiStepOrientation;
         /**
-          * Shows a pointer cursor. Use when steps are clickable; ignored on disabled steps.
+          * Makes the step clickable and focusable, announcing uaiStepSelect. Use for steps the person can go back to; set by the stepper when navigable; ignored on disabled steps.
           * @default false
          */
         "pointer"?: boolean;
@@ -5757,6 +5757,11 @@ export namespace Components {
           * Index of the active step, or -1 when none is active. Use to decide the next step; pair with setActiveStep; avoid assuming a step is always active.
          */
         "getActiveStep": () => Promise<number>;
+        /**
+          * Lets the person click any enabled step, completed or not, to go back or jump. Use for flows where earlier answers can be reviewed; pair with disabled on unreachable steps; avoid it when order is mandatory.
+          * @default false
+         */
+        "navigable": boolean;
         /**
           * Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values.
           * @default 'horizontal'
@@ -6675,6 +6680,14 @@ export interface UaiRadioGroupCustomEvent<T> extends CustomEvent<T> {
 export interface UaiSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiSelectElement;
+}
+export interface UaiStepCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiStepElement;
+}
+export interface UaiStepperCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiStepperElement;
 }
 export interface UaiSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -8533,21 +8546,43 @@ declare global {
         prototype: HTMLUaiSelectOptionElement;
         new (): HTMLUaiSelectOptionElement;
     };
+    interface HTMLUaiStepElementEventMap {
+        "uaiStepSelect": number;
+    }
     /**
      * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
      * Use inside uai-stepper, which sets its orientation, number and position; avoid it outside a stepper.
      */
     interface HTMLUaiStepElement extends Components.UaiStep, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiStepElementEventMap>(type: K, listener: (this: HTMLUaiStepElement, ev: UaiStepCustomEvent<HTMLUaiStepElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiStepElementEventMap>(type: K, listener: (this: HTMLUaiStepElement, ev: UaiStepCustomEvent<HTMLUaiStepElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLUaiStepElement: {
         prototype: HTMLUaiStepElement;
         new (): HTMLUaiStepElement;
     };
+    interface HTMLUaiStepperElementEventMap {
+        "uaiStepChange": { index: number; previousIndex: number };
+    }
     /**
      * Sequential steps of a process. Use for flows with ordered stages; pair with UaiStep; avoid it for free navigation between views (use uai-tab-group).
      * The stepper numbers the steps, marks the last one and sets their orientation.
      */
     interface HTMLUaiStepperElement extends Components.UaiStepper, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiStepperElementEventMap>(type: K, listener: (this: HTMLUaiStepperElement, ev: UaiStepperCustomEvent<HTMLUaiStepperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiStepperElementEventMap>(type: K, listener: (this: HTMLUaiStepperElement, ev: UaiStepperCustomEvent<HTMLUaiStepperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLUaiStepperElement: {
         prototype: HTMLUaiStepperElement;
@@ -14771,12 +14806,16 @@ declare namespace LocalJSX {
          */
         "last"?: boolean;
         /**
+          * Index of the step when the person selects it by click, Enter or Space. Only fires when the step is clickable (pointer) and not disabled.
+         */
+        "onUaiStepSelect"?: (event: UaiStepCustomEvent<number>) => void;
+        /**
           * Layout of the step. Set by the stepper from its orientation; avoid setting it by hand.
           * @default 'horizontal'
          */
         "orientation"?: UaiStepOrientation;
         /**
-          * Shows a pointer cursor. Use when steps are clickable; ignored on disabled steps.
+          * Makes the step clickable and focusable, announcing uaiStepSelect. Use for steps the person can go back to; set by the stepper when navigable; ignored on disabled steps.
           * @default false
          */
         "pointer"?: boolean;
@@ -14786,6 +14825,15 @@ declare namespace LocalJSX {
      * The stepper numbers the steps, marks the last one and sets their orientation.
      */
     interface UaiStepper {
+        /**
+          * Lets the person click any enabled step, completed or not, to go back or jump. Use for flows where earlier answers can be reviewed; pair with disabled on unreachable steps; avoid it when order is mandatory.
+          * @default false
+         */
+        "navigable"?: boolean;
+        /**
+          * Fires when the person selects a step other than the active one. detail: the new index and the previous one (-1 if none). Cancelable: call preventDefault to veto the change, e.g. while the current step is invalid. Otherwise the stepper activates the step. Completed steps keep their state, so going back never loses progress; keep the panels' data in your own state.
+         */
+        "onUaiStepChange"?: (event: UaiStepperCustomEvent<{ index: number; previousIndex: number }>) => void;
         /**
           * Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values.
           * @default 'horizontal'
@@ -16674,6 +16722,7 @@ declare namespace LocalJSX {
     }
     interface UaiStepperAttributes {
         "orientation": 'horizontal' | 'vertical';
+        "navigable": boolean;
     }
     interface UaiSwitchAttributes {
         "refer": string;

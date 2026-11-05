@@ -101,6 +101,10 @@
 .step--pointer {
   cursor: pointer;
 }
+.step--pointer:focus-visible {
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline-offset: calc(-1 * var(--uai-spacing-3xs, 0.125rem));
+}
 
 .step--disabled {
   cursor: not-allowed;

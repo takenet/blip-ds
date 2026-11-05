@@ -1,20 +1,39 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
 
 const uaiStepperCss = () => `:host{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%}:host([orientation=horizontal]){-ms-flex-align:start;align-items:flex-start;border-bottom:var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7)}:host([orientation=horizontal]) ::slotted(uai-step){-ms-flex:1 1 0px;flex:1 1 0}:host([orientation=vertical]){-ms-flex-direction:column;flex-direction:column;-ms-flex-align:stretch;align-items:stretch}`;
 
 const UaiStepper = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
+        this.uaiStepChange = createEvent(this, "uaiStepChange");
         /** Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values. */
         this.orientation = 'horizontal';
+        /** Lets the person click any enabled step, completed or not, to go back or jump. Use for flows where earlier answers can be reviewed; pair with disabled on unreachable steps; avoid it when order is mandatory. */
+        this.navigable = false;
         this.syncSteps = () => {
             const steps = this.steps;
             steps.forEach((step, index) => {
                 step.index = index;
                 step.last = index === steps.length - 1;
+                if (this.navigable)
+                    step.pointer = true;
                 step.orientation = this.orientation === 'vertical' ? 'vertical' : 'horizontal';
             });
         };
+    }
+    navigableChanged() {
+        this.steps.forEach((step) => (step.pointer = this.navigable));
+    }
+    async stepSelected(event) {
+        if (!this.navigable || !this.steps.includes(event.target))
+            return;
+        event.stopPropagation();
+        const previousIndex = await this.getActiveStep();
+        if (event.detail === previousIndex)
+            return;
+        const change = this.uaiStepChange.emit({ index: event.detail, previousIndex });
+        if (!change.defaultPrevented)
+            await this.setActiveStep(event.detail);
     }
     orientationChanged() {
         this.syncSteps();
@@ -63,10 +82,13 @@ const UaiStepper = class {
         this.steps.forEach((step) => (step.completed = false));
     }
     render() {
-        return (h(Host, { key: '2c81a4a7028fffddf3d405efb8ab770521b826a9', role: "list" }, h("slot", { key: 'd8a98934f143dda037f20e98e3d315109b4d6e99', onSlotchange: this.syncSteps })));
+        return (h(Host, { key: 'f1aefdb13b951240c0659ef5170dadd1531e6020', role: "list" }, h("slot", { key: 'a99cb6fb739f776b72db03438e82eec29ffedfc8', onSlotchange: this.syncSteps })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {
+        "navigable": [{
+                "navigableChanged": 0
+            }],
         "orientation": [{
                 "orientationChanged": 0
             }]

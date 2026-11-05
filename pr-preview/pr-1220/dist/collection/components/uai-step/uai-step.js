@@ -24,10 +24,23 @@ export class UaiStep {
         this.disabled = false;
         /** Position of the step, starting at 0. Set by the stepper; avoid setting it by hand. */
         this.index = 0;
-        /** Shows a pointer cursor. Use when steps are clickable; ignored on disabled steps. */
+        /** Makes the step clickable and focusable, announcing uaiStepSelect. Use for steps the person can go back to; set by the stepper when navigable; ignored on disabled steps. */
         this.pointer = false;
         /** Data test is the prop to specifically test the component action object. */
         this.dataTest = null;
+        this.select = () => {
+            if (this.interactive)
+                this.uaiStepSelect.emit(this.index);
+        };
+        this.onKeyDown = (event) => {
+            if (!this.interactive || (event.key !== 'Enter' && event.key !== ' '))
+                return;
+            event.preventDefault();
+            this.select();
+        };
+    }
+    get interactive() {
+        return !!this.pointer && !this.disabled;
     }
     get state() {
         if (this.active)
@@ -39,12 +52,12 @@ export class UaiStep {
     render() {
         const state = this.state;
         const vertical = this.orientation === 'vertical';
-        return (h(Host, { key: 'e9b9bcda67abf61c4a50d61ef916f54bc88118c6', role: "listitem", "aria-current": this.active ? 'step' : undefined, "aria-disabled": this.disabled ? 'true' : undefined }, h("div", { key: 'cb837bebac79753299e3fae010a09e76fb48d4a3', class: {
+        return (h(Host, { key: '6e2817d1294dbf1de9bf6740e9e992846ec3c2d6', role: "listitem", "aria-current": this.active ? 'step' : undefined, "aria-disabled": this.disabled ? 'true' : undefined }, h("div", { key: 'ff9e339002b9abac5de85b0415e9126d7d6b1a50', class: {
                 step: true,
                 [`step--${state}`]: true,
                 'step--disabled': this.disabled,
                 'step--pointer': this.pointer && !this.disabled,
-            }, "data-test": this.dataTest }, h("div", { key: 'abb39dc9ea711947d23481d4a6cd42af3a351ccf', class: "step__number" }, h("span", { key: 'd5253ba16542a3e6321fed2f35ac18093df7d835', class: "step__marker", "aria-hidden": "true" }, state === 'completed' ? (h("uai-icon", { name: "check", size: "medium" })) : (h("uai-typo", { tag: "span", variant: "body-base", bold: "medium", margin: false }, this.index + 1))), vertical && !this.last && h("span", { key: '82f29a9b9b692ea0bccd3f518ed535e12a8f759f', class: "step__line", "aria-hidden": "true" })), h("div", { key: '5d33e216282bbf3223127639b8d24729e8dbdd7d', class: "step__content" }, h("uai-typo", { key: 'f458562324c0885c522ae44dd30a51ad3a3fe848', tag: "span", variant: "title-md", bold: "semibold", margin: false, class: "step__heading" }, h("slot", { key: '65570b953e2345ea3ace4fea5186299f0c95e65b', name: "heading" }, this.heading)), h("div", { key: 'b675184e13f27b7f3183665dd7fe3d3aeb2925ad', class: "step__description" }, h("uai-typo", { key: '743e8947b57a497e94f101bb332b0dfce9bc6b2f', tag: "span", variant: "body-base", margin: false }, h("slot", { key: '2e17f7d2f1abc9a4a86249806cdfed69391d4fbf', name: "description" }, this.description)))))));
+            }, "data-test": this.dataTest, role: this.interactive ? 'button' : undefined, tabindex: this.interactive ? 0 : undefined, onClick: this.select, onKeyDown: this.onKeyDown }, h("div", { key: 'b6387017f7bb76d33cd50563b90be3062312ff11', class: "step__number" }, h("span", { key: 'cfbda81ef4926103f54429276c16fc245bcadb94', class: "step__marker", "aria-hidden": "true" }, state === 'completed' ? (h("uai-icon", { name: "check", size: "medium" })) : (h("uai-typo", { tag: "span", variant: "body-base", bold: "medium", margin: false }, this.index + 1))), vertical && !this.last && h("span", { key: 'a9a7cf774862a9b139c3f978c493ef6314bd3945', class: "step__line", "aria-hidden": "true" })), h("div", { key: '55c4180e842207e9960adb001875435e04f079e5', class: "step__content" }, h("uai-typo", { key: 'e2d7bd20b0d6ebbb5436a924db7261e9addc983d', tag: "span", variant: "title-md", bold: "semibold", margin: false, class: "step__heading" }, h("slot", { key: '19df7d2f1745d05127bb4afe3da3071244236f5f', name: "heading" }, this.heading)), h("div", { key: '7616ed8f953aabe0d4f8c6acd61e9b733b0d1506', class: "step__description" }, h("uai-typo", { key: '1d8f13719ba41c221d6a500fecf719ae4c1e6a41', tag: "span", variant: "body-base", margin: false }, h("slot", { key: '4f1636063ef7cd16bdad2fac2cebcbbb646b59a0', name: "description" }, this.description)))))));
     }
     static get is() { return "uai-step"; }
     static get encapsulation() { return "shadow"; }
@@ -238,7 +251,7 @@ export class UaiStep {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Shows a pointer cursor. Use when steps are clickable; ignored on disabled steps."
+                    "text": "Makes the step clickable and focusable, announcing uaiStepSelect. Use for steps the person can go back to; set by the stepper when navigable; ignored on disabled steps."
                 },
                 "getter": false,
                 "setter": false,
@@ -267,5 +280,23 @@ export class UaiStep {
                 "defaultValue": "null"
             }
         };
+    }
+    static get events() {
+        return [{
+                "method": "uaiStepSelect",
+                "name": "uaiStepSelect",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Index of the step when the person selects it by click, Enter or Space. Only fires when the step is clickable (pointer) and not disabled."
+                },
+                "complexType": {
+                    "original": "number",
+                    "resolved": "number",
+                    "references": {}
+                }
+            }];
     }
 }

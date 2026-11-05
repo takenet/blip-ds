@@ -1,3 +1,4 @@
+import { EventEmitter } from '../../stencil-public-runtime';
 /**
  * Sequential steps of a process. Use for flows with ordered stages; pair with UaiStep; avoid it for free navigation between views (use uai-tab-group).
  * The stepper numbers the steps, marks the last one and sets their orientation.
@@ -8,6 +9,19 @@ export declare class UaiStepper {
     el: HTMLUaiStepperElement;
     /** Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values. */
     orientation: 'horizontal' | 'vertical';
+    /** Lets the person click any enabled step, completed or not, to go back or jump. Use for flows where earlier answers can be reviewed; pair with disabled on unreachable steps; avoid it when order is mandatory. */
+    navigable: boolean;
+    /**
+     * Fires when the person selects a step other than the active one. detail: the new index and the previous one (-1 if none).
+     * Cancelable: call preventDefault to veto the change, e.g. while the current step is invalid. Otherwise the stepper activates the step.
+     * Completed steps keep their state, so going back never loses progress; keep the panels' data in your own state.
+     */
+    uaiStepChange: EventEmitter<{
+        index: number;
+        previousIndex: number;
+    }>;
+    protected navigableChanged(): void;
+    protected stepSelected(event: CustomEvent<number>): Promise<void>;
     protected orientationChanged(): void;
     private get steps();
     connectedCallback(): void;
