@@ -78,4 +78,64 @@ describe('uai-stepper', () => {
     await page.waitForChanges();
     expect(steps(page).some((step) => step.completed || step.active)).toBe(false);
   });
+
+  describe('navigable', () => {
+    const navigable = html.replace('<uai-stepper>', '<uai-stepper navigable>');
+    const select = async (page, index: number) => {
+      (steps(page)[index].shadowRoot.querySelector('.step') as HTMLElement).click();
+      await page.waitForChanges();
+    };
+
+    it('makes every step clickable', async () => {
+      const page = await newSpecPage({ components: [UaiStepper, UaiStep], html: navigable });
+      expect(steps(page).map((step) => step.pointer)).toEqual([true, true, true]);
+      page.root.navigable = false;
+      await page.waitForChanges();
+      expect(steps(page).some((step) => step.pointer)).toBe(false);
+    });
+
+    it('goes back to a completed step without losing the completed ones', async () => {
+      const page = await newSpecPage({ components: [UaiStepper, UaiStep], html: navigable });
+      await page.root.setCompletedStep(0);
+      await page.root.setActiveStep(1);
+      await page.root.setCompletedStep(1);
+      await page.root.setActiveStep(2);
+      await page.waitForChanges();
+      const changed = jest.fn();
+      page.root.addEventListener('uaiStepChange', (event: CustomEvent) => changed(event.detail));
+      await select(page, 0);
+      expect(changed).toHaveBeenCalledWith({ index: 0, previousIndex: 2 });
+      expect(await page.root.getActiveStep()).toBe(0);
+      expect(steps(page).map((step) => step.completed)).toEqual([true, true, false]);
+    });
+
+    it('does nothing when the active step is selected again', async () => {
+      const page = await newSpecPage({ components: [UaiStepper, UaiStep], html: navigable });
+      await page.root.setActiveStep(1);
+      const changed = jest.fn();
+      page.root.addEventListener('uaiStepChange', changed);
+      await select(page, 1);
+      expect(changed).not.toHaveBeenCalled();
+    });
+
+    it('lets the consumer veto the change', async () => {
+      const page = await newSpecPage({ components: [UaiStepper, UaiStep], html: navigable });
+      await page.root.setActiveStep(1);
+      page.root.addEventListener('uaiStepChange', (event: Event) => event.preventDefault());
+      await select(page, 0);
+      expect(await page.root.getActiveStep()).toBe(1);
+    });
+
+    it('ignores disabled steps and non-navigable steppers', async () => {
+      const disabled = await newSpecPage({
+        components: [UaiStepper, UaiStep],
+        html: navigable.replace('heading="Two"', 'heading="Two" disabled'),
+      });
+      await select(disabled, 1);
+      expect(await disabled.root.getActiveStep()).toBe(-1);
+      const plain = await newSpecPage({ components: [UaiStepper, UaiStep], html: html.replace('<uai-step heading="One"', '<uai-step pointer heading="One"') });
+      await select(plain, 0);
+      expect(await plain.root.getActiveStep()).toBe(-1);
+    });
+  });
 });

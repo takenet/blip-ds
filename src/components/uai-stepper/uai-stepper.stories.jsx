@@ -1,5 +1,12 @@
-import React, { useRef, useState } from 'react';
-import { UaiButton, UaiPaper, UaiStep, UaiStepper, UaiThemeProvider } from '../../../blip-ds-react/dist/components';
+import React, { useState } from 'react';
+import {
+  UaiButton,
+  UaiInput,
+  UaiPaper,
+  UaiStep,
+  UaiStepper,
+  UaiThemeProvider,
+} from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './uai-stepper.mdx';
 
 export default {
@@ -54,20 +61,20 @@ export const States = () => (
 );
 
 export const Controlled = () => {
-  const stepper = useRef(null);
   const [current, setCurrent] = useState(0);
 
-  const go = async (next, complete) => {
-    if (complete) await stepper.current.setCompletedStep(current);
-    await stepper.current.setActiveStep(next);
-    setCurrent(next);
-  };
-
+  // React reapplies props on every render, so active/completed come from state instead of the stepper methods.
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--uai-spacing-md)' }}>
-      <UaiStepper ref={stepper}>
+      <UaiStepper>
         {STEPS.map((step, index) => (
-          <UaiStep key={step.heading} active={index === 0} heading={step.heading} description={step.description} />
+          <UaiStep
+            key={step.heading}
+            active={index === current}
+            completed={index < current}
+            heading={step.heading}
+            description={step.description}
+          />
         ))}
       </UaiStepper>
       <UaiPaper elevation="none" border style={{ padding: 'var(--uai-spacing-md)' }}>
@@ -75,18 +82,60 @@ export const Controlled = () => {
       </UaiPaper>
       <div style={{ display: 'flex', gap: 'var(--uai-spacing-xs)' }}>
         {current > 0 && current < STEPS.length && (
-          <UaiButton variant="secondary" onClick={() => go(current - 1)}>
+          <UaiButton variant="secondary" onClick={() => setCurrent(current - 1)}>
             Voltar
           </UaiButton>
         )}
-        {current < STEPS.length - 1 && <UaiButton onClick={() => go(current + 1, true)}>Próxima etapa</UaiButton>}
-        {current === STEPS.length - 1 && (
-          <UaiButton
-            onClick={async () => {
-              await stepper.current.setCompletedStep(current);
-              setCurrent(STEPS.length);
-            }}
-          >
+        {current < STEPS.length && (
+          <UaiButton onClick={() => setCurrent(current + 1)}>
+            {current === STEPS.length - 1 ? 'Concluir' : 'Próxima etapa'}
+          </UaiButton>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export const Navigable = () => {
+  const [current, setCurrent] = useState(0);
+  const [done, setDone] = useState([]);
+  const [values, setValues] = useState({ 0: '', 1: '', 2: '' });
+
+  // The stepper only reports the choice: step state and answers live here, so going back keeps everything.
+  const complete = () => setDone((prev) => (prev.includes(current) ? prev : [...prev, current]));
+
+  const advance = () => {
+    complete();
+    setCurrent(current + 1);
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--uai-spacing-md)' }}>
+      <UaiStepper navigable onUaiStepChange={(event) => setCurrent(event.detail.index)}>
+        {STEPS.map((step, index) => (
+          <UaiStep
+            key={step.heading}
+            active={index === current}
+            completed={done.includes(index)}
+            disabled={index > 0 && !done.includes(index - 1) && index !== current}
+            heading={step.heading}
+            description={step.description}
+          />
+        ))}
+      </UaiStepper>
+      <UaiInput
+        key={current}
+        label={STEPS[current].heading}
+        value={values[current]}
+        onUaiChange={(event) => setValues((prev) => ({ ...prev, [current]: event.detail.value }))}
+      />
+      <div>
+        {current < STEPS.length - 1 ? (
+          <UaiButton disabled={!values[current]} onClick={advance}>
+            Próxima etapa
+          </UaiButton>
+        ) : (
+          <UaiButton disabled={!values[current]} onClick={complete}>
             Concluir
           </UaiButton>
         )}

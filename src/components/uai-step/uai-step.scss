@@ -82,6 +82,11 @@
 
 .step--pointer {
   cursor: pointer;
+
+  &:focus-visible {
+    outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--uai-border-ring, #{$uai-border-ring});
+    outline-offset: calc(-1 * var(--uai-spacing-3xs, #{$uai-spacing-3xs}));
+  }
 }
 
 .step--disabled {

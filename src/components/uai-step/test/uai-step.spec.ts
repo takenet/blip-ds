@@ -53,4 +53,29 @@ describe('uai-step', () => {
     const { root } = await render('<uai-step pointer disabled heading="One"></uai-step>');
     expect(root.querySelector('.step--pointer')).toBeNull();
   });
+
+  it('is a focusable button that announces its index when clickable', async () => {
+    const { page, root } = await render('<uai-step pointer index="2" heading="One"></uai-step>');
+    const content = root.querySelector('.step') as HTMLElement;
+    expect(content.getAttribute('role')).toBe('button');
+    expect(content.getAttribute('tabindex')).toBe('0');
+    const selected = jest.fn();
+    page.root.addEventListener('uaiStepSelect', (event: CustomEvent) => selected(event.detail));
+    content.click();
+    content.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
+    content.dispatchEvent(new KeyboardEvent('keydown', { key: ' ' }));
+    content.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+    expect(selected.mock.calls).toEqual([[2], [2], [2]]);
+  });
+
+  it('is neither a button nor selectable when disabled or not clickable', async () => {
+    for (const html of ['<uai-step pointer disabled heading="One"></uai-step>', '<uai-step heading="One"></uai-step>']) {
+      const { page, root } = await render(html);
+      const selected = jest.fn();
+      page.root.addEventListener('uaiStepSelect', selected);
+      (root.querySelector('.step') as HTMLElement).click();
+      expect(root.querySelector('.step').getAttribute('role')).toBeNull();
+      expect(selected).not.toHaveBeenCalled();
+    }
+  });
 });

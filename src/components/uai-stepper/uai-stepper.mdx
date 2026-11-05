@@ -23,13 +23,21 @@ Use as props `heading` e `description` para texto simples ou os slots `heading` 
 
 ## Estados
 
-`completed` troca o número por um check, `active` destaca a etapa atual (e vence `completed` se os dois estiverem ligados) e `disabled` indica uma etapa ainda inacessível. `pointer` mostra o cursor de clique quando os passos são clicáveis.
+`completed` troca o número por um check, `active` destaca a etapa atual (e vence `completed` se os dois estiverem ligados) e `disabled` indica uma etapa ainda inacessível. `pointer` torna um passo clicável e focável (use `navigable` no stepper para aplicar a todos).
 
 <Canvas of={StepperStories.States} />
 
+## Voltar para uma etapa
+
+Com `navigable`, qualquer passo habilitado vira um botão (clique, Enter ou Espaço), inclusive os já concluídos. O stepper dispara `uaiStepChange` (`detail`: `{ index, previousIndex }`) e ativa o passo escolhido; os passos concluídos continuam concluídos, então voltar não perde o progresso. Chame `event.preventDefault()` para impedir a troca, por exemplo se o passo atual for inválido, e marque `disabled` nos passos que ainda não podem ser acessados.
+
+O stepper só indica a etapa: os dados de cada etapa ficam no estado da sua tela. Mantenha-os fora do conteúdo do passo (ou deixe os painéis montados e apenas escondidos) para que continuem preenchidos ao voltar. No exemplo, voltar ao passo 1 mantém o que foi digitado no passo 2.
+
+<Canvas of={StepperStories.Navigable} />
+
 ## Controlando as etapas
 
-O stepper não avança sozinho: use os métodos para refletir o estado do seu fluxo.
+O stepper não avança sozinho. Em HTML puro, use os métodos para refletir o estado do seu fluxo; em React, prefira props derivadas do estado (veja abaixo).
 
 | Método | Descrição |
 | --- | --- |
@@ -38,6 +46,8 @@ O stepper não avança sozinho: use os métodos para refletir o estado do seu fl
 | `getActiveStep()` | Índice do passo ativo, ou `-1` se nenhum estiver ativo. |
 | `resetActiveSteps()` | Remove o estado ativo de todos. |
 | `resetCompletedSteps()` | Remove o estado concluído de todos. |
+
+Em React (e em qualquer wrapper que reaplica as props a cada render), derive `active` e `completed` do estado em vez de misturar props fixas com os métodos: uma prop como `active={index === 0}` é regravada a cada render e desfaz o `setActiveStep`. O exemplo abaixo guia os passos só pelo estado.
 
 <Canvas of={StepperStories.Controlled} />
 

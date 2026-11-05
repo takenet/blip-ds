@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
 export type UaiStepOrientation = 'horizontal' | 'vertical';
 
@@ -39,11 +39,28 @@ export class UaiStep {
   /** Position of the step, starting at 0. Set by the stepper; avoid setting it by hand. */
   @Prop({ mutable: true }) index?: number = 0;
 
-  /** Shows a pointer cursor. Use when steps are clickable; ignored on disabled steps. */
+  /** Makes the step clickable and focusable, announcing uaiStepSelect. Use for steps the person can go back to; set by the stepper when navigable; ignored on disabled steps. */
   @Prop({ reflect: true }) pointer?: boolean = false;
 
   /** Data test is the prop to specifically test the component action object. */
   @Prop() dataTest?: string = null;
+
+  /** Index of the step when the person selects it by click, Enter or Space. Only fires when the step is clickable (pointer) and not disabled. */
+  @Event() uaiStepSelect!: EventEmitter<number>;
+
+  private get interactive(): boolean {
+    return !!this.pointer && !this.disabled;
+  }
+
+  private select = (): void => {
+    if (this.interactive) this.uaiStepSelect.emit(this.index);
+  };
+
+  private onKeyDown = (event: KeyboardEvent): void => {
+    if (!this.interactive || (event.key !== 'Enter' && event.key !== ' ')) return;
+    event.preventDefault();
+    this.select();
+  };
 
   private get state(): 'active' | 'completed' | 'pending' {
     if (this.active) return 'active';
@@ -65,6 +82,10 @@ export class UaiStep {
             'step--pointer': this.pointer && !this.disabled,
           }}
           data-test={this.dataTest}
+          role={this.interactive ? 'button' : undefined}
+          tabindex={this.interactive ? 0 : undefined}
+          onClick={this.select}
+          onKeyDown={this.onKeyDown}
         >
           <div class="step__number">
             <span class="step__marker" aria-hidden="true">

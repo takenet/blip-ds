@@ -1228,14 +1228,14 @@ export const UaiStep = createComponent({
     tagName: 'uai-step',
     elementClass: UaiStepElement,
     react: React,
-    events: {},
+    events: { onUaiStepSelect: 'uaiStepSelect' },
     defineCustomElement: defineUaiStep
 });
 export const UaiStepper = createComponent({
     tagName: 'uai-stepper',
     elementClass: UaiStepperElement,
     react: React,
-    events: {},
+    events: { onUaiStepChange: 'uaiStepChange' },
     defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({

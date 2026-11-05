@@ -12,9 +12,17 @@ The stepper numbers the steps, marks the last one and sets their orientation.
 
 ## Properties
 
-| Property      | Attribute     | Description                                                                                                                                                       | Type                         | Default        |
-| ------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------- |
-| `orientation` | `orientation` | Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values. | `"horizontal" \| "vertical"` | `'horizontal'` |
+| Property      | Attribute     | Description                                                                                                                                                                                                   | Type                         | Default        |
+| ------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | -------------- |
+| `navigable`   | `navigable`   | Lets the person click any enabled step, completed or not, to go back or jump. Use for flows where earlier answers can be reviewed; pair with disabled on unreachable steps; avoid it when order is mandatory. | `boolean`                    | `false`        |
+| `orientation` | `orientation` | Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values.                                             | `"horizontal" \| "vertical"` | `'horizontal'` |
+
+
+## Events
+
+| Event           | Description                                                                                                                                                                                                                                                                                                                                                                   | Type                                                     |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `uaiStepChange` | Fires when the person selects a step other than the active one. detail: the new index and the previous one (-1 if none). Cancelable: call preventDefault to veto the change, e.g. while the current step is invalid. Otherwise the stepper activates the step. Completed steps keep their state, so going back never loses progress; keep the panels' data in your own state. | `CustomEvent<{ index: number; previousIndex: number; }>` |
 
 
 ## Methods
