@@ -1,1 +1,1 @@
-import{C as o,d as s}from"./p-DoWXctkD.js";const t=o,p=s;export{t as BdsCheckbox,p as defineCustomElement}
+import{C as o,d as s}from"./p-0O8Q5yMV.js";const p=o,r=s;export{p as BdsCheckbox,r as defineCustomElement}

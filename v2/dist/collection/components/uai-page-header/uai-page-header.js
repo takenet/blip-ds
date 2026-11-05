@@ -13,9 +13,9 @@ export class UaiPageHeader {
          */
         this.level = 'primary';
         /**
-         * Primary page title. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
+         * Primary page heading. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
          */
-        this.title = '';
+        this.heading = '';
         /**
          * Secondary breadcrumb items, as JSON or array. Use ancestor-to-current order; pair with level secondary; avoid context selectors.
          */
@@ -39,7 +39,7 @@ export class UaiPageHeader {
             warnLegacyValue('uai-page-header', 'level', level, 'primary');
             level = 'primary';
         }
-        return (h("header", { key: 'd26353409aca8416f04fd94f4cd2dd4392ad4bda', class: "header" }, h("div", { key: '1b0833917837c9413b2b5ecacbb9474d4b396647', class: "header__main" }, level === 'primary' ? (h("uai-typo", { class: "header__title", tag: "h1", variant: "title-md", bold: "semibold", margin: false }, this.title)) : (h("uai-breadcrumb", { items: this.items, wrapItems: this.wrapItems, editable: this.editable, language: this.language, labels: this.labels, currentHeadingLevel: 1 }))), h("div", { key: 'fae186253a6f40680d687047f960798a875cb39c', class: "header__actions" }, h("slot", { key: '43f060ea26eb4c2a36fcb576da4e1a0f9666a2e4', name: "actions" }))));
+        return (h("header", { key: '67fc13c0605f330d29c6d237d49677e8d651c8aa', class: "header" }, h("div", { key: '4d70d5f8d2ea41bc00cf990a4dc39030be949909', class: "header__main" }, level === 'primary' ? (h("uai-typo", { class: "header__title", tag: "h1", variant: "title-md", bold: "semibold", margin: false }, this.heading)) : (h("uai-breadcrumb", { items: this.items, wrapItems: this.wrapItems, editable: this.editable, language: this.language, labels: this.labels, currentHeadingLevel: 1 }))), h("div", { key: '4986c4dc8aa4c9721b4c283783a5742979aad38b', class: "header__actions" }, h("slot", { key: 'c0052adf72fceca83e6b9339e951522e3c4179dd', name: "actions" }))));
     }
     static get is() { return "uai-page-header"; }
     static get encapsulation() { return "shadow"; }
@@ -81,7 +81,7 @@ export class UaiPageHeader {
                 "attribute": "level",
                 "defaultValue": "'primary'"
             },
-            "title": {
+            "heading": {
                 "type": "string",
                 "mutable": false,
                 "complexType": {
@@ -93,12 +93,12 @@ export class UaiPageHeader {
                 "optional": false,
                 "docs": {
                     "tags": [],
-                    "text": "Primary page title. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback."
+                    "text": "Primary page heading. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
-                "attribute": "title",
+                "attribute": "heading",
                 "defaultValue": "''"
             },
             "items": {

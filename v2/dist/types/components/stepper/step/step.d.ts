@@ -1,4 +1,7 @@
 import { ComponentInterface } from '../../../stencil-public-runtime';
+/**
+ * @deprecated Use uai-step inside uai-stepper for tokenized styling and accessible list semantics.
+ */
 export declare class BdsStep implements ComponentInterface {
     el: HTMLBdsToastElement;
     /**

@@ -139,10 +139,10 @@ const Slider = class {
         return valueSteps.map((term) => ({ value: term, name: term * this.step + this.min }));
     }
     render() {
-        return (h(Host, { key: '36a29be594999b6c39beb267ee61b34eaeaa5c2a' }, h("input", { key: '989812b18d8c917552a5762c6d1e635468bf022c', ref: this.refInputSlide, type: "range", class: {
+        return (h(Host, { key: 'df89a4d207383405e822185ac5109dce584b49f5' }, h("input", { key: '7ad524679446c4575b91c8fac2188cd8c6c6fb0a', ref: this.refInputSlide, type: "range", class: {
                 input_slide: true,
-            }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { key: 'ac8a1fcaebe630df48707c455cc7c68c606f579c', class: "track-bg" }, this.markers &&
-            this.stepArray.map((item, index) => (h("div", { key: index, class: { step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 } }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { key: '40e54d4e87b282782a68145a06c3b0c12991a3fb', class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { key: '83720d0d3c8d7e49c5aaf8af88e677e4ee9fcbda', ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: this.tooltipPosition, "tooltip-text": this.inputValue }, h("div", { key: '141e246be71205a5128210a8054270c9d09f9294', class: { [`progress-bar-thumb`]: true } }))))));
+            }, value: this.value, onInput: this.onInputSlide, onMouseEnter: this.onInputMouseEnter, onMouseLeave: this.onInputMouseLeave, "data-test": this.dataTest }), h("div", { key: '29d1baaf9fb0b047434a289ad58f8f622f3e6b99', class: "track-bg" }, this.markers &&
+            this.stepArray.map((item, index) => (h("div", { key: index, class: { step: true, 'step--first': index === 0, 'step--last': index === this.stepArray.length - 1 } }, this.label && h("bds-typo", { class: "label-step", variant: "fs-10" }, `${item.name}`)))), h("div", { key: 'd6a6a73e1bf074747975ea92b0a0d1e625fd2d2f', class: { [`progress-bar`]: true, [`progress-bar-liner`]: this.type !== 'no-linear' }, ref: this.refProgressBar }, h("bds-tooltip", { key: '0903836093fa910441c8df59d1daaf9531441d05', ref: this.refBdsTooltip, class: { [`progress-bar-tooltip`]: true }, position: this.tooltipPosition, "tooltip-text": this.inputValue }, h("div", { key: '95774ea3d63d01f5870ce98ea7dacccbd4aeb9f2', class: { [`progress-bar-thumb`]: true } }))))));
     }
 };
 Slider.style = sliderCss();

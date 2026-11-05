@@ -447,6 +447,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-select-option.entry.js').then(processMod, consoleError);
+                case 'uai-step':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-step.entry.js').then(processMod, consoleError);
+                case 'uai-stepper':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-stepper.entry.js').then(processMod, consoleError);
                 case 'uai-switch':
                     return import(
                       /* webpackMode: "lazy" */

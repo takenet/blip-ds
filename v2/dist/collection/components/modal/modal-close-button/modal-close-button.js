@@ -7,10 +7,10 @@ export class BdsModalCloseButton {
         this.active = true;
     }
     render() {
-        return (h("div", { key: '82622e46bd4c247e4a84d7f91d8ae5eb071f2651', class: {
+        return (h("div", { key: '4989cf333b360a074cf6b658d98bf9f53d0583c8', class: {
                 'modal__close__button-icon': true,
                 'modal__close__button-icon--active': this.active,
-            } }, h("bds-icon", { key: '6b414aaeca19669fc380af1009d4654b931c65e4', size: "medium", name: "close" })));
+            } }, h("bds-icon", { key: '9ab540262b89c1e0b3b147d5c2c9bef07441a022', size: "medium", name: "close" })));
     }
     static get is() { return "bds-modal-close-button"; }
     static get encapsulation() { return "shadow"; }

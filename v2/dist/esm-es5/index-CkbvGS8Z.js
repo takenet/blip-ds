@@ -175,7 +175,11 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-radio-group.entry.js").then(u,consoleError);case"uai-select-option":return import(
 /* webpackMode: "lazy" */
-"./uai-select-option.entry.js").then(u,consoleError);case"uai-switch":return import(
+"./uai-select-option.entry.js").then(u,consoleError);case"uai-step":return import(
+/* webpackMode: "lazy" */
+"./uai-step.entry.js").then(u,consoleError);case"uai-stepper":return import(
+/* webpackMode: "lazy" */
+"./uai-stepper.entry.js").then(u,consoleError);case"uai-switch":return import(
 /* webpackMode: "lazy" */
 "./uai-switch.entry.js").then(u,consoleError);case"uai-tab-item":return import(
 /* webpackMode: "lazy" */

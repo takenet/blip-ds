@@ -1,4 +1,7 @@
 import { ComponentInterface } from '../../stencil-public-runtime';
+/**
+ * @deprecated Use uai-stepper with UaiStep and UaiThemeProvider for tokenized styling and accessible list semantics.
+ */
 export declare class BdsStepper implements ComponentInterface {
     el: HTMLBdsStepperElement;
     connectedCallback(): void;

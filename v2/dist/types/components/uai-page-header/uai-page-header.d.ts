@@ -13,9 +13,9 @@ export declare class UaiPageHeader {
      */
     level: UaiPageHeaderLevel;
     /**
-     * Primary page title. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
+     * Primary page heading. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
      */
-    title: string;
+    heading: string;
     /**
      * Secondary breadcrumb items, as JSON or array. Use ancestor-to-current order; pair with level secondary; avoid context selectors.
      */
