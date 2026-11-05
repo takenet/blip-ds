@@ -129,6 +129,8 @@ import { UaiRadioGroup as UaiRadioGroupElement } from "blip-ds/dist/components/u
 import { UaiRadio as UaiRadioElement } from "blip-ds/dist/components/uai-radio.js";
 import { UaiSelectOption as UaiSelectOptionElement } from "blip-ds/dist/components/uai-select-option.js";
 import { UaiSelect as UaiSelectElement } from "blip-ds/dist/components/uai-select.js";
+import { UaiStep as UaiStepElement } from "blip-ds/dist/components/uai-step.js";
+import { UaiStepper as UaiStepperElement } from "blip-ds/dist/components/uai-stepper.js";
 import { UaiSwitch as UaiSwitchElement } from "blip-ds/dist/components/uai-switch.js";
 import { UaiTabGroup as UaiTabGroupElement } from "blip-ds/dist/components/uai-tab-group.js";
 import { UaiTabItem as UaiTabItemElement } from "blip-ds/dist/components/uai-tab-item.js";
@@ -805,6 +807,10 @@ export type UaiSelectEvents = {
 export declare const UaiSelect: StencilReactComponent<UaiSelectElement, UaiSelectEvents, Components.UaiSelect>;
 export type UaiSelectOptionEvents = NonNullable<unknown>;
 export declare const UaiSelectOption: StencilReactComponent<UaiSelectOptionElement, UaiSelectOptionEvents, Components.UaiSelectOption, 'value'>;
+export type UaiStepEvents = NonNullable<unknown>;
+export declare const UaiStep: StencilReactComponent<UaiStepElement, UaiStepEvents, Components.UaiStep>;
+export type UaiStepperEvents = NonNullable<unknown>;
+export declare const UaiStepper: StencilReactComponent<UaiStepperElement, UaiStepperEvents, Components.UaiStepper>;
 export type UaiSwitchEvents = {
     onUaiChange: EventName<UaiSwitchCustomEvent<{
         checked: boolean;

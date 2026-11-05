@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-step inside uai-stepper for tokenized styling and accessible list semantics.
+
 ## Properties
 
 | Property    | Attribute   | Description                                                                  | Type      | Default |

@@ -1,0 +1,53 @@
+import { Meta, Controls, Canvas } from '@storybook/addon-docs/blocks';
+import * as StepperStories from './uai-stepper.stories';
+
+<Meta of={StepperStories} />
+
+# Stepper
+
+Indica em que etapa de um processo sequencial a pessoa está. O `uai-stepper` agrupa itens `uai-step`: ele numera os passos, marca o último e repassa a orientação. Cada `uai-step` tem marcador numerado, título (`heading`) e descrição (`description`), expõe `role="listitem"` e `aria-current="step"` quando ativo, e o stepper é uma `list`.
+
+<Canvas of={StepperStories.Playground} />
+
+<Controls of={StepperStories.Playground} />
+
+## Orientação
+
+`orientation="horizontal"` (padrão) mostra os passos em linha, com uma barra de estado embaixo de cada um; a descrição é cortada em duas linhas. `orientation="vertical"` empilha os passos e liga os marcadores por uma linha, que acompanha o estado do passo.
+
+<Canvas of={StepperStories.Vertical} />
+
+## Título e descrição
+
+Use as props `heading` e `description` para texto simples ou os slots `heading` e `description` para conteúdo mais rico. Os dois slots têm as props como conteúdo padrão.
+
+## Estados
+
+`completed` troca o número por um check, `active` destaca a etapa atual (e vence `completed` se os dois estiverem ligados) e `disabled` indica uma etapa ainda inacessível. `pointer` mostra o cursor de clique quando os passos são clicáveis.
+
+<Canvas of={StepperStories.States} />
+
+## Controlando as etapas
+
+O stepper não avança sozinho: use os métodos para refletir o estado do seu fluxo.
+
+| Método | Descrição |
+| --- | --- |
+| `setActiveStep(index)` | Ativa o passo (e desativa os outros). Índices inválidos são ignorados. |
+| `setCompletedStep(index)` | Marca o passo como concluído. |
+| `getActiveStep()` | Índice do passo ativo, ou `-1` se nenhum estiver ativo. |
+| `resetActiveSteps()` | Remove o estado ativo de todos. |
+| `resetCompletedSteps()` | Remove o estado concluído de todos. |
+
+<Canvas of={StepperStories.Controlled} />
+
+## Migração de `bds-stepper` / `bds-step`
+
+| `bds-stepper` / `bds-step` | `uai-stepper` / `uai-step` |
+| --- | --- |
+| `bds-stepper`, `bds-step` | `uai-stepper`, `uai-step` |
+| Rótulo no conteúdo do `bds-step` | `heading` e `description` (props ou slots) |
+| Só horizontal, com conectores injetados no DOM | `orientation` horizontal ou vertical, desenhada pelo próprio `uai-step` |
+| `getActiveStep()` falhava sem passo ativo | Retorna `-1` |
+| Índice fora do intervalo gerava erro | É ignorado |
+| Props `active`, `completed`, `disabled`, `pointer`, `index`, `last`, `dataTest` | As mesmas |

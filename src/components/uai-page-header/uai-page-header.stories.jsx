@@ -32,10 +32,10 @@ export const Playground = (args) => (
     <UaiButton slot="actions">Criar relatório</UaiButton>
   </UaiPageHeader>
 );
-Playground.args = { level: 'primary', title: 'Relatórios', items, wrapItems: true, editable: false, language: 'pt_BR', labels: {} };
+Playground.args = { level: 'primary', heading: 'Relatórios', items, wrapItems: true, editable: false, language: 'pt_BR', labels: {} };
 Playground.argTypes = {
   level: { control: 'select', options: ['primary', 'secondary'], description: 'Nível visual, não profundidade. Padrão primary: title; secondary: items.' },
-  title: { control: 'text', description: 'Título primary, padrão vazio. Não é editável e não é fallback do secondary.' },
+  heading: { control: 'text', description: 'Título primary, padrão vazio. Não é editável e não é fallback do secondary.' },
   items: { control: 'object', description: 'Array de { label, href? } ou JSON, padrão []. Repassado ao breadcrumb secondary.' },
   wrapItems: { control: 'boolean', description: 'Padrão true. Acima de três itens recolhe intermediários; false mostra todos.' },
   editable: { control: 'boolean', description: 'Padrão false. Edita somente o atual do secondary; não edita title.' },
@@ -106,12 +106,12 @@ export function ReportPageHeader() {
 
 export const States = () => (
   <div style={column}>
-    <UaiPageHeader title="Relatórios" />
+    <UaiPageHeader heading="Relatórios" />
     <UaiPageHeader level="secondary" items={items} />
     <UaiTypo tag="p" variant="body-base">Edite o atual abaixo; confirme vazio para ver erro ou cancele. As ações continuam disponíveis.</UaiTypo>
     <Usage />
-    <UaiPageHeader level="secondary" title="Este título não é fallback" items={[]} />
-    <UaiPageHeader title="Relatório com ações indisponíveis">
+    <UaiPageHeader level="secondary" heading="Este título não é fallback" items={[]} />
+    <UaiPageHeader heading="Relatório com ações indisponíveis">
       <UaiButton slot="actions" disabled variant="outline" color="content">Exportar indisponível</UaiButton>
       <UaiButton slot="actions" loading>Salvando</UaiButton>
     </UaiPageHeader>
@@ -140,7 +140,7 @@ export const SplitActions = () => {
   const [message, setMessage] = useState('Escolha uma ação.');
   return (
     <div style={column}>
-      <UaiPageHeader title="Relatórios">
+      <UaiPageHeader heading="Relatórios">
         <div slot="actions" role="group" aria-label="Ações de criação do relatório" style={group}>
           <UaiButton onUaiClick={() => setMessage('Criação solicitada.')}>Criar relatório</UaiButton>
           <UaiButton variant="outline" color="content" onUaiClick={() => setMessage('Criação a partir de modelo solicitada.')}>Criar a partir de modelo</UaiButton>
@@ -177,7 +177,7 @@ export const Themes = () => (
       <UaiThemeProvider key={theme} theme={theme}>
         <div style={{ ...column, padding: 'var(--uai-spacing-md)', background: 'var(--uai-surface-paper)', color: 'var(--uai-content-primary)' }}>
           <UaiTypo tag="p" variant="body-base">{theme}: primary, secondary e edição interativa.</UaiTypo>
-          <UaiPageHeader title="Relatórios" />
+          <UaiPageHeader heading="Relatórios" />
           <Usage />
         </div>
       </UaiThemeProvider>

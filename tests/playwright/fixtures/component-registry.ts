@@ -360,9 +360,9 @@ export const WAVE_4: ComponentEntry[] = [
   },
   {
     tag: 'bds-stepper',
-    name: 'Stepper',
-    primaryStory: 'components-stepper--properties',
-    stories: [{ storyId: 'components-stepper--properties', label: 'Properties' }],
+    name: '[deprecated] Stepper',
+    primaryStory: 'components-deprecated-stepper--properties',
+    stories: [{ storyId: 'components-deprecated-stepper--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-slider',

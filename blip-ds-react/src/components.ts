@@ -141,6 +141,8 @@ import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUai
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
 import { UaiSelectOption as UaiSelectOptionElement, defineCustomElement as defineUaiSelectOption } from "blip-ds/dist/components/uai-select-option.js";
 import { UaiSelect as UaiSelectElement, defineCustomElement as defineUaiSelect } from "blip-ds/dist/components/uai-select.js";
+import { UaiStep as UaiStepElement, defineCustomElement as defineUaiStep } from "blip-ds/dist/components/uai-step.js";
+import { UaiStepper as UaiStepperElement, defineCustomElement as defineUaiStepper } from "blip-ds/dist/components/uai-stepper.js";
 import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
 import { UaiTabGroup as UaiTabGroupElement, defineCustomElement as defineUaiTabGroup } from "blip-ds/dist/components/uai-tab-group.js";
 import { UaiTabItem as UaiTabItemElement, defineCustomElement as defineUaiTabItem } from "blip-ds/dist/components/uai-tab-item.js";
@@ -1929,6 +1931,28 @@ export const UaiSelectOption: StencilReactComponent<UaiSelectOptionElement, UaiS
     react: React,
     events: {} as UaiSelectOptionEvents,
     defineCustomElement: defineUaiSelectOption
+});
+
+export type UaiStepEvents = NonNullable<unknown>;
+
+export const UaiStep: StencilReactComponent<UaiStepElement, UaiStepEvents, Components.UaiStep> = /*@__PURE__*/ createComponent<UaiStepElement, UaiStepEvents, Components.UaiStep>({
+    tagName: 'uai-step',
+    elementClass: UaiStepElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiStepEvents,
+    defineCustomElement: defineUaiStep
+});
+
+export type UaiStepperEvents = NonNullable<unknown>;
+
+export const UaiStepper: StencilReactComponent<UaiStepperElement, UaiStepperEvents, Components.UaiStepper> = /*@__PURE__*/ createComponent<UaiStepperElement, UaiStepperEvents, Components.UaiStepper>({
+    tagName: 'uai-stepper',
+    elementClass: UaiStepperElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiStepperEvents,
+    defineCustomElement: defineUaiStepper
 });
 
 export type UaiSwitchEvents = { onUaiChange: EventName<UaiSwitchCustomEvent<{ checked: boolean }>> };

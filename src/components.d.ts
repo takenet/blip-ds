@@ -96,6 +96,7 @@ import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem 
 import { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
+import { UaiStepOrientation } from "./components/uai-step/uai-step";
 import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 import { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
 import { UaiTableRowVariant } from "./components/uai-table-row/uai-table-row";
@@ -194,6 +195,7 @@ export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem 
 export { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
+export { UaiStepOrientation } from "./components/uai-step/uai-step";
 export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 export { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
 export { UaiTableRowVariant } from "./components/uai-table-row/uai-table-row";
@@ -3214,6 +3216,9 @@ export namespace Components {
          */
         "value"?: number;
     }
+    /**
+     * @deprecated Use uai-step inside uai-stepper for tokenized styling and accessible list semantics.
+     */
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -3251,6 +3256,9 @@ export namespace Components {
          */
         "pointer"?: boolean;
     }
+    /**
+     * @deprecated Use uai-stepper with UaiStep and UaiThemeProvider for tokenized styling and accessible list semantics.
+     */
     interface BdsStepper {
         /**
           * Returns the active step
@@ -5316,6 +5324,11 @@ export namespace Components {
          */
         "editable": boolean;
         /**
+          * Primary page heading. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
+          * @default ''
+         */
+        "heading": string;
+        /**
           * Secondary breadcrumb items, as JSON or array. Use ancestor-to-current order; pair with level secondary; avoid context selectors.
           * @default []
          */
@@ -5334,11 +5347,6 @@ export namespace Components {
           * @default 'primary'
          */
         "level": UaiPageHeaderLevel;
-        /**
-          * Primary page title. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
-          * @default ''
-         */
-        "title": string;
         /**
           * Collapses intermediate breadcrumb items above three. Use false to show all; pair with items; avoid imposing a depth limit.
           * @default true
@@ -5683,6 +5691,95 @@ export namespace Components {
           * Value submitted and emitted when the option is chosen. Use a short stable string; pair with the label text; avoid duplicates inside one select.
          */
         "value": string;
+    }
+    /**
+     * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
+     * Use inside uai-stepper, which sets its orientation, number and position; avoid it outside a stepper.
+     */
+    interface UaiStep {
+        /**
+          * Marks the current stage. Use with setActiveStep; avoid more than one active step.
+          * @default false
+         */
+        "active"?: boolean;
+        /**
+          * Marks the stage as done and shows a check. Use with setCompletedStep; the active step wins over completed.
+          * @default false
+         */
+        "completed"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Step description. Use for one or two lines of detail; pair with heading; in the horizontal stepper it is cut at two lines.
+          * @default null
+         */
+        "description"?: string;
+        /**
+          * Makes the step unavailable. Use for stages that cannot be reached yet; avoid combining it with pointer.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Step title. Use a short noun phrase; pair with description for details; avoid long sentences.
+          * @default null
+         */
+        "heading"?: string;
+        /**
+          * Position of the step, starting at 0. Set by the stepper; avoid setting it by hand.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * Marks the last step, which draws no connector in the vertical layout. Set by the stepper; avoid setting it by hand.
+          * @default false
+         */
+        "last"?: boolean;
+        /**
+          * Layout of the step. Set by the stepper from its orientation; avoid setting it by hand.
+          * @default 'horizontal'
+         */
+        "orientation"?: UaiStepOrientation;
+        /**
+          * Shows a pointer cursor. Use when steps are clickable; ignored on disabled steps.
+          * @default false
+         */
+        "pointer"?: boolean;
+    }
+    /**
+     * Sequential steps of a process. Use for flows with ordered stages; pair with UaiStep; avoid it for free navigation between views (use uai-tab-group).
+     * The stepper numbers the steps, marks the last one and sets their orientation.
+     */
+    interface UaiStepper {
+        /**
+          * Index of the active step, or -1 when none is active. Use to decide the next step; pair with setActiveStep; avoid assuming a step is always active.
+         */
+        "getActiveStep": () => Promise<number>;
+        /**
+          * Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values.
+          * @default 'horizontal'
+         */
+        "orientation": 'horizontal' | 'vertical';
+        /**
+          * Clears the active state of every step. Use before restarting a flow; pair with resetCompletedSteps.
+         */
+        "resetActiveSteps": () => Promise<void>;
+        /**
+          * Clears the completed state of every step. Use before restarting a flow; pair with resetActiveSteps.
+         */
+        "resetCompletedSteps": () => Promise<void>;
+        /**
+          * Sets the active step. Use for moving forward or back; pair with setCompletedStep; avoid indexes outside the steps, which are ignored.
+          * @param index Zero-based index of the step.
+         */
+        "setActiveStep": (index: number) => Promise<void>;
+        /**
+          * Marks a step as completed. Use after the person finishes a stage; pair with setActiveStep; avoid indexes outside the steps, which are ignored.
+          * @param index Zero-based index of the step.
+         */
+        "setCompletedStep": (index: number) => Promise<void>;
     }
     /**
      * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
@@ -7725,12 +7822,18 @@ declare global {
         prototype: HTMLBdsSliderElement;
         new (): HTMLBdsSliderElement;
     };
+    /**
+     * @deprecated Use uai-step inside uai-stepper for tokenized styling and accessible list semantics.
+     */
     interface HTMLBdsStepElement extends Components.BdsStep, HTMLStencilElement {
     }
     var HTMLBdsStepElement: {
         prototype: HTMLBdsStepElement;
         new (): HTMLBdsStepElement;
     };
+    /**
+     * @deprecated Use uai-stepper with UaiStep and UaiThemeProvider for tokenized styling and accessible list semantics.
+     */
     interface HTMLBdsStepperElement extends Components.BdsStepper, HTMLStencilElement {
     }
     var HTMLBdsStepperElement: {
@@ -8430,6 +8533,26 @@ declare global {
         prototype: HTMLUaiSelectOptionElement;
         new (): HTMLUaiSelectOptionElement;
     };
+    /**
+     * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
+     * Use inside uai-stepper, which sets its orientation, number and position; avoid it outside a stepper.
+     */
+    interface HTMLUaiStepElement extends Components.UaiStep, HTMLStencilElement {
+    }
+    var HTMLUaiStepElement: {
+        prototype: HTMLUaiStepElement;
+        new (): HTMLUaiStepElement;
+    };
+    /**
+     * Sequential steps of a process. Use for flows with ordered stages; pair with UaiStep; avoid it for free navigation between views (use uai-tab-group).
+     * The stepper numbers the steps, marks the last one and sets their orientation.
+     */
+    interface HTMLUaiStepperElement extends Components.UaiStepper, HTMLStencilElement {
+    }
+    var HTMLUaiStepperElement: {
+        prototype: HTMLUaiStepperElement;
+        new (): HTMLUaiStepperElement;
+    };
     interface HTMLUaiSwitchElementEventMap {
         "uaiChange": { checked: boolean };
     }
@@ -8750,6 +8873,8 @@ declare global {
         "uai-radio-group": HTMLUaiRadioGroupElement;
         "uai-select": HTMLUaiSelectElement;
         "uai-select-option": HTMLUaiSelectOptionElement;
+        "uai-step": HTMLUaiStepElement;
+        "uai-stepper": HTMLUaiStepperElement;
         "uai-switch": HTMLUaiSwitchElement;
         "uai-tab-group": HTMLUaiTabGroupElement;
         "uai-tab-item": HTMLUaiTabItemElement;
@@ -12083,6 +12208,9 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    /**
+     * @deprecated Use uai-step inside uai-stepper for tokenized styling and accessible list semantics.
+     */
     interface BdsStep {
         /**
           * Used to set the step as active
@@ -12120,6 +12248,9 @@ declare namespace LocalJSX {
          */
         "pointer"?: boolean;
     }
+    /**
+     * @deprecated Use uai-stepper with UaiStep and UaiThemeProvider for tokenized styling and accessible list semantics.
+     */
     interface BdsStepper {
     }
     /**
@@ -14202,6 +14333,11 @@ declare namespace LocalJSX {
          */
         "editable"?: boolean;
         /**
+          * Primary page heading. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
+          * @default ''
+         */
+        "heading"?: string;
+        /**
           * Secondary breadcrumb items, as JSON or array. Use ancestor-to-current order; pair with level secondary; avoid context selectors.
           * @default []
          */
@@ -14228,11 +14364,6 @@ declare namespace LocalJSX {
           * Rename request bubbling from the breadcrumb. Use to update items; pair with editable; avoid assuming persistence succeeded.
          */
         "onUaiBreadcrumbItemEdit"?: (event: UaiPageHeaderCustomEvent<UaiBreadcrumbEditDetail1>) => void;
-        /**
-          * Primary page title. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
-          * @default ''
-         */
-        "title"?: string;
         /**
           * Collapses intermediate breadcrumb items above three. Use false to show all; pair with items; avoid imposing a depth limit.
           * @default true
@@ -14593,6 +14724,73 @@ declare namespace LocalJSX {
           * Value submitted and emitted when the option is chosen. Use a short stable string; pair with the label text; avoid duplicates inside one select.
          */
         "value": string;
+    }
+    /**
+     * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
+     * Use inside uai-stepper, which sets its orientation, number and position; avoid it outside a stepper.
+     */
+    interface UaiStep {
+        /**
+          * Marks the current stage. Use with setActiveStep; avoid more than one active step.
+          * @default false
+         */
+        "active"?: boolean;
+        /**
+          * Marks the stage as done and shows a check. Use with setCompletedStep; the active step wins over completed.
+          * @default false
+         */
+        "completed"?: boolean;
+        /**
+          * Data test is the prop to specifically test the component action object.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Step description. Use for one or two lines of detail; pair with heading; in the horizontal stepper it is cut at two lines.
+          * @default null
+         */
+        "description"?: string;
+        /**
+          * Makes the step unavailable. Use for stages that cannot be reached yet; avoid combining it with pointer.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Step title. Use a short noun phrase; pair with description for details; avoid long sentences.
+          * @default null
+         */
+        "heading"?: string;
+        /**
+          * Position of the step, starting at 0. Set by the stepper; avoid setting it by hand.
+          * @default 0
+         */
+        "index"?: number;
+        /**
+          * Marks the last step, which draws no connector in the vertical layout. Set by the stepper; avoid setting it by hand.
+          * @default false
+         */
+        "last"?: boolean;
+        /**
+          * Layout of the step. Set by the stepper from its orientation; avoid setting it by hand.
+          * @default 'horizontal'
+         */
+        "orientation"?: UaiStepOrientation;
+        /**
+          * Shows a pointer cursor. Use when steps are clickable; ignored on disabled steps.
+          * @default false
+         */
+        "pointer"?: boolean;
+    }
+    /**
+     * Sequential steps of a process. Use for flows with ordered stages; pair with UaiStep; avoid it for free navigation between views (use uai-tab-group).
+     * The stepper numbers the steps, marks the last one and sets their orientation.
+     */
+    interface UaiStepper {
+        /**
+          * Layout of the steps: a row with a state bar under each step, or a column with connectors. Use vertical for long labels or narrow areas; avoid unsupported values.
+          * @default 'horizontal'
+         */
+        "orientation"?: 'horizontal' | 'vertical';
     }
     /**
      * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
@@ -16390,7 +16588,7 @@ declare namespace LocalJSX {
     }
     interface UaiPageHeaderAttributes {
         "level": UaiPageHeaderLevel;
-        "title": string;
+        "heading": string;
         "items": string | UaiBreadcrumbItem[];
         "wrapItems": boolean;
         "editable": boolean;
@@ -16461,6 +16659,21 @@ declare namespace LocalJSX {
         "value": string;
         "disabled": boolean;
         "icon": string;
+    }
+    interface UaiStepAttributes {
+        "heading": string;
+        "description": string;
+        "orientation": UaiStepOrientation;
+        "last": boolean;
+        "completed": boolean;
+        "active": boolean;
+        "disabled": boolean;
+        "index": number;
+        "pointer": boolean;
+        "dataTest": string;
+    }
+    interface UaiStepperAttributes {
+        "orientation": 'horizontal' | 'vertical';
     }
     interface UaiSwitchAttributes {
         "refer": string;
@@ -16720,6 +16933,8 @@ declare namespace LocalJSX {
         "uai-radio-group": Omit<UaiRadioGroup, keyof UaiRadioGroupAttributes> & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes]?: UaiRadioGroup[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `attr:${K}`]?: UaiRadioGroupAttributes[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `prop:${K}`]?: UaiRadioGroup[K] };
         "uai-select": Omit<UaiSelect, keyof UaiSelectAttributes> & { [K in keyof UaiSelect & keyof UaiSelectAttributes]?: UaiSelect[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `attr:${K}`]?: UaiSelectAttributes[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `prop:${K}`]?: UaiSelect[K] };
         "uai-select-option": Omit<UaiSelectOption, keyof UaiSelectOptionAttributes> & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes]?: UaiSelectOption[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `attr:${K}`]?: UaiSelectOptionAttributes[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `prop:${K}`]?: UaiSelectOption[K] } & OneOf<"value", UaiSelectOption["value"], UaiSelectOptionAttributes["value"]>;
+        "uai-step": Omit<UaiStep, keyof UaiStepAttributes> & { [K in keyof UaiStep & keyof UaiStepAttributes]?: UaiStep[K] } & { [K in keyof UaiStep & keyof UaiStepAttributes as `attr:${K}`]?: UaiStepAttributes[K] } & { [K in keyof UaiStep & keyof UaiStepAttributes as `prop:${K}`]?: UaiStep[K] };
+        "uai-stepper": Omit<UaiStepper, keyof UaiStepperAttributes> & { [K in keyof UaiStepper & keyof UaiStepperAttributes]?: UaiStepper[K] } & { [K in keyof UaiStepper & keyof UaiStepperAttributes as `attr:${K}`]?: UaiStepperAttributes[K] } & { [K in keyof UaiStepper & keyof UaiStepperAttributes as `prop:${K}`]?: UaiStepper[K] };
         "uai-switch": Omit<UaiSwitch, keyof UaiSwitchAttributes> & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes]?: UaiSwitch[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `attr:${K}`]?: UaiSwitchAttributes[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `prop:${K}`]?: UaiSwitch[K] };
         "uai-tab-group": Omit<UaiTabGroup, keyof UaiTabGroupAttributes> & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes]?: UaiTabGroup[K] } & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes as `attr:${K}`]?: UaiTabGroupAttributes[K] } & { [K in keyof UaiTabGroup & keyof UaiTabGroupAttributes as `prop:${K}`]?: UaiTabGroup[K] };
         "uai-tab-item": Omit<UaiTabItem, keyof UaiTabItemAttributes> & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes]?: UaiTabItem[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `attr:${K}`]?: UaiTabItemAttributes[K] } & { [K in keyof UaiTabItem & keyof UaiTabItemAttributes as `prop:${K}`]?: UaiTabItem[K] };
@@ -16867,7 +17082,13 @@ declare module "@stencil/core" {
             "bds-sidebar": LocalJSX.IntrinsicElements["bds-sidebar"] & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
             "bds-skeleton": LocalJSX.IntrinsicElements["bds-skeleton"] & JSXBase.HTMLAttributes<HTMLBdsSkeletonElement>;
             "bds-slider": LocalJSX.IntrinsicElements["bds-slider"] & JSXBase.HTMLAttributes<HTMLBdsSliderElement>;
+            /**
+             * @deprecated Use uai-step inside uai-stepper for tokenized styling and accessible list semantics.
+             */
             "bds-step": LocalJSX.IntrinsicElements["bds-step"] & JSXBase.HTMLAttributes<HTMLBdsStepElement>;
+            /**
+             * @deprecated Use uai-stepper with UaiStep and UaiThemeProvider for tokenized styling and accessible list semantics.
+             */
             "bds-stepper": LocalJSX.IntrinsicElements["bds-stepper"] & JSXBase.HTMLAttributes<HTMLBdsStepperElement>;
             /**
              * @deprecated Use uai-switch with UaiThemeProvider for tokenized settings and native form support.
@@ -17053,6 +17274,16 @@ declare module "@stencil/core" {
              * nothing by itself.
              */
             "uai-select-option": LocalJSX.IntrinsicElements["uai-select-option"] & JSXBase.HTMLAttributes<HTMLUaiSelectOptionElement>;
+            /**
+             * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
+             * Use inside uai-stepper, which sets its orientation, number and position; avoid it outside a stepper.
+             */
+            "uai-step": LocalJSX.IntrinsicElements["uai-step"] & JSXBase.HTMLAttributes<HTMLUaiStepElement>;
+            /**
+             * Sequential steps of a process. Use for flows with ordered stages; pair with UaiStep; avoid it for free navigation between views (use uai-tab-group).
+             * The stepper numbers the steps, marks the last one and sets their orientation.
+             */
+            "uai-stepper": LocalJSX.IntrinsicElements["uai-stepper"] & JSXBase.HTMLAttributes<HTMLUaiStepperElement>;
             /**
              * Binary setting applied immediately. Use an accessible name; pair with UaiThemeProvider.
              * Avoid switches for submitting a form or choosing mutually exclusive options.

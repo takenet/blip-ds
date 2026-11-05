@@ -27,9 +27,9 @@ export class UaiPageHeader {
   @Prop() level: UaiPageHeaderLevel = 'primary';
 
   /**
-   * Primary page title. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
+   * Primary page heading. Use with level primary; pair with actions; avoid expecting a secondary breadcrumb fallback.
    */
-  @Prop() title: string = '';
+  @Prop() heading: string = '';
 
   /**
    * Secondary breadcrumb items, as JSON or array. Use ancestor-to-current order; pair with level secondary; avoid context selectors.
@@ -77,7 +77,7 @@ export class UaiPageHeader {
         <div class="header__main">
           {level === 'primary' ? (
             <uai-typo class="header__title" tag="h1" variant="title-md" bold="semibold" margin={false}>
-              {this.title}
+              {this.heading}
             </uai-typo>
           ) : (
             <uai-breadcrumb
