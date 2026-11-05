@@ -41,7 +41,7 @@ Use propriedades do elemento para arrays/`labels`, e `addEventListener('uaiBread
 | Prop / slot | Contrato |
 | --- | --- |
 | `level` | `'primary'` (padrão) ou `'secondary'` |
-| `title` | `string`, padrão `''`; usado somente em primary |
+| `heading` | `string`, padrão `''`; usado somente em primary |
 | `items` | `string` JSON ou `Array<{ label: string; href?: string }>`, padrão `[]` |
 | `wrapItems` | `boolean`, padrão `true`; repassado ao breadcrumb |
 | `editable` | `boolean`, padrão `false`; somente atual do secondary |
@@ -49,7 +49,7 @@ Use propriedades do elemento para arrays/`labels`, e `addEventListener('uaiBread
 | `labels` | `Partial<UaiBreadcrumbLabels>`; sobrescritas parciais repassadas |
 | `actions` | Slot de ações fornecidas pelo consumidor com `UaiButton` |
 
-Primary usa `title` mesmo com `items`; secondary usa `items` mesmo com `title`. Secondary vazio não usa título como fallback. Não há prop pública `state` nem edição do título primary.
+Primary usa `heading` mesmo com `items`; secondary usa `items` mesmo com `heading`. Secondary vazio não usa título como fallback. Não há prop pública `state` nem edição do título primary.
 
 ### Edição opcional no secondary
 
@@ -135,7 +135,7 @@ Componente novo, sem equivalente `bds-*` direto. Substitua composições de tít
 
 | Composição anterior | UAI |
 | --- | --- |
-| Título manual | `UaiPageHeader level="primary" title="…"` |
+| Título manual | `UaiPageHeader level="primary" heading="…"` |
 | `BdsBreadcrumb` com ações ao lado | `level="secondary"`, `items`, slot `actions` |
 | `items` / `wrapItems` do breadcrumb | Mesmos formatos/defaults, sem limite de profundidade |
 | Botões legados | `UaiButton` em `actions`; variantes `solid`, `outline`, `text` |

@@ -10,7 +10,7 @@ describe('uai-page-header', () => {
   it('defaults to a primary h1 without breadcrumb or invented actions', async () => {
     const page = await newSpecPage({
       components,
-      template: () => <uai-page-header title="Reports" items={[{ label: 'Ignored' }]} />,
+      template: () => <uai-page-header heading="Reports" items={[{ label: 'Ignored' }]} />,
     });
     expect(page.rootInstance.level).toBe('primary');
     const title = page.root.shadowRoot.querySelector('uai-typo');
@@ -30,7 +30,7 @@ describe('uai-page-header', () => {
       template: () => (
         <uai-page-header
           level="secondary"
-          title="Ignored"
+          heading="Ignored"
           items={items}
           wrapItems={false}
           editable

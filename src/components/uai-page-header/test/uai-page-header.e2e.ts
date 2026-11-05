@@ -13,7 +13,7 @@ type EventWindow = Window & { breadcrumbEvents?: Array<Record<string, unknown>> 
 
 const setup = async (attributes = '', actions = '') => {
   const page = await newE2EPage({
-    html: `<meta charset="utf-8"><uai-theme-provider><uai-page-header title="Título primário" ${attributes}>${actions}</uai-page-header></uai-theme-provider>`,
+    html: `<meta charset="utf-8"><uai-theme-provider><uai-page-header heading="Título primário" ${attributes}>${actions}</uai-page-header></uai-theme-provider>`,
   });
   const session = await page.target().createCDPSession();
   await session.send('Emulation.setFocusEmulationEnabled', { enabled: true });

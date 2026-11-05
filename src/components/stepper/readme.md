@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-stepper with UaiStep and UaiThemeProvider for tokenized styling and accessible list semantics.
+
 ## Methods
 
 ### `getActiveStep() => Promise<number>`

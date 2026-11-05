@@ -129,6 +129,8 @@ import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUai
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
 import { UaiSelectOption as UaiSelectOptionElement, defineCustomElement as defineUaiSelectOption } from "blip-ds/dist/components/uai-select-option.js";
 import { UaiSelect as UaiSelectElement, defineCustomElement as defineUaiSelect } from "blip-ds/dist/components/uai-select.js";
+import { UaiStep as UaiStepElement, defineCustomElement as defineUaiStep } from "blip-ds/dist/components/uai-step.js";
+import { UaiStepper as UaiStepperElement, defineCustomElement as defineUaiStepper } from "blip-ds/dist/components/uai-stepper.js";
 import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
 import { UaiTabGroup as UaiTabGroupElement, defineCustomElement as defineUaiTabGroup } from "blip-ds/dist/components/uai-tab-group.js";
 import { UaiTabItem as UaiTabItemElement, defineCustomElement as defineUaiTabItem } from "blip-ds/dist/components/uai-tab-item.js";
@@ -1221,6 +1223,20 @@ export const UaiSelectOption = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiSelectOption
+});
+export const UaiStep = createComponent({
+    tagName: 'uai-step',
+    elementClass: UaiStepElement,
+    react: React,
+    events: { onUaiStepSelect: 'uaiStepSelect' },
+    defineCustomElement: defineUaiStep
+});
+export const UaiStepper = createComponent({
+    tagName: 'uai-stepper',
+    elementClass: UaiStepperElement,
+    react: React,
+    events: { onUaiStepChange: 'uaiStepChange' },
+    defineCustomElement: defineUaiStepper
 });
 export const UaiSwitch = createComponent({
     tagName: 'uai-switch',

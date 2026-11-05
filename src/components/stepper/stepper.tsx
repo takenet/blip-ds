@@ -1,4 +1,7 @@
 import { Component, ComponentInterface, h, Element, Method, Host } from '@stencil/core';
+/**
+ * @deprecated Use uai-stepper with UaiStep and UaiThemeProvider for tokenized styling and accessible list semantics.
+ */
 @Component({
   tag: 'bds-stepper',
   styleUrl: 'stepper.scss',

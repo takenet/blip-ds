@@ -1,0 +1,21 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+:host([orientation='horizontal']) {
+  align-items: flex-start;
+  border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--uai-border-default, #{$uai-border-default});
+
+  ::slotted(uai-step) {
+    flex: 1 1 0;
+  }
+}
+
+:host([orientation='vertical']) {
+  flex-direction: column;
+  align-items: stretch;
+}

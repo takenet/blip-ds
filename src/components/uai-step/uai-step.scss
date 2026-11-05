@@ -1,0 +1,143 @@
+@use '../../globals/helpers' as *;
+
+/**
+ * @prop --uai-step-marker-size: Diameter of the numbered marker. Defaults to the sizing/xl token.
+ */
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.step {
+  --step-accent: transparent;
+  --step-line: var(--uai-border-default, #{$uai-border-default});
+
+  // uai-typo ignores the inherited color unless told to use it.
+  --uai-typo-color: currentColor;
+
+  display: flex;
+  box-sizing: border-box;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+.step__number {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.step__marker {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--uai-step-marker-size, var(--uai-sizing-xl, #{$uai-sizing-xl}));
+  height: var(--uai-step-marker-size, var(--uai-sizing-xl, #{$uai-sizing-xl}));
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--uai-content-disabled, #{$uai-content-disabled});
+  color: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+.step--active .step__marker {
+  border-color: var(--uai-content-secondary, #{$uai-content-secondary});
+  background: var(--uai-content-secondary, #{$uai-content-secondary});
+  color: var(--uai-content-inverse, #{$uai-content-inverse});
+}
+
+.step--completed .step__marker {
+  border-color: var(--uai-content-primary, #{$uai-content-primary});
+  background: var(--uai-content-primary, #{$uai-content-primary});
+  color: var(--uai-content-inverse, #{$uai-content-inverse});
+}
+
+.step--active {
+  --step-line: var(--uai-content-secondary, #{$uai-content-secondary});
+  --step-accent: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+.step--completed {
+  --step-line: var(--uai-content-primary, #{$uai-content-primary});
+  --step-accent: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.step__content {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.step__heading {
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.step__description {
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+.step--pointer {
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--uai-border-ring, #{$uai-border-ring});
+    outline-offset: calc(-1 * var(--uai-spacing-3xs, #{$uai-spacing-3xs}));
+  }
+}
+
+.step--disabled {
+  cursor: not-allowed;
+
+  .step__heading,
+  .step__description {
+    color: var(--uai-content-disabled, #{$uai-content-disabled});
+  }
+}
+
+// Vertical: the marker column carries the connector down to the next step.
+:host([orientation='vertical']) {
+  .step {
+    align-items: stretch;
+  }
+
+  .step__number {
+    padding-bottom: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  }
+
+  .step__line {
+    flex: 1 1 0;
+    min-height: var(--uai-sizing-lg, #{$uai-sizing-lg});
+    border-left: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--step-line);
+  }
+
+  .step__content {
+    justify-content: flex-start;
+    gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+    padding-bottom: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  }
+
+  .step__heading {
+    padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs}) 0;
+  }
+}
+
+// Horizontal: every step is a tab-like cell with a state bar underneath.
+:host([orientation='horizontal']) {
+  .step {
+    align-items: center;
+    padding: var(--uai-spacing-lg, #{$uai-spacing-lg});
+    border-bottom: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--step-accent);
+  }
+
+  .step__description {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+}

@@ -9,7 +9,7 @@ test.describe('UaiPageHeader - Visual Regression', () => {
       await expect(header).toHaveClass(/hydrated/);
       await header.evaluate((el: HTMLElement & Components.UaiPageHeader) => {
         el.level = 'primary';
-        el.title = 'Visão geral dos projetos';
+        el.heading = 'Visão geral dos projetos';
         el.items = [
           { label: 'Início', href: '#inicio' },
           { label: 'Equipe', href: '#equipe' },

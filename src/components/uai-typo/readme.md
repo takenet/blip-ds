@@ -57,6 +57,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
  - [uai-page-header](../uai-page-header)
  - [uai-pagination](../uai-pagination)
  - [uai-select](../uai-select)
+ - [uai-step](../uai-step)
  - [uai-tab-group](../uai-tab-group)
  - [uai-table-cell](../uai-table-cell)
  - [uai-table-th](../uai-table-th)
@@ -79,6 +80,7 @@ graph TD;
   uai-page-header --> uai-typo
   uai-pagination --> uai-typo
   uai-select --> uai-typo
+  uai-step --> uai-typo
   uai-tab-group --> uai-typo
   uai-table-cell --> uai-typo
   uai-table-th --> uai-typo
