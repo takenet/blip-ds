@@ -1,1 +1,0 @@
-import{I as o,d as s}from"./p-BNP9LEKt.js";const t=o,p=s;export{t as BdsButtonIcon,p as defineCustomElement}
