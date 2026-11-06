@@ -1,0 +1,43 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as ChipTagStories from './uai-chip-tag.stories';
+
+<Meta isTemplate />
+
+# Chip Tag
+
+## Visão geral
+
+Rótulo passivo para categorizar ou etiquetar um item com uma palavra-chave ou status. Não é uma ação: para chips clicáveis ou selecionáveis use os outros chips.
+
+No React, importe `UaiChipTag` e `UaiThemeProvider` de `blip-ds-react/dist/components`.
+
+```jsx
+<UaiChipTag color="success" icon="info">
+  Ativo
+</UaiChipTag>
+```
+
+## Playground
+
+<Canvas of={ChipTagStories.Playground} />
+<Controls of={ChipTagStories.Playground} />
+
+## Cores
+
+`system`, `outline`, `info`, `success`, `warning`, `danger` e `disabled`. Não use só a cor para comunicar o significado: o texto deve dizer o estado.
+
+<Canvas of={ChipTagStories.Colors} />
+
+## Sem ícone
+
+<Canvas of={ChipTagStories.WithoutIcon} />
+
+## Migração de `bds-chip-tag`
+
+| `bds-chip-tag`      | `uai-chip-tag`                    |
+| ------------------- | --------------------------------- |
+| `color="default"`   | `color="system"` (aceita `default`) |
+| `color="danger"`    | `color="danger"`                  |
+| demais cores, `icon`, `data-test` | iguais                |
+
+O texto usa `uai-typo` `caption`; ícones usam `uai-icon` `x-small`.

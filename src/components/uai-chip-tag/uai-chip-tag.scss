@@ -1,0 +1,77 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.chip {
+  --chip-bg: var(--uai-action-primary-default, #{$uai-action-primary-default});
+  --chip-border: var(--uai-action-primary-default, #{$uai-action-primary-default});
+  --chip-fg: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  min-width: 0;
+  padding: var(--uai-spacing-3xs, #{$uai-spacing-3xs}) var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--chip-border);
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background-color: var(--chip-bg);
+  color: var(--chip-fg);
+
+  &--outline {
+    --chip-bg: transparent;
+    --chip-border: var(--uai-border-input, #{$uai-border-input});
+    --chip-fg: var(--uai-content-primary, #{$uai-content-primary});
+  }
+
+  &--info,
+  &--success,
+  &--warning,
+  &--danger {
+    --chip-fg: var(--uai-content-primary, #{$uai-content-primary});
+  }
+
+  &--info {
+    --chip-bg: var(--uai-feedback-info-subtle, #{$uai-feedback-info-subtle});
+    --chip-border: color-mix(in srgb, var(--uai-feedback-info, #{$uai-feedback-info}) 30%, transparent);
+  }
+
+  &--success {
+    --chip-bg: var(--uai-feedback-success-subtle, #{$uai-feedback-success-subtle});
+    --chip-border: color-mix(in srgb, var(--uai-feedback-success, #{$uai-feedback-success}) 30%, transparent);
+  }
+
+  &--warning {
+    --chip-bg: var(--uai-feedback-warning-subtle, #{$uai-feedback-warning-subtle});
+    --chip-border: color-mix(in srgb, var(--uai-feedback-warning, #{$uai-feedback-warning}) 30%, transparent);
+  }
+
+  &--danger {
+    --chip-bg: var(--uai-feedback-error-subtle, #{$uai-feedback-error-subtle});
+    --chip-border: color-mix(in srgb, var(--uai-feedback-error, #{$uai-feedback-error}) 30%, transparent);
+  }
+
+  &--disabled {
+    --chip-bg: var(--uai-action-outline-pressed, #{$uai-action-outline-pressed});
+    --chip-border: var(--uai-border-input, #{$uai-border-input});
+    --chip-fg: var(--uai-content-disabled, #{$uai-content-disabled});
+  }
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+.chip__icon {
+  flex: none;
+}
+
+.chip__text {
+  --uai-typo-color: currentColor;
+
+  min-width: 0;
+  white-space: nowrap;
+}

@@ -124,6 +124,7 @@ import { UaiBanner as UaiBannerElement, defineCustomElement as defineUaiBanner }
 import { UaiBreadcrumb as UaiBreadcrumbElement, defineCustomElement as defineUaiBreadcrumb } from "blip-ds/dist/components/uai-breadcrumb.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
+import { UaiChipTag as UaiChipTagElement, defineCustomElement as defineUaiChipTag } from "blip-ds/dist/components/uai-chip-tag.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement, defineCustomElement as defineUaiInputChips } from "blip-ds/dist/components/uai-input-chips.js";
@@ -1634,6 +1635,17 @@ export const UaiCheckbox: StencilReactComponent<UaiCheckboxElement, UaiCheckboxE
         onUaiInput: 'uaiInput'
     } as UaiCheckboxEvents,
     defineCustomElement: defineUaiCheckbox
+});
+
+export type UaiChipTagEvents = NonNullable<unknown>;
+
+export const UaiChipTag: StencilReactComponent<UaiChipTagElement, UaiChipTagEvents, Components.UaiChipTag> = /*@__PURE__*/ createComponent<UaiChipTagElement, UaiChipTagEvents, Components.UaiChipTag>({
+    tagName: 'uai-chip-tag',
+    elementClass: UaiChipTagElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiChipTagEvents,
+    defineCustomElement: defineUaiChipTag
 });
 
 export type UaiGridEvents = NonNullable<unknown>;

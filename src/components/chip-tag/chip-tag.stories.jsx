@@ -3,7 +3,7 @@ import { BdsChipTag } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './chip-tag.mdx';
 
 export default {
-  title: 'Components/Chip Tag',
+  title: 'Components/[deprecated] Chip Tag',
   parameters: {
     docs: {
       page: DocumentationTemplate,
