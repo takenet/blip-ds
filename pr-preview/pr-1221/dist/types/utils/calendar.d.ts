@@ -1,0 +1,32 @@
+import { DaysList } from '../components/datepicker/datepicker-interface';
+import { languages } from '../utils/languages';
+import { MonthsList } from '../utils/calendar-interface';
+export declare const THIS_DAY: Date;
+export declare const THIS_YEAR: number;
+export declare const THIS_MONTH: number;
+export declare const weekDays: (language: languages) => {
+    Sunday: string;
+    Monday: string;
+    Tuesday: string;
+    Wednesday: string;
+    Thursday: string;
+    Friday: string;
+    Saturday: string;
+};
+export declare const changeMonths: (language: languages) => {
+    value: number;
+    label: string;
+}[];
+export declare const defaultStartDate: string;
+export declare const defaultEndDate: string;
+export declare const getYears: (year: number, startYear: number, endYear: number) => any[];
+export declare const getMonths: (year: number, startDate: DaysList, endDate: DaysList, monthList?: MonthsList[]) => MonthsList[];
+export declare const getDaysInMonth: (year?: number, month?: number) => any[];
+export declare const getMonthsSlide: (year?: number, month?: number) => any[];
+export declare const fillDayList: (value: DaysList) => string;
+export declare const fillDate: (value: Date) => string;
+export declare const dateToDayList: (value: string) => DaysList;
+export declare const dateToInputDate: (value: string) => string;
+export declare const dateToString: (value: Date) => string;
+export declare const typeDateToStringDate: (value: string) => string;
+export declare const dateToTypeDate: (value: Date) => string;

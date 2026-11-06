@@ -1,0 +1,1 @@
+import{S as o,d as s}from"./p-DRAebzej.js";const e=o,p=s;export{e as BdsSkeleton,p as defineCustomElement}

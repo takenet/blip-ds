@@ -1,0 +1,4 @@
+System.register(["./p-CLAYiqZ6.system.js"],(function(t){"use strict";var e,i;return{setters:[function(t){e=t.r;i=t.h}],execute:function(){var o=function(){return".modal__close__button-icon{opacity:0;visibility:hidden;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:16px}.modal__close__button-icon--active{opacity:1;visibility:visible}"};var n=t("bds_modal_close_button",/** @class */function(){function t(t){e(this,t);
+/**
+                     * Used to hide or show the close button
+                     */this.active=true}t.prototype.render=function(){return i("div",{key:"4989cf333b360a074cf6b658d98bf9f53d0583c8",class:{"modal__close__button-icon":true,"modal__close__button-icon--active":this.active}},i("bds-icon",{key:"9ab540262b89c1e0b3b147d5c2c9bef07441a022",size:"medium",name:"close"}))};return t}());n.style=o()}}}));
