@@ -128,6 +128,7 @@
     "components/toast/toast.js",
     "components/toast-container/toast-container.js",
     "components/uai-checkbox/uai-checkbox.js",
+    "components/uai-chip-tag/uai-chip-tag.js",
     "components/uai-grid/uai-grid.js",
     "components/uai-navbar-content/uai-navbar-content.js",
     "components/uai-paper/uai-paper.js",

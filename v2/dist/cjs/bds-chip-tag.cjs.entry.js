@@ -17,10 +17,10 @@ const ChipTag = class {
         this.dataTest = null;
     }
     render() {
-        return (index.h(index.Host, { key: '887254e094eb8da629197db22d1cf745d36c44eb' }, index.h("div", { key: '184c6b4bbe90f3c4db18c1f15fd7a4b5e103f423', class: {
+        return (index.h(index.Host, { key: 'b8c5c9dbe90aba2964c68356839c78c309d4a1ca' }, index.h("div", { key: 'd15754ad55416cac647433060caf513e257ac966', class: {
                 chip_tag: true,
                 [`chip_tag--${this.color}`]: true,
-            }, "data-test": this.dataTest }, this.icon && (index.h("div", { key: '12c1fab15b6a7a95a34820c4300591976335230e', class: "chip_tag--icon" }, index.h("bds-icon", { key: 'bc21e95c84cff8a0a648be069ee7c9c438c00f60', size: "x-small", name: this.icon }))), index.h("div", { key: 'a7aa8eac28bf01ab0d09ee995a0cd87fb6bc2ac1', class: this.icon ? `chip_tag--container-text--half` : `chip_tag--container-text--full` }, index.h("bds-typo", { key: '8782a444b3c56871c5001404f2fb8d966b9bffaa', "no-wrap": "true", class: "chip_tag--text", variant: "fs-12", bold: "bold" }, index.h("slot", { key: '058c4a53484962e98402be0db41bb0462afaa336' }))))));
+            }, "data-test": this.dataTest }, this.icon && (index.h("div", { key: 'dc570cf1e3da9ec9d277ddf6a85044880b902e8d', class: "chip_tag--icon" }, index.h("bds-icon", { key: '4bdaef69560630cae690f5c2cf47bc486780e501', size: "x-small", name: this.icon }))), index.h("div", { key: '0498db13a8f781d05507bbc6dc015817ec01a12c', class: this.icon ? `chip_tag--container-text--half` : `chip_tag--container-text--full` }, index.h("bds-typo", { key: '53686e1531f0a7922f68a86b8cbc5d4b7077518b', "no-wrap": "true", class: "chip_tag--text", variant: "fs-12", bold: "bold" }, index.h("slot", { key: '78ed8b04029f66a348e0aa4948fc0b31d216bc02' }))))));
     }
 };
 ChipTag.style = chipTagCss();

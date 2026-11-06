@@ -399,6 +399,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-checkbox.entry.js').then(processMod, consoleError);
+                case 'uai-chip-tag':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-chip-tag.entry.js').then(processMod, consoleError);
                 case 'uai-grid':
                     return import(
                       /* webpackMode: "lazy" */

@@ -78,7 +78,7 @@ export class UaiTabItem {
         }
     }
     render() {
-        return (h(Host, { key: '750ee08b2e8d43828a97625c31fb82bf0a489578', class: { 'is-open': this.open && !this.disable }, hidden: !this.open || this.disable }, h("div", { key: 'da8c9543c73ade92cd5e9d7d37dcfd5a77bd4f58', class: "uai-tab-item__content", "data-test": this.dataTest }, h("slot", { key: 'a414f6b3c2860738446a5c448ecb5f2a7f76b782' }))));
+        return (h(Host, { key: '3f17524a2b56e56f77f2801dad1fec24cbd3635f', class: { 'is-open': this.open && !this.disable }, hidden: !this.open || this.disable }, h("div", { key: '768c3ccdbd37a6c444c5125605cfe8a12bee1ab2', class: "uai-tab-item__content", "data-test": this.dataTest }, h("slot", { key: '6e114c96ffffd057081cb00f87e0b30ad9a7b0f5' }))));
     }
     static get is() { return "uai-tab-item"; }
     static get encapsulation() { return "shadow"; }

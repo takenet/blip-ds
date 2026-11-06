@@ -1,4 +1,7 @@
 export type ColorChipTag = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline' | 'disabled';
+/**
+ * @deprecated Use uai-chip-tag with UaiThemeProvider for tokenized styling.
+ */
 export declare class ChipTag {
     /**
      * used for add icon in left container. Uses the bds-icon component.

@@ -151,7 +151,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-banner.entry.js").then(u,consoleError);case"uai-checkbox":return import(
 /* webpackMode: "lazy" */
-"./uai-checkbox.entry.js").then(u,consoleError);case"uai-grid":return import(
+"./uai-checkbox.entry.js").then(u,consoleError);case"uai-chip-tag":return import(
+/* webpackMode: "lazy" */
+"./uai-chip-tag.entry.js").then(u,consoleError);case"uai-grid":return import(
 /* webpackMode: "lazy" */
 "./uai-grid.entry.js").then(u,consoleError);case"uai-input-chips":return import(
 /* webpackMode: "lazy" */

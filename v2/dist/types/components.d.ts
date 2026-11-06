@@ -1060,6 +1060,9 @@ export namespace Components {
          */
         "size"?: Size1;
     }
+    /**
+     * @deprecated Use uai-chip-tag with UaiThemeProvider for tokenized styling.
+     */
     interface BdsChipTag {
         /**
           * used for change the color. Uses one of them.
@@ -4168,6 +4171,26 @@ export namespace Components {
         "value": string;
     }
     /**
+     * Small passive label that categorizes or tags an item. Use for short keywords or statuses;
+     * pair with a text label; avoid using color alone to convey meaning or using it as an action.
+     */
+    interface UaiChipTag {
+        /**
+          * Semantic color: system, outline, info, success, warning, danger or disabled. Use for status; pair with the text; avoid arbitrary colors. The legacy default value maps to system.
+          * @default 'system'
+         */
+        "color"?: string;
+        /**
+          * Test selector on the chip. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Icon name shown before the text. Use to reinforce the meaning; pair with the text; avoid decorative icons.
+         */
+        "icon"?: string;
+    }
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -7107,6 +7130,9 @@ declare global {
         prototype: HTMLBdsChipSelectedElement;
         new (): HTMLBdsChipSelectedElement;
     };
+    /**
+     * @deprecated Use uai-chip-tag with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsChipTagElement extends Components.BdsChipTag, HTMLStencilElement {
     }
     var HTMLBdsChipTagElement: {
@@ -8205,6 +8231,16 @@ declare global {
         new (): HTMLUaiCheckboxElement;
     };
     /**
+     * Small passive label that categorizes or tags an item. Use for short keywords or statuses;
+     * pair with a text label; avoid using color alone to convey meaning or using it as an action.
+     */
+    interface HTMLUaiChipTagElement extends Components.UaiChipTag, HTMLStencilElement {
+    }
+    var HTMLUaiChipTagElement: {
+        prototype: HTMLUaiChipTagElement;
+        new (): HTMLUaiChipTagElement;
+    };
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -8891,6 +8927,7 @@ declare global {
         "uai-breadcrumb": HTMLUaiBreadcrumbElement;
         "uai-button": HTMLUaiButtonElement;
         "uai-checkbox": HTMLUaiCheckboxElement;
+        "uai-chip-tag": HTMLUaiChipTagElement;
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-input": HTMLUaiInputElement;
@@ -9831,6 +9868,9 @@ declare namespace LocalJSX {
          */
         "size"?: Size1;
     }
+    /**
+     * @deprecated Use uai-chip-tag with UaiThemeProvider for tokenized styling.
+     */
     interface BdsChipTag {
         /**
           * used for change the color. Uses one of them.
@@ -13164,6 +13204,26 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * Small passive label that categorizes or tags an item. Use for short keywords or statuses;
+     * pair with a text label; avoid using color alone to convey meaning or using it as an action.
+     */
+    interface UaiChipTag {
+        /**
+          * Semantic color: system, outline, info, success, warning, danger or disabled. Use for status; pair with the text; avoid arbitrary colors. The legacy default value maps to system.
+          * @default 'system'
+         */
+        "color"?: string;
+        /**
+          * Test selector on the chip. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Icon name shown before the text. Use to reinforce the meaning; pair with the text; avoid decorative icons.
+         */
+        "icon"?: string;
+    }
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -16411,6 +16471,11 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiChipTagAttributes {
+        "icon": string;
+        "color": string;
+        "dataTest": string;
+    }
     interface UaiGridAttributes {
         "height": string;
         "direction": direction;
@@ -16965,6 +17030,7 @@ declare namespace LocalJSX {
         "uai-breadcrumb": Omit<UaiBreadcrumb, keyof UaiBreadcrumbAttributes> & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes]?: UaiBreadcrumb[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `attr:${K}`]?: UaiBreadcrumbAttributes[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `prop:${K}`]?: UaiBreadcrumb[K] };
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
+        "uai-chip-tag": Omit<UaiChipTag, keyof UaiChipTagAttributes> & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes]?: UaiChipTag[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `attr:${K}`]?: UaiChipTagAttributes[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `prop:${K}`]?: UaiChipTag[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
@@ -17046,6 +17112,9 @@ declare module "@stencil/core" {
             "bds-chip": LocalJSX.IntrinsicElements["bds-chip"] & JSXBase.HTMLAttributes<HTMLBdsChipElement>;
             "bds-chip-clickable": LocalJSX.IntrinsicElements["bds-chip-clickable"] & JSXBase.HTMLAttributes<HTMLBdsChipClickableElement>;
             "bds-chip-selected": LocalJSX.IntrinsicElements["bds-chip-selected"] & JSXBase.HTMLAttributes<HTMLBdsChipSelectedElement>;
+            /**
+             * @deprecated Use uai-chip-tag with UaiThemeProvider for tokenized styling.
+             */
             "bds-chip-tag": LocalJSX.IntrinsicElements["bds-chip-tag"] & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
             "bds-counter-text": LocalJSX.IntrinsicElements["bds-counter-text"] & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
             "bds-data-table": LocalJSX.IntrinsicElements["bds-data-table"] & JSXBase.HTMLAttributes<HTMLBdsDataTableElement>;
@@ -17222,6 +17291,11 @@ declare module "@stencil/core" {
              * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.
              */
             "uai-checkbox": LocalJSX.IntrinsicElements["uai-checkbox"] & JSXBase.HTMLAttributes<HTMLUaiCheckboxElement>;
+            /**
+             * Small passive label that categorizes or tags an item. Use for short keywords or statuses;
+             * pair with a text label; avoid using color alone to convey meaning or using it as an action.
+             */
+            "uai-chip-tag": LocalJSX.IntrinsicElements["uai-chip-tag"] & JSXBase.HTMLAttributes<HTMLUaiChipTagElement>;
             /**
              * UAI layout grid. The legacy bds-grid remains available; this component keeps
              * its layout props while using UAI dimensions and theme-aware color tokens.
