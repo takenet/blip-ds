@@ -71,11 +71,11 @@ describe('uai-tab-group e2e — contrato w2-uai-tabs', () => {
       await page.evaluate(value => document.querySelector('uai-theme-provider').theme = value, theme);
       await page.waitForChanges();
       await page.waitForFunction(color =>
-        getComputedStyle(document.querySelector('[aria-selected="true"]')).backgroundColor === color, {}, selected);
+        getComputedStyle(document.querySelector('.uai-tabs__indicator')).backgroundColor === color, {}, selected);
       expect(await page.evaluate(() => ({
         background: getComputedStyle(document.querySelector('.uai-tabs__navigation')).backgroundColor,
-        selected: getComputedStyle(document.querySelector('[aria-selected="true"]')).backgroundColor,
-        shadow: getComputedStyle(document.querySelector('[aria-selected="true"]')).boxShadow,
+        selected: getComputedStyle(document.querySelector('.uai-tabs__indicator')).backgroundColor,
+        shadow: getComputedStyle(document.querySelector('.uai-tabs__indicator')).boxShadow,
       }))).toEqual({
         background, selected, shadow: 'rgba(0, 0, 0, 0.1) 0px 1px 4px 0px',
       });
@@ -96,7 +96,7 @@ describe('uai-tab-group e2e — contrato w2-uai-tabs', () => {
           const tab = document.querySelector<HTMLElement>('[role="tab"]:focus');
           const rect = tab.getBoundingClientRect();
           const viewport = document.querySelector('.uai-tabs__viewport').getBoundingClientRect();
-          const style = getComputedStyle(tab);
+          const style = getComputedStyle(document.querySelector('.uai-tabs__indicator'));
           const shadow = style.boxShadow.replace(/rgba?\([^)]+\)/, '').trim().split(/\s+/).map(parseFloat);
           const [x, y, blur, spread] = shadow;
           const focus = parseFloat(style.outlineWidth) + parseFloat(style.outlineOffset);
@@ -522,5 +522,58 @@ describe('uai-tab-group e2e — contrato w2-uai-tabs', () => {
     expect(await page.evaluate(() => Array.from(document.querySelectorAll('uai-badge')).every(badge =>
       getComputedStyle(badge.shadowRoot.querySelector('.badge__pulse')).animationName === 'none',
     ))).toBe(true);
+  });
+
+  it('Visual / transição compartilhada: indicador acompanha a aba e sua largura', async () => {
+    const page = await createGroup(`
+      <uai-tab-item id="first" label="Resumo">Painel resumo</uai-tab-item>
+      <uai-tab-item id="last" label="Detalhes do projeto">Painel de detalhes</uai-tab-item>`);
+    await page.waitForFunction(() =>
+      document.querySelector('.uai-tabs__indicator')?.getAttribute('data-initialized') === 'true',
+    );
+
+    const initial = await page.evaluate(() => {
+      const group = document.querySelector('uai-tab-group');
+      const indicator = group.querySelector<HTMLElement>('.uai-tabs__indicator');
+      const selected = group.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+      return {
+        count: group.querySelectorAll('.uai-tabs__indicator').length,
+        x: indicator.style.getPropertyValue('--tab-x'),
+        width: indicator.style.getPropertyValue('--tab-width'),
+        selectedX: `${selected.offsetLeft}px`,
+        selectedWidth: `${selected.offsetWidth}px`,
+        buttonBackground: getComputedStyle(selected).backgroundColor,
+        indicatorBackground: getComputedStyle(indicator).backgroundColor,
+        transition: getComputedStyle(indicator).transition,
+      };
+    });
+    expect(initial.count).toBe(1);
+    expect(initial.x).toBe(initial.selectedX);
+    expect(initial.width).toBe(initial.selectedWidth);
+    expect(initial.buttonBackground).toBe('rgba(0, 0, 0, 0)');
+    expect(initial.indicatorBackground).not.toBe('rgba(0, 0, 0, 0)');
+    expect(initial.transition).toContain('transform 0.2s');
+    expect(initial.transition).toContain('width 0.2s');
+
+    await page.click('[role="tab"][aria-controls="last"]');
+    await page.waitForChanges();
+    await page.waitForFunction(() => {
+      const group = document.querySelector('uai-tab-group');
+      const indicator = group.querySelector<HTMLElement>('.uai-tabs__indicator');
+      const selected = group.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+      return indicator.style.getPropertyValue('--tab-x') === `${selected.offsetLeft}px` &&
+        indicator.style.getPropertyValue('--tab-width') === `${selected.offsetWidth}px`;
+    });
+
+    await page.evaluate(() => {
+      document.querySelector<UaiTabItemElement>('#last').label = 'Detalhes';
+    });
+    await page.waitForChanges();
+    await page.waitForFunction(() => {
+      const group = document.querySelector('uai-tab-group');
+      const indicator = group.querySelector<HTMLElement>('.uai-tabs__indicator');
+      const selected = group.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+      return indicator.style.getPropertyValue('--tab-width') === `${selected.offsetWidth}px`;
+    });
   });
 });
