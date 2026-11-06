@@ -10,6 +10,6 @@ test.describe('Chip - Visual Regression', () => {
   });
 
   test('chip tag default state', async ({ storybook }) => {
-    await storybook.screenshotStory('components-chip-tag--properties', 'chip-tag-default');
+    await storybook.screenshotStory('components-deprecated-chip-tag--properties', 'chip-tag-default');
   });
 });

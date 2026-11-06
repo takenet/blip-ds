@@ -444,9 +444,9 @@ export const WAVE_4: ComponentEntry[] = [
   },
   {
     tag: 'bds-chip-tag',
-    name: 'Chip Tag',
-    primaryStory: 'components-chip-tag--properties',
-    stories: [{ storyId: 'components-chip-tag--properties', label: 'Properties' }],
+    name: '[deprecated] Chip Tag',
+    primaryStory: 'components-deprecated-chip-tag--properties',
+    stories: [{ storyId: 'components-deprecated-chip-tag--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-expansion-panel',

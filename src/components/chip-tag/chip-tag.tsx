@@ -2,6 +2,9 @@ import { Component, Host, h, Prop } from '@stencil/core';
 
 export type ColorChipTag = 'default' | 'info' | 'success' | 'warning' | 'danger' | 'outline' | 'disabled';
 
+/**
+ * @deprecated Use uai-chip-tag with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-chip-tag',
   styleUrl: 'chip-tag.scss',

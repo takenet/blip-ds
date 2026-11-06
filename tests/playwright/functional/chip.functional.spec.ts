@@ -36,7 +36,7 @@ test.describe('Chip Selected - Functional Tests', () => {
 
 test.describe('Chip Tag - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-chip-tag--properties');
+    await storybook.goto('components-deprecated-chip-tag--properties');
   });
 
   test('renders correctly', async ({ page }) => {

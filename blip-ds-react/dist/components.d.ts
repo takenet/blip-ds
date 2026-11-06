@@ -112,6 +112,7 @@ import { UaiBanner as UaiBannerElement } from "blip-ds/dist/components/uai-banne
 import { UaiBreadcrumb as UaiBreadcrumbElement } from "blip-ds/dist/components/uai-breadcrumb.js";
 import { UaiButton as UaiButtonElement } from "blip-ds/dist/components/uai-button.js";
 import { UaiCheckbox as UaiCheckboxElement } from "blip-ds/dist/components/uai-checkbox.js";
+import { UaiChipTag as UaiChipTagElement } from "blip-ds/dist/components/uai-chip-tag.js";
 import { UaiGrid as UaiGridElement } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement } from "blip-ds/dist/components/uai-input-chips.js";
@@ -688,6 +689,8 @@ export type UaiCheckboxEvents = {
     onUaiInput: EventName<UaiCheckboxCustomEvent<KeyboardEvent>>;
 };
 export declare const UaiCheckbox: StencilReactComponent<UaiCheckboxElement, UaiCheckboxEvents, Components.UaiCheckbox>;
+export type UaiChipTagEvents = NonNullable<unknown>;
+export declare const UaiChipTag: StencilReactComponent<UaiChipTagElement, UaiChipTagEvents, Components.UaiChipTag>;
 export type UaiGridEvents = NonNullable<unknown>;
 export declare const UaiGrid: StencilReactComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid>;
 export type UaiIconEvents = NonNullable<unknown>;
