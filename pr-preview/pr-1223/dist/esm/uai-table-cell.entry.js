@@ -1,0 +1,17 @@
+import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
+
+const uaiTableCellCss = () => `:host{display:-ms-flexbox;display:flex;gap:var(--uai-spacing-xs, 0.5rem);-ms-flex-align:center;align-items:center;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:0;padding:var(--uai-spacing-lg, 1.5rem) var(--uai-spacing-md, 1rem)}:host([justify-content=center]){-ms-flex-pack:center;justify-content:center}:host([justify-content=right]){-ms-flex-pack:end;justify-content:flex-end}uai-typo{display:-ms-flexbox;display:flex;gap:var(--uai-spacing-xs, 0.5rem);-ms-flex-align:center;align-items:center;min-width:0}`;
+
+const UaiTableCell = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
+        /** Horizontal alignment of the content. Use right for numbers and center for controls; avoid mixing alignments in one column. */
+        this.justifyContent = 'left';
+    }
+    render() {
+        return (h(Host, { key: '161c1458c9f49dca640b46d8f40ce1f1273c735e', role: "cell" }, h("uai-typo", { key: '2c95888bf2169988860e24fb1e5d2a520ad8cb8f', tag: "span", variant: "body-base", margin: false }, h("slot", { key: '4cb24338f1b39ce199bd0eb3c173dac1bfbe1795' }))));
+    }
+};
+UaiTableCell.style = uaiTableCellCss();
+
+export { UaiTableCell as uai_table_cell };

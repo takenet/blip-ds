@@ -1,0 +1,368 @@
+'use strict';
+
+var index = require('./index-BuAR9UTp.js');
+var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
+
+const uaiInputPasswordCss = () => `:host{--password-height:var(--uai-control-height-medium, 2.5rem);--password-background:var(--uai-surface-paper, #ffffff);--password-border:var(--uai-border-input, #adb4b8);--password-content:var(--uai-content-primary, #242729);--password-label:var(--uai-content-primary, #242729);--password-message:var(--uai-content-secondary, #5f676d);--password-feedback:var(--password-content);--password-halo:color-mix(     in srgb,     var(--uai-border-ring, #242729) calc(var(--uai-opacity-focus-ring, 0.3) * 100%),     transparent   );display:block;width:100%}:host(.uai-input-password--size-short){--password-height:var(--uai-control-height-short, 2rem)}:host(.uai-input-password--danger){--password-border:var(--uai-feedback-error, #cf0022);--password-label:var(--uai-feedback-error, #cf0022);--password-message:var(--uai-feedback-error, #cf0022);--password-feedback:var(--uai-feedback-error, #cf0022)}:host(.uai-input-password--success){--password-border:var(--uai-feedback-success, #3da329);--password-message:var(--uai-feedback-success, #3da329);--password-feedback:var(--uai-feedback-success, #3da329)}:host(.uai-input-password--disabled){--password-background:var(--uai-surface-muted, #f2f3f3);--password-border:var(--uai-border-default, #e4e6e7);--password-content:var(--uai-content-disabled, #848e94);--password-label:var(--uai-content-disabled, #848e94);--password-message:var(--uai-content-disabled, #848e94);--password-feedback:var(--uai-content-disabled, #848e94)}.password{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;gap:var(--uai-spacing-2xs, 0.25rem)}.password__label,.password__message,.password__strength-label,.password__strength-value{--uai-typo-color:currentColor}.password__label{color:var(--password-label)}.password__message{padding:0 var(--uai-spacing-xs, 0.5rem);color:var(--password-message)}.password__control{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem);height:var(--password-height);padding:0 var(--uai-spacing-xs, 0.5rem);border:var(--uai-border-width-default, 1px) solid var(--password-border);border-radius:var(--uai-radius-lg, 0.75rem);background-color:var(--password-background);color:var(--password-content);cursor:text;-webkit-transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.password__control{-webkit-transition:none;transition:none}}.password__control:focus-within{--password-border:var(--uai-border-ring, #242729);-webkit-box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--password-halo);box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--password-halo)}@media (forced-colors: active){.password__control:focus-within{-webkit-box-shadow:none;box-shadow:none;outline:var(--uai-border-width-thick, 2px) solid CanvasText}}:host(:not(.uai-input-password--disabled):not(.uai-input-password--readonly):not(.uai-input-password--danger):not(.uai-input-password--success)) .password__control:hover:not(:focus-within){--password-border:var(--uai-content-secondary, #5f676d)}:host(.uai-input-password--disabled) .password__control{cursor:not-allowed}.password__field{display:-ms-flexbox;display:flex;-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem);min-width:0;height:100%}.password__native{-ms-flex:1 1 auto;flex:1 1 auto;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:0;height:100%;margin:0;padding:0;border:0;outline:none;background:transparent;color:inherit;font-family:var(--uai-font-family-sans, Figtree), sans-serif;font-size:var(--uai-body-base-font-size, 0.875rem);font-weight:var(--uai-font-weight-regular, 400);line-height:var(--uai-body-base-line-height, 1.375rem);text-overflow:ellipsis;-webkit-appearance:none;-moz-appearance:none;appearance:none}.password__native::-webkit-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.password__native::-moz-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.password__native:-ms-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.password__native::-ms-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.password__native::placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.password__native:disabled{cursor:not-allowed;opacity:1;-webkit-text-fill-color:currentColor}.password__native:disabled::-webkit-input-placeholder{color:var(--uai-content-disabled, #848e94)}.password__native:disabled::-moz-placeholder{color:var(--uai-content-disabled, #848e94)}.password__native:disabled:-ms-input-placeholder{color:var(--uai-content-disabled, #848e94)}.password__native:disabled::-ms-input-placeholder{color:var(--uai-content-disabled, #848e94)}.password__native:disabled::placeholder{color:var(--uai-content-disabled, #848e94)}.password__icon,.password__feedback{-ms-flex:none;flex:none;color:var(--password-feedback)}.password__toggle{display:-ms-inline-flexbox;display:inline-flex;-ms-flex:none;flex:none;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;margin:0;padding:var(--uai-spacing-3xs, 0.125rem);border:0;border-radius:var(--uai-radius-sm, 0.25rem);background:transparent;color:inherit;cursor:pointer}.password__toggle:disabled{cursor:not-allowed}:host(.uai-input-password--disabled) .password__toggle{color:var(--uai-content-disabled, #848e94)}.password__strength{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;gap:var(--uai-spacing-3xs, 0.125rem);padding:0 var(--uai-spacing-xs, 0.5rem);color:var(--uai-content-secondary, #5f676d)}.password__meter{display:-ms-flexbox;display:flex;gap:var(--uai-spacing-3xs, 0.125rem)}.password__segment{-ms-flex:1 1 0px;flex:1 1 0;border-top:var(--uai-border-width-thick, 2px) solid var(--uai-border-default, #e4e6e7);border-radius:var(--uai-radius-full, 624.9375rem)}.password__segment--active{border-top-color:var(--uai-content-primary, #242729)}.password__meter--low .password__segment--active{border-top-color:var(--uai-feedback-error, #cf0022)}.password__meter--high .password__segment--active{border-top-color:var(--uai-feedback-success, #3da329)}.password__strength-value{color:var(--uai-content-primary, #242729)}:host(.uai-input-password--disabled) .password__strength{color:var(--uai-content-disabled, #848e94)}:host(.uai-input-password--disabled) .password__segment{border-top-color:var(--uai-border-default, #e4e6e7)}`;
+
+const SIZES = ['short', 'medium'];
+const STRENGTH_LEVELS = ['none', 'low', 'medium', 'high'];
+const VALIDITY_FLAGS = [
+    'valueMissing',
+    'tooLong',
+    'tooShort',
+    'rangeUnderflow',
+    'rangeOverflow',
+    'badInput',
+];
+let instances = 0;
+const UaiInputPassword = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        this.uaiInputPasswordChange = index.createEvent(this, "uaiInputPasswordChange");
+        this.uaiInputPasswordInput = index.createEvent(this, "uaiInputPasswordInput");
+        this.uaiInputPasswordBlur = index.createEvent(this, "uaiInputPasswordBlur");
+        this.uaiInputPasswordFocus = index.createEvent(this, "uaiInputPasswordFocus");
+        this.uaiInputPasswordSubmit = index.createEvent(this, "uaiInputPasswordSubmit");
+        this.uaiKeyDownBackspace = index.createEvent(this, "uaiKeyDownBackspace");
+        if (hostRef.$hostElement$["s-ei"]) {
+            this.internals = hostRef.$hostElement$["s-ei"];
+        }
+        else {
+            this.internals = hostRef.$hostElement$.attachInternals();
+            hostRef.$hostElement$["s-ei"] = this.internals;
+        }
+        this.validationDanger = false;
+        this.validationText = '';
+        this.disabledByForm = false;
+        this.defaultValue = '';
+        this.hasExplicitName = false;
+        this.inputId = `uai-input-password-${++instances}`;
+        /**
+         * Name of the value in submitted form data, kept from bds-input-password.
+         */
+        this.inputName = '';
+        /**
+         * Controls whether the password is revealed. The visibility button updates this property.
+         */
+        this.openEyes = false;
+        /**
+         * Height of the field. Can be 'short' or 'medium' (default).
+         */
+        this.size = 'medium';
+        /**
+         * Label shown above the field. Without a visible label, set aria-label.
+         */
+        this.label = '';
+        /**
+         * Example of the expected text, shown while the field is empty. Do not use it as the label.
+         */
+        this.placeholder = '';
+        /**
+         * If true, the value can be selected and copied but not edited.
+         */
+        this.readonly = false;
+        /**
+         * If true, an empty field blocks form submission.
+         */
+        this.required = false;
+        /**
+         * Message below the field that helps to fill it.
+         */
+        this.helperMessage = '';
+        /**
+         * Message below the field while danger is true.
+         */
+        this.errorMessage = '';
+        /**
+         * Message below the field while success is true.
+         */
+        this.successMessage = '';
+        /**
+         * If true, shows the error state and errorMessage. Has priority over success.
+         */
+        this.danger = false;
+        /**
+         * If true, shows the success state and successMessage.
+         */
+        this.success = false;
+        /**
+         * UaiIcon name shown before the password.
+         */
+        this.icon = '';
+        /**
+         * If true, the field cannot be focused or edited and is left out of the form data.
+         */
+        this.disabled = false;
+        /**
+         * Automatic capitalization on virtual keyboards.
+         */
+        this.autoCapitalize = 'off';
+        /**
+         * Browser autofill hint while the password is revealed. While masked, autocomplete is current-password.
+         */
+        this.autoComplete = 'off';
+        /**
+         * Current password. It is not reflected to an attribute.
+         */
+        this.value = '';
+        /**
+         * Accessible name when there is no visible label.
+         */
+        this.ariaLabel = null;
+        /**
+         * Data test id, set on the native input.
+         */
+        this.dataTest = null;
+        /**
+         * If true, shows the visual strength indicator. The level remains consumer-provided.
+         */
+        this.showStrength = false;
+        /**
+         * Consumer-provided visual level. This component does not evaluate the password.
+         */
+        this.strengthLevel = 'none';
+        this.onInput = (event) => {
+            this.value = event.currentTarget.value;
+            this.syncValidity();
+            this.uaiInputPasswordInput.emit(event);
+        };
+        this.onBlur = () => {
+            this.showValidation(true);
+            this.uaiInputPasswordBlur.emit();
+        };
+        this.onFocus = () => {
+            this.uaiInputPasswordFocus.emit();
+        };
+        this.onKeyDown = (event) => {
+            var _a, _b;
+            if (event.key === 'Enter') {
+                if (event.isComposing)
+                    return;
+                this.uaiInputPasswordSubmit.emit({ event, value: this.value });
+                if (!event.defaultPrevented)
+                    (_b = (_a = this.formControl) === null || _a === void 0 ? void 0 : _a.form) === null || _b === void 0 ? void 0 : _b.requestSubmit();
+            }
+            else if (event.key === 'Backspace' || event.key === 'Delete') {
+                this.uaiKeyDownBackspace.emit({ event, value: this.value });
+            }
+        };
+        this.onVisibilityClick = () => {
+            if (!this.disabled && !this.disabledByForm)
+                this.openEyes = !this.openEyes;
+        };
+        this.onControlClick = (event) => {
+            var _a;
+            if (event.target === event.currentTarget)
+                (_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.focus();
+        };
+    }
+    /**
+     * Moves focus to the password field.
+     */
+    async setFocus() {
+        var _a;
+        (_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.focus();
+    }
+    /**
+     * Removes focus from the password field.
+     */
+    async removeFocus() {
+        var _a;
+        (_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.blur();
+    }
+    /**
+     * Returns the native input element.
+     */
+    async getInputElement() {
+        return this.nativeInput;
+    }
+    /**
+     * Checks the native required and character-length constraints.
+     */
+    async isValid() {
+        return this.nativeInput ? this.nativeInput.validity.valid : true;
+    }
+    /**
+     * Clears the password.
+     */
+    async clear() {
+        this.value = '';
+    }
+    nameChanged(newValue) {
+        if (newValue && newValue !== this.inputName && newValue !== this.aliasName)
+            this.hasExplicitName = true;
+        if (!newValue && this.inputName && !this.hasExplicitName)
+            this.syncInputName();
+        this.aliasName = this.inputName;
+    }
+    inputNameChanged(newValue, oldValue) {
+        if (!this.hasExplicitName && (!this.name || this.name === oldValue || this.name === this.aliasName)) {
+            this.syncInputName(newValue);
+        }
+        this.aliasName = newValue;
+    }
+    valueChanged(newValue) {
+        var _a;
+        const value = newValue !== null && newValue !== void 0 ? newValue : '';
+        if (this.nativeInput && this.nativeInput.value !== value)
+            this.nativeInput.value = value;
+        (_a = this.formControl) === null || _a === void 0 ? void 0 : _a.setValue(value);
+        this.uaiInputPasswordChange.emit({ value: newValue });
+        if (this.validationDanger)
+            this.showValidation(true);
+        this.syncValidity();
+    }
+    onInvalid() {
+        this.showValidation(true);
+    }
+    componentWillLoad() {
+        var _a, _b;
+        this.defaultValue = (_a = this.value) !== null && _a !== void 0 ? _a : '';
+        this.hasExplicitName = this.el.hasAttribute('name');
+        this.aliasName = this.inputName;
+        if (!this.hasExplicitName && this.inputName)
+            this.syncInputName();
+        if (typeof ((_b = this.internals) === null || _b === void 0 ? void 0 : _b.setFormValue) === 'function') {
+            this.formControl = new uaiFormControl.UaiFormControl({
+                internals: this.internals,
+                defaultValue: () => this.defaultValue,
+                onReset: (value) => {
+                    this.validationDanger = false;
+                    this.validationText = '';
+                    this.value = typeof value === 'string' ? value : '';
+                },
+                onDisabledChange: (disabled) => {
+                    queueMicrotask(() => {
+                        var _a, _b;
+                        const formDisabled = (_b = (_a = this.formControl) === null || _a === void 0 ? void 0 : _a.disabled) !== null && _b !== void 0 ? _b : disabled;
+                        if (!this.disabled && this.disabledByForm !== formDisabled)
+                            this.disabledByForm = formDisabled;
+                    });
+                },
+            });
+        }
+        this.warnForAccessibleName();
+    }
+    componentDidRender() {
+        var _a, _b;
+        if (this.nativeInput && this.nativeInput.value !== ((_a = this.value) !== null && _a !== void 0 ? _a : '')) {
+            this.nativeInput.value = (_b = this.value) !== null && _b !== void 0 ? _b : '';
+        }
+        this.syncValidity();
+    }
+    formResetCallback() {
+        var _a;
+        (_a = this.formControl) === null || _a === void 0 ? void 0 : _a.reset();
+    }
+    formDisabledCallback(disabled) {
+        var _a;
+        (_a = this.formControl) === null || _a === void 0 ? void 0 : _a.setDisabled(disabled);
+    }
+    formStateRestoreCallback(state) {
+        if (typeof state === 'string')
+            this.value = state;
+    }
+    syncInputName(value = this.inputName) {
+        if (this.hasExplicitName)
+            return;
+        this.name = value || undefined;
+    }
+    warnForAccessibleName() {
+    }
+    get sizeValue() {
+        if (SIZES.includes(this.size))
+            return this.size;
+        return 'medium';
+    }
+    get strengthLevelValue() {
+        if (STRENGTH_LEVELS.includes(this.strengthLevel))
+            return this.strengthLevel;
+        return 'none';
+    }
+    get strengthValue() {
+        return { none: 0, low: 1, medium: 2, high: 3 }[this.strengthLevelValue];
+    }
+    get strengthLabel() {
+        return { none: 'Não informada', low: 'Baixa', medium: 'Média', high: 'Alta' }[this.strengthLevelValue];
+    }
+    get autocompleteValue() {
+        return this.openEyes ? this.autoComplete : 'current-password';
+    }
+    messageFor(validity) {
+        var _a;
+        const native = ((_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.validationMessage) || '';
+        if (validity.valueMissing)
+            return this.requiredErrorMessage || native;
+        if (validity.tooShort)
+            return this.minlengthErrorMessage || native;
+        return native;
+    }
+    syncValidity() {
+        if (!this.nativeInput || !this.formControl)
+            return;
+        const validity = this.nativeInput.validity;
+        const flags = {};
+        for (const flag of VALIDITY_FLAGS)
+            if (validity[flag])
+                flags[flag] = true;
+        this.formControl.setValidity(flags, validity.valid ? '' : this.messageFor(validity), this.nativeInput);
+        if (this.validationDanger)
+            this.showValidation(!validity.valid);
+    }
+    showValidation(show) {
+        var _a;
+        const validity = (_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.validity;
+        const danger = show && !!validity && !validity.valid;
+        const text = danger ? this.messageFor(validity) : '';
+        if (danger !== this.validationDanger)
+            this.validationDanger = danger;
+        if (text !== this.validationText)
+            this.validationText = text;
+    }
+    render() {
+        var _a, _b;
+        const disabled = this.disabled || ((_a = this.formControl) === null || _a === void 0 ? void 0 : _a.disabled) || this.disabledByForm;
+        const invalid = this.danger || this.validationDanger;
+        const success = this.success && !invalid;
+        const message = this.danger
+            ? this.errorMessage || this.validationText
+            : this.validationDanger
+                ? this.validationText
+                : success
+                    ? this.successMessage
+                    : this.helperMessage;
+        const describedBy = [message && `${this.inputId}-message`, this.showStrength && `${this.inputId}-strength`]
+            .filter(Boolean)
+            .join(' ');
+        const strengthLevel = this.strengthLevelValue;
+        const strengthValue = this.strengthValue;
+        return (index.h(index.Host, { key: '7534ac19bc1d16e319c16fbebfdd212e0a2180c3', "aria-disabled": disabled ? 'true' : null, class: {
+                [`uai-input-password--size-${this.sizeValue}`]: true,
+                'uai-input-password--danger': invalid,
+                'uai-input-password--success': success,
+                'uai-input-password--disabled': disabled,
+                'uai-input-password--readonly': this.readonly && !disabled,
+            } }, index.h("div", { key: '07fd6e1a265e5bd418a67f98545592460a91c357', class: "password" }, this.label && (index.h("label", { key: 'f6c85d0ba2c617804b2ba6f1614d57b80712d9e2', class: "password__label", for: this.inputId }, index.h("uai-typo", { key: '43e35acb4f6b5e6ce52f915dafff11ab55c6bcc2', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), index.h("div", { key: '683376dada4345aa184854f708a09bd1788d7e69', class: "password__control", part: "input-container", onClick: this.onControlClick }, this.icon && index.h("uai-icon", { key: '372e337830751f4a299755b2ade7605497eaf8d6', class: "password__icon", name: this.icon, size: "medium" }), index.h("slot", { key: '81d590b3ad423f9ebbefd5a5f7d99efe8f975b49', name: "input-left" }), index.h("div", { key: '2f441fe37879fafbfd180a11af6c8d65d4294382', class: "password__field" }, index.h("slot", { key: '87a918e6834d8a2aadd4766a3e904e0d4283f7b8', name: "inside-input-left" }), index.h("input", { key: '17cd445609018d0f4d2ffc3acfcb3a2166c5e3d7', id: this.inputId, ref: (input) => (this.nativeInput = input), class: "password__native", part: "input", type: this.openEyes ? 'text' : 'password', min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, value: (_b = this.value) !== null && _b !== void 0 ? _b : '', placeholder: this.placeholder, autocapitalize: this.autoCapitalize, autocomplete: this.autocompleteValue, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.label ? null : this.ariaLabel, "aria-invalid": invalid ? 'true' : null, "aria-describedby": describedBy || null, "data-test": this.dataTest, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown })), invalid && index.h("uai-icon", { key: 'f14ec8e6ecbbcf5ef1c2a25c0ddfdcb60c79552a', class: "password__feedback", name: "error", theme: "outline", size: "medium" }), success && (index.h("uai-icon", { key: '128166a49438f88b1fcf427ec5c9ace21cd6bd91', class: "password__feedback", name: "checkball", theme: "solid", size: "medium" })), index.h("button", { key: 'cd076c75d23037e1342ac539b153a1e309bf6745', class: "password__toggle", type: "button", "aria-label": this.openEyes ? 'Ocultar senha' : 'Mostrar senha', "aria-pressed": this.openEyes ? 'true' : 'false', disabled: disabled, onClick: this.onVisibilityClick }, index.h("uai-icon", { key: '0dd76529e916be1817d2d32eaecc92f2e88687c2', name: this.openEyes ? 'eye-open' : 'eye-closed', size: "medium" })), index.h("slot", { key: '3e2205f8228196d4cda67993610aebdff7b188c3', name: "input-right" })), message && (index.h("div", { key: 'a14b36a651df38451a7da2001d2f6601a4b90e16', id: `${this.inputId}-message`, class: "password__message", part: "input__message" }, index.h("uai-typo", { key: '53c5a22b0ed17cfdfec5de3cd1bccee9f326423d', variant: "caption", tag: "span", margin: false }, message))), this.showStrength && (index.h("div", { key: '1349e47089f2d7e1a5c78a76b50e2f755305e1a5', class: "password__strength" }, index.h("uai-typo", { key: 'a2e2df99664675cef507df7a76e2893d0323699f', class: "password__strength-label", variant: "caption", tag: "span", margin: false }, "For\u00E7a"), index.h("div", { key: '8600a90d629dbfcae16ca0b41122f81ad3b152f2', id: `${this.inputId}-strength`, class: { password__meter: true, [`password__meter--${strengthLevel}`]: true }, role: "meter", "aria-label": "For\u00E7a da senha", "aria-valuemin": "0", "aria-valuemax": "3", "aria-valuenow": strengthValue, "aria-valuetext": this.strengthLabel }, [1, 2, 3].map((segment) => (index.h("span", { class: {
+                password__segment: true,
+                'password__segment--active': segment <= strengthValue,
+            } })))), strengthLevel !== 'none' && (index.h("uai-typo", { key: 'f35c61d8b90af235ac83405ac2f96047776535b3', class: "password__strength-value", variant: "caption", tag: "span", margin: false }, this.strengthLabel)))))));
+    }
+    static get delegatesFocus() { return true; }
+    static get formAssociated() { return true; }
+    get el() { return index.getElement(this); }
+    static get watchers() { return {
+        "name": [{
+                "nameChanged": 0
+            }],
+        "inputName": [{
+                "inputNameChanged": 0
+            }],
+        "value": [{
+                "valueChanged": 0
+            }]
+    }; }
+};
+UaiInputPassword.style = uaiInputPasswordCss();
+
+exports.uai_input_password = UaiInputPassword;
