@@ -49,13 +49,35 @@
 }
 
 .uai-tabs__list {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
   width: max-content;
 }
 
+.uai-tabs__indicator {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: var(--tab-width, 0px);
+  height: var(--tab-height, 100%);
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background: var(--uai-action-outline-default, #{$uai-action-outline-default});
+  box-shadow: var(--uai-elevation-tab-active, #{$uai-elevation-tab-active});
+  pointer-events: none;
+  transform: translate3d(var(--tab-x, 0px), 0, 0);
+  transition: none;
+
+  &[data-initialized='true'] {
+    @include uai-transition(transform width, moderate);
+  }
+}
+
 .uai-tabs__tab {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +94,7 @@
   white-space: nowrap;
   cursor: pointer;
   appearance: none;
-  @include uai-transition(background-color color box-shadow);
+  @include uai-transition(color);
   @include uai-focus-visible;
 
   > uai-typo {
@@ -85,9 +107,7 @@
 
   &:active:not([aria-disabled='true']),
   &--open {
-    background: var(--uai-action-outline-default, #{$uai-action-outline-default});
     color: var(--uai-content-primary, #{$uai-content-primary});
-    box-shadow: var(--uai-elevation-tab-active, #{$uai-elevation-tab-active});
   }
 
   &--error:not([aria-disabled='true']) {

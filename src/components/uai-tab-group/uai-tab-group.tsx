@@ -44,8 +44,10 @@ export class UaiTabGroup {
   private readonly groupId = `uai-tab-group-${nextGroupId++}`;
   private viewport?: HTMLElement;
   private track?: HTMLElement;
+  private indicator?: HTMLElement;
   private observer?: MutationObserver;
   private resizeObserver?: ResizeObserver;
+  private indicatorInitialized = false;
   private synchronizing = false;
   private loaded = false;
   private revealPending = false;
@@ -102,6 +104,7 @@ export class UaiTabGroup {
   componentDidRender(): void {
     if (!this.loaded) return;
     this.updateOverflow();
+    this.updateIndicator();
     if (this.focusPending) {
       this.focusPending = false;
       this.focusTab(this.focusedItem);
@@ -115,7 +118,7 @@ export class UaiTabGroup {
   disconnectedCallback(): void {
     this.observer?.disconnect();
     this.resizeObserver?.disconnect();
-    window.removeEventListener('resize', this.updateOverflow);
+    window.removeEventListener('resize', this.handleResize);
   }
 
   private isOwnItem(target: EventTarget | null): target is UaiTabItemElement {
@@ -135,13 +138,13 @@ export class UaiTabGroup {
     }
     this.resizeObserver?.disconnect();
     if (typeof ResizeObserver === 'function') {
-      this.resizeObserver = new ResizeObserver(this.updateOverflow);
+      this.resizeObserver = new ResizeObserver(this.handleResize);
       if (this.viewport) this.resizeObserver.observe(this.viewport);
       if (this.track) this.resizeObserver.observe(this.track);
     }
-    window.addEventListener('resize', this.updateOverflow);
+    window.addEventListener('resize', this.handleResize);
     this.syncItems();
-    this.updateOverflow();
+    this.handleResize();
   }
 
   private snapshot(element: UaiTabItemElement): Tab {
@@ -238,6 +241,32 @@ export class UaiTabGroup {
     this.canScrollNext = Math.ceil(this.viewport.scrollLeft + this.viewport.clientWidth) < this.viewport.scrollWidth;
   };
 
+  private updateIndicator = (): void => {
+    if (!this.indicator || !this.track) return;
+    const selected = this.track.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+    if (!selected) {
+      this.indicator.hidden = true;
+      this.indicator.removeAttribute('data-initialized');
+      this.indicatorInitialized = false;
+      return;
+    }
+
+    this.indicator.hidden = false;
+    this.indicator.style.setProperty('--tab-x', `${selected.offsetLeft}px`);
+    this.indicator.style.setProperty('--tab-width', `${selected.offsetWidth}px`);
+    this.indicator.style.setProperty('--tab-height', `${selected.offsetHeight}px`);
+    if (!this.indicatorInitialized) {
+      void this.indicator.offsetWidth;
+      this.indicator.setAttribute('data-initialized', 'true');
+      this.indicatorInitialized = true;
+    }
+  };
+
+  private handleResize = (): void => {
+    this.updateOverflow();
+    this.updateIndicator();
+  };
+
   private scroll(direction: -1 | 1): void {
     if (!this.viewport) return;
     const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -306,6 +335,8 @@ export class UaiTabGroup {
               <div class="uai-tabs__viewport" ref={(el) => this.viewport = el} onScroll={this.updateOverflow}>
                 <div class="uai-tabs__list" role="tablist" aria-label={this.ariaLabel || undefined}
                   aria-labelledby={this.ariaLabelledBy || undefined} ref={(el) => this.track = el}>
+                  <span aria-hidden="true" class="uai-tabs__indicator"
+                    ref={(el) => this.indicator = el}></span>
                   {this.items.map((item, index) => {
                     if (!(item.ariaLabel || item.label)?.trim()) {
                       warnOnce('uai-tab-group', `unnamed:${item.element.id}`, 'Each tab requires label or aria-label, including icon-only tabs.');
