@@ -77,13 +77,39 @@
 }
 
 .uai-tabs__list {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--uai-spacing-2xs, 0.25rem);
   width: max-content;
 }
 
+.uai-tabs__indicator {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: var(--tab-width, 0px);
+  height: var(--tab-height, 100%);
+  border-radius: var(--uai-radius-lg, 0.75rem);
+  background: var(--uai-action-outline-default, #ffffff);
+  box-shadow: var(--uai-elevation-tab-active, 0px 1px 4px 0px rgba(0, 0, 0, 0.1));
+  pointer-events: none;
+  transform: translate3d(var(--tab-x, 0px), 0, 0);
+  transition: none;
+}
+.uai-tabs__indicator[data-initialized=true] {
+  transition: transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), width var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .uai-tabs__indicator[data-initialized=true] {
+    transition: none;
+  }
+}
+
 .uai-tabs__tab {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +126,7 @@
   white-space: nowrap;
   cursor: pointer;
   appearance: none;
-  transition: background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+  transition: color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
 }
 @media (prefers-reduced-motion: reduce) {
   .uai-tabs__tab {
@@ -118,9 +144,7 @@
   color: var(--uai-content-primary, #242729);
 }
 .uai-tabs__tab:active:not([aria-disabled=true]), .uai-tabs__tab--open {
-  background: var(--uai-action-outline-default, #ffffff);
   color: var(--uai-content-primary, #242729);
-  box-shadow: var(--uai-elevation-tab-active, 0px 1px 4px 0px rgba(0, 0, 0, 0.1));
 }
 .uai-tabs__tab--error:not([aria-disabled=true]) {
   color: var(--uai-feedback-error, #cf0022);

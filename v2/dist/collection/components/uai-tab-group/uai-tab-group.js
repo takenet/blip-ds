@@ -27,6 +27,7 @@ export class UaiTabGroup {
         this.canScrollPrev = false;
         this.canScrollNext = false;
         this.groupId = `uai-tab-group-${nextGroupId++}`;
+        this.indicatorInitialized = false;
         this.synchronizing = false;
         this.loaded = false;
         this.revealPending = false;
@@ -51,6 +52,30 @@ export class UaiTabGroup {
             this.canScrollPrev = this.viewport.scrollLeft > 0;
             this.canScrollNext = Math.ceil(this.viewport.scrollLeft + this.viewport.clientWidth) < this.viewport.scrollWidth;
         };
+        this.updateIndicator = () => {
+            if (!this.indicator || !this.track)
+                return;
+            const selected = this.track.querySelector('[role="tab"][aria-selected="true"]');
+            if (!selected) {
+                this.indicator.hidden = true;
+                this.indicator.removeAttribute('data-initialized');
+                this.indicatorInitialized = false;
+                return;
+            }
+            this.indicator.hidden = false;
+            this.indicator.style.setProperty('--tab-x', `${selected.offsetLeft}px`);
+            this.indicator.style.setProperty('--tab-width', `${selected.offsetWidth}px`);
+            this.indicator.style.setProperty('--tab-height', `${selected.offsetHeight}px`);
+            if (!this.indicatorInitialized) {
+                void this.indicator.offsetWidth;
+                this.indicator.setAttribute('data-initialized', 'true');
+                this.indicatorInitialized = true;
+            }
+        };
+        this.handleResize = () => {
+            this.updateOverflow();
+            this.updateIndicator();
+        };
     }
     alignmentChanged() {
         this.updateOverflow();
@@ -73,6 +98,7 @@ export class UaiTabGroup {
         if (!this.loaded)
             return;
         this.updateOverflow();
+        this.updateIndicator();
         if (this.focusPending) {
             this.focusPending = false;
             this.focusTab(this.focusedItem);
@@ -86,7 +112,7 @@ export class UaiTabGroup {
         var _a, _b;
         (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
         (_b = this.resizeObserver) === null || _b === void 0 ? void 0 : _b.disconnect();
-        window.removeEventListener('resize', this.updateOverflow);
+        window.removeEventListener('resize', this.handleResize);
     }
     isOwnItem(target) {
         return target instanceof HTMLElement && target.tagName === 'UAI-TAB-ITEM' && target.closest('uai-tab-group') === this.el;
@@ -104,15 +130,15 @@ export class UaiTabGroup {
         }
         (_b = this.resizeObserver) === null || _b === void 0 ? void 0 : _b.disconnect();
         if (typeof ResizeObserver === 'function') {
-            this.resizeObserver = new ResizeObserver(this.updateOverflow);
+            this.resizeObserver = new ResizeObserver(this.handleResize);
             if (this.viewport)
                 this.resizeObserver.observe(this.viewport);
             if (this.track)
                 this.resizeObserver.observe(this.track);
         }
-        window.addEventListener('resize', this.updateOverflow);
+        window.addEventListener('resize', this.handleResize);
         this.syncItems();
-        this.updateOverflow();
+        this.handleResize();
     }
     snapshot(element) {
         return {
@@ -264,7 +290,7 @@ export class UaiTabGroup {
         const labels = LABELS[language];
         const selected = this.items.find((item) => item.open);
         const overflow = this.canScrollPrev || this.canScrollNext;
-        return (h(Host, { key: 'c51231480e74096f6e35b41e43d49ab01ec732bd' }, h("div", { key: '8104bb2283090c1e499308ab198e96ac122aea2e', class: "uai-tabs" }, h("div", { key: '6d44af23b38c7a6f932715ab7b858841342efc70', class: { 'uai-tabs__header': true, [`uai-tabs__header--${align}`]: true }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.headerStyle) }, h("div", { key: '380d9ddc53be13b292093070a8e56c20ff882422', class: { 'uai-tabs__navigation': true, 'uai-tabs__navigation--overflow': overflow } }, overflow && h("uai-button", { key: '5f489d81569fbddd75db8426a3e95b8897d28332', variant: "text", color: "content", size: "short", icon: "arrow-left", "aria-label": labels.previous, disabled: !this.canScrollPrev, dataTest: this.dtButtonPrev, onUaiClick: () => this.scroll(-1) }), h("div", { key: '281a641754c3763a471925d46d1e8b5479c64d98', class: "uai-tabs__viewport", ref: (el) => this.viewport = el, onScroll: this.updateOverflow }, h("div", { key: '3fb5dded7f971c9e5b4590a46250a0f0f0130ffa', class: "uai-tabs__list", role: "tablist", "aria-label": this.ariaLabel || undefined, "aria-labelledby": this.ariaLabelledBy || undefined, ref: (el) => this.track = el }, this.items.map((item, index) => {
+        return (h(Host, { key: 'f1afd3656ab4877cf244dfcd64f4aaff74e81eb6' }, h("div", { key: 'be95ac1b6cac54fb5d5ec8d1167475aeb8c8b37f', class: "uai-tabs" }, h("div", { key: '6945f78b920278df328ebd91ae9a6068c847752b', class: { 'uai-tabs__header': true, [`uai-tabs__header--${align}`]: true }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.headerStyle) }, h("div", { key: 'a48a719daaf2021beae470b01e16f3675bc26e5c', class: { 'uai-tabs__navigation': true, 'uai-tabs__navigation--overflow': overflow } }, overflow && h("uai-button", { key: 'aef2cc4ca63f9e51475f3f96975310eaa02a1b01', variant: "text", color: "content", size: "short", icon: "arrow-left", "aria-label": labels.previous, disabled: !this.canScrollPrev, dataTest: this.dtButtonPrev, onUaiClick: () => this.scroll(-1) }), h("div", { key: 'c853da1a7d7fe3d7a044bee85719bd10d790b128', class: "uai-tabs__viewport", ref: (el) => this.viewport = el, onScroll: this.updateOverflow }, h("div", { key: '8b8dcd2c7d39527dadc46a368f27327dff78f11f', class: "uai-tabs__list", role: "tablist", "aria-label": this.ariaLabel || undefined, "aria-labelledby": this.ariaLabelledBy || undefined, ref: (el) => this.track = el }, h("span", { key: '99a31cd7f4618a84c873d077df0b865bf3fd0233', "aria-hidden": "true", class: "uai-tabs__indicator", ref: (el) => this.indicator = el }), this.items.map((item, index) => {
             var _a;
             if (!((_a = (item.ariaLabel || item.label)) === null || _a === void 0 ? void 0 : _a.trim())) {
                 warnOnce('uai-tab-group', `unnamed:${item.element.id}`, 'Each tab requires label or aria-label, including icon-only tabs.');
@@ -275,7 +301,7 @@ export class UaiTabGroup {
                     if (!item.disable)
                         this.focusedItem = item.element;
                 }, onClick: () => this.activate(item), onKeyDown: (event) => this.handleKeyDown(event, item) }, item.icon && item.iconPosition === 'left' && this.renderIcon(item.icon, item.iconTheme), item.badge && item.badgePosition === 'left' && this.renderBadge(item), !item.iconOnly && h("uai-typo", { tag: "span", variant: "body-base", bold: "medium", margin: false, noWrap: true }, item.label), item.error && h("uai-icon", { class: "uai-tabs__icon", name: "warning", size: "small", "aria-hidden": "true" }), item.icon && item.iconPosition === 'right' && this.renderIcon(item.icon, item.iconTheme), item.badge && item.badgePosition === 'right' && this.renderBadge(item)));
-        }))), overflow && h("uai-button", { key: '7ae54976e236f4773319904841a2fcc6821d0ed3', variant: "text", color: "content", size: "short", icon: "arrow-right", "aria-label": labels.next, disabled: !this.canScrollNext, dataTest: this.dtButtonNext, onUaiClick: () => this.scroll(1) }))), h("div", { key: 'd4b8eae8afeec688856de0aab199f304df06a35f', class: { 'uai-tabs__content': true, 'uai-tabs__content--scrollable': this.contentScrollable }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.contentStyle) }, h("slot", { key: '7514d4929f4b0021d250dd71149e6a5209e64bd0', onSlotchange: () => this.loaded && this.syncItems() })))));
+        }))), overflow && h("uai-button", { key: 'e6b5816e961faad4718bf31ee75bf18221c9a0bc', variant: "text", color: "content", size: "short", icon: "arrow-right", "aria-label": labels.next, disabled: !this.canScrollNext, dataTest: this.dtButtonNext, onUaiClick: () => this.scroll(1) }))), h("div", { key: 'aafa9a0ec19b537d13f9cf95fae0d8e8b7585f3c', class: { 'uai-tabs__content': true, 'uai-tabs__content--scrollable': this.contentScrollable }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.contentStyle) }, h("slot", { key: '3548139cfffc112d8dd04f320b906b782b04c476', onSlotchange: () => this.loaded && this.syncItems() })))));
     }
     static get is() { return "uai-tab-group"; }
     static get encapsulation() { return "scoped"; }

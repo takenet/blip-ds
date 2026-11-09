@@ -10,7 +10,7 @@ const UAI_TAB_ITEM_PROPS = [
     'contentStyle', 'open', 'dataTest', 'ariaLabel', 'iconOnly',
 ];
 
-const uaiTabGroupCss = () => `.sc-uai-tab-group-h{display:block;width:100%;min-width:0}.uai-tabs.sc-uai-tab-group{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;min-width:0;height:100%}.uai-tabs__header.sc-uai-tab-group{display:-ms-flexbox;display:flex;min-width:0;-ms-flex-negative:0;flex-shrink:0}.uai-tabs__header--left.sc-uai-tab-group{-ms-flex-pack:start;justify-content:flex-start}.uai-tabs__header--center.sc-uai-tab-group{-ms-flex-pack:center;justify-content:center}.uai-tabs__header--right.sc-uai-tab-group{-ms-flex-pack:end;justify-content:flex-end}.uai-tabs__navigation.sc-uai-tab-group{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;min-width:0;max-width:100%;padding:var(--uai-spacing-2xs, 0.25rem);border-radius:var(--uai-radius-xl, 1rem);background:var(--uai-surface-contrast, #e4e6e7)}.uai-tabs__navigation--overflow.sc-uai-tab-group{width:100%}.uai-tabs__navigation.sc-uai-tab-group>uai-button.sc-uai-tab-group{-ms-flex-negative:0;flex-shrink:0}.uai-tabs__viewport.sc-uai-tab-group{min-width:0;padding:var(--uai-spacing-xs, 0.5rem);margin:calc(-1 * var(--uai-spacing-xs, 0.5rem));overflow:auto hidden;scrollbar-width:none}.uai-tabs__viewport.sc-uai-tab-group::-webkit-scrollbar{display:none}.uai-tabs__list.sc-uai-tab-group{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-2xs, 0.25rem);width:-webkit-max-content;width:-moz-max-content;width:max-content}.uai-tabs__tab.sc-uai-tab-group{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-ms-flex-negative:0;flex-shrink:0;gap:var(--uai-spacing-xs, 0.5rem);-webkit-box-sizing:border-box;box-sizing:border-box;min-height:var(--uai-control-height-short, 2rem);margin:0;padding:var(--uai-spacing-2xs, 0.25rem) var(--uai-spacing-sm, 0.75rem);border:0;border-radius:var(--uai-radius-lg, 0.75rem);background:transparent;color:var(--uai-content-secondary, #5f676d);white-space:nowrap;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.uai-tabs__tab.sc-uai-tab-group{-webkit-transition:none;transition:none}}.uai-tabs__tab.sc-uai-tab-group:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}.uai-tabs__tab.sc-uai-tab-group>uai-typo.sc-uai-tab-group{--uai-typo-color:currentColor}.uai-tabs__tab.sc-uai-tab-group:hover:not([aria-disabled=true]){color:var(--uai-content-primary, #242729)}.uai-tabs__tab.sc-uai-tab-group:active:not([aria-disabled=true]),.uai-tabs__tab--open.sc-uai-tab-group{background:var(--uai-action-outline-default, #ffffff);color:var(--uai-content-primary, #242729);-webkit-box-shadow:var(--uai-elevation-tab-active, 0px 1px 4px 0px rgba(0, 0, 0, 0.1));box-shadow:var(--uai-elevation-tab-active, 0px 1px 4px 0px rgba(0, 0, 0, 0.1))}.uai-tabs__tab--error.sc-uai-tab-group:not([aria-disabled=true]){color:var(--uai-feedback-error, #cf0022)}.uai-tabs__tab--disabled.sc-uai-tab-group{color:var(--uai-content-disabled, #848e94);cursor:not-allowed}.uai-tabs__tab--icon-only.sc-uai-tab-group{min-width:var(--uai-control-height-short, 2rem);padding:var(--uai-spacing-2xs, 0.25rem)}.uai-tabs__icon.sc-uai-tab-group{-ms-flex-negative:0;flex-shrink:0;pointer-events:none}.uai-tabs__content.sc-uai-tab-group{min-height:0;height:100%}.uai-tabs__content--scrollable.sc-uai-tab-group{overflow:auto}.uai-tabs__badge.sc-uai-tab-group{-ms-flex-negative:0;flex-shrink:0}@media (forced-colors: active){.uai-tabs__tab.sc-uai-tab-group{border:var(--uai-border-width-default, 1px) solid ButtonText}.uai-tabs__tab--open.sc-uai-tab-group{border-color:Highlight;border-style:double}.uai-tabs__tab--disabled.sc-uai-tab-group{color:GrayText}}`;
+const uaiTabGroupCss = () => `.sc-uai-tab-group-h{display:block;width:100%;min-width:0}.uai-tabs.sc-uai-tab-group{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;min-width:0;height:100%}.uai-tabs__header.sc-uai-tab-group{display:-ms-flexbox;display:flex;min-width:0;-ms-flex-negative:0;flex-shrink:0}.uai-tabs__header--left.sc-uai-tab-group{-ms-flex-pack:start;justify-content:flex-start}.uai-tabs__header--center.sc-uai-tab-group{-ms-flex-pack:center;justify-content:center}.uai-tabs__header--right.sc-uai-tab-group{-ms-flex-pack:end;justify-content:flex-end}.uai-tabs__navigation.sc-uai-tab-group{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;min-width:0;max-width:100%;padding:var(--uai-spacing-2xs, 0.25rem);border-radius:var(--uai-radius-xl, 1rem);background:var(--uai-surface-contrast, #e4e6e7)}.uai-tabs__navigation--overflow.sc-uai-tab-group{width:100%}.uai-tabs__navigation.sc-uai-tab-group>uai-button.sc-uai-tab-group{-ms-flex-negative:0;flex-shrink:0}.uai-tabs__viewport.sc-uai-tab-group{min-width:0;padding:var(--uai-spacing-xs, 0.5rem);margin:calc(-1 * var(--uai-spacing-xs, 0.5rem));overflow:auto hidden;scrollbar-width:none}.uai-tabs__viewport.sc-uai-tab-group::-webkit-scrollbar{display:none}.uai-tabs__list.sc-uai-tab-group{position:relative;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-2xs, 0.25rem);width:-webkit-max-content;width:-moz-max-content;width:max-content}.uai-tabs__indicator.sc-uai-tab-group{position:absolute;z-index:0;top:0;left:0;width:var(--tab-width, 0px);height:var(--tab-height, 100%);border-radius:var(--uai-radius-lg, 0.75rem);background:var(--uai-action-outline-default, #ffffff);-webkit-box-shadow:var(--uai-elevation-tab-active, 0px 1px 4px 0px rgba(0, 0, 0, 0.1));box-shadow:var(--uai-elevation-tab-active, 0px 1px 4px 0px rgba(0, 0, 0, 0.1));pointer-events:none;-webkit-transform:translate3d(var(--tab-x, 0px), 0, 0);transform:translate3d(var(--tab-x, 0px), 0, 0);-webkit-transition:none;transition:none}.uai-tabs__indicator[data-initialized=true].sc-uai-tab-group{-webkit-transition:width var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:width var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), width var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), width var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.uai-tabs__indicator[data-initialized=true].sc-uai-tab-group{-webkit-transition:none;transition:none}}.uai-tabs__tab.sc-uai-tab-group{position:relative;z-index:1;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;-ms-flex-negative:0;flex-shrink:0;gap:var(--uai-spacing-xs, 0.5rem);-webkit-box-sizing:border-box;box-sizing:border-box;min-height:var(--uai-control-height-short, 2rem);margin:0;padding:var(--uai-spacing-2xs, 0.25rem) var(--uai-spacing-sm, 0.75rem);border:0;border-radius:var(--uai-radius-lg, 0.75rem);background:transparent;color:var(--uai-content-secondary, #5f676d);white-space:nowrap;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-transition:color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.uai-tabs__tab.sc-uai-tab-group{-webkit-transition:none;transition:none}}.uai-tabs__tab.sc-uai-tab-group:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}.uai-tabs__tab.sc-uai-tab-group>uai-typo.sc-uai-tab-group{--uai-typo-color:currentColor}.uai-tabs__tab.sc-uai-tab-group:hover:not([aria-disabled=true]){color:var(--uai-content-primary, #242729)}.uai-tabs__tab.sc-uai-tab-group:active:not([aria-disabled=true]),.uai-tabs__tab--open.sc-uai-tab-group{color:var(--uai-content-primary, #242729)}.uai-tabs__tab--error.sc-uai-tab-group:not([aria-disabled=true]){color:var(--uai-feedback-error, #cf0022)}.uai-tabs__tab--disabled.sc-uai-tab-group{color:var(--uai-content-disabled, #848e94);cursor:not-allowed}.uai-tabs__tab--icon-only.sc-uai-tab-group{min-width:var(--uai-control-height-short, 2rem);padding:var(--uai-spacing-2xs, 0.25rem)}.uai-tabs__icon.sc-uai-tab-group{-ms-flex-negative:0;flex-shrink:0;pointer-events:none}.uai-tabs__content.sc-uai-tab-group{min-height:0;height:100%}.uai-tabs__content--scrollable.sc-uai-tab-group{overflow:auto}.uai-tabs__badge.sc-uai-tab-group{-ms-flex-negative:0;flex-shrink:0}@media (forced-colors: active){.uai-tabs__tab.sc-uai-tab-group{border:var(--uai-border-width-default, 1px) solid ButtonText}.uai-tabs__tab--open.sc-uai-tab-group{border-color:Highlight;border-style:double}.uai-tabs__tab--disabled.sc-uai-tab-group{color:GrayText}}`;
 
 const LABELS = {
     pt_BR: { previous: 'Abas anteriores', next: 'Próximas abas' },
@@ -33,6 +33,7 @@ const UaiTabGroup = class {
         this.canScrollPrev = false;
         this.canScrollNext = false;
         this.groupId = `uai-tab-group-${nextGroupId++}`;
+        this.indicatorInitialized = false;
         this.synchronizing = false;
         this.loaded = false;
         this.revealPending = false;
@@ -57,6 +58,29 @@ const UaiTabGroup = class {
             this.canScrollPrev = this.viewport.scrollLeft > 0;
             this.canScrollNext = Math.ceil(this.viewport.scrollLeft + this.viewport.clientWidth) < this.viewport.scrollWidth;
         };
+        this.updateIndicator = () => {
+            if (!this.indicator || !this.track)
+                return;
+            const selected = this.track.querySelector('[role="tab"][aria-selected="true"]');
+            if (!selected) {
+                this.indicator.hidden = true;
+                this.indicator.removeAttribute('data-initialized');
+                this.indicatorInitialized = false;
+                return;
+            }
+            this.indicator.hidden = false;
+            this.indicator.style.setProperty('--tab-x', `${selected.offsetLeft}px`);
+            this.indicator.style.setProperty('--tab-width', `${selected.offsetWidth}px`);
+            this.indicator.style.setProperty('--tab-height', `${selected.offsetHeight}px`);
+            if (!this.indicatorInitialized) {
+                this.indicator.setAttribute('data-initialized', 'true');
+                this.indicatorInitialized = true;
+            }
+        };
+        this.handleResize = () => {
+            this.updateOverflow();
+            this.updateIndicator();
+        };
     }
     alignmentChanged() {
         this.updateOverflow();
@@ -79,6 +103,7 @@ const UaiTabGroup = class {
         if (!this.loaded)
             return;
         this.updateOverflow();
+        this.updateIndicator();
         if (this.focusPending) {
             this.focusPending = false;
             this.focusTab(this.focusedItem);
@@ -92,7 +117,7 @@ const UaiTabGroup = class {
         var _a, _b;
         (_a = this.observer) === null || _a === void 0 ? void 0 : _a.disconnect();
         (_b = this.resizeObserver) === null || _b === void 0 ? void 0 : _b.disconnect();
-        window.removeEventListener('resize', this.updateOverflow);
+        window.removeEventListener('resize', this.handleResize);
     }
     isOwnItem(target) {
         return target instanceof HTMLElement && target.tagName === 'UAI-TAB-ITEM' && target.closest('uai-tab-group') === this.el;
@@ -110,15 +135,15 @@ const UaiTabGroup = class {
         }
         (_b = this.resizeObserver) === null || _b === void 0 ? void 0 : _b.disconnect();
         if (typeof ResizeObserver === 'function') {
-            this.resizeObserver = new ResizeObserver(this.updateOverflow);
+            this.resizeObserver = new ResizeObserver(this.handleResize);
             if (this.viewport)
                 this.resizeObserver.observe(this.viewport);
             if (this.track)
                 this.resizeObserver.observe(this.track);
         }
-        window.addEventListener('resize', this.updateOverflow);
+        window.addEventListener('resize', this.handleResize);
         this.syncItems();
-        this.updateOverflow();
+        this.handleResize();
     }
     snapshot(element) {
         return {
@@ -270,7 +295,7 @@ const UaiTabGroup = class {
         const labels = LABELS[language];
         const selected = this.items.find((item) => item.open);
         const overflow = this.canScrollPrev || this.canScrollNext;
-        return (index.h(index.Host, { key: 'c51231480e74096f6e35b41e43d49ab01ec732bd' }, index.h("div", { key: '8104bb2283090c1e499308ab198e96ac122aea2e', class: "uai-tabs" }, index.h("div", { key: '6d44af23b38c7a6f932715ab7b858841342efc70', class: { 'uai-tabs__header': true, [`uai-tabs__header--${align}`]: true }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.headerStyle) }, index.h("div", { key: '380d9ddc53be13b292093070a8e56c20ff882422', class: { 'uai-tabs__navigation': true, 'uai-tabs__navigation--overflow': overflow } }, overflow && index.h("uai-button", { key: '5f489d81569fbddd75db8426a3e95b8897d28332', variant: "text", color: "content", size: "short", icon: "arrow-left", "aria-label": labels.previous, disabled: !this.canScrollPrev, dataTest: this.dtButtonPrev, onUaiClick: () => this.scroll(-1) }), index.h("div", { key: '281a641754c3763a471925d46d1e8b5479c64d98', class: "uai-tabs__viewport", ref: (el) => this.viewport = el, onScroll: this.updateOverflow }, index.h("div", { key: '3fb5dded7f971c9e5b4590a46250a0f0f0130ffa', class: "uai-tabs__list", role: "tablist", "aria-label": this.ariaLabel || undefined, "aria-labelledby": this.ariaLabelledBy || undefined, ref: (el) => this.track = el }, this.items.map((item, index$1) => {
+        return (index.h(index.Host, { key: 'f1afd3656ab4877cf244dfcd64f4aaff74e81eb6' }, index.h("div", { key: 'be95ac1b6cac54fb5d5ec8d1167475aeb8c8b37f', class: "uai-tabs" }, index.h("div", { key: '6945f78b920278df328ebd91ae9a6068c847752b', class: { 'uai-tabs__header': true, [`uai-tabs__header--${align}`]: true }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.headerStyle) }, index.h("div", { key: 'a48a719daaf2021beae470b01e16f3675bc26e5c', class: { 'uai-tabs__navigation': true, 'uai-tabs__navigation--overflow': overflow } }, overflow && index.h("uai-button", { key: 'aef2cc4ca63f9e51475f3f96975310eaa02a1b01', variant: "text", color: "content", size: "short", icon: "arrow-left", "aria-label": labels.previous, disabled: !this.canScrollPrev, dataTest: this.dtButtonPrev, onUaiClick: () => this.scroll(-1) }), index.h("div", { key: 'c853da1a7d7fe3d7a044bee85719bd10d790b128', class: "uai-tabs__viewport", ref: (el) => this.viewport = el, onScroll: this.updateOverflow }, index.h("div", { key: '8b8dcd2c7d39527dadc46a368f27327dff78f11f', class: "uai-tabs__list", role: "tablist", "aria-label": this.ariaLabel || undefined, "aria-labelledby": this.ariaLabelledBy || undefined, ref: (el) => this.track = el }, index.h("span", { key: '99a31cd7f4618a84c873d077df0b865bf3fd0233', "aria-hidden": "true", class: "uai-tabs__indicator", ref: (el) => this.indicator = el }), this.items.map((item, index$1) => {
             var _a;
             if (!((_a = (item.ariaLabel || item.label)) === null || _a === void 0 ? void 0 : _a.trim())) {
                 deprecation.warnOnce('uai-tab-group', `unnamed:${item.element.id}`, 'Each tab requires label or aria-label, including icon-only tabs.');
@@ -281,7 +306,7 @@ const UaiTabGroup = class {
                     if (!item.disable)
                         this.focusedItem = item.element;
                 }, onClick: () => this.activate(item), onKeyDown: (event) => this.handleKeyDown(event, item) }, item.icon && item.iconPosition === 'left' && this.renderIcon(item.icon, item.iconTheme), item.badge && item.badgePosition === 'left' && this.renderBadge(item), !item.iconOnly && index.h("uai-typo", { tag: "span", variant: "body-base", bold: "medium", margin: false, noWrap: true }, item.label), item.error && index.h("uai-icon", { class: "uai-tabs__icon", name: "warning", size: "small", "aria-hidden": "true" }), item.icon && item.iconPosition === 'right' && this.renderIcon(item.icon, item.iconTheme), item.badge && item.badgePosition === 'right' && this.renderBadge(item)));
-        }))), overflow && index.h("uai-button", { key: '7ae54976e236f4773319904841a2fcc6821d0ed3', variant: "text", color: "content", size: "short", icon: "arrow-right", "aria-label": labels.next, disabled: !this.canScrollNext, dataTest: this.dtButtonNext, onUaiClick: () => this.scroll(1) }))), index.h("div", { key: 'd4b8eae8afeec688856de0aab199f304df06a35f', class: { 'uai-tabs__content': true, 'uai-tabs__content--scrollable': this.contentScrollable }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.contentStyle) }, index.h("slot", { key: '7514d4929f4b0021d250dd71149e6a5209e64bd0', onSlotchange: () => this.loaded && this.syncItems() })))));
+        }))), overflow && index.h("uai-button", { key: 'e6b5816e961faad4718bf31ee75bf18221c9a0bc', variant: "text", color: "content", size: "short", icon: "arrow-right", "aria-label": labels.next, disabled: !this.canScrollNext, dataTest: this.dtButtonNext, onUaiClick: () => this.scroll(1) }))), index.h("div", { key: 'aafa9a0ec19b537d13f9cf95fae0d8e8b7585f3c', class: { 'uai-tabs__content': true, 'uai-tabs__content--scrollable': this.contentScrollable }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.contentStyle) }, index.h("slot", { key: '3548139cfffc112d8dd04f320b906b782b04c476', onSlotchange: () => this.loaded && this.syncItems() })))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

@@ -15,8 +15,10 @@ export declare class UaiTabGroup {
     private readonly groupId;
     private viewport?;
     private track?;
+    private indicator?;
     private observer?;
     private resizeObserver?;
+    private indicatorInitialized;
     private synchronizing;
     private loaded;
     private revealPending;
@@ -56,6 +58,8 @@ export declare class UaiTabGroup {
     private focusTab;
     private handleKeyDown;
     private updateOverflow;
+    private updateIndicator;
+    private handleResize;
     private scroll;
     private revealFocusedTab;
     private styles;
