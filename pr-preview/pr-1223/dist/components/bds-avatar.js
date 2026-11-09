@@ -1,1 +1,0 @@
-import{B as o,d as p}from"./p-Dp-oEaTE.js";const s=o,a=p;export{s as BdsAvatar,a as defineCustomElement}
