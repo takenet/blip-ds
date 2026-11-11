@@ -620,13 +620,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">95/95 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">95/95 infos</a><span class="filter-pill ok" aria-disabled="true">412 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/412 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">28 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">95/95 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">95/95 infos</a><span class="filter-pill ok" aria-disabled="true">414 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/414 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">28 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>2.0s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.8s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -54119,7 +54119,7 @@ Países sem bandeira publicada mostram só o código.</div>
       <div class="badges">
         <label for="c-79-uai-modal-err" class="badge err as-toggle">API error</label>
         <label for="c-79-uai-modal-info" class="badge info as-toggle">1 info</label>
-        <label for="c-79-uai-modal-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-79-uai-modal-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -55544,11 +55544,40 @@ export const UaiTypo = createComponent({
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import React from 'react';
-import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from 'blip-ds-react';</code></pre>
+                <pre><code>import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from 'blip-ds-react';</code></pre>
               </div>
           
           
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Usage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Usage = () =&gt; {
+  const [open, setOpen] = React.useState(false);
+  return (
+    &lt;&gt;
+      &lt;UaiButton onClick={() =&gt; setOpen(true)}&gt;Editar dados&lt;/UaiButton&gt;
+      &lt;UaiModal
+        open={open}
+        heading=&quot;Editar dados&quot;
+        onUaiModalChanged={(event) =&gt; setOpen(event.detail.modalStatus === &#39;opened&#39;)}
+      &gt;
+        &lt;UaiTypo variant=&quot;body-base&quot;&gt;Altere as informações e salve para aplicar.&lt;/UaiTypo&gt;
+        &lt;UaiModalAction slot=&quot;footer&quot;&gt;
+          &lt;UaiButton variant=&quot;outline&quot; onClick={() =&gt; setOpen(false)}&gt;
+            Cancelar
+          &lt;/UaiButton&gt;
+          &lt;UaiButton onClick={() =&gt; setOpen(false)}&gt;Salvar&lt;/UaiButton&gt;
+        &lt;/UaiModalAction&gt;
+      &lt;/UaiModal&gt;
+    &lt;/&gt;
+  );
+};</code></pre>
+              
+            </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Playground</span>
@@ -55564,11 +55593,12 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
             &lt;UaiButton onClick={() =&gt; ref.current?.toggle()}&gt;Abrir modal&lt;/UaiButton&gt;
             &lt;UaiModal
                 ref={ref}
-                heading=&quot;Titulo&quot;
+                heading=&quot;Título&quot;
                 open={false}
                 closeButton
                 outzoneClose
                 enterClose
+                escapeClose
                 size=&quot;fixed&quot;&gt;
                 &lt;Content onClose={() =&gt; ref.current?.toggle()} /&gt;
             &lt;/UaiModal&gt;
@@ -55586,20 +55616,24 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
               
               <pre><code>const Sizes = () =&gt; (
   &lt;div style={{ display: &#39;flex&#39;, gap: &#39;var(--uai-spacing-md)&#39; }}&gt;
-    {[&#39;fixed&#39;, &#39;dynamic&#39;].map((size) =&gt; {
-      const ref = React.createRef();
-      return (
-        &lt;React.Fragment key={size}&gt;
-          &lt;UaiButton variant=&quot;outline&quot; onClick={() =&gt; ref.current?.toggle()}&gt;
-            {`Abrir ${size}`}
-          &lt;/UaiButton&gt;
-          &lt;UaiModal ref={ref} size={size} heading=&quot;Titulo&quot;&gt;
-            &lt;Content onClose={() =&gt; ref.current?.toggle()} /&gt;
-          &lt;/UaiModal&gt;
-        &lt;/React.Fragment&gt;
-      );
-    })}
+    {[&#39;fixed&#39;, &#39;dynamic&#39;].map((size) =&gt; (
+      &lt;SizeExample key={size} size={size} /&gt;
+    ))}
   &lt;/div&gt;
+);</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Opened</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Opened = () =&gt; (
+  &lt;UaiModal open heading=&quot;Título&quot;&gt;
+    &lt;Content /&gt;
+  &lt;/UaiModal&gt;
 );</code></pre>
               
             </div>
@@ -55617,7 +55651,7 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
     &lt;&gt;
       &lt;UaiButton onClick={() =&gt; ref.current?.toggle()}&gt;Abrir modal&lt;/UaiButton&gt;
       &lt;UaiTypo variant=&quot;body-base&quot;&gt;{`Último evento uaiModalChanged: ${status}`}&lt;/UaiTypo&gt;
-      &lt;UaiModal ref={ref} heading=&quot;Titulo&quot; onUaiModalChanged={(event) =&gt; setStatus(event.detail.modalStatus)}&gt;
+      &lt;UaiModal ref={ref} heading=&quot;Título&quot; onUaiModalChanged={(event) =&gt; setStatus(event.detail.modalStatus)}&gt;
         &lt;Content onClose={() =&gt; ref.current?.toggle()} /&gt;
       &lt;/UaiModal&gt;
     &lt;/&gt;
@@ -55637,7 +55671,7 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
   return (
     &lt;&gt;
       &lt;UaiButton onClick={() =&gt; ref.current?.toggle()}&gt;Abrir modal&lt;/UaiButton&gt;
-      &lt;UaiModal ref={ref} heading=&quot;Titulo&quot;&gt;
+      &lt;UaiModal ref={ref} heading=&quot;Título&quot;&gt;
         &lt;Content onClose={() =&gt; ref.current?.toggle()} /&gt;
       &lt;/UaiModal&gt;
     &lt;/&gt;
@@ -131629,7 +131663,7 @@ Países sem bandeira publicada mostram só o código.</div>
       <div class="badges">
         <label for="c-error-15-uai-modal-err" class="badge err as-toggle">API error</label>
         <label for="c-error-15-uai-modal-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-15-uai-modal-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-15-uai-modal-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
@@ -133054,11 +133088,40 @@ export const UaiTypo = createComponent({
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import React from 'react';
-import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from 'blip-ds-react';</code></pre>
+                <pre><code>import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from 'blip-ds-react';</code></pre>
               </div>
           
           
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Usage</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Usage = () =&gt; {
+  const [open, setOpen] = React.useState(false);
+  return (
+    &lt;&gt;
+      &lt;UaiButton onClick={() =&gt; setOpen(true)}&gt;Editar dados&lt;/UaiButton&gt;
+      &lt;UaiModal
+        open={open}
+        heading=&quot;Editar dados&quot;
+        onUaiModalChanged={(event) =&gt; setOpen(event.detail.modalStatus === &#39;opened&#39;)}
+      &gt;
+        &lt;UaiTypo variant=&quot;body-base&quot;&gt;Altere as informações e salve para aplicar.&lt;/UaiTypo&gt;
+        &lt;UaiModalAction slot=&quot;footer&quot;&gt;
+          &lt;UaiButton variant=&quot;outline&quot; onClick={() =&gt; setOpen(false)}&gt;
+            Cancelar
+          &lt;/UaiButton&gt;
+          &lt;UaiButton onClick={() =&gt; setOpen(false)}&gt;Salvar&lt;/UaiButton&gt;
+        &lt;/UaiModalAction&gt;
+      &lt;/UaiModal&gt;
+    &lt;/&gt;
+  );
+};</code></pre>
+              
+            </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Playground</span>
@@ -133074,11 +133137,12 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
             &lt;UaiButton onClick={() =&gt; ref.current?.toggle()}&gt;Abrir modal&lt;/UaiButton&gt;
             &lt;UaiModal
                 ref={ref}
-                heading=&quot;Titulo&quot;
+                heading=&quot;Título&quot;
                 open={false}
                 closeButton
                 outzoneClose
                 enterClose
+                escapeClose
                 size=&quot;fixed&quot;&gt;
                 &lt;Content onClose={() =&gt; ref.current?.toggle()} /&gt;
             &lt;/UaiModal&gt;
@@ -133096,20 +133160,24 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
               
               <pre><code>const Sizes = () =&gt; (
   &lt;div style={{ display: &#39;flex&#39;, gap: &#39;var(--uai-spacing-md)&#39; }}&gt;
-    {[&#39;fixed&#39;, &#39;dynamic&#39;].map((size) =&gt; {
-      const ref = React.createRef();
-      return (
-        &lt;React.Fragment key={size}&gt;
-          &lt;UaiButton variant=&quot;outline&quot; onClick={() =&gt; ref.current?.toggle()}&gt;
-            {`Abrir ${size}`}
-          &lt;/UaiButton&gt;
-          &lt;UaiModal ref={ref} size={size} heading=&quot;Titulo&quot;&gt;
-            &lt;Content onClose={() =&gt; ref.current?.toggle()} /&gt;
-          &lt;/UaiModal&gt;
-        &lt;/React.Fragment&gt;
-      );
-    })}
+    {[&#39;fixed&#39;, &#39;dynamic&#39;].map((size) =&gt; (
+      &lt;SizeExample key={size} size={size} /&gt;
+    ))}
   &lt;/div&gt;
+);</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Opened</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Opened = () =&gt; (
+  &lt;UaiModal open heading=&quot;Título&quot;&gt;
+    &lt;Content /&gt;
+  &lt;/UaiModal&gt;
 );</code></pre>
               
             </div>
@@ -133127,7 +133195,7 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
     &lt;&gt;
       &lt;UaiButton onClick={() =&gt; ref.current?.toggle()}&gt;Abrir modal&lt;/UaiButton&gt;
       &lt;UaiTypo variant=&quot;body-base&quot;&gt;{`Último evento uaiModalChanged: ${status}`}&lt;/UaiTypo&gt;
-      &lt;UaiModal ref={ref} heading=&quot;Titulo&quot; onUaiModalChanged={(event) =&gt; setStatus(event.detail.modalStatus)}&gt;
+      &lt;UaiModal ref={ref} heading=&quot;Título&quot; onUaiModalChanged={(event) =&gt; setStatus(event.detail.modalStatus)}&gt;
         &lt;Content onClose={() =&gt; ref.current?.toggle()} /&gt;
       &lt;/UaiModal&gt;
     &lt;/&gt;
@@ -133147,7 +133215,7 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
   return (
     &lt;&gt;
       &lt;UaiButton onClick={() =&gt; ref.current?.toggle()}&gt;Abrir modal&lt;/UaiButton&gt;
-      &lt;UaiModal ref={ref} heading=&quot;Titulo&quot;&gt;
+      &lt;UaiModal ref={ref} heading=&quot;Título&quot;&gt;
         &lt;Content onClose={() =&gt; ref.current?.toggle()} /&gt;
       &lt;/UaiModal&gt;
     &lt;/&gt;

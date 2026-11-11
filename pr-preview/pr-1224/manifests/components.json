@@ -771,27 +771,37 @@
       },
       "stories": [
         {
+          "id": "uai-modal--usage",
+          "name": "Usage",
+          "snippet": "const Usage = () => {\n  const [open, setOpen] = React.useState(false);\n  return (\n    <>\n      <UaiButton onClick={() => setOpen(true)}>Editar dados</UaiButton>\n      <UaiModal\n        open={open}\n        heading=\"Editar dados\"\n        onUaiModalChanged={(event) => setOpen(event.detail.modalStatus === 'opened')}\n      >\n        <UaiTypo variant=\"body-base\">Altere as informações e salve para aplicar.</UaiTypo>\n        <UaiModalAction slot=\"footer\">\n          <UaiButton variant=\"outline\" onClick={() => setOpen(false)}>\n            Cancelar\n          </UaiButton>\n          <UaiButton onClick={() => setOpen(false)}>Salvar</UaiButton>\n        </UaiModalAction>\n      </UaiModal>\n    </>\n  );\n};"
+        },
+        {
           "id": "uai-modal--playground",
           "name": "Playground",
-          "snippet": "const Playground = () => {\n    const ref = React.useRef(null);\n\n    return (\n        <>\n            <UaiButton onClick={() => ref.current?.toggle()}>Abrir modal</UaiButton>\n            <UaiModal\n                ref={ref}\n                heading=\"Titulo\"\n                open={false}\n                closeButton\n                outzoneClose\n                enterClose\n                size=\"fixed\">\n                <Content onClose={() => ref.current?.toggle()} />\n            </UaiModal>\n        </>\n    );\n};"
+          "snippet": "const Playground = () => {\n    const ref = React.useRef(null);\n\n    return (\n        <>\n            <UaiButton onClick={() => ref.current?.toggle()}>Abrir modal</UaiButton>\n            <UaiModal\n                ref={ref}\n                heading=\"Título\"\n                open={false}\n                closeButton\n                outzoneClose\n                enterClose\n                escapeClose\n                size=\"fixed\">\n                <Content onClose={() => ref.current?.toggle()} />\n            </UaiModal>\n        </>\n    );\n};"
         },
         {
           "id": "uai-modal--sizes",
           "name": "Sizes",
-          "snippet": "const Sizes = () => (\n  <div style={{ display: 'flex', gap: 'var(--uai-spacing-md)' }}>\n    {['fixed', 'dynamic'].map((size) => {\n      const ref = React.createRef();\n      return (\n        <React.Fragment key={size}>\n          <UaiButton variant=\"outline\" onClick={() => ref.current?.toggle()}>\n            {`Abrir ${size}`}\n          </UaiButton>\n          <UaiModal ref={ref} size={size} heading=\"Titulo\">\n            <Content onClose={() => ref.current?.toggle()} />\n          </UaiModal>\n        </React.Fragment>\n      );\n    })}\n  </div>\n);"
+          "snippet": "const Sizes = () => (\n  <div style={{ display: 'flex', gap: 'var(--uai-spacing-md)' }}>\n    {['fixed', 'dynamic'].map((size) => (\n      <SizeExample key={size} size={size} />\n    ))}\n  </div>\n);"
+        },
+        {
+          "id": "uai-modal--opened",
+          "name": "Opened",
+          "snippet": "const Opened = () => (\n  <UaiModal open heading=\"Título\">\n    <Content />\n  </UaiModal>\n);"
         },
         {
           "id": "uai-modal--events",
           "name": "Events",
-          "snippet": "const Events = () => {\n  const ref = React.useRef(null);\n  const [status, setStatus] = React.useState('nenhum');\n  return (\n    <>\n      <UaiButton onClick={() => ref.current?.toggle()}>Abrir modal</UaiButton>\n      <UaiTypo variant=\"body-base\">{`Último evento uaiModalChanged: ${status}`}</UaiTypo>\n      <UaiModal ref={ref} heading=\"Titulo\" onUaiModalChanged={(event) => setStatus(event.detail.modalStatus)}>\n        <Content onClose={() => ref.current?.toggle()} />\n      </UaiModal>\n    </>\n  );\n};"
+          "snippet": "const Events = () => {\n  const ref = React.useRef(null);\n  const [status, setStatus] = React.useState('nenhum');\n  return (\n    <>\n      <UaiButton onClick={() => ref.current?.toggle()}>Abrir modal</UaiButton>\n      <UaiTypo variant=\"body-base\">{`Último evento uaiModalChanged: ${status}`}</UaiTypo>\n      <UaiModal ref={ref} heading=\"Título\" onUaiModalChanged={(event) => setStatus(event.detail.modalStatus)}>\n        <Content onClose={() => ref.current?.toggle()} />\n      </UaiModal>\n    </>\n  );\n};"
         },
         {
           "id": "uai-modal--methods",
           "name": "Methods",
-          "snippet": "const Methods = () => {\n  const ref = React.useRef(null);\n  return (\n    <>\n      <UaiButton onClick={() => ref.current?.toggle()}>Abrir modal</UaiButton>\n      <UaiModal ref={ref} heading=\"Titulo\">\n        <Content onClose={() => ref.current?.toggle()} />\n      </UaiModal>\n    </>\n  );\n};"
+          "snippet": "const Methods = () => {\n  const ref = React.useRef(null);\n  return (\n    <>\n      <UaiButton onClick={() => ref.current?.toggle()}>Abrir modal</UaiButton>\n      <UaiModal ref={ref} heading=\"Título\">\n        <Content onClose={() => ref.current?.toggle()} />\n      </UaiModal>\n    </>\n  );\n};"
         }
       ],
-      "import": "import React from 'react';\nimport { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from 'blip-ds-react';"
+      "import": "import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from 'blip-ds-react';"
     },
     "uai-navbar": {
       "id": "uai-navbar",
@@ -3404,6 +3414,6 @@
   },
   "meta": {
     "docgen": "react-docgen",
-    "durationMs": 1955
+    "durationMs": 1786
   }
 }

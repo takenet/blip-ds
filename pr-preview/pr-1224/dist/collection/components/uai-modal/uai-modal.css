@@ -175,5 +175,8 @@
   flex-shrink: 0;
   justify-content: flex-end;
   gap: var(--uai-spacing-xs, 0.5rem);
-  padding: var(--uai-spacing-md, 1rem);
+  padding: var(--uai-spacing-lg, 1.5rem);
+}
+.modal__footer--empty {
+  display: none;
 }

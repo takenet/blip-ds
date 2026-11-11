@@ -28,8 +28,10 @@ export declare class UaiModal {
     width?: number;
     /** Closes the modal when the backdrop is clicked. Use 'false' for flows that need an explicit choice. */
     outzoneClose?: boolean;
-    /** Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice. */
+    /** Closes the modal with Enter when no control (button, link, field) has the focus. Use 'false' when Enter has another meaning in the content. Escape is controlled by `escapeClose`. */
     enterClose?: boolean;
+    /** Closes the modal with Escape, the standard way to dismiss a dialog. Use 'false' only for flows that need an explicit choice; pair with `outzoneClose` 'false'. */
+    escapeClose?: boolean;
     /** Accessible name of the close button. Use a translated label; avoid leaving it generic. */
     closeLabel?: string;
     /** Title shown in the header. Use a short noun phrase; it also names the dialog for assistive technology. */
@@ -46,16 +48,25 @@ export declare class UaiModal {
     }>;
     /** Opens the modal when closed and closes it when open. Use for imperative control; pair with uaiModalChanged. */
     toggle(): Promise<void>;
+    /** Whether something is slotted into `footer`. The footer wrapper stays hidden while it is empty. */
+    hasFooter: boolean;
     protected openChanged(): void;
-    componentDidLoad(): void;
+    protected sizeChanged(): void;
+    connectedCallback(): void;
+    componentWillLoad(): void;
     componentDidRender(): void;
     disconnectedCallback(): void;
     private dialogEl?;
+    private registered;
+    private register;
+    private unregister;
+    private isTop;
+    private warnSize;
     private setOpen;
-    private syncListener;
     private syncNativeDialog;
     private panelWidth;
-    private hasFooter;
+    private hasFooterInLightDom;
+    private onFooterSlotChange;
     private onCancel;
     private onKeydown;
     private onOutzoneClick;

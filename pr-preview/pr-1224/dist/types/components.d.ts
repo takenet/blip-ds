@@ -5345,10 +5345,15 @@ export namespace Components {
          */
         "dtOutzone"?: string;
         /**
-          * Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice.
+          * Closes the modal with Enter when no control (button, link, field) has the focus. Use 'false' when Enter has another meaning in the content. Escape is controlled by `escapeClose`.
           * @default true
          */
         "enterClose"?: boolean;
+        /**
+          * Closes the modal with Escape, the standard way to dismiss a dialog. Use 'false' only for flows that need an explicit choice; pair with `outzoneClose` 'false'.
+          * @default true
+         */
+        "escapeClose"?: boolean;
         /**
           * Title shown in the header. Use a short noun phrase; it also names the dialog for assistive technology.
          */
@@ -14587,10 +14592,15 @@ declare namespace LocalJSX {
          */
         "dtOutzone"?: string;
         /**
-          * Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice.
+          * Closes the modal with Enter when no control (button, link, field) has the focus. Use 'false' when Enter has another meaning in the content. Escape is controlled by `escapeClose`.
           * @default true
          */
         "enterClose"?: boolean;
+        /**
+          * Closes the modal with Escape, the standard way to dismiss a dialog. Use 'false' only for flows that need an explicit choice; pair with `outzoneClose` 'false'.
+          * @default true
+         */
+        "escapeClose"?: boolean;
         /**
           * Title shown in the header. Use a short noun phrase; it also names the dialog for assistive technology.
          */
@@ -16964,6 +16974,7 @@ declare namespace LocalJSX {
         "width": number;
         "outzoneClose": boolean;
         "enterClose": boolean;
+        "escapeClose": boolean;
         "closeLabel": string;
         "heading": string;
         "label": string;
