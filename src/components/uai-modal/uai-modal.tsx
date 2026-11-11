@@ -162,6 +162,16 @@ export class UaiModal {
     document.removeEventListener('keydown', this.onKeydown, false);
   }
 
+  // The browser stacks modal dialogs in the order of showModal(), which can differ from the order the components were
+  // registered in (siblings open on load render in any order). Follow the browser so Escape (native `cancel`) and
+  // Enter (our listener) always target the same modal.
+  private bringToTop(): void {
+    const index = openModals.indexOf(this);
+    if (index < 0) return;
+    openModals.splice(index, 1);
+    openModals.push(this);
+  }
+
   private isTop(): boolean {
     return openModals[openModals.length - 1] === this;
   }
@@ -180,8 +190,10 @@ export class UaiModal {
   private syncNativeDialog(): void {
     const dialog = this.dialogEl;
     if (!dialog || typeof dialog.showModal !== 'function') return;
-    if (this.open && !dialog.open) dialog.showModal();
-    else if (!this.open && dialog.open) dialog.close();
+    if (this.open && !dialog.open) {
+      dialog.showModal();
+      this.bringToTop();
+    } else if (!this.open && dialog.open) dialog.close();
   }
 
   private panelWidth(): number | undefined {

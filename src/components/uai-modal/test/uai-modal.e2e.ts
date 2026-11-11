@@ -128,14 +128,40 @@ describe('uai-modal e2e', () => {
     it('closes only the top modal when two are stacked', async () => {
       const page = await create(
         `<uai-modal id="modal" open heading="Abaixo"><p>Abaixo</p></uai-modal>
-         <uai-modal id="top" open heading="Topo"><p>Topo</p></uai-modal>`,
+         <uai-modal id="top" heading="Topo"><p>Topo</p></uai-modal>`,
       );
+      await page.waitForChanges();
+      // Opened after the first one, so it is the top of the stack.
+      await page.evaluate(() => (document.getElementById('top') as any).toggle());
       await page.waitForChanges();
 
       await page.keyboard.press('Escape');
       await page.waitForChanges();
       expect(await isOpen(page, 'top')).toBe(false);
       expect(await isOpen(page, 'modal')).toBe(true);
+
+      await page.keyboard.press('Escape');
+      await page.waitForChanges();
+      expect(await isOpen(page, 'modal')).toBe(false);
+    });
+
+    it('sends Enter and Escape to the same modal, whatever order two open modals rendered in', async () => {
+      const page = await create(
+        `<uai-modal id="modal" open heading="Abaixo"><p>Abaixo</p></uai-modal>
+         <uai-modal id="top" open heading="Topo"><p>Topo</p></uai-modal>`,
+      );
+      await page.waitForChanges();
+      // The one that holds the focus is the top of the browser's stack.
+      const focused = await page.evaluate(() => {
+        const active = document.activeElement;
+        return active && active.id;
+      });
+      const other = focused === 'top' ? 'modal' : 'top';
+
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+      expect(await isOpen(page, focused)).toBe(false);
+      expect(await isOpen(page, other)).toBe(true);
     });
   });
 
