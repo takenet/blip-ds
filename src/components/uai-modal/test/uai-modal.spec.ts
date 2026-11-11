@@ -25,7 +25,9 @@ describe('uai-modal', () => {
 
   it.each(['fixed', 'dynamic'])('applies the %s size classes', async (size) => {
     const page = await newSpecPage({ components: [UaiModal], html: `<uai-modal size="${size}"></uai-modal>` });
-    expect(page.root.shadowRoot.querySelector('.modal__dialog').classList.contains(`modal__dialog--${size}`)).toBe(true);
+    expect(page.root.shadowRoot.querySelector('.modal__dialog').classList.contains(`modal__dialog--${size}`)).toBe(
+      true,
+    );
     expect(page.root.shadowRoot.querySelector('.modal').classList.contains(`modal--${size}`)).toBe(true);
     expect(page.root.shadowRoot.querySelector('.modal__body')).toBeTruthy();
   });
@@ -67,16 +69,40 @@ describe('uai-modal', () => {
     expect(page.root.shadowRoot.querySelector('.modal__header .modal__close')).toBeTruthy();
   });
 
-  it('renders the footer only when something is slotted into it', async () => {
+  it('keeps the footer hidden until something is slotted into it', async () => {
     const without = await newSpecPage({ components: [UaiModal], html: '<uai-modal><p>Texto</p></uai-modal>' });
-    expect(without.root.shadowRoot.querySelector('.modal__footer')).toBeNull();
+    const emptyFooter = without.root.shadowRoot.querySelector('.modal__footer');
+    expect(emptyFooter.classList.contains('modal__footer--empty')).toBe(true);
+    expect(emptyFooter.querySelector('slot[name="footer"]')).toBeTruthy();
+
     const withFooter = await newSpecPage({
       components: [UaiModal],
       html: '<uai-modal><p>Texto</p><div slot="footer">Cancelar Salvar</div></uai-modal>',
     });
-    const footer = withFooter.root.shadowRoot.querySelector('.modal__footer');
-    expect(footer).toBeTruthy();
-    expect(footer.querySelector('slot[name="footer"]')).toBeTruthy();
+    expect(withFooter.root.shadowRoot.querySelector('.modal__footer').classList.contains('modal__footer--empty')).toBe(
+      false,
+    );
+  });
+
+  it('shows and hides the footer when its content changes after the render', async () => {
+    const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal open="true"><p>Texto</p></uai-modal>' });
+    const footer = () => page.root.shadowRoot.querySelector('.modal__footer');
+    const slot = page.root.shadowRoot.querySelector('slot[name="footer"]') as any;
+    expect(footer().classList.contains('modal__footer--empty')).toBe(true);
+
+    const actions = page.doc.createElement('div');
+    actions.setAttribute('slot', 'footer');
+    page.root.appendChild(actions);
+    slot.assignedElements = () => [actions];
+    slot.dispatchEvent(new Event('slotchange'));
+    await page.waitForChanges();
+    expect(footer().classList.contains('modal__footer--empty')).toBe(false);
+
+    actions.remove();
+    slot.assignedElements = () => [];
+    slot.dispatchEvent(new Event('slotchange'));
+    await page.waitForChanges();
+    expect(footer().classList.contains('modal__footer--empty')).toBe(true);
   });
 
   it('renders an accessible close button that closes and emits', async () => {
@@ -175,19 +201,47 @@ describe('uai-modal', () => {
     expect(page.root.open).toBe(false);
   });
 
-  it('closes on the native cancel event (Escape) only while enterClose is true', async () => {
+  it('closes on the native cancel event (Escape) only while escapeClose is true', async () => {
     const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal open="true"></uai-modal>' });
     const dialog = page.root.shadowRoot.querySelector('dialog');
-    page.root.enterClose = false;
+    page.root.escapeClose = false;
     const blocked = new Event('cancel', { cancelable: true });
     dialog.dispatchEvent(blocked);
     await page.waitForChanges();
     expect(blocked.defaultPrevented).toBe(true);
     expect(page.root.open).toBe(true);
-    page.root.enterClose = true;
+    page.root.escapeClose = true;
     dialog.dispatchEvent(new Event('cancel', { cancelable: true }));
     await page.waitForChanges();
     expect(page.root.open).toBe(false);
+  });
+
+  it('keeps Escape working when enterClose is false, as in forms', async () => {
+    const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal open="true"></uai-modal>' });
+    page.root.enterClose = false;
+    page.root.shadowRoot.querySelector('dialog').dispatchEvent(new Event('cancel', { cancelable: true }));
+    await page.waitForChanges();
+    expect(page.root.open).toBe(false);
+  });
+
+  it('ignores Enter that was already handled (defaultPrevented)', async () => {
+    const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal open="true"></uai-modal>' });
+    const handled = new KeyboardEvent('keydown', { key: 'Enter', cancelable: true });
+    handled.preventDefault();
+    document.dispatchEvent(handled);
+    await page.waitForChanges();
+    expect(page.root.open).toBe(true);
+  });
+
+  it('warns about an invalid size once, not on every render', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal size="giant"></uai-modal>' });
+    page.root.heading = 'A';
+    await page.waitForChanges();
+    page.root.heading = 'B';
+    await page.waitForChanges();
+    expect(warn.mock.calls.filter((call) => String(call[0]).includes('uai-modal')).length).toBe(1);
+    warn.mockRestore();
   });
 
   it('opens and closes the native dialog in modal mode when showModal is available', async () => {

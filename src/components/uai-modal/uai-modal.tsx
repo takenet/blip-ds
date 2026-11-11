@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { warnLegacyValue } from '../../utils/deprecation';
 
 export type UaiModalSize = 'fixed' | 'dynamic';
@@ -20,6 +20,26 @@ const usesEnter = (event: KeyboardEvent): boolean => {
       element.isContentEditable === true
     );
   });
+};
+
+// Open modals, in the order they opened. Only the last one (the top) reacts to the keyboard, so a confirmation
+// stacked over a form closes alone. The document scroll stays locked while at least one modal is open.
+const openModals: object[] = [];
+let scrollLocks = 0;
+let previousOverflow = '';
+
+const lockScroll = (): void => {
+  if (scrollLocks++ === 0) {
+    previousOverflow = document.body.style.getPropertyValue('overflow');
+    document.body.style.setProperty('overflow', 'hidden');
+  }
+};
+
+const unlockScroll = (): void => {
+  if (scrollLocks > 0 && --scrollLocks === 0) {
+    if (previousOverflow) document.body.style.setProperty('overflow', previousOverflow);
+    else document.body.style.removeProperty('overflow');
+  }
 };
 
 /**
@@ -61,8 +81,11 @@ export class UaiModal {
   /** Closes the modal when the backdrop is clicked. Use 'false' for flows that need an explicit choice. */
   @Prop() outzoneClose?: boolean = true;
 
-  /** Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice. */
+  /** Closes the modal with Enter when no control (button, link, field) has the focus. Use 'false' when Enter has another meaning in the content. Escape is controlled by `escapeClose`. */
   @Prop() enterClose?: boolean = true;
+
+  /** Closes the modal with Escape, the standard way to dismiss a dialog. Use 'false' only for flows that need an explicit choice; pair with `outzoneClose` 'false'. */
+  @Prop() escapeClose?: boolean = true;
 
   /** Accessible name of the close button. Use a translated label; avoid leaving it generic. */
   @Prop() closeLabel?: string = 'Fechar';
@@ -88,14 +111,27 @@ export class UaiModal {
     this.setOpen(!this.open);
   }
 
+  /** Whether something is slotted into `footer`. The footer wrapper stays hidden while it is empty. */
+  @State() hasFooter = false;
+
   @Watch('open')
   protected openChanged(): void {
-    this.syncListener();
+    if (this.open) this.register();
+    else this.unregister();
   }
 
-  componentDidLoad(): void {
-    this.dialogEl?.addEventListener('cancel', this.onCancel);
-    this.syncListener();
+  @Watch('size')
+  protected sizeChanged(): void {
+    this.warnSize();
+  }
+
+  connectedCallback(): void {
+    if (this.open) this.register();
+  }
+
+  componentWillLoad(): void {
+    this.warnSize();
+    this.hasFooter = this.hasFooterInLightDom();
   }
 
   componentDidRender(): void {
@@ -103,20 +139,40 @@ export class UaiModal {
   }
 
   disconnectedCallback(): void {
-    document.removeEventListener('keydown', this.onKeydown, false);
-    this.dialogEl?.removeEventListener('cancel', this.onCancel);
+    this.unregister();
   }
 
   private dialogEl?: HTMLDialogElement;
+  private registered = false;
+
+  private register(): void {
+    if (this.registered) return;
+    this.registered = true;
+    openModals.push(this);
+    lockScroll();
+    document.addEventListener('keydown', this.onKeydown, false);
+  }
+
+  private unregister(): void {
+    if (!this.registered) return;
+    this.registered = false;
+    const index = openModals.indexOf(this);
+    if (index >= 0) openModals.splice(index, 1);
+    unlockScroll();
+    document.removeEventListener('keydown', this.onKeydown, false);
+  }
+
+  private isTop(): boolean {
+    return openModals[openModals.length - 1] === this;
+  }
+
+  private warnSize(): void {
+    if (!SIZES.includes(this.size)) warnLegacyValue('uai-modal', 'size', this.size, 'fixed');
+  }
 
   private setOpen(next: boolean): void {
     this.open = next;
     this.uaiModalChanged.emit({ modalStatus: next ? 'opened' : 'closed' });
-  }
-
-  private syncListener(): void {
-    if (this.open) document.addEventListener('keydown', this.onKeydown, false);
-    else document.removeEventListener('keydown', this.onKeydown, false);
   }
 
   // The native <dialog> in modal mode puts the panel in the top layer, moves the focus into it, keeps Tab inside it,
@@ -134,22 +190,29 @@ export class UaiModal {
     return width;
   }
 
-  private hasFooter(): boolean {
+  private hasFooterInLightDom(): boolean {
     return Array.from(this.el.children).some((child) => child.getAttribute('slot') === 'footer');
   }
 
-  // Escape is handled by the native `cancel` event of the dialog; it only closes when enterClose is true.
+  // Runs when the content of the footer slot changes, so a footer added or removed while the modal is open
+  // (a conditional footer in React, for example) shows up or goes away.
+  private onFooterSlotChange = (event: Event): void => {
+    const slot = event.target as HTMLSlotElement;
+    this.hasFooter =
+      typeof slot.assignedElements === 'function' ? slot.assignedElements().length > 0 : this.hasFooterInLightDom();
+  };
+
+  // Escape arrives as the native `cancel` event of the dialog, once per dialog and only on the top one.
   private onCancel = (event: Event): void => {
     event.preventDefault();
-    if (this.enterClose) this.setOpen(false);
+    if (this.escapeClose) this.setOpen(false);
   };
 
   // Enter closes only when it is not being used by a control, so it never closes the modal while someone
   // activates a button or types in a field, and a keyboard click cannot reopen it through toggle().
   private onKeydown = (event: KeyboardEvent): void => {
-    if (this.enterClose && event.key === 'Enter' && !usesEnter(event)) {
-      this.setOpen(false);
-    }
+    if (event.defaultPrevented || !this.enterClose || event.key !== 'Enter' || !this.isTop()) return;
+    if (!usesEnter(event)) this.setOpen(false);
   };
 
   private onOutzoneClick = (): void => {
@@ -157,9 +220,8 @@ export class UaiModal {
   };
 
   render(): HTMLElement {
-    const known = SIZES.find((candidate) => candidate === this.size);
-    const size = known || 'fixed';
-    if (!known) warnLegacyValue('uai-modal', 'size', this.size, size);
+    const size = SIZES.includes(this.size) ? this.size : 'fixed';
+    const width = this.panelWidth();
 
     return (
       <Host>
@@ -173,12 +235,13 @@ export class UaiModal {
           part="dialog"
           aria-label={this.heading ? undefined : this.label}
           aria-labelledby={this.heading ? 'modal-title' : undefined}
+          onCancel={this.onCancel}
         >
           <div class="outzone" onClick={this.onOutzoneClick} data-test={this.dtOutzone}></div>
           <div
             class={{ modal: true, [`modal--${size}`]: true }}
             part="modal"
-            style={this.panelWidth() ? { '--modal-width': `${this.panelWidth()}rem` } : undefined}
+            style={width ? { '--modal-width': `${width}rem` } : undefined}
           >
             {(this.heading || this.closeButton) && (
               <div class="modal__header" part="header">
@@ -212,11 +275,9 @@ export class UaiModal {
             <div class="modal__body" part="body">
               <slot></slot>
             </div>
-            {this.hasFooter() && (
-              <div class="modal__footer" part="footer">
-                <slot name="footer"></slot>
-              </div>
-            )}
+            <div class={{ modal__footer: true, 'modal__footer--empty': !this.hasFooter }} part="footer">
+              <slot name="footer" onSlotchange={this.onFooterSlotChange}></slot>
+            </div>
           </div>
         </dialog>
       </Host>

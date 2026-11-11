@@ -85,7 +85,8 @@
   max-width: calc(100% - var(--uai-sizing-xl, #{$uai-sizing-xl}));
   max-height: calc(100% - var(--uai-sizing-xl, #{$uai-sizing-xl}));
   overflow: hidden;
-  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--uai-border-default, #{$uai-border-default});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
   border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
   background: var(--uai-surface-paper, #{$uai-surface-paper});
   color: var(--uai-content-primary, #{$uai-content-primary});
@@ -98,7 +99,10 @@
   &--dynamic {
     width: auto;
     // The width above is the ceiling; the panel only grows as far as its content.
-    max-width: min(var(--modal-width, var(--modal-default-width)), calc(100% - var(--uai-sizing-xl, #{$uai-sizing-xl})));
+    max-width: min(
+      var(--modal-width, var(--modal-default-width)),
+      calc(100% - var(--uai-sizing-xl, #{$uai-sizing-xl}))
+    );
     max-height: none;
   }
 }
@@ -154,8 +158,10 @@
 // Fixed keeps a standard content height (16rem: dialog width - 5xl - 4xl - xl); dynamic grows with the content.
 .modal--fixed .modal__body {
   min-height: calc(
-    var(--uai-width-dialog, #{$uai-width-dialog}) - var(--uai-sizing-5xl, #{$uai-sizing-5xl}) -
-      var(--uai-sizing-4xl, #{$uai-sizing-4xl}) - var(--uai-sizing-xl, #{$uai-sizing-xl})
+    var(--uai-width-dialog, #{$uai-width-dialog}) - var(--uai-sizing-5xl, #{$uai-sizing-5xl}) - var(
+        --uai-sizing-4xl,
+        #{$uai-sizing-4xl}
+      ) - var(--uai-sizing-xl, #{$uai-sizing-xl})
   );
 }
 
@@ -164,5 +170,10 @@
   flex-shrink: 0;
   justify-content: flex-end;
   gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
-  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+  padding: var(--uai-spacing-lg, #{$uai-spacing-lg});
+
+  // Nothing slotted: the wrapper takes no space, but the slot stays rendered to notice a footer added later.
+  &--empty {
+    display: none;
+  }
 }
