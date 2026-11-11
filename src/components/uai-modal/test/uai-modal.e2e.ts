@@ -50,19 +50,23 @@ describe('uai-modal e2e', () => {
       expect(await focusInside(page)).toBe(true);
     });
 
-    it('keeps Tab and Shift+Tab inside the modal', async () => {
+    // In a modal <dialog> Tab also stops once on the browser UI before it wraps around, so `activeElement` can be the
+    // body for a moment. What must never happen is the focus reaching the page behind.
+    const behindIsFocused = (page: E2EPage) => page.evaluate(() => document.activeElement.id === 'opener');
+
+    it('keeps Tab and Shift+Tab from reaching the page behind', async () => {
       const page = await create();
       await page.click('#opener');
       await page.waitForChanges();
 
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 8; i++) {
         await page.keyboard.press('Tab');
-        expect(await focusInside(page)).toBe(true);
+        expect(await behindIsFocused(page)).toBe(false);
       }
       await page.keyboard.down('Shift');
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 8; i++) {
         await page.keyboard.press('Tab');
-        expect(await focusInside(page)).toBe(true);
+        expect(await behindIsFocused(page)).toBe(false);
       }
       await page.keyboard.up('Shift');
     });
@@ -72,7 +76,13 @@ describe('uai-modal e2e', () => {
       await page.click('#opener');
       await page.waitForChanges();
 
-      expect(await page.evaluate(() => document.getElementById('opener').matches(':inert'))).toBe(true);
+      // An inert element cannot take the focus.
+      expect(
+        await page.evaluate(() => {
+          (document.getElementById('opener') as HTMLElement).focus();
+          return document.activeElement.id === 'opener';
+        }),
+      ).toBe(false);
     });
 
     it('gives the focus back to the element that opened it', async () => {

@@ -208,6 +208,12 @@ export class UaiModal {
     if (this.escapeClose) this.setOpen(false);
   };
 
+  // The browser can close the dialog without a cancelable `cancel` (Escape without a prior user gesture, for example).
+  // Keep `open` in sync so the state never says "open" for a dialog that is already closed.
+  private onNativeClose = (): void => {
+    if (this.open) this.setOpen(false);
+  };
+
   // Enter closes only when it is not being used by a control, so it never closes the modal while someone
   // activates a button or types in a field, and a keyboard click cannot reopen it through toggle().
   private onKeydown = (event: KeyboardEvent): void => {
@@ -236,6 +242,7 @@ export class UaiModal {
           aria-label={this.heading ? undefined : this.label}
           aria-labelledby={this.heading ? 'modal-title' : undefined}
           onCancel={this.onCancel}
+          onClose={this.onNativeClose}
         >
           <div class="outzone" onClick={this.onOutzoneClick} data-test={this.dtOutzone}></div>
           <div

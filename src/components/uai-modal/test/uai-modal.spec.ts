@@ -216,6 +216,21 @@ describe('uai-modal', () => {
     expect(page.root.open).toBe(false);
   });
 
+  it('syncs open when the browser closes the dialog on its own', async () => {
+    const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal open="true"></uai-modal>' });
+    const spy = jest.fn();
+    page.root.addEventListener('uaiModalChanged', spy);
+    page.root.shadowRoot.querySelector('dialog').dispatchEvent(new Event('close'));
+    await page.waitForChanges();
+    expect(page.root.open).toBe(false);
+    expect(spy.mock.calls[0][0].detail).toEqual({ modalStatus: 'closed' });
+
+    // A close that follows our own close() must not emit a second event.
+    page.root.shadowRoot.querySelector('dialog').dispatchEvent(new Event('close'));
+    await page.waitForChanges();
+    expect(spy).toHaveBeenCalledTimes(1);
+  });
+
   it('keeps Escape working when enterClose is false, as in forms', async () => {
     const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal open="true"></uai-modal>' });
     page.root.enterClose = false;
