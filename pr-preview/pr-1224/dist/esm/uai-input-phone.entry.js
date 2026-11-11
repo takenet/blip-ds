@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
 import { g as getAssetUrl } from './asset-loader-ByPjkgw2.js';
 import { U as UaiFormControl } from './uai-form-control-BkRP7pRQ.js';
-import { U as UaiOverlay } from './uai-overlay-BHU2NQyQ.js';
+import { U as UaiOverlay } from './uai-overlay-BBMw0Oa-.js';
 import { c as countriesEs_ES, a as countriesEn_US, b as countriesPt_BR } from './countries-es_ES-AKkjmS9M.js';
 
 // Country keys whose official flag artwork (blip-tokens) is published under another name.

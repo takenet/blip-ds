@@ -1,9 +1,24 @@
 import { Host, h } from "@stencil/core";
 import { warnLegacyValue } from "../../utils/deprecation";
-import { supportsPopover } from "../../utils/uai-overlay";
 const SIZES = ['fixed', 'dynamic'];
+// Controls that use Enter themselves: pressing Enter on them must never close the modal.
+const ENTER_CONTROLS = new Set(['a', 'button', 'input', 'select', 'summary', 'textarea']);
+const ENTER_ROLES = new Set(['button', 'link', 'menuitem', 'option', 'switch', 'tab', 'checkbox', 'radio']);
+const usesEnter = (event) => {
+    const path = typeof event.composedPath === 'function' ? event.composedPath() : [event.target];
+    return path.some((node) => {
+        var _a;
+        const element = node;
+        if (!element || typeof element.tagName !== 'string')
+            return false;
+        return (ENTER_CONTROLS.has(element.tagName.toLowerCase()) ||
+            ENTER_ROLES.has(((_a = element.getAttribute) === null || _a === void 0 ? void 0 : _a.call(element, 'role')) || '') ||
+            element.isContentEditable === true);
+    });
+};
 /**
  * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+ * Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.
  * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
  * avoid it for passive notices (use uai-banner).
  *
@@ -27,7 +42,7 @@ export class UaiModal {
         this.size = 'fixed';
         /** Closes the modal when the backdrop is clicked. Use 'false' for flows that need an explicit choice. */
         this.outzoneClose = true;
-        /** Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms. */
+        /** Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice. */
         this.enterClose = true;
         /** Accessible name of the close button. Use a translated label; avoid leaving it generic. */
         this.closeLabel = 'Fechar';
@@ -35,8 +50,16 @@ export class UaiModal {
         this.dtOutzone = null;
         /** Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it. */
         this.dtButtonClose = null;
+        // Escape is handled by the native `cancel` event of the dialog; it only closes when enterClose is true.
+        this.onCancel = (event) => {
+            event.preventDefault();
+            if (this.enterClose)
+                this.setOpen(false);
+        };
+        // Enter closes only when it is not being used by a control, so it never closes the modal while someone
+        // activates a button or types in a field, and a keyboard click cannot reopen it through toggle().
         this.onKeydown = (event) => {
-            if (this.enterClose && (event.key === 'Enter' || event.key === 'Escape')) {
+            if (this.enterClose && event.key === 'Enter' && !usesEnter(event)) {
                 this.setOpen(false);
             }
         };
@@ -53,13 +76,17 @@ export class UaiModal {
         this.syncListener();
     }
     componentDidLoad() {
+        var _a;
+        (_a = this.dialogEl) === null || _a === void 0 ? void 0 : _a.addEventListener('cancel', this.onCancel);
         this.syncListener();
     }
     componentDidRender() {
-        this.syncTopLayer();
+        this.syncNativeDialog();
     }
     disconnectedCallback() {
+        var _a;
         document.removeEventListener('keydown', this.onKeydown, false);
+        (_a = this.dialogEl) === null || _a === void 0 ? void 0 : _a.removeEventListener('cancel', this.onCancel);
     }
     setOpen(next) {
         this.open = next;
@@ -71,17 +98,16 @@ export class UaiModal {
         else
             document.removeEventListener('keydown', this.onKeydown, false);
     }
-    // The dialog opens in the top layer (Popover API) so no ancestor stacking context can cover it.
-    syncTopLayer() {
-        var _a;
-        const dialog = (_a = this.el.shadowRoot) === null || _a === void 0 ? void 0 : _a.querySelector('.modal__dialog');
-        if (!dialog || !supportsPopover() || typeof dialog.showPopover !== 'function')
+    // The native <dialog> in modal mode puts the panel in the top layer, moves the focus into it, keeps Tab inside it,
+    // makes everything behind inert and gives the focus back to the previous element on close.
+    syncNativeDialog() {
+        const dialog = this.dialogEl;
+        if (!dialog || typeof dialog.showModal !== 'function')
             return;
-        const shown = dialog.matches(':popover-open');
-        if (this.open && !shown)
-            dialog.showPopover();
-        else if (!this.open && shown)
-            dialog.hidePopover();
+        if (this.open && !dialog.open)
+            dialog.showModal();
+        else if (!this.open && dialog.open)
+            dialog.close();
     }
     panelWidth() {
         const width = Number(this.width);
@@ -97,11 +123,11 @@ export class UaiModal {
         const size = known || 'fixed';
         if (!known)
             warnLegacyValue('uai-modal', 'size', this.size, size);
-        return (h(Host, { key: 'd76be5095aa6ce287e6c7c470563973da5eb6dde' }, h("div", { key: '7d99aa167f66609911c1e745a87be9b65b939cad', class: {
+        return (h(Host, { key: 'c7784ba8dd41b2293eddf6431bba010cd25d4795' }, h("dialog", { key: '7dc7340aa92194ccea0ecfa63e0e0f014e956757', ref: (el) => (this.dialogEl = el), class: {
                 modal__dialog: true,
                 'modal__dialog--open': this.open,
                 [`modal__dialog--${size}`]: true,
-            }, part: "dialog", popover: supportsPopover() ? 'manual' : undefined }, h("div", { key: 'af78fe3a9022b2b37815d2868e59b2a32cc32ee4', class: "outzone", onClick: this.onOutzoneClick, "data-test": this.dtOutzone }), h("div", { key: '722e95cc2b719a43564d70e2769410852145d634', class: { modal: true, [`modal--${size}`]: true }, part: "modal", role: "dialog", style: this.panelWidth() ? { '--modal-width': `${this.panelWidth()}rem` } : undefined, "aria-modal": "true", "aria-label": this.heading ? undefined : this.label, "aria-labelledby": this.heading ? 'modal-title' : undefined }, (this.heading || this.closeButton) && (h("div", { key: 'a034b2ad3487deec67b039628ba7f437a13e2f52', class: "modal__header", part: "header" }, this.heading && (h("uai-typo", { key: '2ef8853b6e50cc4f785c3b0ce7aa78e0cdd0871b', id: "modal-title", class: "modal__title", part: "title", tag: "h2", variant: "title-md", bold: "semibold", margin: false }, this.heading)), this.closeButton && (h("button", { key: 'c5abf6b241845cfe2b14a9e9e7f60c7a29d92894', type: "button", class: "modal__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: () => this.setOpen(false) }, h("uai-icon", { key: 'c6bc083cad4d444948928985e93163869b26290c', name: "close", size: "medium", "aria-hidden": "true" }))))), h("div", { key: 'e3e8c6eba5f02c764dc8e22621b20e4a412b5f55', class: "modal__body", part: "body" }, h("slot", { key: '4b6d86c7f77867d5ca262013275be325d9676422' })), this.hasFooter() && (h("div", { key: '86a1081608b87eff31b66749251abcbb0c2dd967', class: "modal__footer", part: "footer" }, h("slot", { key: '6ba6355f806a9d5d01006e62e203c7f9a863268e', name: "footer" })))))));
+            }, part: "dialog", "aria-label": this.heading ? undefined : this.label, "aria-labelledby": this.heading ? 'modal-title' : undefined }, h("div", { key: '23ab813763c93b0e18cae58d5e9490a7f3db6d49', class: "outzone", onClick: this.onOutzoneClick, "data-test": this.dtOutzone }), h("div", { key: 'f9b16a0e8192060449ac4e9b8b028c8613c5e791', class: { modal: true, [`modal--${size}`]: true }, part: "modal", style: this.panelWidth() ? { '--modal-width': `${this.panelWidth()}rem` } : undefined }, (this.heading || this.closeButton) && (h("div", { key: '5b873ddbc95cd83cf4423ed52b81e335c84b46ea', class: "modal__header", part: "header" }, this.heading && (h("uai-typo", { key: '788b06b7adef4e5dbe6bcd94d4c67001064e34de', id: "modal-title", class: "modal__title", part: "title", tag: "h2", variant: "title-md", bold: "semibold", margin: false }, this.heading)), this.closeButton && (h("button", { key: '81c7c7cbcf5de9c3f4b8a57bce7413841be29d22', type: "button", class: "modal__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: () => this.setOpen(false) }, h("uai-icon", { key: '607822fbd17451acd4453f788a0c74316d6d5ceb', name: "close", size: "medium", "aria-hidden": "true" }))))), h("div", { key: '7a93d763fd5bb351b25fa81942c5188155dab841', class: "modal__body", part: "body" }, h("slot", { key: '609971587a453538e050dd501cde32f86eabc3ef' })), this.hasFooter() && (h("div", { key: 'd16fd35529c80f212bb88ae5331afe7682ed2c19', class: "modal__footer", part: "footer" }, h("slot", { key: 'ffaf29860ab0d3ebb6c4a53516477e1e5cd48fca', name: "footer" })))))));
     }
     static get is() { return "uai-modal"; }
     static get encapsulation() { return "shadow"; }
@@ -234,7 +260,7 @@ export class UaiModal {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms."
+                    "text": "Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice."
                 },
                 "getter": false,
                 "setter": false,

@@ -5319,6 +5319,7 @@ export namespace Components {
     }
     /**
      * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+     * Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.
      * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
      * avoid it for passive notices (use uai-banner).
      */
@@ -5344,7 +5345,7 @@ export namespace Components {
          */
         "dtOutzone"?: string;
         /**
-          * Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms.
+          * Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice.
           * @default true
          */
         "enterClose"?: boolean;
@@ -5387,15 +5388,26 @@ export namespace Components {
     interface UaiModalAction {
     }
     /**
-     * Close icon row for custom modal layouts. Use it when the default close button of uai-modal is hidden;
-     * pair with a click handler on the host; avoid it as the only way to dismiss a modal.
+     * Close button for custom modal layouts. It is a native button with an accessible name, so it takes the focus and
+     * works with Enter and Space. Use it when the default close button of uai-modal is hidden; listen to `click` on it
+     * to close the modal; avoid it as the only way to dismiss a modal.
      */
     interface UaiModalCloseButton {
         /**
-          * Shows the close icon when 'true'. Use to hide it without removing the element; avoid toggling on every render.
+          * Shows the close button when 'true'. Use to hide it without removing the element; a hidden button leaves the tab order.
           * @default true
          */
         "active"?: boolean;
+        /**
+          * Test selector on the button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButton"?: string;
+        /**
+          * Accessible name of the button. Use a translated label; avoid leaving it generic.
+          * @default 'Fechar'
+         */
+        "label"?: string;
     }
     /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
@@ -8541,6 +8553,7 @@ declare global {
     }
     /**
      * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+     * Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.
      * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
      * avoid it for passive notices (use uai-banner).
      */
@@ -8569,8 +8582,9 @@ declare global {
         new (): HTMLUaiModalActionElement;
     };
     /**
-     * Close icon row for custom modal layouts. Use it when the default close button of uai-modal is hidden;
-     * pair with a click handler on the host; avoid it as the only way to dismiss a modal.
+     * Close button for custom modal layouts. It is a native button with an accessible name, so it takes the focus and
+     * works with Enter and Space. Use it when the default close button of uai-modal is hidden; listen to `click` on it
+     * to close the modal; avoid it as the only way to dismiss a modal.
      */
     interface HTMLUaiModalCloseButtonElement extends Components.UaiModalCloseButton, HTMLStencilElement {
     }
@@ -14547,6 +14561,7 @@ declare namespace LocalJSX {
     }
     /**
      * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+     * Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.
      * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
      * avoid it for passive notices (use uai-banner).
      */
@@ -14572,7 +14587,7 @@ declare namespace LocalJSX {
          */
         "dtOutzone"?: string;
         /**
-          * Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms.
+          * Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice.
           * @default true
          */
         "enterClose"?: boolean;
@@ -14615,15 +14630,26 @@ declare namespace LocalJSX {
     interface UaiModalAction {
     }
     /**
-     * Close icon row for custom modal layouts. Use it when the default close button of uai-modal is hidden;
-     * pair with a click handler on the host; avoid it as the only way to dismiss a modal.
+     * Close button for custom modal layouts. It is a native button with an accessible name, so it takes the focus and
+     * works with Enter and Space. Use it when the default close button of uai-modal is hidden; listen to `click` on it
+     * to close the modal; avoid it as the only way to dismiss a modal.
      */
     interface UaiModalCloseButton {
         /**
-          * Shows the close icon when 'true'. Use to hide it without removing the element; avoid toggling on every render.
+          * Shows the close button when 'true'. Use to hide it without removing the element; a hidden button leaves the tab order.
           * @default true
          */
         "active"?: boolean;
+        /**
+          * Test selector on the button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButton"?: string;
+        /**
+          * Accessible name of the button. Use a translated label; avoid leaving it generic.
+          * @default 'Fechar'
+         */
+        "label"?: string;
     }
     /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
@@ -16946,6 +16972,8 @@ declare namespace LocalJSX {
     }
     interface UaiModalCloseButtonAttributes {
         "active": boolean;
+        "label": string;
+        "dtButton": string;
     }
     interface UaiNavbarAttributes {
         "orientation": uaiNavbarOrientation;
@@ -17621,6 +17649,7 @@ declare module "@stencil/core" {
             "uai-input-phone": LocalJSX.IntrinsicElements["uai-input-phone"] & JSXBase.HTMLAttributes<HTMLUaiInputPhoneElement>;
             /**
              * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+             * Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.
              * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
              * avoid it for passive notices (use uai-banner).
              */
@@ -17631,8 +17660,9 @@ declare module "@stencil/core" {
              */
             "uai-modal-action": LocalJSX.IntrinsicElements["uai-modal-action"] & JSXBase.HTMLAttributes<HTMLUaiModalActionElement>;
             /**
-             * Close icon row for custom modal layouts. Use it when the default close button of uai-modal is hidden;
-             * pair with a click handler on the host; avoid it as the only way to dismiss a modal.
+             * Close button for custom modal layouts. It is a native button with an accessible name, so it takes the focus and
+             * works with Enter and Space. Use it when the default close button of uai-modal is hidden; listen to `click` on it
+             * to close the modal; avoid it as the only way to dismiss a modal.
              */
             "uai-modal-close-button": LocalJSX.IntrinsicElements["uai-modal-close-button"] & JSXBase.HTMLAttributes<HTMLUaiModalCloseButtonElement>;
             /**

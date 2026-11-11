@@ -9,7 +9,7 @@ const UaiTableBody = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: 'c7208693b894046b04c01595ccaf552948925e9f', role: "rowgroup" }, index.h("slot", { key: 'fcf299f588081fe9c0a19faca1e2666d3101a39b' })));
+        return (index.h(index.Host, { key: '4b98f8a759909077efeba4e8c9e74dfecfb598fc', role: "rowgroup" }, index.h("slot", { key: 'b605874969a19592c22a05be099a2ca9b6326302' })));
     }
 };
 UaiTableBody.style = uaiTableBodyCss();

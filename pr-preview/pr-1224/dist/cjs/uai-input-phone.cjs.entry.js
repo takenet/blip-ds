@@ -3,7 +3,7 @@
 var index = require('./index-BuAR9UTp.js');
 var assetLoader = require('./asset-loader-BKRWIuxN.js');
 var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
-var uaiOverlay = require('./uai-overlay-Bs4vrx_p.js');
+var uaiOverlay = require('./uai-overlay-PZQC57dM.js');
 var countriesEs_ES = require('./countries-es_ES-BrZr75bu.js');
 
 // Country keys whose official flag artwork (blip-tokens) is published under another name.

@@ -2,6 +2,7 @@ import { EventEmitter } from '../../stencil-public-runtime';
 export type UaiModalSize = 'fixed' | 'dynamic';
 /**
  * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+ * Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.
  * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
  * avoid it for passive notices (use uai-banner).
  *
@@ -27,7 +28,7 @@ export declare class UaiModal {
     width?: number;
     /** Closes the modal when the backdrop is clicked. Use 'false' for flows that need an explicit choice. */
     outzoneClose?: boolean;
-    /** Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms. */
+    /** Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice. */
     enterClose?: boolean;
     /** Accessible name of the close button. Use a translated label; avoid leaving it generic. */
     closeLabel?: string;
@@ -49,11 +50,13 @@ export declare class UaiModal {
     componentDidLoad(): void;
     componentDidRender(): void;
     disconnectedCallback(): void;
+    private dialogEl?;
     private setOpen;
     private syncListener;
-    private syncTopLayer;
+    private syncNativeDialog;
     private panelWidth;
     private hasFooter;
+    private onCancel;
     private onKeydown;
     private onOutzoneClick;
     render(): HTMLElement;
