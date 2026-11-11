@@ -34,8 +34,10 @@
     transition: none;
   }
 
+  // Fixed, not absolute: in `dynamic` the dialog scrolls, and the backdrop must stay pinned to the viewport
+  // (and keep catching the outside click) instead of scrolling away with the content.
   & .outzone {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background-color: var(--uai-overlay-default, #{$uai-overlay-default});
     backdrop-filter: blur(var(--uai-spacing-2xs, #{$uai-spacing-2xs}));

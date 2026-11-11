@@ -143,6 +143,24 @@ describe('uai-modal e2e', () => {
     });
   });
 
+  describe('backdrop', () => {
+    it('stays pinned to the viewport while a dynamic modal scrolls', async () => {
+      const page = await create(
+        '<uai-modal id="modal" open size="dynamic" heading="Título"><div style="height: 3000px">Conteúdo longo</div></uai-modal>',
+      );
+      await page.waitForChanges();
+
+      const rect = await page.evaluate(() => {
+        const dialog = document.getElementById('modal').shadowRoot.querySelector('dialog');
+        dialog.scrollTop = 500;
+        const box = dialog.querySelector('.outzone').getBoundingClientRect();
+        return { top: box.top, height: box.height, viewport: window.innerHeight };
+      });
+      expect(rect.top).toBe(0);
+      expect(rect.height).toBe(rect.viewport);
+    });
+  });
+
   describe('footer', () => {
     it('shows a footer added after the modal is open', async () => {
       const page = await create(`<uai-modal id="modal" open heading="Título"><p>Texto</p></uai-modal>`);
