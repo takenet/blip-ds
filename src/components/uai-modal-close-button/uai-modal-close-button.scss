@@ -1,0 +1,41 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+}
+
+.modal__close__button-icon {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: var(--uai-spacing-md, #{$uai-spacing-md});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  opacity: 0;
+  visibility: hidden;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal__close__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  padding: 0;
+  border: 0;
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  @include uai-transition(background-color);
+
+  &:hover {
+    background: var(--uai-overlay-hover, #{$uai-overlay-hover});
+  }
+
+  @include uai-focus-visible;
+}

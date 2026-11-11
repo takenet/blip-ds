@@ -55,6 +55,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
  - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
+ - [uai-modal](../uai-modal)
  - [uai-page-header](../uai-page-header)
  - [uai-pagination](../uai-pagination)
  - [uai-select](../uai-select)
@@ -79,6 +80,7 @@ graph TD;
   uai-input-editable --> uai-typo
   uai-input-password --> uai-typo
   uai-input-phone --> uai-typo
+  uai-modal --> uai-typo
   uai-page-header --> uai-typo
   uai-pagination --> uai-typo
   uai-select --> uai-typo

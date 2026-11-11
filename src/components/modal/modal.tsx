@@ -1,6 +1,9 @@
 import { Component, ComponentInterface, h, Method, Event, EventEmitter, Prop, Watch } from '@stencil/core';
 
 export type sizes = 'fixed' | 'dynamic';
+/**
+ * @deprecated Use uai-modal with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-modal',
   styleUrl: 'modal.scss',
