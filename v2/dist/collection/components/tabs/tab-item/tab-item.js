@@ -84,7 +84,7 @@ export class BdsTabItem {
         this.tabDisabled.emit({ item: this.numberElement, disable: this.disable });
     }
     render() {
-        return (h(Host, { key: '40affaae80dfec41752b7c128ee9d7c3748d39cb', class: { [`is-open`]: this.disable === true ? false : this.open } }, h("div", { key: '5f6803c4ba105e677202220147a2a5ac91866919', class: { tab_item: true }, "data-test": this.dataTest }, h("div", { key: 'b8d65c390991702413516f1d8f89c3ee64200de9', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, h("slot", { key: '5fe42cf3e9ebd5394e571aee647bef61eb1cfc9c' })))));
+        return (h(Host, { key: 'f81ec63db466c8c7de1eedd7c2efdd11f2ea54e1', class: { [`is-open`]: this.disable === true ? false : this.open } }, h("div", { key: '5bb8507ce5db1ba9dc0f0b9ffa99f89d41e62fcf', class: { tab_item: true }, "data-test": this.dataTest }, h("div", { key: 'd6e950f79afe7a1c6eaaae6726df60d62384532e', class: { tab_item_content: true, [`tab_item_content--open`]: this.open } }, h("slot", { key: '6115ccb62fb607e38d304f1a17fcd1f8c546b531' })))));
     }
     static get is() { return "bds-tab-item"; }
     static get encapsulation() { return "shadow"; }

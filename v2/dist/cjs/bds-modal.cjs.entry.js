@@ -74,11 +74,11 @@ const BdsModal = class {
             document.removeEventListener('keydown', this.listener, false);
     }
     render() {
-        return (index.h("div", { key: '9ac394e64a529da3afcfa94697da6fbbfc50411e', class: {
+        return (index.h("div", { key: '76c465b89250f63f71656525e662f6377d7bb6c1', class: {
                 modal__dialog: true,
                 'modal__dialog--open': this.open,
                 [`modal__dialog--${this.size}`]: true,
-            } }, index.h("div", { key: '2c6527e438a5777a551c48ecd661c05875451ca0', class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone }), index.h("div", { key: 'cdafc1e745ba925b8b9710931b559b18be3fb8ac', class: { modal: true, [`modal--${this.size}`]: true } }, this.closeButton && (index.h("bds-icon", { key: '7ce6fae7c50c36815c85148acb0e913582f33847', size: "medium", class: "close-button", name: "close", tabindex: "0", onClick: this.handleMouseClick, dataTest: this.dtButtonClose })), this.size == 'fixed' && index.h("slot", { key: 'e2bdd4f67cc817c5a6cfee78bca306ca07184bba' }), this.size !== 'fixed' && (index.h("div", { key: '13c26695a6d65ce83b75fa4e0c6df1558da180bc', class: { slot: true, [`slot--${this.size}`]: true } }, index.h("slot", { key: '8118e76275e0e2f91a6a735a4c3c4b598998f17f' }))))));
+            } }, index.h("div", { key: 'c531488a67d8b29c37b554274a5976f35fe2768a', class: { outzone: true }, onClick: () => this.onClickCloseButtom(), "data-test": this.dtOutzone }), index.h("div", { key: '73ecf21f11db0daee00575d91c2263a1ca2dfc19', class: { modal: true, [`modal--${this.size}`]: true } }, this.closeButton && (index.h("bds-icon", { key: '9575453595e77c1522f23bdff4f85feb1a9d59ef', size: "medium", class: "close-button", name: "close", tabindex: "0", onClick: this.handleMouseClick, dataTest: this.dtButtonClose })), this.size == 'fixed' && index.h("slot", { key: '91ee7814b049e7b4395d7a56ddf519e75589cefe' }), this.size !== 'fixed' && (index.h("div", { key: '94689c77c9a4a990715b74f0038b35fc748a7135', class: { slot: true, [`slot--${this.size}`]: true } }, index.h("slot", { key: '87edcc5ae89091b8337731062f688a916bc220ab' }))))));
     }
     static get watchers() { return {
         "open": [{

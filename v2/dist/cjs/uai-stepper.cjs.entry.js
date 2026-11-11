@@ -84,7 +84,7 @@ const UaiStepper = class {
         this.steps.forEach((step) => (step.completed = false));
     }
     render() {
-        return (index.h(index.Host, { key: '84cece87a57a282f99f688c4d78ffab7fa8a34ce', role: "list" }, index.h("slot", { key: '5f8aa93a1cb8092edb558819c54c6c8db75f953e', onSlotchange: this.syncSteps })));
+        return (index.h(index.Host, { key: '65cbc63ea262e76cb49eeea33fa82723b9b3d606', role: "list" }, index.h("slot", { key: '21886fed3983a5185e4adf6e345d13e22dc0371f', onSlotchange: this.syncSteps })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

@@ -161,7 +161,13 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-input-editable.entry.js").then(u,consoleError);case"uai-input-password":return import(
 /* webpackMode: "lazy" */
-"./uai-input-password.entry.js").then(u,consoleError);case"uai-navbar":return import(
+"./uai-input-password.entry.js").then(u,consoleError);case"uai-modal":return import(
+/* webpackMode: "lazy" */
+"./uai-modal.entry.js").then(u,consoleError);case"uai-modal-action":return import(
+/* webpackMode: "lazy" */
+"./uai-modal-action.entry.js").then(u,consoleError);case"uai-modal-close-button":return import(
+/* webpackMode: "lazy" */
+"./uai-modal-close-button.entry.js").then(u,consoleError);case"uai-navbar":return import(
 /* webpackMode: "lazy" */
 "./uai-navbar.entry.js").then(u,consoleError);case"uai-navbar-content":return import(
 /* webpackMode: "lazy" */

@@ -419,6 +419,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-input-password.entry.js').then(processMod, consoleError);
+                case 'uai-modal':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-modal.entry.js').then(processMod, consoleError);
+                case 'uai-modal-action':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-modal-action.entry.js').then(processMod, consoleError);
+                case 'uai-modal-close-button':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-modal-close-button.entry.js').then(processMod, consoleError);
                 case 'uai-navbar':
                     return import(
                       /* webpackMode: "lazy" */

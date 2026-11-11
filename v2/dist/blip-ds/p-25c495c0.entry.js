@@ -1,1 +1,0 @@
-import{r as e,h as a,H as r}from"./p-CkbvGS8Z.js";const t=class{constructor(a){e(this,a)}render(){return a(r,{key:"01cfacef061c956a57f8f82e3ac8b059e1e5b745",role:"rowgroup"},a("slot",{key:"f132e9708e7c93bfcc43099e272eef307cfa6142"}))}};t.style=":host{display:block}::slotted(uai-table-row:not([variant=bar])){min-height:0}";export{t as uai_table_header}

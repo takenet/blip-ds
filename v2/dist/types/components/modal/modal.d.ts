@@ -1,5 +1,8 @@
 import { ComponentInterface, EventEmitter } from '../../stencil-public-runtime';
 export type sizes = 'fixed' | 'dynamic';
+/**
+ * @deprecated Use uai-modal with UaiThemeProvider for tokenized styling.
+ */
 export declare class BdsModal implements ComponentInterface {
     /**
      * Used to open/close the modal

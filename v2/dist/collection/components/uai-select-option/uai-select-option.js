@@ -14,7 +14,7 @@ export class UaiSelectOption {
         this.icon = null;
     }
     render() {
-        return (h(Host, { key: 'b7450c378389faf259bfddba42bafa79067d7733', hidden: true }, h("slot", { key: '36a42f203effe21edc38836cd0d8da976d4f5237' })));
+        return (h(Host, { key: '3b248979da665d981ae5d69164b67a081980594e', hidden: true }, h("slot", { key: '2170fe2fde64813e03c70219602a528cef0187b3' })));
     }
     static get is() { return "uai-select-option"; }
     static get encapsulation() { return "shadow"; }

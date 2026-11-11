@@ -439,6 +439,18 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-input-password.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-modal.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-modal.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-modal-action.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-modal-action.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-modal-close-button.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-modal-close-button.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-navbar.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

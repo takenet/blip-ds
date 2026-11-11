@@ -16,12 +16,12 @@ export class UaiNavbar {
         this.dataTest = null;
     }
     render() {
-        return (h(Host, { key: 'b21ba095925e5f2e1ab15c36a858b85c89e84ea1', class: { [`${this.orientation}`]: true } }, h("div", { key: '2a97b102c8fa02536a7fc3f78079f631415d4cea', class: {
+        return (h(Host, { key: 'dee473adefcf81ea1dbaf334d0faa75d319ba174', class: { [`${this.orientation}`]: true } }, h("div", { key: 'b03d72d5b307ff0093b1e8015ce0f332cda2db83', class: {
                 navbar: true,
                 [`navbar__justify-content__${this.justifyContent}`]: true,
                 [`navbar__orientation__${this.orientation}`]: true,
                 [`navbar__background-color__${this.backgroundColor}`]: true,
-            }, "data-test": this.dataTest }, h("slot", { key: '0af17f81bad533aa3aa0799d78fff01bd92e3c9e' }))));
+            }, "data-test": this.dataTest }, h("slot", { key: '3034666a651291d4596db8bd0cbe9fba4ce448a3' }))));
     }
     static get is() { return "uai-navbar"; }
     static get encapsulation() { return "shadow"; }
