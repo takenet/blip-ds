@@ -151,6 +151,16 @@ export class UaiModal {
         unlockScroll();
         document.removeEventListener('keydown', this.onKeydown, false);
     }
+    // The browser stacks modal dialogs in the order of showModal(), which can differ from the order the components were
+    // registered in (siblings open on load render in any order). Follow the browser so Escape (native `cancel`) and
+    // Enter (our listener) always target the same modal.
+    bringToTop() {
+        const index = openModals.indexOf(this);
+        if (index < 0)
+            return;
+        openModals.splice(index, 1);
+        openModals.push(this);
+    }
     isTop() {
         return openModals[openModals.length - 1] === this;
     }
@@ -168,8 +178,10 @@ export class UaiModal {
         const dialog = this.dialogEl;
         if (!dialog || typeof dialog.showModal !== 'function')
             return;
-        if (this.open && !dialog.open)
+        if (this.open && !dialog.open) {
             dialog.showModal();
+            this.bringToTop();
+        }
         else if (!this.open && dialog.open)
             dialog.close();
     }
@@ -185,11 +197,11 @@ export class UaiModal {
     render() {
         const size = SIZES.includes(this.size) ? this.size : 'fixed';
         const width = this.panelWidth();
-        return (h(Host, { key: 'baab10c403c453e6624ed6f73db25886e7d212bc' }, h("dialog", { key: '4e25aa7ae25fb8f9d464ecc80be551b74ba6ba2f', ref: (el) => (this.dialogEl = el), class: {
+        return (h(Host, { key: 'f1fd8e38864bf163efc358233c3593baeb1c27de' }, h("dialog", { key: '8d1b4f2a3c76eb568c5266a638d3a01114e028de', ref: (el) => (this.dialogEl = el), class: {
                 modal__dialog: true,
                 'modal__dialog--open': this.open,
                 [`modal__dialog--${size}`]: true,
-            }, part: "dialog", "aria-label": this.heading ? undefined : this.label, "aria-labelledby": this.heading ? 'modal-title' : undefined, onCancel: this.onCancel, onClose: this.onNativeClose }, h("div", { key: '348208c47c7f23bbfff8174acc01b820ebb78a66', class: "outzone", onClick: this.onOutzoneClick, "data-test": this.dtOutzone }), h("div", { key: '7a42e2b163bb2141c45a22bdf472a7dd4c33b870', class: { modal: true, [`modal--${size}`]: true }, part: "modal", style: width ? { '--modal-width': `${width}rem` } : undefined }, (this.heading || this.closeButton) && (h("div", { key: 'b78d4119f855bd89cd587a6b3d51ba3683b45c50', class: "modal__header", part: "header" }, this.heading && (h("uai-typo", { key: 'f0430a87e6417e6db9cc905d79c5220d1d5ebb2e', id: "modal-title", class: "modal__title", part: "title", tag: "h2", variant: "title-md", bold: "semibold", margin: false }, this.heading)), this.closeButton && (h("button", { key: 'b71e26c276d809ed47f6f5485ee40af8c0ef008c', type: "button", class: "modal__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: () => this.setOpen(false) }, h("uai-icon", { key: '0411277daf6ceab5281d2eb45ab04788096d13da', name: "close", size: "medium", "aria-hidden": "true" }))))), h("div", { key: '168d9baf9d08e70d11d43be2e2087e43c2511ac7', class: "modal__body", part: "body" }, h("slot", { key: '3e6c5f09dbb4fd68c21b79b20a053ccc3cf32fe2' })), h("div", { key: 'b504850a678319ad5de227e15bc52820f968b1ca', class: { modal__footer: true, 'modal__footer--empty': !this.hasFooter }, part: "footer" }, h("slot", { key: '37fa7d91f654ef16bb4bd0a230dead18a8ec2cf4', name: "footer", onSlotchange: this.onFooterSlotChange }))))));
+            }, part: "dialog", "aria-label": this.heading ? undefined : this.label, "aria-labelledby": this.heading ? 'modal-title' : undefined, onCancel: this.onCancel, onClose: this.onNativeClose }, h("div", { key: '8e00352ba5a80ce7642ea043b92d3424e2acd80e', class: "outzone", onClick: this.onOutzoneClick, "data-test": this.dtOutzone }), h("div", { key: 'a06cbeb06464510483f1e8baf8a6aa2342624e22', class: { modal: true, [`modal--${size}`]: true }, part: "modal", style: width ? { '--modal-width': `${width}rem` } : undefined }, (this.heading || this.closeButton) && (h("div", { key: '136fa748e356f7908d4c4c38304113e2e2fa7bbd', class: "modal__header", part: "header" }, this.heading && (h("uai-typo", { key: '0b768577b541eaba0f6849cfc406bd66006305b6', id: "modal-title", class: "modal__title", part: "title", tag: "h2", variant: "title-md", bold: "semibold", margin: false }, this.heading)), this.closeButton && (h("button", { key: '999995a2360da6f1c6f6d8ea87f7713f9fa4ae31', type: "button", class: "modal__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: () => this.setOpen(false) }, h("uai-icon", { key: 'd384def6f2f73fbd7554e0a9c986f8ba85d74d40', name: "close", size: "medium", "aria-hidden": "true" }))))), h("div", { key: '9b62d7dd52f4ec95fb03c2c720261691f1e83ded', class: "modal__body", part: "body" }, h("slot", { key: '85a5bf5119feb8d2b18a4932d331cbd4cb3c737b' })), h("div", { key: '9c1561367ff70ab1eddcd6ac483ff11fa200e564', class: { modal__footer: true, 'modal__footer--empty': !this.hasFooter }, part: "footer" }, h("slot", { key: '88805e74922cf8c75659c680c675d3598f279201', name: "footer", onSlotchange: this.onFooterSlotChange }))))));
     }
     static get is() { return "uai-modal"; }
     static get encapsulation() { return "shadow"; }

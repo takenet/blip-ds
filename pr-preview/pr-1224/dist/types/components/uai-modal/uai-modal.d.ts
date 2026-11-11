@@ -60,6 +60,7 @@ export declare class UaiModal {
     private registered;
     private register;
     private unregister;
+    private bringToTop;
     private isTop;
     private warnSize;
     private setOpen;
