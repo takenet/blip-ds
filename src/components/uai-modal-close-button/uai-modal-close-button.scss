@@ -1,0 +1,19 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+}
+
+.modal__close__button-icon {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: var(--uai-spacing-md, #{$uai-spacing-md});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  opacity: 0;
+  visibility: hidden;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+}

@@ -1,0 +1,170 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: contents;
+}
+
+.modal__dialog {
+  // Popover UA styles (border, padding, margin, background) are reset; the dialog is a full-viewport layer.
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  overflow: visible;
+  // Fallback stacking for browsers without the Popover API; in the top layer it has no effect.
+  z-index: 9999;
+  display: none;
+  opacity: 0;
+  // Enter and exit use motion/duration-moderate with easing/standard. `display` and `overlay` are discrete, so the
+  // dialog stays rendered (and in the top layer) until the exit fade finishes.
+  transition:
+    opacity var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    display var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+      allow-discrete,
+    overlay var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+      allow-discrete;
+
+  @include uai-reduced-motion {
+    transition: none;
+  }
+
+  & .outzone {
+    position: absolute;
+    inset: 0;
+    background-color: var(--uai-overlay-default, #{$uai-overlay-default});
+    backdrop-filter: blur(var(--uai-spacing-2xs, #{$uai-spacing-2xs}));
+  }
+
+  &--dynamic {
+    overflow-y: auto;
+    padding-top: var(--uai-spacing-2xl, #{$uai-spacing-2xl});
+    padding-bottom: var(--uai-spacing-2xl, #{$uai-spacing-2xl});
+  }
+
+  &--open {
+    display: flex;
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+
+    .modal {
+      opacity: 1;
+      transform: none;
+
+      @starting-style {
+        opacity: 0;
+        transform: translateY(var(--uai-spacing-md, #{$uai-spacing-md}));
+      }
+    }
+  }
+}
+
+.modal {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  // 41rem, as in the UAI Core modal: dialog width + 5xl + 4xl + 2xl + xl + lg.
+  // `--modal-width` is set by the `width` prop (in rem); without it the default below applies.
+  --modal-default-width: calc(
+    var(--uai-width-dialog, #{$uai-width-dialog}) + var(--uai-sizing-5xl, #{$uai-sizing-5xl}) +
+      var(--uai-sizing-4xl, #{$uai-sizing-4xl}) + var(--uai-sizing-2xl, #{$uai-sizing-2xl}) +
+      var(--uai-sizing-xl, #{$uai-sizing-xl}) + var(--uai-sizing-lg, #{$uai-sizing-lg})
+  );
+
+  width: var(--modal-width, var(--modal-default-width));
+  max-width: calc(100% - var(--uai-sizing-xl, #{$uai-sizing-xl}));
+  max-height: calc(100% - var(--uai-sizing-xl, #{$uai-sizing-xl}));
+  overflow: hidden;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  box-shadow: var(--uai-elevation-dialog, #{$uai-elevation-dialog});
+  // Closed state of the panel: slightly lower and transparent; the open state is set on `.modal__dialog--open`.
+  opacity: 0;
+  transform: translateY(var(--uai-spacing-md, #{$uai-spacing-md}));
+  @include uai-transition((opacity, transform), moderate);
+
+  &--dynamic {
+    width: auto;
+    // The width above is the ceiling; the panel only grows as far as its content.
+    max-width: min(var(--modal-width, var(--modal-default-width)), calc(100% - var(--uai-sizing-xl, #{$uai-sizing-xl})));
+    max-height: none;
+  }
+}
+
+.modal__header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}
+
+.modal__title {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  // Keeps the close button at the end even when there is no title.
+  margin-inline-start: auto;
+  width: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  padding: 0;
+  border: 0;
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background: transparent;
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  cursor: pointer;
+  @include uai-transition(background-color);
+
+  &:hover {
+    background: var(--uai-overlay-hover, #{$uai-overlay-hover});
+  }
+
+  @include uai-focus-visible;
+}
+
+.modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--uai-spacing-lg, #{$uai-spacing-lg});
+}
+
+// Fixed keeps a standard content height (16rem: dialog width - 5xl - 4xl - xl); dynamic grows with the content.
+.modal--fixed .modal__body {
+  min-height: calc(
+    var(--uai-width-dialog, #{$uai-width-dialog}) - var(--uai-sizing-5xl, #{$uai-sizing-5xl}) -
+      var(--uai-sizing-4xl, #{$uai-sizing-4xl}) - var(--uai-sizing-xl, #{$uai-sizing-xl})
+  );
+}
+
+.modal__footer {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+}

@@ -52,6 +52,8 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
  - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
+ - [uai-modal](../uai-modal)
+ - [uai-modal-close-button](../uai-modal-close-button)
  - [uai-select](../uai-select)
  - [uai-step](../uai-step)
  - [uai-tab-group](../uai-tab-group)
@@ -73,6 +75,8 @@ graph TD;
   uai-input-editable --> uai-icon
   uai-input-password --> uai-icon
   uai-input-phone --> uai-icon
+  uai-modal --> uai-icon
+  uai-modal-close-button --> uai-icon
   uai-select --> uai-icon
   uai-step --> uai-icon
   uai-tab-group --> uai-icon

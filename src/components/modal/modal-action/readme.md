@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-modal-action with UaiThemeProvider for tokenized styling.
+
 ## Slots
 
 | Slot | Description      |

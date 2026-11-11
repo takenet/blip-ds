@@ -2,11 +2,11 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Modal - Visual Regression', () => {
   test('default state', async ({ storybook }) => {
-    await storybook.screenshotStory('components-modal--properties', 'modal-default');
+    await storybook.screenshotStory('components-deprecated-modal--properties', 'modal-default');
   });
 
   test('open modal', async ({ storybook, page }) => {
-    await storybook.goto('components-modal--properties');
+    await storybook.goto('components-deprecated-modal--properties');
     // Modals are typically toggled via a method or open prop
     await page.evaluate(() => {
       const modal = document.querySelector('bds-modal') as any;

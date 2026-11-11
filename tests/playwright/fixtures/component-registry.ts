@@ -84,11 +84,11 @@ export const WAVE_1: ComponentEntry[] = [
   },
   {
     tag: 'bds-modal',
-    name: 'Modal',
-    primaryStory: 'components-modal--properties',
+    name: '[deprecated] Modal',
+    primaryStory: 'components-deprecated-modal--properties',
     stories: [
-      { storyId: 'components-modal--properties', label: 'Properties' },
-      { storyId: 'components-modal--events', label: 'Events' },
+      { storyId: 'components-deprecated-modal--properties', label: 'Properties' },
+      { storyId: 'components-deprecated-modal--events', label: 'Events' },
     ],
   },
   {

@@ -1,0 +1,84 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as ModalStories from './uai-modal.stories';
+
+<Meta isTemplate />
+
+# Modal
+
+## Visão geral
+
+Diálogo que bloqueia a página com um fundo escurecido para pedir uma decisão ou mostrar um conteúdo focado. Use para confirmações e tarefas curtas; para avisos passivos, use um banner.
+
+No React, importe `UaiModal`, `UaiModalAction` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Declare o tema na raiz e carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+
+```jsx
+import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+<UaiThemeProvider theme="light">
+  <UaiModal open={open} heading="Titulo" onUaiModalChanged={(e) => setOpen(e.detail.modalStatus === 'opened')}>
+    <UaiTypo variant="body-base">Tem certeza?</UaiTypo>
+    <UaiModalAction slot="footer">
+      <UaiButton variant="outline" onClick={() => setOpen(false)}>Cancelar</UaiButton>
+      <UaiButton onClick={() => setOpen(false)}>Salvar</UaiButton>
+    </UaiModalAction>
+  </UaiModal>
+</UaiThemeProvider>;
+```
+
+## Playground
+
+<Canvas of={ModalStories.Playground} />
+<Controls of={ModalStories.Playground} />
+
+## Estrutura
+
+O painel tem três áreas, como no UAI Core:
+
+- **Cabeçalho:** `heading` (título) à esquerda e o botão de fechar à direita, separados do conteúdo por uma linha.
+- **Conteúdo:** o slot padrão, com rolagem própria quando passa da altura da tela.
+- **Rodapé:** o slot `footer`, com as ações alinhadas à direita. Use `UaiModalAction slot="footer"` com um botão `outline` (Cancelar) e um sólido (Salvar). Sem nada no slot, o rodapé não aparece.
+
+## Tamanhos
+
+`fixed` (padrão) tem largura de 41rem e conteúdo com altura mínima de 16rem; `dynamic` cresce com o conteúdo, até a mesma largura máxima.
+
+## Largura
+
+`width` define a largura do painel em rem (`width={30}` = 30rem). No `fixed` é a largura; no `dynamic` é a largura máxima. Valores ausentes, zero ou negativos voltam para 41. O painel nunca passa da largura da tela.
+
+<Canvas of={ModalStories.Sizes} />
+
+## Eventos
+
+`uaiModalChanged` é emitido ao abrir ou fechar, com `{ modalStatus: 'opened' | 'closed' }`.
+
+<Canvas of={ModalStories.Events} sourceState="shown" />
+
+## Métodos
+
+`toggle()` abre o modal fechado e fecha o aberto.
+
+<Canvas of={ModalStories.Methods} sourceState="shown" />
+
+## Animação
+
+Abrir e fechar usam os tokens de motion do UAI (`duration-moderate` com `easing-standard`): o fundo faz fade e o painel sobe suavemente ao entrar e desce ao sair. O modal só sai da tela depois da animação de saída. Com `prefers-reduced-motion`, a animação é desligada.
+
+## Fechamento
+
+O modal fecha pelo botão de fechar (`closeButton`), ao clicar no fundo (`outzoneClose`) e com Enter ou Escape (`enterClose`). Desative `enterClose` quando o Enter for usado dentro do conteúdo, como em formulários.
+
+## Acessibilidade
+
+O painel usa `role="dialog"` e `aria-modal="true"`; o `heading` nomeia o diálogo (`aria-labelledby`) e `label` serve de nome acessível quando não há título. O botão de fechar é um `<button>` nativo com `aria-label` (`closeLabel`) e foco visível. Em navegadores com Popover API, o modal abre na camada superior e nenhum contexto de empilhamento o cobre.
+
+## Migração do bds-modal
+
+Troque `BdsModal` por `UaiModal`, `BdsModalAction` por `UaiModalAction`, `BdsModalCloseButton` por `UaiModalCloseButton`, `onBdsModalChanged` por `onUaiModalChanged` e envolva a aplicação em `UaiThemeProvider`. `open`, `closeButton`, `size`, `outzoneClose`, `enterClose`, `dtOutzone`, `dtButtonClose` e o método `toggle()` são preservados. Diferenças:
+
+- O botão de fechar é um `<button>` com `aria-label`, e o painel tem `role="dialog"`.
+- O teclado também vale quando o modal já nasce aberto (no legado só após a primeira mudança de `open`).
+- `heading`, o slot `footer`, `closeLabel` e `label` são adições. O layout segue o UAI Core: cabeçalho com título e fechar, conteúdo rolável e rodapé de ações, sem o espaçamento externo de 32px do legado.
+
+Tokens: `overlay-default`, `border-default`, `surface-paper`, `content-primary`, `elevation-dialog`, `overlay-hover`, `border-ring`, `border-width-thick`, `radius-xl`, `radius-lg`, `spacing-md`, `spacing-xs`, `spacing-lg`, `spacing-2xl`, `spacing-2xs`, `sizing-lg`, `sizing-xl`, `sizing-2xl`, `sizing-4xl`, `sizing-5xl`, `title-md`, `width-dialog`, `width-content`, `control-height-medium`, `duration-fast`, `duration-moderate` e `easing-standard`.

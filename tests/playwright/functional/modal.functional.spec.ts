@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Modal - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-modal--properties');
+    await storybook.goto('components-deprecated-modal--properties');
   });
 
   test('opens modal via toggle method', async ({ page }) => {

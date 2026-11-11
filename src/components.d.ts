@@ -90,6 +90,7 @@ import { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
 import { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditableSize } from "./components/uai-input-editable/uai-input-editable";
 import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
+import { UaiModalSize } from "./components/uai-modal/uai-modal";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
 import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
@@ -189,6 +190,7 @@ export { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
 export { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditableSize } from "./components/uai-input-editable/uai-input-editable";
 export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
+export { UaiModalSize } from "./components/uai-modal/uai-modal";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
 export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
@@ -2430,6 +2432,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated Use uai-modal with UaiThemeProvider for tokenized styling.
+     */
     interface BdsModal {
         /**
           * Used to hide or show the close button
@@ -2471,8 +2476,14 @@ export namespace Components {
          */
         "toggle": () => Promise<void>;
     }
+    /**
+     * @deprecated Use uai-modal-action with UaiThemeProvider for tokenized styling.
+     */
     interface BdsModalAction {
     }
+    /**
+     * @deprecated Use uai-modal-close-button with UaiThemeProvider for tokenized styling.
+     */
     interface BdsModalCloseButton {
         /**
           * Used to hide or show the close button
@@ -5307,6 +5318,86 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
+     * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+     * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
+     * avoid it for passive notices (use uai-banner).
+     */
+    interface UaiModal {
+        /**
+          * Shows the close button when 'true'. Use for dismissible dialogs; avoid hiding it when no other action closes the modal.
+          * @default true
+         */
+        "closeButton"?: boolean;
+        /**
+          * Accessible name of the close button. Use a translated label; avoid leaving it generic.
+          * @default 'Fechar'
+         */
+        "closeLabel"?: string;
+        /**
+          * Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Test selector on the backdrop. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtOutzone"?: string;
+        /**
+          * Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms.
+          * @default true
+         */
+        "enterClose"?: boolean;
+        /**
+          * Title shown in the header. Use a short noun phrase; it also names the dialog for assistive technology.
+         */
+        "heading"?: string;
+        /**
+          * Accessible name of the dialog. Use only when there is no `heading`; pair with a short sentence.
+         */
+        "label"?: string;
+        /**
+          * Opens or closes the modal. Use for declarative control; pair with uaiModalChanged. Avoid toggling it on every render.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Closes the modal when the backdrop is clicked. Use 'false' for flows that need an explicit choice.
+          * @default true
+         */
+        "outzoneClose"?: boolean;
+        /**
+          * Panel size. 'fixed' keeps a standard width and height; 'dynamic' grows with the content. Use 'dynamic' for variable content.
+          * @default 'fixed'
+         */
+        "size"?: UaiModalSize;
+        /**
+          * Opens the modal when closed and closes it when open. Use for imperative control; pair with uaiModalChanged.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Panel width in rem, e.g. `30` for 30rem. In `fixed` it is the width; in `dynamic` it is the maximum width. Use for narrower or wider dialogs; avoid values wider than the screen, the panel never exceeds it. Defaults to 41.
+         */
+        "width"?: number;
+    }
+    /**
+     * Row for the buttons of a uai-modal, aligned to the end with spacing/xs between them. Use it with slot="footer" in uai-modal;
+     * pair with uai-button (Cancelar, Salvar); avoid putting long content in it.
+     */
+    interface UaiModalAction {
+    }
+    /**
+     * Close icon row for custom modal layouts. Use it when the default close button of uai-modal is hidden;
+     * pair with a click handler on the host; avoid it as the only way to dismiss a modal.
+     */
+    interface UaiModalCloseButton {
+        /**
+          * Shows the close icon when 'true'. Use to hide it without removing the element; avoid toggling on every render.
+          * @default true
+         */
+        "active"?: boolean;
+    }
+    /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
      */
     interface UaiNavbar {
@@ -6684,6 +6775,10 @@ export interface UaiInputPhoneCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputPhoneElement;
 }
+export interface UaiModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiModalElement;
+}
 export interface UaiPageHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiPageHeaderElement;
@@ -7570,6 +7665,9 @@ declare global {
     interface HTMLBdsModalElementEventMap {
         "bdsModalChanged": { modalStatus: 'opened' | 'closed' };
     }
+    /**
+     * @deprecated Use uai-modal with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsModalElement extends Components.BdsModal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsModalElementEventMap>(type: K, listener: (this: HTMLBdsModalElement, ev: BdsModalCustomEvent<HTMLBdsModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7584,12 +7682,18 @@ declare global {
         prototype: HTMLBdsModalElement;
         new (): HTMLBdsModalElement;
     };
+    /**
+     * @deprecated Use uai-modal-action with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsModalActionElement extends Components.BdsModalAction, HTMLStencilElement {
     }
     var HTMLBdsModalActionElement: {
         prototype: HTMLBdsModalActionElement;
         new (): HTMLBdsModalActionElement;
     };
+    /**
+     * @deprecated Use uai-modal-close-button with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsModalCloseButtonElement extends Components.BdsModalCloseButton, HTMLStencilElement {
     }
     var HTMLBdsModalCloseButtonElement: {
@@ -8432,6 +8536,48 @@ declare global {
         prototype: HTMLUaiInputPhoneElement;
         new (): HTMLUaiInputPhoneElement;
     };
+    interface HTMLUaiModalElementEventMap {
+        "uaiModalChanged": { modalStatus: 'opened' | 'closed' };
+    }
+    /**
+     * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+     * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
+     * avoid it for passive notices (use uai-banner).
+     */
+    interface HTMLUaiModalElement extends Components.UaiModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiModalElementEventMap>(type: K, listener: (this: HTMLUaiModalElement, ev: UaiModalCustomEvent<HTMLUaiModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiModalElementEventMap>(type: K, listener: (this: HTMLUaiModalElement, ev: UaiModalCustomEvent<HTMLUaiModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiModalElement: {
+        prototype: HTMLUaiModalElement;
+        new (): HTMLUaiModalElement;
+    };
+    /**
+     * Row for the buttons of a uai-modal, aligned to the end with spacing/xs between them. Use it with slot="footer" in uai-modal;
+     * pair with uai-button (Cancelar, Salvar); avoid putting long content in it.
+     */
+    interface HTMLUaiModalActionElement extends Components.UaiModalAction, HTMLStencilElement {
+    }
+    var HTMLUaiModalActionElement: {
+        prototype: HTMLUaiModalActionElement;
+        new (): HTMLUaiModalActionElement;
+    };
+    /**
+     * Close icon row for custom modal layouts. Use it when the default close button of uai-modal is hidden;
+     * pair with a click handler on the host; avoid it as the only way to dismiss a modal.
+     */
+    interface HTMLUaiModalCloseButtonElement extends Components.UaiModalCloseButton, HTMLStencilElement {
+    }
+    var HTMLUaiModalCloseButtonElement: {
+        prototype: HTMLUaiModalCloseButtonElement;
+        new (): HTMLUaiModalCloseButtonElement;
+    };
     /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
      */
@@ -8936,6 +9082,9 @@ declare global {
         "uai-input-editable": HTMLUaiInputEditableElement;
         "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-input-phone": HTMLUaiInputPhoneElement;
+        "uai-modal": HTMLUaiModalElement;
+        "uai-modal-action": HTMLUaiModalActionElement;
+        "uai-modal-close-button": HTMLUaiModalCloseButtonElement;
         "uai-navbar": HTMLUaiNavbarElement;
         "uai-navbar-content": HTMLUaiNavbarContentElement;
         "uai-page-header": HTMLUaiPageHeaderElement;
@@ -11422,6 +11571,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated Use uai-modal with UaiThemeProvider for tokenized styling.
+     */
     interface BdsModal {
         /**
           * Used to hide or show the close button
@@ -11463,8 +11615,14 @@ declare namespace LocalJSX {
          */
         "size"?: sizes;
     }
+    /**
+     * @deprecated Use uai-modal-action with UaiThemeProvider for tokenized styling.
+     */
     interface BdsModalAction {
     }
+    /**
+     * @deprecated Use uai-modal-close-button with UaiThemeProvider for tokenized styling.
+     */
     interface BdsModalCloseButton {
         /**
           * Used to hide or show the close button
@@ -14388,6 +14546,86 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
+     * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+     * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
+     * avoid it for passive notices (use uai-banner).
+     */
+    interface UaiModal {
+        /**
+          * Shows the close button when 'true'. Use for dismissible dialogs; avoid hiding it when no other action closes the modal.
+          * @default true
+         */
+        "closeButton"?: boolean;
+        /**
+          * Accessible name of the close button. Use a translated label; avoid leaving it generic.
+          * @default 'Fechar'
+         */
+        "closeLabel"?: string;
+        /**
+          * Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Test selector on the backdrop. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtOutzone"?: string;
+        /**
+          * Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms.
+          * @default true
+         */
+        "enterClose"?: boolean;
+        /**
+          * Title shown in the header. Use a short noun phrase; it also names the dialog for assistive technology.
+         */
+        "heading"?: string;
+        /**
+          * Accessible name of the dialog. Use only when there is no `heading`; pair with a short sentence.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the modal opens or closes. Use to sync external state; avoid duplicate handlers.
+         */
+        "onUaiModalChanged"?: (event: UaiModalCustomEvent<{ modalStatus: 'opened' | 'closed' }>) => void;
+        /**
+          * Opens or closes the modal. Use for declarative control; pair with uaiModalChanged. Avoid toggling it on every render.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Closes the modal when the backdrop is clicked. Use 'false' for flows that need an explicit choice.
+          * @default true
+         */
+        "outzoneClose"?: boolean;
+        /**
+          * Panel size. 'fixed' keeps a standard width and height; 'dynamic' grows with the content. Use 'dynamic' for variable content.
+          * @default 'fixed'
+         */
+        "size"?: UaiModalSize;
+        /**
+          * Panel width in rem, e.g. `30` for 30rem. In `fixed` it is the width; in `dynamic` it is the maximum width. Use for narrower or wider dialogs; avoid values wider than the screen, the panel never exceeds it. Defaults to 41.
+         */
+        "width"?: number;
+    }
+    /**
+     * Row for the buttons of a uai-modal, aligned to the end with spacing/xs between them. Use it with slot="footer" in uai-modal;
+     * pair with uai-button (Cancelar, Salvar); avoid putting long content in it.
+     */
+    interface UaiModalAction {
+    }
+    /**
+     * Close icon row for custom modal layouts. Use it when the default close button of uai-modal is hidden;
+     * pair with a click handler on the host; avoid it as the only way to dismiss a modal.
+     */
+    interface UaiModalCloseButton {
+        /**
+          * Shows the close icon when 'true'. Use to hide it without removing the element; avoid toggling on every render.
+          * @default true
+         */
+        "active"?: boolean;
+    }
+    /**
      * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
      */
     interface UaiNavbar {
@@ -16693,6 +16931,22 @@ declare namespace LocalJSX {
         "dataTest": string;
         "dtSelectFlag": string;
     }
+    interface UaiModalAttributes {
+        "open": boolean;
+        "closeButton": boolean;
+        "size": UaiModalSize;
+        "width": number;
+        "outzoneClose": boolean;
+        "enterClose": boolean;
+        "closeLabel": string;
+        "heading": string;
+        "label": string;
+        "dtOutzone": string;
+        "dtButtonClose": string;
+    }
+    interface UaiModalCloseButtonAttributes {
+        "active": boolean;
+    }
     interface UaiNavbarAttributes {
         "orientation": uaiNavbarOrientation;
         "backgroundColor": uaiNavbarBackground;
@@ -17039,6 +17293,9 @@ declare namespace LocalJSX {
         "uai-input-editable": Omit<UaiInputEditable, keyof UaiInputEditableAttributes> & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes]?: UaiInputEditable[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `attr:${K}`]?: UaiInputEditableAttributes[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `prop:${K}`]?: UaiInputEditable[K] };
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
+        "uai-modal": Omit<UaiModal, keyof UaiModalAttributes> & { [K in keyof UaiModal & keyof UaiModalAttributes]?: UaiModal[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `attr:${K}`]?: UaiModalAttributes[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `prop:${K}`]?: UaiModal[K] };
+        "uai-modal-action": UaiModalAction;
+        "uai-modal-close-button": Omit<UaiModalCloseButton, keyof UaiModalCloseButtonAttributes> & { [K in keyof UaiModalCloseButton & keyof UaiModalCloseButtonAttributes]?: UaiModalCloseButton[K] } & { [K in keyof UaiModalCloseButton & keyof UaiModalCloseButtonAttributes as `attr:${K}`]?: UaiModalCloseButtonAttributes[K] } & { [K in keyof UaiModalCloseButton & keyof UaiModalCloseButtonAttributes as `prop:${K}`]?: UaiModalCloseButton[K] };
         "uai-navbar": Omit<UaiNavbar, keyof UaiNavbarAttributes> & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes]?: UaiNavbar[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `attr:${K}`]?: UaiNavbarAttributes[K] } & { [K in keyof UaiNavbar & keyof UaiNavbarAttributes as `prop:${K}`]?: UaiNavbar[K] };
         "uai-navbar-content": UaiNavbarContent;
         "uai-page-header": Omit<UaiPageHeader, keyof UaiPageHeaderAttributes> & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes]?: UaiPageHeader[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `attr:${K}`]?: UaiPageHeaderAttributes[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `prop:${K}`]?: UaiPageHeader[K] };
@@ -17165,8 +17422,17 @@ declare module "@stencil/core" {
             "bds-menu-list": LocalJSX.IntrinsicElements["bds-menu-list"] & JSXBase.HTMLAttributes<HTMLBdsMenuListElement>;
             "bds-menu-list-item": LocalJSX.IntrinsicElements["bds-menu-list-item"] & JSXBase.HTMLAttributes<HTMLBdsMenuListItemElement>;
             "bds-menu-separation": LocalJSX.IntrinsicElements["bds-menu-separation"] & JSXBase.HTMLAttributes<HTMLBdsMenuSeparationElement>;
+            /**
+             * @deprecated Use uai-modal with UaiThemeProvider for tokenized styling.
+             */
             "bds-modal": LocalJSX.IntrinsicElements["bds-modal"] & JSXBase.HTMLAttributes<HTMLBdsModalElement>;
+            /**
+             * @deprecated Use uai-modal-action with UaiThemeProvider for tokenized styling.
+             */
             "bds-modal-action": LocalJSX.IntrinsicElements["bds-modal-action"] & JSXBase.HTMLAttributes<HTMLBdsModalActionElement>;
+            /**
+             * @deprecated Use uai-modal-close-button with UaiThemeProvider for tokenized styling.
+             */
             "bds-modal-close-button": LocalJSX.IntrinsicElements["bds-modal-close-button"] & JSXBase.HTMLAttributes<HTMLBdsModalCloseButtonElement>;
             "bds-nav-tree": LocalJSX.IntrinsicElements["bds-nav-tree"] & JSXBase.HTMLAttributes<HTMLBdsNavTreeElement>;
             "bds-nav-tree-group": LocalJSX.IntrinsicElements["bds-nav-tree-group"] & JSXBase.HTMLAttributes<HTMLBdsNavTreeGroupElement>;
@@ -17353,6 +17619,22 @@ declare module "@stencil/core" {
              * country from the number. Wrap the app in UaiThemeProvider.
              */
             "uai-input-phone": LocalJSX.IntrinsicElements["uai-input-phone"] & JSXBase.HTMLAttributes<HTMLUaiInputPhoneElement>;
+            /**
+             * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+             * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
+             * avoid it for passive notices (use uai-banner).
+             */
+            "uai-modal": LocalJSX.IntrinsicElements["uai-modal"] & JSXBase.HTMLAttributes<HTMLUaiModalElement>;
+            /**
+             * Row for the buttons of a uai-modal, aligned to the end with spacing/xs between them. Use it with slot="footer" in uai-modal;
+             * pair with uai-button (Cancelar, Salvar); avoid putting long content in it.
+             */
+            "uai-modal-action": LocalJSX.IntrinsicElements["uai-modal-action"] & JSXBase.HTMLAttributes<HTMLUaiModalActionElement>;
+            /**
+             * Close icon row for custom modal layouts. Use it when the default close button of uai-modal is hidden;
+             * pair with a click handler on the host; avoid it as the only way to dismiss a modal.
+             */
+            "uai-modal-close-button": LocalJSX.IntrinsicElements["uai-modal-close-button"] & JSXBase.HTMLAttributes<HTMLUaiModalCloseButtonElement>;
             /**
              * Navigation bar container. Set orientation, background and justifyContent; put uai-navbar-content items inside.
              */

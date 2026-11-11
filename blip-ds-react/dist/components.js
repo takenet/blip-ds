@@ -121,6 +121,9 @@ import { UaiInputEditable as UaiInputEditableElement, defineCustomElement as def
 import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
 import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
+import { UaiModalAction as UaiModalActionElement, defineCustomElement as defineUaiModalAction } from "blip-ds/dist/components/uai-modal-action.js";
+import { UaiModalCloseButton as UaiModalCloseButtonElement, defineCustomElement as defineUaiModalCloseButton } from "blip-ds/dist/components/uai-modal-close-button.js";
+import { UaiModal as UaiModalElement, defineCustomElement as defineUaiModal } from "blip-ds/dist/components/uai-modal.js";
 import { UaiNavbarContent as UaiNavbarContentElement, defineCustomElement as defineUaiNavbarContent } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiPageHeader as UaiPageHeaderElement, defineCustomElement as defineUaiPageHeader } from "blip-ds/dist/components/uai-page-header.js";
@@ -1154,6 +1157,27 @@ export const UaiInputPhone = createComponent({
         onUaiBlur: 'uaiBlur'
     },
     defineCustomElement: defineUaiInputPhone
+});
+export const UaiModal = createComponent({
+    tagName: 'uai-modal',
+    elementClass: UaiModalElement,
+    react: React,
+    events: { onUaiModalChanged: 'uaiModalChanged' },
+    defineCustomElement: defineUaiModal
+});
+export const UaiModalAction = createComponent({
+    tagName: 'uai-modal-action',
+    elementClass: UaiModalActionElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiModalAction
+});
+export const UaiModalCloseButton = createComponent({
+    tagName: 'uai-modal-close-button',
+    elementClass: UaiModalCloseButtonElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiModalCloseButton
 });
 export const UaiNavbar = createComponent({
     tagName: 'uai-navbar',
