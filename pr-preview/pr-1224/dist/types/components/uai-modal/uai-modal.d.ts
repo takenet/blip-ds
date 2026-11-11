@@ -68,6 +68,7 @@ export declare class UaiModal {
     private hasFooterInLightDom;
     private onFooterSlotChange;
     private onCancel;
+    private onNativeClose;
     private onKeydown;
     private onOutzoneClick;
     render(): HTMLElement;

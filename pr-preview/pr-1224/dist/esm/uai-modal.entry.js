@@ -75,6 +75,12 @@ const UaiModal = class {
             if (this.escapeClose)
                 this.setOpen(false);
         };
+        // The browser can close the dialog without a cancelable `cancel` (Escape without a prior user gesture, for example).
+        // Keep `open` in sync so the state never says "open" for a dialog that is already closed.
+        this.onNativeClose = () => {
+            if (this.open)
+                this.setOpen(false);
+        };
         // Enter closes only when it is not being used by a control, so it never closes the modal while someone
         // activates a button or types in a field, and a keyboard click cannot reopen it through toggle().
         this.onKeydown = (event) => {
@@ -165,11 +171,11 @@ const UaiModal = class {
     render() {
         const size = SIZES.includes(this.size) ? this.size : 'fixed';
         const width = this.panelWidth();
-        return (h(Host, { key: '552a82d2a9779f6f63db37af06982637e8523366' }, h("dialog", { key: 'ec36823413ac4978db89653fd12689a2fee845e3', ref: (el) => (this.dialogEl = el), class: {
+        return (h(Host, { key: 'baab10c403c453e6624ed6f73db25886e7d212bc' }, h("dialog", { key: '4e25aa7ae25fb8f9d464ecc80be551b74ba6ba2f', ref: (el) => (this.dialogEl = el), class: {
                 modal__dialog: true,
                 'modal__dialog--open': this.open,
                 [`modal__dialog--${size}`]: true,
-            }, part: "dialog", "aria-label": this.heading ? undefined : this.label, "aria-labelledby": this.heading ? 'modal-title' : undefined, onCancel: this.onCancel }, h("div", { key: 'f6c5ee6331ae39b41ad39f2cd78f3b4f9e8565f8', class: "outzone", onClick: this.onOutzoneClick, "data-test": this.dtOutzone }), h("div", { key: '1068ea80cd87984e8103618dca027bcc445e3d3d', class: { modal: true, [`modal--${size}`]: true }, part: "modal", style: width ? { '--modal-width': `${width}rem` } : undefined }, (this.heading || this.closeButton) && (h("div", { key: '450cfc2776a21dde9cdc00398ade447e233d7974', class: "modal__header", part: "header" }, this.heading && (h("uai-typo", { key: 'eea83aea37dd5ddd72dafcffb109d802e42580e2', id: "modal-title", class: "modal__title", part: "title", tag: "h2", variant: "title-md", bold: "semibold", margin: false }, this.heading)), this.closeButton && (h("button", { key: '2b4bc33c015b3476d9a827214c4c998e841f30b3', type: "button", class: "modal__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: () => this.setOpen(false) }, h("uai-icon", { key: 'd1d79a9f59ab810ce5ab8a30b540bc2cd872b3c3', name: "close", size: "medium", "aria-hidden": "true" }))))), h("div", { key: 'c2e795776bfed9359540934a1552d5676c8c4498', class: "modal__body", part: "body" }, h("slot", { key: '6fb2f18591716a9bdd4531565e6117b6f0046502' })), h("div", { key: '3a5c27f6185eff5798266914d8f0ee05c4285039', class: { modal__footer: true, 'modal__footer--empty': !this.hasFooter }, part: "footer" }, h("slot", { key: '432bcee25dd12eef4704f8bac2ec8724c1c0cb24', name: "footer", onSlotchange: this.onFooterSlotChange }))))));
+            }, part: "dialog", "aria-label": this.heading ? undefined : this.label, "aria-labelledby": this.heading ? 'modal-title' : undefined, onCancel: this.onCancel, onClose: this.onNativeClose }, h("div", { key: '348208c47c7f23bbfff8174acc01b820ebb78a66', class: "outzone", onClick: this.onOutzoneClick, "data-test": this.dtOutzone }), h("div", { key: '7a42e2b163bb2141c45a22bdf472a7dd4c33b870', class: { modal: true, [`modal--${size}`]: true }, part: "modal", style: width ? { '--modal-width': `${width}rem` } : undefined }, (this.heading || this.closeButton) && (h("div", { key: 'b78d4119f855bd89cd587a6b3d51ba3683b45c50', class: "modal__header", part: "header" }, this.heading && (h("uai-typo", { key: 'f0430a87e6417e6db9cc905d79c5220d1d5ebb2e', id: "modal-title", class: "modal__title", part: "title", tag: "h2", variant: "title-md", bold: "semibold", margin: false }, this.heading)), this.closeButton && (h("button", { key: 'b71e26c276d809ed47f6f5485ee40af8c0ef008c', type: "button", class: "modal__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: () => this.setOpen(false) }, h("uai-icon", { key: '0411277daf6ceab5281d2eb45ab04788096d13da', name: "close", size: "medium", "aria-hidden": "true" }))))), h("div", { key: '168d9baf9d08e70d11d43be2e2087e43c2511ac7', class: "modal__body", part: "body" }, h("slot", { key: '3e6c5f09dbb4fd68c21b79b20a053ccc3cf32fe2' })), h("div", { key: 'b504850a678319ad5de227e15bc52820f968b1ca', class: { modal__footer: true, 'modal__footer--empty': !this.hasFooter }, part: "footer" }, h("slot", { key: '37fa7d91f654ef16bb4bd0a230dead18a8ec2cf4', name: "footer", onSlotchange: this.onFooterSlotChange }))))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {
