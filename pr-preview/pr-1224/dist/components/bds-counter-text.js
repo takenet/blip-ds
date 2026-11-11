@@ -1,0 +1,1 @@
+import{C as o,d as s}from"./p-CAgXeaDc.js";const a=o,p=s;export{a as BdsCounterText,p as defineCustomElement}

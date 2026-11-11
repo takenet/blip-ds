@@ -1,0 +1,1 @@
+import{G as o,d as r}from"./p-CUHRokvr.js";const s=o,p=r;export{s as BdsGrid,p as defineCustomElement}

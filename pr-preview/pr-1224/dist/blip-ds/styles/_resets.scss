@@ -1,0 +1,95 @@
+@mixin form-reset-input-specific {
+  &:focus {
+    outline: 0;
+  }
+
+  &[type="checkbox"],
+  &[type="radio"] {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Make webkit render the search input like a normal text field */
+  &[type="search"] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+  }
+
+  /* Turn off the recent search for webkit. It adds about 15px padding on the left */
+  @at-root {
+    ::-webkit-search-decoration {
+      display: none;
+    }
+  }
+
+  /* Fix IE7 display bug */
+  &[type="reset"],
+  &[type="button"],
+  &[type="submit"] {
+    overflow: visible;
+  }
+}
+
+@mixin reset-input {
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: auto;
+  vertical-align: middle; // IE6,IE7
+  white-space: normal;
+  line-height: inherit;
+  background: none;
+
+  /* Browsers have different default form fonts */
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::-webkit-file-upload-button {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  @include form-reset-input-specific();
+}
+
+@mixin reset-button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  outline: none;
+
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+
+  /* Remove excess padding and border in Firefox 4+ */
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
