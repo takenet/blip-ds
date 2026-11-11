@@ -49,7 +49,7 @@
   }
 }
 .modal__dialog .outzone {
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-color: var(--uai-overlay-default, rgba(0, 0, 0, 0.72));
   backdrop-filter: blur(var(--uai-spacing-2xs, 0.25rem));
