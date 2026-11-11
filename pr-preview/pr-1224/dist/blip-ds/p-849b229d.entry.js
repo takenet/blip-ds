@@ -1,1 +1,0 @@
-import{r as a,h as o}from"./p-CkbvGS8Z.js";const s=class{constructor(o){a(this,o)}render(){return o("div",{key:"9a11b6f8c57aab73edf5708de0b05c842816c65b",class:"modal__action"},o("slot",{key:"a4e49fba5bf4ec14462604f81f0f526607b44acf"}))}};s.style=".modal__action{display:-ms-flexbox;display:flex;padding-top:16px;bottom:32px;right:32px}";export{s as bds_modal_action}
