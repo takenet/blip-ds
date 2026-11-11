@@ -8,6 +8,7 @@
 ## Overview
 
 Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.
 Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
 avoid it for passive notices (use uai-banner).
 
@@ -19,7 +20,7 @@ avoid it for passive notices (use uai-banner).
 | `closeLabel`    | `close-label`     | Accessible name of the close button. Use a translated label; avoid leaving it generic.                                                                                                                                        | `string`               | `'Fechar'`  |
 | `dtButtonClose` | `dt-button-close` | Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it.                                                                                                                       | `string`               | `null`      |
 | `dtOutzone`     | `dt-outzone`      | Test selector on the backdrop. Use for automation; pair with semantic queries. Avoid styling by it.                                                                                                                           | `string`               | `null`      |
-| `enterClose`    | `enter-close`     | Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms.                                                                                                                     | `boolean`              | `true`      |
+| `enterClose`    | `enter-close`     | Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice.                                                                         | `boolean`              | `true`      |
 | `heading`       | `heading`         | Title shown in the header. Use a short noun phrase; it also names the dialog for assistive technology.                                                                                                                        | `string`               | `undefined` |
 | `label`         | `label`           | Accessible name of the dialog. Use only when there is no `heading`; pair with a short sentence.                                                                                                                               | `string`               | `undefined` |
 | `open`          | `open`            | Opens or closes the modal. Use for declarative control; pair with uaiModalChanged. Avoid toggling it on every render.                                                                                                         | `boolean`              | `false`     |

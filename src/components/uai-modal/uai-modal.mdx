@@ -67,18 +67,28 @@ Abrir e fechar usam os tokens de motion do UAI (`duration-moderate` com `easing-
 
 ## Fechamento
 
-O modal fecha pelo botão de fechar (`closeButton`), ao clicar no fundo (`outzoneClose`) e com Enter ou Escape (`enterClose`). Desative `enterClose` quando o Enter for usado dentro do conteúdo, como em formulários.
+O modal fecha pelo botão de fechar (`closeButton`), ao clicar no fundo (`outzoneClose`), com Escape e com Enter (`enterClose`).
+
+O Enter só fecha quando nenhum controle está em foco. Em botões, links, campos e elementos com papel interativo, o Enter faz o que o controle faz: ativa o botão, envia o formulário, quebra a linha. Assim, ele nunca fecha o modal enquanto alguém aciona um botão, e um clique por teclado não reabre o modal por meio de `toggle()`. Desative `enterClose` para exigir uma escolha explícita: com ele, o Escape também deixa de fechar.
 
 ## Acessibilidade
 
-O painel usa `role="dialog"` e `aria-modal="true"`; o `heading` nomeia o diálogo (`aria-labelledby`) e `label` serve de nome acessível quando não há título. O botão de fechar é um `<button>` nativo com `aria-label` (`closeLabel`) e foco visível. Em navegadores com Popover API, o modal abre na camada superior e nenhum contexto de empilhamento o cobre.
+O painel é um `<dialog>` nativo aberto em modo modal, o que dá, sem código extra:
+
+- O foco vai para dentro do modal ao abrir, o Tab fica preso nele e o conteúdo de fundo fica inerte (sem foco, clique ou leitura por tecnologia assistiva).
+- Ao fechar, o foco volta ao elemento que o tinha antes.
+- A camada superior do navegador mantém o modal acima de qualquer contexto de empilhamento.
+
+O `heading` nomeia o diálogo (`aria-labelledby`); `label` serve de nome acessível quando não há título. O botão de fechar é um `<button>` nativo com `aria-label` (`closeLabel`) e foco visível. `UaiModalCloseButton` também é um `<button>` nativo (`label` define o nome); ouça o `click` nele para fechar o modal.
 
 ## Migração do bds-modal
 
 Troque `BdsModal` por `UaiModal`, `BdsModalAction` por `UaiModalAction`, `BdsModalCloseButton` por `UaiModalCloseButton`, `onBdsModalChanged` por `onUaiModalChanged` e envolva a aplicação em `UaiThemeProvider`. `open`, `closeButton`, `size`, `outzoneClose`, `enterClose`, `dtOutzone`, `dtButtonClose` e o método `toggle()` são preservados. Diferenças:
 
 - O botão de fechar é um `<button>` com `aria-label`, e o painel tem `role="dialog"`.
-- O teclado também vale quando o modal já nasce aberto (no legado só após a primeira mudança de `open`).
+- O teclado também vale quando o modal já nasce aberto (no legado só após a primeira mudança de `open`). O Enter não fecha mais o modal quando está em um botão, link ou campo.
+- O foco fica preso no modal e o fundo fica inerte; o foco volta ao elemento anterior ao fechar.
+- `UaiModalCloseButton` é um `<button>` nativo com `label` (no legado era um ícone sem foco).
 - `heading`, o slot `footer`, `closeLabel` e `label` são adições. O layout segue o UAI Core: cabeçalho com título e fechar, conteúdo rolável e rodapé de ações, sem o espaçamento externo de 32px do legado.
 
 Tokens: `overlay-default`, `border-default`, `surface-paper`, `content-primary`, `elevation-dialog`, `overlay-hover`, `border-ring`, `border-width-thick`, `radius-xl`, `radius-lg`, `spacing-md`, `spacing-xs`, `spacing-lg`, `spacing-2xl`, `spacing-2xs`, `sizing-lg`, `sizing-xl`, `sizing-2xl`, `sizing-4xl`, `sizing-5xl`, `title-md`, `width-dialog`, `width-content`, `control-height-medium`, `duration-fast`, `duration-moderate` e `easing-standard`.

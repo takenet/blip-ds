@@ -5,7 +5,7 @@
 }
 
 .modal__dialog {
-  // Popover UA styles (border, padding, margin, background) are reset; the dialog is a full-viewport layer.
+  // Native dialog UA styles (border, padding, margin, background, size limits) are reset; the dialog is a full-viewport layer.
   position: fixed;
   inset: 0;
   box-sizing: border-box;
@@ -19,8 +19,6 @@
   background: transparent;
   color: inherit;
   overflow: visible;
-  // Fallback stacking for browsers without the Popover API; in the top layer it has no effect.
-  z-index: 9999;
   display: none;
   opacity: 0;
   // Enter and exit use motion/duration-moderate with easing/standard. `display` and `overlay` are discrete, so the

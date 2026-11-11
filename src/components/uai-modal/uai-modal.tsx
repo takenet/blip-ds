@@ -1,13 +1,30 @@
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { warnLegacyValue } from '../../utils/deprecation';
-import { supportsPopover } from '../../utils/uai-overlay';
 
 export type UaiModalSize = 'fixed' | 'dynamic';
 
 const SIZES: readonly UaiModalSize[] = ['fixed', 'dynamic'];
 
+// Controls that use Enter themselves: pressing Enter on them must never close the modal.
+const ENTER_CONTROLS = new Set(['a', 'button', 'input', 'select', 'summary', 'textarea']);
+const ENTER_ROLES = new Set(['button', 'link', 'menuitem', 'option', 'switch', 'tab', 'checkbox', 'radio']);
+
+const usesEnter = (event: KeyboardEvent): boolean => {
+  const path = typeof event.composedPath === 'function' ? event.composedPath() : [event.target];
+  return path.some((node) => {
+    const element = node as HTMLElement;
+    if (!element || typeof element.tagName !== 'string') return false;
+    return (
+      ENTER_CONTROLS.has(element.tagName.toLowerCase()) ||
+      ENTER_ROLES.has(element.getAttribute?.('role') || '') ||
+      element.isContentEditable === true
+    );
+  });
+};
+
 /**
  * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
+ * Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.
  * Use for confirmations and short tasks; pair with uai-modal-action for the buttons and UaiThemeProvider;
  * avoid it for passive notices (use uai-banner).
  *
@@ -44,7 +61,7 @@ export class UaiModal {
   /** Closes the modal when the backdrop is clicked. Use 'false' for flows that need an explicit choice. */
   @Prop() outzoneClose?: boolean = true;
 
-  /** Closes the modal on Enter or Escape. Use 'false' when Enter is used inside the content, such as in forms. */
+  /** Closes the modal with Escape, and with Enter when no control (button, link, field) has the focus. Use 'false' for flows that need an explicit choice. */
   @Prop() enterClose?: boolean = true;
 
   /** Accessible name of the close button. Use a translated label; avoid leaving it generic. */
@@ -77,16 +94,20 @@ export class UaiModal {
   }
 
   componentDidLoad(): void {
+    this.dialogEl?.addEventListener('cancel', this.onCancel);
     this.syncListener();
   }
 
   componentDidRender(): void {
-    this.syncTopLayer();
+    this.syncNativeDialog();
   }
 
   disconnectedCallback(): void {
     document.removeEventListener('keydown', this.onKeydown, false);
+    this.dialogEl?.removeEventListener('cancel', this.onCancel);
   }
+
+  private dialogEl?: HTMLDialogElement;
 
   private setOpen(next: boolean): void {
     this.open = next;
@@ -98,13 +119,13 @@ export class UaiModal {
     else document.removeEventListener('keydown', this.onKeydown, false);
   }
 
-  // The dialog opens in the top layer (Popover API) so no ancestor stacking context can cover it.
-  private syncTopLayer(): void {
-    const dialog = this.el.shadowRoot?.querySelector<HTMLElement>('.modal__dialog');
-    if (!dialog || !supportsPopover() || typeof dialog.showPopover !== 'function') return;
-    const shown = dialog.matches(':popover-open');
-    if (this.open && !shown) dialog.showPopover();
-    else if (!this.open && shown) dialog.hidePopover();
+  // The native <dialog> in modal mode puts the panel in the top layer, moves the focus into it, keeps Tab inside it,
+  // makes everything behind inert and gives the focus back to the previous element on close.
+  private syncNativeDialog(): void {
+    const dialog = this.dialogEl;
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    if (this.open && !dialog.open) dialog.showModal();
+    else if (!this.open && dialog.open) dialog.close();
   }
 
   private panelWidth(): number | undefined {
@@ -117,8 +138,16 @@ export class UaiModal {
     return Array.from(this.el.children).some((child) => child.getAttribute('slot') === 'footer');
   }
 
+  // Escape is handled by the native `cancel` event of the dialog; it only closes when enterClose is true.
+  private onCancel = (event: Event): void => {
+    event.preventDefault();
+    if (this.enterClose) this.setOpen(false);
+  };
+
+  // Enter closes only when it is not being used by a control, so it never closes the modal while someone
+  // activates a button or types in a field, and a keyboard click cannot reopen it through toggle().
   private onKeydown = (event: KeyboardEvent): void => {
-    if (this.enterClose && (event.key === 'Enter' || event.key === 'Escape')) {
+    if (this.enterClose && event.key === 'Enter' && !usesEnter(event)) {
       this.setOpen(false);
     }
   };
@@ -134,24 +163,22 @@ export class UaiModal {
 
     return (
       <Host>
-        <div
+        <dialog
+          ref={(el) => (this.dialogEl = el as HTMLDialogElement)}
           class={{
             modal__dialog: true,
             'modal__dialog--open': this.open,
             [`modal__dialog--${size}`]: true,
           }}
           part="dialog"
-          popover={supportsPopover() ? 'manual' : undefined}
+          aria-label={this.heading ? undefined : this.label}
+          aria-labelledby={this.heading ? 'modal-title' : undefined}
         >
           <div class="outzone" onClick={this.onOutzoneClick} data-test={this.dtOutzone}></div>
           <div
             class={{ modal: true, [`modal--${size}`]: true }}
             part="modal"
-            role="dialog"
             style={this.panelWidth() ? { '--modal-width': `${this.panelWidth()}rem` } : undefined}
-            aria-modal="true"
-            aria-label={this.heading ? undefined : this.label}
-            aria-labelledby={this.heading ? 'modal-title' : undefined}
           >
             {(this.heading || this.closeButton) && (
               <div class="modal__header" part="header">
@@ -191,7 +218,7 @@ export class UaiModal {
               </div>
             )}
           </div>
-        </div>
+        </dialog>
       </Host>
     );
   }

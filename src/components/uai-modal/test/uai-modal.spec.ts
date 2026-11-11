@@ -37,10 +37,10 @@ describe('uai-modal', () => {
 
   it('exposes the dialog semantics', async () => {
     const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal label="Confirmar"></uai-modal>' });
-    const modal = page.root.shadowRoot.querySelector('.modal');
-    expect(modal.getAttribute('role')).toBe('dialog');
-    expect(modal.getAttribute('aria-modal')).toBe('true');
-    expect(modal.getAttribute('aria-label')).toBe('Confirmar');
+    const dialog = page.root.shadowRoot.querySelector('dialog.modal__dialog');
+    expect(dialog).toBeTruthy();
+    expect(dialog.getAttribute('aria-label')).toBe('Confirmar');
+    expect(page.root.shadowRoot.querySelector('[role="dialog"]')).toBeNull();
   });
 
   it('renders the heading in the header and uses it as the dialog name', async () => {
@@ -50,9 +50,9 @@ describe('uai-modal', () => {
     expect(title.textContent).toBe('Titulo');
     expect(title.getAttribute('variant')).toBe('title-md');
     expect(title.getAttribute('bold')).toBe('semibold');
-    const modal = root.querySelector('.modal');
-    expect(modal.getAttribute('aria-labelledby')).toBe('modal-title');
-    expect(modal.getAttribute('aria-label')).toBeNull();
+    const dialog = root.querySelector('dialog.modal__dialog');
+    expect(dialog.getAttribute('aria-labelledby')).toBe('modal-title');
+    expect(dialog.getAttribute('aria-label')).toBeNull();
   });
 
   it('omits the header without heading and close button', async () => {
@@ -130,16 +130,78 @@ describe('uai-modal', () => {
     expect(spy.mock.calls.map((call) => call[0].detail.modalStatus)).toEqual(['opened', 'closed']);
   });
 
-  it.each(['Enter', 'Escape'])('closes on %s only while open and enterClose is true', async (key) => {
+  it('closes on Enter when no control has the focus, only while enterClose is true', async () => {
     const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal open="true"></uai-modal>' });
     page.root.enterClose = false;
-    document.dispatchEvent(new KeyboardEvent('keydown', { key }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await page.waitForChanges();
     expect(page.root.open).toBe(true);
     page.root.enterClose = true;
-    document.dispatchEvent(new KeyboardEvent('keydown', { key }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await page.waitForChanges();
     expect(page.root.open).toBe(false);
+  });
+
+  it.each(['button', 'a', 'input', 'textarea', 'select'])('does not close on Enter pressed on a %s', async (tag) => {
+    const page = await newSpecPage({
+      components: [UaiModal],
+      html: `<uai-modal open="true"><${tag} id="control"></${tag}></uai-modal>`,
+    });
+    page.body.querySelector('#control').dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    await page.waitForChanges();
+    expect(page.root.open).toBe(true);
+  });
+
+  it('does not close on Enter pressed on an element with an interactive role', async () => {
+    const page = await newSpecPage({
+      components: [UaiModal],
+      html: '<uai-modal open="true"><div id="control" role="button"></div></uai-modal>',
+    });
+    page.body.querySelector('#control').dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    await page.waitForChanges();
+    expect(page.root.open).toBe(true);
+  });
+
+  it('does not reopen through toggle() after a keyboard activation of a button', async () => {
+    const page = await newSpecPage({
+      components: [UaiModal],
+      html: '<uai-modal open="true"><button id="ok">Ok</button></uai-modal>',
+    });
+    const ok = page.body.querySelector('#ok') as HTMLElement;
+    ok.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    ok.addEventListener('click', () => page.root.toggle());
+    ok.click();
+    await page.waitForChanges();
+    expect(page.root.open).toBe(false);
+  });
+
+  it('closes on the native cancel event (Escape) only while enterClose is true', async () => {
+    const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal open="true"></uai-modal>' });
+    const dialog = page.root.shadowRoot.querySelector('dialog');
+    page.root.enterClose = false;
+    const blocked = new Event('cancel', { cancelable: true });
+    dialog.dispatchEvent(blocked);
+    await page.waitForChanges();
+    expect(blocked.defaultPrevented).toBe(true);
+    expect(page.root.open).toBe(true);
+    page.root.enterClose = true;
+    dialog.dispatchEvent(new Event('cancel', { cancelable: true }));
+    await page.waitForChanges();
+    expect(page.root.open).toBe(false);
+  });
+
+  it('opens and closes the native dialog in modal mode when showModal is available', async () => {
+    const page = await newSpecPage({ components: [UaiModal], html: '<uai-modal></uai-modal>' });
+    const dialog = page.root.shadowRoot.querySelector('dialog') as any;
+    dialog.open = false;
+    dialog.showModal = jest.fn(() => (dialog.open = true));
+    dialog.close = jest.fn(() => (dialog.open = false));
+    page.root.open = true;
+    await page.waitForChanges();
+    expect(dialog.showModal).toHaveBeenCalledTimes(1);
+    page.root.open = false;
+    await page.waitForChanges();
+    expect(dialog.close).toHaveBeenCalledTimes(1);
   });
 
   it('does not react to the keyboard once closed', async () => {
@@ -148,7 +210,7 @@ describe('uai-modal', () => {
     await page.waitForChanges();
     const spy = jest.fn();
     page.root.addEventListener('uaiModalChanged', spy);
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }));
     await page.waitForChanges();
     expect(spy).not.toHaveBeenCalled();
   });
