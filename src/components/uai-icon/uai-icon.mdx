@@ -5,7 +5,7 @@ import * as UaiIconStories from './uai-icon.stories';
 
 # Icon
 
-Ícone de interface da fonte de ícones UAI do `blip-tokens`. Use ao lado de textos e dentro de controles para ajudar a reconhecer uma ação ou um status. Para logos e emojis, use o `bds-icon`.
+Ícone de interface da fonte de ícones UAI do `blip-tokens`. Use ao lado de textos e dentro de controles para ajudar a reconhecer uma ação ou um status. Para logos e emojis, use `<uai-logo>` e `<uai-emoji>`.
 
 <Canvas of={UaiIconStories.Playground} />
 
@@ -72,7 +72,7 @@ Componentes que usam o `UaiIcon` por dentro, como o `UaiButton`, mudam o tamanho
 | `size` `xxx-small`, `xx-small`, `large`, `x-large`, `xx-large`, `xxx-large`, `brand` | Não aceitos: use `x-small`, `small` ou `medium` |
 | `theme="outline"`, `"solid"` | Os mesmos valores |
 | `color` com qualquer cor CSS | `color` com um token UAI, ou nenhum para herdar a cor do texto |
-| `type="logo"`, `"emoji"` | Não aceitos: continue com o `BdsIcon` |
+| `type="logo"`, `"emoji"` | `<UaiLogo>` e `<UaiEmoji>` |
 | `name` | O mesmo, mas só nomes da fonte UAI |
 
 Valores não aceitos caem no padrão e avisam no console.

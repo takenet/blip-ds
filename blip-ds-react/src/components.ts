@@ -125,6 +125,7 @@ import { UaiBreadcrumb as UaiBreadcrumbElement, defineCustomElement as defineUai
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiChipTag as UaiChipTagElement, defineCustomElement as defineUaiChipTag } from "blip-ds/dist/components/uai-chip-tag.js";
+import { UaiEmoji as UaiEmojiElement, defineCustomElement as defineUaiEmoji } from "blip-ds/dist/components/uai-emoji.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement, defineCustomElement as defineUaiInputChips } from "blip-ds/dist/components/uai-input-chips.js";
@@ -133,6 +134,7 @@ import { UaiInputEditable as UaiInputEditableElement, defineCustomElement as def
 import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
 import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
+import { UaiLogo as UaiLogoElement, defineCustomElement as defineUaiLogo } from "blip-ds/dist/components/uai-logo.js";
 import { UaiModalAction as UaiModalActionElement, defineCustomElement as defineUaiModalAction } from "blip-ds/dist/components/uai-modal-action.js";
 import { UaiModalCloseButton as UaiModalCloseButtonElement, defineCustomElement as defineUaiModalCloseButton } from "blip-ds/dist/components/uai-modal-close-button.js";
 import { UaiModal as UaiModalElement, defineCustomElement as defineUaiModal } from "blip-ds/dist/components/uai-modal.js";
@@ -1651,6 +1653,17 @@ export const UaiChipTag: StencilReactComponent<UaiChipTagElement, UaiChipTagEven
     defineCustomElement: defineUaiChipTag
 });
 
+export type UaiEmojiEvents = NonNullable<unknown>;
+
+export const UaiEmoji: StencilReactComponent<UaiEmojiElement, UaiEmojiEvents, Components.UaiEmoji> = /*@__PURE__*/ createComponent<UaiEmojiElement, UaiEmojiEvents, Components.UaiEmoji>({
+    tagName: 'uai-emoji',
+    elementClass: UaiEmojiElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiEmojiEvents,
+    defineCustomElement: defineUaiEmoji
+});
+
 export type UaiGridEvents = NonNullable<unknown>;
 
 export const UaiGrid: StencilReactComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid> = /*@__PURE__*/ createComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid>({
@@ -1819,6 +1832,17 @@ export const UaiInputPhone: StencilReactComponent<UaiInputPhoneElement, UaiInput
         onUaiBlur: 'uaiBlur'
     } as UaiInputPhoneEvents,
     defineCustomElement: defineUaiInputPhone
+});
+
+export type UaiLogoEvents = NonNullable<unknown>;
+
+export const UaiLogo: StencilReactComponent<UaiLogoElement, UaiLogoEvents, Components.UaiLogo> = /*@__PURE__*/ createComponent<UaiLogoElement, UaiLogoEvents, Components.UaiLogo>({
+    tagName: 'uai-logo',
+    elementClass: UaiLogoElement,
+    // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
+    react: React,
+    events: {} as UaiLogoEvents,
+    defineCustomElement: defineUaiLogo
 });
 
 export type UaiModalEvents = { onUaiModalChanged: EventName<UaiModalCustomEvent<{ modalStatus: 'opened' | 'closed' }>> };
