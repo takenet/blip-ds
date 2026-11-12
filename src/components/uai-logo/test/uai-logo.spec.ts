@@ -69,4 +69,31 @@ describe('uai-logo', () => {
     expect(page.rootInstance.name).not.toBe(name);
     expect(loadAssetSvg).toHaveBeenLastCalledWith('asset-logo-updated');
   });
+
+  it('loads the logo when reconnected while its asset request is pending', async () => {
+    let resolveAsset: (svg: string) => void;
+    const pendingAsset = new Promise<string>((resolve) => {
+      resolveAsset = resolve;
+    });
+    (loadAssetSvg as jest.Mock).mockImplementationOnce(() => pendingAsset).mockImplementationOnce(() => pendingAsset);
+
+    const page = await render('<uai-logo name="google"></uai-logo>');
+    await Promise.resolve();
+    expect(loadAssetSvg).toHaveBeenCalledTimes(1);
+
+    page.root.remove();
+    await page.waitForChanges();
+    page.body.appendChild(page.root);
+    await page.waitForChanges();
+    await Promise.resolve();
+    expect(loadAssetSvg).toHaveBeenCalledTimes(2);
+
+    resolveAsset('<svg viewBox="0 0 80 40"><path fill="#4285F4"/></svg>');
+    await pendingAsset;
+    await Promise.resolve();
+    await Promise.resolve();
+    await page.waitForChanges();
+
+    expect(page.root.shadowRoot.querySelector('svg')).not.toBeNull();
+  });
 });

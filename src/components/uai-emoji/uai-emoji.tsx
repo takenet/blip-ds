@@ -34,7 +34,7 @@ export class UaiEmoji {
    */
   @Prop() dataTest?: string;
 
-  componentDidLoad(): void {
+  connectedCallback(): void {
     this.loadEmoji();
   }
 

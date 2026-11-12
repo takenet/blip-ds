@@ -69,4 +69,31 @@ describe('uai-emoji', () => {
     expect(page.rootInstance.name).not.toBe(name);
     expect(loadAssetSvg).toHaveBeenLastCalledWith('asset-emoji-updated');
   });
+
+  it('loads the emoji when reconnected while its asset request is pending', async () => {
+    let resolveAsset: (svg: string) => void;
+    const pendingAsset = new Promise<string>((resolve) => {
+      resolveAsset = resolve;
+    });
+    (loadAssetSvg as jest.Mock).mockImplementationOnce(() => pendingAsset).mockImplementationOnce(() => pendingAsset);
+
+    const page = await render('<uai-emoji name="smiling-face"></uai-emoji>');
+    await Promise.resolve();
+    expect(loadAssetSvg).toHaveBeenCalledTimes(1);
+
+    page.root.remove();
+    await page.waitForChanges();
+    page.body.appendChild(page.root);
+    await page.waitForChanges();
+    await Promise.resolve();
+    expect(loadAssetSvg).toHaveBeenCalledTimes(2);
+
+    resolveAsset('<svg viewBox="0 0 40 40"><circle fill="#FABC04"/></svg>');
+    await pendingAsset;
+    await Promise.resolve();
+    await Promise.resolve();
+    await page.waitForChanges();
+
+    expect(page.root.shadowRoot.querySelector('svg')).not.toBeNull();
+  });
 });

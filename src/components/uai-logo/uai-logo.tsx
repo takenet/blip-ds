@@ -34,7 +34,7 @@ export class UaiLogo {
    */
   @Prop() dataTest?: string;
 
-  componentDidLoad(): void {
+  connectedCallback(): void {
     this.loadLogo();
   }
 
