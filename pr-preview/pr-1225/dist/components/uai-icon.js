@@ -1,0 +1,1 @@
+import{U as s,d as o}from"./p-mpk5sXS4.js";const p=s,m=o;export{p as UaiIcon,m as defineCustomElement}

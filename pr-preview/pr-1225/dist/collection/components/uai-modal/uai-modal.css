@@ -1,0 +1,182 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  display: contents;
+}
+
+.modal__dialog {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  overflow: visible;
+  display: none;
+  opacity: 0;
+  transition: opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, overlay var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete;
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal__dialog {
+    transition: none;
+  }
+}
+.modal__dialog .outzone {
+  position: fixed;
+  inset: 0;
+  background-color: var(--uai-overlay-default, rgba(0, 0, 0, 0.72));
+  backdrop-filter: blur(var(--uai-spacing-2xs, 0.25rem));
+}
+.modal__dialog--dynamic {
+  overflow-y: auto;
+  padding-top: var(--uai-spacing-2xl, 2.5rem);
+  padding-bottom: var(--uai-spacing-2xl, 2.5rem);
+}
+.modal__dialog--open {
+  display: flex;
+  opacity: 1;
+}
+@starting-style {
+  .modal__dialog--open {
+    opacity: 0;
+  }
+}
+.modal__dialog--open .modal {
+  opacity: 1;
+  transform: none;
+}
+@starting-style {
+  .modal__dialog--open .modal {
+    opacity: 0;
+    transform: translateY(var(--uai-spacing-md, 1rem));
+  }
+}
+
+.modal {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  --modal-default-width: calc(
+    var(--uai-width-dialog, 26.5rem) + var(--uai-sizing-5xl, 4.5rem) +
+      var(--uai-sizing-4xl, 4rem) + var(--uai-sizing-2xl, 2.5rem) +
+      var(--uai-sizing-xl, 2rem) + var(--uai-sizing-lg, 1.5rem)
+  );
+  width: var(--modal-width, var(--modal-default-width));
+  max-width: calc(100% - var(--uai-sizing-xl, 2rem));
+  max-height: calc(100% - var(--uai-sizing-xl, 2rem));
+  overflow: hidden;
+  border: var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7);
+  border-radius: var(--uai-radius-xl, 1rem);
+  background: var(--uai-surface-paper, #ffffff);
+  color: var(--uai-content-primary, #242729);
+  box-shadow: var(--uai-elevation-dialog, 0px 32px 32px -20px rgba(0, 0, 0, 0.1));
+  opacity: 0;
+  transform: translateY(var(--uai-spacing-md, 1rem));
+  transition: opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal {
+    transition: none;
+  }
+}
+.modal--dynamic {
+  width: auto;
+  max-width: min(var(--modal-width, var(--modal-default-width)), 100% - var(--uai-sizing-xl, 2rem));
+  max-height: none;
+}
+
+.modal__header {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  padding: var(--uai-spacing-lg, 1.5rem);
+  border-bottom: var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7);
+}
+
+.modal__title {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  width: var(--uai-control-height-medium, 2.5rem);
+  height: var(--uai-control-height-medium, 2.5rem);
+  padding: 0;
+  border: 0;
+  border-radius: var(--uai-radius-lg, 0.75rem);
+  background: transparent;
+  color: var(--uai-content-primary, #242729);
+  cursor: pointer;
+  transition: background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .modal__close {
+    transition: none;
+  }
+}
+.modal__close:hover {
+  background: var(--uai-overlay-hover, rgba(0, 0, 0, 0.08));
+}
+.modal__close:focus-visible {
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline-offset: var(--uai-spacing-3xs, 0.125rem);
+}
+
+.modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--uai-spacing-lg, 1.5rem);
+}
+
+.modal--fixed .modal__body {
+  min-height: calc(var(--uai-width-dialog, 26.5rem) - var(--uai-sizing-5xl, 4.5rem) - var(--uai-sizing-4xl, 4rem) - var(--uai-sizing-xl, 2rem));
+}
+
+.modal__footer {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  padding: var(--uai-spacing-lg, 1.5rem);
+}
+.modal__footer--empty {
+  display: none;
+}

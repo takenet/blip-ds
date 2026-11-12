@@ -1,0 +1,1 @@
+import{S as o,d as s}from"./p-COWVbMgg.js";const p=o,r=s;export{p as BdsSelectOption,r as defineCustomElement}

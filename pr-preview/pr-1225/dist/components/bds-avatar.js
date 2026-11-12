@@ -1,0 +1,1 @@
+import{B as o,d as p}from"./p-BDMMCpVy.js";const s=o,r=p;export{s as BdsAvatar,r as defineCustomElement}
