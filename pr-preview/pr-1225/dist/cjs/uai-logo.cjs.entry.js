@@ -16,7 +16,7 @@ const UaiLogo = class {
          */
         this.ariaLabel = null;
     }
-    componentDidLoad() {
+    connectedCallback() {
         this.loadLogo();
     }
     disconnectedCallback() {
@@ -43,7 +43,7 @@ const UaiLogo = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'bdce83b7287b602cde2398bf29c81a506a2c40c1', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("div", { key: '02de08e77dd0af1a84fbe9f423251b60d7db8f39', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
+        return (index.h(index.Host, { key: '97d0336a2595ef273e9bf75f53bae4ba40420e89', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("div", { key: '8848a9452103237c9dd7078bc5583315253a941f', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
     }
     static get watchers() { return {
         "name": [{

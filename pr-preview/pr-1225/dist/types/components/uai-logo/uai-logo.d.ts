@@ -19,7 +19,7 @@ export declare class UaiLogo {
      * Value forwarded to the logo SVG container's data-test attribute.
      */
     dataTest?: string;
-    componentDidLoad(): void;
+    connectedCallback(): void;
     disconnectedCallback(): void;
     private loadLogo;
     render(): HTMLElement;

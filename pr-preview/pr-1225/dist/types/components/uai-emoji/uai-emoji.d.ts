@@ -19,7 +19,7 @@ export declare class UaiEmoji {
      * Value forwarded to the emoji SVG container's data-test attribute.
      */
     dataTest?: string;
-    componentDidLoad(): void;
+    connectedCallback(): void;
     disconnectedCallback(): void;
     private loadEmoji;
     render(): HTMLElement;

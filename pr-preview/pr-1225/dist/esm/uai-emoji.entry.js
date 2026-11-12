@@ -14,7 +14,7 @@ const UaiEmoji = class {
          */
         this.ariaLabel = null;
     }
-    componentDidLoad() {
+    connectedCallback() {
         this.loadEmoji();
     }
     disconnectedCallback() {
@@ -41,7 +41,7 @@ const UaiEmoji = class {
         });
     }
     render() {
-        return (h(Host, { key: '7bde33805fa8875b8d8c00854405476624cef2c4', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("div", { key: '090ed8a9a4a730b6340dda21fd79b1cd4331cbce', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
+        return (h(Host, { key: '8f1f8cf95cc7adb5442e5f7fb1b88f98a998fbbf', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("div", { key: '47eeab40eac2bbf48715c62983d27df2ee223c61', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
     }
     static get watchers() { return {
         "name": [{
