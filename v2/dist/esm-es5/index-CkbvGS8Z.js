@@ -153,7 +153,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-checkbox.entry.js").then(u,consoleError);case"uai-chip-tag":return import(
 /* webpackMode: "lazy" */
-"./uai-chip-tag.entry.js").then(u,consoleError);case"uai-grid":return import(
+"./uai-chip-tag.entry.js").then(u,consoleError);case"uai-emoji":return import(
+/* webpackMode: "lazy" */
+"./uai-emoji.entry.js").then(u,consoleError);case"uai-grid":return import(
 /* webpackMode: "lazy" */
 "./uai-grid.entry.js").then(u,consoleError);case"uai-input-chips":return import(
 /* webpackMode: "lazy" */
@@ -161,7 +163,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-input-editable.entry.js").then(u,consoleError);case"uai-input-password":return import(
 /* webpackMode: "lazy" */
-"./uai-input-password.entry.js").then(u,consoleError);case"uai-modal":return import(
+"./uai-input-password.entry.js").then(u,consoleError);case"uai-logo":return import(
+/* webpackMode: "lazy" */
+"./uai-logo.entry.js").then(u,consoleError);case"uai-modal":return import(
 /* webpackMode: "lazy" */
 "./uai-modal.entry.js").then(u,consoleError);case"uai-modal-action":return import(
 /* webpackMode: "lazy" */
@@ -247,7 +251,9 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./bds-loading-spinner.entry.js").then(u,consoleError);case"bds-button-icon":return import(
 /* webpackMode: "lazy" */
-"./bds-button-icon.entry.js").then(u,consoleError);case"bds-input-phone-number":return import(
+"./bds-button-icon.entry.js").then(u,consoleError);case"bds-icon":return import(
+/* webpackMode: "lazy" */
+"./bds-icon.entry.js").then(u,consoleError);case"bds-input-phone-number":return import(
 /* webpackMode: "lazy" */
 "./bds-input-phone-number.entry.js").then(u,consoleError);case"bds-pagination":return import(
 /* webpackMode: "lazy" */
@@ -261,9 +267,7 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-tab-group.entry.js").then(u,consoleError);case"bds-counter-text":return import(
 /* webpackMode: "lazy" */
-"./bds-counter-text.entry.js").then(u,consoleError);case"bds-icon":return import(
-/* webpackMode: "lazy" */
-"./bds-icon.entry.js").then(u,consoleError);case"bds-datepicker-period_2":return import(
+"./bds-counter-text.entry.js").then(u,consoleError);case"bds-datepicker-period_2":return import(
 /* webpackMode: "lazy" */
 "./bds-datepicker-period_2.entry.js").then(u,consoleError);case"bds-illustration_2":return import(
 /* webpackMode: "lazy" */

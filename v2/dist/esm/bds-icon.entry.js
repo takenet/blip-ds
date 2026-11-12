@@ -1,95 +1,6 @@
 import { r as registerInstance, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
 import { l as loadAssetSvg } from './asset-loader-ByPjkgw2.js';
-
-const FILL_ELEMENTS = ['path', 'rect', 'circle', 'ellipse', 'polygon', 'polyline', 'line'];
-const getFilledElements = (svg) => {
-    const elements = [];
-    for (const tag of FILL_ELEMENTS) {
-        const found = svg.getElementsByTagName(tag);
-        for (let i = 0; i < found.length; i++) {
-            elements.push(found[i]);
-        }
-    }
-    return elements;
-};
-const clearAllFillColors = (svg, color) => {
-    const elements = getFilledElements(svg);
-    for (const el of elements) {
-        el.setAttribute('fill', color);
-    }
-    svg.setAttribute('fill', color);
-};
-const isMultiColorIcon = (svg) => {
-    const elements = getFilledElements(svg);
-    const fills = new Set();
-    for (const el of elements) {
-        const fill = el.getAttribute('fill');
-        if (fill && fill !== 'none' && fill !== 'currentColor') {
-            fills.add(fill.toLowerCase());
-        }
-    }
-    return fills.size > 1;
-};
-const applyColorVariables = (svg) => {
-    const elements = getFilledElements(svg);
-    // First pass: identify unique fill colors and assign layer indices
-    const colorToLayerIndex = new Map();
-    let layerIndex = 0;
-    for (const el of elements) {
-        const fill = el.getAttribute('fill');
-        if (fill && fill !== 'none' && fill !== 'currentColor') {
-            const normalizedFill = fill.toLowerCase();
-            if (!colorToLayerIndex.has(normalizedFill)) {
-                colorToLayerIndex.set(normalizedFill, layerIndex);
-                layerIndex++;
-            }
-        }
-    }
-    // Second pass: apply CSS variables using the color-to-layer mapping
-    for (const el of elements) {
-        const currentFill = el.getAttribute('fill');
-        if (currentFill && currentFill !== 'none' && currentFill !== 'currentColor') {
-            const normalizedFill = currentFill.toLowerCase();
-            const layer = colorToLayerIndex.get(normalizedFill);
-            el.style.fill = `var(--icon-layer-${layer}, ${currentFill})`;
-            el.setAttribute('data-customizable', 'true');
-        }
-    }
-};
-const formatSvg = (svgContent, color, emoji = false) => {
-    if (svgContent) {
-        const div = document.createElement('div');
-        div.innerHTML = svgContent;
-        const svgElm = div.firstElementChild;
-        if (!svgElm) {
-            return '';
-        }
-        svgElm.removeAttribute('width');
-        svgElm.removeAttribute('height');
-        if (!emoji) {
-            if (color) {
-                clearAllFillColors(svgElm, color);
-            }
-            else if (isMultiColorIcon(svgElm)) {
-                applyColorVariables(svgElm);
-            }
-            else {
-                clearAllFillColors(svgElm, 'currentColor');
-            }
-        }
-        return div.innerHTML;
-    }
-    return '';
-};
-const getIconName = (name, theme) => {
-    return `asset-icon-${name}-${theme}`;
-};
-const getEmojiName = (name) => {
-    return `asset-emoji-${name}`;
-};
-const getLogoName = (name) => {
-    return `asset-logo-${name}`;
-};
+import { f as formatSvg, b as getIconName, g as getEmojiName, a as getLogoName } from './utils-i0ANWvuJ.js';
 
 const iconCss = () => `:host{width:1em;height:1em;color:var(--color-content-default, rgb(40, 40, 40));fill:currentColor;-webkit-box-sizing:content-box !important;box-sizing:content-box !important}.icon-inner{max-width:100%;height:100%}.emoji-inner{max-width:100%;height:100%;display:-ms-flexbox;display:flex}:host(.bds-icon){display:inline-block}:host(.bds-icon) svg{fill:currentColor;width:100%;min-width:100%}:host(.bds-icon__size--brand){width:64px;min-width:64px;height:64px;max-height:64px;min-height:64px}:host(.bds-icon__size--xxx-large){width:40px;min-width:40px;height:40px;max-height:40px;min-height:40px}:host(.bds-icon__size--xx-large){width:36px;min-width:36px;height:36px;max-height:36px;min-height:36px}:host(.bds-icon__size--x-large){width:32px;min-width:32px;height:32px;max-height:32px;min-height:32px}:host(.bds-icon__size--large){width:28px;min-width:28px;height:28px;max-height:28px;min-height:28px}:host(.bds-icon__size--medium){width:24px;min-width:24px;height:24px;max-height:24px;min-height:24px}:host(.bds-icon__size--small){width:20px;min-width:20px;height:20px;max-height:20px;min-height:20px}:host(.bds-icon__size--x-small){width:16px;min-width:16px;height:16px;max-height:16px;min-height:16px}:host(.bds-icon__size--xx-small){width:12px;min-width:12px;height:12px;max-height:12px;min-height:12px}`;
 
@@ -191,7 +102,7 @@ const Icon = class {
         }
     }
     render() {
-        return (h(Host, { key: '821a15f1d605c1db6143d52b429fb832c9a2d29b', role: "img", class: {
+        return (h(Host, { key: 'a07b911cf36f20117c47188d609a54891b86d6b4', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (h("div", { class: {

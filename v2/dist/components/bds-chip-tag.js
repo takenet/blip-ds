@@ -1,1 +1,1 @@
-import{C as m,d as o}from"./p-DDA98mmT.js";const s=m,p=o;export{s as BdsChipTag,p as defineCustomElement}
+import{C as o,d as p}from"./p-Dh6CpfZc.js";const s=o,r=p;export{s as BdsChipTag,r as defineCustomElement}

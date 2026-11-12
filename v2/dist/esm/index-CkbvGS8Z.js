@@ -403,6 +403,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-chip-tag.entry.js').then(processMod, consoleError);
+                case 'uai-emoji':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-emoji.entry.js').then(processMod, consoleError);
                 case 'uai-grid':
                     return import(
                       /* webpackMode: "lazy" */
@@ -419,6 +423,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-input-password.entry.js').then(processMod, consoleError);
+                case 'uai-logo':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-logo.entry.js').then(processMod, consoleError);
                 case 'uai-modal':
                     return import(
                       /* webpackMode: "lazy" */
@@ -591,6 +599,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-button-icon.entry.js').then(processMod, consoleError);
+                case 'bds-icon':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './bds-icon.entry.js').then(processMod, consoleError);
                 case 'bds-input-phone-number':
                     return import(
                       /* webpackMode: "lazy" */
@@ -619,10 +631,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './bds-counter-text.entry.js').then(processMod, consoleError);
-                case 'bds-icon':
-                    return import(
-                      /* webpackMode: "lazy" */
-                      './bds-icon.entry.js').then(processMod, consoleError);
                 case 'bds-datepicker-period_2':
                     return import(
                       /* webpackMode: "lazy" */

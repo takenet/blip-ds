@@ -1,1 +1,1 @@
-import{U as o,d as s}from"./p-CmleLvC9.js";const m=o,p=s;export{m as UaiBreadcrumb,p as defineCustomElement}
+import{U as o,d as s}from"./p-_ocmfq6M.js";const m=o,p=s;export{m as UaiBreadcrumb,p as defineCustomElement}

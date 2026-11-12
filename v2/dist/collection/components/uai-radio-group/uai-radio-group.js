@@ -209,7 +209,7 @@ export class UaiRadioGroup {
     }
     render() {
         const disabled = this.effectiveDisabled;
-        return (h(Host, { key: '4c4ec66df77b5b79700d4d8a7ad47c57f5246677', role: "radiogroup", tabIndex: -1, part: "group", "aria-label": this.ariaLabel || null, "aria-labelledby": this.ariaLabelledBy || null, "aria-disabled": disabled ? 'true' : null, "aria-required": this.required ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, onKeyDown: this.onKeyDown }, h("slot", { key: '2796a2bb669d96413588bc6346759addcb406fc8', onSlotchange: this.onSlotChange }), h("input", { key: '18e213fa4a68c0eba9c6afd792f416f489afabb3', class: "validation-proxy", type: "checkbox", required: this.required && !disabled, checked: this.value !== undefined && this.value !== null, "aria-hidden": "true", tabIndex: -1, ref: (input) => (this.validationProxy = input) })));
+        return (h(Host, { key: 'ab5984d4e62cd2b5529697d8c1aca4111db1513c', role: "radiogroup", tabIndex: -1, part: "group", "aria-label": this.ariaLabel || null, "aria-labelledby": this.ariaLabelledBy || null, "aria-disabled": disabled ? 'true' : null, "aria-required": this.required ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, onKeyDown: this.onKeyDown }, h("slot", { key: '324f6476df7630b0f9342093bc5828467786dcdf', onSlotchange: this.onSlotChange }), h("input", { key: '904120d32d3332fbbc6cd5c9080309c273c55032', class: "validation-proxy", type: "checkbox", required: this.required && !disabled, checked: this.value !== undefined && this.value !== null, "aria-hidden": "true", tabIndex: -1, ref: (input) => (this.validationProxy = input) })));
     }
     static get is() { return "uai-radio-group"; }
     static get encapsulation() { return "shadow"; }

@@ -1,1 +1,1 @@
-import{L as o,d as s}from"./p-DdmfaPdg.js";const a=o,d=s;export{a as BdsListItem,d as defineCustomElement}
+import{L as o,d as s}from"./p-jzGsTgoy.js";const p=o,r=s;export{p as BdsListItem,r as defineCustomElement}

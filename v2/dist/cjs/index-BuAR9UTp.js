@@ -423,6 +423,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-chip-tag.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-emoji.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-emoji.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-grid.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -439,6 +443,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-input-password.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-logo.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-logo.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-modal.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -611,6 +619,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-button-icon.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'bds-icon.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './bds-icon.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-input-phone-number.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -639,10 +651,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-counter-text.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'bds-icon.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './bds-icon.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-datepicker-period_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

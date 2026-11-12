@@ -3,7 +3,8 @@ import { Build, Host, h } from "@stencil/core";
 import { loadAssetSvg } from "../../utils/asset-loader";
 import { formatSvg, getIconName, getEmojiName, getLogoName } from "./utils";
 /**
- * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+ * @deprecated Use `uai-icon` for interface icons, `uai-emoji` for emojis, and `uai-logo` for logos in new UAI experiences.
+ * This component remains supported for existing consumers.
  */
 export class Icon {
     constructor() {
@@ -102,7 +103,7 @@ export class Icon {
         }
     }
     render() {
-        return (h(Host, { key: '821a15f1d605c1db6143d52b429fb832c9a2d29b', role: "img", class: {
+        return (h(Host, { key: 'a07b911cf36f20117c47188d609a54891b86d6b4', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (h("div", { class: {

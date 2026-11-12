@@ -9,7 +9,7 @@ const UaiModalAction = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '2acbb3a911d02c8be6df2a40984910908055cbd5' }, index.h("div", { key: '93a7d65e067504759e7c0ddfc52fdc04df3b221e', class: "modal__action", part: "action" }, index.h("slot", { key: '7f111bfe638a5a76c1157cc6cd95b8bc602fc231' }))));
+        return (index.h(index.Host, { key: '54e15bd3f000bcb517077bd13f40c1591c25a053' }, index.h("div", { key: 'cf9d6fdf68c949843681d314537aeb52ca5484af', class: "modal__action", part: "action" }, index.h("slot", { key: 'e434b4f6a5ae07b3df71099a35ce472fa8f56a18' }))));
     }
 };
 UaiModalAction.style = uaiModalActionCss();
