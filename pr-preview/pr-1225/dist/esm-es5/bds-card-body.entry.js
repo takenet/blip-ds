@@ -1,1 +1,0 @@
-import{r as registerInstance,h}from"./index-CkbvGS8Z.js";var CardBody=/** @class */function(){function r(r){registerInstance(this,r)}r.prototype.render=function(){return h("bds-grid",{key:"a35bc05f6fbb5986e684b9549da6471cb5745fb6"},h("slot",{key:"a823301df291e69747fb0f5965e9e6da181055ff"}))};return r}();export{CardBody as bds_card_body};

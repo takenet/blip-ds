@@ -1,1 +1,0 @@
-import{R as o,d as r}from"./p-BrFBgmOA.js";const s=o,m=r;export{s as BdsRadio,m as defineCustomElement}

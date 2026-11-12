@@ -1,1 +1,0 @@
-import{S as o,d as r}from"./p-CgrkWo3S.js";const s=o,p=r;export{s as BdsSelect,p as defineCustomElement}
