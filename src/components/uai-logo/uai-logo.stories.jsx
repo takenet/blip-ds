@@ -24,12 +24,14 @@ export default {
 const LOGO_PREFIX = 'asset-logo-';
 const LOCAL_LOGO_PREVIEWS = ['google-ads', 'google-rcs', 'meta'];
 const logoNames = () =>
-  [...new Set([
-    ...Object.keys(assetConfig.assets || {})
-      .filter((key) => key.startsWith(LOGO_PREFIX))
-      .map((key) => key.slice(LOGO_PREFIX.length)),
-    ...LOCAL_LOGO_PREVIEWS,
-  ])].sort();
+  [
+    ...new Set([
+      ...Object.keys(assetConfig.assets || {})
+        .filter((key) => key.startsWith(LOGO_PREFIX))
+        .map((key) => key.slice(LOGO_PREFIX.length)),
+      ...LOCAL_LOGO_PREVIEWS,
+    ]),
+  ].sort();
 
 const row = { display: 'flex', alignItems: 'center', gap: 'var(--uai-spacing-lg)', flexWrap: 'wrap' };
 const cell = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'var(--uai-spacing-xs)' };
@@ -117,7 +119,7 @@ export const Catalog = () => {
           <div key={name} style={{ ...cell, color: 'var(--uai-content-primary)' }}>
             {LOCAL_LOGO_PREVIEWS.includes(name) ? (
               <img
-                src={`/assets/logos/${name}.svg`}
+                src={`assets/logos/${name}.svg`}
                 alt=""
                 style={{ width: 'var(--uai-sizing-5xl)', height: 'var(--uai-sizing-5xl)' }}
               />
