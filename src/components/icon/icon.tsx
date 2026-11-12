@@ -5,7 +5,8 @@ import { IconSize, IconTheme, IconType } from './icon-interface';
 import { formatSvg, getIconName, getEmojiName, getLogoName } from './utils';
 
 /**
- * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+ * @deprecated Use `uai-icon` for interface icons, `uai-emoji` for emojis, and `uai-logo` for logos in new UAI experiences.
+ * This component remains supported for existing consumers.
  */
 @Component({
   tag: 'bds-icon',

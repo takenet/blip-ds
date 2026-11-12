@@ -337,6 +337,15 @@ export const WAVE_4: ComponentEntry[] = [
     ],
   },
   {
+    tag: 'uai-emoji',
+    name: 'UaiEmoji',
+    primaryStory: 'uai-emoji--playground',
+    stories: [
+      { storyId: 'uai-emoji--playground', label: 'Playground' },
+      { storyId: 'uai-emoji--catalog', label: 'Catalog' },
+    ],
+  },
+  {
     tag: 'uai-icon',
     name: 'UaiIcon',
     primaryStory: 'uai-icon--colors',
@@ -344,6 +353,15 @@ export const WAVE_4: ComponentEntry[] = [
       { storyId: 'uai-icon--sizes', label: 'Sizes' },
       { storyId: 'uai-icon--colors', label: 'Colors' },
       { storyId: 'uai-icon--themes', label: 'Themes' },
+    ],
+  },
+  {
+    tag: 'uai-logo',
+    name: 'UaiLogo',
+    primaryStory: 'uai-logo--playground',
+    stories: [
+      { storyId: 'uai-logo--playground', label: 'Playground' },
+      { storyId: 'uai-logo--catalog', label: 'Catalog' },
     ],
   },
   {
