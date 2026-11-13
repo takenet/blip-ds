@@ -85,4 +85,48 @@ describe('computeOverlayLayout', () => {
       expect(result.left).toBe(MARGIN);
     });
   });
+
+  describe('preferred side and alignment', () => {
+    it('keeps the automatic behavior when no preference is given', () => {
+      expect(layout({ side: undefined, align: undefined })).toEqual(layout({}));
+    });
+
+    it('opens above when asked to and there is room', () => {
+      const result = layout({ trigger: rect(100, 500, 200, 40), side: 'top' });
+      expect(result.side).toBe('top');
+      expect(result.top).toBe(500 - GAP - 300);
+    });
+
+    it('opens below when asked to even if the automatic choice would be above', () => {
+      const result = layout({ trigger: rect(100, 600, 200, 40), panel: { width: 240, height: 100 }, side: 'bottom' });
+      expect(result.side).toBe('bottom');
+    });
+
+    it('flips to the other side when the preferred one does not fit and has less room', () => {
+      expect(layout({ trigger: rect(100, 700, 200, 40), side: 'bottom' }).side).toBe('top');
+      expect(layout({ trigger: rect(100, 20, 200, 40), side: 'top' }).side).toBe('bottom');
+    });
+
+    it('keeps the preferred side when it does not fit but has more room', () => {
+      const result = layout({ trigger: rect(100, 200, 200, 40), panel: { width: 240, height: 700 }, side: 'bottom' });
+      expect(result.side).toBe('bottom');
+    });
+
+    it('aligns to the end of the trigger when asked to, even in the left half', () => {
+      const result = layout({ trigger: rect(300, 100, 200, 40), panel: { width: 240, height: 100 }, align: 'end' });
+      expect(result.align).toBe('end');
+      expect(result.left).toBe(500 - 240);
+    });
+
+    it('aligns to the start of the trigger when asked to, even in the right half', () => {
+      const result = layout({ trigger: rect(600, 100, 200, 40), align: 'start' });
+      expect(result.align).toBe('start');
+      expect(result.left).toBe(600);
+    });
+
+    it('moves to the other edge when the preferred alignment would leave the viewport', () => {
+      expect(layout({ trigger: rect(850, 100, 100, 40), align: 'start' }).align).toBe('end');
+      expect(layout({ trigger: rect(0, 100, 100, 40), align: 'end' }).align).toBe('start');
+    });
+  });
 });

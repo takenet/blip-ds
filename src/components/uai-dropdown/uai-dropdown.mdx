@@ -1,0 +1,75 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as DropdownStories from './uai-dropdown.stories';
+
+<Meta isTemplate />
+
+# Dropdown
+
+## Visão geral
+
+Painel flutuante aberto por um gatilho, com **header** opcional fixo, **corpo** rolável e **footer** opcional fixo. Use para filtros, seletores e formulários curtos junto ao gatilho; para escolher um valor de uma lista simples, use o select; para tarefas que bloqueiam a tela, use o modal.
+
+## Como usar
+
+No React, importe `UaiDropdown` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+
+<Canvas of={DropdownStories.Usage} sourceState="shown" />
+
+O gatilho vai no slot `activator`; use um `UaiButton` ou um `<button>` nativo, para que receba foco e responda a Enter e Espaço. O painel abre e fecha pelo clique no gatilho, fecha com Escape (devolvendo o foco ao gatilho), com um clique fora ou ao tirar o foco do dropdown com Tab. Fora do React, use o custom element `<uai-dropdown>` com as mesmas propriedades e o evento `uaiToggle`.
+
+## Playground
+
+<Canvas of={DropdownStories.Playground} />
+<Controls of={DropdownStories.Playground} />
+
+## Estrutura
+
+O painel tem três áreas, como no UAI Core:
+
+- **Header** (slot `header`): título, campo de busca ou qualquer conteúdo fixo no topo. Opcional: sem conteúdo no slot, a área não aparece.
+- **Corpo** (slot padrão): o conteúdo principal. É a única área que rola quando o painel é mais alto que o espaço disponível na tela.
+- **Footer** (slot `footer`): ações fixas na base, com os itens distribuídos nas pontas (por exemplo, um botão de texto à esquerda e a ação principal à direita). Opcional.
+
+Header e footer podem ser adicionados ou removidos a qualquer momento, inclusive com o painel aberto (um footer condicional em React funciona).
+
+<Canvas of={DropdownStories.Structure} />
+
+## Posição
+
+`position="auto"` (padrão) escolhe o lado e o alinhamento pelo espaço disponível. `bottom-left`, `bottom-right`, `top-left` e `top-right` fixam o lado (abaixo ou acima) e o alinhamento com o gatilho (`left` no início, `right` no fim). O painel ainda inverte o lado ou muda de borda quando não cabe na tela.
+
+<Canvas of={DropdownStories.Positions} />
+
+## Largura
+
+`width` define a largura do painel em rem (`width={24}` = 24rem). Sem ela, vale 21. O painel nunca passa da largura da tela.
+
+## Eventos
+
+`uaiToggle` é emitido ao abrir ou fechar, com `{ value: boolean }`.
+
+<Canvas of={DropdownStories.Events} sourceState="shown" />
+
+## Métodos
+
+`toggle()`, `setOpen()` e `setClose()` controlam o painel por código. Use `setClose()` para fechar a partir de uma ação dentro dele, como Salvar.
+
+<Canvas of={DropdownStories.Methods} sourceState="shown" />
+
+## Acessibilidade
+
+O painel tem `role="dialog"`, e `label` define o nome acessível quando o header não tem um título visível. O gatilho recebe `aria-haspopup="dialog"` e `aria-expanded` com o estado atual. Ao abrir, o foco vai para o painel e o Tab segue para dentro dele; Escape fecha e devolve o foco ao gatilho. O painel abre na camada superior do navegador (Popover API), então nenhum contexto de empilhamento ou `overflow` de um ancestral o corta.
+
+## Migração do bds-dropdown
+
+Troque `BdsDropdown` por `UaiDropdown`, `onBdsToggle` por `onUaiToggle` e envolva a aplicação em `UaiThemeProvider`. `open`, `position`, `dataTest` e os métodos `toggle()`, `setOpen()` e `setClose()` são preservados. Diferenças:
+
+- **Slots:** `dropdown-activator` virou `activator`, e `dropdown-content` virou o slot padrão. Os novos `header` e `footer` são adições.
+- **`position`:** `bottom-left`, `bottom-right`, `top-left`, `top-right`, `top-center` e `bottom-center` continuam valendo (os dois últimos fixam o lado e deixam o alinhamento automático). `left-*` e `right-*`, que abriam ao lado do gatilho, **não são suportados** e voltam para `auto` com um aviso no console.
+- **`activeMode="hover"` e submenus aninhados:** não são suportados; o painel abre só por clique, e `activeMode` foi mantido apenas por compatibilidade.
+- O painel abre na camada superior, fecha com Escape e devolve o foco, o que o legado não fazia. O gatilho ganha `aria-expanded` e `aria-haspopup`.
+- `width` e `label` são adições.
+
+Tokens: `surface-paper`, `content-primary`, `border-default`, `border-width-default`, `radius-xl`, `elevation-2`, `spacing-md`, `spacing-xs`, `width-panel`, `sizing-3xl`, `duration-moderate` e `easing-standard`.
+
+[Componente no UAI Core](https://www.figma.com/design/xNgjSCmKfbgd3ed5mIPdHo/UAI-Design-Tokens?node-id=467-2330).
