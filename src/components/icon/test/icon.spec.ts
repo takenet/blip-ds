@@ -417,7 +417,7 @@ describe('bds-icon', () => {
       // Call setSvgContent directly to trigger the error
       await (page.rootInstance as unknown as { setSvgContent: () => Promise<void> }).setSvgContent();
 
-      expect(consoleWarnSpy).toHaveBeenCalledWith('[Warning]: Failed to setSvgContent to', 'invalid-icon');
+      expect(consoleWarnSpy).toHaveBeenCalledWith('[Warning]: Failed to setSvgContent to', 'invalid-icon', expect.any(Error));
 
       // Restore mocks
       global.atob = originalAtob;
