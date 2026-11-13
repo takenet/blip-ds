@@ -81,6 +81,7 @@ import { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 import { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
 import { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
+import { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 import { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
@@ -181,6 +182,7 @@ export { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 export { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
 export { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
+export { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 export { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
@@ -1348,6 +1350,9 @@ export namespace Components {
          */
         "styleType": 'solid' | 'dotted' | 'dashed';
     }
+    /**
+     * @deprecated Use uai-dropdown with UaiThemeProvider for tokenized styling.
+     */
     interface BdsDropdown {
         /**
           * Open. Used to open/close the dropdown.
@@ -3983,6 +3988,11 @@ export namespace Components {
          */
         "ariaExpanded": 'true' | 'false';
         /**
+          * Type of popup the button opens. Use on activators of menus, listboxes and dialogs, such as uai-dropdown; pair with aria-expanded; avoid on buttons that do not open a popup.
+          * @default null
+         */
+        "ariaHaspopup": 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
+        /**
           * Accessible name of the button. Required when the button has no visible label.
           * @default null
          */
@@ -4201,6 +4211,54 @@ export namespace Components {
           * Icon name shown before the text. Use to reinforce the meaning; pair with the text; avoid decorative icons.
          */
         "icon"?: string;
+    }
+    /**
+     * Floating panel opened by an activator, with an optional fixed header, a scrollable body and an optional fixed footer.
+     * Use for filters, pickers and short forms next to a trigger; pair with uai-button as the activator and
+     * UaiThemeProvider; avoid it for a plain list of choices (use uai-select) or for blocking tasks (use uai-modal).
+     */
+    interface UaiDropdown {
+        /**
+          * How the activator opens the panel. Only 'click' is supported; 'hover' is kept for compatibility and behaves as 'click'.
+          * @deprecated The panel opens on click only.
+          * @default 'click'
+         */
+        "activeMode"?: UaiDropdownActiveMode;
+        /**
+          * Test selector on the panel. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Accessible name of the panel. Without it, the panel is named by the first heading slotted into `header` (h1 to h6, role="heading" or uai-typo with an h tag). Use a short noun phrase when the header has no title.
+         */
+        "label"?: string;
+        /**
+          * Opens or closes the panel. Use for declarative control; pair with uaiToggle. Avoid toggling it on every render.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Where the panel opens: 'auto' picks the side and alignment with the room available; the others fix the side (top or bottom) and the alignment with the activator (left aligns to its start, right to its end). The panel still flips or moves when it would leave the screen. 'top-center' and 'bottom-center' come from bds-dropdown: they fix the side and leave the alignment automatic. Use 'auto' unless the layout needs a fixed side.
+          * @default 'auto'
+         */
+        "position"?: UaiDropdownPosition;
+        /**
+          * Closes the panel. Use to close it from an action inside the panel, such as Save.
+         */
+        "setClose": () => Promise<void>;
+        /**
+          * Opens the panel. Use when opening from code, for example after an async load.
+         */
+        "setOpen": () => Promise<void>;
+        /**
+          * Opens the panel when closed and closes it when open. Use for imperative control; pair with uaiToggle.
+         */
+        "toggle": () => Promise<void>;
+        /**
+          * Panel width in rem, e.g. `24` for 24rem. Use for narrower or wider panels; the panel never exceeds the screen. Defaults to 21.
+         */
+        "width"?: number;
     }
     /**
      * Emoji from the versioned asset catalog in blip-tokens. Set the host width to control its size;
@@ -6807,6 +6865,10 @@ export interface UaiCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiCheckboxElement;
 }
+export interface UaiDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiDropdownElement;
+}
 export interface UaiInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputElement;
@@ -7388,6 +7450,9 @@ declare global {
     interface HTMLBdsDropdownElementEventMap {
         "bdsToggle": { value: boolean };
     }
+    /**
+     * @deprecated Use uai-dropdown with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsDropdownElement extends Components.BdsDropdown, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsDropdownElementEventMap>(type: K, listener: (this: HTMLBdsDropdownElement, ev: BdsDropdownCustomEvent<HTMLBdsDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8401,6 +8466,28 @@ declare global {
         prototype: HTMLUaiChipTagElement;
         new (): HTMLUaiChipTagElement;
     };
+    interface HTMLUaiDropdownElementEventMap {
+        "uaiToggle": { value: boolean };
+    }
+    /**
+     * Floating panel opened by an activator, with an optional fixed header, a scrollable body and an optional fixed footer.
+     * Use for filters, pickers and short forms next to a trigger; pair with uai-button as the activator and
+     * UaiThemeProvider; avoid it for a plain list of choices (use uai-select) or for blocking tasks (use uai-modal).
+     */
+    interface HTMLUaiDropdownElement extends Components.UaiDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiDropdownElementEventMap>(type: K, listener: (this: HTMLUaiDropdownElement, ev: UaiDropdownCustomEvent<HTMLUaiDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiDropdownElementEventMap>(type: K, listener: (this: HTMLUaiDropdownElement, ev: UaiDropdownCustomEvent<HTMLUaiDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiDropdownElement: {
+        prototype: HTMLUaiDropdownElement;
+        new (): HTMLUaiDropdownElement;
+    };
     /**
      * Emoji from the versioned asset catalog in blip-tokens. Set the host width to control its size;
      * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful emoji, or omit it when decorative.
@@ -9153,6 +9240,7 @@ declare global {
         "uai-button": HTMLUaiButtonElement;
         "uai-checkbox": HTMLUaiCheckboxElement;
         "uai-chip-tag": HTMLUaiChipTagElement;
+        "uai-dropdown": HTMLUaiDropdownElement;
         "uai-emoji": HTMLUaiEmojiElement;
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
@@ -10418,6 +10506,9 @@ declare namespace LocalJSX {
          */
         "styleType"?: 'solid' | 'dotted' | 'dashed';
     }
+    /**
+     * @deprecated Use uai-dropdown with UaiThemeProvider for tokenized styling.
+     */
     interface BdsDropdown {
         /**
           * Open. Used to open/close the dropdown.
@@ -13268,6 +13359,11 @@ declare namespace LocalJSX {
          */
         "ariaExpanded"?: 'true' | 'false';
         /**
+          * Type of popup the button opens. Use on activators of menus, listboxes and dialogs, such as uai-dropdown; pair with aria-expanded; avoid on buttons that do not open a popup.
+          * @default null
+         */
+        "ariaHaspopup"?: 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
+        /**
           * Accessible name of the button. Required when the button has no visible label.
           * @default null
          */
@@ -13462,6 +13558,46 @@ declare namespace LocalJSX {
           * Icon name shown before the text. Use to reinforce the meaning; pair with the text; avoid decorative icons.
          */
         "icon"?: string;
+    }
+    /**
+     * Floating panel opened by an activator, with an optional fixed header, a scrollable body and an optional fixed footer.
+     * Use for filters, pickers and short forms next to a trigger; pair with uai-button as the activator and
+     * UaiThemeProvider; avoid it for a plain list of choices (use uai-select) or for blocking tasks (use uai-modal).
+     */
+    interface UaiDropdown {
+        /**
+          * How the activator opens the panel. Only 'click' is supported; 'hover' is kept for compatibility and behaves as 'click'.
+          * @deprecated The panel opens on click only.
+          * @default 'click'
+         */
+        "activeMode"?: UaiDropdownActiveMode;
+        /**
+          * Test selector on the panel. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Accessible name of the panel. Without it, the panel is named by the first heading slotted into `header` (h1 to h6, role="heading" or uai-typo with an h tag). Use a short noun phrase when the header has no title.
+         */
+        "label"?: string;
+        /**
+          * Emitted when the panel opens or closes, with `value` true when it opened. Use to sync external state.
+         */
+        "onUaiToggle"?: (event: UaiDropdownCustomEvent<{ value: boolean }>) => void;
+        /**
+          * Opens or closes the panel. Use for declarative control; pair with uaiToggle. Avoid toggling it on every render.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Where the panel opens: 'auto' picks the side and alignment with the room available; the others fix the side (top or bottom) and the alignment with the activator (left aligns to its start, right to its end). The panel still flips or moves when it would leave the screen. 'top-center' and 'bottom-center' come from bds-dropdown: they fix the side and leave the alignment automatic. Use 'auto' unless the layout needs a fixed side.
+          * @default 'auto'
+         */
+        "position"?: UaiDropdownPosition;
+        /**
+          * Panel width in rem, e.g. `24` for 24rem. Use for narrower or wider panels; the panel never exceeds the screen. Defaults to 21.
+         */
+        "width"?: number;
     }
     /**
      * Emoji from the versioned asset catalog in blip-tokens. Set the host width to control its size;
@@ -16830,6 +16966,7 @@ declare namespace LocalJSX {
         "bdsLoadingColor": colorsVariants;
         "ariaLabel": string;
         "ariaExpanded": 'true' | 'false';
+        "ariaHaspopup": 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
         "dataTest": string;
     }
     interface UaiCheckboxAttributes {
@@ -16849,6 +16986,14 @@ declare namespace LocalJSX {
     interface UaiChipTagAttributes {
         "icon": string;
         "color": string;
+        "dataTest": string;
+    }
+    interface UaiDropdownAttributes {
+        "open": boolean;
+        "position": UaiDropdownPosition;
+        "activeMode": UaiDropdownActiveMode;
+        "width": number;
+        "label": string;
         "dataTest": string;
     }
     interface UaiEmojiAttributes {
@@ -17435,6 +17580,7 @@ declare namespace LocalJSX {
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
         "uai-chip-tag": Omit<UaiChipTag, keyof UaiChipTagAttributes> & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes]?: UaiChipTag[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `attr:${K}`]?: UaiChipTagAttributes[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `prop:${K}`]?: UaiChipTag[K] };
+        "uai-dropdown": Omit<UaiDropdown, keyof UaiDropdownAttributes> & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes]?: UaiDropdown[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `attr:${K}`]?: UaiDropdownAttributes[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `prop:${K}`]?: UaiDropdown[K] };
         "uai-emoji": Omit<UaiEmoji, keyof UaiEmojiAttributes> & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes]?: UaiEmoji[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `attr:${K}`]?: UaiEmojiAttributes[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `prop:${K}`]?: UaiEmoji[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
@@ -17531,6 +17677,9 @@ declare module "@stencil/core" {
             "bds-datepicker-period": LocalJSX.IntrinsicElements["bds-datepicker-period"] & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
             "bds-datepicker-single": LocalJSX.IntrinsicElements["bds-datepicker-single"] & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
             "bds-divider": LocalJSX.IntrinsicElements["bds-divider"] & JSXBase.HTMLAttributes<HTMLBdsDividerElement>;
+            /**
+             * @deprecated Use uai-dropdown with UaiThemeProvider for tokenized styling.
+             */
             "bds-dropdown": LocalJSX.IntrinsicElements["bds-dropdown"] & JSXBase.HTMLAttributes<HTMLBdsDropdownElement>;
             "bds-expansion-panel": LocalJSX.IntrinsicElements["bds-expansion-panel"] & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelElement>;
             "bds-expansion-panel-body": LocalJSX.IntrinsicElements["bds-expansion-panel-body"] & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelBodyElement>;
@@ -17715,6 +17864,12 @@ declare module "@stencil/core" {
              * pair with a text label; avoid using color alone to convey meaning or using it as an action.
              */
             "uai-chip-tag": LocalJSX.IntrinsicElements["uai-chip-tag"] & JSXBase.HTMLAttributes<HTMLUaiChipTagElement>;
+            /**
+             * Floating panel opened by an activator, with an optional fixed header, a scrollable body and an optional fixed footer.
+             * Use for filters, pickers and short forms next to a trigger; pair with uai-button as the activator and
+             * UaiThemeProvider; avoid it for a plain list of choices (use uai-select) or for blocking tasks (use uai-modal).
+             */
+            "uai-dropdown": LocalJSX.IntrinsicElements["uai-dropdown"] & JSXBase.HTMLAttributes<HTMLUaiDropdownElement>;
             /**
              * Emoji from the versioned asset catalog in blip-tokens. Set the host width to control its size;
              * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful emoji, or omit it when decorative.

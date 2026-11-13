@@ -17,6 +17,14 @@ describe('uai-button', () => {
   });
 
   describe('defaults', () => {
+    it('forwards the popup type to the native button only when it is set', async () => {
+      const page = await render('<uai-button>Abrir</uai-button>');
+      expect(innerButton(page).hasAttribute('aria-haspopup')).toBe(false);
+      page.root.ariaHaspopup = 'dialog';
+      await page.waitForChanges();
+      expect(innerButton(page).getAttribute('aria-haspopup')).toBe('dialog');
+    });
+
     it('forwards disclosure semantics and focuses through its public method', async () => {
       const page = await render('<uai-button aria-label="Show pages" aria-expanded="false"></uai-button>');
       expect(innerButton(page).getAttribute('aria-expanded')).toBe('false');
