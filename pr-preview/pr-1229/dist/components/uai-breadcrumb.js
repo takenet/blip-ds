@@ -1,0 +1,1 @@
+import{U as s,d as o}from"./p-DUWuMpTs.js";const p=s,r=o;export{p as UaiBreadcrumb,r as defineCustomElement}

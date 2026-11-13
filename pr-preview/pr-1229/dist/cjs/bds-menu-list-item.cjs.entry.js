@@ -1,0 +1,18 @@
+'use strict';
+
+var index = require('./index-BuAR9UTp.js');
+
+const menuListItemCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex:1;flex:1}.menu-list-item{background-color:#f6f6f6;color:currentColor;cursor:pointer;width:76px;height:56px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-o-user-select:none;-ms-user-select:none;user-select:none}.menu-list-item:hover,.menu-list-item:hover>.menu-list-item__text{background-color:#f3f6fa;color:#3f7de8}.menu-list-item:active,.menu-list-item:active>.menu-list-item__text{background-color:#d1e3fa;color:#3f7de8}.menu-list-item:focus,.menu-list-item:focus>.menu-list-item__text{background-color:#f3f6fa;color:#3f7de8}.menu-list-item__text{color:#e3e3e3}`;
+
+const MenuListItem = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+    }
+    render() {
+        const color = this.color || 'currentColor';
+        return (index.h(index.Host, { key: '1eb9af78fe19e8b3920d07d9379aaeca01357067', role: "button" }, index.h("div", { key: 'c1ebd14f1def8815eaed348861add97bfbf5cad6', class: "menu-list-item" }, index.h("bds-icon", { key: 'b843359ee673c3855b4fa2760b8bb166b00dff23', color: color, name: this.icon }), index.h("bds-typo", { key: '209cb7c3e6131306436affee02b44e0148f2a286', class: "menu-list-item__text", variant: "fs-10" }, index.h("slot", { key: 'c0ec63eb18e8b9e32fd08d53b97ffc66cc05b727' })))));
+    }
+};
+MenuListItem.style = menuListItemCss();
+
+exports.bds_menu_list_item = MenuListItem;

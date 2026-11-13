@@ -1,0 +1,1 @@
+import{I as s,d as o}from"./p-BmUKRtvs.js";const t=s,m=o;export{t as BdsIcon,m as defineCustomElement}
