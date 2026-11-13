@@ -4,6 +4,9 @@ jest.mock('../asset-config.json', () => ({
     'asset-icon-close-outline': 'icons/close-outline.svg',
     'asset-logo-retry': 'logos/retry.svg',
     'asset-emoji-invalid': 'emojis/invalid.svg',
+    'asset-icon-network-outline': 'icons/network-outline.svg',
+    'asset-logo-timeout': 'logos/timeout.svg',
+    'asset-logo-permanent': 'logos/permanent.svg',
   },
 }));
 
@@ -55,6 +58,44 @@ describe('global asset delivery', () => {
     fetchMock.mockResolvedValueOnce({ ok: true, headers: { get: () => 'image/svg+xml' }, text: async () => svg });
     await expect(loadAssetSvg('asset-logo-retry')).resolves.toBe(svg);
     expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('retries after a transient network error and then succeeds', async () => {
+    fetchMock.mockRejectedValueOnce(new TypeError('Failed to fetch'));
+    fetchMock.mockResolvedValueOnce({ ok: true, headers: { get: () => 'image/svg+xml' }, text: async () => svg });
+    await expect(loadAssetSvg('asset-icon-network-outline')).resolves.toBe(svg);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('retries after a timeout abort and reports a clear error when every attempt times out', async () => {
+    jest.useFakeTimers();
+    try {
+      fetchMock.mockImplementation(
+        (_url: string, init: { signal: AbortSignal }) =>
+          new Promise((_resolve, reject) => init.signal.addEventListener('abort', () => reject(Object.assign(new Error('The operation was aborted'), { name: 'AbortError' })))),
+      );
+      const failure = loadAssetSvg('asset-logo-timeout').then(
+        () => undefined,
+        error => error,
+      );
+      for (let i = 0; i < 10; i++) {
+        jest.advanceTimersByTime(20000);
+        await Promise.resolve();
+        await Promise.resolve();
+      }
+      const error = await failure;
+      expect(error.message).toContain('Timed out');
+      expect(error.message).toContain('asset-logo-timeout');
+      expect(fetchMock).toHaveBeenCalledTimes(3);
+    } finally {
+      jest.useRealTimers();
+    }
+  });
+
+  it('does not retry responses that are not a valid SVG', async () => {
+    fetchMock.mockResolvedValue({ ok: false, headers: { get: () => 'text/html' } });
+    await expect(loadAssetSvg('asset-logo-permanent')).rejects.toThrow('Failed to fetch SVG');
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it('rejects HTML error pages even with an SVG MIME type', async () => {
