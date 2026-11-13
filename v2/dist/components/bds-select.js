@@ -1,1 +1,1 @@
-import{S as o,d as s}from"./p-DDlNXj_k.js";const p=o,r=s;export{p as BdsSelect,r as defineCustomElement}
+import{S as o,d as s}from"./p-BtDBkWhQ.js";const t=o,p=s;export{t as BdsSelect,p as defineCustomElement}

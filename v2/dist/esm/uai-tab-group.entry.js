@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
-import { i as isUaiIcon } from './uai-icons-BU-ELWpE.js';
+import { i as isUaiIcon } from './uai-icons-DTAenokK.js';
 import { w as warnOnce } from './deprecation-B4L0JRQZ.js';
 
 const UAI_TAB_ITEM_PROPS = [

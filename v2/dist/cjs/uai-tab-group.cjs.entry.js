@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-BuAR9UTp.js');
-var uaiIcons = require('./uai-icons-CNosT5AB.js');
+var uaiIcons = require('./uai-icons-DZdOYxNV.js');
 var deprecation = require('./deprecation-DQqFZBv-.js');
 
 const UAI_TAB_ITEM_PROPS = [

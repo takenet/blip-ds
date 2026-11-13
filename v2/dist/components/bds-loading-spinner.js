@@ -1,1 +1,1 @@
-import{B as o,d as s}from"./p-BjQaKQ13.js";const a=o,p=s;export{a as BdsLoadingSpinner,p as defineCustomElement}
+import{B as o,d as s}from"./p-teMqVISJ.js";const t=o,p=s;export{t as BdsLoadingSpinner,p as defineCustomElement}

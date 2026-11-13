@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-BuAR9UTp.js');
-var assetLoader = require('./asset-loader-BKRWIuxN.js');
+var assetLoader = require('./asset-loader-CwAg8CJh.js');
 var deprecation = require('./deprecation-DQqFZBv-.js');
 var utils = require('./utils-nCYeuj-P.js');
 

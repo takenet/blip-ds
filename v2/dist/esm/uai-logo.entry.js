@@ -1,5 +1,5 @@
 import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
-import { l as loadAssetSvg } from './asset-loader-ByPjkgw2.js';
+import { l as loadAssetSvg } from './asset-loader-4TTmk6ec.js';
 import { w as warnOnce } from './deprecation-B4L0JRQZ.js';
 import { a as getLogoName } from './utils-i0ANWvuJ.js';
 

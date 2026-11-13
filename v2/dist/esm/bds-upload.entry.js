@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, g as getElement } from './index-CkbvGS8Z.js';
-import { g as getAssetUrl } from './asset-loader-ByPjkgw2.js';
+import { g as getAssetUrl } from './asset-loader-4TTmk6ec.js';
 
 const ptTerms = [
     {

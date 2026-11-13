@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
-import { g as getAssetUrl } from './asset-loader-ByPjkgw2.js';
+import { g as getAssetUrl } from './asset-loader-4TTmk6ec.js';
 import { U as UaiFormControl } from './uai-form-control-BkRP7pRQ.js';
 import { U as UaiOverlay } from './uai-overlay-FY8Npzk3.js';
 import { c as countriesEs_ES, a as countriesEn_US, b as countriesPt_BR } from './countries-es_ES-AKkjmS9M.js';
