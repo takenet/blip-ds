@@ -1,0 +1,1 @@
+import{I as m,d as o}from"./p-BOcVCmMm.js";const s=m,p=o;export{s as BdsIcon,p as defineCustomElement}

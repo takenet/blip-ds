@@ -1,0 +1,1 @@
+import{U as o,d as s}from"./p-BBZREme8.js";const m=o,p=s;export{m as UaiBadge,p as defineCustomElement}

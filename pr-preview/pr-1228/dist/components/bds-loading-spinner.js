@@ -1,0 +1,1 @@
+import{B as o,d as s}from"./p-QguYKOic.js";const p=o,r=s;export{p as BdsLoadingSpinner,r as defineCustomElement}
