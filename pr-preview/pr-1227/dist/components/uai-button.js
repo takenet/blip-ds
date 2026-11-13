@@ -1,0 +1,1 @@
+import{U as o,d as r}from"./p-DKXdrUm0.js";const s=o,m=r;export{s as UaiButton,m as defineCustomElement}
