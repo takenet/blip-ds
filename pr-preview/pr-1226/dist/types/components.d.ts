@@ -3988,6 +3988,11 @@ export namespace Components {
          */
         "ariaExpanded": 'true' | 'false';
         /**
+          * Type of popup the button opens. Use on activators of menus, listboxes and dialogs, such as uai-dropdown; pair with aria-expanded; avoid on buttons that do not open a popup.
+          * @default null
+         */
+        "ariaHaspopup": 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
+        /**
           * Accessible name of the button. Required when the button has no visible label.
           * @default null
          */
@@ -4225,7 +4230,7 @@ export namespace Components {
          */
         "dataTest"?: string;
         /**
-          * Accessible name of the panel. Use a short noun phrase when the header has no visible title.
+          * Accessible name of the panel. Without it, the panel is named by the first heading slotted into `header` (h1 to h6, role="heading" or uai-typo with an h tag). Use a short noun phrase when the header has no title.
          */
         "label"?: string;
         /**
@@ -4234,7 +4239,7 @@ export namespace Components {
          */
         "open"?: boolean;
         /**
-          * Where the panel opens: 'auto' picks the side and alignment with the room available; the others fix the side (top or bottom) and the alignment with the activator (left aligns to its start, right to its end). The panel still flips or moves when it would leave the screen. Use 'auto' unless the layout needs a fixed side.
+          * Where the panel opens: 'auto' picks the side and alignment with the room available; the others fix the side (top or bottom) and the alignment with the activator (left aligns to its start, right to its end). The panel still flips or moves when it would leave the screen. 'top-center' and 'bottom-center' come from bds-dropdown: they fix the side and leave the alignment automatic. Use 'auto' unless the layout needs a fixed side.
           * @default 'auto'
          */
         "position"?: UaiDropdownPosition;
@@ -13354,6 +13359,11 @@ declare namespace LocalJSX {
          */
         "ariaExpanded"?: 'true' | 'false';
         /**
+          * Type of popup the button opens. Use on activators of menus, listboxes and dialogs, such as uai-dropdown; pair with aria-expanded; avoid on buttons that do not open a popup.
+          * @default null
+         */
+        "ariaHaspopup"?: 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
+        /**
           * Accessible name of the button. Required when the button has no visible label.
           * @default null
          */
@@ -13567,7 +13577,7 @@ declare namespace LocalJSX {
          */
         "dataTest"?: string;
         /**
-          * Accessible name of the panel. Use a short noun phrase when the header has no visible title.
+          * Accessible name of the panel. Without it, the panel is named by the first heading slotted into `header` (h1 to h6, role="heading" or uai-typo with an h tag). Use a short noun phrase when the header has no title.
          */
         "label"?: string;
         /**
@@ -13580,7 +13590,7 @@ declare namespace LocalJSX {
          */
         "open"?: boolean;
         /**
-          * Where the panel opens: 'auto' picks the side and alignment with the room available; the others fix the side (top or bottom) and the alignment with the activator (left aligns to its start, right to its end). The panel still flips or moves when it would leave the screen. Use 'auto' unless the layout needs a fixed side.
+          * Where the panel opens: 'auto' picks the side and alignment with the room available; the others fix the side (top or bottom) and the alignment with the activator (left aligns to its start, right to its end). The panel still flips or moves when it would leave the screen. 'top-center' and 'bottom-center' come from bds-dropdown: they fix the side and leave the alignment automatic. Use 'auto' unless the layout needs a fixed side.
           * @default 'auto'
          */
         "position"?: UaiDropdownPosition;
@@ -16956,6 +16966,7 @@ declare namespace LocalJSX {
         "bdsLoadingColor": colorsVariants;
         "ariaLabel": string;
         "ariaExpanded": 'true' | 'false';
+        "ariaHaspopup": 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
         "dataTest": string;
     }
     interface UaiCheckboxAttributes {

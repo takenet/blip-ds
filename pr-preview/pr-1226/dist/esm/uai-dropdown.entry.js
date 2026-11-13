@@ -23,7 +23,8 @@ const UaiDropdown = class {
         /**
          * Where the panel opens: 'auto' picks the side and alignment with the room available; the others fix the side
          * (top or bottom) and the alignment with the activator (left aligns to its start, right to its end). The panel
-         * still flips or moves when it would leave the screen. Use 'auto' unless the layout needs a fixed side.
+         * still flips or moves when it would leave the screen. 'top-center' and 'bottom-center' come from bds-dropdown: they
+         * fix the side and leave the alignment automatic. Use 'auto' unless the layout needs a fixed side.
          */
         this.position = 'auto';
         /**
@@ -118,6 +119,19 @@ const UaiDropdown = class {
     hasSlotted(name) {
         return Array.from(this.el.children).some((child) => child.getAttribute('slot') === name);
     }
+    // A heading slotted into the header names the panel when there is no label. aria-labelledby cannot point from the
+    // Shadow DOM to an element in the page, so the heading text is used as the aria-label.
+    accessibleName() {
+        var _a;
+        if (this.label)
+            return this.label;
+        const heading = Array.from(this.el.children).find((child) => child.getAttribute('slot') === 'header' &&
+            (/^H[1-6]$/.test(child.tagName) ||
+                child.getAttribute('role') === 'heading' ||
+                (child.tagName === 'UAI-TYPO' && /^h[1-6]$/.test(child.getAttribute('tag') || ''))));
+        const text = (_a = heading === null || heading === void 0 ? void 0 : heading.textContent) === null || _a === void 0 ? void 0 : _a.trim();
+        return text || undefined;
+    }
     activator() {
         return Array.from(this.el.children).find((child) => child.getAttribute('slot') === 'activator');
     }
@@ -161,7 +175,7 @@ const UaiDropdown = class {
     render() {
         const width = Number(this.width);
         const panelWidth = this.width != null && Number.isFinite(width) && width > 0 ? width : undefined;
-        return (h(Host, { key: '068d6411de8f3953131a317763dbff27ac3369f3', onFocusout: this.onFocusout }, h("div", { key: 'f19785dcfc28dcc336ceb0017d944e14e557fa9c', class: "dropdown__activator", ref: (el) => (this.activatorEl = el), onClick: () => this.toggle() }, h("slot", { key: 'dfeb942db0d090d116a5ed4b2585ab51a2b34ca5', name: "activator" })), h("div", { key: 'dba59cbe71f9252ffabe02f0106e4fbf86ca36a8', class: "dropdown__panel", part: "panel", role: "dialog", tabindex: "-1", "aria-label": this.label, "data-test": this.dataTest, style: panelWidth ? { '--dropdown-width': `${panelWidth}rem` } : undefined, ref: (el) => (this.panelEl = el) }, h("div", { key: '19a74e44d89daecb07cf5a051b35b9b1566d69c0', class: { dropdown__header: true, 'dropdown__header--empty': !this.hasHeader }, part: "header" }, h("slot", { key: '0ae84c136461e3579643ab100a2da9638a9ce89c', name: "header", onSlotchange: this.onSlotChange('header') })), h("div", { key: '97332093734d8b1e5e3c95e6ca87a4c09b16fb8e', class: "dropdown__body", part: "body" }, h("slot", { key: '3df6e6b606b6c2dec7ce92e008654fdd4c617d86' })), h("div", { key: '5814fcc7e2a1ed300aa22632ecc8c9f7eef7c0e2', class: { dropdown__footer: true, 'dropdown__footer--empty': !this.hasFooter }, part: "footer" }, h("slot", { key: '2490fb4a8c7297756aa994a680fa9e682493285e', name: "footer", onSlotchange: this.onSlotChange('footer') })))));
+        return (h(Host, { key: '9f6cf734435eb58af3f2132a7c3d86adc67218a0', onFocusout: this.onFocusout }, h("div", { key: '10ee274c4760b527894bd7d90ae8865be8786166', class: "dropdown__activator", ref: (el) => (this.activatorEl = el), onClick: () => this.toggle() }, h("slot", { key: '40a385191fdebd74e680d6c3193fd71d2286a111', name: "activator" })), h("div", { key: '1aac55536835b64edd5f4c38fbcd217078511d07', class: "dropdown__panel", part: "panel", role: "dialog", tabindex: "-1", "aria-label": this.accessibleName(), "data-test": this.dataTest, style: panelWidth ? { '--dropdown-width': `${panelWidth}rem` } : undefined, ref: (el) => (this.panelEl = el) }, h("div", { key: 'b2d82989d7f489ccb65bf03b25ed26968cf9b9ce', class: { dropdown__header: true, 'dropdown__header--empty': !this.hasHeader }, part: "header" }, h("slot", { key: '093c3bfe834c52a5c97660c5b5f2841f380c908d', name: "header", onSlotchange: this.onSlotChange('header') })), h("div", { key: '671e47c10b204e77b898c53d5265077e420ba1df', class: "dropdown__body", part: "body" }, h("slot", { key: 'cbf4970c0badcf1a7dd3c22f1104e2f06bf43cd3' })), h("div", { key: 'bd183c38ed2e0dfe1adc6aaa8fcd810a5df2cba1', class: { dropdown__footer: true, 'dropdown__footer--empty': !this.hasFooter }, part: "footer" }, h("slot", { key: '3c35d4c0e91829ba323109c4db120d13f0c21681', name: "footer", onSlotchange: this.onSlotChange('footer') })))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {
