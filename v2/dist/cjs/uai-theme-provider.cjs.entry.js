@@ -21,7 +21,7 @@ const UaiThemeProvider = class {
     }
     render() {
         const theme = THEMES.includes(this.theme) ? this.theme : 'light';
-        return (index.h(index.Host, { key: 'e4866d3419a2f31358d5e9068152d18dcdc387c9', "data-uai-theme": theme }, index.h("slot", { key: '8fb7c35ce4c35d318db7a00aae63dc28d9c232c1' })));
+        return (index.h(index.Host, { key: '801154091a1edf7e180edcffc7f622afa54dd8bc', "data-uai-theme": theme }, index.h("slot", { key: 'b3e95028249d29f0a9c76efa564888453e70ed24' })));
     }
     static get watchers() { return {
         "theme": [{

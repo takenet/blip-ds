@@ -403,6 +403,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return import(
                       /* webpackMode: "lazy" */
                       './uai-chip-tag.entry.js').then(processMod, consoleError);
+                case 'uai-dropdown':
+                    return import(
+                      /* webpackMode: "lazy" */
+                      './uai-dropdown.entry.js').then(processMod, consoleError);
                 case 'uai-emoji':
                     return import(
                       /* webpackMode: "lazy" */

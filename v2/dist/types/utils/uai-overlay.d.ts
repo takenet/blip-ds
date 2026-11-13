@@ -5,6 +5,8 @@
  * datepicker, tooltip and other UAI components build on it. The panel must include the `uai-overlay-panel` mixin,
  * which provides the spacing/2xs gap, the spacing/xs viewport margin and the duration/moderate fade.
  */
+export type UaiOverlaySide = 'top' | 'bottom';
+export type UaiOverlayAlign = 'start' | 'end';
 export type UaiOverlayCloseReason = 'escape' | 'outside' | 'trigger-hidden' | 'api';
 export interface UaiOverlayRect {
     top: number;
@@ -30,6 +32,10 @@ export interface UaiOverlayLayoutInput {
     margin: number;
     /** The panel is at least as wide as the trigger. */
     matchTriggerWidth?: boolean;
+    /** Preferred side. The panel still flips when it does not fit and the other side has more room. */
+    side?: UaiOverlaySide;
+    /** Preferred alignment with the trigger. The panel still moves to the other edge when it would leave the viewport. */
+    align?: UaiOverlayAlign;
 }
 export interface UaiOverlayLayout {
     top: number;
@@ -37,13 +43,17 @@ export interface UaiOverlayLayout {
     minWidth: number;
     maxWidth: number;
     maxHeight: number;
-    side: 'top' | 'bottom';
-    align: 'start' | 'end';
+    side: UaiOverlaySide;
+    align: UaiOverlayAlign;
 }
 export interface UaiOverlayOptions {
     trigger: HTMLElement;
     panel: HTMLElement;
     matchTriggerWidth?: boolean;
+    /** Preferred side; without it the side is chosen by the room available. */
+    side?: UaiOverlaySide;
+    /** Preferred alignment; without it the panel aligns to the half of the viewport the trigger is in. */
+    align?: UaiOverlayAlign;
     onClose?: (reason: UaiOverlayCloseReason) => void;
 }
 export declare function computeOverlayLayout(input: UaiOverlayLayoutInput): UaiOverlayLayout;
@@ -61,6 +71,11 @@ export declare class UaiOverlay {
     toggle(): void;
     /** Recomputes the position, for example after the panel content changes. */
     update(): void;
+    /** Changes the preferred side and alignment, and repositions when open. `undefined` goes back to automatic. */
+    setPlacement(placement: {
+        side?: UaiOverlaySide;
+        align?: UaiOverlayAlign;
+    }): void;
     /** True when the event path goes through this overlay's panel or trigger. */
     contains(path: EventTarget[]): boolean;
     destroy(): void;

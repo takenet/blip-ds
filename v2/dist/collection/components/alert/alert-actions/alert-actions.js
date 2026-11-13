@@ -1,7 +1,7 @@
 import { h } from "@stencil/core";
 export class AlertActions {
     render() {
-        return (h("div", { key: '307b4c89ce045111e52e3a653906394cad04ec29', class: "alert__actions" }, h("slot", { key: '12dc8a663f8fef629454fbf6671a7e147bc60b3e' })));
+        return (h("div", { key: 'c99d042de4e1f15e0583bf7e9efc7b31ba92bfb8', class: "alert__actions" }, h("slot", { key: '5037720f7f25a341ca6517e0b1d187d666de617a' })));
     }
     static get is() { return "bds-alert-actions"; }
     static get encapsulation() { return "shadow"; }

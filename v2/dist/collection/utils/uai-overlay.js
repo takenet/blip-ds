@@ -14,13 +14,26 @@ export function computeOverlayLayout(input) {
     const width = clamp(panel.width, minWidth, maxWidth);
     const below = viewport.height - trigger.bottom - gap - margin;
     const above = trigger.top - gap - margin;
-    const side = panel.height > below && above > below ? 'top' : 'bottom';
+    const preferredSide = input.side;
+    let side = panel.height > below && above > below ? 'top' : 'bottom';
+    if (preferredSide) {
+        const room = preferredSide === 'top' ? above : below;
+        const otherRoom = preferredSide === 'top' ? below : above;
+        const other = preferredSide === 'top' ? 'bottom' : 'top';
+        side = panel.height <= room || room >= otherRoom ? preferredSide : other;
+    }
     const maxHeight = Math.max(0, side === 'top' ? above : below);
     const height = Math.min(panel.height, maxHeight);
     const top = side === 'top' ? trigger.top - gap - height : trigger.bottom + gap;
     const inRightHalf = trigger.left + trigger.width / 2 > viewport.width / 2;
     const fitsFromStart = trigger.left + width <= viewport.width - margin;
-    const align = inRightHalf || !fitsFromStart ? 'end' : 'start';
+    const fitsFromEnd = trigger.right - width >= margin;
+    let align = inRightHalf || !fitsFromStart ? 'end' : 'start';
+    if (input.align) {
+        const preferredFits = input.align === 'start' ? fitsFromStart : fitsFromEnd;
+        const otherFits = input.align === 'start' ? fitsFromEnd : fitsFromStart;
+        align = preferredFits || !otherFits ? input.align : input.align === 'start' ? 'end' : 'start';
+    }
     const preferredLeft = align === 'end' ? trigger.right - width : trigger.left;
     const left = clamp(preferredLeft, margin, viewport.width - margin - width);
     return { top, left, minWidth, maxWidth, maxHeight, side, align };
@@ -141,15 +154,22 @@ export class UaiOverlay {
             gap: readLength(panel, '--uai-overlay-gap'),
             margin: readLength(panel, '--uai-overlay-margin'),
             matchTriggerWidth,
+            side: this.options.side,
+            align: this.options.align,
         });
         style.top = `${layout.top}px`;
         style.left = `${layout.left}px`;
         style.minWidth = `${layout.minWidth}px`;
         style.maxWidth = `${layout.maxWidth}px`;
-        style.maxHeight =
-            maxHeight === 'none' ? `${layout.maxHeight}px` : `min(${layout.maxHeight}px, ${maxHeight})`;
+        style.maxHeight = maxHeight === 'none' ? `${layout.maxHeight}px` : `min(${layout.maxHeight}px, ${maxHeight})`;
         panel.dataset.side = layout.side;
         panel.dataset.align = layout.align;
+    }
+    /** Changes the preferred side and alignment, and repositions when open. `undefined` goes back to automatic. */
+    setPlacement(placement) {
+        this.options.side = placement.side;
+        this.options.align = placement.align;
+        this.update();
     }
     /** True when the event path goes through this overlay's panel or trigger. */
     contains(path) {

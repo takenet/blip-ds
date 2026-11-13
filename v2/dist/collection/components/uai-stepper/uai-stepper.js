@@ -83,7 +83,7 @@ export class UaiStepper {
         this.steps.forEach((step) => (step.completed = false));
     }
     render() {
-        return (h(Host, { key: 'cee513cf3ee85f8bbcc09b390325105aa80c141e', role: "list" }, h("slot", { key: 'c85fa52a0866f1c46fe667005441dace8abcff15', onSlotchange: this.syncSteps })));
+        return (h(Host, { key: 'b466ddda610c4254c84dca72a0ac39105e2b5eee', role: "list" }, h("slot", { key: '75c12926ef3983fe0cfb7213308605f1f5e263b7', onSlotchange: this.syncSteps })));
     }
     static get is() { return "uai-stepper"; }
     static get encapsulation() { return "shadow"; }

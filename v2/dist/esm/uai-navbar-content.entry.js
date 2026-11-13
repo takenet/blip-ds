@@ -7,7 +7,7 @@ const UaiNavbarContent = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '91a7b2b2ae584c643e30f35f0b35a006a8d17d14', class: { NavbarContent: true } }, h("slot", { key: '031321831e80184a095994d9d4b1bf7375e9c157' })));
+        return (h(Host, { key: 'b30960a29a303a05ab8e5199277f4ff489a282fd', class: { NavbarContent: true } }, h("slot", { key: 'a4ece51c3775412fd6e89437fd12c89c211e755a' })));
     }
     get hostElement() { return getElement(this); }
 };

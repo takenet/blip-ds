@@ -44,11 +44,11 @@ const BdsAlert = class {
             document.removeEventListener('keydown', this.listener, false);
     }
     render() {
-        return (h("div", { key: 'e1a61ce74bfc4877d5de0aa06749bd818c892058', class: {
+        return (h("div", { key: 'a8da6c2b140fc098a7652f3f9891517eccb8d371', class: {
                 alert__dialog: true,
                 'alert__dialog--open': this.open,
                 [`alert__dialog--${this.position}`]: true,
-            } }, h("div", { key: '898885669a0bbb2430a884a268ca5215b574be15', class: "alert", "data-test": this.dataTest }, h("slot", { key: '621d02a76d40a8657f7f7b7cf55d9046630e9152' }))));
+            } }, h("div", { key: '7d70daff91217ce331886e712e48ee5202a53532', class: "alert", "data-test": this.dataTest }, h("slot", { key: '57ef0b74c8a70b5f54a645c39cd9f8fafadc3f8a' }))));
     }
     static get watchers() { return {
         "open": [{

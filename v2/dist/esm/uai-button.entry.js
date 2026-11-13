@@ -110,6 +110,11 @@ const UaiButton = class {
          */
         this.ariaExpanded = null;
         /**
+         * Type of popup the button opens. Use on activators of menus, listboxes and dialogs, such as uai-dropdown; pair with
+         * aria-expanded; avoid on buttons that do not open a popup.
+         */
+        this.ariaHaspopup = null;
+        /**
          * Data test is the prop to specifically test the component action object.
          */
         this.dataTest = null;
@@ -217,12 +222,12 @@ const UaiButton = class {
         }
         const left = this.loading ? (h("span", { class: "button__spinner", "aria-hidden": "true" })) : leftIconName ? (this.renderIcon(leftIconName, size, 'left')) : null;
         const right = rightIconName && !(iconOnly && this.loading) ? this.renderIcon(rightIconName, size, 'right') : null;
-        const label = (h("span", { key: '5bafb0ce1a157f029cee1ed68ad093d0ad4f8f42', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: '4d0cf29d8d221502228aacf2a254d950ee99cbeb', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: 'd30ef6357589fa1c364b17368950c0a8b087ff31', onSlotchange: this.updateHasLabel }))));
+        const label = (h("span", { key: 'ba5674deacb381229942a06b50e784d6a4ae51d6', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: '875544c98e5162d3f8c1db527d695dc735a67b51', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: 'd7a4b15b79b9fd75ec86a01ae543e7e70c6b1c4b', onSlotchange: this.updateHasLabel }))));
         const grouped = this.groupIcon && justify === 'space-between' && left;
-        return (h(Host, { key: '0aabb5a4c64eb9fea48906c78db97d06fdacff89', class: {
+        return (h(Host, { key: 'f58ebb5f73aff48c0d26db491e44b265d11e3e84', class: {
                 'uai-button--block': this.block || this.fullWidth,
                 'uai-button--group': !!this.position,
-            } }, h("button", { key: '0e0766fc2d2442295d1d29089a8ada086e191923', class: {
+            } }, h("button", { key: '6fef2a9f839f229c6142a7fcae181ea4f03bc76a', class: {
                 button: true,
                 [`button--${variant}`]: true,
                 [`button--color-${color}`]: true,
@@ -232,7 +237,7 @@ const UaiButton = class {
                 'button--icon-only': iconOnly,
                 'button--active': !!this.active,
                 'button--loading': this.loading,
-            }, part: "button", type: "button", disabled: this.disabled, "aria-disabled": this.loading ? 'true' : undefined, "aria-busy": this.loading ? 'true' : undefined, "aria-label": this.ariaLabel || undefined, "aria-expanded": this.ariaExpanded, "aria-pressed": this.active === undefined ? undefined : String(this.active), "data-test": this.dataTest, onClick: this.handleClick }, grouped ? (h("span", { class: "button__group" }, left, label)) : ([left, label]), right)));
+            }, part: "button", type: "button", disabled: this.disabled, "aria-disabled": this.loading ? 'true' : undefined, "aria-busy": this.loading ? 'true' : undefined, "aria-label": this.ariaLabel || undefined, "aria-expanded": this.ariaExpanded, "aria-haspopup": this.ariaHaspopup || undefined, "aria-pressed": this.active === undefined ? undefined : String(this.active), "data-test": this.dataTest, onClick: this.handleClick }, grouped ? (h("span", { class: "button__group" }, left, label)) : ([left, label]), right)));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

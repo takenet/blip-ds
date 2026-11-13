@@ -1,1 +1,1 @@
-import{U as o,d as s}from"./p-CSNgWC_-.js";const p=o,r=s;export{p as UaiBadge,r as defineCustomElement}
+import{U as o,d as s}from"./p-D2gEczK-.js";const p=o,r=s;export{p as UaiBadge,r as defineCustomElement}

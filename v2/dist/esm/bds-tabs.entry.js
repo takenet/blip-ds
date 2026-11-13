@@ -121,10 +121,10 @@ const Tabs = class {
             : (options.left = this.tabsHeaderChildElement.scrollLeft - this.tabsHeaderChildElement.clientWidth);
     }
     render() {
-        return (h(Host, { key: '7e677bc1e807b443734c5e56554af0d506565c01', class: {
+        return (h(Host, { key: 'aa9165b9b0db3a7e267b869d38dbfaf2339b21d0', class: {
                 'bds-tabs': true,
                 [`bds-tabs--${this.align}`]: true,
-            } }, h("div", { key: 'a4b653a864c089c5c34d2011985cb3e5364030ac', class: "bds-tabs__header-button-container" }, h("bds-button-icon", { key: '7a862f7fb5d3666406cfa59039e74c829187551a', class: "bds-tabs__header-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.handleScrollButtonClick("left" /* ScrollDirection.LEFT */), variant: "secondary" })), h("div", { key: '1333e3768e63d0c8fb87b4352d9a3e53bab46154', class: "bds-tabs__header" }, h("slot", { key: 'ec524ad41edc4de3c436079cc3e3c76299e61a18' })), h("div", { key: '795aba6eaf85588e51806e5da40ab913022bd726', class: "bds-tabs__header-button-container" }, h("bds-button-icon", { key: '5bbfc9c4fe700bd103751791ccb4419de2980724', class: "bds-tabs__header-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.handleScrollButtonClick("right" /* ScrollDirection.RIGHT */), variant: "secondary" }))));
+            } }, h("div", { key: 'd3948802d940ff161d2d451fbd1ec024ef12ac0e', class: "bds-tabs__header-button-container" }, h("bds-button-icon", { key: 'ab220e94abf351b5091ff6c59760d0b984f13660', class: "bds-tabs__header-button", icon: "arrow-left", size: "short", id: "bds-tabs-button-left", onClick: () => this.handleScrollButtonClick("left" /* ScrollDirection.LEFT */), variant: "secondary" })), h("div", { key: '1fcf98010bc705088a11d1bd4da9ad0672302916', class: "bds-tabs__header" }, h("slot", { key: '50dd645b55fe53ce561de9b4ca470055eca4d588' })), h("div", { key: '4661f543c11cc28df211a08f0830620b1b95b8b5', class: "bds-tabs__header-button-container" }, h("bds-button-icon", { key: 'aaeaed47ff9d600e691f5da65bc87f7cedb86f43', class: "bds-tabs__header-button", icon: "arrow-right", size: "short", id: "bds-tabs-button-right", onClick: () => this.handleScrollButtonClick("right" /* ScrollDirection.RIGHT */), variant: "secondary" }))));
     }
     get el() { return getElement(this); }
 };

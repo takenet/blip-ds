@@ -112,6 +112,11 @@ export declare class UaiButton {
      */
     ariaExpanded: 'true' | 'false';
     /**
+     * Type of popup the button opens. Use on activators of menus, listboxes and dialogs, such as uai-dropdown; pair with
+     * aria-expanded; avoid on buttons that do not open a popup.
+     */
+    ariaHaspopup: 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
+    /**
      * Data test is the prop to specifically test the component action object.
      */
     dataTest?: string;

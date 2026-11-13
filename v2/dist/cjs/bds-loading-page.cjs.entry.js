@@ -35,7 +35,7 @@ const BdsLoading = class {
         this.setSvgContent();
     }
     render() {
-        return (index.h(index.Host, { key: '2a0e2bd5fd73019e2b8f10f585cc1ccf08450352' }, index.h("div", { key: '214d4eb311333d48b9431be0252834a57da70c15', class: "loading-container", "data-test": this.dataTest }, index.h("div", { key: 'c3e564f69105b427ccd28cad1bfa3e05c65c5615', class: { page_loading: true }, innerHTML: this.svgContent }))));
+        return (index.h(index.Host, { key: 'f7a4e584724afe08ee1c5f202e1696f23a5de632' }, index.h("div", { key: '9d259f9986c9fbd6676457954243f3e56a419860', class: "loading-container", "data-test": this.dataTest }, index.h("div", { key: 'eb17eb4acdb2f252774d8762bf5bcd10631d4f45', class: { page_loading: true }, innerHTML: this.svgContent }))));
     }
 };
 BdsLoading.style = loadingPageCss();

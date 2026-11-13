@@ -4,6 +4,9 @@ export type dropVerticalPosition = 'bottom' | 'top' | 'left' | 'right';
 export type dropHorizontalPosition = 'left' | 'center' | 'right' | 'bottom' | 'top';
 export type subMenuState = 'close' | 'pending' | 'open';
 export type DropdownPostionType = 'auto' | 'top-center' | 'top-left' | 'top-right' | 'bottom-center' | 'bottom-right' | 'bottom-left' | 'right-center' | 'right-top' | 'right-bottom' | 'left-center' | 'left-top' | 'left-bottom';
+/**
+ * @deprecated Use uai-dropdown with UaiThemeProvider for tokenized styling.
+ */
 export declare class BdsDropdown implements ComponentInterface {
     private activatorElement?;
     private dropElement?;

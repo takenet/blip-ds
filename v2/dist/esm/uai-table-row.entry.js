@@ -23,7 +23,7 @@ const UaiTableRow = class {
         };
     }
     render() {
-        return (h(Host, { key: '566ffd2b1b5891ad6074fefa0ec8b73fb3ac170b', role: "row", "aria-selected": this.selected ? 'true' : undefined, tabindex: this.clickable ? 0 : undefined, "data-test": this.dataTest, onKeyDown: this.onKeyDown }, h("slot", { key: '5131df2ce8b815950be555038980e70d41a34fdc' })));
+        return (h(Host, { key: 'f3e3fa29bb8c4034471d693bf639515046ceb3fe', role: "row", "aria-selected": this.selected ? 'true' : undefined, tabindex: this.clickable ? 0 : undefined, "data-test": this.dataTest, onKeyDown: this.onKeyDown }, h("slot", { key: '11492c3a1c61279a23065d7565d31f47c31d11bb' })));
     }
     get el() { return getElement(this); }
 };

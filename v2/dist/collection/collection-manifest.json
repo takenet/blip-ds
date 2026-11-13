@@ -50,6 +50,7 @@
     "components/uai-banner/uai-banner.js",
     "components/uai-breadcrumb/uai-breadcrumb.js",
     "components/uai-button/uai-button.js",
+    "components/uai-dropdown/uai-dropdown.js",
     "components/uai-icon/uai-icon.js",
     "components/uai-input/uai-input.js",
     "components/uai-input-chips/uai-input-chips.js",

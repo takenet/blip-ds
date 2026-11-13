@@ -65,11 +65,11 @@ const UaiTooltip = class {
     }
     render() {
         const position = POSITIONS.find((candidate) => candidate === this.position) || 'left-center';
-        return (h(Host, { key: '708cff26974ec406ddadb4f920de2363735df7ab' }, h("div", { key: 'd8b04b83f6fd67d009f754ae6b818a26260eb1c9', class: "tooltip__wrapper" }, h("div", { key: '5e369f8a33db0bf0d50985c5c66761c02ad24b93', class: "tooltip__trigger", onMouseEnter: () => this.setVisibility(true), onMouseLeave: () => this.setVisibility(false), onFocusin: () => this.setVisibility(true), onFocusout: () => this.setVisibility(false), onKeyDown: this.onKeyDown, "data-test": this.dataTest, "aria-describedby": this.tipId }, h("slot", { key: '18d8e0a8333878abcedc0032206e43c4ba193865' })), h("div", { key: '12dc05407ffcd68f16ffe29840b1675a7d939982', id: this.tipId, part: "tip", role: "tooltip", class: {
+        return (h(Host, { key: 'ff3dfff4a5aa89bbf76635927a951c9d4d9ebe3b' }, h("div", { key: '53ef14854efa841308a73ceac66edc5617fefed0', class: "tooltip__wrapper" }, h("div", { key: '658ab3424ba23d4ff3b5b94a46b96cb0aefd26bd', class: "tooltip__trigger", onMouseEnter: () => this.setVisibility(true), onMouseLeave: () => this.setVisibility(false), onFocusin: () => this.setVisibility(true), onFocusout: () => this.setVisibility(false), onKeyDown: this.onKeyDown, "data-test": this.dataTest, "aria-describedby": this.tipId }, h("slot", { key: 'e37e2cc97690b0cbec2cbfa161cbe75272121b43' })), h("div", { key: '7e5216fed22a454ef3bdab8786995b5df94de44b', id: this.tipId, part: "tip", role: "tooltip", class: {
                 tooltip__tip: true,
                 [`tooltip__tip--${position}`]: true,
                 'tooltip__tip--visible': this.isVisible,
-            }, style: { maxWidth: this.maxWidthTooltip } }, h("uai-typo", { key: 'fb2aaa4883eee679a70e9b86d5d9d8d917578685', class: "tooltip__text", tag: "span", variant: "caption", margin: false }, this.textVerify)))));
+            }, style: { maxWidth: this.maxWidthTooltip } }, h("uai-typo", { key: '0bf63f94995598e35da73ed9d4c84b5f3030e24b', class: "tooltip__text", tag: "span", variant: "caption", margin: false }, this.textVerify)))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

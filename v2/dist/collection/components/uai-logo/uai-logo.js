@@ -43,7 +43,7 @@ export class UaiLogo {
         });
     }
     render() {
-        return (h(Host, { key: '97d0336a2595ef273e9bf75f53bae4ba40420e89', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("div", { key: '8848a9452103237c9dd7078bc5583315253a941f', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
+        return (h(Host, { key: '28d0a47d76d974468e18fe126a07699a55472fb2', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("div", { key: '9436a95674b371dcf6754efa19dceb8ede241b6c', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
     }
     static get is() { return "uai-logo"; }
     static get encapsulation() { return "shadow"; }

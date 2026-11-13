@@ -14,10 +14,10 @@ const TabPanel = class {
         this.isActive = event.detail == this.group;
     }
     render() {
-        return (h(Host, { key: 'f3f10322804dbde59f2b4b4b456ee9f8f73ee08f', class: {
+        return (h(Host, { key: 'a991c87b7fd1278ad0c5f022d58b6520de131bb4', class: {
                 'bds-tab-panel': true,
                 ['bds-tab-panel--selected']: this.isActive,
-            } }, h("slot", { key: '8ce4dab08da8d220bd307379b1e11cd1cb616306' })));
+            } }, h("slot", { key: '44f58fa2d37a6eb49144c019cefd024c4de8594a' })));
     }
 };
 TabPanel.style = tabPanelCss();

@@ -35,8 +35,8 @@ export class UaiTableTh {
         const justify = JUSTIFY.find((candidate) => candidate === this.justifyContent) || 'left';
         if (justify !== this.justifyContent)
             warnLegacyValue('uai-table-th', 'justifyContent', this.justifyContent, justify);
-        const title = (h("uai-typo", { key: '6f489bae070582d21eabf7d443b101e28bafccd7', tag: "span", variant: "body-lg", bold: "semibold", margin: false }, h("slot", { key: '4a11df189cc1df0dbd31012b0613903c31ae0ebd' })));
-        return (h(Host, { key: 'e14ef643bd2f3936c06d1762c55ebe4dadacf84d', role: "columnheader", "aria-sort": this.sortable ? direction : undefined }, this.sortable ? (h("button", { type: "button", class: "th__button", "aria-label": this.sortLabel, onClick: this.onSort }, title, h("uai-icon", { class: {
+        const title = (h("uai-typo", { key: '27625f87357236b1356cd905fa1e2d7788976371', tag: "span", variant: "body-lg", bold: "semibold", margin: false }, h("slot", { key: 'a943f8f8965e9afeac77cc41640ef2ac1a08b05d' })));
+        return (h(Host, { key: '4a7c647ca33611b77a9f8e9c76de81516a3db4b3', role: "columnheader", "aria-sort": this.sortable ? direction : undefined }, this.sortable ? (h("button", { type: "button", class: "th__button", "aria-label": this.sortLabel, onClick: this.onSort }, title, h("uai-icon", { class: {
                 th__icon: true,
                 'th__icon--active': direction !== 'none',
                 'th__icon--descending': direction === 'descending',

@@ -1,1 +1,1 @@
-import{U as s,d as o}from"./p-mpk5sXS4.js";const p=s,m=o;export{p as UaiIcon,m as defineCustomElement}
+import{U as o,d as p}from"./p-Dp5QJr6O.js";const r=o,s=p;export{r as UaiIcon,s as defineCustomElement}
