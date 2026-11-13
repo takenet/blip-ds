@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+import * as deprecation from '../../../utils/deprecation';
 import { UaiOverlay } from '../../../utils/uai-overlay';
 import { UaiDropdown } from '../uai-dropdown';
 
@@ -42,6 +43,40 @@ describe('uai-dropdown', () => {
     const panel = page.root.shadowRoot.querySelector('.dropdown__panel');
     expect(panel.getAttribute('aria-label')).toBe('Filtros');
     expect(panel.getAttribute('data-test')).toBe('panel');
+  });
+
+  describe('accessible name', () => {
+    const name = (page) => page.root.shadowRoot.querySelector('.dropdown__panel').getAttribute('aria-label');
+
+    it('uses label when it is set, even with a heading in the header', async () => {
+      const page = await create(
+        `<uai-dropdown label="Filtros"><button slot="activator">Abrir</button><h2 slot="header">Título</h2></uai-dropdown>`,
+      );
+      expect(name(page)).toBe('Filtros');
+    });
+
+    it.each([
+      ['an h2', '<h2 slot="header"> Branchs </h2>'],
+      ['role="heading"', '<div slot="header" role="heading" aria-level="2">Branchs</div>'],
+      ['a uai-typo with an h tag', '<uai-typo slot="header" tag="h2">Branchs</uai-typo>'],
+    ])('falls back to the text of %s slotted into the header', async (_, heading) => {
+      const page = await create(`<uai-dropdown><button slot="activator">Abrir</button>${heading}</uai-dropdown>`);
+      expect(name(page)).toBe('Branchs');
+    });
+
+    it('ignores headings outside the header and warns when there is no name', async () => {
+      // warnOnce prints once per page, so the call is checked instead of the console.
+      const warnOnce = jest.spyOn(deprecation, 'warnOnce');
+      const page = await create(
+        `<uai-dropdown><button slot="activator">Abrir</button><h2>No corpo</h2><input slot="header" /></uai-dropdown>`,
+      );
+      expect(name(page)).toBeNull();
+      expect(warnOnce).toHaveBeenCalledWith(
+        'uai-dropdown',
+        'accessible-name',
+        expect.stringContaining('accessible name'),
+      );
+    });
   });
 
   describe('width', () => {

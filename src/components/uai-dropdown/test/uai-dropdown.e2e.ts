@@ -89,6 +89,21 @@ describe('uai-dropdown e2e', () => {
       ).toBe(true);
     });
 
+    it('announces the popup on the native button of a uai-button activator', async () => {
+      const page = await create(
+        `<uai-dropdown id="dd" label="Filtros"><uai-button slot="activator" id="activator">Abrir</uai-button><p>Corpo</p></uai-dropdown>`,
+      );
+      const inner = () =>
+        page.evaluate(() => {
+          const button = document.getElementById('activator').shadowRoot.querySelector('button');
+          return { haspopup: button.getAttribute('aria-haspopup'), expanded: button.getAttribute('aria-expanded') };
+        });
+      expect(await inner()).toEqual({ haspopup: 'dialog', expanded: 'false' });
+      await page.click('#activator');
+      await page.waitForChanges();
+      expect(await inner()).toEqual({ haspopup: 'dialog', expanded: 'true' });
+    });
+
     it('closes when the activator is clicked again', async () => {
       const page = await create();
       await open(page);

@@ -1,8 +1,9 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
-import { warnDeprecated, warnLegacyValue } from '../../utils/deprecation';
+import { Build, Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { warnDeprecated, warnLegacyValue, warnOnce } from '../../utils/deprecation';
 import { UaiOverlay, UaiOverlayAlign, UaiOverlayCloseReason, UaiOverlaySide } from '../../utils/uai-overlay';
 
-export type UaiDropdownPosition = 'auto' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+export type UaiDropdownPosition =
+  'auto' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'top-center' | 'bottom-center';
 export type UaiDropdownActiveMode = 'click' | 'hover';
 
 interface Placement {
@@ -50,7 +51,8 @@ export class UaiDropdown {
   /**
    * Where the panel opens: 'auto' picks the side and alignment with the room available; the others fix the side
    * (top or bottom) and the alignment with the activator (left aligns to its start, right to its end). The panel
-   * still flips or moves when it would leave the screen. Use 'auto' unless the layout needs a fixed side.
+   * still flips or moves when it would leave the screen. 'top-center' and 'bottom-center' come from bds-dropdown: they
+   * fix the side and leave the alignment automatic. Use 'auto' unless the layout needs a fixed side.
    */
   @Prop() position?: UaiDropdownPosition = 'auto';
 
@@ -64,7 +66,10 @@ export class UaiDropdown {
   /** Panel width in rem, e.g. `24` for 24rem. Use for narrower or wider panels; the panel never exceeds the screen. Defaults to 21. */
   @Prop() width?: number;
 
-  /** Accessible name of the panel. Use a short noun phrase when the header has no visible title. */
+  /**
+   * Accessible name of the panel. Without it, the panel is named by the first heading slotted into `header`
+   * (h1 to h6, role="heading" or uai-typo with an h tag). Use a short noun phrase when the header has no title.
+   */
   @Prop() label?: string;
 
   /** Test selector on the panel. Use for automation; pair with semantic queries. Avoid styling by it. */
@@ -135,6 +140,13 @@ export class UaiDropdown {
   componentDidRender(): void {
     this.syncOverlay();
     this.syncActivatorAria();
+    if (Build.isDev && !this.accessibleName()) {
+      warnOnce(
+        'uai-dropdown',
+        'accessible-name',
+        'The panel has no accessible name. Set label or slot a heading into the header.',
+      );
+    }
   }
 
   disconnectedCallback(): void {
@@ -161,6 +173,21 @@ export class UaiDropdown {
 
   private hasSlotted(name: string): boolean {
     return Array.from(this.el.children).some((child) => child.getAttribute('slot') === name);
+  }
+
+  // A heading slotted into the header names the panel when there is no label. aria-labelledby cannot point from the
+  // Shadow DOM to an element in the page, so the heading text is used as the aria-label.
+  private accessibleName(): string | undefined {
+    if (this.label) return this.label;
+    const heading = Array.from(this.el.children).find(
+      (child) =>
+        child.getAttribute('slot') === 'header' &&
+        (/^H[1-6]$/.test(child.tagName) ||
+          child.getAttribute('role') === 'heading' ||
+          (child.tagName === 'UAI-TYPO' && /^h[1-6]$/.test(child.getAttribute('tag') || ''))),
+    );
+    const text = heading?.textContent?.trim();
+    return text || undefined;
   }
 
   private activator(): HTMLElement | undefined {
@@ -232,7 +259,7 @@ export class UaiDropdown {
           part="panel"
           role="dialog"
           tabindex="-1"
-          aria-label={this.label}
+          aria-label={this.accessibleName()}
           data-test={this.dataTest}
           style={panelWidth ? { '--dropdown-width': `${panelWidth}rem` } : undefined}
           ref={(el) => (this.panelEl = el)}

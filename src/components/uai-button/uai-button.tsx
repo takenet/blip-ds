@@ -171,6 +171,12 @@ export class UaiButton {
   @Prop({ attribute: 'aria-expanded' }) ariaExpanded: 'true' | 'false' = null;
 
   /**
+   * Type of popup the button opens. Use on activators of menus, listboxes and dialogs, such as uai-dropdown; pair with
+   * aria-expanded; avoid on buttons that do not open a popup.
+   */
+  @Prop({ attribute: 'aria-haspopup' }) ariaHaspopup: 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog' = null;
+
+  /**
    * Data test is the prop to specifically test the component action object.
    */
   @Prop() dataTest?: string = null;
@@ -259,7 +265,11 @@ export class UaiButton {
 
   componentDidLoad(): void {
     if (!hasThemeRoot(this.el)) {
-      warnOnce('uai-button', 'theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
+      warnOnce(
+        'uai-button',
+        'theme-root',
+        'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.',
+      );
     }
   }
 
@@ -381,6 +391,7 @@ export class UaiButton {
           aria-busy={this.loading ? 'true' : undefined}
           aria-label={this.ariaLabel || undefined}
           aria-expanded={this.ariaExpanded}
+          aria-haspopup={this.ariaHaspopup || undefined}
           aria-pressed={this.active === undefined ? undefined : String(this.active)}
           data-test={this.dataTest}
           onClick={this.handleClick}
