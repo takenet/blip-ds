@@ -34,6 +34,9 @@ export type DropdownPostionType =
   | 'left-top'
   | 'left-bottom';
 
+/**
+ * @deprecated Use uai-dropdown with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-dropdown',
   styleUrl: 'dropdown.scss',

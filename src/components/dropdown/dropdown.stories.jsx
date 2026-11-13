@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import DocumentationTemplate from './dropdown.mdx';
 
 export default {
-  title: 'Components/Dropdown',
+  title: 'Components/[deprecated] Dropdown',
   parameters: {
     docs: {
       page: DocumentationTemplate,

@@ -2,11 +2,11 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Dropdown - Visual Regression', () => {
   test('default closed state', async ({ storybook }) => {
-    await storybook.screenshotStory('components-dropdown--properties', 'dropdown-default');
+    await storybook.screenshotStory('components-deprecated-dropdown--properties', 'dropdown-default');
   });
 
   test('opened state', async ({ storybook, page }) => {
-    await storybook.goto('components-dropdown--properties');
+    await storybook.goto('components-deprecated-dropdown--properties');
 
     // Open dropdown via shadow DOM
     await page.evaluate(() => {

@@ -144,9 +144,9 @@ export const WAVE_2: ComponentEntry[] = [
   },
   {
     tag: 'bds-dropdown',
-    name: 'Dropdown',
-    primaryStory: 'components-dropdown--properties',
-    stories: [{ storyId: 'components-dropdown--properties', label: 'Properties' }],
+    name: '[deprecated] Dropdown',
+    primaryStory: 'components-deprecated-dropdown--properties',
+    stories: [{ storyId: 'components-deprecated-dropdown--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-menu',
