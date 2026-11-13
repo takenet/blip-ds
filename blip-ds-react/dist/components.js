@@ -114,6 +114,7 @@ import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton }
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiChipTag as UaiChipTagElement, defineCustomElement as defineUaiChipTag } from "blip-ds/dist/components/uai-chip-tag.js";
 import { UaiDropdown as UaiDropdownElement, defineCustomElement as defineUaiDropdown } from "blip-ds/dist/components/uai-dropdown.js";
+import { UaiEmoji as UaiEmojiElement, defineCustomElement as defineUaiEmoji } from "blip-ds/dist/components/uai-emoji.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement, defineCustomElement as defineUaiInputChips } from "blip-ds/dist/components/uai-input-chips.js";
@@ -122,6 +123,7 @@ import { UaiInputEditable as UaiInputEditableElement, defineCustomElement as def
 import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
 import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
+import { UaiLogo as UaiLogoElement, defineCustomElement as defineUaiLogo } from "blip-ds/dist/components/uai-logo.js";
 import { UaiModalAction as UaiModalActionElement, defineCustomElement as defineUaiModalAction } from "blip-ds/dist/components/uai-modal-action.js";
 import { UaiModalCloseButton as UaiModalCloseButtonElement, defineCustomElement as defineUaiModalCloseButton } from "blip-ds/dist/components/uai-modal-close-button.js";
 import { UaiModal as UaiModalElement, defineCustomElement as defineUaiModal } from "blip-ds/dist/components/uai-modal.js";
@@ -1069,6 +1071,13 @@ export const UaiDropdown = createComponent({
     events: { onUaiToggle: 'uaiToggle' },
     defineCustomElement: defineUaiDropdown
 });
+export const UaiEmoji = createComponent({
+    tagName: 'uai-emoji',
+    elementClass: UaiEmojiElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiEmoji
+});
 export const UaiGrid = createComponent({
     tagName: 'uai-grid',
     elementClass: UaiGridElement,
@@ -1165,6 +1174,13 @@ export const UaiInputPhone = createComponent({
         onUaiBlur: 'uaiBlur'
     },
     defineCustomElement: defineUaiInputPhone
+});
+export const UaiLogo = createComponent({
+    tagName: 'uai-logo',
+    elementClass: UaiLogoElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiLogo
 });
 export const UaiModal = createComponent({
     tagName: 'uai-modal',

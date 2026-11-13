@@ -114,6 +114,7 @@ import { UaiButton as UaiButtonElement } from "blip-ds/dist/components/uai-butto
 import { UaiCheckbox as UaiCheckboxElement } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiChipTag as UaiChipTagElement } from "blip-ds/dist/components/uai-chip-tag.js";
 import { UaiDropdown as UaiDropdownElement } from "blip-ds/dist/components/uai-dropdown.js";
+import { UaiEmoji as UaiEmojiElement } from "blip-ds/dist/components/uai-emoji.js";
 import { UaiGrid as UaiGridElement } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement } from "blip-ds/dist/components/uai-input-chips.js";
@@ -122,6 +123,7 @@ import { UaiInputEditable as UaiInputEditableElement } from "blip-ds/dist/compon
 import { UaiInputPassword as UaiInputPasswordElement } from "blip-ds/dist/components/uai-input-password.js";
 import { UaiInputPhone as UaiInputPhoneElement } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInput as UaiInputElement } from "blip-ds/dist/components/uai-input.js";
+import { UaiLogo as UaiLogoElement } from "blip-ds/dist/components/uai-logo.js";
 import { UaiModalAction as UaiModalActionElement } from "blip-ds/dist/components/uai-modal-action.js";
 import { UaiModalCloseButton as UaiModalCloseButtonElement } from "blip-ds/dist/components/uai-modal-close-button.js";
 import { UaiModal as UaiModalElement } from "blip-ds/dist/components/uai-modal.js";
@@ -701,6 +703,8 @@ export type UaiDropdownEvents = {
     }>>;
 };
 export declare const UaiDropdown: StencilReactComponent<UaiDropdownElement, UaiDropdownEvents, Components.UaiDropdown>;
+export type UaiEmojiEvents = NonNullable<unknown>;
+export declare const UaiEmoji: StencilReactComponent<UaiEmojiElement, UaiEmojiEvents, Components.UaiEmoji>;
 export type UaiGridEvents = NonNullable<unknown>;
 export declare const UaiGrid: StencilReactComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid>;
 export type UaiIconEvents = NonNullable<unknown>;
@@ -780,6 +784,8 @@ export type UaiInputPhoneEvents = {
     onUaiBlur: EventName<UaiInputPhoneCustomEvent<void>>;
 };
 export declare const UaiInputPhone: StencilReactComponent<UaiInputPhoneElement, UaiInputPhoneEvents, Components.UaiInputPhone>;
+export type UaiLogoEvents = NonNullable<unknown>;
+export declare const UaiLogo: StencilReactComponent<UaiLogoElement, UaiLogoEvents, Components.UaiLogo>;
 export type UaiModalEvents = {
     onUaiModalChanged: EventName<UaiModalCustomEvent<{
         modalStatus: 'opened' | 'closed';

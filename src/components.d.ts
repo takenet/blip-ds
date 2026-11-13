@@ -1419,7 +1419,8 @@ export namespace Components {
         "xxsOffset"?: breakpoint;
     }
     /**
-     * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+     * @deprecated Use `uai-icon` for interface icons, `uai-emoji` for emojis, and `uai-logo` for logos in new UAI experiences.
+     * This component remains supported for existing consumers.
      */
     interface BdsIcon {
         /**
@@ -4255,6 +4256,25 @@ export namespace Components {
         "width"?: number;
     }
     /**
+     * Emoji from the versioned asset catalog in blip-tokens. Set the host width to control its size;
+     * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful emoji, or omit it when decorative.
+     */
+    interface UaiEmoji {
+        /**
+          * Accessible name for a meaningful emoji. Without it, the emoji is decorative.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Value forwarded to the emoji SVG container's data-test attribute.
+         */
+        "dataTest"?: string;
+        /**
+          * Emoji name as listed in the blip-tokens asset catalog.
+         */
+        "name": string;
+    }
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -5369,6 +5389,25 @@ export namespace Components {
           * @default '+55'
          */
         "value"?: string | null;
+    }
+    /**
+     * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
+     * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
+     */
+    interface UaiLogo {
+        /**
+          * Accessible name for a meaningful logo. Without it, the logo is decorative.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Value forwarded to the logo SVG container's data-test attribute.
+         */
+        "dataTest"?: string;
+        /**
+          * Logo name as listed in the blip-tokens asset catalog.
+         */
+        "name": string;
     }
     /**
      * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
@@ -7448,7 +7487,8 @@ declare global {
         new (): HTMLBdsGridElement;
     };
     /**
-     * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+     * @deprecated Use `uai-icon` for interface icons, `uai-emoji` for emojis, and `uai-logo` for logos in new UAI experiences.
+     * This component remains supported for existing consumers.
      */
     interface HTMLBdsIconElement extends Components.BdsIcon, HTMLStencilElement {
     }
@@ -8444,6 +8484,16 @@ declare global {
         new (): HTMLUaiDropdownElement;
     };
     /**
+     * Emoji from the versioned asset catalog in blip-tokens. Set the host width to control its size;
+     * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful emoji, or omit it when decorative.
+     */
+    interface HTMLUaiEmojiElement extends Components.UaiEmoji, HTMLStencilElement {
+    }
+    var HTMLUaiEmojiElement: {
+        prototype: HTMLUaiEmojiElement;
+        new (): HTMLUaiEmojiElement;
+    };
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -8634,6 +8684,16 @@ declare global {
     var HTMLUaiInputPhoneElement: {
         prototype: HTMLUaiInputPhoneElement;
         new (): HTMLUaiInputPhoneElement;
+    };
+    /**
+     * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
+     * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
+     */
+    interface HTMLUaiLogoElement extends Components.UaiLogo, HTMLStencilElement {
+    }
+    var HTMLUaiLogoElement: {
+        prototype: HTMLUaiLogoElement;
+        new (): HTMLUaiLogoElement;
     };
     interface HTMLUaiModalElementEventMap {
         "uaiModalChanged": { modalStatus: 'opened' | 'closed' };
@@ -9176,6 +9236,7 @@ declare global {
         "uai-checkbox": HTMLUaiCheckboxElement;
         "uai-chip-tag": HTMLUaiChipTagElement;
         "uai-dropdown": HTMLUaiDropdownElement;
+        "uai-emoji": HTMLUaiEmojiElement;
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-input": HTMLUaiInputElement;
@@ -9184,6 +9245,7 @@ declare global {
         "uai-input-editable": HTMLUaiInputEditableElement;
         "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-input-phone": HTMLUaiInputPhoneElement;
+        "uai-logo": HTMLUaiLogoElement;
         "uai-modal": HTMLUaiModalElement;
         "uai-modal-action": HTMLUaiModalActionElement;
         "uai-modal-close-button": HTMLUaiModalCloseButtonElement;
@@ -10509,7 +10571,8 @@ declare namespace LocalJSX {
         "xxsOffset"?: breakpoint;
     }
     /**
-     * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+     * @deprecated Use `uai-icon` for interface icons, `uai-emoji` for emojis, and `uai-logo` for logos in new UAI experiences.
+     * This component remains supported for existing consumers.
      */
     interface BdsIcon {
         /**
@@ -13527,6 +13590,25 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     /**
+     * Emoji from the versioned asset catalog in blip-tokens. Set the host width to control its size;
+     * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful emoji, or omit it when decorative.
+     */
+    interface UaiEmoji {
+        /**
+          * Accessible name for a meaningful emoji. Without it, the emoji is decorative.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Value forwarded to the emoji SVG container's data-test attribute.
+         */
+        "dataTest"?: string;
+        /**
+          * Emoji name as listed in the blip-tokens asset catalog.
+         */
+        "name"?: string;
+    }
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -14689,6 +14771,25 @@ declare namespace LocalJSX {
           * @default '+55'
          */
         "value"?: string | null;
+    }
+    /**
+     * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
+     * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
+     */
+    interface UaiLogo {
+        /**
+          * Accessible name for a meaningful logo. Without it, the logo is decorative.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Value forwarded to the logo SVG container's data-test attribute.
+         */
+        "dataTest"?: string;
+        /**
+          * Logo name as listed in the blip-tokens asset catalog.
+         */
+        "name"?: string;
     }
     /**
      * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
@@ -16884,6 +16985,11 @@ declare namespace LocalJSX {
         "label": string;
         "dataTest": string;
     }
+    interface UaiEmojiAttributes {
+        "name": string;
+        "ariaLabel": string;
+        "dataTest": string;
+    }
     interface UaiGridAttributes {
         "height": string;
         "direction": direction;
@@ -17100,6 +17206,11 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
         "dtSelectFlag": string;
+    }
+    interface UaiLogoAttributes {
+        "name": string;
+        "ariaLabel": string;
+        "dataTest": string;
     }
     interface UaiModalAttributes {
         "open": boolean;
@@ -17459,6 +17570,7 @@ declare namespace LocalJSX {
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
         "uai-chip-tag": Omit<UaiChipTag, keyof UaiChipTagAttributes> & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes]?: UaiChipTag[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `attr:${K}`]?: UaiChipTagAttributes[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `prop:${K}`]?: UaiChipTag[K] };
         "uai-dropdown": Omit<UaiDropdown, keyof UaiDropdownAttributes> & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes]?: UaiDropdown[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `attr:${K}`]?: UaiDropdownAttributes[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `prop:${K}`]?: UaiDropdown[K] };
+        "uai-emoji": Omit<UaiEmoji, keyof UaiEmojiAttributes> & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes]?: UaiEmoji[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `attr:${K}`]?: UaiEmojiAttributes[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `prop:${K}`]?: UaiEmoji[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
@@ -17467,6 +17579,7 @@ declare namespace LocalJSX {
         "uai-input-editable": Omit<UaiInputEditable, keyof UaiInputEditableAttributes> & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes]?: UaiInputEditable[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `attr:${K}`]?: UaiInputEditableAttributes[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `prop:${K}`]?: UaiInputEditable[K] };
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
+        "uai-logo": Omit<UaiLogo, keyof UaiLogoAttributes> & { [K in keyof UaiLogo & keyof UaiLogoAttributes]?: UaiLogo[K] } & { [K in keyof UaiLogo & keyof UaiLogoAttributes as `attr:${K}`]?: UaiLogoAttributes[K] } & { [K in keyof UaiLogo & keyof UaiLogoAttributes as `prop:${K}`]?: UaiLogo[K] };
         "uai-modal": Omit<UaiModal, keyof UaiModalAttributes> & { [K in keyof UaiModal & keyof UaiModalAttributes]?: UaiModal[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `attr:${K}`]?: UaiModalAttributes[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `prop:${K}`]?: UaiModal[K] };
         "uai-modal-action": UaiModalAction;
         "uai-modal-close-button": Omit<UaiModalCloseButton, keyof UaiModalCloseButtonAttributes> & { [K in keyof UaiModalCloseButton & keyof UaiModalCloseButtonAttributes]?: UaiModalCloseButton[K] } & { [K in keyof UaiModalCloseButton & keyof UaiModalCloseButtonAttributes as `attr:${K}`]?: UaiModalCloseButtonAttributes[K] } & { [K in keyof UaiModalCloseButton & keyof UaiModalCloseButtonAttributes as `prop:${K}`]?: UaiModalCloseButton[K] };
@@ -17562,7 +17675,8 @@ declare module "@stencil/core" {
             "bds-expansion-panel-header": LocalJSX.IntrinsicElements["bds-expansion-panel-header"] & JSXBase.HTMLAttributes<HTMLBdsExpansionPanelHeaderElement>;
             "bds-grid": LocalJSX.IntrinsicElements["bds-grid"] & JSXBase.HTMLAttributes<HTMLBdsGridElement>;
             /**
-             * @deprecated Use `uai-icon` for interface icons in new UAI experiences. Emojis and logos (`type="emoji"` or `type="logo"`) have no UAI equivalent yet and keep using this component, which remains supported for existing consumers.
+             * @deprecated Use `uai-icon` for interface icons, `uai-emoji` for emojis, and `uai-logo` for logos in new UAI experiences.
+             * This component remains supported for existing consumers.
              */
             "bds-icon": LocalJSX.IntrinsicElements["bds-icon"] & JSXBase.HTMLAttributes<HTMLBdsIconElement>;
             "bds-illustration": LocalJSX.IntrinsicElements["bds-illustration"] & JSXBase.HTMLAttributes<HTMLBdsIllustrationElement>;
@@ -17746,6 +17860,11 @@ declare module "@stencil/core" {
              */
             "uai-dropdown": LocalJSX.IntrinsicElements["uai-dropdown"] & JSXBase.HTMLAttributes<HTMLUaiDropdownElement>;
             /**
+             * Emoji from the versioned asset catalog in blip-tokens. Set the host width to control its size;
+             * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful emoji, or omit it when decorative.
+             */
+            "uai-emoji": LocalJSX.IntrinsicElements["uai-emoji"] & JSXBase.HTMLAttributes<HTMLUaiEmojiElement>;
+            /**
              * UAI layout grid. The legacy bds-grid remains available; this component keeps
              * its layout props while using UAI dimensions and theme-aware color tokens.
              */
@@ -17802,6 +17921,11 @@ declare module "@stencil/core" {
              * country from the number. Wrap the app in UaiThemeProvider.
              */
             "uai-input-phone": LocalJSX.IntrinsicElements["uai-input-phone"] & JSXBase.HTMLAttributes<HTMLUaiInputPhoneElement>;
+            /**
+             * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
+             * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
+             */
+            "uai-logo": LocalJSX.IntrinsicElements["uai-logo"] & JSXBase.HTMLAttributes<HTMLUaiLogoElement>;
             /**
              * Dialog that blocks the page behind a backdrop to ask for a decision or show focused content.
              * Built on the native dialog in modal mode: the focus moves into it, stays inside it, the page behind becomes inert and the focus returns on close.

@@ -1,0 +1,82 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiEmojiStories from './uai-emoji.stories';
+
+<Meta isTemplate />
+
+# Emoji
+
+`<uai-emoji>` exibe um emoji SVG publicado em `blip-tokens`. Use-o para expressões e reações; para marcas, use `<uai-logo>`, e para ícones de interface, use `<uai-icon>`.
+
+## Visão geral
+
+O nome seleciona um asset do manifesto instalado. O componente preserva a aparência original e não define uma escala: aplique a largura ao host; o SVG acompanha essa largura e mantém a proporção intrínseca do `viewBox`.
+
+O componente não depende da fonte de ícones. Em React, importe o wrapper e o provider de tema:
+
+```jsx
+import { UaiEmoji, UaiThemeProvider } from 'blip-ds-react/dist/components';
+
+<UaiThemeProvider theme="light">
+  <UaiEmoji name="smiling-face" ariaLabel="Sorrindo" />
+</UaiThemeProvider>;
+```
+
+Em HTML, use o custom element:
+
+```html
+<uai-emoji name="smiling-face" aria-label="Sorrindo" style="width: var(--uai-sizing-5xl)"></uai-emoji>
+```
+
+## Playground
+
+<Canvas of={UaiEmojiStories.Playground} />
+
+<Controls of={UaiEmojiStories.Playground} />
+
+## Como usar
+
+- `name` é o nome do manifesto sem o prefixo `asset-emoji-`; por exemplo, `asset-emoji-smiling-face` corresponde a `name="smiling-face"`.
+- `ariaLabel` no wrapper React corresponde ao atributo HTML `aria-label`.
+- `dataTest` é destinado a testes e é encaminhado como `data-test` ao SVG.
+- Não existe prop `size`. Defina a dimensão no host com `style` ou CSS; por exemplo, `style={{ width: 'var(--uai-sizing-5xl)' }}` em React.
+- Os exemplos de React usam o wrapper gerado `UaiEmoji`. Fora de React, use `<uai-emoji>`.
+
+## Comportamento
+
+| Situação | Comportamento |
+| --- | --- |
+| `name` conhecido | Carrega o SVG original da chave `asset-emoji-<name>` no manifesto versionado. |
+| `name` desconhecido | Não renderiza imagem inválida nem interrompe a tela; emite aviso uma única vez para o nome. |
+| Largura do host alterada | O SVG acompanha a largura e mantém a razão de aspecto do `viewBox`. |
+| `name` alterado | O asset é atualizado para o novo nome. |
+
+<Canvas of={UaiEmojiStories.Dimensions} />
+
+## Acessibilidade
+
+- Com `ariaLabel`/`aria-label`, o host expõe `role="img"` e o nome fornecido.
+- Sem o rótulo, o emoji é decorativo e fica oculto para tecnologias assistivas por `aria-hidden="true"`.
+- O componente não é interativo, não recebe foco e não deve ser usado como substituto do nome acessível de um botão ou link.
+- Se a expressão já estiver descrita por texto adjacente, deixe o emoji decorativo para evitar anúncio duplicado.
+
+<Canvas of={UaiEmojiStories.Accessibility} />
+
+## Tokens e origem
+
+O componente não aplica tokens de cor, espaçamento ou tamanho ao artwork. A largura pertence ao estilo do host e o SVG mantém aparência e proporções originais. Os nomes vêm de `src/utils/asset-config.json`, gerado a partir do manifesto de `blip-tokens@2.4.1`; o carregador resolve os SVGs no CDN da versão instalada.
+
+O catálogo deriva automaticamente todas as chaves `asset-emoji-*` do manifesto instalado (36 emojis). Os assets são imagens, não nós de componente individual no Figma; por isso, não há Code Connect por asset.
+
+<Canvas of={UaiEmojiStories.Catalog} />
+
+## Migração do `bds-icon`
+
+| `BdsIcon` | `UaiEmoji` |
+| --- | --- |
+| `type="emoji"` e `name="smiling-face"` | `<UaiEmoji name="smiling-face" />` |
+| `size` | Remova a prop e defina a largura no host por estilo. |
+| `ariaLabel` | Mantenha como `ariaLabel` no React ou `aria-label` no custom element. |
+| `dataTest` | Mantenha como `dataTest` no React ou `data-test` no custom element. |
+| `src`, `icon`, `lazy`, `theme`, `color` | Não aplicável; o asset é escolhido pelo `name` e mantém a aparência de origem. |
+
+`bds-icon` continua suportado. Para experiências novas, use a tag específica da família de asset.
