@@ -1,1 +1,0 @@
-import{I as o,d as s}from"./p-CcoKtoT1.js";const t=o,p=s;export{t as BdsIcon,p as defineCustomElement}

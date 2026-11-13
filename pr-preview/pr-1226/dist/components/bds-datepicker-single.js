@@ -1,1 +1,0 @@
-import{B as o,d as r}from"./p-35YrMA9_.js";const s=o,p=r;export{s as BdsDatepickerSingle,p as defineCustomElement}
