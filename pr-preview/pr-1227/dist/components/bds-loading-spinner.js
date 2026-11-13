@@ -1,1 +1,0 @@
-import{B as o,d as s}from"./p-teMqVISJ.js";const t=o,p=s;export{t as BdsLoadingSpinner,p as defineCustomElement}
