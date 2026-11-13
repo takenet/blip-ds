@@ -235,14 +235,19 @@ export class BdsAutocomplete {
     }
   }
 
-  @Watch('checkedOptions')
-  protected changeCheckedOptions() {
+  @Watch('placeholder')
+  protected updatePlaceholderState() {
     this.placeholderState =
       this.selectionType === 'multiple'
-        ? this.checkedOptions?.length === 0 || this.checkedOptions === null
+        ? !this.checkedOptions || this.checkedOptions.length === 0
           ? this.placeholder
           : ''
         : this.placeholder;
+  }
+
+  @Watch('checkedOptions')
+  protected changeCheckedOptions() {
+    this.updatePlaceholderState();
     this.getTextMultiselect(this.checkedOptions);
     this.bdsMultiselectedChange.emit({ value: this.checkedOptions });
   }
