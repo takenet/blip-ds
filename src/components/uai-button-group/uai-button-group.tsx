@@ -26,8 +26,8 @@ export interface UaiButtonGroupSelectedDetail {
 const DIRECTIONS: readonly UaiButtonDirection[] = ['row', 'column'];
 
 /**
- * Set of joined uai-button toggles for picking one option, or several with `multiple`. Selected buttons turn solid and
- * expose aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+ * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+ * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
  * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
  *
  * @slot - The uai-button elements of the group.
@@ -111,11 +111,13 @@ export class UaiButtonGroup {
         if (typeof button.setPosition !== 'function') return;
         const active = this.selected.includes(index);
         const last = buttons.length - 1;
+        // A selected button is a regular uai-button: solid primary in the neutral group, solid of the accent otherwise.
+        const color = active && this.color === 'content' ? 'primary' : this.color;
         await Promise.all([
           button.setPosition(index === 0 ? 'first' : index === last ? 'last' : 'middle'),
           button.setDirection(direction),
           button.setSize(this.size),
-          button.setColor(this.color),
+          button.setColor(color),
           button.setVariant(active ? 'solid' : 'outline'),
           button.isActive(active),
         ]);

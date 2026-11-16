@@ -120,6 +120,24 @@ describe('uai-button-group e2e', () => {
     expect(Math.round(styles.buttons[0].right - styles.buttons[1].left)).toBe(1);
   });
 
+  it('draws the selected button as a regular uai-button that is on (solid primary, active)', async () => {
+    const page = await create(`${HTML}<uai-button id="reference">Referência</uai-button>`);
+    // A toggled-on uai-button uses its own active state, the pressed tone of its color.
+    await page.evaluate(() => (document.getElementById('reference') as any).isActive(true));
+    await page.click('#b');
+    await page.waitForChanges();
+    // Move the pointer away so the button shows its rest state, not the hover; uai-button animates the background.
+    await page.mouse.move(600, 600);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    const colors = await page.evaluate(() =>
+      ['b', 'reference'].map((id) => {
+        const style = getComputedStyle(document.getElementById(id).shadowRoot.querySelector('button'));
+        return { bg: style.backgroundColor, fg: style.color };
+      }),
+    );
+    expect(colors[0]).toEqual(colors[1]);
+  });
+
   it('sets up a button added after the render', async () => {
     const page = await create();
     await page.evaluate(() => {

@@ -72,6 +72,9 @@ describe('uai-button-group', () => {
       await click(page, 'b');
       await page.waitForChanges();
       expect(button(page, 'b').variant).toBe('solid');
+      // A selected button in the neutral group is a regular uai-button: solid primary.
+      expect(button(page, 'b').color).toBe('primary');
+      expect(button(page, 'a').color).toBe('content');
       expect(button(page, 'b').classList.contains('active')).toBe(true);
       expect(inner(page, 'b').getAttribute('aria-pressed')).toBe('true');
       expect(inner(page, 'a').getAttribute('aria-pressed')).toBe('false');
@@ -91,6 +94,7 @@ describe('uai-button-group', () => {
       await click(page, 'c');
       await page.waitForChanges();
       expect(button(page, 'c').variant).toBe('outline');
+      expect(button(page, 'c').color).toBe('content');
       expect(spy.mock.calls[0][0].detail).toEqual({ id: 'c', index: 2, active: false, selected: [] });
     });
 
@@ -105,6 +109,17 @@ describe('uai-button-group', () => {
       expect(spy).toHaveBeenCalledTimes(1);
       expect(button(page, 'a').variant).toBe('solid');
     });
+  });
+
+  it('keeps the accent color on the selected button of a colored group', async () => {
+    const page = await create();
+    page.root.color = 'negative';
+    await page.waitForChanges();
+    await click(page, 'a');
+    await page.waitForChanges();
+    expect(button(page, 'a').variant).toBe('solid');
+    expect(button(page, 'a').color).toBe('negative');
+    expect(button(page, 'b').color).toBe('negative');
   });
 
   describe('multiple selection', () => {

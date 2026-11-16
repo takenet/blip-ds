@@ -4126,8 +4126,8 @@ export namespace Components {
         "variant"?: UaiButtonVariant;
     }
     /**
-     * Set of joined uai-button toggles for picking one option, or several with `multiple`. Selected buttons turn solid and
-     * expose aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
      * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
      */
     interface UaiButtonGroup {
@@ -8487,8 +8487,8 @@ declare global {
         "uaiButtonSelected": UaiButtonGroupSelectedDetail;
     }
     /**
-     * Set of joined uai-button toggles for picking one option, or several with `multiple`. Selected buttons turn solid and
-     * expose aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
      * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
      */
     interface HTMLUaiButtonGroupElement extends Components.UaiButtonGroup, HTMLStencilElement {
@@ -13541,8 +13541,8 @@ declare namespace LocalJSX {
         "variant"?: UaiButtonVariant;
     }
     /**
-     * Set of joined uai-button toggles for picking one option, or several with `multiple`. Selected buttons turn solid and
-     * expose aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
      * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
      */
     interface UaiButtonGroup {
@@ -17976,8 +17976,8 @@ declare module "@stencil/core" {
              */
             "uai-button": LocalJSX.IntrinsicElements["uai-button"] & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
             /**
-             * Set of joined uai-button toggles for picking one option, or several with `multiple`. Selected buttons turn solid and
-             * expose aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+             * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+             * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
              * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
              */
             "uai-button-group": LocalJSX.IntrinsicElements["uai-button-group"] & JSXBase.HTMLAttributes<HTMLUaiButtonGroupElement>;
