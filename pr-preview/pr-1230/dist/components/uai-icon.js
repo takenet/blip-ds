@@ -1,0 +1,1 @@
+import{U as o,d as s}from"./p-DN-3zoe7.js";const p=o,r=s;export{p as UaiIcon,r as defineCustomElement}

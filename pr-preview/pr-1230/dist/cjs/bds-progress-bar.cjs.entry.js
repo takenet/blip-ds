@@ -1,0 +1,38 @@
+'use strict';
+
+var index = require('./index-BuAR9UTp.js');
+
+const progressBarCss = () => `:host{display:block}.progress_bar{-webkit-box-sizing:border-box;box-sizing:border-box;position:relative;border-radius:32px;border:1px solid var(--color-content-disable, rgb(89, 89, 89));margin-bottom:4px}.progress_bar.size_small{height:8px}.progress_bar.size_small .bar_behind .progress{border-radius:1px}.progress_bar.size_default{height:16px}.progress_bar.size_default .bar_behind .progress{border-radius:2px}.progress_bar .bar_behind{position:absolute;inset:0.5px 1px 1px 0.5px;border-radius:16px;overflow:hidden}.progress_bar .bar_behind .progress{position:absolute;height:100%;-webkit-transition:all 0.3s;transition:all 0.3s;-webkit-transition-property:all;transition-property:all;-webkit-transition-duration:0.3s;transition-duration:0.3s;-webkit-transition-timing-function:ease;transition-timing-function:ease;-webkit-transition-delay:0s;transition-delay:0s;overflow:hidden}.progress_bar .bar_behind .progress.color_default{background-color:var(--color-extended-blue, rgb(25, 104, 240))}.progress_bar .bar_behind .progress.color_positive{background-color:var(--color-extended-green, rgb(53, 222, 144))}.progress_bar .bar_behind .progress.color_information{background-color:var(--color-extended-yellow, rgb(251, 207, 35))}.progress_bar .bar_behind .progress.color_warning{background-color:var(--color-extended-red, rgb(230, 15, 15))}.progress_bar .bar_behind .progress .loading{position:absolute;left:-16px;width:calc(100% + 16px);height:100%;background:rgb(255, 255, 255);background:-webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(75%, rgba(255, 255, 255, 0)), color-stop(75%, rgba(0, 0, 0, 0.26)));background:linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 75%, rgba(0, 0, 0, 0.26) 75%);background-size:4px;-webkit-transform:skewX(-15deg);transform:skewX(-15deg);-webkit-animation-name:load;animation-name:load;-webkit-animation-timing-function:linear;animation-timing-function:linear;-webkit-animation-duration:0.5s;animation-duration:0.5s;-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite}.typo_progress{color:var(--color-content-default, rgb(40, 40, 40))}@-webkit-keyframes load{from{left:-16px}to{left:0}}@keyframes load{from{left:-16px}to{left:0}}`;
+
+const BdsProgressBar = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        /**
+         * Percent, property to enter the progress bar status percentage value.
+         */
+        this.percent = 0;
+        /**
+         * Size, property to define size of component.
+         */
+        this.size = 'default';
+        /**
+         * Text, property to define status of component.
+         */
+        this.color = 'default';
+        /**
+         * Text, property to enable the bar info text.
+         */
+        this.text = '';
+        /**
+         * Data test is the prop to specifically test the component action object.
+         */
+        this.dataTest = null;
+    }
+    render() {
+        const styles = { width: `${this.percent ? (this.percent > 100 ? 100 : this.percent) : 0}%` };
+        return (index.h(index.Host, { key: '83a0dca9c5306c29fef89c394af061832bc8fb62' }, index.h("div", { key: 'c95357c03d71648179434121335f01b51ecada31', class: { progress_bar: true, [`size_${this.size}`]: true }, "data-test": this.dataTest }, index.h("div", { key: '60f0a1139d9ca107d02c2514feab63ce9a81493b', class: { bar_behind: true } }, index.h("div", { key: '0d6b5702d1c8bfc66845a558d0fa61763ed9acff', class: { progress: true, [`color_${this.color}`]: true }, style: styles }))), this.text && (index.h("div", { key: 'a558820f57d99b4a2aa6bebb35f018d985f70d40', class: { typo_progress: true } }, index.h("bds-typo", { key: 'e18e8633adc0068606fa38880dc583b07ffcd539', variant: "fs-14" }, this.text)))));
+    }
+};
+BdsProgressBar.style = progressBarCss();
+
+exports.bds_progress_bar = BdsProgressBar;

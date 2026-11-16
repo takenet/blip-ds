@@ -1,0 +1,1 @@
+import{C as o,d as r}from"./p-C0jMrCaL.js";const s=o,a=r;export{s as BdsChipClickable,a as defineCustomElement}
