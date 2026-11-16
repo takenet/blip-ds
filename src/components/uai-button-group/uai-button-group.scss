@@ -1,0 +1,44 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.button-group {
+  // Each outlined uai-button draws its own border, so joined buttons would show a double line. The buttons overlap by
+  // one border width (border-width/default), not by a spacing step, so the group shows a single line between them.
+  --group-overlap: calc(-1 * var(--uai-border-width-default, #{$uai-border-width-default}));
+
+  display: flex;
+
+  &--row {
+    flex-direction: row;
+
+    ::slotted(uai-button:not(:first-child)) {
+      margin-inline-start: var(--group-overlap);
+    }
+  }
+
+  &--column {
+    flex-direction: column;
+
+    ::slotted(uai-button:not(:first-child)) {
+      margin-block-start: var(--group-overlap);
+    }
+  }
+}
+
+// The selected and the focused button are raised above their neighbors, so their border and focus ring are not
+// covered by the next button.
+::slotted(uai-button) {
+  position: relative;
+}
+
+::slotted(uai-button.active) {
+  z-index: 1;
+}
+
+::slotted(uai-button:focus-within) {
+  z-index: 2;
+}
