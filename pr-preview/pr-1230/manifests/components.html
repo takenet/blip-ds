@@ -620,13 +620,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">99/99 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">99/99 infos</a><span class="filter-pill ok" aria-disabled="true">437 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/437 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">28 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">99/99 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">99/99 infos</a><span class="filter-pill ok" aria-disabled="true">438 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">1/438 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">28 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.2s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.9s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -37953,7 +37953,7 @@ import { UaiButton, UaiThemeProvider } from 'blip-ds-react';</code></pre>
       <div class="badges">
         <label for="c-69-uai-button-group-err" class="badge err as-toggle">API error</label>
         <label for="c-69-uai-button-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-69-uai-button-group-stories" class="badge ok as-toggle">8 stories</label>
+        <label for="c-69-uai-button-group-stories" class="badge ok as-toggle">9 stories</label>
         
         
       </div>
@@ -39451,7 +39451,7 @@ export const UaiTypo = createComponent({
               
               <pre><code>const Playground = () =&gt; &lt;UaiButtonGroup
     size=&quot;medium&quot;
-    color=&quot;primary&quot;
+    color=&quot;content&quot;
     direction=&quot;row&quot;
     multiple={false}
     label=&quot;Alinhamento&quot;&gt;
@@ -39471,6 +39471,24 @@ export const UaiTypo = createComponent({
     &lt;UaiButton iconLeft=&quot;chart-bar&quot;&gt;Barras&lt;/UaiButton&gt;
     &lt;UaiButton iconLeft=&quot;chart-line&quot;&gt;Linhas&lt;/UaiButton&gt;
     &lt;UaiButton iconLeft=&quot;chart-pizza&quot;&gt;Pizza&lt;/UaiButton&gt;
+  &lt;/UaiButtonGroup&gt;
+);</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Menu Icons</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithMenuIcons = () =&gt; (
+  &lt;UaiButtonGroup label=&quot;Ações&quot;&gt;
+    {[&#39;Exportar&#39;, &#39;Compartilhar&#39;, &#39;Mais&#39;].map((item) =&gt; (
+      &lt;UaiButton key={item} iconRight=&quot;arrow-down&quot;&gt;
+        {item}
+      &lt;/UaiButton&gt;
+    ))}
   &lt;/UaiButtonGroup&gt;
 );</code></pre>
               
@@ -39508,7 +39526,7 @@ export const UaiTypo = createComponent({
         &lt;IconButtons /&gt;
       &lt;/UaiButtonGroup&gt;
     ))}
-    {[&#39;primary&#39;, &#39;content&#39;, &#39;positive&#39;, &#39;negative&#39;].map((color) =&gt; (
+    {[&#39;content&#39;, &#39;primary&#39;, &#39;positive&#39;, &#39;negative&#39;].map((color) =&gt; (
       &lt;UaiButtonGroup key={color} label={`Cor ${color}`} color={color}&gt;
         &lt;IconButtons /&gt;
       &lt;/UaiButtonGroup&gt;
@@ -39534,7 +39552,7 @@ export const UaiTypo = createComponent({
       &lt;UaiButtonGroup ref={ref} label=&quot;Alinhamento&quot;&gt;
         &lt;IconButtons /&gt;
       &lt;/UaiButtonGroup&gt;
-      &lt;UaiButtonGroup label=&quot;Alinhamento em coluna&quot; direction=&quot;column&quot; color=&quot;content&quot;&gt;
+      &lt;UaiButtonGroup label=&quot;Alinhamento em coluna&quot; direction=&quot;column&quot;&gt;
         &lt;IconButtons /&gt;
       &lt;/UaiButtonGroup&gt;
     &lt;/div&gt;
@@ -122922,7 +122940,7 @@ import { UaiButton, UaiThemeProvider } from 'blip-ds-react';</code></pre>
       <div class="badges">
         <label for="c-error-5-uai-button-group-err" class="badge err as-toggle">API error</label>
         <label for="c-error-5-uai-button-group-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-5-uai-button-group-stories" class="badge ok as-toggle">8 stories</label>
+        <label for="c-error-5-uai-button-group-stories" class="badge ok as-toggle">9 stories</label>
         
         
       </div>
@@ -124420,7 +124438,7 @@ export const UaiTypo = createComponent({
               
               <pre><code>const Playground = () =&gt; &lt;UaiButtonGroup
     size=&quot;medium&quot;
-    color=&quot;primary&quot;
+    color=&quot;content&quot;
     direction=&quot;row&quot;
     multiple={false}
     label=&quot;Alinhamento&quot;&gt;
@@ -124440,6 +124458,24 @@ export const UaiTypo = createComponent({
     &lt;UaiButton iconLeft=&quot;chart-bar&quot;&gt;Barras&lt;/UaiButton&gt;
     &lt;UaiButton iconLeft=&quot;chart-line&quot;&gt;Linhas&lt;/UaiButton&gt;
     &lt;UaiButton iconLeft=&quot;chart-pizza&quot;&gt;Pizza&lt;/UaiButton&gt;
+  &lt;/UaiButtonGroup&gt;
+);</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Menu Icons</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithMenuIcons = () =&gt; (
+  &lt;UaiButtonGroup label=&quot;Ações&quot;&gt;
+    {[&#39;Exportar&#39;, &#39;Compartilhar&#39;, &#39;Mais&#39;].map((item) =&gt; (
+      &lt;UaiButton key={item} iconRight=&quot;arrow-down&quot;&gt;
+        {item}
+      &lt;/UaiButton&gt;
+    ))}
   &lt;/UaiButtonGroup&gt;
 );</code></pre>
               
@@ -124477,7 +124513,7 @@ export const UaiTypo = createComponent({
         &lt;IconButtons /&gt;
       &lt;/UaiButtonGroup&gt;
     ))}
-    {[&#39;primary&#39;, &#39;content&#39;, &#39;positive&#39;, &#39;negative&#39;].map((color) =&gt; (
+    {[&#39;content&#39;, &#39;primary&#39;, &#39;positive&#39;, &#39;negative&#39;].map((color) =&gt; (
       &lt;UaiButtonGroup key={color} label={`Cor ${color}`} color={color}&gt;
         &lt;IconButtons /&gt;
       &lt;/UaiButtonGroup&gt;
@@ -124503,7 +124539,7 @@ export const UaiTypo = createComponent({
       &lt;UaiButtonGroup ref={ref} label=&quot;Alinhamento&quot;&gt;
         &lt;IconButtons /&gt;
       &lt;/UaiButtonGroup&gt;
-      &lt;UaiButtonGroup label=&quot;Alinhamento em coluna&quot; direction=&quot;column&quot; color=&quot;content&quot;&gt;
+      &lt;UaiButtonGroup label=&quot;Alinhamento em coluna&quot; direction=&quot;column&quot;&gt;
         &lt;IconButtons /&gt;
       &lt;/UaiButtonGroup&gt;
     &lt;/div&gt;

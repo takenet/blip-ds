@@ -255,3 +255,7 @@
     transform: rotate(360deg);
   }
 }
+:host(.uai-button--group) .button--outline.button--color-content {
+  --button-bg: var(--uai-surface-background, #f2f3f3);
+  --button-bg-hover: var(--uai-action-outline-default, #ffffff);
+}

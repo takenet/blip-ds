@@ -13,8 +13,11 @@ const UaiButtonGroup = class {
         this.size = 'medium';
         /** Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars. */
         this.direction = 'row';
-        /** Color of every button in the group. Use 'content' for neutral toolbars. */
-        this.color = 'primary';
+        /**
+         * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page
+         * surface separated by border/default. Use the other colors only to stress an accent.
+         */
+        this.color = 'content';
         /** Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views. */
         this.multiple = false;
         /** Indexes of the selected buttons. */
@@ -98,7 +101,7 @@ const UaiButtonGroup = class {
     }
     render() {
         const direction = DIRECTIONS.includes(this.direction) ? this.direction : 'row';
-        return (index.h(index.Host, { key: 'ba9836e73573d9182996b5713304d75d1531ec01', role: "group", "aria-label": this.label, onClick: this.onClick }, index.h("div", { key: '672859bab0915909eed20078ee402eeb6431b6e4', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, index.h("slot", { key: '0b5376e64805f356f9a9ca18c640381e498c556a', onSlotchange: this.onSlotChange }))));
+        return (index.h(index.Host, { key: '3ec49b58511ee4f7c2305fce1b47c6bf0d5a982a', role: "group", "aria-label": this.label, onClick: this.onClick }, index.h("div", { key: 'a0045d800936b45dedda0ba46289aa0c8c6c7edd', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, index.h("slot", { key: '35f04df785ee1b3b29f689ade692f66dfe7d9fa4', onSlotchange: this.onSlotChange }))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

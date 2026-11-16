@@ -263,12 +263,17 @@
         {
           "id": "uai-button-group--playground",
           "name": "Playground",
-          "snippet": "const Playground = () => <UaiButtonGroup\n    size=\"medium\"\n    color=\"primary\"\n    direction=\"row\"\n    multiple={false}\n    label=\"Alinhamento\">\n    <IconButtons />\n</UaiButtonGroup>;"
+          "snippet": "const Playground = () => <UaiButtonGroup\n    size=\"medium\"\n    color=\"content\"\n    direction=\"row\"\n    multiple={false}\n    label=\"Alinhamento\">\n    <IconButtons />\n</UaiButtonGroup>;"
         },
         {
           "id": "uai-button-group--with-labels",
           "name": "With Labels",
           "snippet": "const WithLabels = () => (\n  <UaiButtonGroup label=\"Gráfico\">\n    <UaiButton iconLeft=\"chart-bar\">Barras</UaiButton>\n    <UaiButton iconLeft=\"chart-line\">Linhas</UaiButton>\n    <UaiButton iconLeft=\"chart-pizza\">Pizza</UaiButton>\n  </UaiButtonGroup>\n);"
+        },
+        {
+          "id": "uai-button-group--with-menu-icons",
+          "name": "With Menu Icons",
+          "snippet": "const WithMenuIcons = () => (\n  <UaiButtonGroup label=\"Ações\">\n    {['Exportar', 'Compartilhar', 'Mais'].map((item) => (\n      <UaiButton key={item} iconRight=\"arrow-down\">\n        {item}\n      </UaiButton>\n    ))}\n  </UaiButtonGroup>\n);"
         },
         {
           "id": "uai-button-group--directions",
@@ -278,12 +283,12 @@
         {
           "id": "uai-button-group--sizes-and-colors",
           "name": "Sizes And Colors",
-          "snippet": "const SizesAndColors = () => (\n  <div style={column}>\n    {['compact', 'short', 'medium', 'large'].map((size) => (\n      <UaiButtonGroup key={size} label={`Tamanho ${size}`} size={size}>\n        <IconButtons />\n      </UaiButtonGroup>\n    ))}\n    {['primary', 'content', 'positive', 'negative'].map((color) => (\n      <UaiButtonGroup key={color} label={`Cor ${color}`} color={color}>\n        <IconButtons />\n      </UaiButtonGroup>\n    ))}\n  </div>\n);"
+          "snippet": "const SizesAndColors = () => (\n  <div style={column}>\n    {['compact', 'short', 'medium', 'large'].map((size) => (\n      <UaiButtonGroup key={size} label={`Tamanho ${size}`} size={size}>\n        <IconButtons />\n      </UaiButtonGroup>\n    ))}\n    {['content', 'primary', 'positive', 'negative'].map((color) => (\n      <UaiButtonGroup key={color} label={`Cor ${color}`} color={color}>\n        <IconButtons />\n      </UaiButtonGroup>\n    ))}\n  </div>\n);"
         },
         {
           "id": "uai-button-group--selected",
           "name": "Selected",
-          "snippet": "const Selected = () => {\n  const ref = React.useRef(null);\n  React.useEffect(() => {\n    ref.current?.componentOnReady?.().then(() => ref.current.activateButton(1));\n  }, []);\n  return (\n    <div style={column}>\n      <UaiButtonGroup ref={ref} label=\"Alinhamento\">\n        <IconButtons />\n      </UaiButtonGroup>\n      <UaiButtonGroup label=\"Alinhamento em coluna\" direction=\"column\" color=\"content\">\n        <IconButtons />\n      </UaiButtonGroup>\n    </div>\n  );\n};"
+          "snippet": "const Selected = () => {\n  const ref = React.useRef(null);\n  React.useEffect(() => {\n    ref.current?.componentOnReady?.().then(() => ref.current.activateButton(1));\n  }, []);\n  return (\n    <div style={column}>\n      <UaiButtonGroup ref={ref} label=\"Alinhamento\">\n        <IconButtons />\n      </UaiButtonGroup>\n      <UaiButtonGroup label=\"Alinhamento em coluna\" direction=\"column\">\n        <IconButtons />\n      </UaiButtonGroup>\n    </div>\n  );\n};"
         },
         {
           "id": "uai-button-group--multiple",
@@ -3589,6 +3594,6 @@
   },
   "meta": {
     "docgen": "react-docgen",
-    "durationMs": 1244
+    "durationMs": 1889
   }
 }
