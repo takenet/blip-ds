@@ -47,8 +47,11 @@ export class UaiButtonGroup {
   /** Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars. */
   @Prop({ mutable: true }) direction?: UaiButtonDirection = 'row';
 
-  /** Color of every button in the group. Use 'content' for neutral toolbars. */
-  @Prop({ mutable: true }) color?: UaiButtonColor = 'primary';
+  /**
+   * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page
+   * surface separated by border/default. Use the other colors only to stress an accent.
+   */
+  @Prop({ mutable: true }) color?: UaiButtonColor = 'content';
 
   /** Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views. */
   @Prop({ mutable: true }) multiple?: boolean = false;

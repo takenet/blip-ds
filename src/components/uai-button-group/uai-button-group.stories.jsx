@@ -52,7 +52,7 @@ export const Playground = (args) => (
     <IconButtons />
   </UaiButtonGroup>
 );
-Playground.args = { size: 'medium', color: 'primary', direction: 'row', multiple: false, label: 'Alinhamento' };
+Playground.args = { size: 'medium', color: 'content', direction: 'row', multiple: false, label: 'Alinhamento' };
 Playground.argTypes = {
   size: {
     options: ['compact', 'short', 'medium', 'large'],
@@ -60,9 +60,9 @@ Playground.argTypes = {
     table: { defaultValue: { summary: 'medium' } },
   },
   color: {
-    options: ['primary', 'content', 'positive', 'negative'],
+    options: ['content', 'primary', 'positive', 'negative'],
     control: 'select',
-    table: { defaultValue: { summary: 'primary' } },
+    table: { defaultValue: { summary: 'content' } },
   },
   direction: { options: ['row', 'column'], control: 'select', table: { defaultValue: { summary: 'row' } } },
   multiple: { control: 'boolean', table: { defaultValue: { summary: 'false' } } },
@@ -73,6 +73,17 @@ export const WithLabels = () => (
     <UaiButton iconLeft="chart-bar">Barras</UaiButton>
     <UaiButton iconLeft="chart-line">Linhas</UaiButton>
     <UaiButton iconLeft="chart-pizza">Pizza</UaiButton>
+  </UaiButtonGroup>
+);
+
+// Items with a trailing icon, as in the UAI Core button-group, for actions that open a menu.
+export const WithMenuIcons = () => (
+  <UaiButtonGroup label="Ações">
+    {['Exportar', 'Compartilhar', 'Mais'].map((item) => (
+      <UaiButton key={item} iconRight="arrow-down">
+        {item}
+      </UaiButton>
+    ))}
   </UaiButtonGroup>
 );
 
@@ -94,7 +105,7 @@ export const SizesAndColors = () => (
         <IconButtons />
       </UaiButtonGroup>
     ))}
-    {['primary', 'content', 'positive', 'negative'].map((color) => (
+    {['content', 'primary', 'positive', 'negative'].map((color) => (
       <UaiButtonGroup key={color} label={`Cor ${color}`} color={color}>
         <IconButtons />
       </UaiButtonGroup>
@@ -113,7 +124,7 @@ export const Selected = () => {
       <UaiButtonGroup ref={ref} label="Alinhamento">
         <IconButtons />
       </UaiButtonGroup>
-      <UaiButtonGroup label="Alinhamento em coluna" direction="column" color="content">
+      <UaiButtonGroup label="Alinhamento em coluna" direction="column">
         <IconButtons />
       </UaiButtonGroup>
     </div>

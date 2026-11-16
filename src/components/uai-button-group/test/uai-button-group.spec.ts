@@ -19,12 +19,12 @@ const click = async (page: SpecPage, id: string) => {
 };
 
 describe('uai-button-group', () => {
-  it('keeps the bds-button-group defaults', async () => {
+  it('keeps the bds-button-group defaults, with the neutral color of UAI Core', async () => {
     const page = await create();
     const group = page.rootInstance;
     expect(group.size).toBe('medium');
     expect(group.direction).toBe('row');
-    expect(group.color).toBe('primary');
+    expect(group.color).toBe('content');
     expect(group.multiple).toBe(false);
   });
 
@@ -44,7 +44,7 @@ describe('uai-button-group', () => {
     for (const id of ['a', 'b', 'c']) {
       expect(button(page, id).variant).toBe('outline');
       expect(button(page, id).size).toBe('medium');
-      expect(button(page, id).color).toBe('primary');
+      expect(button(page, id).color).toBe('content');
     }
   });
 

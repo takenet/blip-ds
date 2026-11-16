@@ -274,3 +274,11 @@
     transform: rotate(360deg);
   }
 }
+
+// Item of a uai-button-group with the neutral outline (UAI Core button-group): the items sit on the page surface,
+// separated by border/default. The hover lifts the item to the action surface, since action/outline/hover equals
+// surface/background in the light theme.
+:host(.uai-button--group) .button--outline.button--color-content {
+  --button-bg: var(--uai-surface-background, #{$uai-surface-background});
+  --button-bg-hover: var(--uai-action-outline-default, #{$uai-action-outline-default});
+}

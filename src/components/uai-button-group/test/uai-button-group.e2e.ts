@@ -95,6 +95,31 @@ describe('uai-button-group e2e', () => {
     expect(first[0]).not.toBe('0px');
   });
 
+  it('draws the neutral UAI Core group: page surface, border/default and a single line between items', async () => {
+    const page = await create();
+    // The group sets the buttons after they load, and uai-button animates the background (duration/fast).
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    const styles = await page.evaluate(() => {
+      // The token values the theme provider applies, resolved by the browser.
+      const probe = document.createElement('div');
+      probe.style.background = 'var(--uai-surface-background)';
+      probe.style.border = '1px solid var(--uai-border-default)';
+      document.querySelector('uai-theme-provider').appendChild(probe);
+      const tokens = { bg: getComputedStyle(probe).backgroundColor, border: getComputedStyle(probe).borderTopColor };
+      probe.remove();
+      const buttons = ['a', 'b'].map((id) => {
+        const style = getComputedStyle(document.getElementById(id).shadowRoot.querySelector('button'));
+        const box = document.getElementById(id).getBoundingClientRect();
+        return { bg: style.backgroundColor, border: style.borderTopColor, left: box.left, right: box.right };
+      });
+      return { tokens, buttons };
+    });
+    expect(styles.buttons[0].bg).toBe(styles.tokens.bg);
+    expect(styles.buttons[0].border).toBe(styles.tokens.border);
+    // The second button starts one border width before the end of the first, so their borders overlap.
+    expect(Math.round(styles.buttons[0].right - styles.buttons[1].left)).toBe(1);
+  });
+
   it('sets up a button added after the render', async () => {
     const page = await create();
     await page.evaluate(() => {

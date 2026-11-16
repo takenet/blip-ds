@@ -7,7 +7,7 @@ import * as ButtonGroupStories from './uai-button-group.stories';
 
 ## Visão geral
 
-Conjunto de `UaiButton` unidos para escolher uma opção, ou várias com `multiple`. O botão selecionado fica sólido e os demais ficam com contorno. Use para poucas opções relacionadas, como modos de visualização, períodos ou filtros; para ações que não mantêm um estado selecionado, use botões separados.
+Conjunto de `UaiButton` unidos, como no UAI Core: os itens ficam sobre a superfície da página (`surface-background`), com borda externa e divisórias `border-default`, nos temas claro e escuro. Clicar em um item o seleciona (ou vários, com `multiple`): o selecionado fica sólido. Use para poucas opções relacionadas, como modos de visualização, períodos ou filtros; para ações que não mantêm um estado selecionado, use botões separados.
 
 ## Como usar
 
@@ -28,6 +28,10 @@ Os botões podem ter texto, com ou sem ícone.
 
 <Canvas of={ButtonGroupStories.WithLabels} />
 
+Para ações que abrem um menu, use `iconRight="arrow-down"`, como no UAI Core.
+
+<Canvas of={ButtonGroupStories.WithMenuIcons} />
+
 ## Direção
 
 `direction="row"` (padrão) une os botões lado a lado; `column`, um embaixo do outro.
@@ -36,7 +40,7 @@ Os botões podem ter texto, com ou sem ícone.
 
 ## Tamanhos e cores
 
-`size` (`compact`, `short`, `medium` e `large`) e `color` (`primary`, `content`, `positive` e `negative`) valem para todos os botões do grupo.
+`size` (`compact`, `short`, `medium` e `large`) e `color` valem para todos os botões do grupo. `content` (padrão) é o grupo neutro do UAI Core; `primary`, `positive` e `negative` usam o contorno colorido do `UaiButton`, para destacar um acento.
 
 <Canvas of={ButtonGroupStories.SizesAndColors} />
 
@@ -65,7 +69,10 @@ O grupo tem `role="group"`, e `label` define o nome acessível dele: use uma fra
 Troque `BdsButtonGroup` por `UaiButtonGroup`, `BdsButton` por `UaiButton` e `onButtonSelected` por `onUaiButtonSelected`, e envolva a aplicação em `UaiThemeProvider`. `size`, `direction`, `color`, `multiple` e o método `activateButton()` são preservados. Diferenças:
 
 - **Evento:** `buttonSelected` emitia só o `id` do botão; `uaiButtonSelected` emite `{ id, index, active, selected }`.
+- **Cor padrão:** `content` (neutra, do UAI Core) no lugar de `primary`. Defina `color="primary"` para manter o contorno do legado.
 - **Tamanhos:** além de `medium` e `large`, valem `compact` e `short`, como no `UaiButton`.
 - **Correções:** cada clique conta uma vez (o legado somava um novo listener a cada atualização das props), botões adicionados depois são configurados e o grupo tem `role="group"` com `label`.
 
-Tokens: os do `UaiButton`, que desenha os botões e os cantos unidos do grupo.
+Tokens: `surface-background`, `border-default`, `content-primary`, `action-outline-default` (hover) e `border-width-default`, além dos do `UaiButton`, que desenha os botões e os cantos unidos do grupo.
+
+[Componente no UAI Core](https://www.figma.com/design/xNgjSCmKfbgd3ed5mIPdHo/UAI-Design-Tokens?node-id=498-3282).

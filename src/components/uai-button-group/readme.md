@@ -1,7 +1,5 @@
 # uai-button-group
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -13,13 +11,13 @@ aria-label; avoid it for actions that do not keep a selected state (use separate
 
 ## Properties
 
-| Property    | Attribute   | Description                                                                                                      | Type                                                 | Default     |
-| ----------- | ----------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------- |
-| `color`     | `color`     | Color of every button in the group. Use 'content' for neutral toolbars.                                          | `"content" \| "negative" \| "positive" \| "primary"` | `'primary'` |
-| `direction` | `direction` | Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars.                                      | `"column" \| "row"`                                  | `'row'`     |
-| `label`     | `label`     | Accessible name of the group. Use a short noun phrase that says what the buttons choose, such as "Visualização". | `string`                                             | `undefined` |
-| `multiple`  | `multiple`  | Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views.  | `boolean`                                            | `false`     |
-| `size`      | `size`      | Size of every button in the group. Use the same size as the controls around the group.                           | `"compact" \| "large" \| "medium" \| "short"`        | `'medium'`  |
+| Property    | Attribute   | Description                                                                                                                                                                                     | Type                                                 | Default     |
+| ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------- |
+| `color`     | `color`     | Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/default. Use the other colors only to stress an accent. | `"content" \| "negative" \| "positive" \| "primary"` | `'content'` |
+| `direction` | `direction` | Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars.                                                                                                                     | `"column" \| "row"`                                  | `'row'`     |
+| `label`     | `label`     | Accessible name of the group. Use a short noun phrase that says what the buttons choose, such as "Visualização".                                                                                | `string`                                             | `undefined` |
+| `multiple`  | `multiple`  | Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views.                                                                                 | `boolean`                                            | `false`     |
+| `size`      | `size`      | Size of every button in the group. Use the same size as the controls around the group.                                                                                                          | `"compact" \| "large" \| "medium" \| "short"`        | `'medium'`  |
 
 
 ## Events
