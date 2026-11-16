@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-button-group with uai-button and UaiThemeProvider for tokenized styling.
+
 ## Properties
 
 | Property    | Attribute   | Description                                                           | Type                                                     | Default     |
