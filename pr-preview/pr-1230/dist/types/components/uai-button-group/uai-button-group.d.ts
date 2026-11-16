@@ -11,8 +11,8 @@ export interface UaiButtonGroupSelectedDetail {
     selected: number[];
 }
 /**
- * Set of joined uai-button toggles for picking one option, or several with `multiple`. Selected buttons turn solid and
- * expose aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+ * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+ * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
  * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
  *
  * @slot - The uai-button elements of the group.

@@ -2,8 +2,8 @@ import { Host, h } from "@stencil/core";
 import { warnLegacyValue } from "../../utils/deprecation";
 const DIRECTIONS = ['row', 'column'];
 /**
- * Set of joined uai-button toggles for picking one option, or several with `multiple`. Selected buttons turn solid and
- * expose aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+ * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+ * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
  * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
  *
  * @slot - The uai-button elements of the group.
@@ -78,11 +78,13 @@ export class UaiButtonGroup {
                 return;
             const active = this.selected.includes(index);
             const last = buttons.length - 1;
+            // A selected button is a regular uai-button: solid primary in the neutral group, solid of the accent otherwise.
+            const color = active && this.color === 'content' ? 'primary' : this.color;
             await Promise.all([
                 button.setPosition(index === 0 ? 'first' : index === last ? 'last' : 'middle'),
                 button.setDirection(direction),
                 button.setSize(this.size),
-                button.setColor(this.color),
+                button.setColor(color),
                 button.setVariant(active ? 'solid' : 'outline'),
                 button.isActive(active),
             ]);
@@ -104,7 +106,7 @@ export class UaiButtonGroup {
     }
     render() {
         const direction = DIRECTIONS.includes(this.direction) ? this.direction : 'row';
-        return (h(Host, { key: '3ec49b58511ee4f7c2305fce1b47c6bf0d5a982a', role: "group", "aria-label": this.label, onClick: this.onClick }, h("div", { key: 'a0045d800936b45dedda0ba46289aa0c8c6c7edd', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, h("slot", { key: '35f04df785ee1b3b29f689ade692f66dfe7d9fa4', onSlotchange: this.onSlotChange }))));
+        return (h(Host, { key: '61adb6bde111e14a5e5f93f3edeaff06b2686360', role: "group", "aria-label": this.label, onClick: this.onClick }, h("div", { key: '30aa7a4ca2829a9eda8c4c1f474a8070a74fa4ac', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, h("slot", { key: '2f8178db9f029bfa3251724afbb8a070713c700b', onSlotchange: this.onSlotChange }))));
     }
     static get is() { return "uai-button-group"; }
     static get encapsulation() { return "shadow"; }
