@@ -1,1 +1,0 @@
-import{B as a,d as o}from"./p-Waa0NBO2.js";const s=a,p=o;export{s as BdsButton,p as defineCustomElement}
