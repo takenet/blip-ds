@@ -2,8 +2,8 @@ import { Host, h } from "@stencil/core";
 import { warnLegacyValue } from "../../utils/deprecation";
 const DIRECTIONS = ['row', 'column'];
 /**
- * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
- * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+ * Set of joined outline uai-button toggles for picking one option, or several with `multiple`, as the UAI Core
+ * uaiButtonGroup. A selected button shows the pressed state and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
  * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
  *
  * @slot - The uai-button elements of the group.
@@ -15,11 +15,8 @@ export class UaiButtonGroup {
         this.size = 'medium';
         /** Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars. */
         this.direction = 'row';
-        /**
-         * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page
-         * surface separated by border/input. Use the other colors only to stress an accent.
-         */
-        this.color = 'content';
+        /** Color of the outline buttons of the group. 'primary' is the UAI Core group; use the others to stress an accent. */
+        this.color = 'primary';
         /** Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views. */
         this.multiple = false;
         /** Indexes of the selected buttons. */
@@ -78,14 +75,13 @@ export class UaiButtonGroup {
                 return;
             const active = this.selected.includes(index);
             const last = buttons.length - 1;
-            // A selected button is a regular uai-button: solid primary in the neutral group, solid of the accent otherwise.
-            const color = active && this.color === 'content' ? 'primary' : this.color;
             await Promise.all([
                 button.setPosition(index === 0 ? 'first' : index === last ? 'last' : 'middle'),
                 button.setDirection(direction),
                 button.setSize(this.size),
-                button.setColor(color),
-                button.setVariant(active ? 'solid' : 'outline'),
+                button.setColor(this.color),
+                // Every item is an outline button; the selected one is in its active state (Pressed in UAI Core).
+                button.setVariant('outline'),
                 button.isActive(active),
             ]);
             button.classList.toggle('active', active);
@@ -106,7 +102,7 @@ export class UaiButtonGroup {
     }
     render() {
         const direction = DIRECTIONS.includes(this.direction) ? this.direction : 'row';
-        return (h(Host, { key: 'bb3bd3a413dd5348679654c3440a18018ff5f4ce', role: "group", "aria-label": this.label, onClick: this.onClick }, h("div", { key: '84129f517a20c9849d87524571ddfee04f8889a2', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, h("slot", { key: '5446fafba75f691c3c29a6174956f6ce42abfbff', onSlotchange: this.onSlotChange }))));
+        return (h(Host, { key: 'ee5c0a895569a3d88dc4479f030e03b627dc5748', role: "group", "aria-label": this.label, onClick: this.onClick }, h("div", { key: '8ad1d7ef92aac6b19e83d9fdf19ee6350e8eb35d', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, h("slot", { key: 'b9fd581c700bccde942affd8292aac69132401b5', onSlotchange: this.onSlotChange }))));
     }
     static get is() { return "uai-button-group"; }
     static get encapsulation() { return "shadow"; }
@@ -195,13 +191,13 @@ export class UaiButtonGroup {
                 "optional": true,
                 "docs": {
                     "tags": [],
-                    "text": "Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page\nsurface separated by border/input. Use the other colors only to stress an accent."
+                    "text": "Color of the outline buttons of the group. 'primary' is the UAI Core group; use the others to stress an accent."
                 },
                 "getter": false,
                 "setter": false,
                 "reflect": false,
                 "attribute": "color",
-                "defaultValue": "'content'"
+                "defaultValue": "'primary'"
             },
             "multiple": {
                 "type": "boolean",

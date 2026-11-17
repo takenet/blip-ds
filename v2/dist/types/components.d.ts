@@ -4126,8 +4126,8 @@ export namespace Components {
         "variant"?: UaiButtonVariant;
     }
     /**
-     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
-     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * Set of joined outline uai-button toggles for picking one option, or several with `multiple`, as the UAI Core
+     * uaiButtonGroup. A selected button shows the pressed state and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
      * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
      */
     interface UaiButtonGroup {
@@ -4136,8 +4136,8 @@ export namespace Components {
          */
         "activateButton": (index: number) => Promise<void>;
         /**
-          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/input. Use the other colors only to stress an accent.
-          * @default 'content'
+          * Color of the outline buttons of the group. 'primary' is the UAI Core group; use the others to stress an accent.
+          * @default 'primary'
          */
         "color"?: UaiButtonColor1;
         /**
@@ -8487,8 +8487,8 @@ declare global {
         "uaiButtonSelected": UaiButtonGroupSelectedDetail;
     }
     /**
-     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
-     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * Set of joined outline uai-button toggles for picking one option, or several with `multiple`, as the UAI Core
+     * uaiButtonGroup. A selected button shows the pressed state and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
      * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
      */
     interface HTMLUaiButtonGroupElement extends Components.UaiButtonGroup, HTMLStencilElement {
@@ -13541,14 +13541,14 @@ declare namespace LocalJSX {
         "variant"?: UaiButtonVariant;
     }
     /**
-     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
-     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * Set of joined outline uai-button toggles for picking one option, or several with `multiple`, as the UAI Core
+     * uaiButtonGroup. A selected button shows the pressed state and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
      * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
      */
     interface UaiButtonGroup {
         /**
-          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/input. Use the other colors only to stress an accent.
-          * @default 'content'
+          * Color of the outline buttons of the group. 'primary' is the UAI Core group; use the others to stress an accent.
+          * @default 'primary'
          */
         "color"?: UaiButtonColor1;
         /**
@@ -17976,8 +17976,8 @@ declare module "@stencil/core" {
              */
             "uai-button": LocalJSX.IntrinsicElements["uai-button"] & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
             /**
-             * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
-             * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+             * Set of joined outline uai-button toggles for picking one option, or several with `multiple`, as the UAI Core
+             * uaiButtonGroup. A selected button shows the pressed state and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
              * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
              */
             "uai-button-group": LocalJSX.IntrinsicElements["uai-button-group"] & JSXBase.HTMLAttributes<HTMLUaiButtonGroupElement>;

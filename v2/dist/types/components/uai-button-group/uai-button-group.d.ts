@@ -11,8 +11,8 @@ export interface UaiButtonGroupSelectedDetail {
     selected: number[];
 }
 /**
- * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
- * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+ * Set of joined outline uai-button toggles for picking one option, or several with `multiple`, as the UAI Core
+ * uaiButtonGroup. A selected button shows the pressed state and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
  * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
  *
  * @slot - The uai-button elements of the group.
@@ -24,10 +24,7 @@ export declare class UaiButtonGroup {
     size?: UaiButtonSize;
     /** Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars. */
     direction?: UaiButtonDirection;
-    /**
-     * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page
-     * surface separated by border/input. Use the other colors only to stress an accent.
-     */
+    /** Color of the outline buttons of the group. 'primary' is the UAI Core group; use the others to stress an accent. */
     color?: UaiButtonColor;
     /** Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views. */
     multiple?: boolean;

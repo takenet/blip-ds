@@ -255,8 +255,10 @@
     transform: rotate(360deg);
   }
 }
-:host(.uai-button--group) .button--outline.button--color-content {
-  --button-bg: var(--uai-surface-background, #f2f3f3);
-  --button-border: var(--uai-border-input, #adb4b8);
-  --button-bg-hover: var(--uai-action-outline-default, #ffffff);
+:host(.uai-button--group) .button {
+  --button-border: transparent;
+  border-radius: 0;
+}
+:host(.uai-button--group) .button:focus-visible {
+  outline-offset: calc(-1 * var(--uai-spacing-3xs, 0.125rem));
 }

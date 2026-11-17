@@ -1,6 +1,6 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
 
-const uaiButtonGroupCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.button-group{--group-overlap:calc(-1 * var(--uai-border-width-default, 1px));display:-ms-flexbox;display:flex}.button-group--row{-ms-flex-direction:row;flex-direction:row}.button-group--row ::slotted(uai-button:not(:first-child)){-webkit-margin-start:var(--group-overlap);margin-inline-start:var(--group-overlap)}.button-group--column{-ms-flex-direction:column;flex-direction:column}.button-group--column ::slotted(uai-button:not(:first-child)){-webkit-margin-before:var(--group-overlap);margin-block-start:var(--group-overlap)}::slotted(uai-button){position:relative}::slotted(uai-button.active){z-index:1}::slotted(uai-button:focus-within){z-index:2}`;
+const uaiButtonGroupCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.button-group{--group-divider:var(--uai-border-width-default, 1px) solid     var(--uai-border-default, #e4e6e7);display:-ms-flexbox;display:flex;overflow:hidden;border:var(--group-divider);border-radius:var(--uai-radius-lg, 0.75rem)}.button-group--row{-ms-flex-direction:row;flex-direction:row}.button-group--row ::slotted(uai-button:not(:first-child)){-webkit-border-start:var(--group-divider);border-inline-start:var(--group-divider)}.button-group--column{-ms-flex-direction:column;flex-direction:column}.button-group--column ::slotted(uai-button:not(:first-child)){-webkit-border-before:var(--group-divider);border-block-start:var(--group-divider)}::slotted(uai-button){position:relative}::slotted(uai-button:focus-within){z-index:1}`;
 
 const DIRECTIONS = ['row', 'column'];
 const UaiButtonGroup = class {
@@ -11,11 +11,8 @@ const UaiButtonGroup = class {
         this.size = 'medium';
         /** Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars. */
         this.direction = 'row';
-        /**
-         * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page
-         * surface separated by border/input. Use the other colors only to stress an accent.
-         */
-        this.color = 'content';
+        /** Color of the outline buttons of the group. 'primary' is the UAI Core group; use the others to stress an accent. */
+        this.color = 'primary';
         /** Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views. */
         this.multiple = false;
         /** Indexes of the selected buttons. */
@@ -73,14 +70,13 @@ const UaiButtonGroup = class {
                 return;
             const active = this.selected.includes(index);
             const last = buttons.length - 1;
-            // A selected button is a regular uai-button: solid primary in the neutral group, solid of the accent otherwise.
-            const color = active && this.color === 'content' ? 'primary' : this.color;
             await Promise.all([
                 button.setPosition(index === 0 ? 'first' : index === last ? 'last' : 'middle'),
                 button.setDirection(direction),
                 button.setSize(this.size),
-                button.setColor(color),
-                button.setVariant(active ? 'solid' : 'outline'),
+                button.setColor(this.color),
+                // Every item is an outline button; the selected one is in its active state (Pressed in UAI Core).
+                button.setVariant('outline'),
                 button.isActive(active),
             ]);
             button.classList.toggle('active', active);
@@ -101,7 +97,7 @@ const UaiButtonGroup = class {
     }
     render() {
         const direction = DIRECTIONS.includes(this.direction) ? this.direction : 'row';
-        return (h(Host, { key: 'bb3bd3a413dd5348679654c3440a18018ff5f4ce', role: "group", "aria-label": this.label, onClick: this.onClick }, h("div", { key: '84129f517a20c9849d87524571ddfee04f8889a2', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, h("slot", { key: '5446fafba75f691c3c29a6174956f6ce42abfbff', onSlotchange: this.onSlotChange }))));
+        return (h(Host, { key: 'ee5c0a895569a3d88dc4479f030e03b627dc5748', role: "group", "aria-label": this.label, onClick: this.onClick }, h("div", { key: '8ad1d7ef92aac6b19e83d9fdf19ee6350e8eb35d', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, h("slot", { key: 'b9fd581c700bccde942affd8292aac69132401b5', onSlotchange: this.onSlotChange }))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

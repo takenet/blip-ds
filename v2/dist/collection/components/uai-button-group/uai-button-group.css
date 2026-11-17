@@ -27,30 +27,30 @@
 }
 
 .button-group {
-  --group-overlap: calc(-1 * var(--uai-border-width-default, 1px));
+  --group-divider: var(--uai-border-width-default, 1px) solid
+    var(--uai-border-default, #e4e6e7);
   display: flex;
+  overflow: hidden;
+  border: var(--group-divider);
+  border-radius: var(--uai-radius-lg, 0.75rem);
 }
 .button-group--row {
   flex-direction: row;
 }
 .button-group--row ::slotted(uai-button:not(:first-child)) {
-  margin-inline-start: var(--group-overlap);
+  border-inline-start: var(--group-divider);
 }
 .button-group--column {
   flex-direction: column;
 }
 .button-group--column ::slotted(uai-button:not(:first-child)) {
-  margin-block-start: var(--group-overlap);
+  border-block-start: var(--group-divider);
 }
 
 ::slotted(uai-button) {
   position: relative;
 }
 
-::slotted(uai-button.active) {
-  z-index: 1;
-}
-
 ::slotted(uai-button:focus-within) {
-  z-index: 2;
+  z-index: 1;
 }
