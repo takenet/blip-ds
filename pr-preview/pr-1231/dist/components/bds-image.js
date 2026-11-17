@@ -1,0 +1,1 @@
+import{I as r,d as o}from"./p-DrCAvrAf.js";const s=r,p=o;export{s as BdsImage,p as defineCustomElement}

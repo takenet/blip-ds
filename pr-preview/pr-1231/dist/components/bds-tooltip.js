@@ -1,0 +1,1 @@
+import{T as o,d as s}from"./p-viymZS9F.js";const m=o,p=s;export{m as BdsTooltip,p as defineCustomElement}

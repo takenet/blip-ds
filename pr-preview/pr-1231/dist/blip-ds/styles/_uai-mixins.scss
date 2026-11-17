@@ -1,0 +1,99 @@
+// Internal UAI primitives (w0-primitivas-internas): focus ring, motion and floating panels.
+// Every value comes from a UAI token, read at runtime with its own SCSS variable as fallback.
+@use 'sass:list';
+@use 'sass:map';
+@use 'blip-tokens/build/scss/uai-colors-light' as *;
+@use 'blip-tokens/build/scss/uai-dimensions' as *;
+@use 'blip-tokens/build/scss/uai-motion' as *;
+
+$uai-durations: (
+  instant: $uai-duration-instant,
+  fast: $uai-duration-fast,
+  moderate: $uai-duration-moderate,
+);
+
+// Solid neutral focus indicator (border/ring). Inputs may add their own halo with opacity/focus-ring.
+@mixin uai-focus-ring {
+  outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--uai-border-ring, #{$uai-border-ring});
+  outline-offset: var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+}
+
+@mixin uai-focus-visible {
+  &:focus-visible {
+    @include uai-focus-ring;
+  }
+}
+
+// For composite controls whose focus lands on an inner element.
+@mixin uai-focus-within {
+  &:focus-within {
+    @include uai-focus-ring;
+  }
+}
+
+@mixin uai-reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// Transitions the given properties with duration/<$duration> and easing/standard; none with reduced motion.
+@mixin uai-transition($properties, $duration: fast) {
+  @if not map.has-key($uai-durations, $duration) {
+    @error 'uai-transition: unknown duration "#{$duration}"; use #{map.keys($uai-durations)}.';
+  }
+  $transitions: ();
+  @each $property in $properties {
+    $transitions: list.append(
+      $transitions,
+      $property
+        var(--uai-duration-#{$duration}, #{map.get($uai-durations, $duration)})
+        var(--uai-easing-standard, #{$uai-easing-standard}),
+      $separator: comma
+    );
+  }
+  transition: $transitions;
+
+  @include uai-reduced-motion {
+    transition: none;
+  }
+}
+
+// Panel positioned by src/utils/uai-overlay.ts. It opens in the top layer (Popover API), takes no layout
+// space while closed and fades with duration/moderate. The custom properties feed the positioning math.
+@mixin uai-overlay-panel {
+  --uai-overlay-gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  --uai-overlay-margin: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  position: fixed;
+  inset: auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: auto;
+  background: transparent;
+  color: inherit;
+  opacity: 0;
+  transition:
+    opacity var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    display var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+      allow-discrete,
+    overlay var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+      allow-discrete;
+
+  &:not(.uai-overlay--open) {
+    display: none;
+  }
+
+  &.uai-overlay--open {
+    opacity: 1;
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  @include uai-reduced-motion {
+    transition: none;
+  }
+}
