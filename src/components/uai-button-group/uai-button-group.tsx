@@ -49,7 +49,7 @@ export class UaiButtonGroup {
 
   /**
    * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page
-   * surface separated by border/default. Use the other colors only to stress an accent.
+   * surface separated by border/input. Use the other colors only to stress an accent.
    */
   @Prop({ mutable: true }) color?: UaiButtonColor = 'content';
 

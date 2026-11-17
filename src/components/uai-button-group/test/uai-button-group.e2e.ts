@@ -95,7 +95,7 @@ describe('uai-button-group e2e', () => {
     expect(first[0]).not.toBe('0px');
   });
 
-  it('draws the neutral UAI Core group: page surface, border/default and a single line between items', async () => {
+  it('draws the neutral UAI Core group: page surface, border/input and a single line between items', async () => {
     const page = await create();
     // The group sets the buttons after they load, and uai-button animates the background (duration/fast).
     await new Promise((resolve) => setTimeout(resolve, 400));
@@ -103,7 +103,7 @@ describe('uai-button-group e2e', () => {
       // The token values the theme provider applies, resolved by the browser.
       const probe = document.createElement('div');
       probe.style.background = 'var(--uai-surface-background)';
-      probe.style.border = '1px solid var(--uai-border-default)';
+      probe.style.border = '1px solid var(--uai-border-input)';
       document.querySelector('uai-theme-provider').appendChild(probe);
       const tokens = { bg: getComputedStyle(probe).backgroundColor, border: getComputedStyle(probe).borderTopColor };
       probe.remove();

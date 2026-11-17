@@ -7,7 +7,7 @@ import * as ButtonGroupStories from './uai-button-group.stories';
 
 ## Visão geral
 
-Conjunto de `UaiButton` unidos, como no UAI Core: os itens ficam sobre a superfície da página (`surface-background`), com borda externa e divisórias `border-default`, nos temas claro e escuro. Clicar em um item o seleciona (ou vários, com `multiple`): o selecionado fica igual a um `UaiButton` padrão, sólido `primary` (num grupo colorido, sólido da própria cor). Use para poucas opções relacionadas, como modos de visualização, períodos ou filtros; para ações que não mantêm um estado selecionado, use botões separados.
+Conjunto de `UaiButton` unidos, como no UAI Core: os itens ficam sobre a superfície da página (`surface-background`), com borda externa e divisórias `border-input`, nos temas claro e escuro. Clicar em um item o seleciona (ou vários, com `multiple`): o selecionado fica igual a um `UaiButton` padrão, sólido `primary` (num grupo colorido, sólido da própria cor). Use para poucas opções relacionadas, como modos de visualização, períodos ou filtros; para ações que não mantêm um estado selecionado, use botões separados.
 
 ## Como usar
 
@@ -73,6 +73,6 @@ Troque `BdsButtonGroup` por `UaiButtonGroup`, `BdsButton` por `UaiButton` e `onB
 - **Tamanhos:** além de `medium` e `large`, valem `compact` e `short`, como no `UaiButton`.
 - **Correções:** cada clique conta uma vez (o legado somava um novo listener a cada atualização das props), botões adicionados depois são configurados e o grupo tem `role="group"` com `label`.
 
-Tokens: `surface-background`, `border-default`, `content-primary`, `action-outline-default` (hover) e `border-width-default`, além dos do `UaiButton`, que desenha os botões e os cantos unidos do grupo.
+Tokens: `surface-background`, `border-input`, `content-primary`, `action-outline-default` (hover) e `border-width-default`, além dos do `UaiButton`, que desenha os botões e os cantos unidos do grupo.
 
 [Componente no UAI Core](https://www.figma.com/design/xNgjSCmKfbgd3ed5mIPdHo/UAI-Design-Tokens?node-id=498-3282).
