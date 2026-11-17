@@ -3,7 +3,7 @@ import { BdsButton, BdsButtonGroup } from '../../../blip-ds-react/dist/component
 import DocumentationTemplate from './button-group.mdx';
 
 export default {
-  title: 'Components/Button Group',
+  title: 'Components/[deprecated] Button Group',
   tags: ['autodocs'],
   parameters: {
     docs: {

@@ -110,6 +110,7 @@ import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar }
 import { UaiBadge as UaiBadgeElement, defineCustomElement as defineUaiBadge } from "blip-ds/dist/components/uai-badge.js";
 import { UaiBanner as UaiBannerElement, defineCustomElement as defineUaiBanner } from "blip-ds/dist/components/uai-banner.js";
 import { UaiBreadcrumb as UaiBreadcrumbElement, defineCustomElement as defineUaiBreadcrumb } from "blip-ds/dist/components/uai-breadcrumb.js";
+import { UaiButtonGroup as UaiButtonGroupElement, defineCustomElement as defineUaiButtonGroup } from "blip-ds/dist/components/uai-button-group.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiChipTag as UaiChipTagElement, defineCustomElement as defineUaiChipTag } from "blip-ds/dist/components/uai-chip-tag.js";
@@ -1046,6 +1047,13 @@ export const UaiButton = createComponent({
     react: React,
     events: { onUaiClick: 'uaiClick' },
     defineCustomElement: defineUaiButton
+});
+export const UaiButtonGroup = createComponent({
+    tagName: 'uai-button-group',
+    elementClass: UaiButtonGroupElement,
+    react: React,
+    events: { onUaiButtonSelected: 'uaiButtonSelected' },
+    defineCustomElement: defineUaiButtonGroup
 });
 export const UaiCheckbox = createComponent({
     tagName: 'uai-checkbox',

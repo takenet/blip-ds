@@ -11,6 +11,9 @@ interface HTMLBdsButtonElement extends HTMLElement {
   setPosition(position: string): void;
 }
 
+/**
+ * @deprecated Use uai-button-group with uai-button and UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-button-group',
   styleUrl: 'button-group.scss',
