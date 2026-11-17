@@ -13,18 +13,19 @@ const create = (html = HTML) => newSpecPage({ components: [UaiButtonGroup, UaiBu
 
 const button = (page: SpecPage, id: string) => page.body.querySelector(`#${id}`) as HTMLUaiButtonElement;
 const inner = (page: SpecPage, id: string) => button(page, id).shadowRoot.querySelector('button');
+const pressed = (page: SpecPage, id: string) => inner(page, id).getAttribute('aria-pressed') === 'true';
 const click = async (page: SpecPage, id: string) => {
   button(page, id).click();
   await page.waitForChanges();
 };
 
 describe('uai-button-group', () => {
-  it('keeps the bds-button-group defaults, with the neutral color of UAI Core', async () => {
+  it('keeps the bds-button-group defaults', async () => {
     const page = await create();
     const group = page.rootInstance;
     expect(group.size).toBe('medium');
     expect(group.direction).toBe('row');
-    expect(group.color).toBe('content');
+    expect(group.color).toBe('primary');
     expect(group.multiple).toBe(false);
   });
 
@@ -44,7 +45,7 @@ describe('uai-button-group', () => {
     for (const id of ['a', 'b', 'c']) {
       expect(button(page, id).variant).toBe('outline');
       expect(button(page, id).size).toBe('medium');
-      expect(button(page, id).color).toBe('content');
+      expect(button(page, id).color).toBe('primary');
     }
   });
 
@@ -64,17 +65,17 @@ describe('uai-button-group', () => {
   });
 
   describe('single selection', () => {
-    it('selects the clicked button, makes it solid and pressed, and emits uaiButtonSelected', async () => {
+    it('selects the clicked button, shows it pressed, and emits uaiButtonSelected', async () => {
       const page = await create();
       const spy = jest.fn();
       page.root.addEventListener('uaiButtonSelected', spy);
 
       await click(page, 'b');
       await page.waitForChanges();
-      expect(button(page, 'b').variant).toBe('solid');
-      // A selected button in the neutral group is a regular uai-button: solid primary.
+      expect(pressed(page, 'b')).toBe(true);
+      // The selected button stays an outline button of the group color, in its pressed (active) state.
+      expect(button(page, 'b').variant).toBe('outline');
       expect(button(page, 'b').color).toBe('primary');
-      expect(button(page, 'a').color).toBe('content');
       expect(button(page, 'b').classList.contains('active')).toBe(true);
       expect(inner(page, 'b').getAttribute('aria-pressed')).toBe('true');
       expect(inner(page, 'a').getAttribute('aria-pressed')).toBe('false');
@@ -86,15 +87,14 @@ describe('uai-button-group', () => {
       await click(page, 'a');
       await click(page, 'c');
       await page.waitForChanges();
-      expect(button(page, 'a').variant).toBe('outline');
-      expect(button(page, 'c').variant).toBe('solid');
+      expect(pressed(page, 'a')).toBe(false);
+      expect(pressed(page, 'c')).toBe(true);
 
       const spy = jest.fn();
       page.root.addEventListener('uaiButtonSelected', spy);
       await click(page, 'c');
       await page.waitForChanges();
-      expect(button(page, 'c').variant).toBe('outline');
-      expect(button(page, 'c').color).toBe('content');
+      expect(pressed(page, 'c')).toBe(false);
       expect(spy.mock.calls[0][0].detail).toEqual({ id: 'c', index: 2, active: false, selected: [] });
     });
 
@@ -107,17 +107,18 @@ describe('uai-button-group', () => {
       page.root.addEventListener('uaiButtonSelected', spy);
       await click(page, 'a');
       expect(spy).toHaveBeenCalledTimes(1);
-      expect(button(page, 'a').variant).toBe('solid');
+      expect(pressed(page, 'a')).toBe(true);
     });
   });
 
-  it('keeps the accent color on the selected button of a colored group', async () => {
+  it('keeps the accent color on every button of a colored group, the selected one included', async () => {
     const page = await create();
     page.root.color = 'negative';
     await page.waitForChanges();
     await click(page, 'a');
     await page.waitForChanges();
-    expect(button(page, 'a').variant).toBe('solid');
+    expect(pressed(page, 'a')).toBe(true);
+    expect(button(page, 'a').variant).toBe('outline');
     expect(button(page, 'a').color).toBe('negative');
     expect(button(page, 'b').color).toBe('negative');
   });
@@ -133,8 +134,8 @@ describe('uai-button-group', () => {
       await click(page, 'c');
       await click(page, 'a');
       await page.waitForChanges();
-      expect(button(page, 'a').variant).toBe('solid');
-      expect(button(page, 'c').variant).toBe('solid');
+      expect(pressed(page, 'a')).toBe(true);
+      expect(pressed(page, 'c')).toBe(true);
       expect(spy.mock.calls[1][0].detail.selected).toEqual([0, 2]);
 
       await click(page, 'c');
@@ -149,8 +150,8 @@ describe('uai-button-group', () => {
       page.root.multiple = false;
       await page.waitForChanges();
       await page.waitForChanges();
-      expect(button(page, 'a').variant).toBe('solid');
-      expect(button(page, 'c').variant).toBe('outline');
+      expect(pressed(page, 'a')).toBe(true);
+      expect(pressed(page, 'c')).toBe(false);
     });
   });
 
@@ -163,7 +164,7 @@ describe('uai-button-group', () => {
       await page.root.activateButton(7);
       await page.root.activateButton(-1);
       await page.waitForChanges();
-      expect(button(page, 'b').variant).toBe('solid');
+      expect(pressed(page, 'b')).toBe(true);
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
@@ -182,7 +183,7 @@ describe('uai-button-group', () => {
     expect(inner(page, 'd').classList.contains('button--position-row-last')).toBe(true);
     await click(page, 'd');
     await page.waitForChanges();
-    expect(button(page, 'd').variant).toBe('solid');
+    expect(pressed(page, 'd')).toBe(true);
   });
 
   it('falls back to a row, with a warning, for an unknown direction', async () => {

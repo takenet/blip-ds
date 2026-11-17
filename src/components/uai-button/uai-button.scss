@@ -275,11 +275,14 @@
   }
 }
 
-// Item of a uai-button-group with the neutral outline (UAI Core button-group): the items sit on the page surface,
-// separated by border/input. The hover lifts the item to the action surface, since action/outline/hover equals
-// surface/background in the light theme.
-:host(.uai-button--group) .button--outline.button--color-content {
-  --button-bg: var(--uai-surface-background, #{$uai-surface-background});
-  --button-border: var(--uai-border-input, #{$uai-border-input});
-  --button-bg-hover: var(--uai-action-outline-default, #{$uai-action-outline-default});
+// Item of a uai-button-group (UAI Core uaiButtonGroup): the group draws the border, the rounded corners and the
+// dividers, so a grouped button has neither its own border nor a radius. The group clips its corners, so the focus
+// ring is drawn inside the button. A selected item is the button in its active state (Pressed in UAI Core).
+:host(.uai-button--group) .button {
+  --button-border: transparent;
+  border-radius: 0;
+
+  &:focus-visible {
+    outline-offset: calc(-1 * var(--uai-spacing-3xs, #{$uai-spacing-3xs}));
+  }
 }
