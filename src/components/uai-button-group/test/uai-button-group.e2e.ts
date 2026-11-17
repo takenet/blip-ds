@@ -33,7 +33,8 @@ describe('uai-button-group e2e', () => {
     await page.click('#b');
     await page.waitForChanges();
     expect(await pressed(page)).toEqual(['false', 'true', 'false']);
-    expect(await variants(page)).toEqual(['outline', 'solid', 'outline']);
+    // Every item stays an outline button; the selected one is in its pressed (active) state.
+    expect(await variants(page)).toEqual(['outline', 'outline', 'outline']);
   });
 
   it('toggles with the keyboard', async () => {
@@ -72,70 +73,78 @@ describe('uai-button-group e2e', () => {
     expect(await pressed(page)).toEqual(['true', 'false', 'true']);
   });
 
-  it('joins the buttons in a row and in a column', async () => {
-    const page = await create();
-    const radii = () =>
-      page.evaluate(() =>
-        ['a', 'b', 'c'].map((id) => {
-          const style = getComputedStyle(document.getElementById(id).shadowRoot.querySelector('button'));
-          return [style.borderTopLeftRadius, style.borderTopRightRadius, style.borderBottomLeftRadius];
-        }),
-      );
-    let [first, middle, last] = await radii();
-    expect(first[1]).toBe('0px');
-    expect(middle).toEqual(['0px', '0px', '0px']);
-    expect(last[0]).toBe('0px');
-    expect(first[0]).not.toBe('0px');
+  // Reads the group container and each button, after uai-button's background transition (duration/fast).
+  const layout = async (page: E2EPage) => {
+    await page.mouse.move(600, 600);
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    return page.evaluate(() => {
+      const probe = document.createElement('div');
+      probe.style.border = '1px solid var(--uai-border-default)';
+      probe.style.borderRadius = 'var(--uai-radius-lg)';
+      document.querySelector('uai-theme-provider').appendChild(probe);
+      const token = {
+        border: getComputedStyle(probe).borderTopColor,
+        radius: getComputedStyle(probe).borderTopLeftRadius,
+      };
+      probe.remove();
+      const group = getComputedStyle(document.getElementById('group').shadowRoot.querySelector('.button-group'));
+      const items = ['a', 'b', 'c'].map((id) => {
+        const host = getComputedStyle(document.getElementById(id));
+        const inner = getComputedStyle(document.getElementById(id).shadowRoot.querySelector('button'));
+        return {
+          radius: inner.borderTopLeftRadius,
+          border: inner.borderTopColor,
+          bg: inner.backgroundColor,
+          dividerStart: `${host.borderLeftWidth} ${host.borderLeftColor}`,
+          dividerTop: `${host.borderTopWidth} ${host.borderTopColor}`,
+        };
+      });
+      return {
+        token,
+        group: { border: group.borderTopColor, radius: group.borderTopLeftRadius, overflow: group.overflow },
+        items,
+      };
+    });
+  };
 
+  it('draws the UAI Core group: one rounded border, clipped corners and a divider between the buttons', async () => {
+    const page = await create();
+    const { token, group, items } = await layout(page);
+
+    expect(group).toEqual({ border: token.border, radius: token.radius, overflow: 'hidden' });
+    for (const item of items) {
+      expect(item.radius).toBe('0px');
+      expect(item.border).toBe('rgba(0, 0, 0, 0)');
+    }
+    expect(items[0].dividerStart.startsWith('0px')).toBe(true);
+    expect(items[1].dividerStart).toBe(`1px ${token.border}`);
+    expect(items[2].dividerStart).toBe(`1px ${token.border}`);
+  });
+
+  it('draws the dividers on top of the buttons in a column', async () => {
+    const page = await create();
     await page.evaluate(() => ((document.getElementById('group') as any).direction = 'column'));
     await page.waitForChanges();
-    [first, middle, last] = await radii();
-    expect(first[2]).toBe('0px');
-    expect(last[0]).toBe('0px');
-    expect(first[0]).not.toBe('0px');
+    const { token, items } = await layout(page);
+
+    expect(items[0].dividerTop.startsWith('0px')).toBe(true);
+    expect(items[1].dividerTop).toBe(`1px ${token.border}`);
+    expect(items[1].dividerStart.startsWith('0px')).toBe(true);
+    for (const item of items) expect(item.radius).toBe('0px');
   });
 
-  it('draws the neutral UAI Core group: page surface, border/input and a single line between items', async () => {
-    const page = await create();
-    // The group sets the buttons after they load, and uai-button animates the background (duration/fast).
-    await new Promise((resolve) => setTimeout(resolve, 400));
-    const styles = await page.evaluate(() => {
-      // The token values the theme provider applies, resolved by the browser.
-      const probe = document.createElement('div');
-      probe.style.background = 'var(--uai-surface-background)';
-      probe.style.border = '1px solid var(--uai-border-input)';
-      document.querySelector('uai-theme-provider').appendChild(probe);
-      const tokens = { bg: getComputedStyle(probe).backgroundColor, border: getComputedStyle(probe).borderTopColor };
-      probe.remove();
-      const buttons = ['a', 'b'].map((id) => {
-        const style = getComputedStyle(document.getElementById(id).shadowRoot.querySelector('button'));
-        const box = document.getElementById(id).getBoundingClientRect();
-        return { bg: style.backgroundColor, border: style.borderTopColor, left: box.left, right: box.right };
-      });
-      return { tokens, buttons };
-    });
-    expect(styles.buttons[0].bg).toBe(styles.tokens.bg);
-    expect(styles.buttons[0].border).toBe(styles.tokens.border);
-    // The second button starts one border width before the end of the first, so their borders overlap.
-    expect(Math.round(styles.buttons[0].right - styles.buttons[1].left)).toBe(1);
-  });
-
-  it('draws the selected button as a regular uai-button that is on (solid primary, active)', async () => {
-    const page = await create(`${HTML}<uai-button id="reference">Referência</uai-button>`);
-    // A toggled-on uai-button uses its own active state, the pressed tone of its color.
+  it('shows the selected button pressed, as an active outline uai-button', async () => {
+    const page = await create(`${HTML}<uai-button id="reference" variant="outline">Referência</uai-button>`);
     await page.evaluate(() => (document.getElementById('reference') as any).isActive(true));
     await page.click('#b');
     await page.waitForChanges();
-    // Move the pointer away so the button shows its rest state, not the hover; uai-button animates the background.
-    await page.mouse.move(600, 600);
-    await new Promise((resolve) => setTimeout(resolve, 400));
-    const colors = await page.evaluate(() =>
-      ['b', 'reference'].map((id) => {
-        const style = getComputedStyle(document.getElementById(id).shadowRoot.querySelector('button'));
-        return { bg: style.backgroundColor, fg: style.color };
-      }),
+    const { items } = await layout(page);
+    const reference = await page.evaluate(
+      () => getComputedStyle(document.getElementById('reference').shadowRoot.querySelector('button')).backgroundColor,
     );
-    expect(colors[0]).toEqual(colors[1]);
+
+    expect(items[1].bg).toBe(reference);
+    expect(items[0].bg).not.toBe(reference);
   });
 
   it('sets up a button added after the render', async () => {
@@ -149,7 +158,11 @@ describe('uai-button-group e2e', () => {
     await page.waitForChanges();
     await page.click('#d');
     await page.waitForChanges();
-    expect(await page.evaluate(() => (document.getElementById('d') as any).variant)).toBe('solid');
+    expect(
+      await page.evaluate(() =>
+        document.getElementById('d').shadowRoot.querySelector('button').getAttribute('aria-pressed'),
+      ),
+    ).toBe('true');
     expect(
       await page.evaluate(() =>
         document

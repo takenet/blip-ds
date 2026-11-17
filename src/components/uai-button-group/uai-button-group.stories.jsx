@@ -52,7 +52,7 @@ export const Playground = (args) => (
     <IconButtons />
   </UaiButtonGroup>
 );
-Playground.args = { size: 'medium', color: 'content', direction: 'row', multiple: false, label: 'Alinhamento' };
+Playground.args = { size: 'medium', color: 'primary', direction: 'row', multiple: false, label: 'Alinhamento' };
 Playground.argTypes = {
   size: {
     options: ['compact', 'short', 'medium', 'large'],
@@ -60,9 +60,9 @@ Playground.argTypes = {
     table: { defaultValue: { summary: 'medium' } },
   },
   color: {
-    options: ['content', 'primary', 'positive', 'negative'],
+    options: ['primary', 'content', 'positive', 'negative'],
     control: 'select',
-    table: { defaultValue: { summary: 'content' } },
+    table: { defaultValue: { summary: 'primary' } },
   },
   direction: { options: ['row', 'column'], control: 'select', table: { defaultValue: { summary: 'row' } } },
   multiple: { control: 'boolean', table: { defaultValue: { summary: 'false' } } },
@@ -76,7 +76,7 @@ export const WithLabels = () => (
   </UaiButtonGroup>
 );
 
-// Items with a trailing icon, as in the UAI Core button-group, for actions that open a menu.
+// Items with a trailing icon, for actions that open a menu.
 export const WithMenuIcons = () => (
   <UaiButtonGroup label="Ações">
     {['Exportar', 'Compartilhar', 'Mais'].map((item) => (
@@ -105,7 +105,7 @@ export const SizesAndColors = () => (
         <IconButtons />
       </UaiButtonGroup>
     ))}
-    {['content', 'primary', 'positive', 'negative'].map((color) => (
+    {['primary', 'content', 'positive', 'negative'].map((color) => (
       <UaiButtonGroup key={color} label={`Cor ${color}`} color={color}>
         <IconButtons />
       </UaiButtonGroup>

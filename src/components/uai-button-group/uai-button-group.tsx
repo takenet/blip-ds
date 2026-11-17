@@ -26,8 +26,8 @@ export interface UaiButtonGroupSelectedDetail {
 const DIRECTIONS: readonly UaiButtonDirection[] = ['row', 'column'];
 
 /**
- * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
- * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+ * Set of joined outline uai-button toggles for picking one option, or several with `multiple`, as the UAI Core
+ * uaiButtonGroup. A selected button shows the pressed state and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
  * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
  *
  * @slot - The uai-button elements of the group.
@@ -47,11 +47,8 @@ export class UaiButtonGroup {
   /** Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars. */
   @Prop({ mutable: true }) direction?: UaiButtonDirection = 'row';
 
-  /**
-   * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page
-   * surface separated by border/input. Use the other colors only to stress an accent.
-   */
-  @Prop({ mutable: true }) color?: UaiButtonColor = 'content';
+  /** Color of the outline buttons of the group. 'primary' is the UAI Core group; use the others to stress an accent. */
+  @Prop({ mutable: true }) color?: UaiButtonColor = 'primary';
 
   /** Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views. */
   @Prop({ mutable: true }) multiple?: boolean = false;
@@ -111,14 +108,13 @@ export class UaiButtonGroup {
         if (typeof button.setPosition !== 'function') return;
         const active = this.selected.includes(index);
         const last = buttons.length - 1;
-        // A selected button is a regular uai-button: solid primary in the neutral group, solid of the accent otherwise.
-        const color = active && this.color === 'content' ? 'primary' : this.color;
         await Promise.all([
           button.setPosition(index === 0 ? 'first' : index === last ? 'last' : 'middle'),
           button.setDirection(direction),
           button.setSize(this.size),
-          button.setColor(color),
-          button.setVariant(active ? 'solid' : 'outline'),
+          button.setColor(this.color),
+          // Every item is an outline button; the selected one is in its active state (Pressed in UAI Core).
+          button.setVariant('outline'),
           button.isActive(active),
         ]);
         button.classList.toggle('active', active);
