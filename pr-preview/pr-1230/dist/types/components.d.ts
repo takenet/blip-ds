@@ -4136,7 +4136,7 @@ export namespace Components {
          */
         "activateButton": (index: number) => Promise<void>;
         /**
-          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/default. Use the other colors only to stress an accent.
+          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/input. Use the other colors only to stress an accent.
           * @default 'content'
          */
         "color"?: UaiButtonColor1;
@@ -13547,7 +13547,7 @@ declare namespace LocalJSX {
      */
     interface UaiButtonGroup {
         /**
-          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/default. Use the other colors only to stress an accent.
+          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/input. Use the other colors only to stress an accent.
           * @default 'content'
          */
         "color"?: UaiButtonColor1;

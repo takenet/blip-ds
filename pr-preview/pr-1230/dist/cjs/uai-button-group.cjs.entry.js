@@ -15,7 +15,7 @@ const UaiButtonGroup = class {
         this.direction = 'row';
         /**
          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page
-         * surface separated by border/default. Use the other colors only to stress an accent.
+         * surface separated by border/input. Use the other colors only to stress an accent.
          */
         this.color = 'content';
         /** Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views. */
@@ -103,7 +103,7 @@ const UaiButtonGroup = class {
     }
     render() {
         const direction = DIRECTIONS.includes(this.direction) ? this.direction : 'row';
-        return (index.h(index.Host, { key: '61adb6bde111e14a5e5f93f3edeaff06b2686360', role: "group", "aria-label": this.label, onClick: this.onClick }, index.h("div", { key: '30aa7a4ca2829a9eda8c4c1f474a8070a74fa4ac', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, index.h("slot", { key: '2f8178db9f029bfa3251724afbb8a070713c700b', onSlotchange: this.onSlotChange }))));
+        return (index.h(index.Host, { key: 'bb3bd3a413dd5348679654c3440a18018ff5f4ce', role: "group", "aria-label": this.label, onClick: this.onClick }, index.h("div", { key: '84129f517a20c9849d87524571ddfee04f8889a2', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, index.h("slot", { key: '5446fafba75f691c3c29a6174956f6ce42abfbff', onSlotchange: this.onSlotChange }))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

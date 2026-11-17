@@ -257,5 +257,6 @@
 }
 :host(.uai-button--group) .button--outline.button--color-content {
   --button-bg: var(--uai-surface-background, #f2f3f3);
+  --button-border: var(--uai-border-input, #adb4b8);
   --button-bg-hover: var(--uai-action-outline-default, #ffffff);
 }
