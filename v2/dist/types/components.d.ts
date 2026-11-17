@@ -81,6 +81,8 @@ import { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 import { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
 import { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
+import { UaiButtonColor as UaiButtonColor1, UaiButtonDirection as UaiButtonDirection1, UaiButtonSize as UaiButtonSize1 } from "./components/uai-button/uai-button";
+import { UaiButtonGroupSelectedDetail } from "./components/uai-button-group/uai-button-group";
 import { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -182,6 +184,8 @@ export { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 export { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
 export { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
+export { UaiButtonColor as UaiButtonColor1, UaiButtonDirection as UaiButtonDirection1, UaiButtonSize as UaiButtonSize1 } from "./components/uai-button/uai-button";
+export { UaiButtonGroupSelectedDetail } from "./components/uai-button-group/uai-button-group";
 export { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -673,6 +677,9 @@ export namespace Components {
          */
         "variant"?: ButtonVariant;
     }
+    /**
+     * @deprecated Use uai-button-group with uai-button and UaiThemeProvider for tokenized styling.
+     */
     interface BdsButtonGroup {
         "activateButton": (index: number) => Promise<void>;
         /**
@@ -4119,6 +4126,41 @@ export namespace Components {
         "variant"?: UaiButtonVariant;
     }
     /**
+     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
+     */
+    interface UaiButtonGroup {
+        /**
+          * Selects or unselects the button at `index`, as a click would. Ignored for an index outside the group.
+         */
+        "activateButton": (index: number) => Promise<void>;
+        /**
+          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/input. Use the other colors only to stress an accent.
+          * @default 'content'
+         */
+        "color"?: UaiButtonColor1;
+        /**
+          * Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars.
+          * @default 'row'
+         */
+        "direction"?: UaiButtonDirection1;
+        /**
+          * Accessible name of the group. Use a short noun phrase that says what the buttons choose, such as "Visualização".
+         */
+        "label"?: string;
+        /**
+          * Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views.
+          * @default false
+         */
+        "multiple"?: boolean;
+        /**
+          * Size of every button in the group. Use the same size as the controls around the group.
+          * @default 'medium'
+         */
+        "size"?: UaiButtonSize1;
+    }
+    /**
      * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
      * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.
      */
@@ -6861,6 +6903,10 @@ export interface UaiButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiButtonElement;
 }
+export interface UaiButtonGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiButtonGroupElement;
+}
 export interface UaiCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiCheckboxElement;
@@ -7163,6 +7209,9 @@ declare global {
     interface HTMLBdsButtonGroupElementEventMap {
         "buttonSelected": string;
     }
+    /**
+     * @deprecated Use uai-button-group with uai-button and UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsButtonGroupElement extends Components.BdsButtonGroup, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsButtonGroupElementEventMap>(type: K, listener: (this: HTMLBdsButtonGroupElement, ev: BdsButtonGroupCustomEvent<HTMLBdsButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8434,6 +8483,28 @@ declare global {
         prototype: HTMLUaiButtonElement;
         new (): HTMLUaiButtonElement;
     };
+    interface HTMLUaiButtonGroupElementEventMap {
+        "uaiButtonSelected": UaiButtonGroupSelectedDetail;
+    }
+    /**
+     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
+     */
+    interface HTMLUaiButtonGroupElement extends Components.UaiButtonGroup, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiButtonGroupElementEventMap>(type: K, listener: (this: HTMLUaiButtonGroupElement, ev: UaiButtonGroupCustomEvent<HTMLUaiButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiButtonGroupElementEventMap>(type: K, listener: (this: HTMLUaiButtonGroupElement, ev: UaiButtonGroupCustomEvent<HTMLUaiButtonGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiButtonGroupElement: {
+        prototype: HTMLUaiButtonGroupElement;
+        new (): HTMLUaiButtonGroupElement;
+    };
     interface HTMLUaiCheckboxElementEventMap {
         "uaiChange": { checked: boolean; indeterminate: boolean };
         "uaiInput": KeyboardEvent;
@@ -9238,6 +9309,7 @@ declare global {
         "uai-banner": HTMLUaiBannerElement;
         "uai-breadcrumb": HTMLUaiBreadcrumbElement;
         "uai-button": HTMLUaiButtonElement;
+        "uai-button-group": HTMLUaiButtonGroupElement;
         "uai-checkbox": HTMLUaiCheckboxElement;
         "uai-chip-tag": HTMLUaiChipTagElement;
         "uai-dropdown": HTMLUaiDropdownElement;
@@ -9774,6 +9846,9 @@ declare namespace LocalJSX {
          */
         "variant"?: ButtonVariant;
     }
+    /**
+     * @deprecated Use uai-button-group with uai-button and UaiThemeProvider for tokenized styling.
+     */
     interface BdsButtonGroup {
         /**
           * Color scheme for the buttons. Default is 'primary'.
@@ -13466,6 +13541,41 @@ declare namespace LocalJSX {
         "variant"?: UaiButtonVariant;
     }
     /**
+     * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+     * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+     * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
+     */
+    interface UaiButtonGroup {
+        /**
+          * Color of every button in the group. 'content' (default) is the neutral group of UAI Core: items on the page surface separated by border/input. Use the other colors only to stress an accent.
+          * @default 'content'
+         */
+        "color"?: UaiButtonColor1;
+        /**
+          * Layout of the group: 'row' or 'column'. Use 'column' for vertical toolbars.
+          * @default 'row'
+         */
+        "direction"?: UaiButtonDirection1;
+        /**
+          * Accessible name of the group. Use a short noun phrase that says what the buttons choose, such as "Visualização".
+         */
+        "label"?: string;
+        /**
+          * Allows several buttons to be selected at once. Use for independent filters; avoid for mutually exclusive views.
+          * @default false
+         */
+        "multiple"?: boolean;
+        /**
+          * Emitted when a button is clicked, with its id and index, whether it is now selected, and every selected index.
+         */
+        "onUaiButtonSelected"?: (event: UaiButtonGroupCustomEvent<UaiButtonGroupSelectedDetail>) => void;
+        /**
+          * Size of every button in the group. Use the same size as the controls around the group.
+          * @default 'medium'
+         */
+        "size"?: UaiButtonSize1;
+    }
+    /**
      * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
      * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.
      */
@@ -16969,6 +17079,13 @@ declare namespace LocalJSX {
         "ariaHaspopup": 'true' | 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog';
         "dataTest": string;
     }
+    interface UaiButtonGroupAttributes {
+        "size": UaiButtonSize;
+        "direction": UaiButtonDirection;
+        "color": UaiButtonColor;
+        "multiple": boolean;
+        "label": string;
+    }
     interface UaiCheckboxAttributes {
         "refer": string;
         "label": string;
@@ -17578,6 +17695,7 @@ declare namespace LocalJSX {
         "uai-banner": Omit<UaiBanner, keyof UaiBannerAttributes> & { [K in keyof UaiBanner & keyof UaiBannerAttributes]?: UaiBanner[K] } & { [K in keyof UaiBanner & keyof UaiBannerAttributes as `attr:${K}`]?: UaiBannerAttributes[K] } & { [K in keyof UaiBanner & keyof UaiBannerAttributes as `prop:${K}`]?: UaiBanner[K] };
         "uai-breadcrumb": Omit<UaiBreadcrumb, keyof UaiBreadcrumbAttributes> & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes]?: UaiBreadcrumb[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `attr:${K}`]?: UaiBreadcrumbAttributes[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `prop:${K}`]?: UaiBreadcrumb[K] };
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
+        "uai-button-group": Omit<UaiButtonGroup, keyof UaiButtonGroupAttributes> & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes]?: UaiButtonGroup[K] } & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes as `attr:${K}`]?: UaiButtonGroupAttributes[K] } & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes as `prop:${K}`]?: UaiButtonGroup[K] };
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
         "uai-chip-tag": Omit<UaiChipTag, keyof UaiChipTagAttributes> & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes]?: UaiChipTag[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `attr:${K}`]?: UaiChipTagAttributes[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `prop:${K}`]?: UaiChipTag[K] };
         "uai-dropdown": Omit<UaiDropdown, keyof UaiDropdownAttributes> & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes]?: UaiDropdown[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `attr:${K}`]?: UaiDropdownAttributes[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `prop:${K}`]?: UaiDropdown[K] };
@@ -17649,6 +17767,9 @@ declare module "@stencil/core" {
              */
             "bds-breadcrumb": LocalJSX.IntrinsicElements["bds-breadcrumb"] & JSXBase.HTMLAttributes<HTMLBdsBreadcrumbElement>;
             "bds-button": LocalJSX.IntrinsicElements["bds-button"] & JSXBase.HTMLAttributes<HTMLBdsButtonElement>;
+            /**
+             * @deprecated Use uai-button-group with uai-button and UaiThemeProvider for tokenized styling.
+             */
             "bds-button-group": LocalJSX.IntrinsicElements["bds-button-group"] & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
             "bds-button-icon": LocalJSX.IntrinsicElements["bds-button-icon"] & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
             "bds-card": LocalJSX.IntrinsicElements["bds-card"] & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
@@ -17854,6 +17975,12 @@ declare module "@stencil/core" {
              * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
              */
             "uai-button": LocalJSX.IntrinsicElements["uai-button"] & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
+            /**
+             * Set of joined uai-button toggles for picking one option, or several with `multiple`. A selected button looks like a
+             * regular uai-button (solid primary in the neutral group) and exposes aria-pressed. Use for a few related options such as views or filters; pair each icon-only button with an
+             * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
+             */
+            "uai-button-group": LocalJSX.IntrinsicElements["uai-button-group"] & JSXBase.HTMLAttributes<HTMLUaiButtonGroupElement>;
             /**
              * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
              * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.

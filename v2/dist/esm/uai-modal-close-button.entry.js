@@ -13,10 +13,10 @@ const UaiModalCloseButton = class {
         this.dtButton = null;
     }
     render() {
-        return (h(Host, { key: 'e074004aeec92d8ea9282e84c5d27669200933bb' }, h("div", { key: 'bc341c4c39648631da957a7b4f0980940981ae64', class: {
+        return (h(Host, { key: '28216fc4c67d499ad9b3bd2c4d9bdbfe9b469b78' }, h("div", { key: '28ffc98b60bb3c84cc250a28e97ae84713db64f1', class: {
                 'modal__close__button-icon': true,
                 'modal__close__button-icon--active': this.active,
-            } }, h("button", { key: 'b2281eecc41763448948597b760a54f3300b228a', type: "button", class: "modal__close__button", part: "button", "aria-label": this.label, "data-test": this.dtButton, disabled: !this.active }, h("uai-icon", { key: 'a681c0bf440d70fdace1b907b0bd100e9ec632d2', name: "close", size: "medium", "aria-hidden": "true" })))));
+            } }, h("button", { key: '7c04c49a32a0ba565f80146d6d986662ec9a9a88', type: "button", class: "modal__close__button", part: "button", "aria-label": this.label, "data-test": this.dtButton, disabled: !this.active }, h("uai-icon", { key: 'f274322dc727c8b62f0a261868c8c7348de8fcb8', name: "close", size: "medium", "aria-hidden": "true" })))));
     }
 };
 UaiModalCloseButton.style = uaiModalCloseButtonCss();

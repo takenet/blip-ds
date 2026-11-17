@@ -50,7 +50,7 @@ const UaiIcon = class {
         if (!known) {
             warnOnce('uai-icon', `name:${theme}:${this.name}`, `"${this.name}" is not a ${theme} icon of the UAI icon font.`);
         }
-        return (h(Host, { key: 'daf53418a113fede5ede583b693b539fb9bee7ce', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: '7226012620c32be9397d157940d75315b611793f', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, part: "glyph", "data-test": this.dataTest })));
+        return (h(Host, { key: 'd357629d3c35c42d9878135f64dbc17923437f78', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: 'c0d7709c542917ef78d1208b3efd5324b5ca71d4', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, part: "glyph", "data-test": this.dataTest })));
     }
 };
 UaiIcon.style = uaiIconCss();
@@ -147,7 +147,7 @@ const UaiTypo = class {
         const bold = supported('bold', this.bold, BOLDS, 'regular');
         const letterSpacing = supported('letterSpacing', this.letterSpacing, LETTER_SPACINGS, 'normal');
         const Tag = supported('tag', this.tag, TAGS, 'p');
-        return (h(Tag, { key: '72c93bed514125549249f6ea2a8e6fd75830e006', class: {
+        return (h(Tag, { key: '011a733fd66578d2e17b683e045e238d951a2542', class: {
                 typo: true,
                 [`typo--variant-${variant}`]: true,
                 [`typo--bold-${bold}`]: true,
@@ -156,7 +156,7 @@ const UaiTypo = class {
                 'typo--paragraph': this.paragraph,
                 'typo--italic': this.italic,
                 'typo--no-wrap': this.noWrap,
-            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: '562f21938815b7f27d6356ed52db9aa5324e7eda' })));
+            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: 'a266ac57cbadd21b5bfe3f481a426b3928c227a6' })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

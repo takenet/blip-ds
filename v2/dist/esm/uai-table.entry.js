@@ -11,7 +11,7 @@ const UaiTable = class {
         this.label = null;
     }
     render() {
-        return (h(Host, { key: 'c07326f516a35397fb7ffdc7af40f4923ab1f2b5', role: "table", "aria-label": this.label, style: this.columns ? { '--uai-table-columns': this.columns } : undefined }, h("slot", { key: '37dd2c4631b995fe57daa5bcb6a8d005dd17b14f' })));
+        return (h(Host, { key: '5d9b1b136eeccb75c862774ec119643a86a20c72', role: "table", "aria-label": this.label, style: this.columns ? { '--uai-table-columns': this.columns } : undefined }, h("slot", { key: '1cdf79a7c08cb3351d10e0d1fe6d93523e8f96b8' })));
     }
     get el() { return getElement(this); }
 };

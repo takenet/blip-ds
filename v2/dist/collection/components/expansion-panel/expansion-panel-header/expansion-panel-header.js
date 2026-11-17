@@ -1,7 +1,7 @@
 import { Host, h } from "@stencil/core";
 export class ExpansionPanelHeader {
     render() {
-        return (h(Host, { key: 'f45556030aaae462274ef1c5cb90b02edf35b0e4' }, h("div", { key: '4420eea83495f8419bdb898998dd451d83b43521', class: "header" }, h("slot", { key: '7bfd5c95a4392c0c19f3738b2ba3d00052e7d371' })), h("bds-typo", { key: '4dc1fe19bde064a2fee3682772a47e774d737d30', tag: "p", variant: "fs-12" }, this.text)));
+        return (h(Host, { key: 'fb4d86776fdc83fcf881d1d44b6a86bf128c4fcd' }, h("div", { key: 'fd4cdf6cd2651eb9182a7dcd1d792ef53d932865', class: "header" }, h("slot", { key: '85105cb6070262aa1ab58a8b9e4102054dec7651' })), h("bds-typo", { key: '7560e58dbe685590b12adf5860f4bc1ce6405de0', tag: "p", variant: "fs-12" }, this.text)));
     }
     static get is() { return "bds-expansion-panel-header"; }
     static get encapsulation() { return "shadow"; }

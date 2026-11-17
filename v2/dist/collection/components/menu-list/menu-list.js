@@ -1,7 +1,7 @@
 import { Host, h } from "@stencil/core";
 export class MenuList {
     render() {
-        return (h(Host, { key: '3067387d8e7ebced8df4af0c1a6862a060bbac1b' }, h("div", { key: '3cd362876aca385c6ab5dfad8bb56173d084d721', class: "menu-list" }, h("div", { key: '6aa27a10a5c34fd09b7f690f8c8acea0875174a9', class: "menu-list__left" }), h("slot", { key: '3549cd8720af844c69bf2980e2f76cff25184514' }), h("div", { key: 'd1138aec52240186d41599bdb5320f95de5837ff', class: "menu-list__right" }))));
+        return (h(Host, { key: '5d99f0ff282bf159d9834635b56975ba0a60ee33' }, h("div", { key: 'ec4dc921f997ac8f7ef5e886dda843ed614f6c2f', class: "menu-list" }, h("div", { key: 'fbabd5088b23d69f595af29809a0e52d35ceb3b8', class: "menu-list__left" }), h("slot", { key: '7aa6c3cbff23a1e134f41406fbd6268f209c156d' }), h("div", { key: '2c0ff79247fdabb6319b291e42d398cb18ed3749', class: "menu-list__right" }))));
     }
     static get is() { return "bds-menu-list"; }
     static get encapsulation() { return "shadow"; }

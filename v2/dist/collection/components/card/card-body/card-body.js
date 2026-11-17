@@ -1,7 +1,7 @@
 import { h } from "@stencil/core";
 export class CardBody {
     render() {
-        return (h("bds-grid", { key: '79e012fb8338436b6f59c1d758f6c3a62bacd9cb' }, h("slot", { key: 'a27fc634212d330d72ba9475f361a77c231342fc' })));
+        return (h("bds-grid", { key: '57ce28df3a4ecd47dd99d9ba4538bebfea895fff' }, h("slot", { key: '00f97a4ffed000c100bee749e81e1e238ca7a8ac' })));
     }
     static get is() { return "bds-card-body"; }
     static get encapsulation() { return "shadow"; }

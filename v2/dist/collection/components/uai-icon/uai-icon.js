@@ -55,7 +55,7 @@ export class UaiIcon {
         if (!known) {
             warnOnce('uai-icon', `name:${theme}:${this.name}`, `"${this.name}" is not a ${theme} icon of the UAI icon font.`);
         }
-        return (h(Host, { key: 'daf53418a113fede5ede583b693b539fb9bee7ce', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: '7226012620c32be9397d157940d75315b611793f', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, part: "glyph", "data-test": this.dataTest })));
+        return (h(Host, { key: 'd357629d3c35c42d9878135f64dbc17923437f78', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: 'c0d7709c542917ef78d1208b3efd5324b5ca71d4', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, part: "glyph", "data-test": this.dataTest })));
     }
     static get is() { return "uai-icon"; }
     static get encapsulation() { return "shadow"; }

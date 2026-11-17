@@ -17,10 +17,10 @@ const BdsMenuSeparation = class {
         this.size = null;
     }
     render() {
-        return (index.h("div", { key: '342952c593a0033ca79e3de8219ff0f40dfcc230', class: {
+        return (index.h("div", { key: '4d3b8a3553cad15d8a94daee008f100eb2fd3c74', class: {
                 menuseparation: true,
                 [`menuseparation__${this.size}`]: true,
-            } }, this.value && (index.h("bds-typo", { key: '26e879bdbac64f4527202d4cd0fa2c5086fff978', class: "title-item", variant: "fs-10", tag: "span" }, this.value)), index.h("div", { key: '9c00b12a67588c3a8450505d1f43ca5849d4c691', class: "dividor-item" })));
+            } }, this.value && (index.h("bds-typo", { key: 'e919f6f5803476d3f947ef56a39891eb470e0c56', class: "title-item", variant: "fs-10", tag: "span" }, this.value)), index.h("div", { key: '0f0a08faebdb279aca009221bd16ed6f0506a7cb', class: "dividor-item" })));
     }
 };
 BdsMenuSeparation.style = menuSeparationCss();

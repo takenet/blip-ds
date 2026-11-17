@@ -7,7 +7,7 @@ const BdsModalAction = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h("div", { key: 'cf64167250bcab6a34402fa07d0b8af2c2903e51', class: "modal__action" }, h("slot", { key: '592fe9b22e2030893e57a0636ec45d6b94722de3' })));
+        return (h("div", { key: 'cec2dd1d12eea760598dffd918adb7ecf7ad5abd', class: "modal__action" }, h("slot", { key: 'd8a4435e85ee167bf08bfe7b7a510d9bf1fcfa42' })));
     }
 };
 BdsModalAction.style = modalActionCss();

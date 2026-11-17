@@ -1,6 +1,9 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { direction } from '../grid/grid-interface';
 import { ButtonSize } from './button';
+/**
+ * @deprecated Use uai-button-group with uai-button and UaiThemeProvider for tokenized styling.
+ */
 export declare class ButtonGroup {
     el: HTMLElement;
     activeIndexes: Set<number>;

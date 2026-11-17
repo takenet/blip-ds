@@ -30,7 +30,7 @@ export class UaiTableRow {
         const variant = VARIANTS.find((candidate) => candidate === this.variant) || 'row';
         if (variant !== this.variant)
             warnLegacyValue('uai-table-row', 'variant', this.variant, variant);
-        return (h(Host, { key: 'f3e3fa29bb8c4034471d693bf639515046ceb3fe', role: "row", "aria-selected": this.selected ? 'true' : undefined, tabindex: this.clickable ? 0 : undefined, "data-test": this.dataTest, onKeyDown: this.onKeyDown }, h("slot", { key: '11492c3a1c61279a23065d7565d31f47c31d11bb' })));
+        return (h(Host, { key: 'b2171b1f839dcb4ef5ff5071c90cf9184fa71d1f', role: "row", "aria-selected": this.selected ? 'true' : undefined, tabindex: this.clickable ? 0 : undefined, "data-test": this.dataTest, onKeyDown: this.onKeyDown }, h("slot", { key: 'a3e23f544fb0a3b4b0c9670208c510deecae2c62' })));
     }
     static get is() { return "uai-table-row"; }
     static get encapsulation() { return "shadow"; }

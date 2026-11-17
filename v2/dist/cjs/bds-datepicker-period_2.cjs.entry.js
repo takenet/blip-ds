@@ -598,7 +598,7 @@ const BdsdatepickerSingle = class {
             }, onClick: () => this.selectDate(item), variant: "fs-14" }, item.date))))));
     }
     render() {
-        return (index.h("div", { key: '040bf452937269e166eeffdfa741b46d0d303578', class: { datepicker__calendar: true } }, index.h("div", { key: 'e6ef1113d9182a2496c3f61c2fd5743645d8efe1', class: { datepicker__calendar__selectDate: true } }, index.h("bds-icon", { key: '1addba65f3d92d7c9bb13c8f6780dedfbe09556b', class: {
+        return (index.h("div", { key: '09e4d39c0bd148e81d85b0cc5569ea7d83f6c28c', class: { datepicker__calendar: true } }, index.h("div", { key: '7aa7062a5fcf0fed54d8fba279bc123912d47a26', class: { datepicker__calendar__selectDate: true } }, index.h("bds-icon", { key: '84b9b1e037cb6ba01a0db81f98c965b9f044cde8', class: {
                 [`arrow-left`]: true,
                 [`arrow-left__disable`]: calendar.fillDayList(this.monthsSlide[0].days[this.monthsSlide[0].days.length - 1]) <
                     calendar.fillDayList(this.startDate),
@@ -606,11 +606,11 @@ const BdsdatepickerSingle = class {
             }, name: "arrow-left", theme: "outline", size: "small", onClick: () => this.prevMonth(), dataTest: this.dtButtonPrev }), [
             this.renderSelectData(this.months, this.monthActivated, 'months'),
             this.renderSelectData(this.years, this.yearActivated, 'years'),
-        ], index.h("bds-icon", { key: 'ecd4b880d59e1ff774acf92aa948b40952246154', class: {
+        ], index.h("bds-icon", { key: '0d7171a7691d38a91bd82d42a0f20a250bc4f41e', class: {
                 [`arrow-right`]: true,
                 [`arrow-right__disable`]: calendar.fillDayList(this.monthsSlide[2].days[0]) > calendar.fillDayList(this.endDate),
                 datepicker__calendar__selectDate__icon: true,
-            }, name: "arrow-right", theme: "outline", size: "small", onClick: () => this.nextMonth(), dataTest: this.dtButtonNext })), index.h("div", { key: '235b77285df093ce235429fd7a4df30f46b09528' }, index.h("div", { key: 'e6d23bf7e4d8ac5b684c328be3a26ec6f0618f19', class: { datepicker__calendar__week: true } }, this.week.map((item, idx) => (index.h("bds-typo", { variant: "fs-14", key: idx, class: `datepicker__calendar__week__day` }, item.charAt(0))))), index.h("div", { key: 'b24fa25dddd4be69b7a29a31438314e20ca980b0', class: { datepicker__calendar__car: true } }, index.h("div", { key: '7eb8884f9711b874a875d0620f74b1081bc847eb', class: {
+            }, name: "arrow-right", theme: "outline", size: "small", onClick: () => this.nextMonth(), dataTest: this.dtButtonNext })), index.h("div", { key: '2fef7989a91012d39235d0ef1d9803137d9b0a4e' }, index.h("div", { key: 'f62aefb1a1e76a7902b64439ff4b073a9e16a43d', class: { datepicker__calendar__week: true } }, this.week.map((item, idx) => (index.h("bds-typo", { variant: "fs-14", key: idx, class: `datepicker__calendar__week__day` }, item.charAt(0))))), index.h("div", { key: 'b82f80c203e240d5a3f39354bf22fdb0b065107c', class: { datepicker__calendar__car: true } }, index.h("div", { key: 'aab0493052a74bcdefae9b6b2bcf6f55158ae6f4', class: {
                 datepicker__calendar__car__slide: true,
                 animate__prev: this.animatePrev,
                 animate__next: this.animateNext,

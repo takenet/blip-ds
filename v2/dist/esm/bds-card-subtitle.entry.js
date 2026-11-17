@@ -5,7 +5,7 @@ const CardSubtitle = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h("bds-typo", { key: '9572330e44b6d8ddd0e70f9ddb456dbf8aa45c0f', variant: "fs-12", tag: "p", bold: "regular", margin: false }, this.text));
+        return (h("bds-typo", { key: 'd055c995ce4597f1fd939de6db6e818544319858', variant: "fs-12", tag: "p", bold: "regular", margin: false }, this.text));
     }
 };
 
