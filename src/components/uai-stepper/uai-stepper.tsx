@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
+import { isTag } from '../../utils/tag-name';
 
 /**
  * Sequential steps of a process. Use for flows with ordered stages; pair with UaiStep; avoid it for free navigation between views (use uai-tab-group).
@@ -48,7 +49,7 @@ export class UaiStepper {
   }
 
   private get steps(): HTMLUaiStepElement[] {
-    return Array.from(this.el.children).filter((child) => child.tagName === 'UAI-STEP') as HTMLUaiStepElement[];
+    return Array.from(this.el.children).filter((child) => isTag(child, 'uai-step')) as HTMLUaiStepElement[];
   }
 
   connectedCallback(): void {

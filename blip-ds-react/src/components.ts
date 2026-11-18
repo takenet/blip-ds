@@ -10,6 +10,7 @@
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+import { transformTag } from './tag-transformer.js';
 
 import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAvatarCustomEvent, type UaiBannerCustomEvent, type UaiBreadcrumbCustomEvent, type UaiBreadcrumbEditDetail, type UaiBreadcrumbItem, type UaiButtonCustomEvent, type UaiButtonGroupCustomEvent, type UaiButtonGroupSelectedDetail, type UaiCheckboxCustomEvent, type UaiDropdownCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiModalCustomEvent, type UaiPageHeaderCustomEvent, type UaiPaginationCustomEvent, type UaiPhoneNumberChange, type UaiRadioCustomEvent, type UaiRadioGroupCustomEvent, type UaiSelectChange, type UaiSelectCustomEvent, type UaiStepCustomEvent, type UaiStepperCustomEvent, type UaiSwitchCustomEvent, type UaiTabGroupCustomEvent, type UaiTabItemCustomEvent, type UaiTableSortDirection, type UaiTableThCustomEvent, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
 import type { Components } from "blip-ds/dist/components";
@@ -181,7 +182,8 @@ export const BdsAccordion: StencilReactComponent<BdsAccordionElement, BdsAccordi
         onBdsAccordionOpen: 'bdsAccordionOpen',
         onBdsAccordionClose: 'bdsAccordionClose'
     } as BdsAccordionEvents,
-    defineCustomElement: defineBdsAccordion
+    defineCustomElement: defineBdsAccordion,
+    transformTag
 });
 
 export type BdsAccordionBodyEvents = NonNullable<unknown>;
@@ -192,7 +194,8 @@ export const BdsAccordionBody: StencilReactComponent<BdsAccordionBodyElement, Bd
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsAccordionBodyEvents,
-    defineCustomElement: defineBdsAccordionBody
+    defineCustomElement: defineBdsAccordionBody,
+    transformTag
 });
 
 export type BdsAccordionGroupEvents = {
@@ -209,7 +212,8 @@ export const BdsAccordionGroup: StencilReactComponent<BdsAccordionGroupElement, 
         onBdsAccordionCloseAll: 'bdsAccordionCloseAll',
         onBdsAccordionOpenAll: 'bdsAccordionOpenAll'
     } as BdsAccordionGroupEvents,
-    defineCustomElement: defineBdsAccordionGroup
+    defineCustomElement: defineBdsAccordionGroup,
+    transformTag
 });
 
 export type BdsAccordionHeaderEvents = NonNullable<unknown>;
@@ -220,7 +224,8 @@ export const BdsAccordionHeader: StencilReactComponent<BdsAccordionHeaderElement
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsAccordionHeaderEvents,
-    defineCustomElement: defineBdsAccordionHeader
+    defineCustomElement: defineBdsAccordionHeader,
+    transformTag
 });
 
 export type BdsAlertEvents = { onBdsAlertChanged: EventName<BdsAlertCustomEvent<{ alertStatus: string }>> };
@@ -231,7 +236,8 @@ export const BdsAlert: StencilReactComponent<BdsAlertElement, BdsAlertEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsAlertChanged: 'bdsAlertChanged' } as BdsAlertEvents,
-    defineCustomElement: defineBdsAlert
+    defineCustomElement: defineBdsAlert,
+    transformTag
 });
 
 export type BdsAlertActionsEvents = NonNullable<unknown>;
@@ -242,7 +248,8 @@ export const BdsAlertActions: StencilReactComponent<BdsAlertActionsElement, BdsA
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsAlertActionsEvents,
-    defineCustomElement: defineBdsAlertActions
+    defineCustomElement: defineBdsAlertActions,
+    transformTag
 });
 
 export type BdsAlertBodyEvents = NonNullable<unknown>;
@@ -253,7 +260,8 @@ export const BdsAlertBody: StencilReactComponent<BdsAlertBodyElement, BdsAlertBo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsAlertBodyEvents,
-    defineCustomElement: defineBdsAlertBody
+    defineCustomElement: defineBdsAlertBody,
+    transformTag
 });
 
 export type BdsAlertHeaderEvents = NonNullable<unknown>;
@@ -264,7 +272,8 @@ export const BdsAlertHeader: StencilReactComponent<BdsAlertHeaderElement, BdsAle
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsAlertHeaderEvents,
-    defineCustomElement: defineBdsAlertHeader
+    defineCustomElement: defineBdsAlertHeader,
+    transformTag
 });
 
 export type BdsAutocompleteEvents = {
@@ -291,7 +300,8 @@ export const BdsAutocomplete: StencilReactComponent<BdsAutocompleteElement, BdsA
         onBdsFocus: 'bdsFocus',
         onBdsBlur: 'bdsBlur'
     } as BdsAutocompleteEvents,
-    defineCustomElement: defineBdsAutocomplete
+    defineCustomElement: defineBdsAutocomplete,
+    transformTag
 });
 
 export type BdsAvatarEvents = {
@@ -308,7 +318,8 @@ export const BdsAvatar: StencilReactComponent<BdsAvatarElement, BdsAvatarEvents,
         onBdsClickAvatar: 'bdsClickAvatar',
         onBdsImageUpload: 'bdsImageUpload'
     } as BdsAvatarEvents,
-    defineCustomElement: defineBdsAvatar
+    defineCustomElement: defineBdsAvatar,
+    transformTag
 });
 
 export type BdsAvatarGroupEvents = { onBdsClickAvatarGroup: EventName<BdsAvatarGroupCustomEvent<PointerEvent>> };
@@ -319,7 +330,8 @@ export const BdsAvatarGroup: StencilReactComponent<BdsAvatarGroupElement, BdsAva
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsClickAvatarGroup: 'bdsClickAvatarGroup' } as BdsAvatarGroupEvents,
-    defineCustomElement: defineBdsAvatarGroup
+    defineCustomElement: defineBdsAvatarGroup,
+    transformTag
 });
 
 export type BdsBadgeEvents = NonNullable<unknown>;
@@ -330,7 +342,8 @@ export const BdsBadge: StencilReactComponent<BdsBadgeElement, BdsBadgeEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsBadgeEvents,
-    defineCustomElement: defineBdsBadge
+    defineCustomElement: defineBdsBadge,
+    transformTag
 });
 
 export type BdsBannerEvents = { onBdsBannerClose: EventName<BdsBannerCustomEvent<void>> };
@@ -341,7 +354,8 @@ export const BdsBanner: StencilReactComponent<BdsBannerElement, BdsBannerEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsBannerClose: 'bdsBannerClose' } as BdsBannerEvents,
-    defineCustomElement: defineBdsBanner
+    defineCustomElement: defineBdsBanner,
+    transformTag
 });
 
 export type BdsBannerLinkEvents = { onBdsBannerLink: EventName<BdsBannerLinkCustomEvent<HTMLBdsBannerElement>> };
@@ -352,7 +366,8 @@ export const BdsBannerLink: StencilReactComponent<BdsBannerLinkElement, BdsBanne
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsBannerLink: 'bdsBannerLink' } as BdsBannerLinkEvents,
-    defineCustomElement: defineBdsBannerLink
+    defineCustomElement: defineBdsBannerLink,
+    transformTag
 });
 
 export type BdsBreadcrumbEvents = NonNullable<unknown>;
@@ -363,7 +378,8 @@ export const BdsBreadcrumb: StencilReactComponent<BdsBreadcrumbElement, BdsBread
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsBreadcrumbEvents,
-    defineCustomElement: defineBdsBreadcrumb
+    defineCustomElement: defineBdsBreadcrumb,
+    transformTag
 });
 
 export type BdsButtonEvents = { onBdsClick: EventName<BdsButtonCustomEvent<PointerEvent | KeyboardEvent>> };
@@ -374,7 +390,8 @@ export const BdsButton: StencilReactComponent<BdsButtonElement, BdsButtonEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsClick: 'bdsClick' } as BdsButtonEvents,
-    defineCustomElement: defineBdsButton
+    defineCustomElement: defineBdsButton,
+    transformTag
 });
 
 export type BdsButtonGroupEvents = { onButtonSelected: EventName<BdsButtonGroupCustomEvent<string>> };
@@ -385,7 +402,8 @@ export const BdsButtonGroup: StencilReactComponent<BdsButtonGroupElement, BdsBut
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onButtonSelected: 'buttonSelected' } as BdsButtonGroupEvents,
-    defineCustomElement: defineBdsButtonGroup
+    defineCustomElement: defineBdsButtonGroup,
+    transformTag
 });
 
 export type BdsButtonIconEvents = { onBdsClick: EventName<BdsButtonIconCustomEvent<PointerEvent>> };
@@ -396,7 +414,8 @@ export const BdsButtonIcon: StencilReactComponent<BdsButtonIconElement, BdsButto
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsClick: 'bdsClick' } as BdsButtonIconEvents,
-    defineCustomElement: defineBdsButtonIcon
+    defineCustomElement: defineBdsButtonIcon,
+    transformTag
 });
 
 export type BdsCardEvents = { onBdsClick: EventName<BdsCardCustomEvent<PointerEvent | KeyboardEvent>> };
@@ -407,7 +426,8 @@ export const BdsCard: StencilReactComponent<BdsCardElement, BdsCardEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsClick: 'bdsClick' } as BdsCardEvents,
-    defineCustomElement: defineBdsCard
+    defineCustomElement: defineBdsCard,
+    transformTag
 });
 
 export type BdsCardBodyEvents = NonNullable<unknown>;
@@ -418,7 +438,8 @@ export const BdsCardBody: StencilReactComponent<BdsCardBodyElement, BdsCardBodyE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsCardBodyEvents,
-    defineCustomElement: defineBdsCardBody
+    defineCustomElement: defineBdsCardBody,
+    transformTag
 });
 
 export type BdsCardColorEvents = NonNullable<unknown>;
@@ -429,7 +450,8 @@ export const BdsCardColor: StencilReactComponent<BdsCardColorElement, BdsCardCol
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsCardColorEvents,
-    defineCustomElement: defineBdsCardColor
+    defineCustomElement: defineBdsCardColor,
+    transformTag
 });
 
 export type BdsCardFooterEvents = NonNullable<unknown>;
@@ -440,7 +462,8 @@ export const BdsCardFooter: StencilReactComponent<BdsCardFooterElement, BdsCardF
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsCardFooterEvents,
-    defineCustomElement: defineBdsCardFooter
+    defineCustomElement: defineBdsCardFooter,
+    transformTag
 });
 
 export type BdsCardHeaderEvents = NonNullable<unknown>;
@@ -451,7 +474,8 @@ export const BdsCardHeader: StencilReactComponent<BdsCardHeaderElement, BdsCardH
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsCardHeaderEvents,
-    defineCustomElement: defineBdsCardHeader
+    defineCustomElement: defineBdsCardHeader,
+    transformTag
 });
 
 export type BdsCardSubtitleEvents = NonNullable<unknown>;
@@ -462,7 +486,8 @@ export const BdsCardSubtitle: StencilReactComponent<BdsCardSubtitleElement, BdsC
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsCardSubtitleEvents,
-    defineCustomElement: defineBdsCardSubtitle
+    defineCustomElement: defineBdsCardSubtitle,
+    transformTag
 });
 
 export type BdsCardTitleEvents = NonNullable<unknown>;
@@ -473,7 +498,8 @@ export const BdsCardTitle: StencilReactComponent<BdsCardTitleElement, BdsCardTit
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsCardTitleEvents,
-    defineCustomElement: defineBdsCardTitle
+    defineCustomElement: defineBdsCardTitle,
+    transformTag
 });
 
 export type BdsCarouselEvents = { onBdsChangeCarousel: EventName<BdsCarouselCustomEvent<{ value: Itens }>> };
@@ -484,7 +510,8 @@ export const BdsCarousel: StencilReactComponent<BdsCarouselElement, BdsCarouselE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsChangeCarousel: 'bdsChangeCarousel' } as BdsCarouselEvents,
-    defineCustomElement: defineBdsCarousel
+    defineCustomElement: defineBdsCarousel,
+    transformTag
 });
 
 export type BdsCarouselItemEvents = NonNullable<unknown>;
@@ -495,7 +522,8 @@ export const BdsCarouselItem: StencilReactComponent<BdsCarouselItemElement, BdsC
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsCarouselItemEvents,
-    defineCustomElement: defineBdsCarouselItem
+    defineCustomElement: defineBdsCarouselItem,
+    transformTag
 });
 
 export type BdsCheckboxEvents = {
@@ -512,7 +540,8 @@ export const BdsCheckbox: StencilReactComponent<BdsCheckboxElement, BdsCheckboxE
         onBdsChange: 'bdsChange',
         onBdsInput: 'bdsInput'
     } as BdsCheckboxEvents,
-    defineCustomElement: defineBdsCheckbox
+    defineCustomElement: defineBdsCheckbox,
+    transformTag
 });
 
 export type BdsChipEvents = { onBdsDelete: EventName<BdsChipCustomEvent<{ id: string }>> };
@@ -523,7 +552,8 @@ export const BdsChip: StencilReactComponent<BdsChipElement, BdsChipEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsDelete: 'bdsDelete' } as BdsChipEvents,
-    defineCustomElement: defineBdsChip
+    defineCustomElement: defineBdsChip,
+    transformTag
 });
 
 export type BdsChipClickableEvents = {
@@ -540,7 +570,8 @@ export const BdsChipClickable: StencilReactComponent<BdsChipClickableElement, Bd
         onChipClickableClose: 'chipClickableClose',
         onChipClickableClick: 'chipClickableClick'
     } as BdsChipClickableEvents,
-    defineCustomElement: defineBdsChipClickable
+    defineCustomElement: defineBdsChipClickable,
+    transformTag
 });
 
 export type BdsChipSelectedEvents = { onChipClick: EventName<BdsChipSelectedCustomEvent<{ selected: boolean }>> };
@@ -551,7 +582,8 @@ export const BdsChipSelected: StencilReactComponent<BdsChipSelectedElement, BdsC
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onChipClick: 'chipClick' } as BdsChipSelectedEvents,
-    defineCustomElement: defineBdsChipSelected
+    defineCustomElement: defineBdsChipSelected,
+    transformTag
 });
 
 export type BdsChipTagEvents = NonNullable<unknown>;
@@ -562,7 +594,8 @@ export const BdsChipTag: StencilReactComponent<BdsChipTagElement, BdsChipTagEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsChipTagEvents,
-    defineCustomElement: defineBdsChipTag
+    defineCustomElement: defineBdsChipTag,
+    transformTag
 });
 
 export type BdsCounterTextEvents = NonNullable<unknown>;
@@ -573,7 +606,8 @@ export const BdsCounterText: StencilReactComponent<BdsCounterTextElement, BdsCou
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsCounterTextEvents,
-    defineCustomElement: defineBdsCounterText
+    defineCustomElement: defineBdsCounterText,
+    transformTag
 });
 
 export type BdsDataTableEvents = {
@@ -592,7 +626,8 @@ export const BdsDataTable: StencilReactComponent<BdsDataTableElement, BdsDataTab
         onBdsTableDelete: 'bdsTableDelete',
         onBdsTableChange: 'bdsTableChange'
     } as BdsDataTableEvents,
-    defineCustomElement: defineBdsDataTable
+    defineCustomElement: defineBdsDataTable,
+    transformTag
 });
 
 export type BdsDatepickerEvents = {
@@ -613,7 +648,8 @@ export const BdsDatepicker: StencilReactComponent<BdsDatepickerElement, BdsDatep
         onConcludeDatepicker: 'concludeDatepicker',
         onEmptyConcludeDatepicker: 'emptyConcludeDatepicker'
     } as BdsDatepickerEvents,
-    defineCustomElement: defineBdsDatepicker
+    defineCustomElement: defineBdsDatepicker,
+    transformTag
 });
 
 export type BdsDatepickerPeriodEvents = {
@@ -632,7 +668,8 @@ export const BdsDatepickerPeriod: StencilReactComponent<BdsDatepickerPeriodEleme
         onBdsEndDate: 'bdsEndDate',
         onBdsClickDayButton: 'bdsClickDayButton'
     } as BdsDatepickerPeriodEvents,
-    defineCustomElement: defineBdsDatepickerPeriod
+    defineCustomElement: defineBdsDatepickerPeriod,
+    transformTag
 });
 
 export type BdsDatepickerSingleEvents = { onBdsDateSelected: EventName<BdsDatepickerSingleCustomEvent<{ value: Date | null }>> };
@@ -643,7 +680,8 @@ export const BdsDatepickerSingle: StencilReactComponent<BdsDatepickerSingleEleme
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsDateSelected: 'bdsDateSelected' } as BdsDatepickerSingleEvents,
-    defineCustomElement: defineBdsDatepickerSingle
+    defineCustomElement: defineBdsDatepickerSingle,
+    transformTag
 });
 
 export type BdsDividerEvents = NonNullable<unknown>;
@@ -654,7 +692,8 @@ export const BdsDivider: StencilReactComponent<BdsDividerElement, BdsDividerEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsDividerEvents,
-    defineCustomElement: defineBdsDivider
+    defineCustomElement: defineBdsDivider,
+    transformTag
 });
 
 export type BdsDropdownEvents = { onBdsToggle: EventName<BdsDropdownCustomEvent<{ value: boolean }>> };
@@ -665,7 +704,8 @@ export const BdsDropdown: StencilReactComponent<BdsDropdownElement, BdsDropdownE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToggle: 'bdsToggle' } as BdsDropdownEvents,
-    defineCustomElement: defineBdsDropdown
+    defineCustomElement: defineBdsDropdown,
+    transformTag
 });
 
 export type BdsExpansionPanelEvents = NonNullable<unknown>;
@@ -676,7 +716,8 @@ export const BdsExpansionPanel: StencilReactComponent<BdsExpansionPanelElement, 
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsExpansionPanelEvents,
-    defineCustomElement: defineBdsExpansionPanel
+    defineCustomElement: defineBdsExpansionPanel,
+    transformTag
 });
 
 export type BdsExpansionPanelBodyEvents = NonNullable<unknown>;
@@ -687,7 +728,8 @@ export const BdsExpansionPanelBody: StencilReactComponent<BdsExpansionPanelBodyE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsExpansionPanelBodyEvents,
-    defineCustomElement: defineBdsExpansionPanelBody
+    defineCustomElement: defineBdsExpansionPanelBody,
+    transformTag
 });
 
 export type BdsExpansionPanelHeaderEvents = NonNullable<unknown>;
@@ -698,7 +740,8 @@ export const BdsExpansionPanelHeader: StencilReactComponent<BdsExpansionPanelHea
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsExpansionPanelHeaderEvents,
-    defineCustomElement: defineBdsExpansionPanelHeader
+    defineCustomElement: defineBdsExpansionPanelHeader,
+    transformTag
 });
 
 export type BdsGridEvents = NonNullable<unknown>;
@@ -709,7 +752,8 @@ export const BdsGrid: StencilReactComponent<BdsGridElement, BdsGridEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsGridEvents,
-    defineCustomElement: defineBdsGrid
+    defineCustomElement: defineBdsGrid,
+    transformTag
 });
 
 export type BdsIconEvents = NonNullable<unknown>;
@@ -720,7 +764,8 @@ export const BdsIcon: StencilReactComponent<BdsIconElement, BdsIconEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsIconEvents,
-    defineCustomElement: defineBdsIcon
+    defineCustomElement: defineBdsIcon,
+    transformTag
 });
 
 export type BdsIllustrationEvents = NonNullable<unknown>;
@@ -731,7 +776,8 @@ export const BdsIllustration: StencilReactComponent<BdsIllustrationElement, BdsI
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsIllustrationEvents,
-    defineCustomElement: defineBdsIllustration
+    defineCustomElement: defineBdsIllustration,
+    transformTag
 });
 
 export type BdsImageEvents = NonNullable<unknown>;
@@ -742,7 +788,8 @@ export const BdsImage: StencilReactComponent<BdsImageElement, BdsImageEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsImageEvents,
-    defineCustomElement: defineBdsImage
+    defineCustomElement: defineBdsImage,
+    transformTag
 });
 
 export type BdsInputEvents = {
@@ -769,7 +816,8 @@ export const BdsInput: StencilReactComponent<BdsInputElement, BdsInputEvents, Co
         onBdsPatternValidation: 'bdsPatternValidation',
         onBdsKeyDownBackspace: 'bdsKeyDownBackspace'
     } as BdsInputEvents,
-    defineCustomElement: defineBdsInput
+    defineCustomElement: defineBdsInput,
+    transformTag
 });
 
 export type BdsInputChipsEvents = {
@@ -796,7 +844,8 @@ export const BdsInputChips: StencilReactComponent<BdsInputChipsElement, BdsInput
         onBdsExtendedQuantityInput: 'bdsExtendedQuantityInput',
         onBdsSubmit: 'bdsSubmit'
     } as BdsInputChipsEvents,
-    defineCustomElement: defineBdsInputChips
+    defineCustomElement: defineBdsInputChips,
+    transformTag
 });
 
 export type BdsInputEditableEvents = {
@@ -821,7 +870,8 @@ export const BdsInputEditable: StencilReactComponent<BdsInputEditableElement, Bd
         onBdsFocus: 'bdsFocus',
         onBdsBlur: 'bdsBlur'
     } as BdsInputEditableEvents,
-    defineCustomElement: defineBdsInputEditable
+    defineCustomElement: defineBdsInputEditable,
+    transformTag
 });
 
 export type BdsInputPasswordEvents = {
@@ -846,7 +896,8 @@ export const BdsInputPassword: StencilReactComponent<BdsInputPasswordElement, Bd
         onBdsInputPasswordSubmit: 'bdsInputPasswordSubmit',
         onBdsKeyDownBackspace: 'bdsKeyDownBackspace'
     } as BdsInputPasswordEvents,
-    defineCustomElement: defineBdsInputPassword
+    defineCustomElement: defineBdsInputPassword,
+    transformTag
 });
 
 export type BdsInputPhoneNumberEvents = {
@@ -869,7 +920,8 @@ export const BdsInputPhoneNumber: StencilReactComponent<BdsInputPhoneNumberEleme
         onBdsFocus: 'bdsFocus',
         onBdsBlur: 'bdsBlur'
     } as BdsInputPhoneNumberEvents,
-    defineCustomElement: defineBdsInputPhoneNumber
+    defineCustomElement: defineBdsInputPhoneNumber,
+    transformTag
 });
 
 export type BdsListEvents = {
@@ -890,7 +942,8 @@ export const BdsList: StencilReactComponent<BdsListElement, BdsListEvents, Compo
         onBdsListSwitchChange: 'bdsListSwitchChange',
         onBdsClickActionsButtons: 'bdsClickActionsButtons'
     } as BdsListEvents,
-    defineCustomElement: defineBdsList
+    defineCustomElement: defineBdsList,
+    transformTag
 });
 
 export type BdsListItemEvents = {
@@ -907,7 +960,8 @@ export const BdsListItem: StencilReactComponent<BdsListItemElement, BdsListItemE
         onBdsChecked: 'bdsChecked',
         onBdsClickActionButtom: 'bdsClickActionButtom'
     } as BdsListItemEvents,
-    defineCustomElement: defineBdsListItem
+    defineCustomElement: defineBdsListItem,
+    transformTag
 });
 
 export type BdsListItemContentEvents = NonNullable<unknown>;
@@ -918,7 +972,8 @@ export const BdsListItemContent: StencilReactComponent<BdsListItemContentElement
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsListItemContentEvents,
-    defineCustomElement: defineBdsListItemContent
+    defineCustomElement: defineBdsListItemContent,
+    transformTag
 });
 
 export type BdsLoadingBarEvents = NonNullable<unknown>;
@@ -929,7 +984,8 @@ export const BdsLoadingBar: StencilReactComponent<BdsLoadingBarElement, BdsLoadi
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsLoadingBarEvents,
-    defineCustomElement: defineBdsLoadingBar
+    defineCustomElement: defineBdsLoadingBar,
+    transformTag
 });
 
 export type BdsLoadingPageEvents = NonNullable<unknown>;
@@ -940,7 +996,8 @@ export const BdsLoadingPage: StencilReactComponent<BdsLoadingPageElement, BdsLoa
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsLoadingPageEvents,
-    defineCustomElement: defineBdsLoadingPage
+    defineCustomElement: defineBdsLoadingPage,
+    transformTag
 });
 
 export type BdsLoadingSpinnerEvents = NonNullable<unknown>;
@@ -951,7 +1008,8 @@ export const BdsLoadingSpinner: StencilReactComponent<BdsLoadingSpinnerElement, 
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsLoadingSpinnerEvents,
-    defineCustomElement: defineBdsLoadingSpinner
+    defineCustomElement: defineBdsLoadingSpinner,
+    transformTag
 });
 
 export type BdsMenuEvents = { onBdsToggle: EventName<BdsMenuCustomEvent<{ value?: boolean }>> };
@@ -962,7 +1020,8 @@ export const BdsMenu: StencilReactComponent<BdsMenuElement, BdsMenuEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToggle: 'bdsToggle' } as BdsMenuEvents,
-    defineCustomElement: defineBdsMenu
+    defineCustomElement: defineBdsMenu,
+    transformTag
 });
 
 export type BdsMenuActionEvents = NonNullable<unknown>;
@@ -973,7 +1032,8 @@ export const BdsMenuAction: StencilReactComponent<BdsMenuActionElement, BdsMenuA
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsMenuActionEvents,
-    defineCustomElement: defineBdsMenuAction
+    defineCustomElement: defineBdsMenuAction,
+    transformTag
 });
 
 export type BdsMenuExibitionEvents = NonNullable<unknown>;
@@ -984,7 +1044,8 @@ export const BdsMenuExibition: StencilReactComponent<BdsMenuExibitionElement, Bd
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsMenuExibitionEvents,
-    defineCustomElement: defineBdsMenuExibition
+    defineCustomElement: defineBdsMenuExibition,
+    transformTag
 });
 
 export type BdsMenuListEvents = NonNullable<unknown>;
@@ -995,7 +1056,8 @@ export const BdsMenuList: StencilReactComponent<BdsMenuListElement, BdsMenuListE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsMenuListEvents,
-    defineCustomElement: defineBdsMenuList
+    defineCustomElement: defineBdsMenuList,
+    transformTag
 });
 
 export type BdsMenuListItemEvents = NonNullable<unknown>;
@@ -1006,7 +1068,8 @@ export const BdsMenuListItem: StencilReactComponent<BdsMenuListItemElement, BdsM
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsMenuListItemEvents,
-    defineCustomElement: defineBdsMenuListItem
+    defineCustomElement: defineBdsMenuListItem,
+    transformTag
 });
 
 export type BdsMenuSeparationEvents = NonNullable<unknown>;
@@ -1017,7 +1080,8 @@ export const BdsMenuSeparation: StencilReactComponent<BdsMenuSeparationElement, 
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsMenuSeparationEvents,
-    defineCustomElement: defineBdsMenuSeparation
+    defineCustomElement: defineBdsMenuSeparation,
+    transformTag
 });
 
 export type BdsModalEvents = { onBdsModalChanged: EventName<BdsModalCustomEvent<{ modalStatus: 'opened' | 'closed' }>> };
@@ -1028,7 +1092,8 @@ export const BdsModal: StencilReactComponent<BdsModalElement, BdsModalEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsModalChanged: 'bdsModalChanged' } as BdsModalEvents,
-    defineCustomElement: defineBdsModal
+    defineCustomElement: defineBdsModal,
+    transformTag
 });
 
 export type BdsModalActionEvents = NonNullable<unknown>;
@@ -1039,7 +1104,8 @@ export const BdsModalAction: StencilReactComponent<BdsModalActionElement, BdsMod
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsModalActionEvents,
-    defineCustomElement: defineBdsModalAction
+    defineCustomElement: defineBdsModalAction,
+    transformTag
 });
 
 export type BdsModalCloseButtonEvents = NonNullable<unknown>;
@@ -1050,7 +1116,8 @@ export const BdsModalCloseButton: StencilReactComponent<BdsModalCloseButtonEleme
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsModalCloseButtonEvents,
-    defineCustomElement: defineBdsModalCloseButton
+    defineCustomElement: defineBdsModalCloseButton,
+    transformTag
 });
 
 export type BdsNavTreeEvents = { onBdsToogleChange: EventName<BdsNavTreeCustomEvent<{ value?: boolean; element: HTMLElement }>> };
@@ -1061,7 +1128,8 @@ export const BdsNavTree: StencilReactComponent<BdsNavTreeElement, BdsNavTreeEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToogleChange: 'bdsToogleChange' } as BdsNavTreeEvents,
-    defineCustomElement: defineBdsNavTree
+    defineCustomElement: defineBdsNavTree,
+    transformTag
 });
 
 export type BdsNavTreeGroupEvents = {
@@ -1078,7 +1146,8 @@ export const BdsNavTreeGroup: StencilReactComponent<BdsNavTreeGroupElement, BdsN
         onBdsNavTreeGroupCloseAll: 'bdsNavTreeGroupCloseAll',
         onBdsNavTreeGroupOpenAll: 'bdsNavTreeGroupOpenAll'
     } as BdsNavTreeGroupEvents,
-    defineCustomElement: defineBdsNavTreeGroup
+    defineCustomElement: defineBdsNavTreeGroup,
+    transformTag
 });
 
 export type BdsNavTreeItemEvents = { onBdsToogleChange: EventName<BdsNavTreeItemCustomEvent<{ value?: boolean; element: HTMLElement }>> };
@@ -1089,7 +1158,8 @@ export const BdsNavTreeItem: StencilReactComponent<BdsNavTreeItemElement, BdsNav
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToogleChange: 'bdsToogleChange' } as BdsNavTreeItemEvents,
-    defineCustomElement: defineBdsNavTreeItem
+    defineCustomElement: defineBdsNavTreeItem,
+    transformTag
 });
 
 export type BdsNavbarEvents = NonNullable<unknown>;
@@ -1100,7 +1170,8 @@ export const BdsNavbar: StencilReactComponent<BdsNavbarElement, BdsNavbarEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsNavbarEvents,
-    defineCustomElement: defineBdsNavbar
+    defineCustomElement: defineBdsNavbar,
+    transformTag
 });
 
 export type BdsNavbarContentEvents = NonNullable<unknown>;
@@ -1111,7 +1182,8 @@ export const BdsNavbarContent: StencilReactComponent<BdsNavbarContentElement, Bd
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsNavbarContentEvents,
-    defineCustomElement: defineBdsNavbarContent
+    defineCustomElement: defineBdsNavbarContent,
+    transformTag
 });
 
 export type BdsPaginationEvents = {
@@ -1128,7 +1200,8 @@ export const BdsPagination: StencilReactComponent<BdsPaginationElement, BdsPagin
         onBdsPaginationChange: 'bdsPaginationChange',
         onBdsItemsPerPageChange: 'bdsItemsPerPageChange'
     } as BdsPaginationEvents,
-    defineCustomElement: defineBdsPagination
+    defineCustomElement: defineBdsPagination,
+    transformTag
 });
 
 export type BdsPaperEvents = NonNullable<unknown>;
@@ -1139,7 +1212,8 @@ export const BdsPaper: StencilReactComponent<BdsPaperElement, BdsPaperEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsPaperEvents,
-    defineCustomElement: defineBdsPaper
+    defineCustomElement: defineBdsPaper,
+    transformTag
 });
 
 export type BdsProgressBarEvents = NonNullable<unknown>;
@@ -1150,7 +1224,8 @@ export const BdsProgressBar: StencilReactComponent<BdsProgressBarElement, BdsPro
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsProgressBarEvents,
-    defineCustomElement: defineBdsProgressBar
+    defineCustomElement: defineBdsProgressBar,
+    transformTag
 });
 
 export type BdsRadioEvents = {
@@ -1167,7 +1242,8 @@ export const BdsRadio: StencilReactComponent<BdsRadioElement, BdsRadioEvents, Co
         onBdsChange: 'bdsChange',
         onBdsClickChange: 'bdsClickChange'
     } as BdsRadioEvents,
-    defineCustomElement: defineBdsRadio
+    defineCustomElement: defineBdsRadio,
+    transformTag
 });
 
 export type BdsRadioGroupEvents = { onBdsRadioGroupChange: EventName<BdsRadioGroupCustomEvent<{ value?: string }>> };
@@ -1178,7 +1254,8 @@ export const BdsRadioGroup: StencilReactComponent<BdsRadioGroupElement, BdsRadio
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsRadioGroupChange: 'bdsRadioGroupChange' } as BdsRadioGroupEvents,
-    defineCustomElement: defineBdsRadioGroup
+    defineCustomElement: defineBdsRadioGroup,
+    transformTag
 });
 
 export type BdsRichTextEvents = {
@@ -1199,7 +1276,8 @@ export const BdsRichText: StencilReactComponent<BdsRichTextElement, BdsRichTextE
         onBdsBlur: 'bdsBlur',
         onBdsFocus: 'bdsFocus'
     } as BdsRichTextEvents,
-    defineCustomElement: defineBdsRichText
+    defineCustomElement: defineBdsRichText,
+    transformTag
 });
 
 export type BdsSelectEvents = {
@@ -1220,7 +1298,8 @@ export const BdsSelect: StencilReactComponent<BdsSelectElement, BdsSelectEvents,
         onBdsFocus: 'bdsFocus',
         onBdsBlur: 'bdsBlur'
     } as BdsSelectEvents,
-    defineCustomElement: defineBdsSelect
+    defineCustomElement: defineBdsSelect,
+    transformTag
 });
 
 export type BdsSelectChipsEvents = {
@@ -1247,7 +1326,8 @@ export const BdsSelectChips: StencilReactComponent<BdsSelectChipsElement, BdsSel
         onBdsSelectChipsInput: 'bdsSelectChipsInput',
         onBdsSubmit: 'bdsSubmit'
     } as BdsSelectChipsEvents,
-    defineCustomElement: defineBdsSelectChips
+    defineCustomElement: defineBdsSelectChips,
+    transformTag
 });
 
 export type BdsSelectOptionEvents = {
@@ -1264,7 +1344,8 @@ export const BdsSelectOption: StencilReactComponent<BdsSelectOptionElement, BdsS
         onOptionSelected: 'optionSelected',
         onOptionChecked: 'optionChecked'
     } as BdsSelectOptionEvents,
-    defineCustomElement: defineBdsSelectOption
+    defineCustomElement: defineBdsSelectOption,
+    transformTag
 });
 
 export type BdsSidebarEvents = { onBdsToggle: EventName<BdsSidebarCustomEvent<{ value: boolean }>> };
@@ -1275,7 +1356,8 @@ export const BdsSidebar: StencilReactComponent<BdsSidebarElement, BdsSidebarEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsToggle: 'bdsToggle' } as BdsSidebarEvents,
-    defineCustomElement: defineBdsSidebar
+    defineCustomElement: defineBdsSidebar,
+    transformTag
 });
 
 export type BdsSkeletonEvents = NonNullable<unknown>;
@@ -1286,7 +1368,8 @@ export const BdsSkeleton: StencilReactComponent<BdsSkeletonElement, BdsSkeletonE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsSkeletonEvents,
-    defineCustomElement: defineBdsSkeleton
+    defineCustomElement: defineBdsSkeleton,
+    transformTag
 });
 
 export type BdsSliderEvents = { onBdsChange: EventName<BdsSliderCustomEvent<any>> };
@@ -1297,7 +1380,8 @@ export const BdsSlider: StencilReactComponent<BdsSliderElement, BdsSliderEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsChange: 'bdsChange' } as BdsSliderEvents,
-    defineCustomElement: defineBdsSlider
+    defineCustomElement: defineBdsSlider,
+    transformTag
 });
 
 export type BdsStepEvents = NonNullable<unknown>;
@@ -1308,7 +1392,8 @@ export const BdsStep: StencilReactComponent<BdsStepElement, BdsStepEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsStepEvents,
-    defineCustomElement: defineBdsStep
+    defineCustomElement: defineBdsStep,
+    transformTag
 });
 
 export type BdsStepperEvents = NonNullable<unknown>;
@@ -1319,7 +1404,8 @@ export const BdsStepper: StencilReactComponent<BdsStepperElement, BdsStepperEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsStepperEvents,
-    defineCustomElement: defineBdsStepper
+    defineCustomElement: defineBdsStepper,
+    transformTag
 });
 
 export type BdsSwitchEvents = { onBdsChange: EventName<BdsSwitchCustomEvent<{ checked: boolean }>> };
@@ -1330,7 +1416,8 @@ export const BdsSwitch: StencilReactComponent<BdsSwitchElement, BdsSwitchEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsChange: 'bdsChange' } as BdsSwitchEvents,
-    defineCustomElement: defineBdsSwitch
+    defineCustomElement: defineBdsSwitch,
+    transformTag
 });
 
 export type BdsTabEvents = { onBdsTabChange: EventName<BdsTabCustomEvent<string>> };
@@ -1341,7 +1428,8 @@ export const BdsTab: StencilReactComponent<BdsTabElement, BdsTabEvents, Componen
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onBdsTabChange: 'bdsTabChange' } as BdsTabEvents,
-    defineCustomElement: defineBdsTab
+    defineCustomElement: defineBdsTab,
+    transformTag
 });
 
 export type BdsTabGroupEvents = {
@@ -1358,7 +1446,8 @@ export const BdsTabGroup: StencilReactComponent<BdsTabGroupElement, BdsTabGroupE
         onBdsTabChange: 'bdsTabChange',
         onBdsTabDisabled: 'bdsTabDisabled'
     } as BdsTabGroupEvents,
-    defineCustomElement: defineBdsTabGroup
+    defineCustomElement: defineBdsTabGroup,
+    transformTag
 });
 
 export type BdsTabItemEvents = { onTabDisabled: EventName<BdsTabItemCustomEvent<{ item: number; disable: boolean }>> };
@@ -1369,7 +1458,8 @@ export const BdsTabItem: StencilReactComponent<BdsTabItemElement, BdsTabItemEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onTabDisabled: 'tabDisabled' } as BdsTabItemEvents,
-    defineCustomElement: defineBdsTabItem
+    defineCustomElement: defineBdsTabItem,
+    transformTag
 });
 
 export type BdsTabPanelEvents = NonNullable<unknown>;
@@ -1380,7 +1470,8 @@ export const BdsTabPanel: StencilReactComponent<BdsTabPanelElement, BdsTabPanelE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTabPanelEvents,
-    defineCustomElement: defineBdsTabPanel
+    defineCustomElement: defineBdsTabPanel,
+    transformTag
 });
 
 export type BdsTableEvents = NonNullable<unknown>;
@@ -1391,7 +1482,8 @@ export const BdsTable: StencilReactComponent<BdsTableElement, BdsTableEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTableEvents,
-    defineCustomElement: defineBdsTable
+    defineCustomElement: defineBdsTable,
+    transformTag
 });
 
 export type BdsTableBodyEvents = NonNullable<unknown>;
@@ -1402,7 +1494,8 @@ export const BdsTableBody: StencilReactComponent<BdsTableBodyElement, BdsTableBo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTableBodyEvents,
-    defineCustomElement: defineBdsTableBody
+    defineCustomElement: defineBdsTableBody,
+    transformTag
 });
 
 export type BdsTableCellEvents = NonNullable<unknown>;
@@ -1413,7 +1506,8 @@ export const BdsTableCell: StencilReactComponent<BdsTableCellElement, BdsTableCe
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTableCellEvents,
-    defineCustomElement: defineBdsTableCell
+    defineCustomElement: defineBdsTableCell,
+    transformTag
 });
 
 export type BdsTableHeaderEvents = NonNullable<unknown>;
@@ -1424,7 +1518,8 @@ export const BdsTableHeader: StencilReactComponent<BdsTableHeaderElement, BdsTab
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTableHeaderEvents,
-    defineCustomElement: defineBdsTableHeader
+    defineCustomElement: defineBdsTableHeader,
+    transformTag
 });
 
 export type BdsTableRowEvents = NonNullable<unknown>;
@@ -1435,7 +1530,8 @@ export const BdsTableRow: StencilReactComponent<BdsTableRowElement, BdsTableRowE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTableRowEvents,
-    defineCustomElement: defineBdsTableRow
+    defineCustomElement: defineBdsTableRow,
+    transformTag
 });
 
 export type BdsTableThEvents = NonNullable<unknown>;
@@ -1446,7 +1542,8 @@ export const BdsTableTh: StencilReactComponent<BdsTableThElement, BdsTableThEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTableThEvents,
-    defineCustomElement: defineBdsTableTh
+    defineCustomElement: defineBdsTableTh,
+    transformTag
 });
 
 export type BdsTabsEvents = {
@@ -1463,7 +1560,8 @@ export const BdsTabs: StencilReactComponent<BdsTabsElement, BdsTabsEvents, Compo
         onScrollButtonClick: 'scrollButtonClick',
         onBdsTabInit: 'bdsTabInit'
     } as BdsTabsEvents,
-    defineCustomElement: defineBdsTabs
+    defineCustomElement: defineBdsTabs,
+    transformTag
 });
 
 export type BdsTestComponentEvents = NonNullable<unknown>;
@@ -1474,7 +1572,8 @@ export const BdsTestComponent: StencilReactComponent<BdsTestComponentElement, Bd
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTestComponentEvents,
-    defineCustomElement: defineBdsTestComponent
+    defineCustomElement: defineBdsTestComponent,
+    transformTag
 });
 
 export type BdsThemeProviderEvents = NonNullable<unknown>;
@@ -1485,7 +1584,8 @@ export const BdsThemeProvider: StencilReactComponent<BdsThemeProviderElement, Bd
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsThemeProviderEvents,
-    defineCustomElement: defineBdsThemeProvider
+    defineCustomElement: defineBdsThemeProvider,
+    transformTag
 });
 
 export type BdsToastEvents = { onToastButtonClick: EventName<BdsToastCustomEvent<HTMLBdsToastElement>> };
@@ -1496,7 +1596,8 @@ export const BdsToast: StencilReactComponent<BdsToastElement, BdsToastEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onToastButtonClick: 'toastButtonClick' } as BdsToastEvents,
-    defineCustomElement: defineBdsToast
+    defineCustomElement: defineBdsToast,
+    transformTag
 });
 
 export type BdsToastContainerEvents = NonNullable<unknown>;
@@ -1507,7 +1608,8 @@ export const BdsToastContainer: StencilReactComponent<BdsToastContainerElement, 
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsToastContainerEvents,
-    defineCustomElement: defineBdsToastContainer
+    defineCustomElement: defineBdsToastContainer,
+    transformTag
 });
 
 export type BdsTooltipEvents = NonNullable<unknown>;
@@ -1518,7 +1620,8 @@ export const BdsTooltip: StencilReactComponent<BdsTooltipElement, BdsTooltipEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTooltipEvents,
-    defineCustomElement: defineBdsTooltip
+    defineCustomElement: defineBdsTooltip,
+    transformTag
 });
 
 export type BdsTypoEvents = NonNullable<unknown>;
@@ -1529,7 +1632,8 @@ export const BdsTypo: StencilReactComponent<BdsTypoElement, BdsTypoEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsTypoEvents,
-    defineCustomElement: defineBdsTypo
+    defineCustomElement: defineBdsTypo,
+    transformTag
 });
 
 export type BdsUploadEvents = {
@@ -1546,7 +1650,8 @@ export const BdsUpload: StencilReactComponent<BdsUploadElement, BdsUploadEvents,
         onBdsUploadDelete: 'bdsUploadDelete',
         onBdsUploadChange: 'bdsUploadChange'
     } as BdsUploadEvents,
-    defineCustomElement: defineBdsUpload
+    defineCustomElement: defineBdsUpload,
+    transformTag
 });
 
 export type BdsWarningEvents = NonNullable<unknown>;
@@ -1557,7 +1662,8 @@ export const BdsWarning: StencilReactComponent<BdsWarningElement, BdsWarningEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as BdsWarningEvents,
-    defineCustomElement: defineBdsWarning
+    defineCustomElement: defineBdsWarning,
+    transformTag
 });
 
 export type UaiAvatarEvents = {
@@ -1574,7 +1680,8 @@ export const UaiAvatar: StencilReactComponent<UaiAvatarElement, UaiAvatarEvents,
         onUaiClickAvatar: 'uaiClickAvatar',
         onUaiImageUpload: 'uaiImageUpload'
     } as UaiAvatarEvents,
-    defineCustomElement: defineUaiAvatar
+    defineCustomElement: defineUaiAvatar,
+    transformTag
 });
 
 export type UaiBadgeEvents = NonNullable<unknown>;
@@ -1585,7 +1692,8 @@ export const UaiBadge: StencilReactComponent<UaiBadgeElement, UaiBadgeEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiBadgeEvents,
-    defineCustomElement: defineUaiBadge
+    defineCustomElement: defineUaiBadge,
+    transformTag
 });
 
 export type UaiBannerEvents = { onUaiBannerClose: EventName<UaiBannerCustomEvent<void>> };
@@ -1596,7 +1704,8 @@ export const UaiBanner: StencilReactComponent<UaiBannerElement, UaiBannerEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiBannerClose: 'uaiBannerClose' } as UaiBannerEvents,
-    defineCustomElement: defineUaiBanner
+    defineCustomElement: defineUaiBanner,
+    transformTag
 });
 
 export type UaiBreadcrumbEvents = {
@@ -1613,7 +1722,8 @@ export const UaiBreadcrumb: StencilReactComponent<UaiBreadcrumbElement, UaiBread
         onUaiBreadcrumbItemClick: 'uaiBreadcrumbItemClick',
         onUaiBreadcrumbItemEdit: 'uaiBreadcrumbItemEdit'
     } as UaiBreadcrumbEvents,
-    defineCustomElement: defineUaiBreadcrumb
+    defineCustomElement: defineUaiBreadcrumb,
+    transformTag
 });
 
 export type UaiButtonEvents = { onUaiClick: EventName<UaiButtonCustomEvent<MouseEvent>> };
@@ -1624,7 +1734,8 @@ export const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiClick: 'uaiClick' } as UaiButtonEvents,
-    defineCustomElement: defineUaiButton
+    defineCustomElement: defineUaiButton,
+    transformTag
 });
 
 export type UaiButtonGroupEvents = { onUaiButtonSelected: EventName<UaiButtonGroupCustomEvent<UaiButtonGroupSelectedDetail>> };
@@ -1635,7 +1746,8 @@ export const UaiButtonGroup: StencilReactComponent<UaiButtonGroupElement, UaiBut
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiButtonSelected: 'uaiButtonSelected' } as UaiButtonGroupEvents,
-    defineCustomElement: defineUaiButtonGroup
+    defineCustomElement: defineUaiButtonGroup,
+    transformTag
 });
 
 export type UaiCheckboxEvents = {
@@ -1652,7 +1764,8 @@ export const UaiCheckbox: StencilReactComponent<UaiCheckboxElement, UaiCheckboxE
         onUaiChange: 'uaiChange',
         onUaiInput: 'uaiInput'
     } as UaiCheckboxEvents,
-    defineCustomElement: defineUaiCheckbox
+    defineCustomElement: defineUaiCheckbox,
+    transformTag
 });
 
 export type UaiChipTagEvents = NonNullable<unknown>;
@@ -1663,7 +1776,8 @@ export const UaiChipTag: StencilReactComponent<UaiChipTagElement, UaiChipTagEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiChipTagEvents,
-    defineCustomElement: defineUaiChipTag
+    defineCustomElement: defineUaiChipTag,
+    transformTag
 });
 
 export type UaiDropdownEvents = { onUaiToggle: EventName<UaiDropdownCustomEvent<{ value: boolean }>> };
@@ -1674,7 +1788,8 @@ export const UaiDropdown: StencilReactComponent<UaiDropdownElement, UaiDropdownE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiToggle: 'uaiToggle' } as UaiDropdownEvents,
-    defineCustomElement: defineUaiDropdown
+    defineCustomElement: defineUaiDropdown,
+    transformTag
 });
 
 export type UaiEmojiEvents = NonNullable<unknown>;
@@ -1685,7 +1800,8 @@ export const UaiEmoji: StencilReactComponent<UaiEmojiElement, UaiEmojiEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiEmojiEvents,
-    defineCustomElement: defineUaiEmoji
+    defineCustomElement: defineUaiEmoji,
+    transformTag
 });
 
 export type UaiGridEvents = NonNullable<unknown>;
@@ -1696,7 +1812,8 @@ export const UaiGrid: StencilReactComponent<UaiGridElement, UaiGridEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiGridEvents,
-    defineCustomElement: defineUaiGrid
+    defineCustomElement: defineUaiGrid,
+    transformTag
 });
 
 export type UaiIconEvents = NonNullable<unknown>;
@@ -1707,7 +1824,8 @@ export const UaiIcon: StencilReactComponent<UaiIconElement, UaiIconEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiIconEvents,
-    defineCustomElement: defineUaiIcon
+    defineCustomElement: defineUaiIcon,
+    transformTag
 });
 
 export type UaiInputEvents = {
@@ -1734,7 +1852,8 @@ export const UaiInput: StencilReactComponent<UaiInputElement, UaiInputEvents, Co
         onUaiPatternValidation: 'uaiPatternValidation',
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     } as UaiInputEvents,
-    defineCustomElement: defineUaiInput
+    defineCustomElement: defineUaiInput,
+    transformTag
 });
 
 export type UaiInputChipsEvents = {
@@ -1761,7 +1880,8 @@ export const UaiInputChips: StencilReactComponent<UaiInputChipsElement, UaiInput
         onUaiExtendedQuantityInput: 'uaiExtendedQuantityInput',
         onUaiSubmit: 'uaiSubmit'
     } as UaiInputChipsEvents,
-    defineCustomElement: defineUaiInputChips
+    defineCustomElement: defineUaiInputChips,
+    transformTag
 });
 
 export type UaiInputDateEvents = {
@@ -1782,7 +1902,8 @@ export const UaiInputDate: StencilReactComponent<UaiInputDateElement, UaiInputDa
         onUaiFocus: 'uaiFocus',
         onUaiOnBlur: 'uaiOnBlur'
     } as UaiInputDateEvents,
-    defineCustomElement: defineUaiInputDate
+    defineCustomElement: defineUaiInputDate,
+    transformTag
 });
 
 export type UaiInputEditableEvents = {
@@ -1807,7 +1928,8 @@ export const UaiInputEditable: StencilReactComponent<UaiInputEditableElement, Ua
         onUaiFocus: 'uaiFocus',
         onUaiBlur: 'uaiBlur'
     } as UaiInputEditableEvents,
-    defineCustomElement: defineUaiInputEditable
+    defineCustomElement: defineUaiInputEditable,
+    transformTag
 });
 
 export type UaiInputPasswordEvents = {
@@ -1832,7 +1954,8 @@ export const UaiInputPassword: StencilReactComponent<UaiInputPasswordElement, Ua
         onUaiInputPasswordSubmit: 'uaiInputPasswordSubmit',
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     } as UaiInputPasswordEvents,
-    defineCustomElement: defineUaiInputPassword
+    defineCustomElement: defineUaiInputPassword,
+    transformTag
 });
 
 export type UaiInputPhoneEvents = {
@@ -1855,7 +1978,8 @@ export const UaiInputPhone: StencilReactComponent<UaiInputPhoneElement, UaiInput
         onUaiFocus: 'uaiFocus',
         onUaiBlur: 'uaiBlur'
     } as UaiInputPhoneEvents,
-    defineCustomElement: defineUaiInputPhone
+    defineCustomElement: defineUaiInputPhone,
+    transformTag
 });
 
 export type UaiLogoEvents = NonNullable<unknown>;
@@ -1866,7 +1990,8 @@ export const UaiLogo: StencilReactComponent<UaiLogoElement, UaiLogoEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiLogoEvents,
-    defineCustomElement: defineUaiLogo
+    defineCustomElement: defineUaiLogo,
+    transformTag
 });
 
 export type UaiModalEvents = { onUaiModalChanged: EventName<UaiModalCustomEvent<{ modalStatus: 'opened' | 'closed' }>> };
@@ -1877,7 +2002,8 @@ export const UaiModal: StencilReactComponent<UaiModalElement, UaiModalEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiModalChanged: 'uaiModalChanged' } as UaiModalEvents,
-    defineCustomElement: defineUaiModal
+    defineCustomElement: defineUaiModal,
+    transformTag
 });
 
 export type UaiModalActionEvents = NonNullable<unknown>;
@@ -1888,7 +2014,8 @@ export const UaiModalAction: StencilReactComponent<UaiModalActionElement, UaiMod
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiModalActionEvents,
-    defineCustomElement: defineUaiModalAction
+    defineCustomElement: defineUaiModalAction,
+    transformTag
 });
 
 export type UaiModalCloseButtonEvents = NonNullable<unknown>;
@@ -1899,7 +2026,8 @@ export const UaiModalCloseButton: StencilReactComponent<UaiModalCloseButtonEleme
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiModalCloseButtonEvents,
-    defineCustomElement: defineUaiModalCloseButton
+    defineCustomElement: defineUaiModalCloseButton,
+    transformTag
 });
 
 export type UaiNavbarEvents = NonNullable<unknown>;
@@ -1910,7 +2038,8 @@ export const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiNavbarEvents,
-    defineCustomElement: defineUaiNavbar
+    defineCustomElement: defineUaiNavbar,
+    transformTag
 });
 
 export type UaiNavbarContentEvents = NonNullable<unknown>;
@@ -1921,7 +2050,8 @@ export const UaiNavbarContent: StencilReactComponent<UaiNavbarContentElement, Ua
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiNavbarContentEvents,
-    defineCustomElement: defineUaiNavbarContent
+    defineCustomElement: defineUaiNavbarContent,
+    transformTag
 });
 
 export type UaiPageHeaderEvents = {
@@ -1938,7 +2068,8 @@ export const UaiPageHeader: StencilReactComponent<UaiPageHeaderElement, UaiPageH
         onUaiBreadcrumbItemClick: 'uaiBreadcrumbItemClick',
         onUaiBreadcrumbItemEdit: 'uaiBreadcrumbItemEdit'
     } as UaiPageHeaderEvents,
-    defineCustomElement: defineUaiPageHeader
+    defineCustomElement: defineUaiPageHeader,
+    transformTag
 });
 
 export type UaiPaginationEvents = {
@@ -1955,7 +2086,8 @@ export const UaiPagination: StencilReactComponent<UaiPaginationElement, UaiPagin
         onUaiPaginationChange: 'uaiPaginationChange',
         onUaiPageSizeChange: 'uaiPageSizeChange'
     } as UaiPaginationEvents,
-    defineCustomElement: defineUaiPagination
+    defineCustomElement: defineUaiPagination,
+    transformTag
 });
 
 export type UaiPaperEvents = NonNullable<unknown>;
@@ -1966,7 +2098,8 @@ export const UaiPaper: StencilReactComponent<UaiPaperElement, UaiPaperEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiPaperEvents,
-    defineCustomElement: defineUaiPaper
+    defineCustomElement: defineUaiPaper,
+    transformTag
 });
 
 export type UaiRadioEvents = {
@@ -1983,7 +2116,8 @@ export const UaiRadio: StencilReactComponent<UaiRadioElement, UaiRadioEvents, Co
         onUaiChange: 'uaiChange',
         onUaiClickChange: 'uaiClickChange'
     } as UaiRadioEvents,
-    defineCustomElement: defineUaiRadio
+    defineCustomElement: defineUaiRadio,
+    transformTag
 });
 
 export type UaiRadioGroupEvents = { onUaiRadioGroupChange: EventName<UaiRadioGroupCustomEvent<{ value?: string }>> };
@@ -1994,7 +2128,8 @@ export const UaiRadioGroup: StencilReactComponent<UaiRadioGroupElement, UaiRadio
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiRadioGroupChange: 'uaiRadioGroupChange' } as UaiRadioGroupEvents,
-    defineCustomElement: defineUaiRadioGroup
+    defineCustomElement: defineUaiRadioGroup,
+    transformTag
 });
 
 export type UaiSelectEvents = {
@@ -2015,7 +2150,8 @@ export const UaiSelect: StencilReactComponent<UaiSelectElement, UaiSelectEvents,
         onUaiFocus: 'uaiFocus',
         onUaiBlur: 'uaiBlur'
     } as UaiSelectEvents,
-    defineCustomElement: defineUaiSelect
+    defineCustomElement: defineUaiSelect,
+    transformTag
 });
 
 export type UaiSelectOptionEvents = NonNullable<unknown>;
@@ -2026,7 +2162,8 @@ export const UaiSelectOption: StencilReactComponent<UaiSelectOptionElement, UaiS
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiSelectOptionEvents,
-    defineCustomElement: defineUaiSelectOption
+    defineCustomElement: defineUaiSelectOption,
+    transformTag
 });
 
 export type UaiStepEvents = { onUaiStepSelect: EventName<UaiStepCustomEvent<number>> };
@@ -2037,7 +2174,8 @@ export const UaiStep: StencilReactComponent<UaiStepElement, UaiStepEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiStepSelect: 'uaiStepSelect' } as UaiStepEvents,
-    defineCustomElement: defineUaiStep
+    defineCustomElement: defineUaiStep,
+    transformTag
 });
 
 export type UaiStepperEvents = { onUaiStepChange: EventName<UaiStepperCustomEvent<{ index: number; previousIndex: number }>> };
@@ -2048,7 +2186,8 @@ export const UaiStepper: StencilReactComponent<UaiStepperElement, UaiStepperEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiStepChange: 'uaiStepChange' } as UaiStepperEvents,
-    defineCustomElement: defineUaiStepper
+    defineCustomElement: defineUaiStepper,
+    transformTag
 });
 
 export type UaiSwitchEvents = { onUaiChange: EventName<UaiSwitchCustomEvent<{ checked: boolean }>> };
@@ -2059,7 +2198,8 @@ export const UaiSwitch: StencilReactComponent<UaiSwitchElement, UaiSwitchEvents,
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiChange: 'uaiChange' } as UaiSwitchEvents,
-    defineCustomElement: defineUaiSwitch
+    defineCustomElement: defineUaiSwitch,
+    transformTag
 });
 
 export type UaiTabGroupEvents = {
@@ -2076,7 +2216,8 @@ export const UaiTabGroup: StencilReactComponent<UaiTabGroupElement, UaiTabGroupE
         onUaiTabChange: 'uaiTabChange',
         onUaiTabDisabled: 'uaiTabDisabled'
     } as UaiTabGroupEvents,
-    defineCustomElement: defineUaiTabGroup
+    defineCustomElement: defineUaiTabGroup,
+    transformTag
 });
 
 export type UaiTabItemEvents = { onUaiDisabled: EventName<UaiTabItemCustomEvent<{ item: number; disable: boolean }>> };
@@ -2087,7 +2228,8 @@ export const UaiTabItem: StencilReactComponent<UaiTabItemElement, UaiTabItemEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiDisabled: 'uaiDisabled' } as UaiTabItemEvents,
-    defineCustomElement: defineUaiTabItem
+    defineCustomElement: defineUaiTabItem,
+    transformTag
 });
 
 export type UaiTableEvents = NonNullable<unknown>;
@@ -2098,7 +2240,8 @@ export const UaiTable: StencilReactComponent<UaiTableElement, UaiTableEvents, Co
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiTableEvents,
-    defineCustomElement: defineUaiTable
+    defineCustomElement: defineUaiTable,
+    transformTag
 });
 
 export type UaiTableBodyEvents = NonNullable<unknown>;
@@ -2109,7 +2252,8 @@ export const UaiTableBody: StencilReactComponent<UaiTableBodyElement, UaiTableBo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiTableBodyEvents,
-    defineCustomElement: defineUaiTableBody
+    defineCustomElement: defineUaiTableBody,
+    transformTag
 });
 
 export type UaiTableCellEvents = NonNullable<unknown>;
@@ -2120,7 +2264,8 @@ export const UaiTableCell: StencilReactComponent<UaiTableCellElement, UaiTableCe
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiTableCellEvents,
-    defineCustomElement: defineUaiTableCell
+    defineCustomElement: defineUaiTableCell,
+    transformTag
 });
 
 export type UaiTableHeaderEvents = NonNullable<unknown>;
@@ -2131,7 +2276,8 @@ export const UaiTableHeader: StencilReactComponent<UaiTableHeaderElement, UaiTab
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiTableHeaderEvents,
-    defineCustomElement: defineUaiTableHeader
+    defineCustomElement: defineUaiTableHeader,
+    transformTag
 });
 
 export type UaiTableRowEvents = NonNullable<unknown>;
@@ -2142,7 +2288,8 @@ export const UaiTableRow: StencilReactComponent<UaiTableRowElement, UaiTableRowE
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiTableRowEvents,
-    defineCustomElement: defineUaiTableRow
+    defineCustomElement: defineUaiTableRow,
+    transformTag
 });
 
 export type UaiTableThEvents = { onUaiTableSort: EventName<UaiTableThCustomEvent<UaiTableSortDirection>> };
@@ -2153,7 +2300,8 @@ export const UaiTableTh: StencilReactComponent<UaiTableThElement, UaiTableThEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: { onUaiTableSort: 'uaiTableSort' } as UaiTableThEvents,
-    defineCustomElement: defineUaiTableTh
+    defineCustomElement: defineUaiTableTh,
+    transformTag
 });
 
 export type UaiTextareaEvents = {
@@ -2180,7 +2328,8 @@ export const UaiTextarea: StencilReactComponent<UaiTextareaElement, UaiTextareaE
         onUaiPatternValidation: 'uaiPatternValidation',
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     } as UaiTextareaEvents,
-    defineCustomElement: defineUaiTextarea
+    defineCustomElement: defineUaiTextarea,
+    transformTag
 });
 
 export type UaiThemeProviderEvents = NonNullable<unknown>;
@@ -2191,7 +2340,8 @@ export const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, Ua
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiThemeProviderEvents,
-    defineCustomElement: defineUaiThemeProvider
+    defineCustomElement: defineUaiThemeProvider,
+    transformTag
 });
 
 export type UaiTooltipEvents = NonNullable<unknown>;
@@ -2202,7 +2352,8 @@ export const UaiTooltip: StencilReactComponent<UaiTooltipElement, UaiTooltipEven
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiTooltipEvents,
-    defineCustomElement: defineUaiTooltip
+    defineCustomElement: defineUaiTooltip,
+    transformTag
 });
 
 export type UaiTypoEvents = NonNullable<unknown>;
@@ -2213,5 +2364,6 @@ export const UaiTypo: StencilReactComponent<UaiTypoElement, UaiTypoEvents, Compo
     // @ts-ignore - ignore potential React type mismatches between the Stencil Output Target and your project.
     react: React,
     events: {} as UaiTypoEvents,
-    defineCustomElement: defineUaiTypo
+    defineCustomElement: defineUaiTypo,
+    transformTag
 });

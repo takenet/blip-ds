@@ -25,7 +25,7 @@
     "dev": "stencil build --docs && concurrently \"npm:build:watch\" \"npm:storybook\"",
     "start": "stencil build --dev --watch --serve --docs",
     "build": "npm run assets:prepare && stencil build --docs --prod && npm run assets:strip && npm run assets:check",
-    "assets:prepare": "node scripts/prepare_assets.cjs",
+    "assets:prepare": "node scripts/prepare_assets.cjs && node scripts/prepare_tag_scope.cjs",
     "assets:verify": "node scripts/prepare_assets.cjs --verify",
     "assets:check": "node scripts/check_asset_bundle.cjs",
     "assets:strip": "node scripts/check_asset_bundle.cjs --strip-copied",

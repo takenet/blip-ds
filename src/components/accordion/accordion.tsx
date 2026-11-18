@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State, Watch } from '@stencil/core';
+import { isTag } from '../../utils/tag-name';
 
 @Component({
   tag: 'bds-accordion',
@@ -80,7 +81,7 @@ export class Accordion {
 
   componentWillLoad() {
     this.accGroup =
-      this.element.parentElement.tagName == 'BDS-ACCORDION-GROUP' &&
+      isTag(this.element.parentElement, 'bds-accordion-group') &&
       (this.element.parentElement as HTMLBdsAccordionGroupElement);
     this.accheaders = this.element.querySelector('bds-accordion-header') as HTMLBdsAccordionHeaderElement;
     this.accBodies = this.element.querySelector('bds-accordion-body') as HTMLBdsAccordionBodyElement;
