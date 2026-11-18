@@ -8,7 +8,9 @@
 Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
 Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
 Without `color`, the icon takes the text color around it, so it matches the label next to it.
-The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+The icon registers the font of its own blip-tokens release (see uai-icon-font.ts), so different releases on the same
+page never mix glyphs. Loading the global font (`import 'blip-tokens/uai-icons/css';`) is only a fallback for browsers
+without the FontFace API.
 
 ## Properties
 
