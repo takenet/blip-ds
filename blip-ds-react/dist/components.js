@@ -1,6 +1,7 @@
 'use client';
 import { createComponent } from '@stencil/react-output-target/runtime';
 import React from 'react';
+import { transformTag } from './tag-transformer.js';
 import { BdsAccordionBody as BdsAccordionBodyElement, defineCustomElement as defineBdsAccordionBody } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement, defineCustomElement as defineBdsAccordionGroup } from "blip-ds/dist/components/bds-accordion-group.js";
 import { BdsAccordionHeader as BdsAccordionHeaderElement, defineCustomElement as defineBdsAccordionHeader } from "blip-ds/dist/components/bds-accordion-header.js";
@@ -161,14 +162,16 @@ export const BdsAccordion = createComponent({
         onBdsAccordionOpen: 'bdsAccordionOpen',
         onBdsAccordionClose: 'bdsAccordionClose'
     },
-    defineCustomElement: defineBdsAccordion
+    defineCustomElement: defineBdsAccordion,
+    transformTag
 });
 export const BdsAccordionBody = createComponent({
     tagName: 'bds-accordion-body',
     elementClass: BdsAccordionBodyElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsAccordionBody
+    defineCustomElement: defineBdsAccordionBody,
+    transformTag
 });
 export const BdsAccordionGroup = createComponent({
     tagName: 'bds-accordion-group',
@@ -178,42 +181,48 @@ export const BdsAccordionGroup = createComponent({
         onBdsAccordionCloseAll: 'bdsAccordionCloseAll',
         onBdsAccordionOpenAll: 'bdsAccordionOpenAll'
     },
-    defineCustomElement: defineBdsAccordionGroup
+    defineCustomElement: defineBdsAccordionGroup,
+    transformTag
 });
 export const BdsAccordionHeader = createComponent({
     tagName: 'bds-accordion-header',
     elementClass: BdsAccordionHeaderElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsAccordionHeader
+    defineCustomElement: defineBdsAccordionHeader,
+    transformTag
 });
 export const BdsAlert = createComponent({
     tagName: 'bds-alert',
     elementClass: BdsAlertElement,
     react: React,
     events: { onBdsAlertChanged: 'bdsAlertChanged' },
-    defineCustomElement: defineBdsAlert
+    defineCustomElement: defineBdsAlert,
+    transformTag
 });
 export const BdsAlertActions = createComponent({
     tagName: 'bds-alert-actions',
     elementClass: BdsAlertActionsElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsAlertActions
+    defineCustomElement: defineBdsAlertActions,
+    transformTag
 });
 export const BdsAlertBody = createComponent({
     tagName: 'bds-alert-body',
     elementClass: BdsAlertBodyElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsAlertBody
+    defineCustomElement: defineBdsAlertBody,
+    transformTag
 });
 export const BdsAlertHeader = createComponent({
     tagName: 'bds-alert-header',
     elementClass: BdsAlertHeaderElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsAlertHeader
+    defineCustomElement: defineBdsAlertHeader,
+    transformTag
 });
 export const BdsAutocomplete = createComponent({
     tagName: 'bds-autocomplete',
@@ -228,7 +237,8 @@ export const BdsAutocomplete = createComponent({
         onBdsFocus: 'bdsFocus',
         onBdsBlur: 'bdsBlur'
     },
-    defineCustomElement: defineBdsAutocomplete
+    defineCustomElement: defineBdsAutocomplete,
+    transformTag
 });
 export const BdsAvatar = createComponent({
     tagName: 'bds-avatar',
@@ -238,126 +248,144 @@ export const BdsAvatar = createComponent({
         onBdsClickAvatar: 'bdsClickAvatar',
         onBdsImageUpload: 'bdsImageUpload'
     },
-    defineCustomElement: defineBdsAvatar
+    defineCustomElement: defineBdsAvatar,
+    transformTag
 });
 export const BdsAvatarGroup = createComponent({
     tagName: 'bds-avatar-group',
     elementClass: BdsAvatarGroupElement,
     react: React,
     events: { onBdsClickAvatarGroup: 'bdsClickAvatarGroup' },
-    defineCustomElement: defineBdsAvatarGroup
+    defineCustomElement: defineBdsAvatarGroup,
+    transformTag
 });
 export const BdsBadge = createComponent({
     tagName: 'bds-badge',
     elementClass: BdsBadgeElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsBadge
+    defineCustomElement: defineBdsBadge,
+    transformTag
 });
 export const BdsBanner = createComponent({
     tagName: 'bds-banner',
     elementClass: BdsBannerElement,
     react: React,
     events: { onBdsBannerClose: 'bdsBannerClose' },
-    defineCustomElement: defineBdsBanner
+    defineCustomElement: defineBdsBanner,
+    transformTag
 });
 export const BdsBannerLink = createComponent({
     tagName: 'bds-banner-link',
     elementClass: BdsBannerLinkElement,
     react: React,
     events: { onBdsBannerLink: 'bdsBannerLink' },
-    defineCustomElement: defineBdsBannerLink
+    defineCustomElement: defineBdsBannerLink,
+    transformTag
 });
 export const BdsBreadcrumb = createComponent({
     tagName: 'bds-breadcrumb',
     elementClass: BdsBreadcrumbElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsBreadcrumb
+    defineCustomElement: defineBdsBreadcrumb,
+    transformTag
 });
 export const BdsButton = createComponent({
     tagName: 'bds-button',
     elementClass: BdsButtonElement,
     react: React,
     events: { onBdsClick: 'bdsClick' },
-    defineCustomElement: defineBdsButton
+    defineCustomElement: defineBdsButton,
+    transformTag
 });
 export const BdsButtonGroup = createComponent({
     tagName: 'bds-button-group',
     elementClass: BdsButtonGroupElement,
     react: React,
     events: { onButtonSelected: 'buttonSelected' },
-    defineCustomElement: defineBdsButtonGroup
+    defineCustomElement: defineBdsButtonGroup,
+    transformTag
 });
 export const BdsButtonIcon = createComponent({
     tagName: 'bds-button-icon',
     elementClass: BdsButtonIconElement,
     react: React,
     events: { onBdsClick: 'bdsClick' },
-    defineCustomElement: defineBdsButtonIcon
+    defineCustomElement: defineBdsButtonIcon,
+    transformTag
 });
 export const BdsCard = createComponent({
     tagName: 'bds-card',
     elementClass: BdsCardElement,
     react: React,
     events: { onBdsClick: 'bdsClick' },
-    defineCustomElement: defineBdsCard
+    defineCustomElement: defineBdsCard,
+    transformTag
 });
 export const BdsCardBody = createComponent({
     tagName: 'bds-card-body',
     elementClass: BdsCardBodyElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsCardBody
+    defineCustomElement: defineBdsCardBody,
+    transformTag
 });
 export const BdsCardColor = createComponent({
     tagName: 'bds-card-color',
     elementClass: BdsCardColorElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsCardColor
+    defineCustomElement: defineBdsCardColor,
+    transformTag
 });
 export const BdsCardFooter = createComponent({
     tagName: 'bds-card-footer',
     elementClass: BdsCardFooterElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsCardFooter
+    defineCustomElement: defineBdsCardFooter,
+    transformTag
 });
 export const BdsCardHeader = createComponent({
     tagName: 'bds-card-header',
     elementClass: BdsCardHeaderElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsCardHeader
+    defineCustomElement: defineBdsCardHeader,
+    transformTag
 });
 export const BdsCardSubtitle = createComponent({
     tagName: 'bds-card-subtitle',
     elementClass: BdsCardSubtitleElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsCardSubtitle
+    defineCustomElement: defineBdsCardSubtitle,
+    transformTag
 });
 export const BdsCardTitle = createComponent({
     tagName: 'bds-card-title',
     elementClass: BdsCardTitleElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsCardTitle
+    defineCustomElement: defineBdsCardTitle,
+    transformTag
 });
 export const BdsCarousel = createComponent({
     tagName: 'bds-carousel',
     elementClass: BdsCarouselElement,
     react: React,
     events: { onBdsChangeCarousel: 'bdsChangeCarousel' },
-    defineCustomElement: defineBdsCarousel
+    defineCustomElement: defineBdsCarousel,
+    transformTag
 });
 export const BdsCarouselItem = createComponent({
     tagName: 'bds-carousel-item',
     elementClass: BdsCarouselItemElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsCarouselItem
+    defineCustomElement: defineBdsCarouselItem,
+    transformTag
 });
 export const BdsCheckbox = createComponent({
     tagName: 'bds-checkbox',
@@ -367,14 +395,16 @@ export const BdsCheckbox = createComponent({
         onBdsChange: 'bdsChange',
         onBdsInput: 'bdsInput'
     },
-    defineCustomElement: defineBdsCheckbox
+    defineCustomElement: defineBdsCheckbox,
+    transformTag
 });
 export const BdsChip = createComponent({
     tagName: 'bds-chip',
     elementClass: BdsChipElement,
     react: React,
     events: { onBdsDelete: 'bdsDelete' },
-    defineCustomElement: defineBdsChip
+    defineCustomElement: defineBdsChip,
+    transformTag
 });
 export const BdsChipClickable = createComponent({
     tagName: 'bds-chip-clickable',
@@ -384,28 +414,32 @@ export const BdsChipClickable = createComponent({
         onChipClickableClose: 'chipClickableClose',
         onChipClickableClick: 'chipClickableClick'
     },
-    defineCustomElement: defineBdsChipClickable
+    defineCustomElement: defineBdsChipClickable,
+    transformTag
 });
 export const BdsChipSelected = createComponent({
     tagName: 'bds-chip-selected',
     elementClass: BdsChipSelectedElement,
     react: React,
     events: { onChipClick: 'chipClick' },
-    defineCustomElement: defineBdsChipSelected
+    defineCustomElement: defineBdsChipSelected,
+    transformTag
 });
 export const BdsChipTag = createComponent({
     tagName: 'bds-chip-tag',
     elementClass: BdsChipTagElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsChipTag
+    defineCustomElement: defineBdsChipTag,
+    transformTag
 });
 export const BdsCounterText = createComponent({
     tagName: 'bds-counter-text',
     elementClass: BdsCounterTextElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsCounterText
+    defineCustomElement: defineBdsCounterText,
+    transformTag
 });
 export const BdsDataTable = createComponent({
     tagName: 'bds-data-table',
@@ -416,7 +450,8 @@ export const BdsDataTable = createComponent({
         onBdsTableDelete: 'bdsTableDelete',
         onBdsTableChange: 'bdsTableChange'
     },
-    defineCustomElement: defineBdsDataTable
+    defineCustomElement: defineBdsDataTable,
+    transformTag
 });
 export const BdsDatepicker = createComponent({
     tagName: 'bds-datepicker',
@@ -428,7 +463,8 @@ export const BdsDatepicker = createComponent({
         onConcludeDatepicker: 'concludeDatepicker',
         onEmptyConcludeDatepicker: 'emptyConcludeDatepicker'
     },
-    defineCustomElement: defineBdsDatepicker
+    defineCustomElement: defineBdsDatepicker,
+    transformTag
 });
 export const BdsDatepickerPeriod = createComponent({
     tagName: 'bds-datepicker-period',
@@ -439,77 +475,88 @@ export const BdsDatepickerPeriod = createComponent({
         onBdsEndDate: 'bdsEndDate',
         onBdsClickDayButton: 'bdsClickDayButton'
     },
-    defineCustomElement: defineBdsDatepickerPeriod
+    defineCustomElement: defineBdsDatepickerPeriod,
+    transformTag
 });
 export const BdsDatepickerSingle = createComponent({
     tagName: 'bds-datepicker-single',
     elementClass: BdsDatepickerSingleElement,
     react: React,
     events: { onBdsDateSelected: 'bdsDateSelected' },
-    defineCustomElement: defineBdsDatepickerSingle
+    defineCustomElement: defineBdsDatepickerSingle,
+    transformTag
 });
 export const BdsDivider = createComponent({
     tagName: 'bds-divider',
     elementClass: BdsDividerElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsDivider
+    defineCustomElement: defineBdsDivider,
+    transformTag
 });
 export const BdsDropdown = createComponent({
     tagName: 'bds-dropdown',
     elementClass: BdsDropdownElement,
     react: React,
     events: { onBdsToggle: 'bdsToggle' },
-    defineCustomElement: defineBdsDropdown
+    defineCustomElement: defineBdsDropdown,
+    transformTag
 });
 export const BdsExpansionPanel = createComponent({
     tagName: 'bds-expansion-panel',
     elementClass: BdsExpansionPanelElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsExpansionPanel
+    defineCustomElement: defineBdsExpansionPanel,
+    transformTag
 });
 export const BdsExpansionPanelBody = createComponent({
     tagName: 'bds-expansion-panel-body',
     elementClass: BdsExpansionPanelBodyElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsExpansionPanelBody
+    defineCustomElement: defineBdsExpansionPanelBody,
+    transformTag
 });
 export const BdsExpansionPanelHeader = createComponent({
     tagName: 'bds-expansion-panel-header',
     elementClass: BdsExpansionPanelHeaderElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsExpansionPanelHeader
+    defineCustomElement: defineBdsExpansionPanelHeader,
+    transformTag
 });
 export const BdsGrid = createComponent({
     tagName: 'bds-grid',
     elementClass: BdsGridElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsGrid
+    defineCustomElement: defineBdsGrid,
+    transformTag
 });
 export const BdsIcon = createComponent({
     tagName: 'bds-icon',
     elementClass: BdsIconElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsIcon
+    defineCustomElement: defineBdsIcon,
+    transformTag
 });
 export const BdsIllustration = createComponent({
     tagName: 'bds-illustration',
     elementClass: BdsIllustrationElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsIllustration
+    defineCustomElement: defineBdsIllustration,
+    transformTag
 });
 export const BdsImage = createComponent({
     tagName: 'bds-image',
     elementClass: BdsImageElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsImage
+    defineCustomElement: defineBdsImage,
+    transformTag
 });
 export const BdsInput = createComponent({
     tagName: 'bds-input',
@@ -524,7 +571,8 @@ export const BdsInput = createComponent({
         onBdsPatternValidation: 'bdsPatternValidation',
         onBdsKeyDownBackspace: 'bdsKeyDownBackspace'
     },
-    defineCustomElement: defineBdsInput
+    defineCustomElement: defineBdsInput,
+    transformTag
 });
 export const BdsInputChips = createComponent({
     tagName: 'bds-input-chips',
@@ -539,7 +587,8 @@ export const BdsInputChips = createComponent({
         onBdsExtendedQuantityInput: 'bdsExtendedQuantityInput',
         onBdsSubmit: 'bdsSubmit'
     },
-    defineCustomElement: defineBdsInputChips
+    defineCustomElement: defineBdsInputChips,
+    transformTag
 });
 export const BdsInputEditable = createComponent({
     tagName: 'bds-input-editable',
@@ -553,7 +602,8 @@ export const BdsInputEditable = createComponent({
         onBdsFocus: 'bdsFocus',
         onBdsBlur: 'bdsBlur'
     },
-    defineCustomElement: defineBdsInputEditable
+    defineCustomElement: defineBdsInputEditable,
+    transformTag
 });
 export const BdsInputPassword = createComponent({
     tagName: 'bds-input-password',
@@ -567,7 +617,8 @@ export const BdsInputPassword = createComponent({
         onBdsInputPasswordSubmit: 'bdsInputPasswordSubmit',
         onBdsKeyDownBackspace: 'bdsKeyDownBackspace'
     },
-    defineCustomElement: defineBdsInputPassword
+    defineCustomElement: defineBdsInputPassword,
+    transformTag
 });
 export const BdsInputPhoneNumber = createComponent({
     tagName: 'bds-input-phone-number',
@@ -580,7 +631,8 @@ export const BdsInputPhoneNumber = createComponent({
         onBdsFocus: 'bdsFocus',
         onBdsBlur: 'bdsBlur'
     },
-    defineCustomElement: defineBdsInputPhoneNumber
+    defineCustomElement: defineBdsInputPhoneNumber,
+    transformTag
 });
 export const BdsList = createComponent({
     tagName: 'bds-list',
@@ -592,7 +644,8 @@ export const BdsList = createComponent({
         onBdsListSwitchChange: 'bdsListSwitchChange',
         onBdsClickActionsButtons: 'bdsClickActionsButtons'
     },
-    defineCustomElement: defineBdsList
+    defineCustomElement: defineBdsList,
+    transformTag
 });
 export const BdsListItem = createComponent({
     tagName: 'bds-list-item',
@@ -602,105 +655,120 @@ export const BdsListItem = createComponent({
         onBdsChecked: 'bdsChecked',
         onBdsClickActionButtom: 'bdsClickActionButtom'
     },
-    defineCustomElement: defineBdsListItem
+    defineCustomElement: defineBdsListItem,
+    transformTag
 });
 export const BdsListItemContent = createComponent({
     tagName: 'bds-list-item-content',
     elementClass: BdsListItemContentElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsListItemContent
+    defineCustomElement: defineBdsListItemContent,
+    transformTag
 });
 export const BdsLoadingBar = createComponent({
     tagName: 'bds-loading-bar',
     elementClass: BdsLoadingBarElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsLoadingBar
+    defineCustomElement: defineBdsLoadingBar,
+    transformTag
 });
 export const BdsLoadingPage = createComponent({
     tagName: 'bds-loading-page',
     elementClass: BdsLoadingPageElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsLoadingPage
+    defineCustomElement: defineBdsLoadingPage,
+    transformTag
 });
 export const BdsLoadingSpinner = createComponent({
     tagName: 'bds-loading-spinner',
     elementClass: BdsLoadingSpinnerElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsLoadingSpinner
+    defineCustomElement: defineBdsLoadingSpinner,
+    transformTag
 });
 export const BdsMenu = createComponent({
     tagName: 'bds-menu',
     elementClass: BdsMenuElement,
     react: React,
     events: { onBdsToggle: 'bdsToggle' },
-    defineCustomElement: defineBdsMenu
+    defineCustomElement: defineBdsMenu,
+    transformTag
 });
 export const BdsMenuAction = createComponent({
     tagName: 'bds-menu-action',
     elementClass: BdsMenuActionElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsMenuAction
+    defineCustomElement: defineBdsMenuAction,
+    transformTag
 });
 export const BdsMenuExibition = createComponent({
     tagName: 'bds-menu-exibition',
     elementClass: BdsMenuExibitionElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsMenuExibition
+    defineCustomElement: defineBdsMenuExibition,
+    transformTag
 });
 export const BdsMenuList = createComponent({
     tagName: 'bds-menu-list',
     elementClass: BdsMenuListElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsMenuList
+    defineCustomElement: defineBdsMenuList,
+    transformTag
 });
 export const BdsMenuListItem = createComponent({
     tagName: 'bds-menu-list-item',
     elementClass: BdsMenuListItemElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsMenuListItem
+    defineCustomElement: defineBdsMenuListItem,
+    transformTag
 });
 export const BdsMenuSeparation = createComponent({
     tagName: 'bds-menu-separation',
     elementClass: BdsMenuSeparationElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsMenuSeparation
+    defineCustomElement: defineBdsMenuSeparation,
+    transformTag
 });
 export const BdsModal = createComponent({
     tagName: 'bds-modal',
     elementClass: BdsModalElement,
     react: React,
     events: { onBdsModalChanged: 'bdsModalChanged' },
-    defineCustomElement: defineBdsModal
+    defineCustomElement: defineBdsModal,
+    transformTag
 });
 export const BdsModalAction = createComponent({
     tagName: 'bds-modal-action',
     elementClass: BdsModalActionElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsModalAction
+    defineCustomElement: defineBdsModalAction,
+    transformTag
 });
 export const BdsModalCloseButton = createComponent({
     tagName: 'bds-modal-close-button',
     elementClass: BdsModalCloseButtonElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsModalCloseButton
+    defineCustomElement: defineBdsModalCloseButton,
+    transformTag
 });
 export const BdsNavTree = createComponent({
     tagName: 'bds-nav-tree',
     elementClass: BdsNavTreeElement,
     react: React,
     events: { onBdsToogleChange: 'bdsToogleChange' },
-    defineCustomElement: defineBdsNavTree
+    defineCustomElement: defineBdsNavTree,
+    transformTag
 });
 export const BdsNavTreeGroup = createComponent({
     tagName: 'bds-nav-tree-group',
@@ -710,28 +778,32 @@ export const BdsNavTreeGroup = createComponent({
         onBdsNavTreeGroupCloseAll: 'bdsNavTreeGroupCloseAll',
         onBdsNavTreeGroupOpenAll: 'bdsNavTreeGroupOpenAll'
     },
-    defineCustomElement: defineBdsNavTreeGroup
+    defineCustomElement: defineBdsNavTreeGroup,
+    transformTag
 });
 export const BdsNavTreeItem = createComponent({
     tagName: 'bds-nav-tree-item',
     elementClass: BdsNavTreeItemElement,
     react: React,
     events: { onBdsToogleChange: 'bdsToogleChange' },
-    defineCustomElement: defineBdsNavTreeItem
+    defineCustomElement: defineBdsNavTreeItem,
+    transformTag
 });
 export const BdsNavbar = createComponent({
     tagName: 'bds-navbar',
     elementClass: BdsNavbarElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsNavbar
+    defineCustomElement: defineBdsNavbar,
+    transformTag
 });
 export const BdsNavbarContent = createComponent({
     tagName: 'bds-navbar-content',
     elementClass: BdsNavbarContentElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsNavbarContent
+    defineCustomElement: defineBdsNavbarContent,
+    transformTag
 });
 export const BdsPagination = createComponent({
     tagName: 'bds-pagination',
@@ -741,21 +813,24 @@ export const BdsPagination = createComponent({
         onBdsPaginationChange: 'bdsPaginationChange',
         onBdsItemsPerPageChange: 'bdsItemsPerPageChange'
     },
-    defineCustomElement: defineBdsPagination
+    defineCustomElement: defineBdsPagination,
+    transformTag
 });
 export const BdsPaper = createComponent({
     tagName: 'bds-paper',
     elementClass: BdsPaperElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsPaper
+    defineCustomElement: defineBdsPaper,
+    transformTag
 });
 export const BdsProgressBar = createComponent({
     tagName: 'bds-progress-bar',
     elementClass: BdsProgressBarElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsProgressBar
+    defineCustomElement: defineBdsProgressBar,
+    transformTag
 });
 export const BdsRadio = createComponent({
     tagName: 'bds-radio',
@@ -765,14 +840,16 @@ export const BdsRadio = createComponent({
         onBdsChange: 'bdsChange',
         onBdsClickChange: 'bdsClickChange'
     },
-    defineCustomElement: defineBdsRadio
+    defineCustomElement: defineBdsRadio,
+    transformTag
 });
 export const BdsRadioGroup = createComponent({
     tagName: 'bds-radio-group',
     elementClass: BdsRadioGroupElement,
     react: React,
     events: { onBdsRadioGroupChange: 'bdsRadioGroupChange' },
-    defineCustomElement: defineBdsRadioGroup
+    defineCustomElement: defineBdsRadioGroup,
+    transformTag
 });
 export const BdsRichText = createComponent({
     tagName: 'bds-rich-text',
@@ -784,7 +861,8 @@ export const BdsRichText = createComponent({
         onBdsBlur: 'bdsBlur',
         onBdsFocus: 'bdsFocus'
     },
-    defineCustomElement: defineBdsRichText
+    defineCustomElement: defineBdsRichText,
+    transformTag
 });
 export const BdsSelect = createComponent({
     tagName: 'bds-select',
@@ -796,7 +874,8 @@ export const BdsSelect = createComponent({
         onBdsFocus: 'bdsFocus',
         onBdsBlur: 'bdsBlur'
     },
-    defineCustomElement: defineBdsSelect
+    defineCustomElement: defineBdsSelect,
+    transformTag
 });
 export const BdsSelectChips = createComponent({
     tagName: 'bds-select-chips',
@@ -811,7 +890,8 @@ export const BdsSelectChips = createComponent({
         onBdsSelectChipsInput: 'bdsSelectChipsInput',
         onBdsSubmit: 'bdsSubmit'
     },
-    defineCustomElement: defineBdsSelectChips
+    defineCustomElement: defineBdsSelectChips,
+    transformTag
 });
 export const BdsSelectOption = createComponent({
     tagName: 'bds-select-option',
@@ -821,56 +901,64 @@ export const BdsSelectOption = createComponent({
         onOptionSelected: 'optionSelected',
         onOptionChecked: 'optionChecked'
     },
-    defineCustomElement: defineBdsSelectOption
+    defineCustomElement: defineBdsSelectOption,
+    transformTag
 });
 export const BdsSidebar = createComponent({
     tagName: 'bds-sidebar',
     elementClass: BdsSidebarElement,
     react: React,
     events: { onBdsToggle: 'bdsToggle' },
-    defineCustomElement: defineBdsSidebar
+    defineCustomElement: defineBdsSidebar,
+    transformTag
 });
 export const BdsSkeleton = createComponent({
     tagName: 'bds-skeleton',
     elementClass: BdsSkeletonElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsSkeleton
+    defineCustomElement: defineBdsSkeleton,
+    transformTag
 });
 export const BdsSlider = createComponent({
     tagName: 'bds-slider',
     elementClass: BdsSliderElement,
     react: React,
     events: { onBdsChange: 'bdsChange' },
-    defineCustomElement: defineBdsSlider
+    defineCustomElement: defineBdsSlider,
+    transformTag
 });
 export const BdsStep = createComponent({
     tagName: 'bds-step',
     elementClass: BdsStepElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsStep
+    defineCustomElement: defineBdsStep,
+    transformTag
 });
 export const BdsStepper = createComponent({
     tagName: 'bds-stepper',
     elementClass: BdsStepperElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsStepper
+    defineCustomElement: defineBdsStepper,
+    transformTag
 });
 export const BdsSwitch = createComponent({
     tagName: 'bds-switch',
     elementClass: BdsSwitchElement,
     react: React,
     events: { onBdsChange: 'bdsChange' },
-    defineCustomElement: defineBdsSwitch
+    defineCustomElement: defineBdsSwitch,
+    transformTag
 });
 export const BdsTab = createComponent({
     tagName: 'bds-tab',
     elementClass: BdsTabElement,
     react: React,
     events: { onBdsTabChange: 'bdsTabChange' },
-    defineCustomElement: defineBdsTab
+    defineCustomElement: defineBdsTab,
+    transformTag
 });
 export const BdsTabGroup = createComponent({
     tagName: 'bds-tab-group',
@@ -880,63 +968,72 @@ export const BdsTabGroup = createComponent({
         onBdsTabChange: 'bdsTabChange',
         onBdsTabDisabled: 'bdsTabDisabled'
     },
-    defineCustomElement: defineBdsTabGroup
+    defineCustomElement: defineBdsTabGroup,
+    transformTag
 });
 export const BdsTabItem = createComponent({
     tagName: 'bds-tab-item',
     elementClass: BdsTabItemElement,
     react: React,
     events: { onTabDisabled: 'tabDisabled' },
-    defineCustomElement: defineBdsTabItem
+    defineCustomElement: defineBdsTabItem,
+    transformTag
 });
 export const BdsTabPanel = createComponent({
     tagName: 'bds-tab-panel',
     elementClass: BdsTabPanelElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTabPanel
+    defineCustomElement: defineBdsTabPanel,
+    transformTag
 });
 export const BdsTable = createComponent({
     tagName: 'bds-table',
     elementClass: BdsTableElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTable
+    defineCustomElement: defineBdsTable,
+    transformTag
 });
 export const BdsTableBody = createComponent({
     tagName: 'bds-table-body',
     elementClass: BdsTableBodyElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTableBody
+    defineCustomElement: defineBdsTableBody,
+    transformTag
 });
 export const BdsTableCell = createComponent({
     tagName: 'bds-table-cell',
     elementClass: BdsTableCellElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTableCell
+    defineCustomElement: defineBdsTableCell,
+    transformTag
 });
 export const BdsTableHeader = createComponent({
     tagName: 'bds-table-header',
     elementClass: BdsTableHeaderElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTableHeader
+    defineCustomElement: defineBdsTableHeader,
+    transformTag
 });
 export const BdsTableRow = createComponent({
     tagName: 'bds-table-row',
     elementClass: BdsTableRowElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTableRow
+    defineCustomElement: defineBdsTableRow,
+    transformTag
 });
 export const BdsTableTh = createComponent({
     tagName: 'bds-table-th',
     elementClass: BdsTableThElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTableTh
+    defineCustomElement: defineBdsTableTh,
+    transformTag
 });
 export const BdsTabs = createComponent({
     tagName: 'bds-tabs',
@@ -946,49 +1043,56 @@ export const BdsTabs = createComponent({
         onScrollButtonClick: 'scrollButtonClick',
         onBdsTabInit: 'bdsTabInit'
     },
-    defineCustomElement: defineBdsTabs
+    defineCustomElement: defineBdsTabs,
+    transformTag
 });
 export const BdsTestComponent = createComponent({
     tagName: 'bds-test-component',
     elementClass: BdsTestComponentElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTestComponent
+    defineCustomElement: defineBdsTestComponent,
+    transformTag
 });
 export const BdsThemeProvider = createComponent({
     tagName: 'bds-theme-provider',
     elementClass: BdsThemeProviderElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsThemeProvider
+    defineCustomElement: defineBdsThemeProvider,
+    transformTag
 });
 export const BdsToast = createComponent({
     tagName: 'bds-toast',
     elementClass: BdsToastElement,
     react: React,
     events: { onToastButtonClick: 'toastButtonClick' },
-    defineCustomElement: defineBdsToast
+    defineCustomElement: defineBdsToast,
+    transformTag
 });
 export const BdsToastContainer = createComponent({
     tagName: 'bds-toast-container',
     elementClass: BdsToastContainerElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsToastContainer
+    defineCustomElement: defineBdsToastContainer,
+    transformTag
 });
 export const BdsTooltip = createComponent({
     tagName: 'bds-tooltip',
     elementClass: BdsTooltipElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTooltip
+    defineCustomElement: defineBdsTooltip,
+    transformTag
 });
 export const BdsTypo = createComponent({
     tagName: 'bds-typo',
     elementClass: BdsTypoElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsTypo
+    defineCustomElement: defineBdsTypo,
+    transformTag
 });
 export const BdsUpload = createComponent({
     tagName: 'bds-upload',
@@ -998,14 +1102,16 @@ export const BdsUpload = createComponent({
         onBdsUploadDelete: 'bdsUploadDelete',
         onBdsUploadChange: 'bdsUploadChange'
     },
-    defineCustomElement: defineBdsUpload
+    defineCustomElement: defineBdsUpload,
+    transformTag
 });
 export const BdsWarning = createComponent({
     tagName: 'bds-warning',
     elementClass: BdsWarningElement,
     react: React,
     events: {},
-    defineCustomElement: defineBdsWarning
+    defineCustomElement: defineBdsWarning,
+    transformTag
 });
 export const UaiAvatar = createComponent({
     tagName: 'uai-avatar',
@@ -1015,21 +1121,24 @@ export const UaiAvatar = createComponent({
         onUaiClickAvatar: 'uaiClickAvatar',
         onUaiImageUpload: 'uaiImageUpload'
     },
-    defineCustomElement: defineUaiAvatar
+    defineCustomElement: defineUaiAvatar,
+    transformTag
 });
 export const UaiBadge = createComponent({
     tagName: 'uai-badge',
     elementClass: UaiBadgeElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiBadge
+    defineCustomElement: defineUaiBadge,
+    transformTag
 });
 export const UaiBanner = createComponent({
     tagName: 'uai-banner',
     elementClass: UaiBannerElement,
     react: React,
     events: { onUaiBannerClose: 'uaiBannerClose' },
-    defineCustomElement: defineUaiBanner
+    defineCustomElement: defineUaiBanner,
+    transformTag
 });
 export const UaiBreadcrumb = createComponent({
     tagName: 'uai-breadcrumb',
@@ -1039,21 +1148,24 @@ export const UaiBreadcrumb = createComponent({
         onUaiBreadcrumbItemClick: 'uaiBreadcrumbItemClick',
         onUaiBreadcrumbItemEdit: 'uaiBreadcrumbItemEdit'
     },
-    defineCustomElement: defineUaiBreadcrumb
+    defineCustomElement: defineUaiBreadcrumb,
+    transformTag
 });
 export const UaiButton = createComponent({
     tagName: 'uai-button',
     elementClass: UaiButtonElement,
     react: React,
     events: { onUaiClick: 'uaiClick' },
-    defineCustomElement: defineUaiButton
+    defineCustomElement: defineUaiButton,
+    transformTag
 });
 export const UaiButtonGroup = createComponent({
     tagName: 'uai-button-group',
     elementClass: UaiButtonGroupElement,
     react: React,
     events: { onUaiButtonSelected: 'uaiButtonSelected' },
-    defineCustomElement: defineUaiButtonGroup
+    defineCustomElement: defineUaiButtonGroup,
+    transformTag
 });
 export const UaiCheckbox = createComponent({
     tagName: 'uai-checkbox',
@@ -1063,42 +1175,48 @@ export const UaiCheckbox = createComponent({
         onUaiChange: 'uaiChange',
         onUaiInput: 'uaiInput'
     },
-    defineCustomElement: defineUaiCheckbox
+    defineCustomElement: defineUaiCheckbox,
+    transformTag
 });
 export const UaiChipTag = createComponent({
     tagName: 'uai-chip-tag',
     elementClass: UaiChipTagElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiChipTag
+    defineCustomElement: defineUaiChipTag,
+    transformTag
 });
 export const UaiDropdown = createComponent({
     tagName: 'uai-dropdown',
     elementClass: UaiDropdownElement,
     react: React,
     events: { onUaiToggle: 'uaiToggle' },
-    defineCustomElement: defineUaiDropdown
+    defineCustomElement: defineUaiDropdown,
+    transformTag
 });
 export const UaiEmoji = createComponent({
     tagName: 'uai-emoji',
     elementClass: UaiEmojiElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiEmoji
+    defineCustomElement: defineUaiEmoji,
+    transformTag
 });
 export const UaiGrid = createComponent({
     tagName: 'uai-grid',
     elementClass: UaiGridElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiGrid
+    defineCustomElement: defineUaiGrid,
+    transformTag
 });
 export const UaiIcon = createComponent({
     tagName: 'uai-icon',
     elementClass: UaiIconElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiIcon
+    defineCustomElement: defineUaiIcon,
+    transformTag
 });
 export const UaiInput = createComponent({
     tagName: 'uai-input',
@@ -1113,7 +1231,8 @@ export const UaiInput = createComponent({
         onUaiPatternValidation: 'uaiPatternValidation',
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     },
-    defineCustomElement: defineUaiInput
+    defineCustomElement: defineUaiInput,
+    transformTag
 });
 export const UaiInputChips = createComponent({
     tagName: 'uai-input-chips',
@@ -1128,7 +1247,8 @@ export const UaiInputChips = createComponent({
         onUaiExtendedQuantityInput: 'uaiExtendedQuantityInput',
         onUaiSubmit: 'uaiSubmit'
     },
-    defineCustomElement: defineUaiInputChips
+    defineCustomElement: defineUaiInputChips,
+    transformTag
 });
 export const UaiInputDate = createComponent({
     tagName: 'uai-input-date',
@@ -1140,7 +1260,8 @@ export const UaiInputDate = createComponent({
         onUaiFocus: 'uaiFocus',
         onUaiOnBlur: 'uaiOnBlur'
     },
-    defineCustomElement: defineUaiInputDate
+    defineCustomElement: defineUaiInputDate,
+    transformTag
 });
 export const UaiInputEditable = createComponent({
     tagName: 'uai-input-editable',
@@ -1154,7 +1275,8 @@ export const UaiInputEditable = createComponent({
         onUaiFocus: 'uaiFocus',
         onUaiBlur: 'uaiBlur'
     },
-    defineCustomElement: defineUaiInputEditable
+    defineCustomElement: defineUaiInputEditable,
+    transformTag
 });
 export const UaiInputPassword = createComponent({
     tagName: 'uai-input-password',
@@ -1168,7 +1290,8 @@ export const UaiInputPassword = createComponent({
         onUaiInputPasswordSubmit: 'uaiInputPasswordSubmit',
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     },
-    defineCustomElement: defineUaiInputPassword
+    defineCustomElement: defineUaiInputPassword,
+    transformTag
 });
 export const UaiInputPhone = createComponent({
     tagName: 'uai-input-phone',
@@ -1181,49 +1304,56 @@ export const UaiInputPhone = createComponent({
         onUaiFocus: 'uaiFocus',
         onUaiBlur: 'uaiBlur'
     },
-    defineCustomElement: defineUaiInputPhone
+    defineCustomElement: defineUaiInputPhone,
+    transformTag
 });
 export const UaiLogo = createComponent({
     tagName: 'uai-logo',
     elementClass: UaiLogoElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiLogo
+    defineCustomElement: defineUaiLogo,
+    transformTag
 });
 export const UaiModal = createComponent({
     tagName: 'uai-modal',
     elementClass: UaiModalElement,
     react: React,
     events: { onUaiModalChanged: 'uaiModalChanged' },
-    defineCustomElement: defineUaiModal
+    defineCustomElement: defineUaiModal,
+    transformTag
 });
 export const UaiModalAction = createComponent({
     tagName: 'uai-modal-action',
     elementClass: UaiModalActionElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiModalAction
+    defineCustomElement: defineUaiModalAction,
+    transformTag
 });
 export const UaiModalCloseButton = createComponent({
     tagName: 'uai-modal-close-button',
     elementClass: UaiModalCloseButtonElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiModalCloseButton
+    defineCustomElement: defineUaiModalCloseButton,
+    transformTag
 });
 export const UaiNavbar = createComponent({
     tagName: 'uai-navbar',
     elementClass: UaiNavbarElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiNavbar
+    defineCustomElement: defineUaiNavbar,
+    transformTag
 });
 export const UaiNavbarContent = createComponent({
     tagName: 'uai-navbar-content',
     elementClass: UaiNavbarContentElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiNavbarContent
+    defineCustomElement: defineUaiNavbarContent,
+    transformTag
 });
 export const UaiPageHeader = createComponent({
     tagName: 'uai-page-header',
@@ -1233,7 +1363,8 @@ export const UaiPageHeader = createComponent({
         onUaiBreadcrumbItemClick: 'uaiBreadcrumbItemClick',
         onUaiBreadcrumbItemEdit: 'uaiBreadcrumbItemEdit'
     },
-    defineCustomElement: defineUaiPageHeader
+    defineCustomElement: defineUaiPageHeader,
+    transformTag
 });
 export const UaiPagination = createComponent({
     tagName: 'uai-pagination',
@@ -1243,14 +1374,16 @@ export const UaiPagination = createComponent({
         onUaiPaginationChange: 'uaiPaginationChange',
         onUaiPageSizeChange: 'uaiPageSizeChange'
     },
-    defineCustomElement: defineUaiPagination
+    defineCustomElement: defineUaiPagination,
+    transformTag
 });
 export const UaiPaper = createComponent({
     tagName: 'uai-paper',
     elementClass: UaiPaperElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiPaper
+    defineCustomElement: defineUaiPaper,
+    transformTag
 });
 export const UaiRadio = createComponent({
     tagName: 'uai-radio',
@@ -1260,14 +1393,16 @@ export const UaiRadio = createComponent({
         onUaiChange: 'uaiChange',
         onUaiClickChange: 'uaiClickChange'
     },
-    defineCustomElement: defineUaiRadio
+    defineCustomElement: defineUaiRadio,
+    transformTag
 });
 export const UaiRadioGroup = createComponent({
     tagName: 'uai-radio-group',
     elementClass: UaiRadioGroupElement,
     react: React,
     events: { onUaiRadioGroupChange: 'uaiRadioGroupChange' },
-    defineCustomElement: defineUaiRadioGroup
+    defineCustomElement: defineUaiRadioGroup,
+    transformTag
 });
 export const UaiSelect = createComponent({
     tagName: 'uai-select',
@@ -1279,35 +1414,40 @@ export const UaiSelect = createComponent({
         onUaiFocus: 'uaiFocus',
         onUaiBlur: 'uaiBlur'
     },
-    defineCustomElement: defineUaiSelect
+    defineCustomElement: defineUaiSelect,
+    transformTag
 });
 export const UaiSelectOption = createComponent({
     tagName: 'uai-select-option',
     elementClass: UaiSelectOptionElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiSelectOption
+    defineCustomElement: defineUaiSelectOption,
+    transformTag
 });
 export const UaiStep = createComponent({
     tagName: 'uai-step',
     elementClass: UaiStepElement,
     react: React,
     events: { onUaiStepSelect: 'uaiStepSelect' },
-    defineCustomElement: defineUaiStep
+    defineCustomElement: defineUaiStep,
+    transformTag
 });
 export const UaiStepper = createComponent({
     tagName: 'uai-stepper',
     elementClass: UaiStepperElement,
     react: React,
     events: { onUaiStepChange: 'uaiStepChange' },
-    defineCustomElement: defineUaiStepper
+    defineCustomElement: defineUaiStepper,
+    transformTag
 });
 export const UaiSwitch = createComponent({
     tagName: 'uai-switch',
     elementClass: UaiSwitchElement,
     react: React,
     events: { onUaiChange: 'uaiChange' },
-    defineCustomElement: defineUaiSwitch
+    defineCustomElement: defineUaiSwitch,
+    transformTag
 });
 export const UaiTabGroup = createComponent({
     tagName: 'uai-tab-group',
@@ -1317,56 +1457,64 @@ export const UaiTabGroup = createComponent({
         onUaiTabChange: 'uaiTabChange',
         onUaiTabDisabled: 'uaiTabDisabled'
     },
-    defineCustomElement: defineUaiTabGroup
+    defineCustomElement: defineUaiTabGroup,
+    transformTag
 });
 export const UaiTabItem = createComponent({
     tagName: 'uai-tab-item',
     elementClass: UaiTabItemElement,
     react: React,
     events: { onUaiDisabled: 'uaiDisabled' },
-    defineCustomElement: defineUaiTabItem
+    defineCustomElement: defineUaiTabItem,
+    transformTag
 });
 export const UaiTable = createComponent({
     tagName: 'uai-table',
     elementClass: UaiTableElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiTable
+    defineCustomElement: defineUaiTable,
+    transformTag
 });
 export const UaiTableBody = createComponent({
     tagName: 'uai-table-body',
     elementClass: UaiTableBodyElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiTableBody
+    defineCustomElement: defineUaiTableBody,
+    transformTag
 });
 export const UaiTableCell = createComponent({
     tagName: 'uai-table-cell',
     elementClass: UaiTableCellElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiTableCell
+    defineCustomElement: defineUaiTableCell,
+    transformTag
 });
 export const UaiTableHeader = createComponent({
     tagName: 'uai-table-header',
     elementClass: UaiTableHeaderElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiTableHeader
+    defineCustomElement: defineUaiTableHeader,
+    transformTag
 });
 export const UaiTableRow = createComponent({
     tagName: 'uai-table-row',
     elementClass: UaiTableRowElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiTableRow
+    defineCustomElement: defineUaiTableRow,
+    transformTag
 });
 export const UaiTableTh = createComponent({
     tagName: 'uai-table-th',
     elementClass: UaiTableThElement,
     react: React,
     events: { onUaiTableSort: 'uaiTableSort' },
-    defineCustomElement: defineUaiTableTh
+    defineCustomElement: defineUaiTableTh,
+    transformTag
 });
 export const UaiTextarea = createComponent({
     tagName: 'uai-textarea',
@@ -1381,27 +1529,31 @@ export const UaiTextarea = createComponent({
         onUaiPatternValidation: 'uaiPatternValidation',
         onUaiKeyDownBackspace: 'uaiKeyDownBackspace'
     },
-    defineCustomElement: defineUaiTextarea
+    defineCustomElement: defineUaiTextarea,
+    transformTag
 });
 export const UaiThemeProvider = createComponent({
     tagName: 'uai-theme-provider',
     elementClass: UaiThemeProviderElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiThemeProvider
+    defineCustomElement: defineUaiThemeProvider,
+    transformTag
 });
 export const UaiTooltip = createComponent({
     tagName: 'uai-tooltip',
     elementClass: UaiTooltipElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiTooltip
+    defineCustomElement: defineUaiTooltip,
+    transformTag
 });
 export const UaiTypo = createComponent({
     tagName: 'uai-typo',
     elementClass: UaiTypoElement,
     react: React,
     events: {},
-    defineCustomElement: defineUaiTypo
+    defineCustomElement: defineUaiTypo,
+    transformTag
 });
 //# sourceMappingURL=components.js.map

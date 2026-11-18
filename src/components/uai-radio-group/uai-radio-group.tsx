@@ -14,6 +14,7 @@ import {
 } from '@stencil/core';
 import { UaiFormControl } from '../../utils/uai-form-control';
 import { warnOnce } from '../../utils/deprecation';
+import { isTag } from '../../utils/tag-name';
 
 interface UaiRadioOption extends HTMLElement {
   value?: string;
@@ -26,7 +27,7 @@ interface UaiRadioOption extends HTMLElement {
 }
 
 const isRadioOption = (target: EventTarget | null): target is UaiRadioOption =>
-  target instanceof HTMLElement && target.tagName.toLowerCase() === 'uai-radio';
+  target instanceof HTMLElement && isTag(target, 'uai-radio');
 
 /**
  * Coordinates a mutually exclusive set of UaiRadio options. Provide an accessible group name with
@@ -136,7 +137,7 @@ export class UaiRadioGroup {
 
   private isFromNestedGroup(event: Event): boolean {
     return event.composedPath().some(
-      (target) => target instanceof HTMLElement && target.tagName.toLowerCase() === 'uai-radio-group' && target !== this.el,
+      (target) => target instanceof HTMLElement && isTag(target, 'uai-radio-group') && target !== this.el,
     );
   }
 

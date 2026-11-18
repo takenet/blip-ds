@@ -1,6 +1,7 @@
 import { Build, Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { warnDeprecated, warnLegacyValue, warnOnce } from '../../utils/deprecation';
 import { UaiOverlay, UaiOverlayAlign, UaiOverlayCloseReason, UaiOverlaySide } from '../../utils/uai-overlay';
+import { isTag } from '../../utils/tag-name';
 
 export type UaiDropdownPosition =
   'auto' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'top-center' | 'bottom-center';
@@ -184,7 +185,7 @@ export class UaiDropdown {
         child.getAttribute('slot') === 'header' &&
         (/^H[1-6]$/.test(child.tagName) ||
           child.getAttribute('role') === 'heading' ||
-          (child.tagName === 'UAI-TYPO' && /^h[1-6]$/.test(child.getAttribute('tag') || ''))),
+          (isTag(child, 'uai-typo') && /^h[1-6]$/.test(child.getAttribute('tag') || ''))),
     );
     const text = heading?.textContent?.trim();
     return text || undefined;

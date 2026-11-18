@@ -36,10 +36,12 @@ export const config: Config = {
     reactOutputTarget({
       outDir: 'blip-ds-react/src',
       stencilPackageName: 'blip-ds',
+      transformTag: true,
     }),
   ],
   buildEs5: true,
   extras: {
+    additionalTagTransformers: true,
     appendChildSlotFix: false,
     scriptDataOpts: true,
     cloneNodeFix: false,

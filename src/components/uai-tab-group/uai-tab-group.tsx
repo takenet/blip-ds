@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Host, Listen, Prop, State, Wat
 import { UAI_TAB_ITEM_PROPS, UaiTabItemElement, UaiTabItemOptions } from '../uai-tab-item/uai-tab-item-interface';
 import { isUaiIcon } from '../../globals/uai-icons';
 import { warnLegacyValue, warnOnce } from '../../utils/deprecation';
+import { isTag } from '../../utils/tag-name';
 
 interface Tab extends UaiTabItemOptions {
   element: UaiTabItemElement;
@@ -122,7 +123,7 @@ export class UaiTabGroup {
   }
 
   private isOwnItem(target: EventTarget | null): target is UaiTabItemElement {
-    return target instanceof HTMLElement && target.tagName === 'UAI-TAB-ITEM' && target.closest('uai-tab-group') === this.el;
+    return target instanceof HTMLElement && isTag(target, 'uai-tab-item') && target.closest('uai-tab-group') === this.el;
   }
 
   private connectObservers(): void {
@@ -131,7 +132,7 @@ export class UaiTabGroup {
       this.observer = new MutationObserver((records) => {
         if (records.some((record) => record.type === 'childList' &&
           [...Array.from(record.addedNodes), ...Array.from(record.removedNodes)].some(
-            (node) => node instanceof HTMLElement && (node.tagName === 'UAI-TAB-ITEM' || !!node.querySelector('uai-tab-item')),
+            (node) => node instanceof HTMLElement && (isTag(node, 'uai-tab-item') || !!node.querySelector('uai-tab-item')),
           ))) this.syncItems();
       });
       this.observer.observe(this.el, { childList: true, subtree: true });

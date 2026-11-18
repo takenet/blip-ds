@@ -5,6 +5,7 @@ import * as countriesDefault from './countries.json';
 import * as countriesPtBR from './countries-pt_BR.json';
 import * as countriesEnUS from './countries-en_US.json';
 import * as countriesEsES from './countries-es_ES.json';
+import { isTag } from '../../utils/tag-name';
 
 export type languages = 'pt_BR' | 'es_ES' | 'en_US';
 
@@ -285,7 +286,7 @@ export class InputPhoneNumber {
   }
 
   private keyPressWrapper = (event: KeyboardEvent): void => {
-    const isSelectElement = (event.target as Element).localName === 'bds-select';
+    const isSelectElement = isTag(event.target as Element, 'bds-select');
     const isInputElement = (event.target as Element).localName === 'input';
 
     if (event.key === 'Enter' && !this.isOpen && (isSelectElement || isInputElement)) {

@@ -1,6 +1,7 @@
 import { Component, Host, Prop, h } from '@stencil/core';
 import { UaiIconTheme, isUaiIcon } from '../../globals/uai-icons';
 import { warnLegacyValue, warnOnce } from '../../utils/deprecation';
+import { ICON_FONT_FAMILY, registerIconFont } from '../../utils/uai-icon-font';
 
 export type UaiIconSize = 'x-small' | 'small' | 'medium';
 export type UaiIconColor =
@@ -38,7 +39,9 @@ const supported = <T extends string>(prop: string, value: string, allowed: T[], 
  * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
  * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
  * Without `color`, the icon takes the text color around it, so it matches the label next to it.
- * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+ * The icon registers the font of its own blip-tokens release (see uai-icon-font.ts), so different releases on the same
+ * page never mix glyphs. Loading the global font (`import 'blip-tokens/uai-icons/css';`) is only a fallback for browsers
+ * without the FontFace API.
  *
  * @part glyph - The element that renders the icon font glyph.
  */
@@ -79,6 +82,10 @@ export class UaiIcon {
    */
   @Prop() dataTest?: string = null;
 
+  componentWillLoad(): void {
+    registerIconFont();
+  }
+
   render(): HTMLElement {
     const theme = supported('theme', this.theme, THEMES, 'outline');
     const size = supported('size', this.size, SIZES, 'medium');
@@ -97,6 +104,7 @@ export class UaiIcon {
       >
         <span
           class={{ 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }}
+          style={{ '--uai-icon-font-family': `"${ICON_FONT_FAMILY}"` }}
           part="glyph"
           data-test={this.dataTest}
         ></span>

@@ -1,4 +1,5 @@
 import { Component, Host, Element, State, Prop, Method, Event, EventEmitter, Watch, h } from '@stencil/core';
+import { isTag } from '../../utils/tag-name';
 
 export type collapses = 'single' | 'multiple';
 
@@ -86,7 +87,7 @@ export class NavTree {
 
   componentWillLoad() {
     this.itemsGroup =
-      this.element.parentElement.tagName == 'BDS-NAV-TREE-GROUP' &&
+      isTag(this.element.parentElement, 'bds-nav-tree-group') &&
       (this.element.parentElement as HTMLBdsNavTreeGroupElement);
     this.navTreeChild = this.element.querySelector('bds-nav-tree-item') === null ? false : true;
   }
