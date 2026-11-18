@@ -1,1 +1,0 @@
-import{B as t,d as o}from"./p-BiGtgOtY.js";const s=t,p=o;export{s as BdsLoadingSpinner,p as defineCustomElement}
