@@ -1,6 +1,7 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { i as isTag } from './tag-name-D0YfnSi8.js';
 
-const uaiStepperCss = () => `:host{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%}:host([orientation=horizontal]){-ms-flex-align:start;align-items:flex-start;border-bottom:var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7)}:host([orientation=horizontal]) ::slotted(uai-step){-ms-flex:1 1 0px;flex:1 1 0}:host([orientation=vertical]){-ms-flex-direction:column;flex-direction:column;-ms-flex-align:stretch;align-items:stretch}`;
+const uaiStepperCss = () => `:host{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%}:host([orientation=horizontal]){-ms-flex-align:start;align-items:flex-start;border-bottom:var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7)}:host([orientation=horizontal]) ::slotted(${transformTag("uai-step")}){-ms-flex:1 1 0px;flex:1 1 0}:host([orientation=vertical]){-ms-flex-direction:column;flex-direction:column;-ms-flex-align:stretch;align-items:stretch}`;
 
 const UaiStepper = class {
     constructor(hostRef) {
@@ -39,7 +40,7 @@ const UaiStepper = class {
         this.syncSteps();
     }
     get steps() {
-        return Array.from(this.el.children).filter((child) => child.tagName === 'UAI-STEP');
+        return Array.from(this.el.children).filter((child) => isTag(child, 'uai-step'));
     }
     connectedCallback() {
         this.syncSteps();
@@ -82,7 +83,7 @@ const UaiStepper = class {
         this.steps.forEach((step) => (step.completed = false));
     }
     render() {
-        return (h(Host, { key: '6b13bbd10baa7333e0241de10cc7a6eddd39ec65', role: "list" }, h("slot", { key: '8639d90d98f6f249fd4eeb51ab0371b64de1a10f', onSlotchange: this.syncSteps })));
+        return (h(Host, { key: 'bc13a0e935e15ea8944aa757ffd97774dae902e6', role: "list" }, h("slot", { key: '96bc2669c49c5d64bc56282091f0f83381863e6f', onSlotchange: this.syncSteps })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

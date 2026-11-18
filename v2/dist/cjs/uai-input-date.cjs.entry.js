@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
 var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
 
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;

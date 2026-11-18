@@ -1,10 +1,11 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
-var assetLoader = require('./asset-loader-CwAg8CJh.js');
+var index = require('./index-Bq8uwDLK.js');
+var assetLoader = require('./asset-loader-C39uBW9U.js');
 var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
 var uaiOverlay = require('./uai-overlay-BfPyY4-s.js');
 var countriesEs_ES = require('./countries-es_ES-BrZr75bu.js');
+require('./asset-config-BPl0Q5dr.js');
 
 // Country keys whose official flag artwork (blip-tokens) is published under another name.
 const FLAG_ALIASES = {

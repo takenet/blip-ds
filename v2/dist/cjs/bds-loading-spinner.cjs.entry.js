@@ -1,7 +1,8 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
-var assetLoader = require('./asset-loader-CwAg8CJh.js');
+var index = require('./index-Bq8uwDLK.js');
+var assetLoader = require('./asset-loader-C39uBW9U.js');
+require('./asset-config-BPl0Q5dr.js');
 
 const loadingSpinnerCss = () => `:host{display:block}.spinner_container{display:-ms-inline-flexbox;display:inline-flex;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}.spinner_background{border-radius:50%;border:2px solid}.spinner_background_extra-small{border-width:2px;width:16px;height:16px;-webkit-box-sizing:border-box;box-sizing:border-box}.spinner_background_small{border-width:4px;width:32px;height:32px;-webkit-box-sizing:border-box;box-sizing:border-box}.spinner_background_standard{border-width:8px;width:64px;height:64px;-webkit-box-sizing:border-box;box-sizing:border-box}.spinner_background_main{border-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.16}.spinner_background_light{border-color:var(--color-content-bright, rgb(255, 255, 255));opacity:0.16}.spinner_background_content{border-color:var(--color-surface-0, rgb(255, 255, 255));opacity:0.16}.spinner_background_positive{border-color:var(--color-positive, #10603b);opacity:0.16}.spinner_background_negative{border-color:var(--color-negative, #e60f0f);opacity:0.16}.spinner_loading{-webkit-animation:rotate 0.5s linear infinite;animation:rotate 0.5s linear infinite;position:absolute}.spinner_loading_extra-small{width:16px;height:16px}.spinner_loading_small{width:32px;height:32px}.spinner_loading_standard{width:64px;height:64px}.spinner_loading_main{color:var(--color-primary, rgb(30, 107, 241))}.spinner_loading_light{color:var(--color-content-bright, rgb(255, 255, 255))}.spinner_loading_content{color:var(--color-surface-0, rgb(255, 255, 255))}.spinner_loading_positive{color:var(--color-positive, #10603b)}.spinner_loading_negative{color:var(--color-negative, #e60f0f)}@-webkit-keyframes rotate{to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate{to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}`;
 
@@ -29,7 +30,7 @@ const BdsLoadingSpinner = class {
         this.dataTest = null;
         /**Function to transform the svg in a div element. */
         this.formatSvg = (svgContent) => {
-            const div = document.createElement('div');
+            const div = document.createElement(index.transformTag('div'));
             div.innerHTML = svgContent;
             const svgElm = div.firstElementChild;
             svgElm.removeAttribute('width');

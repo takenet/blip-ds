@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
 var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
 var uaiOverlay = require('./uai-overlay-BfPyY4-s.js');
 
@@ -206,7 +206,7 @@ const UaiSelect = class {
             this.value = state;
     }
     readSlotted() {
-        const children = Array.from(this.el.querySelectorAll('uai-select-option'));
+        const children = Array.from(this.el.querySelectorAll(`${index.transformTag("uai-select-option")}`));
         this.slottedOptions = children.map((child) => {
             var _a;
             return ({

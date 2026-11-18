@@ -1,7 +1,8 @@
-import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
-import { l as loadAssetSvg } from './asset-loader-4TTmk6ec.js';
+import { r as registerInstance, h, H as Host } from './index-D799VfbI.js';
+import { l as loadAssetSvg } from './asset-loader-DibQ0X3y.js';
 import { w as warnOnce } from './deprecation-B4L0JRQZ.js';
-import { g as getEmojiName } from './utils-i0ANWvuJ.js';
+import { g as getEmojiName } from './utils-CsjvLMMV.js';
+import './asset-config-CsnuhrSZ.js';
 
 const uaiEmojiCss = () => `:host{display:inline-block;vertical-align:middle}.asset{display:block}.asset svg{display:block;width:100%;height:auto}`;
 

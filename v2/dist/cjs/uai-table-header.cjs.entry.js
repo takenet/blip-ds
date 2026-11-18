@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
 
-const uaiTableHeaderCss = () => `:host{display:block}::slotted(uai-table-row:not([variant=bar])){min-height:0}`;
+const uaiTableHeaderCss = () => `:host{display:block}::slotted(${index.transformTag("uai-table-row")}:not([variant=bar])){min-height:0}`;
 
 const UaiTableHeader = class {
     constructor(hostRef) {

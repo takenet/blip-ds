@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-D799VfbI.js';
 
 const uaiNavbarContentCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}`;
 

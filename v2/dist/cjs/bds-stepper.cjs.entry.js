@@ -1,8 +1,8 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
 
-const stepperCss = () => `:host{width:100%;border-radius:8px;-webkit-box-sizing:border-box;box-sizing:border-box;padding:16px;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between}:host ::slotted(bds-step:last-child){-ms-flex:inherit;flex:inherit}::slotted(.stepper__container__divisor){-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-item-align:center;align-self:center;height:1.5px;background:var(--color-content-disable, rgb(89, 89, 89));margin:0px 8px;min-width:24px}::slotted(.stepper__container__divisor--completed){border-top:2px solid var(--color-primary, rgb(30, 107, 241))}`;
+const stepperCss = () => `:host{width:100%;border-radius:8px;-webkit-box-sizing:border-box;box-sizing:border-box;padding:16px;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between}:host ::slotted(${index.transformTag("bds-step")}:last-child){-ms-flex:inherit;flex:inherit}::slotted(.stepper__container__divisor){-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-item-align:center;align-self:center;height:1.5px;background:var(--color-content-disable, rgb(89, 89, 89));margin:0px 8px;min-width:24px}::slotted(.stepper__container__divisor--completed){border-top:2px solid var(--color-primary, rgb(30, 107, 241))}`;
 
 const BdsStepper = class {
     constructor(hostRef) {
@@ -67,10 +67,10 @@ const BdsStepper = class {
         }
     }
     get childOptions() {
-        return Array.from(this.el.querySelectorAll('bds-step'));
+        return Array.from(this.el.querySelectorAll(`${index.transformTag("bds-step")}`));
     }
     renderLine() {
-        const line = document.createElement('div');
+        const line = document.createElement(index.transformTag('div'));
         line.classList.add('stepper__container__divisor');
         Array.from(this.childOptions).forEach((item, idx) => {
             if (this.childOptions.length - 1 != idx) {

@@ -1,6 +1,7 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
+var tagName = require('./tag-name-DCmhJ5mj.js');
 
 const accordionCss = () => `.accordion_header{display:-ms-flexbox;display:flex;grid-auto-flow:column;gap:24px;-ms-flex-pack:start;justify-content:start;-ms-flex-align:center;align-items:center;padding:24px;padding-right:56px;position:relative;color:var(--color-content-default, rgb(40, 40, 40));cursor:pointer}.accordion_header::before{content:"";position:absolute;inset:0;z-index:0}.accordion_header slot{display:-ms-flexbox;display:flex;width:100%;-ms-flex-negative:99999;flex-shrink:99999}.accordion_header *{position:relative;z-index:1}.accordion_header:hover::before{background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.08}.accordion_header .accButton{position:absolute;right:24px;top:calc(50% - 16px);border-radius:8px;contain:inherit;-webkit-transition:height 0.5s, all 0.3s;-moz-transition:height 0.5s, all 0.3s;transition:height 0.5s, all 0.3s;z-index:1}.accordion_header .accButton__isopen{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.accordion_header .accButton::before{content:"";position:absolute;inset:-4px;border:2px solid transparent;border-radius:4px}.accordion_header .accButton:focus-visible{outline:none}.accordion_header .accButton:focus-visible::before{border-color:var(--color-focus, rgb(194, 38, 251))}.accordion_header .accButton:hover{background-color:var(--color-surface-1, rgb(246, 246, 246))}.accordion_header .accButton:active{background-color:var(--color-surface-1, rgb(246, 246, 246))}.accordion_body{height:0;overflow:hidden;border-bottom:none;-webkit-transition:height 0.5s;-moz-transition:height 0.5s;transition:height 0.5s}.accordion_body::-webkit-scrollbar{width:16px;background-color:var(--color-shadow-0, rgba(0, 0, 0, 0.04));border-radius:10px}.accordion_body::-webkit-scrollbar-thumb{border-radius:10px;border:4px solid transparent;border-radius:10px;background-clip:content-box;background-color:var(--color-border-1, rgba(0, 0, 0, 0.2))}.accordion_body_isOpen{overflow:overlay}.accordion_body_divisor{border-bottom:1px solid var(--color-border-1, rgba(0, 0, 0, 0.2))}.accordion_body .container{padding:8px 24px 48px;position:relative;color:var(--color-content-default, rgb(40, 40, 40))}`;
 
@@ -59,19 +60,19 @@ const Accordion = class {
         this.condition = false;
     }
     divisorChanged(newValue) {
-        const accordionBody = this.element.querySelector('bds-accordion-body');
+        const accordionBody = this.element.querySelector(`${index.transformTag("bds-accordion-body")}`);
         if (accordionBody) {
             accordionBody.divisor(newValue);
         }
     }
     componentWillLoad() {
         this.accGroup =
-            this.element.parentElement.tagName == 'BDS-ACCORDION-GROUP' &&
+            tagName.isTag(this.element.parentElement, 'bds-accordion-group') &&
                 this.element.parentElement;
-        this.accheaders = this.element.querySelector('bds-accordion-header');
-        this.accBodies = this.element.querySelector('bds-accordion-body');
+        this.accheaders = this.element.querySelector(`${index.transformTag("bds-accordion-header")}`);
+        this.accBodies = this.element.querySelector(`${index.transformTag("bds-accordion-body")}`);
         // Passar a prop divisor para o AccordionBody
-        const accordionBody = this.element.querySelector('bds-accordion-body');
+        const accordionBody = this.element.querySelector(`${index.transformTag("bds-accordion-body")}`);
         if (accordionBody) {
             accordionBody.divisor(this.divisor);
         }
@@ -81,7 +82,7 @@ const Accordion = class {
         }
     }
     render() {
-        return (index.h("div", { key: '7333089734e4ff0b4c0f1393ef2fb796e2b3380b', class: "accordion_group" }, index.h("slot", { key: 'a815efc126b10e30f750ef7a94ec8be203e96152' })));
+        return (index.h("div", { key: '77b78c847df8cca55bae0cae9a1eef4616de33f8', class: "accordion_group" }, index.h("slot", { key: '936af50b269e5415cc347ad26a134207e6e00d39' })));
     }
     get element() { return index.getElement(this); }
     static get watchers() { return {

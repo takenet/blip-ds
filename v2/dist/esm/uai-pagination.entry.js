@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
 
 const uaiPaginationCss = () => `:host{display:block;width:100%}.pagination{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-align:center;align-items:center;-ms-flex-pack:justify;justify-content:space-between;gap:var(--uai-spacing-md, 1rem);color:var(--uai-content-primary, #242729)}.pagination__size,.pagination__actions{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}.pagination__actions{margin-left:auto}.pagination__select{--uai-select-width:var(--uai-pagination-select-width, var(--uai-sizing-5xl, 4.5rem))}.pagination__range,.pagination__counter{white-space:nowrap}`;
 

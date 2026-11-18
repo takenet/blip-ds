@@ -1,1 +1,1 @@
-import{T as s,d as o}from"./p-OqBMHHbs.js";const p=s,r=o;export{p as BdsThemeProvider,r as defineCustomElement}
+import{T as o,d as s}from"./p-B-2-6-T2.js";const p=o,r=s;export{p as BdsThemeProvider,r as defineCustomElement}

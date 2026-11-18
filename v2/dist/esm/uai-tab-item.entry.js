@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
 
 const uaiTabItemCss = () => `:host{display:none}:host(.is-open){display:block;height:100%}:host([hidden]){display:none}.uai-tab-item__content{height:100%}`;
 

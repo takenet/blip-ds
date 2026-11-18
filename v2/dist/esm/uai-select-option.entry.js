@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
+import { r as registerInstance, h, H as Host } from './index-D799VfbI.js';
 
 const uaiSelectOptionCss = () => `:host{display:none}`;
 

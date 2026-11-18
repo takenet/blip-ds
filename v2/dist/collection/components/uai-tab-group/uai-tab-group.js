@@ -2,6 +2,7 @@ import { Host, h } from "@stencil/core";
 import { UAI_TAB_ITEM_PROPS } from "../uai-tab-item/uai-tab-item-interface";
 import { isUaiIcon } from "../../globals/uai-icons";
 import { warnLegacyValue, warnOnce } from "../../utils/deprecation";
+import { isTag } from "../../utils/tag-name";
 const LABELS = {
     pt_BR: { previous: 'Abas anteriores', next: 'Próximas abas' },
     en_US: { previous: 'Previous tabs', next: 'Next tabs' },
@@ -115,7 +116,7 @@ export class UaiTabGroup {
         window.removeEventListener('resize', this.handleResize);
     }
     isOwnItem(target) {
-        return target instanceof HTMLElement && target.tagName === 'UAI-TAB-ITEM' && target.closest('uai-tab-group') === this.el;
+        return target instanceof HTMLElement && isTag(target, 'uai-tab-item') && target.closest('uai-tab-group') === this.el;
     }
     connectObservers() {
         var _a, _b;
@@ -123,7 +124,7 @@ export class UaiTabGroup {
         if (typeof MutationObserver === 'function') {
             this.observer = new MutationObserver((records) => {
                 if (records.some((record) => record.type === 'childList' &&
-                    [...Array.from(record.addedNodes), ...Array.from(record.removedNodes)].some((node) => node instanceof HTMLElement && (node.tagName === 'UAI-TAB-ITEM' || !!node.querySelector('uai-tab-item')))))
+                    [...Array.from(record.addedNodes), ...Array.from(record.removedNodes)].some((node) => node instanceof HTMLElement && (isTag(node, 'uai-tab-item') || !!node.querySelector('uai-tab-item')))))
                     this.syncItems();
             });
             this.observer.observe(this.el, { childList: true, subtree: true });
@@ -290,7 +291,7 @@ export class UaiTabGroup {
         const labels = LABELS[language];
         const selected = this.items.find((item) => item.open);
         const overflow = this.canScrollPrev || this.canScrollNext;
-        return (h(Host, { key: '0ad32bb8797c16a21eb546f90052f6662e155135' }, h("div", { key: 'a4529a02d42b01ec050d29306369f98c7ae09213', class: "uai-tabs" }, h("div", { key: '2ebfd6760ecc35f6a34bff31461d4293c20fd1ed', class: { 'uai-tabs__header': true, [`uai-tabs__header--${align}`]: true }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.headerStyle) }, h("div", { key: 'fb7c0bf9708804d1e192ef3e326e22c31c63d1b7', class: { 'uai-tabs__navigation': true, 'uai-tabs__navigation--overflow': overflow } }, overflow && h("uai-button", { key: '853b104674af5c0438bd5ffc4169e80625de84d4', variant: "text", color: "content", size: "short", icon: "arrow-left", "aria-label": labels.previous, disabled: !this.canScrollPrev, dataTest: this.dtButtonPrev, onUaiClick: () => this.scroll(-1) }), h("div", { key: 'a347244d50d261fd8cbcda26b08dedac1410c826', class: "uai-tabs__viewport", ref: (el) => this.viewport = el, onScroll: this.updateOverflow }, h("div", { key: '5091c4d01aa96aad837593fb0de0c18dfa71df85', class: "uai-tabs__list", role: "tablist", "aria-label": this.ariaLabel || undefined, "aria-labelledby": this.ariaLabelledBy || undefined, ref: (el) => this.track = el }, h("span", { key: '6aaaf2a95cca8a70ed5bb9c2ddaf61f04654327c', "aria-hidden": "true", class: "uai-tabs__indicator", ref: (el) => this.indicator = el }), this.items.map((item, index) => {
+        return (h(Host, { key: 'd4dab207eeae706d9f560babefd190c8ba215d11' }, h("div", { key: '9e27d227ea2658bd45f3056835daba9a72b0978d', class: "uai-tabs" }, h("div", { key: 'db038f464a9f8485981483c231b2a086cf33def3', class: { 'uai-tabs__header': true, [`uai-tabs__header--${align}`]: true }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.headerStyle) }, h("div", { key: '031eb90ba5f861c6b3f81a9c1b10dee770d98bc3', class: { 'uai-tabs__navigation': true, 'uai-tabs__navigation--overflow': overflow } }, overflow && h("uai-button", { key: 'b83fef6aec485fe02cd2fbaed39609ed5967c191', variant: "text", color: "content", size: "short", icon: "arrow-left", "aria-label": labels.previous, disabled: !this.canScrollPrev, dataTest: this.dtButtonPrev, onUaiClick: () => this.scroll(-1) }), h("div", { key: '487cde95ba29bfed44dd763e1b06d7aa71ee1231', class: "uai-tabs__viewport", ref: (el) => this.viewport = el, onScroll: this.updateOverflow }, h("div", { key: '45229926faf9de221ccdceab439acb196a28e01a', class: "uai-tabs__list", role: "tablist", "aria-label": this.ariaLabel || undefined, "aria-labelledby": this.ariaLabelledBy || undefined, ref: (el) => this.track = el }, h("span", { key: 'c18831bac48b7609ab7dd4ac5175b8ef5bf45240', "aria-hidden": "true", class: "uai-tabs__indicator", ref: (el) => this.indicator = el }), this.items.map((item, index) => {
             var _a;
             if (!((_a = (item.ariaLabel || item.label)) === null || _a === void 0 ? void 0 : _a.trim())) {
                 warnOnce('uai-tab-group', `unnamed:${item.element.id}`, 'Each tab requires label or aria-label, including icon-only tabs.');
@@ -301,7 +302,7 @@ export class UaiTabGroup {
                     if (!item.disable)
                         this.focusedItem = item.element;
                 }, onClick: () => this.activate(item), onKeyDown: (event) => this.handleKeyDown(event, item) }, item.icon && item.iconPosition === 'left' && this.renderIcon(item.icon, item.iconTheme), item.badge && item.badgePosition === 'left' && this.renderBadge(item), !item.iconOnly && h("uai-typo", { tag: "span", variant: "body-base", bold: "medium", margin: false, noWrap: true }, item.label), item.error && h("uai-icon", { class: "uai-tabs__icon", name: "warning", size: "small", "aria-hidden": "true" }), item.icon && item.iconPosition === 'right' && this.renderIcon(item.icon, item.iconTheme), item.badge && item.badgePosition === 'right' && this.renderBadge(item)));
-        }))), overflow && h("uai-button", { key: '74dde6c773367bf8e6b2c8847a9d9b7f3b57becc', variant: "text", color: "content", size: "short", icon: "arrow-right", "aria-label": labels.next, disabled: !this.canScrollNext, dataTest: this.dtButtonNext, onUaiClick: () => this.scroll(1) }))), h("div", { key: '434964eeaf9b6f274df0adbbc3fad56dcdb1dda5', class: { 'uai-tabs__content': true, 'uai-tabs__content--scrollable': this.contentScrollable }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.contentStyle) }, h("slot", { key: '17728210cb78322934961d85c254e0b0f407dcf2', onSlotchange: () => this.loaded && this.syncItems() })))));
+        }))), overflow && h("uai-button", { key: '0a644e57dd8e3d1768224dda517b4110b52d9156', variant: "text", color: "content", size: "short", icon: "arrow-right", "aria-label": labels.next, disabled: !this.canScrollNext, dataTest: this.dtButtonNext, onUaiClick: () => this.scroll(1) }))), h("div", { key: 'b41307c4022ec6e3f6239b8334df8e2295966311', class: { 'uai-tabs__content': true, 'uai-tabs__content--scrollable': this.contentScrollable }, style: this.styles(selected === null || selected === void 0 ? void 0 : selected.contentStyle) }, h("slot", { key: 'd273a61258d85727d16f0e2cb3f7db6b14c0b2b1', onSlotchange: () => this.loaded && this.syncItems() })))));
     }
     static get is() { return "uai-tab-group"; }
     static get encapsulation() { return "scoped"; }

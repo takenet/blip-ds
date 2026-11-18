@@ -1,9 +1,10 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
-var assetLoader = require('./asset-loader-CwAg8CJh.js');
+var index = require('./index-Bq8uwDLK.js');
+var assetLoader = require('./asset-loader-C39uBW9U.js');
 var deprecation = require('./deprecation-DQqFZBv-.js');
-var utils = require('./utils-nCYeuj-P.js');
+var utils = require('./utils-BRdVvopb.js');
+require('./asset-config-BPl0Q5dr.js');
 
 const uaiEmojiCss = () => `:host{display:inline-block;vertical-align:middle}.asset{display:block}.asset svg{display:block;width:100%;height:auto}`;
 

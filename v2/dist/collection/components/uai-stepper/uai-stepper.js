@@ -1,4 +1,5 @@
 import { Host, h } from "@stencil/core";
+import { isTag } from "../../utils/tag-name";
 /**
  * Sequential steps of a process. Use for flows with ordered stages; pair with UaiStep; avoid it for free navigation between views (use uai-tab-group).
  * The stepper numbers the steps, marks the last one and sets their orientation.
@@ -40,7 +41,7 @@ export class UaiStepper {
         this.syncSteps();
     }
     get steps() {
-        return Array.from(this.el.children).filter((child) => child.tagName === 'UAI-STEP');
+        return Array.from(this.el.children).filter((child) => isTag(child, 'uai-step'));
     }
     connectedCallback() {
         this.syncSteps();
@@ -83,7 +84,7 @@ export class UaiStepper {
         this.steps.forEach((step) => (step.completed = false));
     }
     render() {
-        return (h(Host, { key: '6b13bbd10baa7333e0241de10cc7a6eddd39ec65', role: "list" }, h("slot", { key: '8639d90d98f6f249fd4eeb51ab0371b64de1a10f', onSlotchange: this.syncSteps })));
+        return (h(Host, { key: 'bc13a0e935e15ea8944aa757ffd97774dae902e6', role: "list" }, h("slot", { key: '96bc2669c49c5d64bc56282091f0f83381863e6f', onSlotchange: this.syncSteps })));
     }
     static get is() { return "uai-stepper"; }
     static get encapsulation() { return "shadow"; }

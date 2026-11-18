@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
+import { r as registerInstance, h, H as Host } from './index-D799VfbI.js';
 
 const uaiModalActionCss = () => `:host{display:block;width:100%}.modal__action{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:end;justify-content:flex-end;gap:var(--uai-spacing-xs, 0.5rem)}`;
 

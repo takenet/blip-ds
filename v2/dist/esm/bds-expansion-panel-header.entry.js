@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
+import { r as registerInstance, h, H as Host } from './index-D799VfbI.js';
 
 const expansionPanelHeaderCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.header{width:70px;padding-right:6px}`;
 

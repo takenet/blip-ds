@@ -1,7 +1,8 @@
 import { Build, Host, h, } from "@stencil/core";
 import { UaiFormControl } from "../../utils/uai-form-control";
 import { warnOnce } from "../../utils/deprecation";
-const isRadioOption = (target) => target instanceof HTMLElement && target.tagName.toLowerCase() === 'uai-radio';
+import { isTag } from "../../utils/tag-name";
+const isRadioOption = (target) => target instanceof HTMLElement && isTag(target, 'uai-radio');
 /**
  * Coordinates a mutually exclusive set of UaiRadio options. Provide an accessible group name with
  * aria-label or aria-labelledby. The group owns the submitted name and value.
@@ -88,7 +89,7 @@ export class UaiRadioGroup {
         return isRadioOption(target) && target.closest('uai-radio-group') === this.el;
     }
     isFromNestedGroup(event) {
-        return event.composedPath().some((target) => target instanceof HTMLElement && target.tagName.toLowerCase() === 'uai-radio-group' && target !== this.el);
+        return event.composedPath().some((target) => target instanceof HTMLElement && isTag(target, 'uai-radio-group') && target !== this.el);
     }
     onInvalid() {
         this.invalid = true;
@@ -209,7 +210,7 @@ export class UaiRadioGroup {
     }
     render() {
         const disabled = this.effectiveDisabled;
-        return (h(Host, { key: '652d206b3cf46c56093d6695b0acb9aaf5862bb1', role: "radiogroup", tabIndex: -1, part: "group", "aria-label": this.ariaLabel || null, "aria-labelledby": this.ariaLabelledBy || null, "aria-disabled": disabled ? 'true' : null, "aria-required": this.required ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, onKeyDown: this.onKeyDown }, h("slot", { key: 'fff8eac3caeae67dbf82fb9886d3486f75e8020b', onSlotchange: this.onSlotChange }), h("input", { key: '90744041e0a2b19d059a23559b4f5f84319915b8', class: "validation-proxy", type: "checkbox", required: this.required && !disabled, checked: this.value !== undefined && this.value !== null, "aria-hidden": "true", tabIndex: -1, ref: (input) => (this.validationProxy = input) })));
+        return (h(Host, { key: '073e0b1d4ad2b8322f3943830e4b90e15d86858d', role: "radiogroup", tabIndex: -1, part: "group", "aria-label": this.ariaLabel || null, "aria-labelledby": this.ariaLabelledBy || null, "aria-disabled": disabled ? 'true' : null, "aria-required": this.required ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, onKeyDown: this.onKeyDown }, h("slot", { key: '92981483d325b973aed407e0f5c5fe82372e6e3a', onSlotchange: this.onSlotChange }), h("input", { key: 'a89ced52dd23da67ff11f5d74371242e7e4f022c', class: "validation-proxy", type: "checkbox", required: this.required && !disabled, checked: this.value !== undefined && this.value !== null, "aria-hidden": "true", tabIndex: -1, ref: (input) => (this.validationProxy = input) })));
     }
     static get is() { return "uai-radio-group"; }
     static get encapsulation() { return "shadow"; }

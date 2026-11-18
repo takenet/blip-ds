@@ -1,6 +1,7 @@
 import { Build, Host, h } from "@stencil/core";
 import { warnDeprecated, warnLegacyValue, warnOnce } from "../../utils/deprecation";
 import { UaiOverlay } from "../../utils/uai-overlay";
+import { isTag } from "../../utils/tag-name";
 // `left` aligns the panel to the start of the activator and `right` to its end, as in bds-dropdown.
 // The `*-center` values of bds-dropdown keep their side and let the alignment follow the room available.
 const PLACEMENTS = {
@@ -145,7 +146,7 @@ export class UaiDropdown {
         const heading = Array.from(this.el.children).find((child) => child.getAttribute('slot') === 'header' &&
             (/^H[1-6]$/.test(child.tagName) ||
                 child.getAttribute('role') === 'heading' ||
-                (child.tagName === 'UAI-TYPO' && /^h[1-6]$/.test(child.getAttribute('tag') || ''))));
+                (isTag(child, 'uai-typo') && /^h[1-6]$/.test(child.getAttribute('tag') || ''))));
         const text = (_a = heading === null || heading === void 0 ? void 0 : heading.textContent) === null || _a === void 0 ? void 0 : _a.trim();
         return text || undefined;
     }
@@ -192,7 +193,7 @@ export class UaiDropdown {
     render() {
         const width = Number(this.width);
         const panelWidth = this.width != null && Number.isFinite(width) && width > 0 ? width : undefined;
-        return (h(Host, { key: '633d78d7b5f48fc205885b080decaf5fb27b32ec', onFocusout: this.onFocusout }, h("div", { key: 'bee42a4987d307382ab4616c2e42e8d98c2b1da9', class: "dropdown__activator", ref: (el) => (this.activatorEl = el), onClick: () => this.toggle() }, h("slot", { key: 'a90c1892d2d6cdb51e6547ddf19447fb528e652b', name: "activator" })), h("div", { key: '9e526bdb4b3484b4ec2ddf8aee39083e70fd32cd', class: "dropdown__panel", part: "panel", role: "dialog", tabindex: "-1", "aria-label": this.accessibleName(), "data-test": this.dataTest, style: panelWidth ? { '--dropdown-width': `${panelWidth}rem` } : undefined, ref: (el) => (this.panelEl = el) }, h("div", { key: 'dcec48b27739becf63337f08834309943479051b', class: { dropdown__header: true, 'dropdown__header--empty': !this.hasHeader }, part: "header" }, h("slot", { key: 'b83dc068f967907704dcbfc868a87abb2cf6e8a0', name: "header", onSlotchange: this.onSlotChange('header') })), h("div", { key: 'bd3e07fad2f51ff990a895b5b75337315e3d7844', class: "dropdown__body", part: "body" }, h("slot", { key: 'e5d6d4fc7297303b15ac739dbc7303969f0dfed8' })), h("div", { key: '15faa8786e4db31862fa45e81596e0e93ff4e39c', class: { dropdown__footer: true, 'dropdown__footer--empty': !this.hasFooter }, part: "footer" }, h("slot", { key: 'e1bc5c50a0e5044180b7911c248a0d85e21c6e80', name: "footer", onSlotchange: this.onSlotChange('footer') })))));
+        return (h(Host, { key: '79bf16db01202c8f437f5baa07a8bb843e6b0a86', onFocusout: this.onFocusout }, h("div", { key: '08d646453ac16df1a8f4809ce80bfe4428a4bb8b', class: "dropdown__activator", ref: (el) => (this.activatorEl = el), onClick: () => this.toggle() }, h("slot", { key: 'f5cbd98ed6a8eb288308b30d2b73b3d5ccd397d9', name: "activator" })), h("div", { key: 'f49b3065ae2879cdec78e8533fc20d7307db4c16', class: "dropdown__panel", part: "panel", role: "dialog", tabindex: "-1", "aria-label": this.accessibleName(), "data-test": this.dataTest, style: panelWidth ? { '--dropdown-width': `${panelWidth}rem` } : undefined, ref: (el) => (this.panelEl = el) }, h("div", { key: 'd688a4f78682862a38be2e4fe87bf96e2d1a6b6c', class: { dropdown__header: true, 'dropdown__header--empty': !this.hasHeader }, part: "header" }, h("slot", { key: '6e605d287ebcbb8939e3626a9eb743594ee32646', name: "header", onSlotchange: this.onSlotChange('header') })), h("div", { key: '2b4f242d1ede112ff6eba713d1558753e1b49c55', class: "dropdown__body", part: "body" }, h("slot", { key: '80800157d04485dc5d1823e48a113fdab4f81343' })), h("div", { key: 'a525c24cdac6d7ef5961b713994d4afc9d2c0707', class: { dropdown__footer: true, 'dropdown__footer--empty': !this.hasFooter }, part: "footer" }, h("slot", { key: '27cdc34637279bdb1464e0d41edb38b7f63701a7', name: "footer", onSlotchange: this.onSlotChange('footer') })))));
     }
     static get is() { return "uai-dropdown"; }
     static get encapsulation() { return "shadow"; }

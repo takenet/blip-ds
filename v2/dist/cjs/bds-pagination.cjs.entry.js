@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
 var positionElement = require('./position-element-Due63Z64.js');
 
 const en_US = {

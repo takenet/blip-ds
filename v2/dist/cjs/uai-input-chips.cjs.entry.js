@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
 var validations = require('./validations-BrQ_igDv.js');
 var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
 

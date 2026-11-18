@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { r as registerInstance, c as createEvent, t as transformTag, h, H as Host, g as getElement } from './index-D799VfbI.js';
 import { i as isUaiIcon } from './uai-icons-DTAenokK.js';
 import { w as warnOnce } from './deprecation-B4L0JRQZ.js';
 
@@ -193,7 +193,7 @@ const UaiButton = class {
         const form = this.el.closest('form');
         if (!form)
             return;
-        const proxy = document.createElement('button');
+        const proxy = document.createElement(transformTag('button'));
         proxy.type = this.type;
         proxy.style.display = 'none';
         form.appendChild(proxy);

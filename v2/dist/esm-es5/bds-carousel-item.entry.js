@@ -1,4 +1,4 @@
-import{r as registerInstance,h,H as Host}from"./index-CkbvGS8Z.js";var carouselItemCss=function(){return":host{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;width:auto}.carrosel-item-frame{display:block;width:100%;height:100%;border-radius:8px;position:relative;overflow:hidden}.carrosel-item-frame ::slotted(*){position:relative}.image-bg{position:absolute;width:100%;height:100%}"};var BdsCarouselItem=/** @class */function(){function e(e){registerInstance(this,e);
+import{r as registerInstance,h,H as Host}from"./index-D799VfbI.js";var carouselItemCss=function(){return":host{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;width:auto}.carrosel-item-frame{display:block;width:100%;height:100%;border-radius:8px;position:relative;overflow:hidden}.carrosel-item-frame ::slotted(*){position:relative}.image-bg{position:absolute;width:100%;height:100%}"};var BdsCarouselItem=/** @class */function(){function e(e){registerInstance(this,e);
 /**
          * Set what theme will be aplyed inside the component.
          * 'light', 'dark';

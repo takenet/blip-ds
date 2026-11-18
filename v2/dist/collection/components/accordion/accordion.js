@@ -1,4 +1,5 @@
 import { h } from "@stencil/core";
+import { isTag } from "../../utils/tag-name";
 export class Accordion {
     constructor() {
         this.accGroup = null;
@@ -57,7 +58,7 @@ export class Accordion {
     }
     componentWillLoad() {
         this.accGroup =
-            this.element.parentElement.tagName == 'BDS-ACCORDION-GROUP' &&
+            isTag(this.element.parentElement, 'bds-accordion-group') &&
                 this.element.parentElement;
         this.accheaders = this.element.querySelector('bds-accordion-header');
         this.accBodies = this.element.querySelector('bds-accordion-body');
@@ -72,7 +73,7 @@ export class Accordion {
         }
     }
     render() {
-        return (h("div", { key: '7333089734e4ff0b4c0f1393ef2fb796e2b3380b', class: "accordion_group" }, h("slot", { key: 'a815efc126b10e30f750ef7a94ec8be203e96152' })));
+        return (h("div", { key: '77b78c847df8cca55bae0cae9a1eef4616de33f8', class: "accordion_group" }, h("slot", { key: '936af50b269e5415cc347ad26a134207e6e00d39' })));
     }
     static get is() { return "bds-accordion"; }
     static get encapsulation() { return "shadow"; }

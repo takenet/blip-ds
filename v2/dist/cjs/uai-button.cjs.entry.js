@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
 var uaiIcons = require('./uai-icons-DZdOYxNV.js');
 var deprecation = require('./deprecation-DQqFZBv-.js');
 
@@ -195,7 +195,7 @@ const UaiButton = class {
         const form = this.el.closest('form');
         if (!form)
             return;
-        const proxy = document.createElement('button');
+        const proxy = document.createElement(index.transformTag('button'));
         proxy.type = this.type;
         proxy.style.display = 'none';
         form.appendChild(proxy);

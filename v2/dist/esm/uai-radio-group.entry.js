@@ -1,9 +1,10 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { r as registerInstance, c as createEvent, t as transformTag, h, H as Host, g as getElement } from './index-D799VfbI.js';
 import { U as UaiFormControl } from './uai-form-control-BkRP7pRQ.js';
+import { i as isTag } from './tag-name-D0YfnSi8.js';
 
 const uaiRadioGroupCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem);color:var(--uai-content-primary, #242729);font-family:var(--uai-font-family-sans, Figtree), sans-serif}:host([aria-disabled=true]){cursor:not-allowed}.validation-proxy{position:absolute;width:0;height:0;overflow:hidden;-webkit-clip-path:inset(50%);clip-path:inset(50%);white-space:nowrap}@media (forced-colors: active){:host(:focus-within){outline:var(--uai-border-width-thick, 2px) solid CanvasText}}`;
 
-const isRadioOption = (target) => target instanceof HTMLElement && target.tagName.toLowerCase() === 'uai-radio';
+const isRadioOption = (target) => target instanceof HTMLElement && isTag(target, 'uai-radio');
 const UaiRadioGroup = class {
     constructor(hostRef) {
         registerInstance(this, hostRef);
@@ -89,10 +90,10 @@ const UaiRadioGroup = class {
         }
     }
     isOwnRadio(target) {
-        return isRadioOption(target) && target.closest('uai-radio-group') === this.el;
+        return isRadioOption(target) && target.closest(`${transformTag("uai-radio-group")}`) === this.el;
     }
     isFromNestedGroup(event) {
-        return event.composedPath().some((target) => target instanceof HTMLElement && target.tagName.toLowerCase() === 'uai-radio-group' && target !== this.el);
+        return event.composedPath().some((target) => target instanceof HTMLElement && isTag(target, 'uai-radio-group') && target !== this.el);
     }
     onInvalid() {
         this.invalid = true;
@@ -152,7 +153,7 @@ const UaiRadioGroup = class {
         return this.disabled || this.disabledByForm;
     }
     get radioOptions() {
-        return Array.from(this.el.querySelectorAll('uai-radio')).filter((radio) => radio.closest('uai-radio-group') === this.el);
+        return Array.from(this.el.querySelectorAll(`${transformTag("uai-radio")}`)).filter((radio) => radio.closest(`${transformTag("uai-radio-group")}`) === this.el);
     }
     getEnabledOptions() {
         return this.radioOptions.filter((radio) => !radio.disabled && !this.effectiveDisabled);
@@ -210,7 +211,7 @@ const UaiRadioGroup = class {
     }
     render() {
         const disabled = this.effectiveDisabled;
-        return (h(Host, { key: '652d206b3cf46c56093d6695b0acb9aaf5862bb1', role: "radiogroup", tabIndex: -1, part: "group", "aria-label": this.ariaLabel || null, "aria-labelledby": this.ariaLabelledBy || null, "aria-disabled": disabled ? 'true' : null, "aria-required": this.required ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, onKeyDown: this.onKeyDown }, h("slot", { key: 'fff8eac3caeae67dbf82fb9886d3486f75e8020b', onSlotchange: this.onSlotChange }), h("input", { key: '90744041e0a2b19d059a23559b4f5f84319915b8', class: "validation-proxy", type: "checkbox", required: this.required && !disabled, checked: this.value !== undefined && this.value !== null, "aria-hidden": "true", tabIndex: -1, ref: (input) => (this.validationProxy = input) })));
+        return (h(Host, { key: '073e0b1d4ad2b8322f3943830e4b90e15d86858d', role: "radiogroup", tabIndex: -1, part: "group", "aria-label": this.ariaLabel || null, "aria-labelledby": this.ariaLabelledBy || null, "aria-disabled": disabled ? 'true' : null, "aria-required": this.required ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, onKeyDown: this.onKeyDown }, h("slot", { key: '92981483d325b973aed407e0f5c5fe82372e6e3a', onSlotchange: this.onSlotChange }), h("input", { key: 'a89ced52dd23da67ff11f5d74371242e7e4f022c', class: "validation-proxy", type: "checkbox", required: this.required && !disabled, checked: this.value !== undefined && this.value !== null, "aria-hidden": "true", tabIndex: -1, ref: (input) => (this.validationProxy = input) })));
     }
     static get formAssociated() { return true; }
     get el() { return getElement(this); }

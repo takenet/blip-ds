@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
 import { c as colorLetter } from './color-letter-1bmWbKgO.js';
 
 const firstLetter = (word) => (word || '')

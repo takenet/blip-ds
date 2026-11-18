@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
 
-const uaiButtonGroupCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.button-group{--group-divider:var(--uai-border-width-default, 1px) solid     var(--uai-border-default, #e4e6e7);display:-ms-flexbox;display:flex;overflow:hidden;border:var(--group-divider);border-radius:var(--uai-radius-lg, 0.75rem)}.button-group--row{-ms-flex-direction:row;flex-direction:row}.button-group--row ::slotted(uai-button:not(:first-child)){-webkit-border-start:var(--group-divider);border-inline-start:var(--group-divider)}.button-group--column{-ms-flex-direction:column;flex-direction:column}.button-group--column ::slotted(uai-button:not(:first-child)){-webkit-border-before:var(--group-divider);border-block-start:var(--group-divider)}::slotted(uai-button){position:relative}::slotted(uai-button:focus-within){z-index:1}`;
+const uaiButtonGroupCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.button-group{--group-divider:var(--uai-border-width-default, 1px) solid     var(--uai-border-default, #e4e6e7);display:-ms-flexbox;display:flex;overflow:hidden;border:var(--group-divider);border-radius:var(--uai-radius-lg, 0.75rem)}.button-group--row{-ms-flex-direction:row;flex-direction:row}.button-group--row ::slotted(${transformTag("uai-button")}:not(:first-child)){-webkit-border-start:var(--group-divider);border-inline-start:var(--group-divider)}.button-group--column{-ms-flex-direction:column;flex-direction:column}.button-group--column ::slotted(${transformTag("uai-button")}:not(:first-child)){-webkit-border-before:var(--group-divider);border-block-start:var(--group-divider)}::slotted(${transformTag("uai-button")}){position:relative}::slotted(${transformTag("uai-button")}:focus-within){z-index:1}`;
 
 const DIRECTIONS = ['row', 'column'];
 const UaiButtonGroup = class {
@@ -50,7 +50,7 @@ const UaiButtonGroup = class {
         void this.syncButtons();
     }
     buttons() {
-        return Array.from(this.el.querySelectorAll('uai-button'));
+        return Array.from(this.el.querySelectorAll(`${transformTag("uai-button")}`));
     }
     layoutDirection() {
         if (DIRECTIONS.includes(this.direction))

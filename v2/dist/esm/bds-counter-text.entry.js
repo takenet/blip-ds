@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-CkbvGS8Z.js';
+import { r as registerInstance, h } from './index-D799VfbI.js';
 
 var CounterTextState;
 (function (CounterTextState) {

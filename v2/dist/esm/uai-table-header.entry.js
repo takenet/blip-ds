@@ -1,6 +1,6 @@
-import { r as registerInstance, h, H as Host } from './index-CkbvGS8Z.js';
+import { t as transformTag, r as registerInstance, h, H as Host } from './index-D799VfbI.js';
 
-const uaiTableHeaderCss = () => `:host{display:block}::slotted(uai-table-row:not([variant=bar])){min-height:0}`;
+const uaiTableHeaderCss = () => `:host{display:block}::slotted(${transformTag("uai-table-row")}:not([variant=bar])){min-height:0}`;
 
 const UaiTableHeader = class {
     constructor(hostRef) {

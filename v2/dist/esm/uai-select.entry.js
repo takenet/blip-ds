@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-CkbvGS8Z.js';
+import { r as registerInstance, c as createEvent, t as transformTag, h, H as Host, g as getElement } from './index-D799VfbI.js';
 import { U as UaiFormControl } from './uai-form-control-BkRP7pRQ.js';
 import { U as UaiOverlay } from './uai-overlay-FY8Npzk3.js';
 
@@ -204,7 +204,7 @@ const UaiSelect = class {
             this.value = state;
     }
     readSlotted() {
-        const children = Array.from(this.el.querySelectorAll('uai-select-option'));
+        const children = Array.from(this.el.querySelectorAll(`${transformTag("uai-select-option")}`));
         this.slottedOptions = children.map((child) => {
             var _a;
             return ({

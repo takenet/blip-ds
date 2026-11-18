@@ -1,6 +1,7 @@
 import { Host, h } from "@stencil/core";
 import { isUaiIcon } from "../../globals/uai-icons";
 import { warnLegacyValue, warnOnce } from "../../utils/deprecation";
+import { ICON_FONT_FAMILY, registerIconFont } from "../../utils/uai-icon-font";
 const THEMES = ['outline', 'solid'];
 const SIZES = ['x-small', 'small', 'medium'];
 const COLORS = [
@@ -24,7 +25,9 @@ const supported = (prop, value, allowed, fallback) => {
  * Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
  * Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
  * Without `color`, the icon takes the text color around it, so it matches the label next to it.
- * The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+ * The icon registers the font of its own blip-tokens release (see uai-icon-font.ts), so different releases on the same
+ * page never mix glyphs. Loading the global font (`import 'blip-tokens/uai-icons/css';`) is only a fallback for browsers
+ * without the FontFace API.
  *
  * @part glyph - The element that renders the icon font glyph.
  */
@@ -47,6 +50,9 @@ export class UaiIcon {
          */
         this.dataTest = null;
     }
+    componentWillLoad() {
+        registerIconFont();
+    }
     render() {
         const theme = supported('theme', this.theme, THEMES, 'outline');
         const size = supported('size', this.size, SIZES, 'medium');
@@ -55,7 +61,7 @@ export class UaiIcon {
         if (!known) {
             warnOnce('uai-icon', `name:${theme}:${this.name}`, `"${this.name}" is not a ${theme} icon of the UAI icon font.`);
         }
-        return (h(Host, { key: 'd357629d3c35c42d9878135f64dbc17923437f78', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: 'c0d7709c542917ef78d1208b3efd5324b5ca71d4', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, part: "glyph", "data-test": this.dataTest })));
+        return (h(Host, { key: '62fada47406060ea3f8eca9cedc66617a0aead8c', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: '70fd5db600e4058b4ac881d45d7a55e2f794989b', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, style: { '--uai-icon-font-family': `"${ICON_FONT_FAMILY}"` }, part: "glyph", "data-test": this.dataTest })));
     }
     static get is() { return "uai-icon"; }
     static get encapsulation() { return "shadow"; }

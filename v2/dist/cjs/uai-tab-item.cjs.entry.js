@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-BuAR9UTp.js');
+var index = require('./index-Bq8uwDLK.js');
 
 const uaiTabItemCss = () => `:host{display:none}:host(.is-open){display:block;height:100%}:host([hidden]){display:none}.uai-tab-item__content{height:100%}`;
 
