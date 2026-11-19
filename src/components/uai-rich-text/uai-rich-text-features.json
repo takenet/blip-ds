@@ -1,0 +1,12 @@
+{
+  "groups": [
+    ["history"],
+    ["heading"],
+    ["bold", "italic", "underline", "strike", "code"],
+    ["textColor", "highlight"],
+    ["link", "image", "table"],
+    ["bulletList", "orderedList", "blockquote", "horizontalRule"],
+    ["textAlign"],
+    ["clearFormatting"]
+  ]
+}

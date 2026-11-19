@@ -159,6 +159,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [uai-breadcrumb](../uai-breadcrumb)
+ - [uai-rich-text](../uai-rich-text)
 
 ### Depends on
 
@@ -171,6 +172,7 @@ graph TD;
   uai-input --> uai-typo
   uai-input --> uai-icon
   uai-breadcrumb --> uai-input
+  uai-rich-text --> uai-input
   style uai-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

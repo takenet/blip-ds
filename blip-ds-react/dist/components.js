@@ -136,6 +136,7 @@ import { UaiPagination as UaiPaginationElement, defineCustomElement as defineUai
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
 import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUaiRadioGroup } from "blip-ds/dist/components/uai-radio-group.js";
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
+import { UaiRichText as UaiRichTextElement, defineCustomElement as defineUaiRichText } from "blip-ds/dist/components/uai-rich-text.js";
 import { UaiSelectOption as UaiSelectOptionElement, defineCustomElement as defineUaiSelectOption } from "blip-ds/dist/components/uai-select-option.js";
 import { UaiSelect as UaiSelectElement, defineCustomElement as defineUaiSelect } from "blip-ds/dist/components/uai-select.js";
 import { UaiStep as UaiStepElement, defineCustomElement as defineUaiStep } from "blip-ds/dist/components/uai-step.js";
@@ -1402,6 +1403,19 @@ export const UaiRadioGroup = createComponent({
     react: React,
     events: { onUaiRadioGroupChange: 'uaiRadioGroupChange' },
     defineCustomElement: defineUaiRadioGroup,
+    transformTag
+});
+export const UaiRichText = createComponent({
+    tagName: 'uai-rich-text',
+    elementClass: UaiRichTextElement,
+    react: React,
+    events: {
+        onUaiInput: 'uaiInput',
+        onUaiChange: 'uaiChange',
+        onUaiFocus: 'uaiFocus',
+        onUaiBlur: 'uaiBlur'
+    },
+    defineCustomElement: defineUaiRichText,
     transformTag
 });
 export const UaiSelect = createComponent({

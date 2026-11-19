@@ -81,6 +81,19 @@ Type: `Promise<void>`
 | `"panel"`  | The floating panel.  |
 
 
+## Dependencies
+
+### Used by
+
+ - [uai-rich-text](../uai-rich-text)
+
+### Graph
+```mermaid
+graph TD;
+  uai-rich-text --> uai-dropdown
+  style uai-dropdown fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
