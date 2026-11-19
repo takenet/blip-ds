@@ -1,7 +1,0 @@
-import{r as registerInstance,h}from"./index-D799VfbI.js";var menuSeparationCss=function(){return".menuseparation{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:0 16px}.menuseparation__small{margin:8px 0}.menuseparation__default{margin:12px 0}.menuseparation__large{margin:16px 0}.menuseparation .dividor-item{height:1px;width:100%;background-color:#d4d4d4}.menuseparation .title-item{margin-right:8px;margin-top:-4px;color:#6e7b91}"};var BdsMenuSeparation=/** @class */function(){function e(e){registerInstance(this,e);
-/**
-         * Value. Used to insert a title to the divider.
-         */this.value=null;
-/**
-         * Size. Used to set the size of the divider.
-         */this.size=null}e.prototype.render=function(){var e;return h("div",{key:"4d3b8a3553cad15d8a94daee008f100eb2fd3c74",class:(e={menuseparation:true},e["menuseparation__".concat(this.size)]=true,e)},this.value&&h("bds-typo",{key:"e919f6f5803476d3f947ef56a39891eb470e0c56",class:"title-item",variant:"fs-10",tag:"span"},this.value),h("div",{key:"0f0a08faebdb279aca009221bd16ed6f0506a7cb",class:"dividor-item"}))};return e}();BdsMenuSeparation.style=menuSeparationCss();export{BdsMenuSeparation as bds_menu_separation};
