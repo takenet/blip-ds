@@ -1,7 +1,7 @@
 'use strict';
 
 var index = require('./index-Bq8uwDLK.js');
-var uaiIcons = require('./uai-icons-DZdOYxNV.js');
+var uaiIcons = require('./uai-icons-S9KBEI0s.js');
 var deprecation = require('./deprecation-DQqFZBv-.js');
 var tagName = require('./tag-name-DCmhJ5mj.js');
 

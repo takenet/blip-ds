@@ -1,6 +1,6 @@
 import { r as registerInstance, c as createEvent, h, g as getElement } from './index-D799VfbI.js';
-import { g as getAssetUrl } from './asset-loader-DibQ0X3y.js';
-import './asset-config-CsnuhrSZ.js';
+import { g as getAssetUrl } from './asset-loader-BG87Jd1l.js';
+import './asset-config-DjyCVRUn.js';
 
 const ptTerms = [
     {

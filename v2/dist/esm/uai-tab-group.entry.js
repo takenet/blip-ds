@@ -1,5 +1,5 @@
 import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
-import { i as isUaiIcon } from './uai-icons-DTAenokK.js';
+import { i as isUaiIcon } from './uai-icons-Cjai80Zd.js';
 import { w as warnOnce } from './deprecation-B4L0JRQZ.js';
 import { i as isTag } from './tag-name-D0YfnSi8.js';
 

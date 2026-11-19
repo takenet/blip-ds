@@ -1,4 +1,4 @@
-import{a as setTagTransformer,t as transformTag}from"./index-D799VfbI.js";var prefix="ds-500a8657";var scope={prefix:prefix};
+import{a as setTagTransformer,t as transformTag}from"./index-D799VfbI.js";var prefix="ds-ea847fc7";var scope={prefix:prefix};
 /**
  * Tag prefix of this build of blip-ds, such as `ds-1a2b3c4d`. It is a hash of the component sources, so every app on
  * the same release gets the same prefix and shares the same registered components, and different releases never clash.
