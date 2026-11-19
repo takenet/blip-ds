@@ -5,6 +5,9 @@ import { termTranslate } from './languages';
 
 export type positionBar = 'top' | 'bottom';
 
+/**
+ * @deprecated Use uai-rich-text with UaiThemeProvider: a form field with headings, colors, links, images and tables.
+ */
 @Component({
   tag: 'bds-rich-text',
   styleUrl: 'rich-text.scss',
