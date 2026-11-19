@@ -1,0 +1,1 @@
+import{U as o,d as r}from"./p-B-Rm0Wir.js";const s=o,m=r;export{s as UaiInput,m as defineCustomElement}

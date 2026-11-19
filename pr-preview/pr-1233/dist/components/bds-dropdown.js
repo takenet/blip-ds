@@ -1,0 +1,1 @@
+import{B as o,d as r}from"./p-BmEvYrdo.js";const s=o,m=r;export{s as BdsDropdown,m as defineCustomElement}
