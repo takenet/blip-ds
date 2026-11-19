@@ -1,0 +1,105 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as RichTextStories from './uai-rich-text.stories';
+
+<Meta isTemplate />
+
+# Rich Text
+
+## Visão geral
+
+Campo para editar conteúdo HTML formatado, como uma página: títulos, negrito, itálico, sublinhado, tachado, código, cores de texto e de destaque, links, imagens, tabelas, listas, citação, linha divisória, alinhamento, desfazer e refazer. É um campo de formulário como o `uai-textarea`: tem label, mensagens de ajuda, erro e sucesso, `required`, `disabled` e `readonly`, e o valor (HTML) é enviado com o formulário.
+
+Use para conteúdo que será exibido como HTML. Para texto simples, use o `uai-textarea`. Para formatos de mensagem (como o do WhatsApp), o HTML não é o formato certo.
+
+## Como usar
+
+```jsx
+import { UaiRichText, UaiThemeProvider } from 'blip-ds-react/dist/components';
+
+<UaiThemeProvider theme="light">
+  <UaiRichText
+    name="page"
+    label="Conteúdo da página"
+    heading
+    bold
+    italic
+    link
+    value={html}
+    onUaiChange={(event) => setHtml(event.detail.value)}
+  />
+</UaiThemeProvider>;
+```
+
+- `value` recebe e devolve HTML. Quando o campo está vazio, o valor é `''`.
+- `uaiInput` é emitido a cada mudança, e `uaiChange` quando o campo perde o foco depois de mudar; os dois trazem `{ value }`.
+- Fora do React, use o custom element `<uai-rich-text>`, com as propriedades em kebab-case: `<uai-rich-text bold bullet-list text-align clear-formatting>`.
+
+<Canvas of={RichTextStories.Playground} />
+<Controls of={RichTextStories.Playground} />
+
+## Segurança do HTML
+
+O editor lê o HTML pelo próprio esquema de conteúdo: o que não faz parte dele é descartado na entrada, como `<script>`, atributos de evento (`onclick`...) e estilos fora das cores e do alinhamento. Links só aceitam `http(s):`, `mailto:`, `tel:` e caminhos relativos (nunca `javascript:`), e imagens só por endereço `http(s)`. Mesmo assim, sanitize o HTML no servidor antes de publicá-lo, como com qualquer conteúdo enviado por usuários.
+
+## Recursos
+
+Cada recurso é uma propriedade booleana, **desligada por padrão**: ligue só o que o campo precisa. Um recurso desligado não tem botão, nem atalho de teclado, e é descartado do conteúdo (ao colar ou ao definir `value`): o HTML que o campo produz é só o que foi ligado. Sem nenhum recurso ligado, o campo aceita só texto em parágrafos e não mostra a barra.
+
+```jsx
+<UaiRichText label="Conteúdo" bold italic heading bulletList orderedList table image />
+```
+
+| Propriedade                             | Recurso                                                       |
+| --------------------------------------- | ------------------------------------------------------------- |
+| `heading`                               | Parágrafo e títulos 1 a 3, com seletor de estilo              |
+| `bold`, `italic`, `underline`, `strike` | Negrito, itálico, sublinhado e tachado                        |
+| `code`                                  | Código em linha e em bloco                                    |
+| `textColor`, `highlight`                | Cor do texto e cor de destaque, de uma paleta                 |
+| `link`                                  | Links, inclusive endereços digitados, que viram link sozinhos |
+| `image`                                 | Imagens por endereço, com descrição (texto alternativo)       |
+| `table`                                 | Tabelas, com menu para linhas, colunas e cabeçalho            |
+| `bulletList`, `orderedList`             | Listas com marcadores e numeradas                             |
+| `blockquote`, `horizontalRule`          | Citação e linha divisória                                     |
+| `textAlign`                             | Alinhamento à esquerda, ao centro e à direita                 |
+| `clearFormatting`                       | Botão que remove a formatação da seleção                      |
+| `history`                               | Botões de desfazer e refazer                                  |
+
+Desfazer e refazer (`Ctrl/Cmd + Z` e `Shift + Z`) funcionam sempre; `history` só mostra os botões. Ligar ou desligar um recurso com o campo em uso recria o editor e mantém o conteúdo.
+
+<Canvas of={RichTextStories.SomeFeatures} />
+
+- **Cores:** a paleta usa valores fixos (os do tema claro dos tokens UAI), porque o HTML é usado fora do design system. Ao aplicar um destaque a um texto sem cor própria, o texto ganha também a cor escura, para continuar legível.
+- **Link:** selecione o texto e informe o endereço; sem protocolo, `https://` é adicionado.
+- **Imagem:** informe o endereço e uma descrição (texto alternativo).
+- **Tabela:** insira uma tabela 3 × 3 e, com o cursor nela, adicione ou exclua linhas e colunas, alterne a linha de cabeçalho ou exclua a tabela.
+
+## Estados
+
+<Canvas of={RichTextStories.States} />
+
+## Formulário
+
+Com `name`, o HTML é enviado com o formulário. Com `required`, o formulário não é enviado com o campo vazio, e a mensagem de erro aparece no campo.
+
+<Canvas of={RichTextStories.InAForm} sourceState="shown" />
+
+## Eventos e métodos
+
+<Canvas of={RichTextStories.Events} sourceState="shown" />
+
+`getContent()` devolve o HTML atual, `clear()` apaga o conteúdo e `setFocus()` foca o campo.
+
+<Canvas of={RichTextStories.Methods} sourceState="shown" />
+
+## Acessibilidade
+
+A área editável tem `role="textbox"` e `aria-multiline`, e é nomeada pela label (ou por `aria-label`). A barra tem `role="toolbar"`; os botões têm nome acessível e os de formatação mostram o estado com `aria-pressed`. Cada botão mostra uma dica (tooltip) com o nome e o atalho, ao passar o mouse ou receber foco: `Ctrl/Cmd + B` (negrito), `I`, `U`, `Shift + S` (tachado), `E` (código), `Shift + 8` e `Shift + 7` (listas), `Shift + B` (citação), `Shift + L`, `E` e `R` (alinhar), `Z` e `Shift + Z` (desfazer e refazer).
+
+## Migração do bds-rich-text
+
+Troque `BdsRichText` por `UaiRichText` e `onBdsRichTextChange` por `onUaiChange` (ou `onUaiInput` para cada mudança). Diferenças:
+
+- É um campo de formulário: label, mensagens, `required`, `name` e reset do formulário.
+- Os recursos são escolhidos por uma propriedade booleana cada, desligadas por padrão (`bold`, `italic`, `link`...), no lugar das props `weightButton`, `italicButton` e afins, que eram ligadas por padrão.
+- Novidades: cores de texto e destaque, imagens, tabelas, linha divisória, desfazer e refazer.
+- O motor é o [Tiptap](https://tiptap.dev) (ProseMirror, licença MIT), no lugar da edição manual do DOM.

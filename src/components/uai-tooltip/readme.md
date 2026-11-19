@@ -60,6 +60,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [uai-rich-text](../uai-rich-text)
+
 ### Depends on
 
 - [uai-typo](../uai-typo)
@@ -68,6 +72,7 @@ Type: `Promise<void>`
 ```mermaid
 graph TD;
   uai-tooltip --> uai-typo
+  uai-rich-text --> uai-tooltip
   style uai-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

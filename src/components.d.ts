@@ -2788,6 +2788,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated Use uai-rich-text with UaiThemeProvider: a form field with headings, colors, links, images and tables.
+     */
     interface BdsRichText {
         /**
           * alignmentButtons to define if component has TextAlign Control.
@@ -5844,6 +5847,199 @@ export namespace Components {
         "value"?: string;
     }
     /**
+     * Rich text field for editing HTML content, such as a page, with a toolbar for headings, text styles, colors, links,
+     * images, tables, lists, alignment and history. It is a form field like uai-textarea: label, helper, error and success
+     * messages, required, disabled and readonly, and its HTML value is submitted with the form.
+     * Use for formatted content that will be shown as HTML; pair with UaiThemeProvider; avoid it for plain text (use
+     * uai-textarea) or for message formats such as WhatsApp markup.
+     */
+    interface UaiRichText {
+        /**
+          * Accessible name when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Turns on quotes.
+          * @default false
+         */
+        "blockquote"?: boolean;
+        /**
+          * Turns on bold (Ctrl/Cmd + B).
+          * @default false
+         */
+        "bold"?: boolean;
+        /**
+          * Turns on bullet lists.
+          * @default false
+         */
+        "bulletList"?: boolean;
+        /**
+          * Removes all the content.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Shows the button that removes the formatting of the selection.
+          * @default false
+         */
+        "clearFormatting"?: boolean;
+        /**
+          * Turns on inline code and code blocks.
+          * @default false
+         */
+        "code"?: boolean;
+        /**
+          * Marks the field as invalid and shows `errorMessage`.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Test selector on the content area.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Blocks editing and the toolbar.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Error text under the field; it is shown while `danger` is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Returns the current HTML value ('' when empty).
+         */
+        "getContent": () => Promise<string>;
+        /**
+          * Turns on headings (paragraph and levels 1 to 3), with a style selector in the toolbar.
+          * @default false
+         */
+        "heading"?: boolean;
+        /**
+          * Helper text under the field.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Turns on the highlight color (background of the text), from a palette.
+          * @default false
+         */
+        "highlight"?: boolean;
+        /**
+          * Shows the undo and redo buttons. Undo and redo with Ctrl/Cmd + Z always work, with or without the buttons.
+          * @default false
+         */
+        "history"?: boolean;
+        /**
+          * Turns on the divider line.
+          * @default false
+         */
+        "horizontalRule"?: boolean;
+        /**
+          * Turns on images, by address with a description (alternative text).
+          * @default false
+         */
+        "image"?: boolean;
+        /**
+          * Turns on italic (Ctrl/Cmd + I).
+          * @default false
+         */
+        "italic"?: boolean;
+        /**
+          * Visible label of the field. Use a short noun phrase; without it, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Turns on links, including the ones typed as an address, which are linked automatically.
+          * @default false
+         */
+        "link"?: boolean;
+        /**
+          * Maximum height of the content area, in pixels; the content scrolls beyond it.
+         */
+        "maxHeight"?: number;
+        /**
+          * Minimum height of the content area, in pixels.
+         */
+        "minHeight"?: number;
+        /**
+          * Name used to submit the HTML value with the form.
+         */
+        "name"?: string;
+        /**
+          * Turns on numbered lists.
+          * @default false
+         */
+        "orderedList"?: boolean;
+        /**
+          * Text shown while the content is empty.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * Shows the content without letting it be edited; the toolbar is hidden.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Requires content to submit the form.
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * Message for an empty required field.
+          * @default 'Este campo é obrigatório.'
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Focuses the content area.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Turns on strikethrough (Ctrl/Cmd + Shift + S).
+          * @default false
+         */
+        "strike"?: boolean;
+        /**
+          * Marks the field as valid and shows `successMessage`.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Success text under the field; it is shown while `success` is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Turns on tables, with a menu to add and remove rows and columns.
+          * @default false
+         */
+        "table"?: boolean;
+        /**
+          * Turns on text alignment (left, center and right).
+          * @default false
+         */
+        "textAlign"?: boolean;
+        /**
+          * Turns on the text color, from a palette.
+          * @default false
+         */
+        "textColor"?: boolean;
+        /**
+          * Turns on underline (Ctrl/Cmd + U).
+          * @default false
+         */
+        "underline"?: boolean;
+        /**
+          * HTML content. Unsafe markup (scripts, event attributes, javascript: links) is dropped when it is read.
+          * @default ''
+         */
+        "value"?: string;
+    }
+    /**
      * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
      * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
      * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
@@ -6961,6 +7157,10 @@ export interface UaiRadioGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiRadioGroupElement;
 }
+export interface UaiRichTextCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiRichTextElement;
+}
 export interface UaiSelectCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiSelectElement;
@@ -8017,6 +8217,9 @@ declare global {
         "bdsBlur": void;
         "bdsFocus": void;
     }
+    /**
+     * @deprecated Use uai-rich-text with UaiThemeProvider: a form field with headings, colors, links, images and tables.
+     */
     interface HTMLBdsRichTextElement extends Components.BdsRichText, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsRichTextElementEventMap>(type: K, listener: (this: HTMLBdsRichTextElement, ev: BdsRichTextCustomEvent<HTMLBdsRichTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8932,6 +9135,33 @@ declare global {
         prototype: HTMLUaiRadioGroupElement;
         new (): HTMLUaiRadioGroupElement;
     };
+    interface HTMLUaiRichTextElementEventMap {
+        "uaiInput": { value: string };
+        "uaiChange": { value: string };
+        "uaiFocus": void;
+        "uaiBlur": void;
+    }
+    /**
+     * Rich text field for editing HTML content, such as a page, with a toolbar for headings, text styles, colors, links,
+     * images, tables, lists, alignment and history. It is a form field like uai-textarea: label, helper, error and success
+     * messages, required, disabled and readonly, and its HTML value is submitted with the form.
+     * Use for formatted content that will be shown as HTML; pair with UaiThemeProvider; avoid it for plain text (use
+     * uai-textarea) or for message formats such as WhatsApp markup.
+     */
+    interface HTMLUaiRichTextElement extends Components.UaiRichText, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiRichTextElementEventMap>(type: K, listener: (this: HTMLUaiRichTextElement, ev: UaiRichTextCustomEvent<HTMLUaiRichTextElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiRichTextElementEventMap>(type: K, listener: (this: HTMLUaiRichTextElement, ev: UaiRichTextCustomEvent<HTMLUaiRichTextElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiRichTextElement: {
+        prototype: HTMLUaiRichTextElement;
+        new (): HTMLUaiRichTextElement;
+    };
     interface HTMLUaiSelectElementEventMap {
         "uaiChange": UaiSelectChange;
         "uaiCancel": void;
@@ -9337,6 +9567,7 @@ declare global {
         "uai-paper": HTMLUaiPaperElement;
         "uai-radio": HTMLUaiRadioElement;
         "uai-radio-group": HTMLUaiRadioGroupElement;
+        "uai-rich-text": HTMLUaiRichTextElement;
         "uai-select": HTMLUaiSelectElement;
         "uai-select-option": HTMLUaiSelectOptionElement;
         "uai-step": HTMLUaiStepElement;
@@ -12187,6 +12418,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated Use uai-rich-text with UaiThemeProvider: a form field with headings, colors, links, images and tables.
+     */
     interface BdsRichText {
         /**
           * alignmentButtons to define if component has TextAlign Control.
@@ -15315,6 +15549,207 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * Rich text field for editing HTML content, such as a page, with a toolbar for headings, text styles, colors, links,
+     * images, tables, lists, alignment and history. It is a form field like uai-textarea: label, helper, error and success
+     * messages, required, disabled and readonly, and its HTML value is submitted with the form.
+     * Use for formatted content that will be shown as HTML; pair with UaiThemeProvider; avoid it for plain text (use
+     * uai-textarea) or for message formats such as WhatsApp markup.
+     */
+    interface UaiRichText {
+        /**
+          * Accessible name when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * Turns on quotes.
+          * @default false
+         */
+        "blockquote"?: boolean;
+        /**
+          * Turns on bold (Ctrl/Cmd + B).
+          * @default false
+         */
+        "bold"?: boolean;
+        /**
+          * Turns on bullet lists.
+          * @default false
+         */
+        "bulletList"?: boolean;
+        /**
+          * Shows the button that removes the formatting of the selection.
+          * @default false
+         */
+        "clearFormatting"?: boolean;
+        /**
+          * Turns on inline code and code blocks.
+          * @default false
+         */
+        "code"?: boolean;
+        /**
+          * Marks the field as invalid and shows `errorMessage`.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Test selector on the content area.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Blocks editing and the toolbar.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Error text under the field; it is shown while `danger` is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Turns on headings (paragraph and levels 1 to 3), with a style selector in the toolbar.
+          * @default false
+         */
+        "heading"?: boolean;
+        /**
+          * Helper text under the field.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Turns on the highlight color (background of the text), from a palette.
+          * @default false
+         */
+        "highlight"?: boolean;
+        /**
+          * Shows the undo and redo buttons. Undo and redo with Ctrl/Cmd + Z always work, with or without the buttons.
+          * @default false
+         */
+        "history"?: boolean;
+        /**
+          * Turns on the divider line.
+          * @default false
+         */
+        "horizontalRule"?: boolean;
+        /**
+          * Turns on images, by address with a description (alternative text).
+          * @default false
+         */
+        "image"?: boolean;
+        /**
+          * Turns on italic (Ctrl/Cmd + I).
+          * @default false
+         */
+        "italic"?: boolean;
+        /**
+          * Visible label of the field. Use a short noun phrase; without it, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Turns on links, including the ones typed as an address, which are linked automatically.
+          * @default false
+         */
+        "link"?: boolean;
+        /**
+          * Maximum height of the content area, in pixels; the content scrolls beyond it.
+         */
+        "maxHeight"?: number;
+        /**
+          * Minimum height of the content area, in pixels.
+         */
+        "minHeight"?: number;
+        /**
+          * Name used to submit the HTML value with the form.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the content area loses the focus.
+         */
+        "onUaiBlur"?: (event: UaiRichTextCustomEvent<void>) => void;
+        /**
+          * Emitted when the field loses the focus after the content changed, with the HTML value.
+         */
+        "onUaiChange"?: (event: UaiRichTextCustomEvent<{ value: string }>) => void;
+        /**
+          * Emitted when the content area takes the focus.
+         */
+        "onUaiFocus"?: (event: UaiRichTextCustomEvent<void>) => void;
+        /**
+          * Emitted on every change of the content, with the HTML value.
+         */
+        "onUaiInput"?: (event: UaiRichTextCustomEvent<{ value: string }>) => void;
+        /**
+          * Turns on numbered lists.
+          * @default false
+         */
+        "orderedList"?: boolean;
+        /**
+          * Text shown while the content is empty.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * Shows the content without letting it be edited; the toolbar is hidden.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * Requires content to submit the form.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Message for an empty required field.
+          * @default 'Este campo é obrigatório.'
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Turns on strikethrough (Ctrl/Cmd + Shift + S).
+          * @default false
+         */
+        "strike"?: boolean;
+        /**
+          * Marks the field as valid and shows `successMessage`.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Success text under the field; it is shown while `success` is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Turns on tables, with a menu to add and remove rows and columns.
+          * @default false
+         */
+        "table"?: boolean;
+        /**
+          * Turns on text alignment (left, center and right).
+          * @default false
+         */
+        "textAlign"?: boolean;
+        /**
+          * Turns on the text color, from a palette.
+          * @default false
+         */
+        "textColor"?: boolean;
+        /**
+          * Turns on underline (Ctrl/Cmd + U).
+          * @default false
+         */
+        "underline"?: boolean;
+        /**
+          * HTML content. Unsafe markup (scripts, event attributes, javascript: links) is dropped when it is read.
+          * @default ''
+         */
+        "value"?: string;
+    }
+    /**
      * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
      * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
      * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
@@ -17422,6 +17857,43 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "ariaLabelledBy": string;
     }
+    interface UaiRichTextAttributes {
+        "value": string;
+        "name": string;
+        "label": string;
+        "ariaLabel": string;
+        "placeholder": string;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "danger": boolean;
+        "success": boolean;
+        "required": boolean;
+        "requiredErrorMessage": string;
+        "disabled": boolean;
+        "readonly": boolean;
+        "history": boolean;
+        "heading": boolean;
+        "bold": boolean;
+        "italic": boolean;
+        "underline": boolean;
+        "strike": boolean;
+        "code": boolean;
+        "textColor": boolean;
+        "highlight": boolean;
+        "link": boolean;
+        "image": boolean;
+        "table": boolean;
+        "bulletList": boolean;
+        "orderedList": boolean;
+        "blockquote": boolean;
+        "horizontalRule": boolean;
+        "textAlign": boolean;
+        "clearFormatting": boolean;
+        "minHeight": number;
+        "maxHeight": number;
+        "dataTest": string;
+    }
     interface UaiSelectAttributes {
         "name": string;
         "value": string;
@@ -17725,6 +18197,7 @@ declare namespace LocalJSX {
         "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
         "uai-radio": Omit<UaiRadio, keyof UaiRadioAttributes> & { [K in keyof UaiRadio & keyof UaiRadioAttributes]?: UaiRadio[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `attr:${K}`]?: UaiRadioAttributes[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `prop:${K}`]?: UaiRadio[K] } & OneOf<"value", UaiRadio["value"], UaiRadioAttributes["value"]>;
         "uai-radio-group": Omit<UaiRadioGroup, keyof UaiRadioGroupAttributes> & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes]?: UaiRadioGroup[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `attr:${K}`]?: UaiRadioGroupAttributes[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `prop:${K}`]?: UaiRadioGroup[K] };
+        "uai-rich-text": Omit<UaiRichText, keyof UaiRichTextAttributes> & { [K in keyof UaiRichText & keyof UaiRichTextAttributes]?: UaiRichText[K] } & { [K in keyof UaiRichText & keyof UaiRichTextAttributes as `attr:${K}`]?: UaiRichTextAttributes[K] } & { [K in keyof UaiRichText & keyof UaiRichTextAttributes as `prop:${K}`]?: UaiRichText[K] };
         "uai-select": Omit<UaiSelect, keyof UaiSelectAttributes> & { [K in keyof UaiSelect & keyof UaiSelectAttributes]?: UaiSelect[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `attr:${K}`]?: UaiSelectAttributes[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `prop:${K}`]?: UaiSelect[K] };
         "uai-select-option": Omit<UaiSelectOption, keyof UaiSelectOptionAttributes> & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes]?: UaiSelectOption[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `attr:${K}`]?: UaiSelectOptionAttributes[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `prop:${K}`]?: UaiSelectOption[K] } & OneOf<"value", UaiSelectOption["value"], UaiSelectOptionAttributes["value"]>;
         "uai-step": Omit<UaiStep, keyof UaiStepAttributes> & { [K in keyof UaiStep & keyof UaiStepAttributes]?: UaiStep[K] } & { [K in keyof UaiStep & keyof UaiStepAttributes as `attr:${K}`]?: UaiStepAttributes[K] } & { [K in keyof UaiStep & keyof UaiStepAttributes as `prop:${K}`]?: UaiStep[K] };
@@ -17882,6 +18355,9 @@ declare module "@stencil/core" {
              * @deprecated Use uai-radio-group for new work.
              */
             "bds-radio-group": LocalJSX.IntrinsicElements["bds-radio-group"] & JSXBase.HTMLAttributes<HTMLBdsRadioGroupElement>;
+            /**
+             * @deprecated Use uai-rich-text with UaiThemeProvider: a form field with headings, colors, links, images and tables.
+             */
             "bds-rich-text": LocalJSX.IntrinsicElements["bds-rich-text"] & JSXBase.HTMLAttributes<HTMLBdsRichTextElement>;
             /**
              * @deprecated Use uai-select with UaiThemeProvider for tokenized styling, ARIA and keyboard support.
@@ -18121,6 +18597,14 @@ declare module "@stencil/core" {
              * aria-label or aria-labelledby. The group owns the submitted name and value.
              */
             "uai-radio-group": LocalJSX.IntrinsicElements["uai-radio-group"] & JSXBase.HTMLAttributes<HTMLUaiRadioGroupElement>;
+            /**
+             * Rich text field for editing HTML content, such as a page, with a toolbar for headings, text styles, colors, links,
+             * images, tables, lists, alignment and history. It is a form field like uai-textarea: label, helper, error and success
+             * messages, required, disabled and readonly, and its HTML value is submitted with the form.
+             * Use for formatted content that will be shown as HTML; pair with UaiThemeProvider; avoid it for plain text (use
+             * uai-textarea) or for message formats such as WhatsApp markup.
+             */
+            "uai-rich-text": LocalJSX.IntrinsicElements["uai-rich-text"] & JSXBase.HTMLAttributes<HTMLUaiRichTextElement>;
             /**
              * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
              * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:

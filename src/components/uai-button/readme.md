@@ -175,6 +175,7 @@ Type: `Promise<void>`
 
  - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-pagination](../uai-pagination)
+ - [uai-rich-text](../uai-rich-text)
  - [uai-tab-group](../uai-tab-group)
 
 ### Depends on
@@ -191,6 +192,7 @@ graph TD;
   uai-button --> uai-typo
   uai-breadcrumb --> uai-button
   uai-pagination --> uai-button
+  uai-rich-text --> uai-button
   uai-tab-group --> uai-button
   style uai-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
