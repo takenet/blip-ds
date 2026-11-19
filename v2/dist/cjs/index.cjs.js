@@ -2,7 +2,7 @@
 
 var index = require('./index-Bq8uwDLK.js');
 
-const prefix = "ds-ea847fc7";
+const prefix = "ds-f14e1f3c";
 var scope = {
 	prefix: prefix
 };

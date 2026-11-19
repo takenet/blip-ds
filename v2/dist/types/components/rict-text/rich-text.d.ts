@@ -1,6 +1,9 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { languages } from './rich-text-interface';
 export type positionBar = 'top' | 'bottom';
+/**
+ * @deprecated Use uai-rich-text with UaiThemeProvider: a form field with headings, colors, links, images and tables.
+ */
 export declare class RichText {
     private buttonsListElement?;
     private buttonsEditElements?;

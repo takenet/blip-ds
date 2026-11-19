@@ -1,6 +1,6 @@
 import { a as setTagTransformer, t as transformTag } from './index-D799VfbI.js';
 
-const prefix = "ds-ea847fc7";
+const prefix = "ds-f14e1f3c";
 var scope = {
 	prefix: prefix
 };

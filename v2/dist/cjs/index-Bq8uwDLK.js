@@ -455,10 +455,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-chip-tag.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'uai-dropdown.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './uai-dropdown.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-emoji.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -531,6 +527,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-radio-group.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-rich-text.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-rich-text.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'uai-select-option.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -587,10 +587,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-theme-provider.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'uai-tooltip.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './uai-tooltip.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-badge.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -631,10 +627,10 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-breadcrumb.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'uai-select.cjs':
+                case 'uai-dropdown_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './uai-select.cjs.entry.js')); }).then(processMod, consoleError);
+                        './uai-dropdown_2.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-banner.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -655,10 +651,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-radio_2.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'uai-input.cjs':
+                case 'uai-select.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
-                        './uai-input.cjs.entry.js')); }).then(processMod, consoleError);
+                        './uai-select.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-button_2.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-button_2.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-chip-clickable_2.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
@@ -667,10 +667,6 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './bds-counter-text.cjs.entry.js')); }).then(processMod, consoleError);
-                case 'uai-button.cjs':
-                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
-                        /* webpackMode: "lazy" */
-                        './uai-button.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-button.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

@@ -1,0 +1,1 @@
+import{r as a,h as e,H as o}from"./p-D799VfbI.js";const r=class{constructor(e){a(this,e)}render(){return e(o,{key:"5013983a8b228aad50af73ad8d8ac9f2e36ebd91",role:"rowgroup"},e("slot",{key:"06f1aa7bcebdd6a7057d3bec40e838e9562039ff"}))}};r.style=":host{display:block}";export{r as uai_table_body}
