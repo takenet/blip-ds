@@ -1,1 +1,0 @@
-import{T as o,d as s}from"./p-DfX_8Bio.js";const p=o,r=s;export{p as BdsTooltip,r as defineCustomElement}

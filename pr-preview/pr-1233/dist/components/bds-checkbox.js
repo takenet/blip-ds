@@ -1,1 +1,0 @@
-import{C as o,d as s}from"./p-BlumfIct.js";const t=o,m=s;export{t as BdsCheckbox,m as defineCustomElement}
