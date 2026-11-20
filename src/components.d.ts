@@ -106,6 +106,7 @@ import { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
 import { UaiTableRowVariant } from "./components/uai-table-row/uai-table-row";
 import { UaiTableSortDirection, UaiTableThJustify } from "./components/uai-table-th/uai-table-th";
 import { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
+import { UaiToastCloseReason, UaiToastOptions, UaiToastPosition, UaiToastVariant } from "./utils/uai-toast";
 import { UaiTooltipPositionType } from "./components/uai-tooltip/uai-tooltip";
 import { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export { collapses } from "./components/accordion/accordion-group";
@@ -209,6 +210,7 @@ export { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
 export { UaiTableRowVariant } from "./components/uai-table-row/uai-table-row";
 export { UaiTableSortDirection, UaiTableThJustify } from "./components/uai-table-th/uai-table-th";
 export { UaiTheme } from "./components/uai-theme-provider/uai-theme-provider";
+export { UaiToastCloseReason, UaiToastOptions, UaiToastPosition, UaiToastVariant } from "./utils/uai-toast";
 export { UaiTooltipPositionType } from "./components/uai-tooltip/uai-tooltip";
 export { UaiTypoBold, UaiTypoLetterSpacing, UaiTypoLineHeight, UaiTypoTag, UaiTypoVariant } from "./components/uai-typo/uai-typo";
 export namespace Components {
@@ -3586,6 +3588,9 @@ export namespace Components {
          */
         "theme"?: Themes1;
     }
+    /**
+     * @deprecated Use uai-toast (or showToast) with UaiThemeProvider for tokenized styling.
+     */
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -3658,6 +3663,9 @@ export namespace Components {
          */
         "variant": VariantType;
     }
+    /**
+     * @deprecated Use uai-toast-container with UaiThemeProvider for tokenized styling.
+     */
     interface BdsToastContainer {
     }
     /**
@@ -6791,6 +6799,94 @@ export namespace Components {
         "theme"?: UaiTheme;
     }
     /**
+     * Short notification that floats over the page, with the result of an action or a system message.
+     * Use for transient feedback; pair with UaiToastContainer (or `show()`, which creates it) and a short text; avoid it
+     * for messages the user must act on, which belong in a modal or a banner.
+     */
+    interface UaiToast {
+        /**
+          * Text of the optional action button, such as "Desfazer". Clicking it emits uaiToastAction and closes the toast.
+          * @default null
+         */
+        "actionLabel"?: string;
+        /**
+          * Shows the close button. Keep it on unless the toast closes by itself; avoid a toast nobody can dismiss.
+          * @default true
+         */
+        "closable": boolean;
+        /**
+          * Closes the toast and emits uaiToastClose with reason "method".
+         */
+        "close": () => Promise<void>;
+        /**
+          * Accessible name of the close button. Use a translated label; avoid leaving it generic.
+          * @default 'Fechar'
+         */
+        "closeLabel"?: string;
+        /**
+          * Test selector on the action button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButtonAction"?: string;
+        /**
+          * Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Time in milliseconds before the toast closes by itself; 0 keeps it open. The time pauses while the mouse or the focus is on it.
+          * @default 0
+         */
+        "duration": number;
+        /**
+          * Optional short title, without a final period. Use for the reason of the notification; avoid long titles.
+          * @default null
+         */
+        "heading"?: string;
+        /**
+          * Short text, preferably one line. It is plain text (never HTML); for a link, use the default slot.
+          * @default null
+         */
+        "message"?: string;
+        /**
+          * Whether the toast is shown. Use show() and close() to also place it and emit the events; avoid toggling it in a loop.
+          * @default false
+         */
+        "open": boolean;
+        /**
+          * Position used by show() when the toast is not inside a UaiToastContainer. Avoid mixing positions for the same kind of message.
+          * @default 'bottom-left'
+         */
+        "position"?: UaiToastPosition;
+        /**
+          * Opens the toast. Outside a UaiToastContainer, it moves the toast into the container of its position (created in the nearest UaiThemeProvider when there is none) and removes it from the page after it closes. Options replace the props of the same name; `removeOnClose` decides whether the toast leaves the page after closing.
+         */
+        "show": (options?: UaiToastOptions) => Promise<void>;
+        /**
+          * Semantic variant: system, info, success, warning or error. Use the one that matches the message; avoid color alone to convey meaning.
+          * @default 'system'
+         */
+        "variant"?: UaiToastVariant;
+    }
+    /**
+     * Stack of toasts fixed to a corner or edge of the screen. It opens in the top layer (Popover API), so the toasts
+     * stay above modals, and announces each toast that opens to screen readers.
+     * Use one per position inside UaiThemeProvider; `uai-toast` `show()` creates it when the page has none.
+     * Avoid placing other content in it.
+     */
+    interface UaiToastContainer {
+        /**
+          * Accessible name of the notifications region. Use a translated label; avoid leaving it generic.
+          * @default 'Notificações'
+         */
+        "label"?: string;
+        /**
+          * Where the toasts are stacked. Use bottom positions for feedback of an action; avoid two containers in one position.
+          * @default 'bottom-left'
+         */
+        "position"?: UaiToastPosition;
+    }
+    /**
      * Short supplementary text shown on hover or keyboard focus of the wrapped element.
      * Use for brief hints; pair with UaiThemeProvider; avoid essential information or interactive content.
      */
@@ -7192,6 +7288,10 @@ export interface UaiTableThCustomEvent<T> extends CustomEvent<T> {
 export interface UaiTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiTextareaElement;
+}
+export interface UaiToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiToastElement;
 }
 declare global {
     interface HTMLBdsAccordionElementEventMap {
@@ -8530,6 +8630,9 @@ declare global {
     interface HTMLBdsToastElementEventMap {
         "toastButtonClick": HTMLBdsToastElement;
     }
+    /**
+     * @deprecated Use uai-toast (or showToast) with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsToastElement extends Components.BdsToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsToastElementEventMap>(type: K, listener: (this: HTMLBdsToastElement, ev: BdsToastCustomEvent<HTMLBdsToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8544,6 +8647,9 @@ declare global {
         prototype: HTMLBdsToastElement;
         new (): HTMLBdsToastElement;
     };
+    /**
+     * @deprecated Use uai-toast-container with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsToastContainerElement extends Components.BdsToastContainer, HTMLStencilElement {
     }
     var HTMLBdsToastContainerElement: {
@@ -9412,6 +9518,42 @@ declare global {
         prototype: HTMLUaiThemeProviderElement;
         new (): HTMLUaiThemeProviderElement;
     };
+    interface HTMLUaiToastElementEventMap {
+        "uaiToastOpen": void;
+        "uaiToastClose": { reason: UaiToastCloseReason };
+        "uaiToastAction": void;
+    }
+    /**
+     * Short notification that floats over the page, with the result of an action or a system message.
+     * Use for transient feedback; pair with UaiToastContainer (or `show()`, which creates it) and a short text; avoid it
+     * for messages the user must act on, which belong in a modal or a banner.
+     */
+    interface HTMLUaiToastElement extends Components.UaiToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiToastElementEventMap>(type: K, listener: (this: HTMLUaiToastElement, ev: UaiToastCustomEvent<HTMLUaiToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiToastElementEventMap>(type: K, listener: (this: HTMLUaiToastElement, ev: UaiToastCustomEvent<HTMLUaiToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiToastElement: {
+        prototype: HTMLUaiToastElement;
+        new (): HTMLUaiToastElement;
+    };
+    /**
+     * Stack of toasts fixed to a corner or edge of the screen. It opens in the top layer (Popover API), so the toasts
+     * stay above modals, and announces each toast that opens to screen readers.
+     * Use one per position inside UaiThemeProvider; `uai-toast` `show()` creates it when the page has none.
+     * Avoid placing other content in it.
+     */
+    interface HTMLUaiToastContainerElement extends Components.UaiToastContainer, HTMLStencilElement {
+    }
+    var HTMLUaiToastContainerElement: {
+        prototype: HTMLUaiToastContainerElement;
+        new (): HTMLUaiToastContainerElement;
+    };
     /**
      * Short supplementary text shown on hover or keyboard focus of the wrapped element.
      * Use for brief hints; pair with UaiThemeProvider; avoid essential information or interactive content.
@@ -9583,6 +9725,8 @@ declare global {
         "uai-table-th": HTMLUaiTableThElement;
         "uai-textarea": HTMLUaiTextareaElement;
         "uai-theme-provider": HTMLUaiThemeProviderElement;
+        "uai-toast": HTMLUaiToastElement;
+        "uai-toast-container": HTMLUaiToastContainerElement;
         "uai-tooltip": HTMLUaiTooltipElement;
         "uai-typo": HTMLUaiTypoElement;
     }
@@ -13256,6 +13400,9 @@ declare namespace LocalJSX {
          */
         "theme"?: Themes1;
     }
+    /**
+     * @deprecated Use uai-toast (or showToast) with UaiThemeProvider for tokenized styling.
+     */
     interface BdsToast {
         /**
           * ActionType. Defines if the button should have a button or an icon. Can be one of: 'icon', 'button';
@@ -13324,6 +13471,9 @@ declare namespace LocalJSX {
          */
         "variant"?: VariantType;
     }
+    /**
+     * @deprecated Use uai-toast-container with UaiThemeProvider for tokenized styling.
+     */
     interface BdsToastContainer {
     }
     /**
@@ -16523,6 +16673,98 @@ declare namespace LocalJSX {
         "theme"?: UaiTheme;
     }
     /**
+     * Short notification that floats over the page, with the result of an action or a system message.
+     * Use for transient feedback; pair with UaiToastContainer (or `show()`, which creates it) and a short text; avoid it
+     * for messages the user must act on, which belong in a modal or a banner.
+     */
+    interface UaiToast {
+        /**
+          * Text of the optional action button, such as "Desfazer". Clicking it emits uaiToastAction and closes the toast.
+          * @default null
+         */
+        "actionLabel"?: string;
+        /**
+          * Shows the close button. Keep it on unless the toast closes by itself; avoid a toast nobody can dismiss.
+          * @default true
+         */
+        "closable"?: boolean;
+        /**
+          * Accessible name of the close button. Use a translated label; avoid leaving it generic.
+          * @default 'Fechar'
+         */
+        "closeLabel"?: string;
+        /**
+          * Test selector on the action button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButtonAction"?: string;
+        /**
+          * Test selector on the close button. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dtButtonClose"?: string;
+        /**
+          * Time in milliseconds before the toast closes by itself; 0 keeps it open. The time pauses while the mouse or the focus is on it.
+          * @default 0
+         */
+        "duration"?: number;
+        /**
+          * Optional short title, without a final period. Use for the reason of the notification; avoid long titles.
+          * @default null
+         */
+        "heading"?: string;
+        /**
+          * Short text, preferably one line. It is plain text (never HTML); for a link, use the default slot.
+          * @default null
+         */
+        "message"?: string;
+        /**
+          * Emitted when the action button is clicked, before the toast closes. Use to run the action, such as undoing.
+         */
+        "onUaiToastAction"?: (event: UaiToastCustomEvent<void>) => void;
+        /**
+          * Emitted when the toast closes, with the reason: close-button, action, timeout, escape or method.
+         */
+        "onUaiToastClose"?: (event: UaiToastCustomEvent<{ reason: UaiToastCloseReason }>) => void;
+        /**
+          * Emitted when the toast opens. UaiToastContainer uses it to stay on top and announce the toast.
+         */
+        "onUaiToastOpen"?: (event: UaiToastCustomEvent<void>) => void;
+        /**
+          * Whether the toast is shown. Use show() and close() to also place it and emit the events; avoid toggling it in a loop.
+          * @default false
+         */
+        "open"?: boolean;
+        /**
+          * Position used by show() when the toast is not inside a UaiToastContainer. Avoid mixing positions for the same kind of message.
+          * @default 'bottom-left'
+         */
+        "position"?: UaiToastPosition;
+        /**
+          * Semantic variant: system, info, success, warning or error. Use the one that matches the message; avoid color alone to convey meaning.
+          * @default 'system'
+         */
+        "variant"?: UaiToastVariant;
+    }
+    /**
+     * Stack of toasts fixed to a corner or edge of the screen. It opens in the top layer (Popover API), so the toasts
+     * stay above modals, and announces each toast that opens to screen readers.
+     * Use one per position inside UaiThemeProvider; `uai-toast` `show()` creates it when the page has none.
+     * Avoid placing other content in it.
+     */
+    interface UaiToastContainer {
+        /**
+          * Accessible name of the notifications region. Use a translated label; avoid leaving it generic.
+          * @default 'Notificações'
+         */
+        "label"?: string;
+        /**
+          * Where the toasts are stacked. Use bottom positions for feedback of an action; avoid two containers in one position.
+          * @default 'bottom-left'
+         */
+        "position"?: UaiToastPosition;
+    }
+    /**
      * Short supplementary text shown on hover or keyboard focus of the wrapped element.
      * Use for brief hints; pair with UaiThemeProvider; avoid essential information or interactive content.
      */
@@ -18042,6 +18284,23 @@ declare namespace LocalJSX {
     interface UaiThemeProviderAttributes {
         "theme": UaiTheme;
     }
+    interface UaiToastAttributes {
+        "variant": UaiToastVariant;
+        "heading": string;
+        "message": string;
+        "open": boolean;
+        "duration": number;
+        "closable": boolean;
+        "closeLabel": string;
+        "actionLabel": string;
+        "position": UaiToastPosition;
+        "dtButtonClose": string;
+        "dtButtonAction": string;
+    }
+    interface UaiToastContainerAttributes {
+        "position": UaiToastPosition;
+        "label": string;
+    }
     interface UaiTooltipAttributes {
         "tooltipText": string;
         "disabled": boolean;
@@ -18213,6 +18472,8 @@ declare namespace LocalJSX {
         "uai-table-th": Omit<UaiTableTh, keyof UaiTableThAttributes> & { [K in keyof UaiTableTh & keyof UaiTableThAttributes]?: UaiTableTh[K] } & { [K in keyof UaiTableTh & keyof UaiTableThAttributes as `attr:${K}`]?: UaiTableThAttributes[K] } & { [K in keyof UaiTableTh & keyof UaiTableThAttributes as `prop:${K}`]?: UaiTableTh[K] };
         "uai-textarea": Omit<UaiTextarea, keyof UaiTextareaAttributes> & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes]?: UaiTextarea[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `attr:${K}`]?: UaiTextareaAttributes[K] } & { [K in keyof UaiTextarea & keyof UaiTextareaAttributes as `prop:${K}`]?: UaiTextarea[K] };
         "uai-theme-provider": Omit<UaiThemeProvider, keyof UaiThemeProviderAttributes> & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes]?: UaiThemeProvider[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `attr:${K}`]?: UaiThemeProviderAttributes[K] } & { [K in keyof UaiThemeProvider & keyof UaiThemeProviderAttributes as `prop:${K}`]?: UaiThemeProvider[K] };
+        "uai-toast": Omit<UaiToast, keyof UaiToastAttributes> & { [K in keyof UaiToast & keyof UaiToastAttributes]?: UaiToast[K] } & { [K in keyof UaiToast & keyof UaiToastAttributes as `attr:${K}`]?: UaiToastAttributes[K] } & { [K in keyof UaiToast & keyof UaiToastAttributes as `prop:${K}`]?: UaiToast[K] };
+        "uai-toast-container": Omit<UaiToastContainer, keyof UaiToastContainerAttributes> & { [K in keyof UaiToastContainer & keyof UaiToastContainerAttributes]?: UaiToastContainer[K] } & { [K in keyof UaiToastContainer & keyof UaiToastContainerAttributes as `attr:${K}`]?: UaiToastContainerAttributes[K] } & { [K in keyof UaiToastContainer & keyof UaiToastContainerAttributes as `prop:${K}`]?: UaiToastContainer[K] };
         "uai-tooltip": Omit<UaiTooltip, keyof UaiTooltipAttributes> & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes]?: UaiTooltip[K] } & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes as `attr:${K}`]?: UaiTooltipAttributes[K] } & { [K in keyof UaiTooltip & keyof UaiTooltipAttributes as `prop:${K}`]?: UaiTooltip[K] };
         "uai-typo": Omit<UaiTypo, keyof UaiTypoAttributes> & { [K in keyof UaiTypo & keyof UaiTypoAttributes]?: UaiTypo[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `attr:${K}`]?: UaiTypoAttributes[K] } & { [K in keyof UaiTypo & keyof UaiTypoAttributes as `prop:${K}`]?: UaiTypo[K] };
     }
@@ -18420,7 +18681,13 @@ declare module "@stencil/core" {
             "bds-tabs": LocalJSX.IntrinsicElements["bds-tabs"] & JSXBase.HTMLAttributes<HTMLBdsTabsElement>;
             "bds-test-component": LocalJSX.IntrinsicElements["bds-test-component"] & JSXBase.HTMLAttributes<HTMLBdsTestComponentElement>;
             "bds-theme-provider": LocalJSX.IntrinsicElements["bds-theme-provider"] & JSXBase.HTMLAttributes<HTMLBdsThemeProviderElement>;
+            /**
+             * @deprecated Use uai-toast (or showToast) with UaiThemeProvider for tokenized styling.
+             */
             "bds-toast": LocalJSX.IntrinsicElements["bds-toast"] & JSXBase.HTMLAttributes<HTMLBdsToastElement>;
+            /**
+             * @deprecated Use uai-toast-container with UaiThemeProvider for tokenized styling.
+             */
             "bds-toast-container": LocalJSX.IntrinsicElements["bds-toast-container"] & JSXBase.HTMLAttributes<HTMLBdsToastContainerElement>;
             /**
              * @deprecated Use uai-tooltip with UaiThemeProvider for tokenized styling and keyboard focus support.
@@ -18682,6 +18949,19 @@ declare module "@stencil/core" {
              * It sets data-uai-theme and the --uai-* tokens from blip-tokens, and does not change the layout (display: contents).
              */
             "uai-theme-provider": LocalJSX.IntrinsicElements["uai-theme-provider"] & JSXBase.HTMLAttributes<HTMLUaiThemeProviderElement>;
+            /**
+             * Short notification that floats over the page, with the result of an action or a system message.
+             * Use for transient feedback; pair with UaiToastContainer (or `show()`, which creates it) and a short text; avoid it
+             * for messages the user must act on, which belong in a modal or a banner.
+             */
+            "uai-toast": LocalJSX.IntrinsicElements["uai-toast"] & JSXBase.HTMLAttributes<HTMLUaiToastElement>;
+            /**
+             * Stack of toasts fixed to a corner or edge of the screen. It opens in the top layer (Popover API), so the toasts
+             * stay above modals, and announces each toast that opens to screen readers.
+             * Use one per position inside UaiThemeProvider; `uai-toast` `show()` creates it when the page has none.
+             * Avoid placing other content in it.
+             */
+            "uai-toast-container": LocalJSX.IntrinsicElements["uai-toast-container"] & JSXBase.HTMLAttributes<HTMLUaiToastContainerElement>;
             /**
              * Short supplementary text shown on hover or keyboard focus of the wrapped element.
              * Use for brief hints; pair with UaiThemeProvider; avoid essential information or interactive content.

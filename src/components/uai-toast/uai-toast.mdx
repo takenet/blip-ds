@@ -1,0 +1,102 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as ToastStories from './uai-toast.stories';
+
+<Meta isTemplate />
+
+# Toast
+
+## Visão geral
+
+Notificação curta que flutua sobre a página, com o resultado de uma ação ou uma mensagem do sistema: system, info, success, warning e error. Use para retornos passageiros; para avisos que precisam ficar na página, use o `uai-banner`, e para decisões, o `uai-modal`.
+
+No React, importe `UaiToast`, `UaiThemeProvider` e `showToast` de `blip-ds-react` (ou de `blip-ds-react/dist/scoped`, com tags com prefixo). Declare o tema na raiz e carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+
+## Como usar
+
+O jeito mais simples é `showToast`: ele cria o toast, o empilha na posição pedida e o tira da página depois que ele fecha. Resolve com o elemento do toast, para ouvir os eventos.
+
+```jsx
+import { showToast } from 'blip-ds-react';
+
+const save = async () => {
+  await api.save();
+  showToast({ variant: 'success', heading: 'Salvo', message: 'Alterações salvas.', duration: 5000 });
+};
+```
+
+<Canvas of={ToastStories.ShowToast} />
+
+Fora do React, use `showToast` de `blip-ds` ou chame `show()` em um `<uai-toast>`.
+
+## Playground
+
+<Canvas of={ToastStories.Playground} />
+<Controls of={ToastStories.Playground} />
+
+## Variantes
+
+Cada variante tem um ícone próprio e usa tokens semânticos: `system` (superfície de ação invertida), `info`, `success`, `warning` e `error`. O significado nunca depende só da cor: o ícone acompanha a variante.
+
+<Canvas of={ToastStories.Variants} />
+
+## Conteúdo
+
+- `heading` é opcional: um título curto e objetivo, sem ponto final, informando o motivo da notificação.
+- `message` é um texto curto, preferencialmente de uma linha. É texto puro, nunca HTML; para um link, use o slot padrão.
+- `actionLabel` mostra um botão de ação, como "Desfazer": ele emite `uaiToastAction` e fecha o toast.
+- `closable` (ligado por padrão) mostra o botão de fechar; `closeLabel` é o nome acessível dele.
+
+<Canvas of={ToastStories.Content} />
+
+## Tempo
+
+`duration` é o tempo, em milissegundos, até o toast fechar sozinho; `0` (padrão) o mantém aberto. O tempo para enquanto o mouse ou o foco estão no toast e continua de onde parou depois. Dê tempo para ler: 5 segundos ou mais, e sem tempo para erros que pedem uma ação.
+
+## Ação
+
+<Canvas of={ToastStories.WithAction} sourceState="shown" />
+
+## Posições
+
+Os toasts ficam em um `uai-toast-container`, uma pilha fixa em `top-left`, `top-center`, `top-right`, `bottom-left` (padrão), `bottom-center` ou `bottom-right`. O toast mais novo fica junto da borda da tela. `showToast` e `show()` criam o container da posição dentro do `uai-theme-provider` (o mais próximo do toast, ou o primeiro da página), então os toasts seguem o tema dele.
+
+<Canvas of={ToastStories.Positions} />
+
+O container abre na camada superior do navegador (Popover API), então os toasts ficam acima de um modal aberto. Um modal deixa inerte tudo o que está fora dele, então, com um modal aberto, `showToast` e `show()` criam o container dentro do modal; quando o modal fecha, os toasts abertos passam para o container da página e continuam na tela.
+
+<Canvas of={ToastStories.OverAModal} sourceState="shown" />
+
+## Toast declarado
+
+Também é possível declarar o container e o toast e controlar `open`. Declarado dentro de um container, o toast continua na página depois de fechar.
+
+<Canvas of={ToastStories.Declarative} sourceState="shown" />
+
+## Eventos e métodos
+
+| Evento           | Quando                                                                                       |
+| ---------------- | -------------------------------------------------------------------------------------------- |
+| `uaiToastOpen`   | O toast abriu.                                                                               |
+| `uaiToastClose`  | O toast fechou; `detail.reason` é `close-button`, `action`, `timeout`, `escape` ou `method`. |
+| `uaiToastAction` | O botão de ação foi clicado (antes de o toast fechar).                                       |
+
+`show(options?)` abre o toast (as opções substituem as props de mesmo nome) e `close()` o fecha.
+
+## Acessibilidade
+
+O container é uma região (`role="region"`, nome "Notificações", que `label` muda) e anuncia cada toast que abre: `polite` para system, info e success, e `assertive` para warning e error. Um toast fora de um container é a própria região viva (`role="status"` ou `role="alert"`). O foco não vai para o toast. Com o foco nele, `Escape` o fecha. Os botões são `<button>` nativos, com foco visível e alvo de 40px.
+
+## Migração do bds-toast
+
+Troque `BdsToast` por `UaiToast` (ou o método `create()` por `showToast` ou `show()`) e envolva a aplicação em `UaiThemeProvider`. Diferenças:
+
+- `toastTitle` e `toastText` viram `heading` e `message`. `message` é texto puro: o HTML de `toastText` não é interpretado; para links, use o slot.
+- **`duration` é em milissegundos** (no legado era em segundos): `duration: 5` vira `duration: 5000`.
+- Variantes: `system`, `info`, `success`, `warning` e `error`. `undo`, `redo` e `notification` caem em `system`; para desfazer, use `actionLabel="Desfazer"`.
+- `actionType` e `buttonAction` saem: o botão de fechar é `closable` e a ação é `actionLabel`, com o evento `uaiToastAction` (no lugar de `toastButtonClick`).
+- `show` e `hide` (props) viram `open`, `show()` e `close()`. O tempo pausa com mouse ou foco, e `Escape` fecha.
+- `position` ganha `top-center` e `bottom-center`; o container é `uai-toast-container`.
+
+Tokens: `action-primary-default`, `action-primary-foreground`, `surface-paper`, `content-primary`, `feedback-info`, `feedback-success`, `feedback-warning`, `feedback-error`, `border-width-default`, `radius-md`, `radius-lg`, `radius-xl`, `spacing-xs`, `spacing-sm`, `spacing-md`, `spacing-xl`, `spacing-4xl`, `sizing-xl`, `sizing-3xl`, `control-height-medium`, `width-dialog`, `elevation-dialog`, `body-base`, `font-weight-medium`, `border-ring`, `duration-fast`, `duration-moderate`, `easing-standard` e `breakpoint-sm`.
+
+[Componente no UAI Core](https://www.figma.com/design/J9sL59g1hQEPBhTqy8F644/-DS--Blip-Inteligence?node-id=2827-6298).

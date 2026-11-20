@@ -1,0 +1,160 @@
+@use '../../globals/helpers' as *;
+
+// Closed toasts take no space. Opening fades and slides the toast in (duration/moderate); closing fades it out.
+:host {
+  display: block;
+  opacity: 0;
+  transform: translateY(var(--uai-spacing-xs, #{$uai-spacing-xs}));
+  transition:
+    opacity var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    transform var(--uai-duration-moderate, #{$uai-duration-moderate})
+      var(--uai-easing-standard, #{$uai-easing-standard}),
+    display var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+      allow-discrete;
+
+  @include uai-reduced-motion {
+    transition: none;
+  }
+}
+
+:host(:not(.uai-toast--open)) {
+  display: none;
+}
+
+:host(.uai-toast--open) {
+  opacity: 1;
+  transform: none;
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(var(--uai-spacing-xs, #{$uai-spacing-xs}));
+  }
+}
+
+.toast {
+  // Feedback variants tint the semantic color over the paper surface, as in the UAI Core toast (and uai-banner).
+  --toast-tint: var(--uai-feedback-info, #{$uai-feedback-info});
+  --toast-base: var(--uai-surface-paper, #{$uai-surface-paper});
+  --toast-fg: var(--uai-content-primary, #{$uai-content-primary});
+  --toast-bg: color-mix(in srgb, var(--toast-tint) 20%, var(--toast-base));
+  --toast-border: color-mix(in srgb, var(--toast-tint) 50%, var(--toast-base));
+  --toast-box-bg: color-mix(in srgb, var(--toast-tint) 40%, var(--toast-base));
+  --toast-box-border: color-mix(in srgb, var(--toast-tint) 60%, var(--toast-base));
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  width: 100%;
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+  overflow: hidden;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--toast-border);
+  border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+  background: var(--toast-bg);
+  box-shadow: var(--uai-elevation-dialog, #{$uai-elevation-dialog});
+  color: var(--toast-fg);
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+
+  &--info {
+    --toast-tint: var(--uai-feedback-info, #{$uai-feedback-info});
+  }
+
+  &--success {
+    --toast-tint: var(--uai-feedback-success, #{$uai-feedback-success});
+  }
+
+  &--warning {
+    --toast-tint: var(--uai-feedback-warning, #{$uai-feedback-warning});
+  }
+
+  &--error {
+    --toast-tint: var(--uai-feedback-error, #{$uai-feedback-error});
+  }
+
+  // System uses the inverted action surface: a lighter step of its own foreground for border and icon box.
+  &--system {
+    --toast-base: var(--uai-action-primary-default, #{$uai-action-primary-default});
+    --toast-tint: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+    --toast-fg: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+    --toast-bg: var(--toast-base);
+    --toast-border: color-mix(in srgb, var(--toast-tint) 10%, var(--toast-base));
+    --toast-box-bg: color-mix(in srgb, var(--toast-tint) 20%, var(--toast-base));
+    --toast-box-border: var(--toast-border);
+  }
+}
+
+.toast__icon-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
+  height: var(--uai-sizing-3xl, #{$uai-sizing-3xl});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--toast-box-border);
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background: var(--toast-box-bg);
+}
+
+.toast__icon {
+  --uai-icon-size: var(--uai-sizing-xl, #{$uai-sizing-xl});
+
+  color: var(--toast-fg);
+}
+
+.toast__text {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  word-break: break-word;
+}
+
+.toast__title,
+.toast__message {
+  --uai-typo-color: var(--toast-fg);
+
+  display: block;
+}
+
+.toast__message ::slotted(a) {
+  color: inherit;
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+}
+
+.toast__action,
+.toast__close {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  @include uai-transition(background-color);
+
+  &:hover {
+    background: color-mix(in srgb, var(--toast-fg) 10%, transparent);
+  }
+
+  @include uai-focus-visible;
+}
+
+.toast__action {
+  padding: 0 var(--uai-spacing-sm, #{$uai-spacing-sm});
+  font-family: inherit;
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  white-space: nowrap;
+}
+
+.toast__close {
+  width: var(--uai-control-height-medium, #{$uai-control-height-medium});
+}

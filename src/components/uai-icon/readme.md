@@ -61,6 +61,7 @@ without the FontFace API.
  - [uai-tab-group](../uai-tab-group)
  - [uai-table-th](../uai-table-th)
  - [uai-textarea](../uai-textarea)
+ - [uai-toast](../uai-toast)
 
 ### Graph
 ```mermaid
@@ -84,6 +85,7 @@ graph TD;
   uai-tab-group --> uai-icon
   uai-table-th --> uai-icon
   uai-textarea --> uai-icon
+  uai-toast --> uai-icon
   style uai-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

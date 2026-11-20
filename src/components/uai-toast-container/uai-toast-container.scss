@@ -1,0 +1,87 @@
+@use '../../globals/helpers' as *;
+
+// Fixed stack in the top layer. The popover defaults (inset, margin, border, background) are reset; the stack itself
+// lets clicks through, and only the toasts take them.
+:host {
+  --toast-container-margin: var(--uai-spacing-xl, #{$uai-spacing-xl});
+  // 30rem, the toast width in UAI Core: dialog width plus spacing/4xl, as there is no width token for it.
+  --toast-container-width: calc(
+    var(--uai-width-dialog, #{$uai-width-dialog}) + var(--uai-spacing-4xl, #{$uai-spacing-4xl})
+  );
+
+  position: fixed;
+  inset: auto;
+  box-sizing: border-box;
+  width: min(var(--toast-container-width), calc(100% - 2 * var(--toast-container-margin)));
+  height: auto;
+  max-height: calc(100% - 2 * var(--toast-container-margin));
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  pointer-events: none;
+}
+
+:host(.uai-toast-container--top-left),
+:host(.uai-toast-container--top-center),
+:host(.uai-toast-container--top-right) {
+  top: var(--toast-container-margin);
+}
+
+:host(.uai-toast-container--bottom-left),
+:host(.uai-toast-container--bottom-center),
+:host(.uai-toast-container--bottom-right) {
+  bottom: var(--toast-container-margin);
+}
+
+:host(.uai-toast-container--top-left),
+:host(.uai-toast-container--bottom-left) {
+  left: var(--toast-container-margin);
+}
+
+:host(.uai-toast-container--top-right),
+:host(.uai-toast-container--bottom-right) {
+  right: var(--toast-container-margin);
+}
+
+:host(.uai-toast-container--top-center),
+:host(.uai-toast-container--bottom-center) {
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+}
+
+@media (max-width: $uai-breakpoint-sm) {
+  :host {
+    --toast-container-margin: var(--uai-spacing-md, #{$uai-spacing-md});
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+// The newest toast (the last one) stays next to the edge of the screen: top stacks are reversed.
+:host(.uai-toast-container--top-left) .stack,
+:host(.uai-toast-container--top-center) .stack,
+:host(.uai-toast-container--top-right) .stack {
+  flex-direction: column-reverse;
+}
+
+::slotted(*) {
+  pointer-events: auto;
+}
+
+// Visually hidden live regions.
+.live {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
