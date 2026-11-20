@@ -160,7 +160,7 @@ export class Icon {
       if (version !== this.requestVersion) return;
       this.svgContent = undefined;
       // eslint-disable-next-line no-console
-      console.warn('[Warning]: Failed to setSvgContent to', this.name);
+      console.warn('[Warning]: Failed to setSvgContent to', this.name, err);
     }
   };
 
