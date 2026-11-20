@@ -318,6 +318,47 @@ describe('bds-autocomplete', () => {
 
       expect(page.rootInstance.placeholderState).toBe('');
     });
+
+    it('should show a placeholder that is set after the first render', async () => {
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: '<bds-autocomplete></bds-autocomplete>',
+      });
+
+      page.root.placeholder = 'Search...';
+      await page.waitForChanges();
+
+      expect(page.root.shadowRoot.querySelector('input').placeholder).toBe('Search...');
+    });
+
+    it('should follow later changes of the placeholder', async () => {
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: '<bds-autocomplete placeholder="Search..."></bds-autocomplete>',
+      });
+
+      page.root.placeholder = 'Buscar...';
+      await page.waitForChanges();
+
+      expect(page.root.shadowRoot.querySelector('input').placeholder).toBe('Buscar...');
+    });
+
+    it('should keep the placeholder hidden while options are checked in multiple mode, even if it changes', async () => {
+      const page = await newSpecPage({
+        components: [BdsAutocomplete],
+        html: '<bds-autocomplete placeholder="Select options..." selection-type="multiple"></bds-autocomplete>',
+      });
+
+      page.rootInstance.checkedOptions = [{ value: 'test', label: 'Test' }];
+      await page.waitForChanges();
+      page.root.placeholder = 'Other';
+      await page.waitForChanges();
+      expect(page.rootInstance.placeholderState).toBe('');
+
+      page.rootInstance.checkedOptions = [];
+      await page.waitForChanges();
+      expect(page.rootInstance.placeholderState).toBe('Other');
+    });
   });
 
   describe('icon rendering', () => {
