@@ -1,0 +1,1 @@
+import{U as s,d as o}from"./p-Cpdwg_sa.js";const p=s,a=o;export{p as UaiDropdown,a as defineCustomElement}
