@@ -235,7 +235,11 @@ var cmpModules=new Map;var failedLoadAttempts=new Map;var loadModule=function(e,
 /* webpackMode: "lazy" */
 "./uai-textarea.entry.js").then(u,consoleError);case"uai-theme-provider":return import(
 /* webpackMode: "lazy" */
-"./uai-theme-provider.entry.js").then(u,consoleError);case"bds-badge":return import(
+"./uai-theme-provider.entry.js").then(u,consoleError);case"uai-toast":return import(
+/* webpackMode: "lazy" */
+"./uai-toast.entry.js").then(u,consoleError);case"uai-toast-container":return import(
+/* webpackMode: "lazy" */
+"./uai-toast-container.entry.js").then(u,consoleError);case"bds-badge":return import(
 /* webpackMode: "lazy" */
 "./bds-badge.entry.js").then(u,consoleError);case"bds-chip-tag":return import(
 /* webpackMode: "lazy" */

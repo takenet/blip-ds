@@ -587,6 +587,14 @@ var loadModule = (cmpMeta, hostRef, hmrVersionId) => {
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */
                         './uai-theme-provider.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-toast.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-toast.cjs.entry.js')); }).then(processMod, consoleError);
+                case 'uai-toast-container.cjs':
+                    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+                        /* webpackMode: "lazy" */
+                        './uai-toast-container.cjs.entry.js')); }).then(processMod, consoleError);
                 case 'bds-badge.cjs':
                     return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
                         /* webpackMode: "lazy" */

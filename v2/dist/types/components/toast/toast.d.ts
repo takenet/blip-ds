@@ -1,5 +1,8 @@
 import { ComponentInterface, EventEmitter } from '../../stencil-public-runtime';
 import { ActionType, VariantType, ButtonActionType, CreateToastType, PositionType } from './toast-interface';
+/**
+ * @deprecated Use uai-toast (or showToast) with UaiThemeProvider for tokenized styling.
+ */
 export declare class BdsToast implements ComponentInterface {
     el: HTMLBdsToastElement;
     /**

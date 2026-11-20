@@ -150,6 +150,8 @@
     "components/uai-table-body/uai-table-body.js",
     "components/uai-table-header/uai-table-header.js",
     "components/uai-textarea/uai-textarea.js",
+    "components/uai-toast/uai-toast.js",
+    "components/uai-toast-container/uai-toast-container.js",
     "components/upload/bds-upload.js",
     "components/warning/warning.js"
   ],

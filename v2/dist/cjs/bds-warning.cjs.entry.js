@@ -9,7 +9,7 @@ const Warning = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: 'b9aa1dad1ef8ef85e6189d274df68ffef333b31d' }, index.h("div", { key: '949c938185c8f7db0bf178b85e29ae39fbb2e097', class: "warning__body" }, index.h("bds-icon", { key: '0279d655be3260ee9efaca7b82f9fa36c1ba93a3', class: "warning__icon", theme: "solid", size: "small", name: "warning" }), index.h("bds-typo", { key: '283de6ea184975abfe689b7a4ef45b7555f2b547', variant: "fs-14", tag: "span", class: "warning__message" }, index.h("slot", { key: '78c60b4dcb84ed34fe72305389292b49132936eb' })))));
+        return (index.h(index.Host, { key: '888a218c6e6ea55ef057a482dad326d06a8b40b2' }, index.h("div", { key: '5fa88bea1c4710eb42da9679c26122ca94606cdc', class: "warning__body" }, index.h("bds-icon", { key: 'e9315aedc35cb6b2968822e477d3d567d74007bf', class: "warning__icon", theme: "solid", size: "small", name: "warning" }), index.h("bds-typo", { key: 'ee1ef49d52d36b14cc9ff85975bc8d41bba64848', variant: "fs-14", tag: "span", class: "warning__message" }, index.h("slot", { key: 'cc0dc06eefacae265bde84e22712dce16610c1ed' })))));
     }
 };
 Warning.style = warningCss();

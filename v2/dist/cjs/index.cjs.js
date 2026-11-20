@@ -1,8 +1,9 @@
 'use strict';
 
 var index = require('./index-Bq8uwDLK.js');
+var uaiToast = require('./uai-toast-s507dmSr.js');
 
-const prefix = "ds-f14e1f3c";
+const prefix = "ds-ae801821";
 var scope = {
 	prefix: prefix
 };
@@ -54,6 +55,8 @@ const scopedTag = (tag) => index.transformTag(tag);
 
 exports.setTagTransformer = index.setTagTransformer;
 exports.transformTag = index.transformTag;
+exports.UAI_TOAST_POSITIONS = uaiToast.UAI_TOAST_POSITIONS;
+exports.showToast = uaiToast.showToast;
 exports.TAG_SCOPE_PREFIX = TAG_SCOPE_PREFIX;
 exports.createTagTransformer = createTagTransformer;
 exports.getTagScope = getTagScope;
