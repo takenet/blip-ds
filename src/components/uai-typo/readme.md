@@ -65,6 +65,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
  - [uai-table-cell](../uai-table-cell)
  - [uai-table-th](../uai-table-th)
  - [uai-textarea](../uai-textarea)
+ - [uai-toast](../uai-toast)
  - [uai-tooltip](../uai-tooltip)
 
 ### Graph
@@ -91,6 +92,7 @@ graph TD;
   uai-table-cell --> uai-typo
   uai-table-th --> uai-typo
   uai-textarea --> uai-typo
+  uai-toast --> uai-typo
   uai-tooltip --> uai-typo
   style uai-typo fill:#f9f,stroke:#333,stroke-width:4px
 ```

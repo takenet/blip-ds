@@ -1,5 +1,8 @@
 import { Component, h, Host } from '@stencil/core';
 
+/**
+ * @deprecated Use uai-toast-container with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-toast-container',
   styleUrl: 'toast-container.scss',

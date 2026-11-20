@@ -152,6 +152,8 @@ import { UaiTableTh as UaiTableThElement, defineCustomElement as defineUaiTableT
 import { UaiTable as UaiTableElement, defineCustomElement as defineUaiTable } from "blip-ds/dist/components/uai-table.js";
 import { UaiTextarea as UaiTextareaElement, defineCustomElement as defineUaiTextarea } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement, defineCustomElement as defineUaiThemeProvider } from "blip-ds/dist/components/uai-theme-provider.js";
+import { UaiToastContainer as UaiToastContainerElement, defineCustomElement as defineUaiToastContainer } from "blip-ds/dist/components/uai-toast-container.js";
+import { UaiToast as UaiToastElement, defineCustomElement as defineUaiToast } from "blip-ds/dist/components/uai-toast.js";
 import { UaiTooltip as UaiTooltipElement, defineCustomElement as defineUaiTooltip } from "blip-ds/dist/components/uai-tooltip.js";
 import { UaiTypo as UaiTypoElement, defineCustomElement as defineUaiTypo } from "blip-ds/dist/components/uai-typo.js";
 export const BdsAccordion = createComponent({
@@ -1552,6 +1554,26 @@ export const UaiThemeProvider = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiThemeProvider,
+    transformTag
+});
+export const UaiToast = createComponent({
+    tagName: 'uai-toast',
+    elementClass: UaiToastElement,
+    react: React,
+    events: {
+        onUaiToastOpen: 'uaiToastOpen',
+        onUaiToastClose: 'uaiToastClose',
+        onUaiToastAction: 'uaiToastAction'
+    },
+    defineCustomElement: defineUaiToast,
+    transformTag
+});
+export const UaiToastContainer = createComponent({
+    tagName: 'uai-toast-container',
+    elementClass: UaiToastContainerElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiToastContainer,
     transformTag
 });
 export const UaiTooltip = createComponent({
