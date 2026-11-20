@@ -1,1 +1,0 @@
-import{T as o,d as r}from"./p-VIBMd3kr.js";const s=o,p=r;export{s as BdsTypo,p as defineCustomElement}

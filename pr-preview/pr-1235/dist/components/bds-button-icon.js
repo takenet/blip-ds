@@ -1,1 +1,0 @@
-import{I as o,d as r}from"./p-Cl0BI_Sr.js";const s=o,p=r;export{s as BdsButtonIcon,p as defineCustomElement}
