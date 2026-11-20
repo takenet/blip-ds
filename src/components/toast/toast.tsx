@@ -7,6 +7,9 @@ import {
   IconVariantMap,
   PositionType,
 } from './toast-interface';
+/**
+ * @deprecated Use uai-toast (or showToast) with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-toast',
   styleUrl: 'toast.scss',

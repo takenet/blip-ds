@@ -93,11 +93,11 @@ export const WAVE_1: ComponentEntry[] = [
   },
   {
     tag: 'bds-toast',
-    name: 'Toast',
-    primaryStory: 'components-toast--properties',
+    name: '[deprecated] Toast',
+    primaryStory: 'components-deprecated-toast--properties',
     stories: [
-      { storyId: 'components-toast--properties', label: 'Properties' },
-      { storyId: 'components-toast--events', label: 'Events' },
+      { storyId: 'components-deprecated-toast--properties', label: 'Properties' },
+      { storyId: 'components-deprecated-toast--events', label: 'Events' },
     ],
   },
 ];
