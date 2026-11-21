@@ -12,6 +12,9 @@ import { languages, termTranslate } from './languages';
 
 export type SelectionType = 'single' | 'multiple';
 
+/**
+ * @deprecated Use uai-autocomplete with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-autocomplete',
   styleUrl: 'autocomplete.scss',
