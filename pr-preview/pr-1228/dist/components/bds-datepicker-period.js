@@ -1,1 +1,0 @@
-import{B as s,d as o}from"./p-BsBxNMZ3.js";const p=s,r=o;export{p as BdsDatepickerPeriod,r as defineCustomElement}
