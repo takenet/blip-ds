@@ -1,0 +1,124 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiInputTimeStories from './uai-input-time.stories';
+
+<Meta isTemplate />
+
+# Input Time
+
+Campo para um horário do dia, digitado só com números ou escolhido no painel de horas e minutos que abre ao clicar. Use para horários de abertura, de retorno e de envio. Para data, use o input date; para os dois, coloque um ao lado do outro.
+
+## Playground
+
+<Canvas of={UaiInputTimeStories.Playground} />
+
+<Controls of={UaiInputTimeStories.Playground} />
+
+## Como usar
+
+Um horário de abertura controlado por estado, limitado por `min` e `max`, com validação nativa e envio. O código abaixo pode ser copiado como ponto de partida.
+
+<Canvas of={UaiInputTimeStories.Usage} sourceState="shown" />
+
+- Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
+- `value`, `min`, `max` e o valor enviado no formulário são sempre `HH:mm`, de `00:00` a `23:59`, em 24 horas.
+- A pessoa digita só os números e os dois pontos entram sozinhos. Dígitos que não formam um horário são recusados: um primeiro dígito acima de 2, uma hora acima de 23 ou minutos que começam acima de 5.
+- Clicar no campo (ou no botão de relógio) abre o painel com duas colunas, horas e minutos. Escolher a hora já preenche o campo e passa para os minutos; escolher o minuto fecha o painel. O foco fica no campo, então dá para digitar com o painel aberto.
+- O painel oferece os minutos de 5 em 5; `minuteStep` muda o intervalo (de 1 a 30). Digitando, qualquer minuto é aceito.
+- Sem `label`, o rótulo é "Horário" (`pt_BR`), "Time" (`en_US`) ou "Hora" (`es_ES`). Sem `placeholder`, aparece `hh:mm`.
+- Fora do React, use o custom element `<uai-input-time>`, com as propriedades em kebab-case (`helper-message`, `min-error-message`) e os eventos `uaiChange`, `uaiInput` etc.
+
+## Estados
+
+`danger` tem prioridade sobre `success`. Erro e sucesso mostram um ícone além da cor, antes do botão de relógio. Em `readonly` o botão some; em `disabled` ele fica desabilitado como o resto do campo, que sai do formulário.
+
+<Canvas of={UaiInputTimeStories.States} />
+
+| Tamanho | Altura |
+| --- | --- |
+| `short` | `control-height/short` |
+| `medium` (padrão) | `control-height/medium` |
+
+<Canvas of={UaiInputTimeStories.Sizes} />
+
+## Comportamento
+
+### Digitação e formato
+
+| Regra | Teste |
+| --- | --- |
+| Só dígitos são aceitos e os dois pontos entram sozinhos: digitar `0930` mostra `09:30` e `value` vira `09:30` | `test/uai-input-time.spec.tsx` |
+| Um dígito que não forma horário é recusado e o campo fica como estava | `test/uai-input-time.spec.tsx` |
+| Horário incompleto (`09:3`) fica visível com `value` vazio | `test/uai-input-time.spec.tsx` |
+| Um `value` que não é `HH:mm` válido não aparece no campo | `test/uai-input-time.spec.tsx` |
+| `language` desconhecido cai em `pt_BR` e `size` desconhecido em `medium`, com aviso único | `test/uai-input-time.spec.tsx` |
+
+### Painel de horas e minutos
+
+| Regra | Teste |
+| --- | --- |
+| Clicar no campo abre o painel; o botão de relógio abre e fecha; Alt+Seta para baixo abre pelo teclado | `test/uai-input-time.spec.tsx` |
+| O painel começa na hora e no minuto do `value`, marcados como selecionados | `test/uai-input-time.spec.tsx` |
+| A hora preenche o campo na hora e passa para os minutos; o minuto completa o `value`, emite `uaiChange` e fecha | `test/uai-input-time.spec.tsx` |
+| Setas para cima e para baixo andam na coluna ativa, para a esquerda e para a direita trocam de coluna, Enter escolhe, Esc e clique fora fecham | `test/uai-input-time.spec.tsx` |
+| Horas e minutos fora de `min` e `max` aparecem desabilitados | `test/uai-input-time.spec.tsx` |
+| `minuteStep` define o intervalo dos minutos (padrão 5) | `test/uai-input-time.spec.tsx` |
+| Em `readonly` o painel não abre e o botão não aparece; em `disabled` nada abre | `test/uai-input-time.spec.tsx` |
+
+### Formulário e validação
+
+| Regra | Teste |
+| --- | --- |
+| Com `name` (ou `inputName`), envia o horário como `HH:mm`; sem nome ou sem horário completo, nada é enviado | — |
+| `required` vazio mostra `requiredErrorMessage` ao sair do campo ou no envio | `test/uai-input-time.spec.tsx` |
+| Horário incompleto mostra `timeErrorMessage` e `isValid()` retorna `false` | `test/uai-input-time.spec.tsx` |
+| Horário antes de `min` ou depois de `max` mostra `minErrorMessage` ou `maxErrorMessage`; sem a prop, o texto padrão do idioma com o limite | `test/uai-input-time.spec.tsx` |
+
+<Canvas of={UaiInputTimeStories.Range} />
+
+<Canvas of={UaiInputTimeStories.DateAndTime} />
+
+<Canvas of={UaiInputTimeStories.Form} />
+
+### Eventos e métodos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiChange` | `uaiChange` | O horário muda, digitando, pelo painel ou por código | `{ value }` em `HH:mm` (vazio enquanto incompleto) |
+| `onUaiInput` | `uaiInput` | A cada tecla | `InputEvent` nativo |
+| `onUaiFocus` / `onUaiOnBlur` | `uaiFocus` / `uaiOnBlur` | O campo ganha ou perde o foco | — |
+
+Métodos: `setFocus()`, `removeFocus()`, `isValid()`, `clear()`, `open()` e `close()`.
+
+### Movimento
+
+Hover e foco do campo e hover do botão de relógio usam `duration/fast` e `easing/standard`. Com `prefers-reduced-motion: reduce`, tudo acontece sem transição.
+
+## Acessibilidade
+
+- O rótulo é um `<label>` associado ao input nativo. Sem `label`, o texto padrão do idioma garante o nome; `aria-label` substitui o nome acessível quando o contexto pede um texto mais específico.
+- O input usa `inputmode="numeric"`, que abre o teclado numérico em dispositivos móveis.
+- O campo é um `combobox`: `aria-expanded` diz se o painel está aberto e `aria-activedescendant` aponta a hora ou o minuto ativo, enquanto o foco continua no campo.
+- O painel é um grupo com o nome do idioma ("Escolher horário"), com duas `listbox` ("Horas" e "Minutos"); a hora e o minuto escolhidos têm `aria-selected`, e os fora da faixa, `aria-disabled`.
+- O botão de relógio é um `<button>` nativo com nome do idioma ("Escolher horário", "Choose time", "Elegir hora") e `aria-expanded`.
+- Mensagens são ligadas ao campo por `aria-describedby`; o erro define `aria-invalid` e mostra ícone e texto além da cor.
+
+## Tokens
+
+Os mesmos do input date, com o ícone `clock` no botão e o painel como o do select.
+
+| Parte | Tokens |
+| --- | --- |
+| Tamanho e forma | `control-height-short`, `control-height-medium`, `radius-lg`, `border-width-default` |
+| Espaços | `spacing-xs` (padding e gap), `spacing-2xs` (rótulo e mensagem) |
+| Repouso e hover | `surface-paper`, `border-input`, `content-secondary` |
+| Foco | `border-ring`, `border-width-thick`, `opacity-focus-ring` |
+| Erro e sucesso | `feedback-error`, `feedback-success` |
+| Desabilitado | `surface-muted`, `border-default`, `content-disabled` |
+| Botão de relógio | `spacing-2xs`, `radius-md`, `sizing-lg` (ícone `clock`), `overlay-hover` |
+| Painel | `surface-paper`, `border-default`, `radius-lg`, `elevation-2`, `spacing-xs` e `spacing-2xs`, `control-height-medium` (altura e largura dos itens) |
+| Itens do painel | `overlay-hover`, `overlay-selected`, `border-ring` (item ativo pelo teclado), `content-disabled`, `radius-md` |
+| Texto | `body-base` (horário e itens), `caption` semibold (rótulo), `caption` (mensagem), `content-primary`, `content-placeholder` |
+
+## Origem
+
+Não há `bds-*` equivalente: o legado não tinha campo de horário. O contrato segue o `uai-input-date` (mesmas props de estado, mensagens, formulário, eventos e métodos), com `timeErrorMessage` no lugar de `dateErrorMessage`, a part `picker-button` no lugar de `calendar-button`, o painel UAI (parts `picker` e `picker-option`) no lugar do seletor nativo, `minuteStep` e os métodos `open()` e `close()`.
