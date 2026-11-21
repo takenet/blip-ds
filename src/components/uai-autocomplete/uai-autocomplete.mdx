@@ -1,0 +1,120 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiAutocompleteStories from './uai-autocomplete.stories';
+
+<Meta isTemplate />
+
+# Autocomplete
+
+Campo para escolher em uma lista longa digitando para buscar. Use para listas que não dá para percorrer de olho, como pessoas, times ou cidades. Para uma lista curta sem busca, use o select; para texto livre com sugestões, use o input com `suggestions`.
+
+## Playground
+
+<Canvas of={UaiAutocompleteStories.Playground} />
+
+<Controls of={UaiAutocompleteStories.Playground} />
+
+## Como usar
+
+Uma cidade controlada por estado, obrigatória e enviada no formulário pelo `name`. O código abaixo pode ser copiado como ponto de partida.
+
+<Canvas of={UaiAutocompleteStories.Usage} sourceState="shown" />
+
+- Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
+- Passe as opções em `options` como `{ value, label, icon?, disabled? }`. Em HTML, use um JSON.
+- Clicar no campo abre a lista; digitar filtra pelo rótulo, sem diferenciar acentos nem maiúsculas.
+- Digitar só busca: o `value` muda quando a pessoa escolhe uma opção ou limpa o campo. Apagar o texto e sair do campo também limpa a escolha.
+- Com `selectionType="multiple"`, as opções viram caixas de seleção e a lista fica aberta enquanto a pessoa marca. A marcação vem de `checked` nas opções: para controlar, atualize as opções com o que `uaiMultiselectedChange` informar.
+- Para buscar em um servidor, ouça `uaiInput`, use `loading` enquanto busca e troque `options` com o resultado.
+- Fora do React, use o custom element `<uai-autocomplete>`, com as propriedades em kebab-case (`selection-type`, `helper-message`) e os eventos `uaiChange`, `uaiMultiselectedChange` etc.
+
+## Estados
+
+`danger` tem prioridade sobre `success`. Erro e sucesso mostram um ícone além da cor. Com uma escolha, aparece o botão de limpar; com `clearIconOnFocus`, só enquanto o campo tem o foco.
+
+<Canvas of={UaiAutocompleteStories.States} />
+
+<Canvas of={UaiAutocompleteStories.ListStates} />
+
+| Tamanho | Altura |
+| --- | --- |
+| `short` | `control-height/short` |
+| `medium` (padrão) | `control-height/medium` |
+
+<Canvas of={UaiAutocompleteStories.Sizes} />
+
+## Comportamento
+
+### Escolha única
+
+| Regra | Teste |
+| --- | --- |
+| Clicar no campo abre a lista com todas as opções | `test/uai-autocomplete.spec.tsx` |
+| Digitar filtra sem acentos e sem mudar o `value` | `test/uai-autocomplete.spec.tsx` |
+| Setas andam pelas opções, pulando as desabilitadas; Enter ou clique escolhe, mostra o rótulo e fecha | `test/uai-autocomplete.spec.tsx` |
+| A opção escolhida tem `aria-selected` | `test/uai-autocomplete.spec.tsx` |
+| O botão de limpar zera o `value` e emite `uaiChange` e `uaiCancel` | `test/uai-autocomplete.spec.tsx` |
+| Sair do campo depois de buscar volta ao rótulo escolhido; sair com o texto apagado limpa a escolha | `test/uai-autocomplete.spec.tsx` |
+
+### Escolha múltipla
+
+| Regra | Teste |
+| --- | --- |
+| A lista é `aria-multiselectable`, com "Selecionar todos" no topo e `selectionTitle` acima | `test/uai-autocomplete.spec.tsx` |
+| Marcar e desmarcar mantém a lista aberta e emite `uaiMultiselectedChange` com as marcadas | `test/uai-autocomplete.spec.tsx` |
+| "Selecionar todos" marca as habilitadas e, de novo, desmarca todas | `test/uai-autocomplete.spec.tsx` |
+| Durante a busca, "Selecionar todos" sai da lista | `test/uai-autocomplete.spec.tsx` |
+| Fora do foco, o campo mostra o rótulo da marcada ou quantas estão marcadas ("2 selecionados") | `test/uai-autocomplete.spec.tsx` |
+| `cleanMultipleSelection()` desmarca todas | `test/uai-autocomplete.spec.tsx` |
+
+<Canvas of={UaiAutocompleteStories.Multiple} />
+
+### Formulário e validação
+
+| Regra | Teste |
+| --- | --- |
+| Com `name`, envia o `value`; na escolha múltipla, cada valor marcado com o mesmo nome | — |
+| `required` sem escolha mostra `requiredErrorMessage` (ou o texto padrão do idioma) ao sair do campo | `test/uai-autocomplete.spec.tsx` |
+| `selectionType`, `size` e `language` desconhecidos caem no padrão, com aviso único | `test/uai-autocomplete.spec.tsx` |
+
+### Eventos e métodos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiChange` | `uaiChange` | A escolha única muda, escolhendo ou limpando | `{ value }` (`null` ao limpar) |
+| `onUaiSelectedChange` | `uaiSelectedChange` | A pessoa escolhe uma opção | `{ value, label }` |
+| `onUaiMultiselectedChange` | `uaiMultiselectedChange` | As marcadas mudam | `{ value }` com as opções marcadas |
+| `onUaiInput` | `uaiInput` | A cada tecla na busca | `InputEvent` nativo |
+| `onUaiCancel` | `uaiCancel` | A escolha é limpa pelo botão | `{ value: '' }` |
+| `onUaiFocus` / `onUaiBlur` | `uaiFocus` / `uaiBlur` | O campo ganha ou perde o foco | — |
+
+Métodos: `setFocus()`, `open()`, `close()` e `cleanMultipleSelection()`.
+
+## Acessibilidade
+
+- O campo é um `combobox` com `aria-autocomplete="list"`: `aria-expanded` diz se a lista está aberta e `aria-activedescendant` aponta a opção ativa, enquanto o foco continua no campo.
+- A lista é uma `listbox` com o nome do rótulo; na escolha múltipla, `aria-multiselectable`. Opções escolhidas ou marcadas têm `aria-selected`, e as desabilitadas, `aria-disabled`.
+- O botão de limpar é um `<button>` nativo com nome do idioma ("Limpar", "Clear", "Limpiar").
+- Mensagens são ligadas ao campo por `aria-describedby`; o erro define `aria-invalid` e mostra ícone e texto além da cor.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Campo | Os mesmos do input: `control-height-*`, `radius-lg`, `border-input`, `surface-paper`, `border-ring` e `opacity-focus-ring` no foco |
+| Lista | `surface-paper`, `border-default`, `radius-lg`, `elevation-2`, `spacing-xs`, `spacing-2xs` |
+| Opções | `overlay-hover` (ativa), `overlay-selected` (escolhida), `content-disabled`, `action-primary-default` (marca da escolhida) |
+| Caixa de seleção | `border-input`, `radius-md`, `sizing-md`, `action-primary-default` e `action-primary-foreground` quando marcada |
+| Botão de limpar | `spacing-2xs`, `radius-md`, `overlay-hover` |
+
+## Migração do `bds-autocomplete`
+
+Props, valores e métodos têm os mesmos nomes do `BdsAutocomplete`; os eventos trocam `bds` por `uai`. As diferenças:
+
+| `BdsAutocomplete` | `UaiAutocomplete` |
+| --- | --- |
+| `bdsChange` emitia o texto digitado como `value` | `uaiChange` só emite ao escolher ou limpar; digitar emite `uaiInput` |
+| `bdsSelectedChange` com o elemento `bds-select-option` | `uaiSelectedChange` com `{ value, label }` |
+| Opções em `options` ou como filhos `bds-select-option` | Só em `options`; `icon` e `disabled` por opção |
+| `selected` (elemento) e `searchOnlyTitle` | Sem `selected`; `searchOnlyTitle` é aceito sem efeito, com aviso: a busca usa sempre o rótulo |
+| Campo fora do `<form>` nativo | Participa do formulário: `name`, `required`, reset e `fieldset` |
+| — | `size` (`short` \| `medium`), `requiredErrorMessage`, `aria-label`, métodos `open()`, `close()` e `setFocus()` |

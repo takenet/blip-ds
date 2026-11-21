@@ -107,6 +107,7 @@ import { BdsTooltip as BdsTooltipElement, defineCustomElement as defineBdsToolti
 import { BdsTypo as BdsTypoElement, defineCustomElement as defineBdsTypo } from "blip-ds/dist/components/bds-typo.js";
 import { BdsUpload as BdsUploadElement, defineCustomElement as defineBdsUpload } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement, defineCustomElement as defineBdsWarning } from "blip-ds/dist/components/bds-warning.js";
+import { UaiAutocomplete as UaiAutocompleteElement, defineCustomElement as defineUaiAutocomplete } from "blip-ds/dist/components/uai-autocomplete.js";
 import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiBadge as UaiBadgeElement, defineCustomElement as defineUaiBadge } from "blip-ds/dist/components/uai-badge.js";
 import { UaiBanner as UaiBannerElement, defineCustomElement as defineUaiBanner } from "blip-ds/dist/components/uai-banner.js";
@@ -124,6 +125,7 @@ import { UaiInputDate as UaiInputDateElement, defineCustomElement as defineUaiIn
 import { UaiInputEditable as UaiInputEditableElement, defineCustomElement as defineUaiInputEditable } from "blip-ds/dist/components/uai-input-editable.js";
 import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as defineUaiInputPassword } from "blip-ds/dist/components/uai-input-password.js";
 import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
+import { UaiInputTime as UaiInputTimeElement, defineCustomElement as defineUaiInputTime } from "blip-ds/dist/components/uai-input-time.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
 import { UaiLogo as UaiLogoElement, defineCustomElement as defineUaiLogo } from "blip-ds/dist/components/uai-logo.js";
 import { UaiModalAction as UaiModalActionElement, defineCustomElement as defineUaiModalAction } from "blip-ds/dist/components/uai-modal-action.js";
@@ -1116,6 +1118,22 @@ export const BdsWarning = createComponent({
     defineCustomElement: defineBdsWarning,
     transformTag
 });
+export const UaiAutocomplete = createComponent({
+    tagName: 'uai-autocomplete',
+    elementClass: UaiAutocompleteElement,
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiSelectedChange: 'uaiSelectedChange',
+        onUaiMultiselectedChange: 'uaiMultiselectedChange',
+        onUaiInput: 'uaiInput',
+        onUaiCancel: 'uaiCancel',
+        onUaiFocus: 'uaiFocus',
+        onUaiBlur: 'uaiBlur'
+    },
+    defineCustomElement: defineUaiAutocomplete,
+    transformTag
+});
 export const UaiAvatar = createComponent({
     tagName: 'uai-avatar',
     elementClass: UaiAvatarElement,
@@ -1308,6 +1326,19 @@ export const UaiInputPhone = createComponent({
         onUaiBlur: 'uaiBlur'
     },
     defineCustomElement: defineUaiInputPhone,
+    transformTag
+});
+export const UaiInputTime = createComponent({
+    tagName: 'uai-input-time',
+    elementClass: UaiInputTimeElement,
+    react: React,
+    events: {
+        onUaiChange: 'uaiChange',
+        onUaiInput: 'uaiInput',
+        onUaiFocus: 'uaiFocus',
+        onUaiOnBlur: 'uaiOnBlur'
+    },
+    defineCustomElement: defineUaiInputTime,
     transformTag
 });
 export const UaiLogo = createComponent({

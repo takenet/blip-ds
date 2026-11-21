@@ -42,6 +42,7 @@ without the FontFace API.
 
 ### Used by
 
+ - [uai-autocomplete](../uai-autocomplete)
  - [uai-avatar](../uai-avatar)
  - [uai-badge](../uai-badge)
  - [uai-banner](../uai-banner)
@@ -54,6 +55,7 @@ without the FontFace API.
  - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
+ - [uai-input-time](../uai-input-time)
  - [uai-modal](../uai-modal)
  - [uai-modal-close-button](../uai-modal-close-button)
  - [uai-select](../uai-select)
@@ -66,6 +68,7 @@ without the FontFace API.
 ### Graph
 ```mermaid
 graph TD;
+  uai-autocomplete --> uai-icon
   uai-avatar --> uai-icon
   uai-badge --> uai-icon
   uai-banner --> uai-icon
@@ -78,6 +81,7 @@ graph TD;
   uai-input-editable --> uai-icon
   uai-input-password --> uai-icon
   uai-input-phone --> uai-icon
+  uai-input-time --> uai-icon
   uai-modal --> uai-icon
   uai-modal-close-button --> uai-icon
   uai-select --> uai-icon

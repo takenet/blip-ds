@@ -76,6 +76,8 @@ import { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 import { TooltipPostionType } from "./components/tooltip/tooltip";
 import { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 import { languages as languages4 } from "./components/upload/languages";
+import { UaiAutocompleteChange, UaiAutocompleteLanguage, UaiAutocompleteMultiselectedChange, UaiAutocompleteOption, UaiAutocompleteOptionsPosition, UaiAutocompleteSelectedChange, UaiAutocompleteSelectionType } from "./components/uai-autocomplete/uai-autocomplete-interface";
+import { UaiAutocompleteSize } from "./components/uai-autocomplete/uai-autocomplete";
 import { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 import { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 import { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
@@ -93,6 +95,8 @@ import { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
 import { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditableSize } from "./components/uai-input-editable/uai-input-editable";
 import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
+import { UaiInputTimeLanguage } from "./components/uai-input-time/uai-input-time-format";
+import { UaiInputTimeSize } from "./components/uai-input-time/uai-input-time";
 import { UaiModalSize } from "./components/uai-modal/uai-modal";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
@@ -180,6 +184,8 @@ export { ActionType, ButtonActionType, CreateToastType, PositionType, VariantTyp
 export { TooltipPostionType } from "./components/tooltip/tooltip";
 export { Bold, FontLineHeight, FontSize, Tag } from "./components/typo/typo";
 export { languages as languages4 } from "./components/upload/languages";
+export { UaiAutocompleteChange, UaiAutocompleteLanguage, UaiAutocompleteMultiselectedChange, UaiAutocompleteOption, UaiAutocompleteOptionsPosition, UaiAutocompleteSelectedChange, UaiAutocompleteSelectionType } from "./components/uai-autocomplete/uai-autocomplete-interface";
+export { UaiAutocompleteSize } from "./components/uai-autocomplete/uai-autocomplete";
 export { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 export { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 export { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
@@ -197,6 +203,8 @@ export { UaiInputDateSize } from "./components/uai-input-date/uai-input-date";
 export { UaiInputEditableEventDetail, UaiInputEditableLanguage, UaiInputEditableSize } from "./components/uai-input-editable/uai-input-editable";
 export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-input-password";
 export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
+export { UaiInputTimeLanguage } from "./components/uai-input-time/uai-input-time-format";
+export { UaiInputTimeSize } from "./components/uai-input-time/uai-input-time";
 export { UaiModalSize } from "./components/uai-modal/uai-modal";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
@@ -324,6 +332,9 @@ export namespace Components {
          */
         "variant"?: AlertHeaderVariannt;
     }
+    /**
+     * @deprecated Use uai-autocomplete with UaiThemeProvider for tokenized styling.
+     */
     interface BdsAutocomplete {
         "cleanMultipleSelection": () => Promise<void>;
         /**
@@ -3816,6 +3827,152 @@ export namespace Components {
     interface BdsWarning {
     }
     /**
+     * Field to choose from a long list by typing to search it. With selectionType "single" (default) the person picks one
+     * option and the field shows its label; with "multiple" the options are checkboxes and the field shows how many are
+     * checked. It takes part in native forms: give it a name to submit the value (each checked value in a multiple
+     * choice). Use it for lists that are too long to scan, such as people, teams or cities. Pair with a visible label.
+     * Avoid it for short lists without search (use uai-select) or for free text (use uai-input with suggestions).
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface UaiAutocomplete {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Unchecks every option of a multiple choice, or clears the choice of a single one.
+         */
+        "cleanMultipleSelection": () => Promise<void>;
+        /**
+          * If true, the clear button shows only while the field has the focus.
+          * @default false
+         */
+        "clearIconOnFocus"?: boolean;
+        /**
+          * Closes the list.
+         */
+        "close": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the field cannot be used and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the text, for example "search".
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiAutocompleteLanguage;
+        /**
+          * If true, the list shows that the options are loading. Pair with uaiInput to search on a server.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Name of the value in the submitted form data. Without it, the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Opens the list.
+         */
+        "open": () => Promise<void>;
+        /**
+          * The options, as an array of { value, label, icon?, disabled?, checked? } or, in HTML, a JSON array (options='[{"value": "sp", "label": "São Paulo"}]'). With selectionType "multiple", checked marks the options checked: change the array to control them.
+         */
+        "options"?: string | UaiAutocompleteOption[];
+        /**
+          * Side of the list. Can be one of: 'auto' (default, where there is room), 'top', 'bottom'.
+          * @default 'auto'
+         */
+        "optionsPosition"?: UaiAutocompleteOptionsPosition;
+        /**
+          * Text shown while the field is empty, such as "Buscar pessoa". Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the form is invalid while nothing is chosen. Pair with requiredErrorMessage.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when required and nothing is chosen. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * @deprecated Options have only a label, which the search always uses. Has no effect.
+         */
+        "searchOnlyTitle"?: boolean;
+        /**
+          * With selectionType "multiple": if true (default), the first row checks or unchecks all options.
+          * @default true
+         */
+        "selectedAll"?: boolean;
+        /**
+          * Title shown above the options of a multiple choice.
+          * @default ''
+         */
+        "selectionTitle"?: string;
+        /**
+          * One option or many. Can be one of: 'single' (default), 'multiple'. With 'multiple', options are checkboxes and uaiMultiselectedChange tells the checked ones.
+          * @default 'single'
+         */
+        "selectionType"?: UaiAutocompleteSelectionType;
+        /**
+          * Moves the focus to the field.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiAutocompleteSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Chosen value, with selectionType "single". Use it to preselect or control the field; pair with uaiChange. Typing only searches: the value changes when the person picks or clears.
+         */
+        "value"?: string | null;
+    }
+    /**
      * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
      * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
      * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
@@ -4582,7 +4739,7 @@ export namespace Components {
          */
         "isTextarea"?: boolean;
         /**
-          * Returns true when the value meets required, minlength, maxlength, min, max, pattern and type.
+          * Returns true when the value meets required, minlength, maxlength, min, max, step, pattern and type.
          */
         "isValid": () => Promise<boolean>;
         /**
@@ -4678,6 +4835,14 @@ export namespace Components {
          */
         "size"?: UaiInputSize;
         /**
+          * Interval between accepted values for type "number", from min: "1" (the browser default) accepts whole numbers, "0.1" one decimal place and "any" any decimal. The arrows and the arrow keys move by it. Use with min and max. Avoid it on other types, where it has no effect.
+         */
+        "step"?: string;
+        /**
+          * Message shown when a number is off the step interval. Without it, the browser message is shown.
+         */
+        "stepErrorMessage": string;
+        /**
           * If true, shows the success state and successMessage.
           * @default false
          */
@@ -4687,6 +4852,10 @@ export namespace Components {
           * @default ''
          */
         "successMessage"?: string;
+        /**
+          * Values offered while typing, which the person can pick or ignore: an array, or a JSON array in HTML (suggestions='["Nome", "CPF"]'). Pair with a free text field. Avoid it to restrict the value to a list: use uai-select.
+         */
+        "suggestions"?: string[] | string;
         /**
           * Kind of text. Can be one of: 'text' (default), 'email', 'number', 'search'. 'password', 'phonenumber' and 'date' still work but are deprecated: use the specialized UAI inputs.
           * @default 'text'
@@ -5447,6 +5616,153 @@ export namespace Components {
         /**
           * Dial code of the selected country, for example "+55" (default) or "+1". Use changeCountry to pick a country that shares its code with others.
           * @default '+55'
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Time field. The person types the time of day as HH:mm (24 hours), and digits that cannot make a time are refused,
+     * or picks the hour and the minutes in the panel that opens on a click; value, min, max and the submitted form value
+     * are HH:mm. Use it for a time of day, such as an opening hour or a return time. Pair with uai-input-date for a date
+     * and time, and with UaiButton in forms. Avoid it for durations or periods. Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputTime {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Clears the time.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Closes the time panel.
+         */
+        "close": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the field and the picker button cannot be used and the value is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the time.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in the submitted form data. Same as name, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Returns true when the time is complete, within min and max, and present when required.
+         */
+        "isValid": () => Promise<boolean>;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Horário").
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputTimeLanguage;
+        /**
+          * Latest accepted time, as HH:mm. Later hours and minutes are disabled in the panel.
+         */
+        "max"?: string;
+        /**
+          * Message shown when the time is after max. Without it, the default text with the max time is shown.
+         */
+        "maxErrorMessage": string;
+        /**
+          * Earliest accepted time, as HH:mm. Earlier hours and minutes are disabled in the panel.
+         */
+        "min"?: string;
+        /**
+          * Message shown when the time is before min. Without it, the default text with the min time is shown.
+         */
+        "minErrorMessage": string;
+        /**
+          * Interval of the minutes offered in the panel, from 1 to 30: 5 (default) offers 00, 05, 10… Typing accepts any minute. Use 15 or 30 for appointments; avoid 1, which makes a long list.
+          * @default 5
+         */
+        "minuteStep"?: number;
+        /**
+          * Name of the value in the submitted form data, which is the time as HH:mm. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Opens the time panel. Use for imperative control; pair with close.
+         */
+        "open": () => Promise<void>;
+        /**
+          * Text shown while the field is empty. Defaults to "hh:mm".
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the time can be selected and copied but not edited; the panel does not open and its button is hidden.
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * Removes the focus from the field.
+         */
+        "removeFocus": () => Promise<void>;
+        /**
+          * If true, an empty field blocks the form submission.
+         */
+        "required": boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage": string;
+        /**
+          * Moves the focus to the field.
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputTimeSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Message shown when the typed time is incomplete. Without it, the default text is shown.
+         */
+        "timeErrorMessage": string;
+        /**
+          * Chosen time as HH:mm, from "00:00" to "23:59". Empty while the typed time is incomplete.
+          * @default ''
          */
         "value"?: string | null;
     }
@@ -7181,6 +7497,10 @@ export interface BdsUploadCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLBdsUploadElement;
 }
+export interface UaiAutocompleteCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiAutocompleteElement;
+}
 export interface UaiAvatarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiAvatarElement;
@@ -7232,6 +7552,10 @@ export interface UaiInputPasswordCustomEvent<T> extends CustomEvent<T> {
 export interface UaiInputPhoneCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputPhoneElement;
+}
+export interface UaiInputTimeCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiInputTimeElement;
 }
 export interface UaiModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -7387,6 +7711,9 @@ declare global {
         "bdsFocus": void;
         "bdsBlur": void;
     }
+    /**
+     * @deprecated Use uai-autocomplete with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsAutocompleteElement extends Components.BdsAutocomplete, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsAutocompleteElementEventMap>(type: K, listener: (this: HTMLBdsAutocompleteElement, ev: BdsAutocompleteCustomEvent<HTMLBdsAutocompleteElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8695,6 +9022,37 @@ declare global {
         prototype: HTMLBdsWarningElement;
         new (): HTMLBdsWarningElement;
     };
+    interface HTMLUaiAutocompleteElementEventMap {
+        "uaiChange": UaiAutocompleteChange;
+        "uaiSelectedChange": UaiAutocompleteSelectedChange;
+        "uaiMultiselectedChange": UaiAutocompleteMultiselectedChange;
+        "uaiInput": InputEvent;
+        "uaiCancel": UaiAutocompleteChange;
+        "uaiFocus": void;
+        "uaiBlur": void;
+    }
+    /**
+     * Field to choose from a long list by typing to search it. With selectionType "single" (default) the person picks one
+     * option and the field shows its label; with "multiple" the options are checkboxes and the field shows how many are
+     * checked. It takes part in native forms: give it a name to submit the value (each checked value in a multiple
+     * choice). Use it for lists that are too long to scan, such as people, teams or cities. Pair with a visible label.
+     * Avoid it for short lists without search (use uai-select) or for free text (use uai-input with suggestions).
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiAutocompleteElement extends Components.UaiAutocomplete, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiAutocompleteElementEventMap>(type: K, listener: (this: HTMLUaiAutocompleteElement, ev: UaiAutocompleteCustomEvent<HTMLUaiAutocompleteElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiAutocompleteElementEventMap>(type: K, listener: (this: HTMLUaiAutocompleteElement, ev: UaiAutocompleteCustomEvent<HTMLUaiAutocompleteElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiAutocompleteElement: {
+        prototype: HTMLUaiAutocompleteElement;
+        new (): HTMLUaiAutocompleteElement;
+    };
     interface HTMLUaiAvatarElementEventMap {
         "uaiClickAvatar": PointerEvent | KeyboardEvent;
         "uaiImageUpload": string;
@@ -9073,6 +9431,32 @@ declare global {
     var HTMLUaiInputPhoneElement: {
         prototype: HTMLUaiInputPhoneElement;
         new (): HTMLUaiInputPhoneElement;
+    };
+    interface HTMLUaiInputTimeElementEventMap {
+        "uaiChange": { value: string };
+        "uaiInput": InputEvent;
+        "uaiFocus": void;
+        "uaiOnBlur": void;
+    }
+    /**
+     * Time field. The person types the time of day as HH:mm (24 hours), and digits that cannot make a time are refused,
+     * or picks the hour and the minutes in the panel that opens on a click; value, min, max and the submitted form value
+     * are HH:mm. Use it for a time of day, such as an opening hour or a return time. Pair with uai-input-date for a date
+     * and time, and with UaiButton in forms. Avoid it for durations or periods. Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiInputTimeElement extends Components.UaiInputTime, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiInputTimeElementEventMap>(type: K, listener: (this: HTMLUaiInputTimeElement, ev: UaiInputTimeCustomEvent<HTMLUaiInputTimeElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiInputTimeElementEventMap>(type: K, listener: (this: HTMLUaiInputTimeElement, ev: UaiInputTimeCustomEvent<HTMLUaiInputTimeElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiInputTimeElement: {
+        prototype: HTMLUaiInputTimeElement;
+        new (): HTMLUaiInputTimeElement;
     };
     /**
      * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
@@ -9680,6 +10064,7 @@ declare global {
         "bds-typo": HTMLBdsTypoElement;
         "bds-upload": HTMLBdsUploadElement;
         "bds-warning": HTMLBdsWarningElement;
+        "uai-autocomplete": HTMLUaiAutocompleteElement;
         "uai-avatar": HTMLUaiAvatarElement;
         "uai-badge": HTMLUaiBadgeElement;
         "uai-banner": HTMLUaiBannerElement;
@@ -9698,6 +10083,7 @@ declare global {
         "uai-input-editable": HTMLUaiInputEditableElement;
         "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-input-phone": HTMLUaiInputPhoneElement;
+        "uai-input-time": HTMLUaiInputTimeElement;
         "uai-logo": HTMLUaiLogoElement;
         "uai-modal": HTMLUaiModalElement;
         "uai-modal-action": HTMLUaiModalActionElement;
@@ -9835,6 +10221,9 @@ declare namespace LocalJSX {
          */
         "variant"?: AlertHeaderVariannt;
     }
+    /**
+     * @deprecated Use uai-autocomplete with UaiThemeProvider for tokenized styling.
+     */
     interface BdsAutocomplete {
         /**
           * If true, the X icon will appear only when component is focused.
@@ -13616,6 +14005,168 @@ declare namespace LocalJSX {
     interface BdsWarning {
     }
     /**
+     * Field to choose from a long list by typing to search it. With selectionType "single" (default) the person picks one
+     * option and the field shows its label; with "multiple" the options are checkboxes and the field shows how many are
+     * checked. It takes part in native forms: give it a name to submit the value (each checked value in a multiple
+     * choice). Use it for lists that are too long to scan, such as people, teams or cities. Pair with a visible label.
+     * Avoid it for short lists without search (use uai-select) or for free text (use uai-input with suggestions).
+     * Wrap the app in UaiThemeProvider.
+     */
+    interface UaiAutocomplete {
+        /**
+          * Accessible name of the field when there is no visible label.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, the clear button shows only while the field has the focus.
+          * @default false
+         */
+        "clearIconOnFocus"?: boolean;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the field cannot be used and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the text, for example "search".
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Label shown above the field. Without a visible label, set aria-label.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiAutocompleteLanguage;
+        /**
+          * If true, the list shows that the options are loading. Pair with uaiInput to search on a server.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Name of the value in the submitted form data. Without it, the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the field loses focus.
+         */
+        "onUaiBlur"?: (event: UaiAutocompleteCustomEvent<void>) => void;
+        /**
+          * Emitted when the choice is cleared with the clear button. detail: { value: '' }.
+         */
+        "onUaiCancel"?: (event: UaiAutocompleteCustomEvent<UaiAutocompleteChange>) => void;
+        /**
+          * Emitted when the chosen value changes, by picking or clearing (selectionType "single"). detail: { value }.
+         */
+        "onUaiChange"?: (event: UaiAutocompleteCustomEvent<UaiAutocompleteChange>) => void;
+        /**
+          * Emitted when the field receives focus.
+         */
+        "onUaiFocus"?: (event: UaiAutocompleteCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke in the search with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiAutocompleteCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when the checked options change (selectionType "multiple"). detail: { value } with the checked options.
+         */
+        "onUaiMultiselectedChange"?: (event: UaiAutocompleteCustomEvent<UaiAutocompleteMultiselectedChange>) => void;
+        /**
+          * Emitted when the person picks an option (selectionType "single"). detail: { value, label }.
+         */
+        "onUaiSelectedChange"?: (event: UaiAutocompleteCustomEvent<UaiAutocompleteSelectedChange>) => void;
+        /**
+          * The options, as an array of { value, label, icon?, disabled?, checked? } or, in HTML, a JSON array (options='[{"value": "sp", "label": "São Paulo"}]'). With selectionType "multiple", checked marks the options checked: change the array to control them.
+         */
+        "options"?: string | UaiAutocompleteOption[];
+        /**
+          * Side of the list. Can be one of: 'auto' (default, where there is room), 'top', 'bottom'.
+          * @default 'auto'
+         */
+        "optionsPosition"?: UaiAutocompleteOptionsPosition;
+        /**
+          * Text shown while the field is empty, such as "Buscar pessoa". Do not use it as the label.
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the form is invalid while nothing is chosen. Pair with requiredErrorMessage.
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when required and nothing is chosen. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * @deprecated Options have only a label, which the search always uses. Has no effect.
+         */
+        "searchOnlyTitle"?: boolean;
+        /**
+          * With selectionType "multiple": if true (default), the first row checks or unchecks all options.
+          * @default true
+         */
+        "selectedAll"?: boolean;
+        /**
+          * Title shown above the options of a multiple choice.
+          * @default ''
+         */
+        "selectionTitle"?: string;
+        /**
+          * One option or many. Can be one of: 'single' (default), 'multiple'. With 'multiple', options are checkboxes and uaiMultiselectedChange tells the checked ones.
+          * @default 'single'
+         */
+        "selectionType"?: UaiAutocompleteSelectionType;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiAutocompleteSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Chosen value, with selectionType "single". Use it to preselect or control the field; pair with uaiChange. Typing only searches: the value changes when the person picks or clears.
+         */
+        "value"?: string | null;
+    }
+    /**
      * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
      * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
      * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
@@ -14474,6 +15025,14 @@ declare namespace LocalJSX {
          */
         "size"?: UaiInputSize;
         /**
+          * Interval between accepted values for type "number", from min: "1" (the browser default) accepts whole numbers, "0.1" one decimal place and "any" any decimal. The arrows and the arrow keys move by it. Use with min and max. Avoid it on other types, where it has no effect.
+         */
+        "step"?: string;
+        /**
+          * Message shown when a number is off the step interval. Without it, the browser message is shown.
+         */
+        "stepErrorMessage"?: string;
+        /**
           * If true, shows the success state and successMessage.
           * @default false
          */
@@ -14483,6 +15042,10 @@ declare namespace LocalJSX {
           * @default ''
          */
         "successMessage"?: string;
+        /**
+          * Values offered while typing, which the person can pick or ignore: an array, or a JSON array in HTML (suggestions='["Nome", "CPF"]'). Pair with a free text field. Avoid it to restrict the value to a list: use uai-select.
+         */
+        "suggestions"?: string[] | string;
         /**
           * Kind of text. Can be one of: 'text' (default), 'email', 'number', 'search'. 'password', 'phonenumber' and 'date' still work but are deprecated: use the specialized UAI inputs.
           * @default 'text'
@@ -15279,6 +15842,149 @@ declare namespace LocalJSX {
         /**
           * Dial code of the selected country, for example "+55" (default) or "+1". Use changeCountry to pick a country that shares its code with others.
           * @default '+55'
+         */
+        "value"?: string | null;
+    }
+    /**
+     * Time field. The person types the time of day as HH:mm (24 hours), and digits that cannot make a time are refused,
+     * or picks the hour and the minutes in the panel that opens on a click; value, min, max and the submitted form value
+     * are HH:mm. Use it for a time of day, such as an opening hour or a return time. Pair with uai-input-date for a date
+     * and time, and with UaiButton in forms. Avoid it for durations or periods. Wrap the app in UaiThemeProvider.
+     */
+    interface UaiInputTime {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, shows the error state and errorMessage. Has priority over success.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * Data test id, set on the native input.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, the field and the picker button cannot be used and the value is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * UaiIcon name shown before the time.
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * Name of the value in the submitted form data. Same as name, kept from bds-input.
+          * @default ''
+         */
+        "inputName"?: string;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Horário").
+         */
+        "label"?: string;
+        /**
+          * Language of the default texts. Can be 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiInputTimeLanguage;
+        /**
+          * Latest accepted time, as HH:mm. Later hours and minutes are disabled in the panel.
+         */
+        "max"?: string;
+        /**
+          * Message shown when the time is after max. Without it, the default text with the max time is shown.
+         */
+        "maxErrorMessage"?: string;
+        /**
+          * Earliest accepted time, as HH:mm. Earlier hours and minutes are disabled in the panel.
+         */
+        "min"?: string;
+        /**
+          * Message shown when the time is before min. Without it, the default text with the min time is shown.
+         */
+        "minErrorMessage"?: string;
+        /**
+          * Interval of the minutes offered in the panel, from 1 to 30: 5 (default) offers 00, 05, 10… Typing accepts any minute. Use 15 or 30 for appointments; avoid 1, which makes a long list.
+          * @default 5
+         */
+        "minuteStep"?: number;
+        /**
+          * Name of the value in the submitted form data, which is the time as HH:mm. Without name (or inputName), the field is not submitted.
+         */
+        "name"?: string;
+        /**
+          * Emitted when the time changes, by typing, by the panel or programmatically. detail: { value } as HH:mm, or '' while the typed time is incomplete.
+         */
+        "onUaiChange"?: (event: UaiInputTimeCustomEvent<{ value: string }>) => void;
+        /**
+          * Emitted when the field receives focus.
+         */
+        "onUaiFocus"?: (event: UaiInputTimeCustomEvent<void>) => void;
+        /**
+          * Emitted on every keystroke with the native InputEvent.
+         */
+        "onUaiInput"?: (event: UaiInputTimeCustomEvent<InputEvent>) => void;
+        /**
+          * Emitted when the field loses focus.
+         */
+        "onUaiOnBlur"?: (event: UaiInputTimeCustomEvent<void>) => void;
+        /**
+          * Text shown while the field is empty. Defaults to "hh:mm".
+         */
+        "placeholder"?: string;
+        /**
+          * If true, the time can be selected and copied but not edited; the panel does not open and its button is hidden.
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * If true, an empty field blocks the form submission.
+         */
+        "required"?: boolean;
+        /**
+          * Message shown when a required field is empty. Without it, the default text of the language is shown.
+         */
+        "requiredErrorMessage"?: string;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiInputTimeSize;
+        /**
+          * If true, shows the success state and successMessage.
+          * @default false
+         */
+        "success"?: boolean;
+        /**
+          * Message below the field while success is true.
+          * @default ''
+         */
+        "successMessage"?: string;
+        /**
+          * Message shown when the typed time is incomplete. Without it, the default text is shown.
+         */
+        "timeErrorMessage"?: string;
+        /**
+          * Chosen time as HH:mm, from "00:00" to "23:59". Empty while the typed time is incomplete.
+          * @default ''
          */
         "value"?: string | null;
     }
@@ -17700,6 +18406,33 @@ declare namespace LocalJSX {
         "dtButtonDelete": string;
         "showListPreview": boolean;
     }
+    interface UaiAutocompleteAttributes {
+        "name": string;
+        "options": string | UaiAutocompleteOption[];
+        "value": string | null;
+        "selectionType": UaiAutocompleteSelectionType;
+        "selectionTitle": string;
+        "selectedAll": boolean;
+        "label": string;
+        "placeholder": string;
+        "icon": string;
+        "size": UaiAutocompleteSize;
+        "optionsPosition": UaiAutocompleteOptionsPosition;
+        "clearIconOnFocus": boolean;
+        "loading": boolean;
+        "language": UaiAutocompleteLanguage;
+        "required": boolean;
+        "requiredErrorMessage": string;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "ariaLabel": string;
+        "dataTest": string;
+        "searchOnlyTitle": boolean;
+    }
     interface UaiAvatarAttributes {
         "name": string;
         "thumbnail": string;
@@ -17847,6 +18580,8 @@ declare namespace LocalJSX {
         "maxlength": number;
         "min": string;
         "minlength": number;
+        "step": string;
+        "suggestions": string[] | string;
         "readonly": boolean;
         "required": boolean;
         "pattern": string;
@@ -17864,6 +18599,7 @@ declare namespace LocalJSX {
         "minlengthErrorMessage": string;
         "minErrorMessage": string;
         "maxErrorMessage": string;
+        "stepErrorMessage": string;
         "emailErrorMessage": string;
         "numberErrorMessage": string;
         "encode": boolean;
@@ -18017,6 +18753,33 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
         "dtSelectFlag": string;
+    }
+    interface UaiInputTimeAttributes {
+        "name": string;
+        "inputName": string;
+        "value": string | null;
+        "min": string;
+        "max": string;
+        "minuteStep": number;
+        "language": UaiInputTimeLanguage;
+        "size": UaiInputTimeSize;
+        "label": string;
+        "placeholder": string;
+        "icon": string;
+        "required": boolean;
+        "readonly": boolean;
+        "disabled": boolean;
+        "danger": boolean;
+        "success": boolean;
+        "helperMessage": string;
+        "errorMessage": string;
+        "successMessage": string;
+        "requiredErrorMessage": string;
+        "timeErrorMessage": string;
+        "minErrorMessage": string;
+        "maxErrorMessage": string;
+        "ariaLabel": string;
+        "dataTest": string;
     }
     interface UaiLogoAttributes {
         "name": string;
@@ -18427,6 +19190,7 @@ declare namespace LocalJSX {
         "bds-typo": Omit<BdsTypo, keyof BdsTypoAttributes> & { [K in keyof BdsTypo & keyof BdsTypoAttributes]?: BdsTypo[K] } & { [K in keyof BdsTypo & keyof BdsTypoAttributes as `attr:${K}`]?: BdsTypoAttributes[K] } & { [K in keyof BdsTypo & keyof BdsTypoAttributes as `prop:${K}`]?: BdsTypo[K] };
         "bds-upload": Omit<BdsUpload, keyof BdsUploadAttributes> & { [K in keyof BdsUpload & keyof BdsUploadAttributes]?: BdsUpload[K] } & { [K in keyof BdsUpload & keyof BdsUploadAttributes as `attr:${K}`]?: BdsUploadAttributes[K] } & { [K in keyof BdsUpload & keyof BdsUploadAttributes as `prop:${K}`]?: BdsUpload[K] };
         "bds-warning": BdsWarning;
+        "uai-autocomplete": Omit<UaiAutocomplete, keyof UaiAutocompleteAttributes> & { [K in keyof UaiAutocomplete & keyof UaiAutocompleteAttributes]?: UaiAutocomplete[K] } & { [K in keyof UaiAutocomplete & keyof UaiAutocompleteAttributes as `attr:${K}`]?: UaiAutocompleteAttributes[K] } & { [K in keyof UaiAutocomplete & keyof UaiAutocompleteAttributes as `prop:${K}`]?: UaiAutocomplete[K] };
         "uai-avatar": Omit<UaiAvatar, keyof UaiAvatarAttributes> & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes]?: UaiAvatar[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `attr:${K}`]?: UaiAvatarAttributes[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `prop:${K}`]?: UaiAvatar[K] };
         "uai-badge": Omit<UaiBadge, keyof UaiBadgeAttributes> & { [K in keyof UaiBadge & keyof UaiBadgeAttributes]?: UaiBadge[K] } & { [K in keyof UaiBadge & keyof UaiBadgeAttributes as `attr:${K}`]?: UaiBadgeAttributes[K] } & { [K in keyof UaiBadge & keyof UaiBadgeAttributes as `prop:${K}`]?: UaiBadge[K] };
         "uai-banner": Omit<UaiBanner, keyof UaiBannerAttributes> & { [K in keyof UaiBanner & keyof UaiBannerAttributes]?: UaiBanner[K] } & { [K in keyof UaiBanner & keyof UaiBannerAttributes as `attr:${K}`]?: UaiBannerAttributes[K] } & { [K in keyof UaiBanner & keyof UaiBannerAttributes as `prop:${K}`]?: UaiBanner[K] };
@@ -18445,6 +19209,7 @@ declare namespace LocalJSX {
         "uai-input-editable": Omit<UaiInputEditable, keyof UaiInputEditableAttributes> & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes]?: UaiInputEditable[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `attr:${K}`]?: UaiInputEditableAttributes[K] } & { [K in keyof UaiInputEditable & keyof UaiInputEditableAttributes as `prop:${K}`]?: UaiInputEditable[K] };
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
+        "uai-input-time": Omit<UaiInputTime, keyof UaiInputTimeAttributes> & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes]?: UaiInputTime[K] } & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes as `attr:${K}`]?: UaiInputTimeAttributes[K] } & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes as `prop:${K}`]?: UaiInputTime[K] };
         "uai-logo": Omit<UaiLogo, keyof UaiLogoAttributes> & { [K in keyof UaiLogo & keyof UaiLogoAttributes]?: UaiLogo[K] } & { [K in keyof UaiLogo & keyof UaiLogoAttributes as `attr:${K}`]?: UaiLogoAttributes[K] } & { [K in keyof UaiLogo & keyof UaiLogoAttributes as `prop:${K}`]?: UaiLogo[K] };
         "uai-modal": Omit<UaiModal, keyof UaiModalAttributes> & { [K in keyof UaiModal & keyof UaiModalAttributes]?: UaiModal[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `attr:${K}`]?: UaiModalAttributes[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `prop:${K}`]?: UaiModal[K] };
         "uai-modal-action": UaiModalAction;
@@ -18490,6 +19255,9 @@ declare module "@stencil/core" {
             "bds-alert-actions": LocalJSX.IntrinsicElements["bds-alert-actions"] & JSXBase.HTMLAttributes<HTMLBdsAlertActionsElement>;
             "bds-alert-body": LocalJSX.IntrinsicElements["bds-alert-body"] & JSXBase.HTMLAttributes<HTMLBdsAlertBodyElement>;
             "bds-alert-header": LocalJSX.IntrinsicElements["bds-alert-header"] & JSXBase.HTMLAttributes<HTMLBdsAlertHeaderElement>;
+            /**
+             * @deprecated Use uai-autocomplete with UaiThemeProvider for tokenized styling.
+             */
             "bds-autocomplete": LocalJSX.IntrinsicElements["bds-autocomplete"] & JSXBase.HTMLAttributes<HTMLBdsAutocompleteElement>;
             /**
              * @deprecated Use `uai-avatar` for new UAI experiences. This component remains supported for existing consumers.
@@ -18697,6 +19465,15 @@ declare module "@stencil/core" {
             "bds-upload": LocalJSX.IntrinsicElements["bds-upload"] & JSXBase.HTMLAttributes<HTMLBdsUploadElement>;
             "bds-warning": LocalJSX.IntrinsicElements["bds-warning"] & JSXBase.HTMLAttributes<HTMLBdsWarningElement>;
             /**
+             * Field to choose from a long list by typing to search it. With selectionType "single" (default) the person picks one
+             * option and the field shows its label; with "multiple" the options are checkboxes and the field shows how many are
+             * checked. It takes part in native forms: give it a name to submit the value (each checked value in a multiple
+             * choice). Use it for lists that are too long to scan, such as people, teams or cities. Pair with a visible label.
+             * Avoid it for short lists without search (use uai-select) or for free text (use uai-input with suggestions).
+             * Wrap the app in UaiThemeProvider.
+             */
+            "uai-autocomplete": LocalJSX.IntrinsicElements["uai-autocomplete"] & JSXBase.HTMLAttributes<HTMLUaiAutocompleteElement>;
+            /**
              * Avatar of a person: photo, initials of the name or a generic icon. Same contract as bds-avatar with UAI tokens.
              * Give the full name in `name`: it builds the initials and the accessible name. Use it in lists, profiles and
              * headers. Pair with the person's name nearby when the avatar is small. Avoid it as a generic button; use `upload`
@@ -18810,6 +19587,13 @@ declare module "@stencil/core" {
              * country from the number. Wrap the app in UaiThemeProvider.
              */
             "uai-input-phone": LocalJSX.IntrinsicElements["uai-input-phone"] & JSXBase.HTMLAttributes<HTMLUaiInputPhoneElement>;
+            /**
+             * Time field. The person types the time of day as HH:mm (24 hours), and digits that cannot make a time are refused,
+             * or picks the hour and the minutes in the panel that opens on a click; value, min, max and the submitted form value
+             * are HH:mm. Use it for a time of day, such as an opening hour or a return time. Pair with uai-input-date for a date
+             * and time, and with UaiButton in forms. Avoid it for durations or periods. Wrap the app in UaiThemeProvider.
+             */
+            "uai-input-time": LocalJSX.IntrinsicElements["uai-input-time"] & JSXBase.HTMLAttributes<HTMLUaiInputTimeElement>;
             /**
              * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
              * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
