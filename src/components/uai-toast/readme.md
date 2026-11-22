@@ -75,12 +75,13 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part         | Description                      |
-| ------------ | -------------------------------- |
-| `"action"`   | The action button.               |
-| `"close"`    | The close button.                |
-| `"icon-box"` | The box around the variant icon. |
-| `"toast"`    | The toast surface.               |
+| Part         | Description                                               |
+| ------------ | --------------------------------------------------------- |
+| `"action"`   | The action button.                                        |
+| `"close"`    | The close button.                                         |
+| `"icon-box"` | The box around the variant icon.                          |
+| `"progress"` | The line along the bottom that shrinks over the duration. |
+| `"toast"`    | The toast surface.                                        |
 
 
 ## Dependencies

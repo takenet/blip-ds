@@ -50,7 +50,15 @@ Cada variante tem um ícone próprio e usa tokens semânticos: `system` (superf�
 
 ## Tempo
 
-`duration` é o tempo, em milissegundos, até o toast fechar sozinho; `0` (padrão) o mantém aberto. O tempo para enquanto o mouse ou o foco estão no toast e continua de onde parou depois. Dê tempo para ler: 5 segundos ou mais, e sem tempo para erros que pedem uma ação.
+`duration` é o tempo, em milissegundos, até o toast fechar sozinho; `0` (padrão) o mantém aberto. Uma linha na base do toast (part `progress`) encolhe ao longo desse tempo. O tempo e a linha param enquanto o mouse ou o foco estão no toast ou na pilha, e enquanto a página está em segundo plano, e continuam de onde pararam. Dê tempo para ler: 5 segundos ou mais, e sem tempo para erros que pedem uma ação.
+
+## Pilha
+
+Com mais de um toast na mesma posição, os mais antigos ficam atrás do mais novo: cada um espia `spacing/sm` (12px) atrás do da frente, 5% menor por nível (no mínimo 90%), com o conteúdo escondido. Aparecem no máximo três; os outros esperam os da frente fecharem. Passar o mouse ou levar o foco à pilha a abre, com `spacing/sm` entre os toasts, um depois do outro, e pausa o tempo de todos; tirar o mouse e o foco a fecha de novo. Só a linha de tempo do toast da frente aparece com a pilha fechada.
+
+O toast entra pela borda da tela, a uma altura dele de distância, um pouco menor (96%) e desfocado, e sai pelo mesmo caminho. Tudo com `duration/moderate` e `easing/standard`; com `prefers-reduced-motion: reduce`, os toasts só aparecem e somem com fade, e a pilha muda sem movimento. A linha de tempo continua, por ser informação.
+
+<Canvas of={ToastStories.Stack} />
 
 ## Ação
 
