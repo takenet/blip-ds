@@ -194,6 +194,8 @@
   box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--input-halo);
 }
 
+@include uai-picker-keyframes;
+
 // The time panel: an hour column and a minute column, each scrolling on its own.
 .panel {
   @include uai-overlay-panel;
@@ -207,6 +209,7 @@
   background: var(--uai-surface-paper, #{$uai-surface-paper});
   box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
   color: var(--uai-content-primary, #{$uai-content-primary});
+  @include uai-picker-panel;
 
   @media (forced-colors: active) {
     border-color: CanvasText;
@@ -248,6 +251,12 @@
 
   &[aria-selected='true'] {
     background: var(--uai-overlay-selected, #{$uai-overlay-selected});
+    animation: uai-calendar-pick var(--uai-duration-fast, #{$uai-duration-fast})
+      var(--uai-easing-standard, #{$uai-easing-standard});
+
+    @include uai-reduced-motion {
+      animation: none;
+    }
   }
 
   &--active {
