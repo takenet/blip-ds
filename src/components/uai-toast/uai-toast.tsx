@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { warnLegacyValue } from '../../utils/deprecation';
 import {
   UaiToastCloseReason,
@@ -49,6 +49,7 @@ const closingTime = (element: HTMLElement): number => {
  * @part icon-box - The box around the variant icon.
  * @part action - The action button.
  * @part close - The close button.
+ * @part progress - The line along the bottom that shrinks over the duration.
  */
 @Component({
   tag: 'uai-toast',
@@ -61,9 +62,14 @@ export class UaiToast {
   private timer?: ReturnType<typeof setTimeout>;
   private timerStart = 0;
   private remaining = 0;
-  private paused = false;
   private removeOnClose = false;
   private loaded = false;
+  private stack?: HTMLElement | null;
+
+  /** The time is paused: the progress line stops with it. */
+  @State() paused = false;
+  /** A new count of the time, which restarts the progress line. */
+  @State() cycle = 0;
 
   /** Semantic variant: system, info, success, warning or error. Use the one that matches the message; avoid color alone to convey meaning. */
   @Prop({ reflect: true }) variant?: UaiToastVariant = 'system';
@@ -160,6 +166,8 @@ export class UaiToast {
 
   // Moving an open toast (from a closing modal to the page) keeps the time it had left.
   connectedCallback(): void {
+    this.watchStack();
+    document.addEventListener('visibilitychange', this.handleVisibility);
     if (!this.loaded || !this.open) return;
     this.paused = false;
     if (this.remaining > 0) this.schedule();
@@ -168,7 +176,33 @@ export class UaiToast {
   disconnectedCallback(): void {
     if (this.timer) this.remaining = Math.max(0, this.remaining - (Date.now() - this.timerStart));
     this.clearTimer();
+    this.unwatchStack();
+    document.removeEventListener('visibilitychange', this.handleVisibility);
   }
+
+  // The time of every toast in a stack pauses while the stack is under the pointer or has the focus, as the stack
+  // unfolds; it also pauses while the page is in the background.
+  private watchStack(): void {
+    this.unwatchStack();
+    this.stack = this.container();
+    this.stack?.addEventListener('mouseenter', this.pause);
+    this.stack?.addEventListener('mouseleave', this.resume);
+    this.stack?.addEventListener('focusin', this.pause);
+    this.stack?.addEventListener('focusout', this.handleFocusOut);
+  }
+
+  private unwatchStack(): void {
+    this.stack?.removeEventListener('mouseenter', this.pause);
+    this.stack?.removeEventListener('mouseleave', this.resume);
+    this.stack?.removeEventListener('focusin', this.pause);
+    this.stack?.removeEventListener('focusout', this.handleFocusOut);
+    this.stack = null;
+  }
+
+  private handleVisibility = (): void => {
+    if (document.visibilityState === 'hidden') this.pause();
+    else this.resume();
+  };
 
   private container(): HTMLElement | null {
     return this.el.closest('uai-toast-container');
@@ -190,6 +224,7 @@ export class UaiToast {
   private startTimer(time: number): void {
     this.clearTimer();
     this.remaining = time > 0 ? time : 0;
+    this.cycle++;
     if (!this.remaining || this.paused) return;
     this.schedule();
   }
@@ -216,13 +251,16 @@ export class UaiToast {
 
   private resume = (): void => {
     if (!this.paused) return;
-    if (this.el.matches(':hover') || this.el.matches(':focus-within')) return;
+    const held = (element: HTMLElement | null | undefined) =>
+      !!element && (element.matches(':hover') || element.matches(':focus-within'));
+    if (held(this.el) || held(this.stack) || document.visibilityState === 'hidden') return;
     this.paused = false;
     if (this.open && this.remaining > 0) this.schedule();
   };
 
   private handleFocusOut = (event: FocusEvent): void => {
-    if (!this.el.contains(event.relatedTarget as Node)) setTimeout(this.resume);
+    const next = event.relatedTarget as Node;
+    if (!this.el.contains(next) && !this.stack?.contains(next)) setTimeout(this.resume);
   };
 
   private handleKeyDown = (event: KeyboardEvent): void => {
@@ -293,6 +331,16 @@ export class UaiToast {
             >
               <uai-icon name="close" size="medium" aria-hidden="true"></uai-icon>
             </button>
+          )}
+          {this.open && this.duration > 0 && (
+            // The remaining time as a line that shrinks with it; a new key restarts it, and it stops while paused.
+            <div class="toast__progress" part="progress" aria-hidden="true">
+              <div
+                key={this.cycle}
+                class={{ 'toast__progress-bar': true, 'toast__progress-bar--paused': this.paused }}
+                style={{ animationDuration: `${this.duration}ms` }}
+              ></div>
+            </div>
           )}
         </div>
       </Host>

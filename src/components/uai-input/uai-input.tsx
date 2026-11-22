@@ -160,6 +160,20 @@ export class UaiInput {
   @Prop() minlength?: number;
 
   /**
+   * Interval between accepted values for type "number", from min: "1" (the browser default) accepts whole numbers,
+   * "0.1" one decimal place and "any" any decimal. The arrows and the arrow keys move by it.
+   * Use with min and max. Avoid it on other types, where it has no effect.
+   */
+  @Prop() step?: string;
+
+  /**
+   * Values offered while typing, which the person can pick or ignore: an array, or a JSON array in HTML
+   * (suggestions='["Nome", "CPF"]'). Pair with a free text field. Avoid it to restrict the value to a list: use
+   * uai-select.
+   */
+  @Prop() suggestions?: string[] | string;
+
+  /**
    * If true, the value can be selected and copied but not edited. It looks like the default state.
    */
   @Prop() readonly = false;
@@ -248,6 +262,11 @@ export class UaiInput {
    * Message shown when the number is larger than max. Without it, the browser message is shown.
    */
   @Prop() maxErrorMessage: string;
+
+  /**
+   * Message shown when a number is off the step interval. Without it, the browser message is shown.
+   */
+  @Prop() stepErrorMessage: string;
 
   /**
    * Message shown when an e-mail is invalid. Without it, the browser message is shown.
@@ -384,7 +403,7 @@ export class UaiInput {
   }
 
   /**
-   * Returns true when the value meets required, minlength, maxlength, min, max, pattern and type.
+   * Returns true when the value meets required, minlength, maxlength, min, max, step, pattern and type.
    */
   @Method()
   async isValid(): Promise<boolean> {
@@ -480,6 +499,20 @@ export class UaiInput {
     return 'text';
   }
 
+  // The suggestions as a list: an array from JS, a JSON array from HTML. Anything else offers nothing.
+  private get suggestionList(): string[] {
+    let list: unknown = this.suggestions;
+    if (typeof list === 'string') {
+      try {
+        list = JSON.parse(list);
+      } catch {
+        warnOnce(TAG, 'suggestions', 'suggestions must be an array or a JSON array of strings.');
+        return [];
+      }
+    }
+    return Array.isArray(list) ? list.filter((item) => item !== null && item !== undefined).map(String) : [];
+  }
+
   private get sizeValue(): UaiInputSize {
     if ((SIZES as string[]).includes(this.size)) return this.size;
     warnLegacyValue(TAG, 'size', this.size, 'medium');
@@ -493,6 +526,7 @@ export class UaiInput {
     if (validity.tooShort) return this.minlengthErrorMessage || native;
     if (validity.rangeUnderflow) return this.minErrorMessage || native;
     if (validity.rangeOverflow) return this.maxErrorMessage || native;
+    if (validity.stepMismatch) return this.stepErrorMessage || native;
     if (validity.typeMismatch && this.type === 'email') return this.emailErrorMessage || native;
     if (validity.badInput && this.type === 'number') return this.numberErrorMessage || native;
     return native;
@@ -574,6 +608,9 @@ export class UaiInput {
           : this.helperMessage;
     const length = (this.value || '').length;
     const counterState = this.counterState(length);
+    // The native list only finds a datalist in the same tree: it lives in the shadow root, next to the input.
+    const suggestions = this.suggestionList;
+    const listId = suggestions.length ? `${this.inputId}-suggestions` : null;
     const describedBy = [message && `${this.inputId}-message`, this.counterLength && `${this.inputId}-counter`]
       .filter(Boolean)
       .join(' ');
@@ -610,6 +647,8 @@ export class UaiInput {
                 type={this.nativeType}
                 min={this.min}
                 max={this.max}
+                step={this.step}
+                list={listId}
                 minLength={this.minlength}
                 maxLength={this.maxlength}
                 pattern={this.pattern}
@@ -629,6 +668,13 @@ export class UaiInput {
                 onFocus={this.onFocus}
                 onKeyDown={this.onKeyDown}
               />
+              {listId && (
+                <datalist id={listId}>
+                  {suggestions.map((suggestion) => (
+                    <option value={suggestion}></option>
+                  ))}
+                </datalist>
+              )}
             </div>
             {this.counterLength && (
               <uai-typo

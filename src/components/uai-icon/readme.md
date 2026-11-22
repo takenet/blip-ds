@@ -42,18 +42,21 @@ without the FontFace API.
 
 ### Used by
 
+ - [uai-autocomplete](../uai-autocomplete)
  - [uai-avatar](../uai-avatar)
  - [uai-badge](../uai-badge)
  - [uai-banner](../uai-banner)
  - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-button](../uai-button)
  - [uai-chip-tag](../uai-chip-tag)
+ - [uai-datepicker](../uai-datepicker)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
  - [uai-input-date](../uai-input-date)
  - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
+ - [uai-input-time](../uai-input-time)
  - [uai-modal](../uai-modal)
  - [uai-modal-close-button](../uai-modal-close-button)
  - [uai-select](../uai-select)
@@ -66,18 +69,21 @@ without the FontFace API.
 ### Graph
 ```mermaid
 graph TD;
+  uai-autocomplete --> uai-icon
   uai-avatar --> uai-icon
   uai-badge --> uai-icon
   uai-banner --> uai-icon
   uai-breadcrumb --> uai-icon
   uai-button --> uai-icon
   uai-chip-tag --> uai-icon
+  uai-datepicker --> uai-icon
   uai-input --> uai-icon
   uai-input-chips --> uai-icon
   uai-input-date --> uai-icon
   uai-input-editable --> uai-icon
   uai-input-password --> uai-icon
   uai-input-phone --> uai-icon
+  uai-input-time --> uai-icon
   uai-modal --> uai-icon
   uai-modal-close-button --> uai-icon
   uai-select --> uai-icon

@@ -30,6 +30,9 @@ export type DropdownPostionType =
   | 'left-top'
   | 'left-bottom';
 
+/**
+ * @deprecated Use uai-datepicker (or uai-input-date for a single typed date) with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-datepicker',
   styleUrl: 'datepicker.scss',

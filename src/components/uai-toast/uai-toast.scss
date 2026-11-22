@@ -41,6 +41,10 @@
   --toast-box-bg: color-mix(in srgb, var(--toast-tint) 40%, var(--toast-base));
   --toast-box-border: color-mix(in srgb, var(--toast-tint) 60%, var(--toast-base));
 
+  // The line of the remaining time: the variant color, softer over the system surface.
+  --toast-progress: color-mix(in srgb, var(--toast-tint) 80%, transparent);
+
+  position: relative;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -80,6 +84,48 @@
     --toast-border: color-mix(in srgb, var(--toast-tint) 10%, var(--toast-base));
     --toast-box-bg: color-mix(in srgb, var(--toast-tint) 20%, var(--toast-base));
     --toast-box-border: var(--toast-border);
+    --toast-progress: color-mix(in srgb, var(--toast-fg) 40%, transparent);
+  }
+
+  // Behind the newest toast of a folded stack, the content fades out and only the surface peeks out
+  // (--toast-content-opacity comes from uai-toast-container).
+  > * {
+    opacity: var(--toast-content-opacity, 1);
+    @include uai-transition(opacity, moderate);
+  }
+}
+
+// The remaining time: a line along the bottom edge that shrinks over the duration and stops while the time is paused.
+.toast__progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+// A border, not a height: the line is as thick as border-width/thick.
+.toast__progress-bar {
+  border-top: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--toast-progress);
+  transform-origin: left center;
+  animation: uai-toast-progress linear forwards;
+
+  &--paused {
+    animation-play-state: paused;
+  }
+
+  @media (forced-colors: active) {
+    border-top-color: CanvasText;
+  }
+}
+
+@keyframes uai-toast-progress {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
   }
 }
 

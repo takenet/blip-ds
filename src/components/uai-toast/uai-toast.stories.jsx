@@ -94,6 +94,29 @@ export const ShowToast = () => (
   </div>
 );
 
+/**
+ * Pilha: com mais de um toast, os mais antigos ficam atrás do mais novo, espiando e menores. Passe o mouse (ou o foco)
+ * para abrir a pilha; o tempo de todos pausa enquanto ela está aberta. A linha na base mostra o tempo que falta.
+ */
+export const Stack = () => {
+  let count = 0;
+  const fire = (position) => {
+    const variant = VARIANTS[count % VARIANTS.length];
+    count += 1;
+    showToast({ variant, heading: `Notificação ${count}`, message: MESSAGE, duration: 8000, position });
+  };
+  return (
+    <div style={row}>
+      <UaiButton variant="solid" color="primary" onClick={() => fire('bottom-right')}>
+        Mostrar toast (embaixo)
+      </UaiButton>
+      <UaiButton variant="outline" color="content" onClick={() => fire('top-right')}>
+        Mostrar toast (em cima)
+      </UaiButton>
+    </div>
+  );
+};
+
 export const Positions = () => (
   <div style={row}>
     {POSITIONS.map((position) => (

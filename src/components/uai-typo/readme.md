@@ -44,17 +44,20 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 
 ### Used by
 
+ - [uai-autocomplete](../uai-autocomplete)
  - [uai-badge](../uai-badge)
  - [uai-banner](../uai-banner)
  - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-button](../uai-button)
  - [uai-chip-tag](../uai-chip-tag)
+ - [uai-datepicker](../uai-datepicker)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
  - [uai-input-date](../uai-input-date)
  - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
+ - [uai-input-time](../uai-input-time)
  - [uai-modal](../uai-modal)
  - [uai-page-header](../uai-page-header)
  - [uai-pagination](../uai-pagination)
@@ -71,17 +74,20 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 ### Graph
 ```mermaid
 graph TD;
+  uai-autocomplete --> uai-typo
   uai-badge --> uai-typo
   uai-banner --> uai-typo
   uai-breadcrumb --> uai-typo
   uai-button --> uai-typo
   uai-chip-tag --> uai-typo
+  uai-datepicker --> uai-typo
   uai-input --> uai-typo
   uai-input-chips --> uai-typo
   uai-input-date --> uai-typo
   uai-input-editable --> uai-typo
   uai-input-password --> uai-typo
   uai-input-phone --> uai-typo
+  uai-input-time --> uai-typo
   uai-modal --> uai-typo
   uai-page-header --> uai-typo
   uai-pagination --> uai-typo

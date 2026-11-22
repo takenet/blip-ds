@@ -5,7 +5,7 @@ import * as UaiInputDateStories from './uai-input-date.stories';
 
 # Input Date
 
-Campo para uma data única, digitada só com números ou escolhida no calendário. Use para datas de nascimento, agendamentos e prazos. Para um período (início e fim), use o datepicker; para texto livre, use o input.
+Campo para uma data única, digitada só com números ou escolhida no calendário UAI que abre ao clicar. Use para datas de nascimento, agendamentos e prazos. Para um período (início e fim), use o `uai-datepicker`; para um horário, o `uai-input-time`; para texto livre, use o input.
 
 ## Playground
 
@@ -21,7 +21,9 @@ Um formulário de agendamento com a data controlada por estado, limitada por `mi
 
 - Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
 - `value`, `min`, `max` e o valor enviado no formulário são sempre ISO `YYYY-MM-DD`. A exibição e a digitação seguem a região do navegador: por exemplo, `DD/MM/YYYY` no Brasil e `MM/DD/YYYY` nos Estados Unidos. A prop `language` traduz os textos, sem definir o formato da data.
-- A pessoa digita só os números; os separadores entram sozinhas. O botão de calendário abre o seletor nativo do navegador, enquanto o calendário UAI (`uai-datepicker`) não chega.
+- A pessoa digita só os números; os separadores entram sozinhos. Clicar no campo abre o calendário UAI com o foco ainda no campo, então dá para digitar com ele aberto; uma data completa digitada leva o calendário ao mês dela.
+- O botão de calendário (ou Alt+Seta para baixo) abre o calendário com o foco no dia: escolhido, hoje ou o mais perto dentro de `min` e `max`. Escolher um dia preenche o campo, fecha o calendário e devolve o foco ao campo.
+- No cabeçalho, as setas trocam o mês, e o mês e o ano abrem listas para pular direto. Dias fora de `min` e `max` aparecem desabilitados.
 - Sem `label`, o rótulo é "Data" (`pt_BR`), "Date" (`en_US`) ou "Fecha" (`es_ES`). Sem `placeholder`, aparece o formato regional do navegador.
 - Fora do React, use o custom element `<uai-input-date>`, com as propriedades em kebab-case (`helper-message`, `min-error-message`) e os eventos `uaiChange`, `uaiInput` etc.
 
@@ -57,10 +59,14 @@ Um formulário de agendamento com a data controlada por estado, limitada por `mi
 
 | Regra | Teste |
 | --- | --- |
-| O botão de calendário é um `<button>` nativo com nome do idioma ("Abrir calendário") e abre o seletor nativo de data com `min` e `max` | `test/uai-input-date.e2e.ts` |
-| A data escolhida no seletor vira o `value`, aparece formatada e emite `uaiChange` | `test/uai-input-date.e2e.ts` |
-| Alt+Seta para baixo no campo abre o mesmo seletor | `test/uai-input-date.e2e.ts` |
-| Em `readonly` o botão não aparece; em `disabled` fica desabilitado | `test/uai-input-date.spec.tsx` |
+| Clicar no campo abre o calendário no mês do `value` (ou de hoje, dentro de `min` e `max`), com o foco ainda no campo | `test/uai-input-date.e2e.ts` |
+| O botão de calendário é um `<button>` nativo com nome do idioma ("Abrir calendário") e abre e fecha o calendário, com o foco no dia | `test/uai-input-date.e2e.ts` |
+| O dia escolhido vira o `value`, aparece formatado, emite `uaiChange`, fecha o calendário e devolve o foco ao campo | `test/uai-input-date.e2e.ts` |
+| Nos dias: setas andam por dia e semana, Home e End vão ao início e ao fim da semana, PageUp e PageDown trocam o mês (com Shift, o ano), Enter escolhe, Esc fecha | `test/uai-input-date.e2e.ts`, `src/utils/test/uai-calendar.spec.ts` |
+| As setas do cabeçalho trocam o mês; o mês e o ano abrem listas para pular direto | `test/uai-input-date.spec.tsx` |
+| Dias fora de `min` e `max` ficam desabilitados e as setas param no mês dos limites | `test/uai-input-date.spec.tsx` |
+| O clique fora e o Tab para fora fecham; a validação espera o calendário fechar | `test/uai-input-date.e2e.ts` |
+| Em `readonly` o calendário não abre e o botão não aparece; em `disabled` nada abre | `test/uai-input-date.spec.tsx` |
 
 ### Formulário e validação
 
@@ -99,8 +105,9 @@ Hover e foco do campo e hover do botão de calendário usam `duration/fast` e `e
 
 - O rótulo é um `<label>` associado ao input nativo: clicar nele foca o campo. Sem `label`, o texto padrão do idioma garante o nome; `aria-label` substitui o nome acessível quando o contexto pede um texto mais específico.
 - O input usa `inputmode="numeric"`, que abre o teclado numérico em dispositivos móveis.
-- O botão de calendário é um `<button>` nativo com nome do idioma ("Abrir calendário", "Open calendar", "Abrir calendario"). O seletor nativo usado por ele fica fora da árvore de acessibilidade e da ordem de Tab.
-- A ordem de Tab é: campo, botão de calendário. Alt+Seta para baixo abre o calendário sem sair do campo.
+- O botão de calendário é um `<button>` nativo com nome do idioma ("Abrir calendário", "Open calendar", "Abrir calendario"), com `aria-expanded`.
+- O calendário é um `dialog` com o padrão de date picker da WAI-ARIA: os dias formam uma `grid` com o nome do mês, cada dia é um botão com a data completa ("quinta-feira, 15 de janeiro de 2026"), o escolhido tem `aria-selected`, hoje tem `aria-current="date"` e só um dia fica na ordem de Tab.
+- A ordem de Tab é: campo, botão de calendário. Alt+Seta para baixo (ou Seta para baixo com o calendário aberto) leva o foco aos dias; Esc o devolve ao campo.
 - Mensagens são ligadas ao campo por `aria-describedby`; o erro define `aria-invalid` e mostra ícone e texto além da cor.
 - O foco aparece no contorno do campo (`:focus-within`) e no botão (`:focus-visible`), com `border/ring`. Em modo de alto contraste, vira um contorno do sistema.
 
@@ -115,6 +122,8 @@ Hover e foco do campo e hover do botão de calendário usam `duration/fast` e `e
 | Erro e sucesso | `feedback-error`, `feedback-success` |
 | Desabilitado | `surface-muted`, `border-default`, `content-disabled` |
 | Botão de calendário | `spacing-2xs`, `radius-md`, `sizing-lg` (ícone `calendar`), `overlay-hover` |
+| Calendário | `surface-paper`, `border-default`, `radius-xl`, `elevation-2`, `spacing-md` (cabeçalho e corpo) |
+| Dias | `sizing-xl` (32px), `radius-lg`, `content-secondary` (dias da semana), `overlay-hover`, `action-primary-default` e `action-primary-foreground` (escolhido), `border-input` (contorno de hoje), `content-disabled` |
 | Texto | `body-base` (data), `caption` semibold (rótulo), `caption` (mensagem), `content-primary`, `content-placeholder` |
 | Movimento | `duration-fast`, `easing-standard`; sem transição com movimento reduzido |
 
@@ -127,12 +136,12 @@ Props e métodos têm os mesmos nomes do `BdsInput`. As diferenças:
 | `<BdsInput type="date" />` | `<UaiInputDate />`, componente próprio |
 | `onBdsChange`, `onBdsInput`, `onBdsFocus`, `onBdsOnBlur` | `onUaiChange`, `onUaiInput`, `onUaiFocus`, `onUaiOnBlur`; `uaiChange` traz `{ value }` em ISO |
 | `value`, `min`, `max` em ISO `YYYY-MM-DD` | Iguais, em ISO; a exibição segue a região do navegador |
-| Aparência e seletor do `input type="date"` do navegador | Campo UAI digitável (só números, separadores automáticos) e botão de calendário que abre o seletor nativo |
+| Aparência e seletor do `input type="date"` do navegador | Campo UAI digitável (só números, separadores automáticos) e calendário UAI, igual em todos os navegadores |
 | `pattern`, `minlength`, `maxlength`, `counterLength`, `type` | Não se aplicam a data |
 | Campo fora do `<form>` nativo | Participa do formulário: `FormData` em ISO, reset, validação e `fieldset` |
 | — | `size` (`short` \| `medium`), `name`, `language`, `dateErrorMessage`, `aria-label` |
 
-Parts `input-container`, `input` e `input__message` continuam; `calendar-button` é novo.
+Parts `input-container`, `input` e `input__message` continuam; `calendar-button`, `calendar`, `calendar-arrow`, `calendar-picker`, `calendar-day` e `calendar-option` são novos, assim como os métodos `open()` e `close()`.
 
 ## Design
 

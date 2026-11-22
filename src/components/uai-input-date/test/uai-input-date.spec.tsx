@@ -13,7 +13,19 @@ const render = async (html: string) => {
 const shadow = (page) => page.root.shadowRoot as ShadowRoot;
 const native = (page) => shadow(page).querySelector('input[part="input"]') as HTMLInputElement;
 const button = (page) => shadow(page).querySelector('[part="calendar-button"]') as HTMLButtonElement;
-const picker = (page) => shadow(page).querySelector('input.picker') as HTMLInputElement;
+const panel = (page) => shadow(page).querySelector('[part="calendar"]') as HTMLElement;
+const day = (page, iso: string) => shadow(page).querySelector(`[data-iso="${iso}"]`) as HTMLButtonElement;
+const pickers = (page) => [...shadow(page).querySelectorAll('[part="calendar-picker"]')] as HTMLButtonElement[];
+const arrows = (page) => [...shadow(page).querySelectorAll('[part="calendar-arrow"]')] as HTMLButtonElement[];
+const isOpen = (page) => page.root.classList.contains('uai-input-date--open');
+const openByClick = async (page) => {
+  native(page).click();
+  await page.waitForChanges();
+};
+const pressOn = async (page, element: HTMLElement, key: string, init: KeyboardEventInit = {}) => {
+  element.dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, ...init }));
+  await page.waitForChanges();
+};
 const message = (page) => shadow(page).querySelector('.input__message')?.textContent.trim();
 
 const type = async (page, text: string) => {
@@ -91,14 +103,15 @@ describe('uai-input-date', () => {
       expect(message(page)).toBe('Dia do pagamento');
     });
 
-    it('keeps the internal date input out of focus and accessibility', async () => {
-      const page = await render(`<uai-input-date min="2026-01-01" max="2026-12-31"></uai-input-date>`);
+    it('renders the calendar closed, as a dialog the field and the button control', async () => {
+      const page = await render(`<uai-input-date></uai-input-date>`);
 
-      expect(picker(page).getAttribute('type')).toBe('date');
-      expect(picker(page).getAttribute('tabindex')).toBe('-1');
-      expect(picker(page).getAttribute('aria-hidden')).toBe('true');
-      expect(picker(page).getAttribute('min')).toBe('2026-01-01');
-      expect(picker(page).getAttribute('max')).toBe('2026-12-31');
+      expect(panel(page).getAttribute('role')).toBe('dialog');
+      expect(panel(page).querySelector('[role="grid"]')).toBeNull();
+      expect(native(page).getAttribute('aria-expanded')).toBe('false');
+      expect(native(page).getAttribute('aria-controls')).toBe(panel(page).id);
+      expect(button(page).getAttribute('aria-controls')).toBe(panel(page).id);
+      expect(shadow(page).querySelector('input.picker')).toBeNull();
     });
 
     it.each([
@@ -149,17 +162,6 @@ describe('uai-input-date', () => {
       expect(page.root.value).toBe('');
     });
 
-    it('takes the date picked in the calendar', async () => {
-      const page = await render(`<uai-input-date></uai-input-date>`);
-
-      picker(page).value = '2026-12-25';
-      picker(page).dispatchEvent(new Event('change'));
-      await page.waitForChanges();
-
-      expect(native(page).value).toBe('25/12/2026');
-      expect(page.root.value).toBe('2026-12-25');
-    });
-
     it('clears the date', async () => {
       const page = await render(`<uai-input-date value="2026-12-25"></uai-input-date>`);
 
@@ -168,6 +170,149 @@ describe('uai-input-date', () => {
 
       expect(native(page).value).toBe('');
       expect(page.root.value).toBe('');
+    });
+  });
+
+  describe('calendar', () => {
+    it('opens on a click on the field, on the month of the value, with the value selected', async () => {
+      const page = await render(`<uai-input-date value="2026-12-25"></uai-input-date>`);
+
+      await openByClick(page);
+
+      expect(isOpen(page)).toBe(true);
+      expect(native(page).getAttribute('aria-expanded')).toBe('true');
+      expect(pickers(page).map((picker) => picker.textContent.trim())).toEqual(['Dez', '2026']);
+      expect(shadow(page).querySelectorAll('.calendar__weekday')).toHaveLength(7);
+      expect(day(page, '2026-12-25').classList.contains('calendar__day--selected')).toBe(true);
+      expect(day(page, '2026-12-25').getAttribute('tabindex')).toBe('0');
+      expect(day(page, '2026-12-01').getAttribute('tabindex')).toBe('-1');
+    });
+
+    it('names each day with the full date', async () => {
+      const page = await render(`<uai-input-date value="2026-01-15"></uai-input-date>`);
+      await openByClick(page);
+
+      expect(day(page, '2026-01-15').getAttribute('aria-label')).toBe('quinta-feira, 15 de janeiro de 2026');
+    });
+
+    it('takes the day picked with a click, shows it formatted and closes', async () => {
+      const page = await render(`<uai-input-date value="2026-12-25"></uai-input-date>`);
+      const change = jest.fn();
+      page.root.addEventListener('uaiChange', (event: CustomEvent) => change(event.detail));
+      await openByClick(page);
+
+      day(page, '2026-12-10').click();
+      await page.waitForChanges();
+
+      expect(page.root.value).toBe('2026-12-10');
+      expect(native(page).value).toBe('10/12/2026');
+      expect(change).toHaveBeenLastCalledWith({ value: '2026-12-10' });
+      expect(isOpen(page)).toBe(false);
+    });
+
+    it('turns the months with the arrows', async () => {
+      const page = await render(`<uai-input-date value="2026-01-31"></uai-input-date>`);
+      await openByClick(page);
+
+      arrows(page)[1].click();
+      await page.waitForChanges();
+      expect(pickers(page)[0].textContent.trim()).toBe('Fev');
+
+      arrows(page)[0].click();
+      arrows(page)[0].click();
+      await page.waitForChanges();
+      expect(pickers(page).map((picker) => picker.textContent.trim())).toEqual(['Dez', '2025']);
+    });
+
+    it('moves with the keys of the date picker pattern and picks with Enter', async () => {
+      const page = await render(`<uai-input-date value="2026-01-15"></uai-input-date>`);
+      await openByClick(page);
+
+      await pressOn(page, day(page, '2026-01-15'), 'ArrowRight');
+      expect(day(page, '2026-01-16').getAttribute('tabindex')).toBe('0');
+
+      await pressOn(page, day(page, '2026-01-16'), 'ArrowDown');
+      await pressOn(page, day(page, '2026-01-23'), 'PageDown');
+      expect(pickers(page)[0].textContent.trim()).toBe('Fev');
+      expect(day(page, '2026-02-23').getAttribute('tabindex')).toBe('0');
+
+      await pressOn(page, day(page, '2026-02-23'), 'Enter');
+      expect(page.root.value).toBe('2026-02-23');
+      expect(isOpen(page)).toBe(false);
+    });
+
+    it('jumps to a month and to a year with the header pickers', async () => {
+      const page = await render(`<uai-input-date value="2026-01-15"></uai-input-date>`);
+      await openByClick(page);
+
+      pickers(page)[0].click();
+      await page.waitForChanges();
+      const months = [...shadow(page).querySelectorAll('[part="calendar-option"]')] as HTMLButtonElement[];
+      expect(months).toHaveLength(12);
+      months[5].click();
+      await page.waitForChanges();
+      expect(pickers(page)[0].textContent.trim()).toBe('Jun');
+
+      pickers(page)[1].click();
+      await page.waitForChanges();
+      const years = [...shadow(page).querySelectorAll('[part="calendar-option"]')] as HTMLButtonElement[];
+      expect(years).toHaveLength(12);
+      years.find((option) => option.textContent.trim() === '2030').click();
+      await page.waitForChanges();
+
+      expect(pickers(page).map((picker) => picker.textContent.trim())).toEqual(['Jun', '2030']);
+    });
+
+    it('disables the days out of min and max and stops the arrows at their months', async () => {
+      const page = await render(`<uai-input-date min="2026-03-10" max="2026-03-20" value="2026-03-15"></uai-input-date>`);
+      await openByClick(page);
+
+      expect(day(page, '2026-03-09').getAttribute('aria-disabled')).toBe('true');
+      expect(day(page, '2026-03-10').getAttribute('aria-disabled')).toBeNull();
+      expect(arrows(page).every((arrow) => arrow.hasAttribute('disabled'))).toBe(true);
+
+      day(page, '2026-03-21').click();
+      await page.waitForChanges();
+      expect(page.root.value).toBe('2026-03-15');
+    });
+
+    it('opens on today within min and max when there is no value', async () => {
+      const page = await render(`<uai-input-date min="2099-05-10"></uai-input-date>`);
+      await openByClick(page);
+
+      expect(pickers(page).map((picker) => picker.textContent.trim())).toEqual(['Mai', '2099']);
+      expect(day(page, '2099-05-10').getAttribute('tabindex')).toBe('0');
+    });
+
+    it('opens and closes with the calendar button', async () => {
+      const page = await render(`<uai-input-date></uai-input-date>`);
+
+      button(page).click();
+      await page.waitForChanges();
+      expect(isOpen(page)).toBe(true);
+
+      button(page).click();
+      await page.waitForChanges();
+      expect(isOpen(page)).toBe(false);
+    });
+
+    it('shows the month of a complete date typed with the calendar open', async () => {
+      const page = await render(`<uai-input-date value="2026-01-15"></uai-input-date>`);
+      await openByClick(page);
+
+      await type(page, '05082027');
+
+      expect(pickers(page).map((picker) => picker.textContent.trim())).toEqual(['Ago', '2027']);
+    });
+
+    it('does not open when readonly or disabled', async () => {
+      const readonly = await render(`<uai-input-date readonly value="2026-01-15"></uai-input-date>`);
+      await openByClick(readonly);
+      expect(isOpen(readonly)).toBe(false);
+
+      const disabled = await render(`<uai-input-date disabled></uai-input-date>`);
+      await openByClick(disabled);
+      expect(isOpen(disabled)).toBe(false);
     });
   });
 

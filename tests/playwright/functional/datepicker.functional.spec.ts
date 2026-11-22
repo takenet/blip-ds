@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Datepicker - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-datepicker--properties');
+    await storybook.goto('components-deprecated-datepicker--properties');
   });
 
   test('renders correctly', async ({ page }) => {

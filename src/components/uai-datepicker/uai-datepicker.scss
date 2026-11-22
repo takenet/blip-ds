@@ -1,0 +1,259 @@
+@use '../../globals/helpers' as *;
+
+/**
+ * @prop --uai-datepicker-width: Width of the field. Defaults to the full width of the container.
+ */
+:host {
+  --input-height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  --input-background: var(--uai-surface-paper, #{$uai-surface-paper});
+  --input-border: var(--uai-border-input, #{$uai-border-input});
+  --input-content: var(--uai-content-primary, #{$uai-content-primary});
+  --input-label: var(--uai-content-primary, #{$uai-content-primary});
+  --input-message: var(--uai-content-secondary, #{$uai-content-secondary});
+  // Focus halo: border/ring at opacity/focus-ring, as published for the UAI input.
+  --input-halo: color-mix(
+    in srgb,
+    var(--uai-border-ring, #{$uai-border-ring}) calc(var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring}) * 100%),
+    transparent
+  );
+  display: block;
+  width: var(--uai-datepicker-width, 100%);
+}
+
+:host(.uai-datepicker--size-short) {
+  --input-height: var(--uai-control-height-short, #{$uai-control-height-short});
+}
+
+:host(.uai-datepicker--danger) {
+  --input-border: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-label: var(--uai-feedback-error, #{$uai-feedback-error});
+  --input-message: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+:host(.uai-datepicker--disabled) {
+  --input-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  --input-border: var(--uai-border-default, #{$uai-border-default});
+  --input-content: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-label: var(--uai-content-disabled, #{$uai-content-disabled});
+  --input-message: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+// ---- the field -----------------------------------------------------------------------------
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+}
+
+.input__label,
+.input__message,
+.input__value {
+  --uai-typo-color: currentColor;
+}
+
+.input__label {
+  color: var(--input-label);
+}
+
+.input__message {
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--input-message);
+}
+
+.input__control {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  width: 100%;
+  height: var(--input-height);
+  margin: 0;
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--input-border);
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  outline: none;
+  background-color: var(--input-background);
+  color: var(--input-content);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  @include uai-transition(border-color box-shadow);
+
+  &:focus-visible,
+  :host(.uai-datepicker--open) & {
+    --input-border: var(--uai-border-ring, #{$uai-border-ring});
+    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--input-halo);
+  }
+
+  &:hover:not(:disabled) {
+    --input-border: var(--uai-content-secondary, #{$uai-content-secondary});
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+    &:focus-visible {
+      box-shadow: none;
+      outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid CanvasText;
+    }
+  }
+}
+
+:host(.uai-datepicker--danger) .input__control:hover:not(:disabled) {
+  --input-border: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+.input__value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &--placeholder {
+    color: var(--uai-content-placeholder, #{$uai-content-placeholder});
+  }
+}
+
+:host(.uai-datepicker--disabled) .input__value--placeholder {
+  color: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+.input__icon,
+.input__feedback {
+  flex: none;
+}
+
+.input__feedback {
+  color: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+// ---- the panel -----------------------------------------------------------------------------
+
+.panel {
+  @include uai-overlay-panel;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  @include uai-picker-panel;
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+.panel__months {
+  display: flex;
+  border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}
+
+.panel__column {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.month__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+
+  // The body of the shared calendar has its own padding; inside the column the column pads it.
+  .calendar__body {
+    padding: 0;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  width: calc(7 * var(--uai-sizing-xl, #{$uai-sizing-xl}));
+}
+
+.field__label {
+  --uai-typo-color: currentColor;
+  padding-left: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.field__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  margin: 0;
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-input, #{$uai-border-input});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  outline: none;
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  @include uai-transition(border-color box-shadow);
+
+  &::placeholder {
+    color: var(--uai-content-placeholder, #{$uai-content-placeholder});
+    opacity: 1;
+  }
+
+  &:hover {
+    border-color: var(--uai-content-secondary, #{$uai-content-secondary});
+  }
+
+  &:focus {
+    border-color: var(--uai-border-ring, #{$uai-border-ring});
+    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--input-halo);
+  }
+
+  .field--danger & {
+    border-color: var(--uai-feedback-error, #{$uai-feedback-error});
+  }
+}
+
+.panel__message {
+  --uai-typo-color: currentColor;
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding: var(--uai-spacing-md, #{$uai-spacing-md}) var(--uai-spacing-md, #{$uai-spacing-md}) 0;
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+
+  &--info {
+    color: var(--uai-feedback-info, #{$uai-feedback-info});
+  }
+
+  &--success {
+    color: var(--uai-feedback-success, #{$uai-feedback-success});
+  }
+
+  &--warning {
+    color: var(--uai-feedback-warning, #{$uai-feedback-warning});
+  }
+
+  &--error {
+    color: var(--uai-feedback-error, #{$uai-feedback-error});
+  }
+}
+
+.panel__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+@include uai-calendar;

@@ -6,7 +6,9 @@
 ## Overview
 
 Stack of toasts fixed to a corner or edge of the screen. It opens in the top layer (Popover API), so the toasts
-stay above modals, and announces each toast that opens to screen readers.
+stay above modals, and announces each toast that opens to screen readers. With more than one toast, the older ones
+stack behind the newest, peeking out and scaled down; the pointer or the focus on the stack unfolds it, and the
+time of every toast pauses while it is unfolded.
 Use one per position inside UaiThemeProvider; `uai-toast` `show()` creates it when the page has none.
 Avoid placing other content in it.
 

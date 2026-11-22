@@ -176,6 +176,43 @@ describe('uai-input', () => {
     });
   });
 
+  describe('step and suggestions', () => {
+    it('passes step to the native number input', async () => {
+      const page = await render(`<uai-input label="Temperatura" type="number" min="0" max="2" step="0.1"></uai-input>`);
+
+      expect(native(page).getAttribute('step')).toBe('0.1');
+    });
+
+    it('offers the suggestions in a datalist of its own shadow root', async () => {
+      const page = await newSpecPage({
+        components: [UaiInput],
+        template: () => <uai-input label="Variável" suggestions={['nome', 'cpf']}></uai-input>,
+      });
+      const list = shadow(page).getElementById(native(page).getAttribute('list'));
+
+      expect(list.tagName).toBe('DATALIST');
+      expect([...list.querySelectorAll('option')].map((option) => option.getAttribute('value'))).toEqual([
+        'nome',
+        'cpf',
+      ]);
+    });
+
+    it('reads the suggestions from a JSON array in HTML', async () => {
+      const page = await render(`<uai-input label="Variável" suggestions='["nome"]'></uai-input>`);
+
+      expect(shadow(page).querySelectorAll('datalist option')).toHaveLength(1);
+    });
+
+    it('renders no list without suggestions, and warns on a value that is not an array', async () => {
+      const empty = await render(`<uai-input label="Campo"></uai-input>`);
+      const broken = await render(`<uai-input label="Campo" suggestions="nome"></uai-input>`);
+
+      expect(native(empty).hasAttribute('list')).toBe(false);
+      expect(shadow(broken).querySelector('datalist')).toBeNull();
+      expect(warn).toHaveBeenCalledWith('[uai-input] suggestions must be an array or a JSON array of strings.');
+    });
+  });
+
   describe('accessibility', () => {
     it('passes aria-label to the native input when there is no visible label', async () => {
       const page = await render(`<uai-input aria-label="Buscar"></uai-input>`);

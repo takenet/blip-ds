@@ -4,6 +4,11 @@
 // lets clicks through, and only the toasts take them.
 :host {
   --toast-container-margin: var(--uai-spacing-xl, #{$uai-spacing-xl});
+  // The stack: how much each folded toast peeks out behind the one in front, and the gap when unfolded (0.75rem).
+  --toast-stack-peek: var(--uai-spacing-sm, #{$uai-spacing-sm});
+  --toast-stack-gap: var(--uai-spacing-sm, #{$uai-spacing-sm});
+  // Toward the screen edge: bottom stacks grow up (-1), top stacks grow down (1).
+  --toast-stack-direction: -1;
   // 30rem, the toast width in UAI Core: dialog width plus spacing/4xl, as there is no width token for it.
   --toast-container-width: calc(
     var(--uai-width-dialog, #{$uai-width-dialog}) + var(--uai-spacing-4xl, #{$uai-spacing-4xl})
@@ -27,6 +32,7 @@
 :host(.uai-toast-container--top-left),
 :host(.uai-toast-container--top-center),
 :host(.uai-toast-container--top-right) {
+  --toast-stack-direction: 1;
   top: var(--toast-container-margin);
 }
 
@@ -59,21 +65,93 @@
   }
 }
 
+// The toasts are laid one over the other, at the edge of the screen; the container sets on each one its index from
+// the newest (--toast-index), its distance from the edge when unfolded (--toast-offset), whether its content shows
+// (--toast-content-opacity) and whether it shows at all (--toast-shown). The stack takes the height of what shows, so
+// the pointer stays on it; it is the only part of the container that takes the pointer.
 .stack {
-  display: flex;
-  flex-direction: column;
-  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
-}
-
-// The newest toast (the last one) stays next to the edge of the screen: top stacks are reversed.
-:host(.uai-toast-container--top-left) .stack,
-:host(.uai-toast-container--top-center) .stack,
-:host(.uai-toast-container--top-right) .stack {
-  flex-direction: column-reverse;
+  position: relative;
+  pointer-events: auto;
+  @include uai-transition(height, moderate);
 }
 
 ::slotted(*) {
+  --toast-scale: max(0.9, calc(1 - var(--toast-index, 0) * 0.05));
+  --toast-folded-y: calc(var(--toast-stack-direction) * var(--toast-index, 0) * var(--toast-stack-peek));
+  --toast-unfolded-y: calc(var(--toast-stack-direction) * var(--toast-offset, 0px));
+  // Entering and leaving: a full toast height beyond the edge, slightly smaller and blurred.
+  --toast-away: translateY(calc(-100% * var(--toast-stack-direction))) scale(0.96);
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: var(--toast-shown, 1);
+  transform: translateY(var(--toast-folded-y)) scale(var(--toast-scale));
+  transform-origin: bottom center;
+  z-index: calc(100 - var(--toast-index, 0));
   pointer-events: auto;
+  transition:
+    opacity var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    transform var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    filter var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    display var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+      allow-discrete;
+}
+
+::slotted(.uai-toast--open) {
+  @starting-style {
+    opacity: 0;
+    transform: var(--toast-away);
+    filter: blur(var(--uai-spacing-2xs, #{$uai-spacing-2xs}));
+  }
+}
+
+::slotted(:not(.uai-toast--open)) {
+  opacity: 0;
+  transform: var(--toast-away);
+  filter: blur(var(--uai-spacing-2xs, #{$uai-spacing-2xs}));
+}
+
+// Unfolded: each toast in its own place, one after the other from the newest (about 32ms apart: half of
+// duration/instant per toast).
+:host(.uai-toast-container--expanded) ::slotted(.uai-toast--open) {
+  transform: translateY(var(--toast-unfolded-y));
+  transition-delay: calc(var(--toast-index, 0) * var(--uai-duration-instant, #{$uai-duration-instant}) / 2);
+}
+
+// Folded, the toasts beyond the visible ones take no pointer.
+::slotted([data-behind]) {
+  cursor: default;
+}
+
+:host(.uai-toast-container--top-left) ::slotted(*),
+:host(.uai-toast-container--top-center) ::slotted(*),
+:host(.uai-toast-container--top-right) ::slotted(*) {
+  top: 0;
+  bottom: auto;
+  transform-origin: top center;
+}
+
+// Reduced motion: the toasts fade in place and the stack changes at once.
+@include uai-reduced-motion {
+  .stack {
+    transition: none;
+  }
+
+  ::slotted(*) {
+    --toast-away: none;
+    transition:
+      opacity var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+      display var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+        allow-discrete;
+    filter: none;
+  }
+
+  ::slotted(.uai-toast--open),
+  ::slotted(:not(.uai-toast--open)) {
+    filter: none;
+  }
 }
 
 // Visually hidden live regions.
