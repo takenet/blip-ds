@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-D799VfbI.js';
+import { r as registerInstance, h, H as Host } from './index-B3G05Lxx.js';
 
 const uaiModalActionCss = () => `:host{display:block;width:100%}.modal__action{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:end;justify-content:flex-end;gap:var(--uai-spacing-xs, 0.5rem)}`;
 
@@ -7,7 +7,7 @@ const UaiModalAction = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: 'bf0eb41437155132f656176289a10a0be416b038' }, h("div", { key: '8a7e0bef38b570e52e93debf4549c7deb120859b', class: "modal__action", part: "action" }, h("slot", { key: 'a7b26b342e317e348ecb05a6056e2818abc0435c' }))));
+        return (h(Host, { key: '661d616b9eff11ff559b3c2ae003864c0eafa35b' }, h("div", { key: 'df298c58bf832f0f1660bf13b15a940f0a367af4', class: "modal__action", part: "action" }, h("slot", { key: '73f376bf01372a2f0fc32c19cf514747f2ea2a48' }))));
     }
 };
 UaiModalAction.style = uaiModalActionCss();

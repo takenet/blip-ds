@@ -80,6 +80,18 @@ export declare class UaiInput {
      */
     minlength?: number;
     /**
+     * Interval between accepted values for type "number", from min: "1" (the browser default) accepts whole numbers,
+     * "0.1" one decimal place and "any" any decimal. The arrows and the arrow keys move by it.
+     * Use with min and max. Avoid it on other types, where it has no effect.
+     */
+    step?: string;
+    /**
+     * Values offered while typing, which the person can pick or ignore: an array, or a JSON array in HTML
+     * (suggestions='["Nome", "CPF"]'). Pair with a free text field. Avoid it to restrict the value to a list: use
+     * uai-select.
+     */
+    suggestions?: string[] | string;
+    /**
      * If true, the value can be selected and copied but not edited. It looks like the default state.
      */
     readonly: boolean;
@@ -151,6 +163,10 @@ export declare class UaiInput {
      * Message shown when the number is larger than max. Without it, the browser message is shown.
      */
     maxErrorMessage: string;
+    /**
+     * Message shown when a number is off the step interval. Without it, the browser message is shown.
+     */
+    stepErrorMessage: string;
     /**
      * Message shown when an e-mail is invalid. Without it, the browser message is shown.
      */
@@ -260,7 +276,7 @@ export declare class UaiInput {
      */
     getInputElement(): Promise<HTMLInputElement>;
     /**
-     * Returns true when the value meets required, minlength, maxlength, min, max, pattern and type.
+     * Returns true when the value meets required, minlength, maxlength, min, max, step, pattern and type.
      */
     isValid(): Promise<boolean>;
     /**
@@ -277,6 +293,7 @@ export declare class UaiInput {
     formStateRestoreCallback(state: string | null): void;
     private warnLegacyUsage;
     private get nativeType();
+    private get suggestionList();
     private get sizeValue();
     private messageFor;
     private syncValidity;

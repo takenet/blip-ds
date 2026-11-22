@@ -1,4 +1,4 @@
-import { t as transformTag, r as registerInstance, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { t as transformTag, r as registerInstance, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 
 const stepperCss = () => `:host{width:100%;border-radius:8px;-webkit-box-sizing:border-box;box-sizing:border-box;padding:16px;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between}:host ::slotted(${transformTag("bds-step")}:last-child){-ms-flex:inherit;flex:inherit}::slotted(.stepper__container__divisor){-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-item-align:center;align-self:center;height:1.5px;background:var(--color-content-disable, rgb(89, 89, 89));margin:0px 8px;min-width:24px}::slotted(.stepper__container__divisor--completed){border-top:2px solid var(--color-primary, rgb(30, 107, 241))}`;
 
@@ -77,7 +77,7 @@ const BdsStepper = class {
         });
     }
     render() {
-        return (h(Host, { key: '0d62e381e9448a2c5a6344e91bb5a87a8099ec77', class: "stepper__container" }, h("slot", { key: '82de6153871278365cf47b888ca737b3325009d5' })));
+        return (h(Host, { key: '9b025068f53981962cb5687b2c2d291580f5b36d', class: "stepper__container" }, h("slot", { key: '830da495bc71d4b6fe4c7f7edeee605c263633e1' })));
     }
     get el() { return getElement(this); }
 };

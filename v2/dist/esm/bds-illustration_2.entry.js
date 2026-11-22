@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-D799VfbI.js';
+import { r as registerInstance, h, H as Host } from './index-B3G05Lxx.js';
 import { g as getAssetUrl } from './asset-loader-BG87Jd1l.js';
 import './asset-config-DjyCVRUn.js';
 
@@ -28,7 +28,7 @@ const BdsIllustration = class {
         }
     }
     render() {
-        return (h(Host, { key: '5035530bdeec1c2638021dcc6777293d9d18d39d', role: "img", class: {
+        return (h(Host, { key: '7633f991c1db5653ae64aed068ecfb345c285561', role: "img", class: {
                 'bds-illustration': true,
             } }, this.IllustrationContent ? (h("img", { draggable: false, src: this.IllustrationContent, onError: () => { this.IllustrationContent = undefined; }, alt: this.alt, "data-test": this.dataTest })) : (h("div", { class: "default", "data-test": this.dataTest }))));
     }

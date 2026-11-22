@@ -1,4 +1,4 @@
-import { r as registerInstance, t as transformTag, h, H as Host } from './index-D799VfbI.js';
+import { r as registerInstance, t as transformTag, h, H as Host } from './index-B3G05Lxx.js';
 import { l as loadAssetSvg } from './asset-loader-BG87Jd1l.js';
 import './asset-config-DjyCVRUn.js';
 

@@ -1,7 +1,7 @@
-import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 import { n as numberValidation } from './validations-BXYXNVip.js';
 import { c as countriesEs_ES, a as countriesEn_US, b as countriesPt_BR } from './countries-es_ES-AKkjmS9M.js';
-import { i as isTag } from './tag-name-D0YfnSi8.js';
+import { i as isTag } from './tag-name-C_DDxI_a.js';
 
 var countries = {
 	"brazil-flag": {

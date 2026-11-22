@@ -442,7 +442,7 @@ export class Input {
     render() {
         const isPressed = this.isPressed && !this.disabled;
         const Element = this.isTextarea ? 'textarea' : 'input';
-        return (h(Host, { key: '56f4bce1e4cda7a8a5bcafc1ed398896afd6d146', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'e5e4b1d866ac4cd2e6d44ada8668c389205b5229', class: {
+        return (h(Host, { key: '3e200d269c3cde7408413e04ac118a73e11840f2', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'fbff76f4235a89c2ebe703024a3b2f7362de33bf', class: {
                 input: true,
                 'input--state-primary': !this.danger && !this.validationDanger,
                 'input--state-danger': this.danger || this.validationDanger,
@@ -451,11 +451,11 @@ export class Input {
                 'input--label': !!this.label,
                 'input--pressed': isPressed,
                 'input--textarea': this.isTextarea,
-            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { key: '0513b1be7725e6da56fb386002a715095a95c439', name: "input-left" }), h("div", { key: 'd054e985081e161418afbef80adf3452784b2a66', class: "input__container" }, this.renderLabel(), h("div", { key: 'd9822ff1dbecbf22852b0e7d5b4c15043e37e36a', class: {
+            }, onClick: this.onClickWrapper, onKeyDown: this.keyPressWrapper, part: "input-container" }, this.renderIcon(), h("slot", { key: 'a07a55e183bba7d45b7b32dd478e2eddc3681b07', name: "input-left" }), h("div", { key: '8f5ef3b9ac101f45981de2a77dddbad7c9f19586', class: "input__container" }, this.renderLabel(), h("div", { key: '3a3f018f187e096b68d7d3910659f146dd1e2fc9', class: {
                 input__container__wrapper: !this.chips,
                 input__container__wrapper__chips: this.chips,
                 'input__container__wrapper--textarea': this.isTextarea
-            } }, h("slot", { key: '9b350ad1486cd7ed26bfaf2142db636fcaa81efb', name: "inside-input-left" }), h(Element, { key: '8c5592a1856c61a3eb80a1ace4b39bef4b746803', class: {
+            } }, h("slot", { key: '342911bc33fef310e9b0868be36d3ee706c53f7f', name: "inside-input-left" }), h(Element, { key: 'c1eaf6f004449f4da79edf88f09648a518e38f11', class: {
                 input__container__text: true,
                 input__container__text__chips: this.chips,
                 'input__container__text--textarea': this.isTextarea
@@ -463,7 +463,7 @@ export class Input {
                 minHeight: `${this.minHeight || 60}px`,
                 maxHeight: `${this.maxHeight || 200}px`,
                 resize: this.resizable ? (this.autoResize ? 'none' : 'vertical') : 'none'
-            } : {} }))), this.counterLength && (h("bds-counter-text", Object.assign({ key: '3cb3831fe7a0d79e46504f591c5604c9a3cb470a', length: this.value.length, max: this.maxlength, active: isPressed }, this.counterLengthRule))), this.success && h("bds-icon", { key: '91d63f57fa360e5a954073c7a51f9eea0cd0ba88', class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { key: 'ed702076951c4cf1a550c03474707f4581ac3018', name: "input-right" })), this.renderMessage()));
+            } : {} }))), this.counterLength && (h("bds-counter-text", Object.assign({ key: '1e490a2fa3395c7c8c5d20c8f9b56dc93edb03de', length: this.value.length, max: this.maxlength, active: isPressed }, this.counterLengthRule))), this.success && h("bds-icon", { key: '83ccca895c1db205fb4a109c07ddabbae96909b3', class: "icon-success", name: "check", theme: "outline", size: "small" }), h("slot", { key: '31305abb3cdf39f30285550599576a90a3f5e880', name: "input-right" })), this.renderMessage()));
     }
     static get is() { return "bds-input"; }
     static get encapsulation() { return "shadow"; }

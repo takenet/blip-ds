@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 
 const uaiNavbarCss = () => `:host{display:-ms-flexbox;display:flex}:host(.horizontal){width:100%;height:-webkit-fit-content;height:-moz-fit-content;height:fit-content}:host(.vertical){width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;height:100%}.navbar{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;display:-ms-flexbox;display:flex;gap:var(--uai-spacing-lg, 1.5rem);-webkit-box-sizing:border-box;box-sizing:border-box}.navbar ::slotted(*){display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.navbar__justify-content__flex-start{-ms-flex-pack:start;justify-content:flex-start}.navbar__justify-content__center{-ms-flex-pack:center;justify-content:center}.navbar__justify-content__flex-end{-ms-flex-pack:end;justify-content:flex-end}.navbar__justify-content__space-between{-ms-flex-pack:justify;justify-content:space-between}.navbar__justify-content__space-around{-ms-flex-pack:distribute;justify-content:space-around}.navbar__justify-content__space-evenly{-ms-flex-pack:space-evenly;justify-content:space-evenly}.navbar__orientation__horizontal{-ms-flex-direction:row;flex-direction:row;width:100%;padding:var(--uai-spacing-md, 1rem)}.navbar__orientation__horizontal ::slotted(*){-ms-flex-direction:row;flex-direction:row}.navbar__orientation__vertical{-ms-flex-direction:column;flex-direction:column;height:100%;padding:var(--uai-spacing-md, 1rem) var(--uai-spacing-md, 1rem)}.navbar__orientation__vertical ::slotted(*){-ms-flex-direction:column;flex-direction:column}.navbar__background-color__surface-background{background-color:var(--uai-surface-background, #f2f3f3)}.navbar__background-color__surface-contrast{background-color:var(--uai-surface-contrast, #e4e6e7)}.navbar__background-color__surface-inverse{background-color:var(--uai-surface-inverse, #242729)}.navbar__background-color__surface-muted{background-color:var(--uai-surface-muted, #f2f3f3)}.navbar__background-color__surface-paper{background-color:var(--uai-surface-paper, #ffffff)}`;
 
@@ -17,12 +17,12 @@ const UaiNavbar = class {
         this.dataTest = null;
     }
     render() {
-        return (index.h(index.Host, { key: 'e2307d68d525dcb848ca1d2ae22166f4dddf4d30', class: { [`${this.orientation}`]: true } }, index.h("div", { key: '7dcedff647390a4c2d9c8684d72edad9054333a6', class: {
+        return (index.h(index.Host, { key: 'bdf54932981caeda7176bd69b8eb2d2c802aeb00', class: { [`${this.orientation}`]: true } }, index.h("div", { key: '17fc9db142e16de36ade66d89b978b2f4a5d44fa', class: {
                 navbar: true,
                 [`navbar__justify-content__${this.justifyContent}`]: true,
                 [`navbar__orientation__${this.orientation}`]: true,
                 [`navbar__background-color__${this.backgroundColor}`]: true,
-            }, "data-test": this.dataTest }, index.h("slot", { key: 'bd669217cf0312445f703aafb12896fc37741d2d' }))));
+            }, "data-test": this.dataTest }, index.h("slot", { key: '14dbe0fd38d0a5d2a06eedefc37740e62d0f518c' }))));
     }
     get hostElement() { return index.getElement(this); }
 };

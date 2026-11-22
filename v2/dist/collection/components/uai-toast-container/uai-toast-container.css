@@ -23,6 +23,9 @@
 */
 :host {
   --toast-container-margin: var(--uai-spacing-xl, 2rem);
+  --toast-stack-peek: var(--uai-spacing-sm, 0.75rem);
+  --toast-stack-gap: var(--uai-spacing-sm, 0.75rem);
+  --toast-stack-direction: -1;
   --toast-container-width: calc(
     var(--uai-width-dialog, 26.5rem) + var(--uai-spacing-4xl, 3.5rem)
   );
@@ -44,6 +47,7 @@
 :host(.uai-toast-container--top-left),
 :host(.uai-toast-container--top-center),
 :host(.uai-toast-container--top-right) {
+  --toast-stack-direction: 1;
   top: var(--toast-container-margin);
 }
 
@@ -76,21 +80,78 @@
   }
 }
 .stack {
-  display: flex;
-  flex-direction: column;
-  gap: var(--uai-spacing-xs, 0.5rem);
+  position: relative;
+  pointer-events: auto;
+  transition: height var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
 }
-
-:host(.uai-toast-container--top-left) .stack,
-:host(.uai-toast-container--top-center) .stack,
-:host(.uai-toast-container--top-right) .stack {
-  flex-direction: column-reverse;
+@media (prefers-reduced-motion: reduce) {
+  .stack {
+    transition: none;
+  }
 }
 
 ::slotted(*) {
+  --toast-scale: max(0.9, calc(1 - var(--toast-index, 0) * 0.05));
+  --toast-folded-y: calc(var(--toast-stack-direction) * var(--toast-index, 0) * var(--toast-stack-peek));
+  --toast-unfolded-y: calc(var(--toast-stack-direction) * var(--toast-offset, 0px));
+  --toast-away: translateY(calc(-100% * var(--toast-stack-direction))) scale(0.96);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: var(--toast-shown, 1);
+  transform: translateY(var(--toast-folded-y)) scale(var(--toast-scale));
+  transform-origin: bottom center;
+  z-index: calc(100 - var(--toast-index, 0));
   pointer-events: auto;
+  transition: opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), filter var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete;
 }
 
+@starting-style {
+  ::slotted(.uai-toast--open) {
+    opacity: 0;
+    transform: var(--toast-away);
+    filter: blur(var(--uai-spacing-2xs, 0.25rem));
+  }
+}
+
+::slotted(:not(.uai-toast--open)) {
+  opacity: 0;
+  transform: var(--toast-away);
+  filter: blur(var(--uai-spacing-2xs, 0.25rem));
+}
+
+:host(.uai-toast-container--expanded) ::slotted(.uai-toast--open) {
+  transform: translateY(var(--toast-unfolded-y));
+  transition-delay: calc(var(--toast-index, 0) * var(--uai-duration-instant, 65ms) / 2);
+}
+
+::slotted([data-behind]) {
+  cursor: default;
+}
+
+:host(.uai-toast-container--top-left) ::slotted(*),
+:host(.uai-toast-container--top-center) ::slotted(*),
+:host(.uai-toast-container--top-right) ::slotted(*) {
+  top: 0;
+  bottom: auto;
+  transform-origin: top center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack {
+    transition: none;
+  }
+  ::slotted(*) {
+    --toast-away: none;
+    transition: opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete;
+    filter: none;
+  }
+  ::slotted(.uai-toast--open),
+  ::slotted(:not(.uai-toast--open)) {
+    filter: none;
+  }
+}
 .live {
   position: absolute;
   width: 0;

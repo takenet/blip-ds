@@ -1,1 +1,1 @@
-import{U as s,d as o}from"./p-Cpdwg_sa.js";const p=s,a=o;export{p as UaiDropdown,a as defineCustomElement}
+import{U as o,d as s}from"./p-B22dBfj0.js";const p=o,r=s;export{p as UaiDropdown,r as defineCustomElement}

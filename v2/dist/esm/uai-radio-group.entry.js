@@ -1,6 +1,6 @@
-import { r as registerInstance, c as createEvent, t as transformTag, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { r as registerInstance, c as createEvent, t as transformTag, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 import { U as UaiFormControl } from './uai-form-control-BkRP7pRQ.js';
-import { i as isTag } from './tag-name-D0YfnSi8.js';
+import { i as isTag } from './tag-name-C_DDxI_a.js';
 
 const uaiRadioGroupCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem);color:var(--uai-content-primary, #242729);font-family:var(--uai-font-family-sans, Figtree), sans-serif}:host([aria-disabled=true]){cursor:not-allowed}.validation-proxy{position:absolute;width:0;height:0;overflow:hidden;-webkit-clip-path:inset(50%);clip-path:inset(50%);white-space:nowrap}@media (forced-colors: active){:host(:focus-within){outline:var(--uai-border-width-thick, 2px) solid CanvasText}}`;
 
@@ -211,7 +211,7 @@ const UaiRadioGroup = class {
     }
     render() {
         const disabled = this.effectiveDisabled;
-        return (h(Host, { key: '073e0b1d4ad2b8322f3943830e4b90e15d86858d', role: "radiogroup", tabIndex: -1, part: "group", "aria-label": this.ariaLabel || null, "aria-labelledby": this.ariaLabelledBy || null, "aria-disabled": disabled ? 'true' : null, "aria-required": this.required ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, onKeyDown: this.onKeyDown }, h("slot", { key: '92981483d325b973aed407e0f5c5fe82372e6e3a', onSlotchange: this.onSlotChange }), h("input", { key: 'a89ced52dd23da67ff11f5d74371242e7e4f022c', class: "validation-proxy", type: "checkbox", required: this.required && !disabled, checked: this.value !== undefined && this.value !== null, "aria-hidden": "true", tabIndex: -1, ref: (input) => (this.validationProxy = input) })));
+        return (h(Host, { key: '65989974f2d1d67a76a580661a16536b09c96a9c', role: "radiogroup", tabIndex: -1, part: "group", "aria-label": this.ariaLabel || null, "aria-labelledby": this.ariaLabelledBy || null, "aria-disabled": disabled ? 'true' : null, "aria-required": this.required ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, onKeyDown: this.onKeyDown }, h("slot", { key: '18637d4034896d877f00ac71f237eafb577152a8', onSlotchange: this.onSlotChange }), h("input", { key: 'e89f4f8812df0244e939480de226b1ee148bdd22', class: "validation-proxy", type: "checkbox", required: this.required && !disabled, checked: this.value !== undefined && this.value !== null, "aria-hidden": "true", tabIndex: -1, ref: (input) => (this.validationProxy = input) })));
     }
     static get formAssociated() { return true; }
     get el() { return getElement(this); }

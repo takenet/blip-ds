@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 var assetLoader = require('./asset-loader-CO6wtD2Y.js');
 require('./asset-config-CKVSo2i2.js');
 

@@ -10,15 +10,20 @@ import { UaiToastCloseReason, UaiToastOptions, UaiToastPosition, UaiToastVariant
  * @part icon-box - The box around the variant icon.
  * @part action - The action button.
  * @part close - The close button.
+ * @part progress - The line along the bottom that shrinks over the duration.
  */
 export declare class UaiToast {
     el: HTMLElement;
     private timer?;
     private timerStart;
     private remaining;
-    private paused;
     private removeOnClose;
     private loaded;
+    private stack?;
+    /** The time is paused: the progress line stops with it. */
+    paused: boolean;
+    /** A new count of the time, which restarts the progress line. */
+    cycle: number;
     /** Semantic variant: system, info, success, warning or error. Use the one that matches the message; avoid color alone to convey meaning. */
     variant?: UaiToastVariant;
     /** Optional short title, without a final period. Use for the reason of the notification; avoid long titles. */
@@ -62,6 +67,9 @@ export declare class UaiToast {
     componentDidLoad(): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
+    private watchStack;
+    private unwatchStack;
+    private handleVisibility;
     private container;
     private dismiss;
     private startTimer;

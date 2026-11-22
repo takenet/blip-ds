@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
-var uaiToast = require('./uai-toast-s507dmSr.js');
+var index = require('./index-GTJCA4wH.js');
+var uaiToast = require('./uai-toast-D1WUYP7I.js');
 
-const prefix = "ds-ae801821";
+const prefix = "ds-4bb9b80f";
 var scope = {
 	prefix: prefix
 };

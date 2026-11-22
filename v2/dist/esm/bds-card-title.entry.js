@@ -1,4 +1,4 @@
-import { r as registerInstance, h } from './index-D799VfbI.js';
+import { r as registerInstance, h } from './index-B3G05Lxx.js';
 
 const cardTitleCss = () => ``;
 
@@ -7,7 +7,7 @@ const CardTitle = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h("bds-typo", { key: '56fe55a85ffe6392ad1407e7ab6928de2e2efe3c', variant: "fs-20", tag: "h4", margin: false, bold: "bold" }, this.text));
+        return (h("bds-typo", { key: 'bf11db0f59de27ca8dc35548c5f2fb8004cfdcf4', variant: "fs-20", tag: "h4", margin: false, bold: "bold" }, this.text));
     }
 };
 CardTitle.style = cardTitleCss();

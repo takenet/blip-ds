@@ -1,4 +1,4 @@
-import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 import { g as getScrollParent, p as positionAbsoluteElement } from './position-element-BNEKIkjk.js';
 
 const ptTerms = {
@@ -488,7 +488,7 @@ const BdsAutocomplete = class {
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: '5c38016eea67629b0f0e21a583ee1070e6abf32e', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'e984282d15c02248116ca226c05b5c8515831446', class: {
+        return (h(Host, { key: '16240525f10b56df55ec7526c353621ed1cf8ecb', "aria-disabled": this.disabled ? 'true' : null }, h("div", { key: 'f7370bb80fd9f1eabdf6858a4288d1284adaf8d7', class: {
                 input: true,
                 select: true,
                 'input--state-primary': !this.danger,
@@ -497,9 +497,9 @@ const BdsAutocomplete = class {
                 'input--state-disabled': this.disabled,
                 'input--label': !!this.label,
                 'input--pressed': this.isPressed,
-            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: '927fa100058c26da3d666d0877ec0d4c1a2e20cb', class: "input__container", tabindex: "0", onFocusout: this.onFocusout }, this.renderLabel(), h("div", { key: '8ee55cc944d8a802e8b0de67a46d964c029d6176', class: { input__container__wrapper: true } }, ((_a = this.textMultiselect) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("bds-typo", { key: '3f9a432f8ea8aaa7b86d9aa66b024eaaabf48bac', variant: "fs-14", class: "inside-input-left" }, this.textMultiselect)), h("input", { key: '0ed161498e50f7aabee064293c3564b55e2d4d7f', class: { input__container__text: true }, ref: (input) => (this.nativeInput = input), disabled: this.disabled, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.changedInputValue, placeholder: this.placeholderState, type: "text", value: this.text, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: '8be191bbc465cc913c2798ea433d735068ebba69', class: "select__icon" }, h("bds-icon", { key: '0612bde2939b7a408b2f4653b30b17e80af92ca6', size: "small", name: "error", theme: "solid", onClick: this.cleanInputSelection, class: {
+            }, onClick: this.onClickWrapper }, this.renderIcon(), h("div", { key: '9da245b81db0f495c2f42537784a9509398d2c5a', class: "input__container", tabindex: "0", onFocusout: this.onFocusout }, this.renderLabel(), h("div", { key: 'a34f98565af72ff5dee01c0f1bab23d0a9051aad', class: { input__container__wrapper: true } }, ((_a = this.textMultiselect) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("bds-typo", { key: '128468f42c6edc231ad36d575987c781a32fb403', variant: "fs-14", class: "inside-input-left" }, this.textMultiselect)), h("input", { key: '8a48c7524751ccc83f47cf1a4690eeaebc11f038', class: { input__container__text: true }, ref: (input) => (this.nativeInput = input), disabled: this.disabled, onBlur: this.onBlur, onFocus: this.onFocus, onInput: this.changedInputValue, placeholder: this.placeholderState, type: "text", value: this.text, "data-test": this.dataTest, onKeyDown: this.keyPressWrapper.bind(this) }))), h("div", { key: '530d4c19a4bcd88a4b23cb2a82a400ad6f396b58', class: "select__icon" }, h("bds-icon", { key: '5af3f246c7052133e83aae74b077f87222146b75', size: "small", name: "error", theme: "solid", onClick: this.cleanInputSelection, class: {
                 'icon-hidden': (this.clearIconOnFocus && (!this.isFocused || !this.isOpen)) || !this.value,
-            } }), h("bds-icon", { key: 'dfee3c2494b1e9cb905a864c269332e24c3fc836', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" }))), this.renderMessage(), this.loading ? (h("div", { ref: (el) => this.refDropdown(el), class: {
+            } }), h("bds-icon", { key: '9a98b3f1db64a596b1e6babb9d49ceaf9dab75e0', ref: (el) => this.refIconDrop(el), size: "small", color: "inherit" }))), this.renderMessage(), this.loading ? (h("div", { ref: (el) => this.refDropdown(el), class: {
                 select__options: true,
                 'select__options--open': this.isOpen,
             } }, h("bds-loading-spinner", { class: "load-spinner", size: "small" }))) : (h("div", { ref: (el) => this.refDropdown(el), class: {

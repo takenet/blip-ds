@@ -4,7 +4,7 @@ import { h, Host } from "@stencil/core";
  */
 export class BdsToastContainer {
     render() {
-        return (h(Host, { key: '1f8aa10ea330752de0f5d9e813c80e9a24cc0d1d' }, h("slot", { key: '2cee75135fcb0316352c944dd1bf3c35f480aca0' })));
+        return (h(Host, { key: '349d18ff85913b6b9ce98552b5155ae4dd0b5ddb' }, h("slot", { key: '3874c06ae28d6796e8628ede5a85b2ee8f96a2ba' })));
     }
     static get is() { return "bds-toast-container"; }
     static get encapsulation() { return "scoped"; }

@@ -211,7 +211,7 @@ export class UaiInput {
         return this.nativeInput;
     }
     /**
-     * Returns true when the value meets required, minlength, maxlength, min, max, pattern and type.
+     * Returns true when the value meets required, minlength, maxlength, min, max, step, pattern and type.
      */
     async isValid() {
         return this.nativeInput ? this.nativeInput.validity.valid : true;
@@ -302,6 +302,20 @@ export class UaiInput {
         warnLegacyValue(TAG, 'type', this.type, 'text');
         return 'text';
     }
+    // The suggestions as a list: an array from JS, a JSON array from HTML. Anything else offers nothing.
+    get suggestionList() {
+        let list = this.suggestions;
+        if (typeof list === 'string') {
+            try {
+                list = JSON.parse(list);
+            }
+            catch (_a) {
+                warnOnce(TAG, 'suggestions', 'suggestions must be an array or a JSON array of strings.');
+                return [];
+            }
+        }
+        return Array.isArray(list) ? list.filter((item) => item !== null && item !== undefined).map(String) : [];
+    }
     get sizeValue() {
         if (SIZES.includes(this.size))
             return this.size;
@@ -319,6 +333,8 @@ export class UaiInput {
             return this.minErrorMessage || native;
         if (validity.rangeOverflow)
             return this.maxErrorMessage || native;
+        if (validity.stepMismatch)
+            return this.stepErrorMessage || native;
         if (validity.typeMismatch && this.type === 'email')
             return this.emailErrorMessage || native;
         if (validity.badInput && this.type === 'number')
@@ -373,16 +389,19 @@ export class UaiInput {
                     : this.helperMessage;
         const length = (this.value || '').length;
         const counterState = this.counterState(length);
+        // The native list only finds a datalist in the same tree: it lives in the shadow root, next to the input.
+        const suggestions = this.suggestionList;
+        const listId = suggestions.length ? `${this.inputId}-suggestions` : null;
         const describedBy = [message && `${this.inputId}-message`, this.counterLength && `${this.inputId}-counter`]
             .filter(Boolean)
             .join(' ');
-        return (h(Host, { key: 'e6f96c8011f4131abc186a6c2a4de33ffb009ae6', "aria-disabled": disabled ? 'true' : null, class: {
+        return (h(Host, { key: '851fbb93584ec1ae4232486231ad4b3319787ba7', "aria-disabled": disabled ? 'true' : null, class: {
                 [`uai-input--size-${this.sizeValue}`]: true,
                 'uai-input--danger': invalid,
                 'uai-input--success': success,
                 'uai-input--disabled': disabled,
                 'uai-input--readonly': this.readonly && !disabled,
-            } }, h("div", { key: '98faaa8970be9d0a0e698f0422e2646f0d085266', class: "input" }, this.label && (h("label", { key: '7093970fbc6c85b3eb0415b4ac66f5a0d577b097', class: "input__label", for: this.inputId }, h("uai-typo", { key: '4775637620b1921867efcfb48bb7d06cf4fe2b0d', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), h("div", { key: '98f1bcd17f50858c7df224831e3f1ace2c4ff100', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && h("uai-icon", { key: '3c83dfcf778350de720e3289c84be84f2967f998', class: "input__icon", name: this.icon, size: "medium" }), h("slot", { key: '8a3b9ee38030d2bec7f37ed99fa49993081fdbfd', name: "input-left" }), h("div", { key: '824e7d3931ae42b5bd19e4bee673f0a29872b5d6', class: "input__field" }, h("slot", { key: '0e987b6064ddf2a3b46c73febef9b0c33416db4f', name: "inside-input-left" }), h("input", { key: '807c903b7d258360f2ad24a3bf1740402638f29f', id: this.inputId, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: this.nativeType, min: this.min, max: this.max, minLength: this.minlength, maxLength: this.maxlength, pattern: this.pattern, value: this.value || '', placeholder: this.placeholder, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.label ? null : this.ariaLabel, "aria-invalid": invalid ? 'true' : null, "aria-describedby": describedBy || null, "data-test": this.dataTest, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown })), this.counterLength && (h("uai-typo", { key: '1b710b368da3853a3becb15a01fdc3d54d461fc0', id: `${this.inputId}-counter`, class: { input__counter: true, [`input__counter--${counterState}`]: !!counterState }, variant: "caption", tag: "span", margin: false }, this.maxlength ? `${length}/${this.maxlength}` : `${length}`)), invalid && h("uai-icon", { key: '021370c37ffeff834bfd846574243163f57688de', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && h("uai-icon", { key: 'b6509049b7abf1782a19726bf0605161060c6ae6', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), h("slot", { key: 'c82596dc9dfb815baf3e12dfc3c52029683b2dbe', name: "input-right" })), message && (h("div", { key: '4234e7c43fbaeb4d82bb2bc49198858ecffe03e6', id: `${this.inputId}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '0f4416ab40194e4eea07e352dca8612112dd05f4', variant: "caption", tag: "span", margin: false }, message))))));
+            } }, h("div", { key: 'b941a23636ec62daa0c92c811ef7054661432530', class: "input" }, this.label && (h("label", { key: 'b5a9e8f76bc48843a862b03bedf97538b5b143b2', class: "input__label", for: this.inputId }, h("uai-typo", { key: 'd1f7f298d02d433528d82f3ef65c3b836ac5fd74', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), h("div", { key: '2edc716e1cd7bd3bc20863ab45aa373fe8beb37c', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && h("uai-icon", { key: '8f93d5f18ac38980c5bc16a0aa26ccb3ff1e55a4', class: "input__icon", name: this.icon, size: "medium" }), h("slot", { key: '33a9c9b65e40d4f388fc0dbaecd0dfd4b4e5d026', name: "input-left" }), h("div", { key: '63b2665a348b4d09d7c0a2ca0bf14038eb83dc65', class: "input__field" }, h("slot", { key: '88e11cfd5032672d52872dc6aa84105f3d75e927', name: "inside-input-left" }), h("input", { key: '81415b0a99c8fa4310834edc349cb829c8111756', id: this.inputId, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: this.nativeType, min: this.min, max: this.max, step: this.step, list: listId, minLength: this.minlength, maxLength: this.maxlength, pattern: this.pattern, value: this.value || '', placeholder: this.placeholder, autocapitalize: this.autoCapitalize, autocomplete: this.autoComplete, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.label ? null : this.ariaLabel, "aria-invalid": invalid ? 'true' : null, "aria-describedby": describedBy || null, "data-test": this.dataTest, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown }), listId && (h("datalist", { key: 'ac43855e29e8659565102eeb00fe7760ffc443d4', id: listId }, suggestions.map((suggestion) => (h("option", { value: suggestion })))))), this.counterLength && (h("uai-typo", { key: 'ad5e58ecea02314d856a0a54e53541ebaecf721e', id: `${this.inputId}-counter`, class: { input__counter: true, [`input__counter--${counterState}`]: !!counterState }, variant: "caption", tag: "span", margin: false }, this.maxlength ? `${length}/${this.maxlength}` : `${length}`)), invalid && h("uai-icon", { key: '9c0c708070c247af8c66c60ff44f915511fd8b9b', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && h("uai-icon", { key: '2a5b5c988149c2412e22fdfed9c16b8ba8c84e34', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), h("slot", { key: '7b2f54878e54069cc768e22527d91d86ae0bf9b5', name: "input-right" })), message && (h("div", { key: '6f5bf114a2e9359047ec97e88248654a3cf52069', id: `${this.inputId}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: 'dc3e59ea35d3749cec3734d35ea9ffbf8ccf8792', variant: "caption", tag: "span", margin: false }, message))))));
     }
     static get is() { return "uai-input"; }
     static get encapsulation() { return "shadow"; }
@@ -665,6 +684,44 @@ export class UaiInput {
                 "setter": false,
                 "reflect": false,
                 "attribute": "minlength"
+            },
+            "step": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Interval between accepted values for type \"number\", from min: \"1\" (the browser default) accepts whole numbers,\n\"0.1\" one decimal place and \"any\" any decimal. The arrows and the arrow keys move by it.\nUse with min and max. Avoid it on other types, where it has no effect."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "step"
+            },
+            "suggestions": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string[] | string",
+                    "resolved": "string | string[]",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Values offered while typing, which the person can pick or ignore: an array, or a JSON array in HTML\n(suggestions='[\"Nome\", \"CPF\"]'). Pair with a free text field. Avoid it to restrict the value to a list: use\nuai-select."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "suggestions"
             },
             "readonly": {
                 "type": "boolean",
@@ -1024,6 +1081,25 @@ export class UaiInput {
                 "setter": false,
                 "reflect": false,
                 "attribute": "max-error-message"
+            },
+            "stepErrorMessage": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": false,
+                "docs": {
+                    "tags": [],
+                    "text": "Message shown when a number is off the step interval. Without it, the browser message is shown."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "step-error-message"
             },
             "emailErrorMessage": {
                 "type": "string",
@@ -1545,7 +1621,7 @@ export class UaiInput {
                     "return": "Promise<boolean>"
                 },
                 "docs": {
-                    "text": "Returns true when the value meets required, minlength, maxlength, min, max, pattern and type.",
+                    "text": "Returns true when the value meets required, minlength, maxlength, min, max, step, pattern and type.",
                     "tags": []
                 }
             },

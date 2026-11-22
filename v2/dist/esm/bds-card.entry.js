@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 
 const cardCss = () => `:host{display:-ms-flexbox;display:flex;position:relative}:host:focus-visible{outline:none}.card{display:-ms-flexbox;display:flex;width:100%}.card_hover:hover{-webkit-transform:scale(1.02);transform:scale(1.02);-webkit-transition:all 0.3s;transition:all 0.3s;cursor:pointer}.card_hover_selectable:hover{-webkit-box-shadow:0px 0px 0px 2px rgba(30, 107, 241, 0.08);box-shadow:0px 0px 0px 2px rgba(30, 107, 241, 0.08)}.card_hover_selectable:active{-webkit-box-shadow:0px 0px 0px 2px rgba(30, 107, 241, 0.24);box-shadow:0px 0px 0px 2px rgba(30, 107, 241, 0.24)}.focus:focus-visible{display:-ms-flexbox;display:flex;position:absolute;border:2px solid var(--color-focus, rgb(194, 38, 251));border-radius:4px;width:100%;height:100%;top:-4px;left:-4px;padding-right:4px;padding-bottom:4px;outline:none}`;
 
@@ -85,12 +85,12 @@ const Card = class {
         const styleHost = {
             width: this.width,
         };
-        return (h(Host, { key: 'cd5a150977f3ba2e4c51d0ceddc978c7f55330d6', style: styleHost }, h("bds-paper", { key: '18c22864c593010dc1e8c26ad3a608023c44b04c', border: this.clickable ? false : true, elevation: this.elevation, class: {
+        return (h(Host, { key: 'ce5f5721d866ff379a0b69de2546e0339cb4a415', style: styleHost }, h("bds-paper", { key: '320add1ae78725f441841796c86b7673bbc03625', border: this.clickable ? false : true, elevation: this.elevation, class: {
                 card: true,
                 card_hover: this.clickable,
                 card_hover_selectable: this.isHovered && this.selectable ? true : false,
                 card_hover_pressed: this.isHovered && this.selectable ? true : false
-            }, height: this.height, width: this.width, bgColor: this.bgColor, "data-test": this.dataTest, "border-color": this.borderColor ? this.borderColor : 'border-1' }, h("div", { key: 'bdc689716604f074cfe7653faa9622cb747ce102', tabindex: "0", class: "focus", onKeyDown: this.handleKeyDown.bind(this) }), h("bds-grid", { key: '7a19f1f1fccc4251eca9f385c9e4c4c908241bc4', xxs: "12", direction: "column", gap: "2", padding: "2" }, h("slot", { key: '2a53b1fb47865df581aaf616575365ed797784f3' })))));
+            }, height: this.height, width: this.width, bgColor: this.bgColor, "data-test": this.dataTest, "border-color": this.borderColor ? this.borderColor : 'border-1' }, h("div", { key: '9a6458612800c08fbc9e741ca1ec78d92eb7b004', tabindex: "0", class: "focus", onKeyDown: this.handleKeyDown.bind(this) }), h("bds-grid", { key: '6758f578d5252cd73926ab5cf3e32fdf5b9b9d0d', xxs: "12", direction: "column", gap: "2", padding: "2" }, h("slot", { key: '3dc5bc22b915d99a9fbf7f33fa3b3ed74d6b5a47' })))));
     }
     get element() { return getElement(this); }
 };

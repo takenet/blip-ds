@@ -1,18 +1,24 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { UaiControlSize } from '../input/input-interface';
+import { UaiCalendarView } from '../../utils/uai-calendar';
 import { UaiInputDateLanguage } from './uai-input-date-format';
 export type UaiInputDateSize = UaiControlSize;
 /**
- * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
- * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
- * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
- * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+ * Date field. The person types the date in the browser's regional format or picks it in the UAI calendar that opens
+ * on a click; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it for a single known date, such
+ * as a birth or due date. Pair with uai-input-time for a date and time, and with UaiButton in forms. Avoid it for
+ * periods (use uai-datepicker) or times (use uai-input-time). Wrap the app in UaiThemeProvider.
  *
  * @slot input-right - Content after the calendar button (for example a clear button). Give actions an accessible name.
  * @part input-container - The field box with border, icon, the native input and the calendar button.
  * @part input - The native text input with the date in the browser's regional format.
  * @part input__message - The helper, error or success message below the field.
- * @part calendar-button - The button that opens the browser calendar.
+ * @part calendar-button - The button that opens and closes the calendar.
+ * @part calendar - The floating calendar panel.
+ * @part calendar-arrow - The previous and next buttons of the calendar header.
+ * @part calendar-picker - The month and year buttons of the calendar header.
+ * @part calendar-day - Each day button of the calendar.
+ * @part calendar-option - Each month or year in their pickers.
  */
 export declare class UaiInputDate {
     el: HTMLElement;
@@ -20,8 +26,19 @@ export declare class UaiInputDate {
     display: string;
     validationDanger: boolean;
     disabledByForm: boolean;
+    isOpen: boolean;
+    view: UaiCalendarView;
+    /** The day with the focus in the calendar grid; its month is the month shown. */
+    focusedDate: string;
+    firstYear: number;
+    /** Where the next month or page of years comes from, for the slide animation. */
+    slide: 'next' | 'previous' | 'view' | null;
     private nativeInput?;
-    private picker?;
+    private control?;
+    private panel?;
+    private overlay?;
+    /** Moves the focus into the grid on the next render (opened by the keyboard or the calendar button). */
+    private focusGrid;
     private formControl?;
     private defaultValue;
     private typing;
@@ -158,11 +175,22 @@ export declare class UaiInputDate {
      * Clears the date.
      */
     clear(): Promise<void>;
+    /**
+     * Opens the calendar. Use for imperative control; pair with close.
+     */
+    open(): Promise<void>;
+    /**
+     * Closes the calendar.
+     */
+    close(): Promise<void>;
     protected inputNameChanged(): void;
     protected valueChanged(newValue: string | null): void;
     protected onInvalid(): void;
+    protected onFocusOut(event: FocusEvent): void;
     componentWillLoad(): void;
+    componentDidLoad(): void;
     componentDidRender(): void;
+    disconnectedCallback(): void;
     formResetCallback(): void;
     formDisabledCallback(disabled: boolean): void;
     formStateRestoreCallback(state: string | null): void;
@@ -174,8 +202,27 @@ export declare class UaiInputDate {
     private onFocus;
     private onBlur;
     private onKeyDown;
+    private get isDisabled();
+    private get viewYear();
+    private get viewMonth();
     private openCalendar;
-    private onPick;
+    private forceFocus;
+    private closeCalendar;
+    private onOverlayClose;
+    private pickDate;
+    private moveFocus;
+    private onDayKeyDown;
+    private showMonth;
+    private moveTo;
+    private changeView;
+    private onView;
+    private onPickMonth;
+    private onPickYear;
+    private onPrevious;
+    private onNext;
+    private onInputClick;
+    private onButtonClick;
+    private renderCalendar;
     private onControlClick;
     render(): any;
 }

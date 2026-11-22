@@ -1,7 +1,7 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
-var tagName = require('./tag-name-DCmhJ5mj.js');
+var index = require('./index-GTJCA4wH.js');
+var tagName = require('./tag-name-f2wnNW4a.js');
 
 const uaiStepperCss = () => `:host{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%}:host([orientation=horizontal]){-ms-flex-align:start;align-items:flex-start;border-bottom:var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7)}:host([orientation=horizontal]) ::slotted(${index.transformTag("uai-step")}){-ms-flex:1 1 0px;flex:1 1 0}:host([orientation=vertical]){-ms-flex-direction:column;flex-direction:column;-ms-flex-align:stretch;align-items:stretch}`;
 
@@ -85,7 +85,7 @@ const UaiStepper = class {
         this.steps.forEach((step) => (step.completed = false));
     }
     render() {
-        return (index.h(index.Host, { key: '1ebb25389d37fe4d9a8b70cb4e9ae93e2abb76f3', role: "list" }, index.h("slot", { key: '6f03a22490860d3c71adf04e3eeebb056a2eb209', onSlotchange: this.syncSteps })));
+        return (index.h(index.Host, { key: '77a0e59ebfbe6d93e75471af98e983064b3cc9e5', role: "list" }, index.h("slot", { key: 'fd1e96d00390d6aae75d67bdb6d3a9dc1ff5b76e', onSlotchange: this.syncSteps })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

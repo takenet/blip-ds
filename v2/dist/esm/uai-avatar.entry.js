@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 import { c as colorLetter } from './color-letter-1bmWbKgO.js';
 
 const firstLetter = (word) => (word || '')
@@ -160,11 +160,11 @@ const UaiAvatar = class {
         const name = this.personName;
         const interactive = this.interactive;
         const accessibleName = name || (this.ellipsis ? `+${this.ellipsis}` : '');
-        return (h(Host, { key: 'a1c8e3c50dc773d675b3f6adb4517eb19ed529a6', class: {
+        return (h(Host, { key: 'f755e54a5a6b15c7292f641e43ede68cdfb175b2', class: {
                 [`uai-avatar--size-${size}`]: true,
                 [`uai-avatar--color-${color}`]: true,
                 'uai-avatar--upload': interactive,
-            }, role: interactive ? 'button' : accessibleName ? 'img' : null, tabindex: interactive ? '0' : null, "aria-label": interactive ? accessibleName || 'Avatar' : accessibleName || null, "aria-hidden": !interactive && !accessibleName ? 'true' : null, "data-test": this.dataTest, onClick: this.onClick, onKeyDown: this.onKeyDown }, h("div", { key: '850a88c2048d86d6dc45727e8b16fea784a798a5', class: "avatar", part: "avatar" }, this.renderContent(size, initials), interactive && (h("div", { key: 'daf6efc4c3e4fc18233e0b283aacf63820918059', class: "avatar__upload", "aria-hidden": "true" }, h("uai-icon", { key: '57eb2eea6bcc80d8d32a14b3eff7f0d86b22f331', name: "upload", theme: "outline", size: ICON_SIZE[size] })))), this.openUpload && (h("input", { key: '0c3a4589a42aedc84c68a09a4700486f9bc551e0', ref: (input) => (this.fileInput = input), class: "avatar__file", type: "file", accept: "image/*", tabindex: "-1", "aria-hidden": "true", onChange: this.onFileChange, onClick: (event) => event.stopPropagation() }))));
+            }, role: interactive ? 'button' : accessibleName ? 'img' : null, tabindex: interactive ? '0' : null, "aria-label": interactive ? accessibleName || 'Avatar' : accessibleName || null, "aria-hidden": !interactive && !accessibleName ? 'true' : null, "data-test": this.dataTest, onClick: this.onClick, onKeyDown: this.onKeyDown }, h("div", { key: 'b6f13f298a96922208c50a22b56925fb06884152', class: "avatar", part: "avatar" }, this.renderContent(size, initials), interactive && (h("div", { key: '479cd9e22d5e1a2ef284240a0cbfa52e566a960b', class: "avatar__upload", "aria-hidden": "true" }, h("uai-icon", { key: '8847eb973d780a8c12bd7a7970827204aa67e4ed', name: "upload", theme: "outline", size: ICON_SIZE[size] })))), this.openUpload && (h("input", { key: '901ba7657428e2f2fd5dfe04ee7c99c5806299f8', ref: (input) => (this.fileInput = input), class: "avatar__file", type: "file", accept: "image/*", tabindex: "-1", "aria-hidden": "true", onChange: this.onFileChange, onClick: (event) => event.stopPropagation() }))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

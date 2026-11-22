@@ -6,7 +6,7 @@ import { Host, h } from "@stencil/core";
  */
 export class UaiTableHeader {
     render() {
-        return (h(Host, { key: '7b665fb48476aeea2df76284e1156174094cc9df', role: "rowgroup" }, h("slot", { key: '2a80ea0e754b6ed3d9e6272523a54d15aedbd819' })));
+        return (h(Host, { key: '0d09f2c6e5ff1eaa4ef7fbf56ad86d4f5004b0df', role: "rowgroup" }, h("slot", { key: 'e32d6de0e9d5d07ee02f5d72357761aed636d090' })));
     }
     static get is() { return "uai-table-header"; }
     static get encapsulation() { return "shadow"; }

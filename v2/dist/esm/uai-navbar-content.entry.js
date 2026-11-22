@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 
 const uaiNavbarContentCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem)}`;
 
@@ -7,7 +7,7 @@ const UaiNavbarContent = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: 'e784e33c0c6ea742153042d7c46b5f7d7a7494c2', class: { NavbarContent: true } }, h("slot", { key: 'ba05a92a362043e2c62f0a406f362d0452dfb938' })));
+        return (h(Host, { key: '49690b9bde3cdf063519dae794498bb669380037', class: { NavbarContent: true } }, h("slot", { key: 'b82d8485d5d8c628c1fce26ed43156b582c2310c' })));
     }
     get hostElement() { return getElement(this); }
 };

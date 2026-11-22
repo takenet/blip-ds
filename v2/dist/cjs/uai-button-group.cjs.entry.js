@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 
 const uaiButtonGroupCss = () => `:host{display:-ms-inline-flexbox;display:inline-flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.button-group{--group-divider:var(--uai-border-width-default, 1px) solid     var(--uai-border-default, #e4e6e7);display:-ms-flexbox;display:flex;overflow:hidden;border:var(--group-divider);border-radius:var(--uai-radius-lg, 0.75rem)}.button-group--row{-ms-flex-direction:row;flex-direction:row}.button-group--row ::slotted(${index.transformTag("uai-button")}:not(:first-child)){-webkit-border-start:var(--group-divider);border-inline-start:var(--group-divider)}.button-group--column{-ms-flex-direction:column;flex-direction:column}.button-group--column ::slotted(${index.transformTag("uai-button")}:not(:first-child)){-webkit-border-before:var(--group-divider);border-block-start:var(--group-divider)}::slotted(${index.transformTag("uai-button")}){position:relative}::slotted(${index.transformTag("uai-button")}:focus-within){z-index:1}`;
 
@@ -99,7 +99,7 @@ const UaiButtonGroup = class {
     }
     render() {
         const direction = DIRECTIONS.includes(this.direction) ? this.direction : 'row';
-        return (index.h(index.Host, { key: 'ee5c0a895569a3d88dc4479f030e03b627dc5748', role: "group", "aria-label": this.label, onClick: this.onClick }, index.h("div", { key: '8ad1d7ef92aac6b19e83d9fdf19ee6350e8eb35d', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, index.h("slot", { key: 'b9fd581c700bccde942affd8292aac69132401b5', onSlotchange: this.onSlotChange }))));
+        return (index.h(index.Host, { key: '71679c54d6ee8f7bae6ceea6ff45cbe88e979fe5', role: "group", "aria-label": this.label, onClick: this.onClick }, index.h("div", { key: 'faa475e55878c8fdaedf70c4157722e16a30bcf3', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, index.h("slot", { key: '608c79b87543af7824f8449c346d0999eacd287a', onSlotchange: this.onSlotChange }))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

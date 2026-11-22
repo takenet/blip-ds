@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
-var uaiToast = require('./uai-toast-s507dmSr.js');
+var index = require('./index-GTJCA4wH.js');
+var uaiToast = require('./uai-toast-D1WUYP7I.js');
 
-const uaiToastCss = () => `:host{display:block;opacity:0;-webkit-transform:translateY(var(--uai-spacing-xs, 0.5rem));transform:translateY(var(--uai-spacing-xs, 0.5rem));-webkit-transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete;transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){:host{-webkit-transition:none;transition:none}}:host(:not(.uai-toast--open)){display:none}:host(.uai-toast--open){opacity:1;-webkit-transform:none;transform:none}@starting-style{:host(.uai-toast--open){opacity:0;-webkit-transform:translateY(var(--uai-spacing-xs, 0.5rem));transform:translateY(var(--uai-spacing-xs, 0.5rem))}}.toast{--toast-tint:var(--uai-feedback-info, #0073e5);--toast-base:var(--uai-surface-paper, #ffffff);--toast-fg:var(--uai-content-primary, #242729);--toast-bg:color-mix(in srgb, var(--toast-tint) 20%, var(--toast-base));--toast-border:color-mix(in srgb, var(--toast-tint) 50%, var(--toast-base));--toast-box-bg:color-mix(in srgb, var(--toast-tint) 40%, var(--toast-base));--toast-box-border:color-mix(in srgb, var(--toast-tint) 60%, var(--toast-base));-webkit-box-sizing:border-box;box-sizing:border-box;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-md, 1rem);width:100%;padding:var(--uai-spacing-md, 1rem);overflow:hidden;border:var(--uai-border-width-default, 1px) solid var(--toast-border);border-radius:var(--uai-radius-xl, 1rem);background:var(--toast-bg);-webkit-box-shadow:var(--uai-elevation-dialog, 0px 32px 32px -20px rgba(0, 0, 0, 0.1));box-shadow:var(--uai-elevation-dialog, 0px 32px 32px -20px rgba(0, 0, 0, 0.1));color:var(--toast-fg);font-family:var(--uai-font-family-sans, Figtree), sans-serif}.toast--info{--toast-tint:var(--uai-feedback-info, #0073e5)}.toast--success{--toast-tint:var(--uai-feedback-success, #3da329)}.toast--warning{--toast-tint:var(--uai-feedback-warning, #ff8000)}.toast--error{--toast-tint:var(--uai-feedback-error, #cf0022)}.toast--system{--toast-base:var(--uai-action-primary-default, #242729);--toast-tint:var(--uai-action-primary-foreground, #ffffff);--toast-fg:var(--uai-action-primary-foreground, #ffffff);--toast-bg:var(--toast-base);--toast-border:color-mix(in srgb, var(--toast-tint) 10%, var(--toast-base));--toast-box-bg:color-mix(in srgb, var(--toast-tint) 20%, var(--toast-base));--toast-box-border:var(--toast-border)}.toast__icon-box{-webkit-box-sizing:border-box;box-sizing:border-box;display:-ms-flexbox;display:flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:var(--uai-sizing-3xl, 3rem);height:var(--uai-sizing-3xl, 3rem);border:var(--uai-border-width-default, 1px) solid var(--toast-box-border);border-radius:var(--uai-radius-md, 0.5rem);background:var(--toast-box-bg)}.toast__icon{--uai-icon-size:var(--uai-sizing-xl, 2rem);color:var(--toast-fg)}.toast__text{display:-ms-flexbox;display:flex;-ms-flex:1 1 0px;flex:1 1 0;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;min-width:0;word-break:break-word}.toast__title,.toast__message{--uai-typo-color:var(--toast-fg);display:block}.toast__message ::slotted(a){color:inherit;font-weight:var(--uai-font-weight-medium, 500)}.toast__action,.toast__close{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:var(--uai-control-height-medium, 2.5rem);margin:0;padding:0;border:0;border-radius:var(--uai-radius-lg, 0.75rem);background:transparent;color:inherit;cursor:pointer;-webkit-transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.toast__action,.toast__close{-webkit-transition:none;transition:none}}.toast__action:hover,.toast__close:hover{background:color-mix(in srgb, var(--toast-fg) 10%, transparent)}.toast__action:focus-visible,.toast__close:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}.toast__action{padding:0 var(--uai-spacing-sm, 0.75rem);font-family:inherit;font-size:var(--uai-body-base-font-size, 0.875rem);font-weight:var(--uai-font-weight-medium, 500);line-height:var(--uai-body-base-line-height, 1.375rem);white-space:nowrap}.toast__close{width:var(--uai-control-height-medium, 2.5rem)}`;
+const uaiToastCss = () => `:host{display:block;opacity:0;-webkit-transform:translateY(var(--uai-spacing-xs, 0.5rem));transform:translateY(var(--uai-spacing-xs, 0.5rem));-webkit-transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete;transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){:host{-webkit-transition:none;transition:none}}:host(:not(.uai-toast--open)){display:none}:host(.uai-toast--open){opacity:1;-webkit-transform:none;transform:none}@starting-style{:host(.uai-toast--open){opacity:0;-webkit-transform:translateY(var(--uai-spacing-xs, 0.5rem));transform:translateY(var(--uai-spacing-xs, 0.5rem))}}.toast{--toast-tint:var(--uai-feedback-info, #0073e5);--toast-base:var(--uai-surface-paper, #ffffff);--toast-fg:var(--uai-content-primary, #242729);--toast-bg:color-mix(in srgb, var(--toast-tint) 20%, var(--toast-base));--toast-border:color-mix(in srgb, var(--toast-tint) 50%, var(--toast-base));--toast-box-bg:color-mix(in srgb, var(--toast-tint) 40%, var(--toast-base));--toast-box-border:color-mix(in srgb, var(--toast-tint) 60%, var(--toast-base));--toast-progress:color-mix(in srgb, var(--toast-tint) 80%, transparent);position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-md, 1rem);width:100%;padding:var(--uai-spacing-md, 1rem);overflow:hidden;border:var(--uai-border-width-default, 1px) solid var(--toast-border);border-radius:var(--uai-radius-xl, 1rem);background:var(--toast-bg);-webkit-box-shadow:var(--uai-elevation-dialog, 0px 32px 32px -20px rgba(0, 0, 0, 0.1));box-shadow:var(--uai-elevation-dialog, 0px 32px 32px -20px rgba(0, 0, 0, 0.1));color:var(--toast-fg);font-family:var(--uai-font-family-sans, Figtree), sans-serif}.toast--info{--toast-tint:var(--uai-feedback-info, #0073e5)}.toast--success{--toast-tint:var(--uai-feedback-success, #3da329)}.toast--warning{--toast-tint:var(--uai-feedback-warning, #ff8000)}.toast--error{--toast-tint:var(--uai-feedback-error, #cf0022)}.toast--system{--toast-base:var(--uai-action-primary-default, #242729);--toast-tint:var(--uai-action-primary-foreground, #ffffff);--toast-fg:var(--uai-action-primary-foreground, #ffffff);--toast-bg:var(--toast-base);--toast-border:color-mix(in srgb, var(--toast-tint) 10%, var(--toast-base));--toast-box-bg:color-mix(in srgb, var(--toast-tint) 20%, var(--toast-base));--toast-box-border:var(--toast-border);--toast-progress:color-mix(in srgb, var(--toast-fg) 40%, transparent)}.toast>*{opacity:var(--toast-content-opacity, 1);-webkit-transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.toast>*{-webkit-transition:none;transition:none}}.toast__progress{position:absolute;right:0;bottom:0;left:0;pointer-events:none}.toast__progress-bar{border-top:var(--uai-border-width-thick, 2px) solid var(--toast-progress);-webkit-transform-origin:left center;transform-origin:left center;-webkit-animation:uai-toast-progress linear forwards;animation:uai-toast-progress linear forwards}.toast__progress-bar--paused{-webkit-animation-play-state:paused;animation-play-state:paused}@media (forced-colors: active){.toast__progress-bar{border-top-color:CanvasText}}@-webkit-keyframes uai-toast-progress{from{-webkit-transform:scaleX(1);transform:scaleX(1)}to{-webkit-transform:scaleX(0);transform:scaleX(0)}}@keyframes uai-toast-progress{from{-webkit-transform:scaleX(1);transform:scaleX(1)}to{-webkit-transform:scaleX(0);transform:scaleX(0)}}.toast__icon-box{-webkit-box-sizing:border-box;box-sizing:border-box;display:-ms-flexbox;display:flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:var(--uai-sizing-3xl, 3rem);height:var(--uai-sizing-3xl, 3rem);border:var(--uai-border-width-default, 1px) solid var(--toast-box-border);border-radius:var(--uai-radius-md, 0.5rem);background:var(--toast-box-bg)}.toast__icon{--uai-icon-size:var(--uai-sizing-xl, 2rem);color:var(--toast-fg)}.toast__text{display:-ms-flexbox;display:flex;-ms-flex:1 1 0px;flex:1 1 0;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;min-width:0;word-break:break-word}.toast__title,.toast__message{--uai-typo-color:var(--toast-fg);display:block}.toast__message ::slotted(a){color:inherit;font-weight:var(--uai-font-weight-medium, 500)}.toast__action,.toast__close{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:var(--uai-control-height-medium, 2.5rem);margin:0;padding:0;border:0;border-radius:var(--uai-radius-lg, 0.75rem);background:transparent;color:inherit;cursor:pointer;-webkit-transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.toast__action,.toast__close{-webkit-transition:none;transition:none}}.toast__action:hover,.toast__close:hover{background:color-mix(in srgb, var(--toast-fg) 10%, transparent)}.toast__action:focus-visible,.toast__close:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}.toast__action{padding:0 var(--uai-spacing-sm, 0.75rem);font-family:inherit;font-size:var(--uai-body-base-font-size, 0.875rem);font-weight:var(--uai-font-weight-medium, 500);line-height:var(--uai-body-base-line-height, 1.375rem);white-space:nowrap}.toast__close{width:var(--uai-control-height-medium, 2.5rem)}`;
 
 const VARIANTS = ['system', 'info', 'success', 'warning', 'error'];
 const ICONS = {
@@ -43,9 +43,12 @@ const UaiToast = class {
         this.uaiToastAction = index.createEvent(this, "uaiToastAction");
         this.timerStart = 0;
         this.remaining = 0;
-        this.paused = false;
         this.removeOnClose = false;
         this.loaded = false;
+        /** The time is paused: the progress line stops with it. */
+        this.paused = false;
+        /** A new count of the time, which restarts the progress line. */
+        this.cycle = 0;
         /** Semantic variant: system, info, success, warning or error. Use the one that matches the message; avoid color alone to convey meaning. */
         this.variant = 'system';
         /** Optional short title, without a final period. Use for the reason of the notification; avoid long titles. */
@@ -68,6 +71,12 @@ const UaiToast = class {
         this.dtButtonClose = null;
         /** Test selector on the action button. Use for automation; pair with semantic queries. Avoid styling by it. */
         this.dtButtonAction = null;
+        this.handleVisibility = () => {
+            if (document.visibilityState === 'hidden')
+                this.pause();
+            else
+                this.resume();
+        };
         // The time stops while the user reads or reaches the toast (WCAG 2.2.1) and resumes with what was left.
         this.pause = () => {
             if (this.paused)
@@ -81,14 +90,17 @@ const UaiToast = class {
         this.resume = () => {
             if (!this.paused)
                 return;
-            if (this.el.matches(':hover') || this.el.matches(':focus-within'))
+            const held = (element) => !!element && (element.matches(':hover') || element.matches(':focus-within'));
+            if (held(this.el) || held(this.stack) || document.visibilityState === 'hidden')
                 return;
             this.paused = false;
             if (this.open && this.remaining > 0)
                 this.schedule();
         };
         this.handleFocusOut = (event) => {
-            if (!this.el.contains(event.relatedTarget))
+            var _a;
+            const next = event.relatedTarget;
+            if (!this.el.contains(next) && !((_a = this.stack) === null || _a === void 0 ? void 0 : _a.contains(next)))
                 setTimeout(this.resume);
         };
         this.handleKeyDown = (event) => {
@@ -151,6 +163,8 @@ const UaiToast = class {
     }
     // Moving an open toast (from a closing modal to the page) keeps the time it had left.
     connectedCallback() {
+        this.watchStack();
+        document.addEventListener('visibilitychange', this.handleVisibility);
         if (!this.loaded || !this.open)
             return;
         this.paused = false;
@@ -161,6 +175,27 @@ const UaiToast = class {
         if (this.timer)
             this.remaining = Math.max(0, this.remaining - (Date.now() - this.timerStart));
         this.clearTimer();
+        this.unwatchStack();
+        document.removeEventListener('visibilitychange', this.handleVisibility);
+    }
+    // The time of every toast in a stack pauses while the stack is under the pointer or has the focus, as the stack
+    // unfolds; it also pauses while the page is in the background.
+    watchStack() {
+        var _a, _b, _c, _d;
+        this.unwatchStack();
+        this.stack = this.container();
+        (_a = this.stack) === null || _a === void 0 ? void 0 : _a.addEventListener('mouseenter', this.pause);
+        (_b = this.stack) === null || _b === void 0 ? void 0 : _b.addEventListener('mouseleave', this.resume);
+        (_c = this.stack) === null || _c === void 0 ? void 0 : _c.addEventListener('focusin', this.pause);
+        (_d = this.stack) === null || _d === void 0 ? void 0 : _d.addEventListener('focusout', this.handleFocusOut);
+    }
+    unwatchStack() {
+        var _a, _b, _c, _d;
+        (_a = this.stack) === null || _a === void 0 ? void 0 : _a.removeEventListener('mouseenter', this.pause);
+        (_b = this.stack) === null || _b === void 0 ? void 0 : _b.removeEventListener('mouseleave', this.resume);
+        (_c = this.stack) === null || _c === void 0 ? void 0 : _c.removeEventListener('focusin', this.pause);
+        (_d = this.stack) === null || _d === void 0 ? void 0 : _d.removeEventListener('focusout', this.handleFocusOut);
+        this.stack = null;
     }
     container() {
         return this.el.closest(`${index.transformTag("uai-toast-container")}`);
@@ -182,6 +217,7 @@ const UaiToast = class {
     startTimer(time) {
         this.clearTimer();
         this.remaining = time > 0 ? time : 0;
+        this.cycle++;
         if (!this.remaining || this.paused)
             return;
         this.schedule();
@@ -202,7 +238,9 @@ const UaiToast = class {
         const urgent = variant === 'error' || variant === 'warning';
         // Inside a container, the container announces the toast; alone, the toast is its own live region.
         const role = this.container() ? undefined : urgent ? 'alert' : 'status';
-        return (index.h(index.Host, { key: 'd5ef66c41db784dc838e534093a6e9a8ffb96a26', class: { 'uai-toast--open': this.open }, onMouseEnter: this.pause, onMouseLeave: this.resume, onFocusin: this.pause, onFocusout: this.handleFocusOut, onKeyDown: this.handleKeyDown }, index.h("div", { key: 'b4b2e99d58d6e49c67c5156305f2d105d6e6c3f6', class: { toast: true, [`toast--${variant}`]: true }, part: "toast", role: role }, index.h("div", { key: 'd262b7b4c1108c03e604a1b8b73cc6555c0cf323', class: "toast__icon-box", part: "icon-box", "aria-hidden": "true" }, index.h("uai-icon", { key: 'f9ab2d40e10747dc970f4bc2b607f0fd2a48dfd3', class: "toast__icon", name: ICONS[variant], size: "medium" })), index.h("div", { key: '614f794f5e764feca72410527a3a0b837bd1054f', class: "toast__text" }, this.heading && (index.h("uai-typo", { key: '194a7aab90d7a6bfe1fd4bde7c5679c585600f0d', class: "toast__title", tag: "p", variant: "body-base", bold: "medium", margin: false }, this.heading)), index.h("uai-typo", { key: '26dae4c1be3a9c065d58311e039aa0b7b4867e9f', class: "toast__message", tag: "span", variant: "body-base", margin: false }, this.message, index.h("slot", { key: '8a2bcb0f90dd337ce23d6b762c51939f47d6dcf6' }))), this.actionLabel && (index.h("button", { key: '0949c98dd2065eb2586be5b62beebd57442eed58', type: "button", class: "toast__action", part: "action", "data-test": this.dtButtonAction, onClick: this.handleAction }, this.actionLabel)), this.closable && (index.h("button", { key: '060612237fa96dc75c1b4df2958d8d22bf9f3376', type: "button", class: "toast__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: () => this.dismiss('close-button') }, index.h("uai-icon", { key: '4885e4bb309cfc0554a5132b1f8dfa8c9ec5074b', name: "close", size: "medium", "aria-hidden": "true" }))))));
+        return (index.h(index.Host, { key: '0e98dd4924b2e82c0d5ed24752e34689fdf6b23a', class: { 'uai-toast--open': this.open }, onMouseEnter: this.pause, onMouseLeave: this.resume, onFocusin: this.pause, onFocusout: this.handleFocusOut, onKeyDown: this.handleKeyDown }, index.h("div", { key: '17ad2924ee834cf293233c0ad16491d1d0081c4b', class: { toast: true, [`toast--${variant}`]: true }, part: "toast", role: role }, index.h("div", { key: '5891cfb66def78bd3958eb6cf15ebe22a4fffcad', class: "toast__icon-box", part: "icon-box", "aria-hidden": "true" }, index.h("uai-icon", { key: '34d5a8f219b00d48e28ff529c283324157066157', class: "toast__icon", name: ICONS[variant], size: "medium" })), index.h("div", { key: '0a8fa74eb7f5b368d12926fafd68a173852f77ee', class: "toast__text" }, this.heading && (index.h("uai-typo", { key: '17ef3cad41fc0307054d458ae0da0d42ab2f9643', class: "toast__title", tag: "p", variant: "body-base", bold: "medium", margin: false }, this.heading)), index.h("uai-typo", { key: '1867dc065a629dfbc399e615a102b698eef79177', class: "toast__message", tag: "span", variant: "body-base", margin: false }, this.message, index.h("slot", { key: '50a2c799a79591f20e925988dc3f1e53a771f370' }))), this.actionLabel && (index.h("button", { key: 'ffbaf4f98d168a969cb81ba484c04ce007b5af62', type: "button", class: "toast__action", part: "action", "data-test": this.dtButtonAction, onClick: this.handleAction }, this.actionLabel)), this.closable && (index.h("button", { key: '48dcd589ae44cfcbe03a1dd17897c14768346347', type: "button", class: "toast__close", part: "close", "aria-label": this.closeLabel, "data-test": this.dtButtonClose, onClick: () => this.dismiss('close-button') }, index.h("uai-icon", { key: 'b920b94b94e5a2bda72b8bc4c825c36353a7af64', name: "close", size: "medium", "aria-hidden": "true" }))), this.open && this.duration > 0 && (
+        // The remaining time as a line that shrinks with it; a new key restarts it, and it stops while paused.
+        index.h("div", { key: 'a9ff65fc3835b60b6aa3fe7ba5d6b6766aaf0ca5', class: "toast__progress", part: "progress", "aria-hidden": "true" }, index.h("div", { key: this.cycle, class: { 'toast__progress-bar': true, 'toast__progress-bar--paused': this.paused }, style: { animationDuration: `${this.duration}ms` } }))))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

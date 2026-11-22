@@ -25,7 +25,7 @@ export class UaiThemeProvider {
     }
     render() {
         const theme = THEMES.includes(this.theme) ? this.theme : 'light';
-        return (h(Host, { key: 'a012d5d1b09253e49601fdd4d6659a25a50316bb', "data-uai-theme": theme }, h("slot", { key: 'cbfae8736834a53e2e564301d4cf15e08113d343' })));
+        return (h(Host, { key: 'ea4a83270197d8209bf65bb12b411cee675e660a', "data-uai-theme": theme }, h("slot", { key: '1506375915fc7b13a81f20ba062a65295bdbcbeb' })));
     }
     static get is() { return "uai-theme-provider"; }
     static get encapsulation() { return "shadow"; }

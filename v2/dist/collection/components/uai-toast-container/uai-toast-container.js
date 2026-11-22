@@ -2,9 +2,13 @@ import { Host, h } from "@stencil/core";
 import { warnLegacyValue } from "../../utils/deprecation";
 import { supportsPopover } from "../../utils/uai-overlay";
 import { UAI_TOAST_POSITIONS, isCreatedContainer, isModal, isOpenModal, toastContainerFor, } from "../../utils/uai-toast";
+// How many toasts show in the collapsed stack; the ones behind them wait hidden until the front ones close.
+const VISIBLE = 3;
 /**
  * Stack of toasts fixed to a corner or edge of the screen. It opens in the top layer (Popover API), so the toasts
- * stay above modals, and announces each toast that opens to screen readers.
+ * stay above modals, and announces each toast that opens to screen readers. With more than one toast, the older ones
+ * stack behind the newest, peeking out and scaled down; the pointer or the focus on the stack unfolds it, and the
+ * time of every toast pauses while it is unfolded.
  * Use one per position inside UaiThemeProvider; `uai-toast` `show()` creates it when the page has none.
  * Avoid placing other content in it.
  *
@@ -13,21 +17,100 @@ import { UAI_TOAST_POSITIONS, isCreatedContainer, isModal, isOpenModal, toastCon
  */
 export class UaiToastContainer {
     constructor() {
+        this.frame = 0;
+        /** The stack is unfolded, by the pointer or the focus on it. */
+        this.expanded = false;
         /** Where the toasts are stacked. Use bottom positions for feedback of an action; avoid two containers in one position. */
         this.position = 'bottom-left';
         /** Accessible name of the notifications region. Use a translated label; avoid leaving it generic. */
         this.label = 'Notificações';
+        this.scheduleLayout = () => {
+            cancelAnimationFrame(this.frame);
+            this.frame = requestAnimationFrame(() => this.layout());
+        };
+        // Places each open toast by its index from the newest (0): how far it is from the edge when unfolded (the toasts in
+        // front of it and the gaps), whether its content shows, and whether it shows at all when the stack is folded. The
+        // stack takes the height of what shows, so the pointer stays on it as it unfolds.
+        this.layout = () => {
+            var _a, _b;
+            if (!this.stack)
+                return;
+            const toasts = this.openToasts.reverse();
+            const gap = this.length('--toast-stack-gap');
+            const peek = this.length('--toast-stack-peek');
+            let offset = 0;
+            toasts.forEach((toast, index) => {
+                var _a;
+                (_a = this.resizeObserver) === null || _a === void 0 ? void 0 : _a.observe(toast);
+                const style = toast.style;
+                style.setProperty('--toast-index', String(index));
+                style.setProperty('--toast-offset', `${offset}px`);
+                style.setProperty('--toast-content-opacity', index === 0 || this.expanded ? '1' : '0');
+                style.setProperty('--toast-shown', index < VISIBLE || this.expanded ? '1' : '0');
+                toast.toggleAttribute('data-behind', index > 0 && !this.expanded);
+                offset += toast.offsetHeight + gap;
+            });
+            const front = (_b = (_a = toasts[0]) === null || _a === void 0 ? void 0 : _a.offsetHeight) !== null && _b !== void 0 ? _b : 0;
+            const height = !toasts.length
+                ? 0
+                : this.expanded
+                    ? offset - gap
+                    : front + peek * (Math.min(toasts.length, VISIBLE) - 1);
+            this.stack.style.height = `${height}px`;
+        };
+        this.onPointerEnter = () => this.setExpanded(true);
+        this.onPointerLeave = () => {
+            if (!this.el.matches(':focus-within'))
+                this.setExpanded(false);
+        };
+        this.onFocusOut = (event) => {
+            if (!this.el.contains(event.relatedTarget) && !this.el.matches(':hover'))
+                this.setExpanded(false);
+        };
     }
     componentDidLoad() {
         this.raise();
         this.watchModal();
+        if (typeof ResizeObserver !== 'undefined')
+            this.resizeObserver = new ResizeObserver(() => this.scheduleLayout());
+        this.layout();
     }
     disconnectedCallback() {
-        var _a;
+        var _a, _b;
         if (supportsPopover() && this.el.matches(':popover-open'))
             this.el.hidePopover();
         (_a = this.modalObserver) === null || _a === void 0 ? void 0 : _a.disconnect();
         this.modalObserver = undefined;
+        (_b = this.resizeObserver) === null || _b === void 0 ? void 0 : _b.disconnect();
+        cancelAnimationFrame(this.frame);
+    }
+    componentDidRender() {
+        this.layout();
+    }
+    // ---- stack -------------------------------------------------------------------------------
+    get openToasts() {
+        return Array.from(this.el.children).filter((child) => child.tagName.toLowerCase().endsWith('uai-toast') && !!child.open);
+    }
+    // A length custom property (rem or px) of the container, in pixels.
+    length(property) {
+        const value = getComputedStyle(this.el).getPropertyValue(property).trim();
+        const amount = parseFloat(value);
+        if (Number.isNaN(amount))
+            return 0;
+        if (value.endsWith('rem'))
+            return amount * parseFloat(getComputedStyle(document.documentElement).fontSize);
+        return amount;
+    }
+    setExpanded(expanded) {
+        if (this.expanded === expanded)
+            return;
+        // One toast has nothing to unfold.
+        this.expanded = expanded && this.openToasts.length > 1;
+    }
+    handleToastClose() {
+        if (this.openToasts.length <= 1)
+            this.expanded = false;
+        this.scheduleLayout();
     }
     // A container that show() created inside an open modal hands its open toasts over to the page when the modal closes,
     // so a toast shown right before closing the modal stays on the screen.
@@ -63,6 +146,7 @@ export class UaiToastContainer {
     handleToastOpen(event) {
         this.raise();
         this.announce(event.target);
+        this.scheduleLayout();
     }
     raise() {
         if (!supportsPopover() || !this.el.isConnected)
@@ -92,7 +176,7 @@ export class UaiToastContainer {
         if (!known)
             warnLegacyValue('uai-toast-container', 'position', this.position, 'bottom-left');
         const position = known || 'bottom-left';
-        return (h(Host, { key: '646d653eb5455d844363cf51fa836b3994d02014', popover: supportsPopover() ? 'manual' : undefined, role: "region", "aria-label": this.label, class: { [`uai-toast-container--${position}`]: true } }, h("div", { key: 'c38168d31f6fb8bcadb690b5d2a1847f5c0e0764', class: "stack", part: "stack" }, h("slot", { key: '22a347ced0a075edc4fbba581dec71b00168b150' })), h("div", { key: 'd06f672132fbb09d6111bd017e641c2ad1490d18', class: "live", "aria-live": "polite", ref: (el) => (this.politeRegion = el) }), h("div", { key: '5854f1ee13210fac83801e99a61f9322baec3436', class: "live", "aria-live": "assertive", ref: (el) => (this.assertiveRegion = el) })));
+        return (h(Host, { key: '8e7711bb8050278095a34cb5aa3ca1cead64f698', popover: supportsPopover() ? 'manual' : undefined, role: "region", "aria-label": this.label, class: { [`uai-toast-container--${position}`]: true, 'uai-toast-container--expanded': this.expanded }, onFocusin: () => this.setExpanded(true), onFocusout: this.onFocusOut }, h("div", { key: '7cc16002dc8234c962113c64dcf8b2b40c7151d8', class: "stack", part: "stack", ref: (stack) => (this.stack = stack), onPointerEnter: this.onPointerEnter, onPointerLeave: this.onPointerLeave }, h("slot", { key: '109f9d1f78f2d144a61feeaeaee334c4e762c707', onSlotchange: this.scheduleLayout })), h("div", { key: '874a2865d9f723a11ef0fafd45e52ff297cd60d1', class: "live", "aria-live": "polite", ref: (el) => (this.politeRegion = el) }), h("div", { key: '5aa1d9bbf7d7c75982c2ce83c4ad76d33fde4820', class: "live", "aria-live": "assertive", ref: (el) => (this.assertiveRegion = el) })));
     }
     static get is() { return "uai-toast-container"; }
     static get encapsulation() { return "shadow"; }
@@ -157,9 +241,20 @@ export class UaiToastContainer {
             }
         };
     }
+    static get states() {
+        return {
+            "expanded": {}
+        };
+    }
     static get elementRef() { return "el"; }
     static get listeners() {
         return [{
+                "name": "uaiToastClose",
+                "method": "handleToastClose",
+                "target": undefined,
+                "capture": false,
+                "passive": false
+            }, {
                 "name": "uaiToastOpen",
                 "method": "handleToastOpen",
                 "target": undefined,

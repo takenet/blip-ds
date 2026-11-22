@@ -43,7 +43,7 @@ export class UaiEmoji {
         });
     }
     render() {
-        return (h(Host, { key: 'a952a547ad3492123e3bc3e4ecd1514eb99b3094', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("div", { key: 'a53211ff26e153cae4fc1951195ec7c78aa134ad', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
+        return (h(Host, { key: 'd17098f5a3908c442001f50e3c5d304d0f491778', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("div", { key: '160d1e57ec5e8c25beaedf52cb606e63a6cd81ec', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
     }
     static get is() { return "uai-emoji"; }
     static get encapsulation() { return "shadow"; }

@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 var assetLoader = require('./asset-loader-CO6wtD2Y.js');
 require('./asset-config-CKVSo2i2.js');
 
@@ -30,7 +30,7 @@ const BdsIllustration = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '5035530bdeec1c2638021dcc6777293d9d18d39d', role: "img", class: {
+        return (index.h(index.Host, { key: '7633f991c1db5653ae64aed068ecfb345c285561', role: "img", class: {
                 'bds-illustration': true,
             } }, this.IllustrationContent ? (index.h("img", { draggable: false, src: this.IllustrationContent, onError: () => { this.IllustrationContent = undefined; }, alt: this.alt, "data-test": this.dataTest })) : (index.h("div", { class: "default", "data-test": this.dataTest }))));
     }

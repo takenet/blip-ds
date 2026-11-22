@@ -1,4 +1,4 @@
-import { t as transformTag, r as registerInstance, h, g as getElement } from './index-D799VfbI.js';
+import { t as transformTag, r as registerInstance, h, g as getElement } from './index-B3G05Lxx.js';
 
 const stepCss = () => `:host{padding:8px}:host .step{width:100%;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}:host .step__content{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}:host .step__content--completed{color:var(--color-content-disable, rgb(89, 89, 89))}:host .step__content--active{color:var(--color-primary, rgb(30, 107, 241));font-weight:bold}:host .step__content--pointer{cursor:pointer}:host .step__content--disabled{cursor:no-drop}:host .step__content__ellipse{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-pack:center;justify-content:center;border-radius:50%;background:var(--color-content-default, rgb(40, 40, 40));margin-right:4px;min-width:24px;min-height:24px}:host .step__content__ellipse ${transformTag("bds-typo")},:host .step__content__ellipse ${transformTag("bds-icon")}{color:var(--color-surface-0, rgb(255, 255, 255))}:host .step__content__ellipse--completed{background:var(--color-content-ghost, rgb(140, 140, 140))}:host .step__content__ellipse--completed ${transformTag("bds-typo")},:host .step__content__ellipse--completed ${transformTag("bds-icon")}{color:var(--color-surface-0, rgb(255, 255, 255))}:host .step__content__ellipse--active{background:var(--color-surface-primary, rgb(30, 107, 241))}:host .step__content__ellipse--active ${transformTag("bds-typo")},:host .step__content__ellipse--active ${transformTag("bds-icon")}{color:var(--color-content-bright, rgb(255, 255, 255))}:host .step__content__ellipse--disabled{background:var(--color-content-ghost, rgb(140, 140, 140))}:host .step__content__ellipse--disabled ${transformTag("bds-typo")},:host .step__content__ellipse--disabled ${transformTag("bds-icon")}{color:var(--color-surface-0, rgb(255, 255, 255))}:host .step__content__text--completed{color:var(--color-content-ghost, rgb(140, 140, 140))}:host .step__content__text--active{color:var(--color-content-default, rgb(40, 40, 40))}:host .step__content__text--disabled{color:var(--color-content-ghost, rgb(140, 140, 140))}@media (max-width: 780px){:host{display:-ms-flexbox;display:flex;-ms-flex:inherit;flex:inherit}}`;
 
@@ -35,24 +35,24 @@ const BdsStep = class {
         this.dataTest = null;
     }
     render() {
-        return (h("div", { key: 'dc721f7f768d5c5404457483ff1425e4463c7e59', class: "step" }, h("div", { key: 'efa1ac1feacf4981e2ad85b8fe9fae168d1da4c3', class: {
+        return (h("div", { key: '6973c6ec7da597fcd76e02f38e036105d1bcca39', class: "step" }, h("div", { key: 'b4b2e95dab5ac7911f83cdd921c3880910f4b8a3', class: {
                 step__content: true,
                 'step__content--active': this.active,
                 'step__content--completed': this.completed,
                 'step__content--disabled': this.disabled,
                 'step__content--pointer': this.pointer,
                 'step--last': this.last,
-            }, "data-test": this.dataTest }, h("div", { key: 'a5037d6e29dcbb78b1e8f5be020a578d77ebb0c4', class: {
+            }, "data-test": this.dataTest }, h("div", { key: 'adc2590c8ac73858f886b5d8945ab8009295f98a', class: {
                 step__content__ellipse: true,
                 'step__content__ellipse--active': this.active,
                 'step__content__ellipse--completed': this.completed,
                 'step__content__ellipse--disabled': this.disabled,
-            } }, this.completed && h("bds-icon", { key: 'fab1d468fad2d78c69ac07f680cf17d8c52165ad', name: "true" }), !this.completed && h("bds-typo", { key: 'd2906e1937746bd38feef416f8cf490ff07a23d9' }, this.index + 1)), h("bds-typo", { key: '6e3f80c3eea8f78a3b9ba8eb1a89898b197ada2c', variant: "fs-16", class: {
+            } }, this.completed && h("bds-icon", { key: '309699d7df07532deebc51d4c3ae1cb0e93ab71c', name: "true" }), !this.completed && h("bds-typo", { key: '7f318055dcf8978ac504b6a05b97f023c2e7cc41' }, this.index + 1)), h("bds-typo", { key: 'ff6841b381fc0580232768b52304cffb0e48ea63', variant: "fs-16", class: {
                 step__content__text: true,
                 'step__content__text--completed': this.completed && !this.active,
                 'step__content__text--active': this.active,
                 'step__content__text--disabled': this.disabled,
-            }, bold: this.active ? 'bold' : 'regular' }, h("slot", { key: 'e8c08800e332faa06a690301bf8dd6dabc148fe3' })))));
+            }, bold: this.active ? 'bold' : 'regular' }, h("slot", { key: '6c4699d7ed76048bc4177a6c980dabccdcc26265' })))));
     }
     get el() { return getElement(this); }
 };

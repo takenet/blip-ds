@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 
 const buttonGroupCss = () => `:host{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}`;
 
@@ -117,7 +117,7 @@ const ButtonGroup = class {
         button.setColor(this.color);
     }
     render() {
-        return (h(Host, { key: '58a9312c6ee4f97e05834a102615ec29bd3072cc', class: "button_group" }, h("bds-grid", { key: 'd7d72115d26e524b2ca0f727b56a39c71060ec2f', direction: this.direction }, h("slot", { key: 'f5f0fc17a74e66788711601007e06371f2dbed3a' }))));
+        return (h(Host, { key: '916582fa76a2007eb10f441efc2286e8884c7f06', class: "button_group" }, h("bds-grid", { key: '1eab130779300458238086c57d8e20f99a406f9a', direction: this.direction }, h("slot", { key: 'c671618618b0678536c12118b74e42a0780d553c' }))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

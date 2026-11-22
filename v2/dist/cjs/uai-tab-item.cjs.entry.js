@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 
 const uaiTabItemCss = () => `:host{display:none}:host(.is-open){display:block;height:100%}:host([hidden]){display:none}.uai-tab-item__content{height:100%}`;
 
@@ -76,7 +76,7 @@ const UaiTabItem = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '1c87ec064aab56bd3361d194cf40a9f314b87dad', class: { 'is-open': this.open && !this.disable }, hidden: !this.open || this.disable }, index.h("div", { key: 'ecce0bae02f03d0313a053ce88ca803e1480b486', class: "uai-tab-item__content", "data-test": this.dataTest }, index.h("slot", { key: 'ca6cde522c044e651bde2538f3ea4eb5fdd9f143' }))));
+        return (index.h(index.Host, { key: '0574bff73c030c5911e57fae37fe5a5dacf66318', class: { 'is-open': this.open && !this.disable }, hidden: !this.open || this.disable }, index.h("div", { key: 'ec567b8ebdfc37eedcbe40b3a3c0ab261c25de92', class: "uai-tab-item__content", "data-test": this.dataTest }, index.h("slot", { key: 'c05f317948cfa3ad8ec94fdf5e4df4ae149a0793' }))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

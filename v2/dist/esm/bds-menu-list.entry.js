@@ -1,4 +1,4 @@
-import { t as transformTag, r as registerInstance, h, H as Host } from './index-D799VfbI.js';
+import { t as transformTag, r as registerInstance, h, H as Host } from './index-B3G05Lxx.js';
 
 const menuListCss = () => `.menu-list{display:-ms-flexbox;display:flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;-webkit-box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));height:56px;border-radius:8px}.menu-list ${transformTag("bds-menu-list-item")}+${transformTag("bds-menu-list-item")}{border-left:1px solid #d4d4d4}.menu-list__left{width:7px;height:56px;border-radius:8px 0px 0px 8px;background-color:#f6f6f6}.menu-list__right{width:7px;height:56px;border-radius:0px 8px 8px 0px;background-color:#f6f6f6}`;
 
@@ -7,7 +7,7 @@ const MenuList = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '5d99f0ff282bf159d9834635b56975ba0a60ee33' }, h("div", { key: 'ec4dc921f997ac8f7ef5e886dda843ed614f6c2f', class: "menu-list" }, h("div", { key: 'fbabd5088b23d69f595af29809a0e52d35ceb3b8', class: "menu-list__left" }), h("slot", { key: '7aa6c3cbff23a1e134f41406fbd6268f209c156d' }), h("div", { key: '2c0ff79247fdabb6319b291e42d398cb18ed3749', class: "menu-list__right" }))));
+        return (h(Host, { key: '9c5faa6ffb5669099459ec58b27bcb58dccb3293' }, h("div", { key: '72aff36835b42f65cff4df05cceb4639271934a5', class: "menu-list" }, h("div", { key: '94a59c004e32d45cac0fc32b1ed872f73b2bf8ea', class: "menu-list__left" }), h("slot", { key: '6412b6feefac9e5d3feec098aab12bfd00e107f3' }), h("div", { key: '916a9e306043e40f354f0fc6e848cc6fd13ff6e7', class: "menu-list__right" }))));
     }
 };
 MenuList.style = menuListCss();

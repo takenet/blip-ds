@@ -1,9 +1,9 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 var validations = require('./validations-BrQ_igDv.js');
 var countriesEs_ES = require('./countries-es_ES-BrZr75bu.js');
-var tagName = require('./tag-name-DCmhJ5mj.js');
+var tagName = require('./tag-name-f2wnNW4a.js');
 
 var countries = {
 	"brazil-flag": {

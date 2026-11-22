@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 
 const uaiTableCss = () => `:host{display:block;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;overflow-x:auto;background-color:var(--uai-surface-paper, #ffffff);color:var(--uai-content-primary, #242729);font-family:var(--uai-font-family-sans, Figtree), sans-serif}`;
 
@@ -13,7 +13,7 @@ const UaiTable = class {
         this.label = null;
     }
     render() {
-        return (index.h(index.Host, { key: '9abab94fe6e16f16c05363c1608e9c8ad6576c8d', role: "table", "aria-label": this.label, style: this.columns ? { '--uai-table-columns': this.columns } : undefined }, index.h("slot", { key: '76f28ba78a6f9184afe1f8d390bcb536c370e4ba' })));
+        return (index.h(index.Host, { key: 'be741ba3a8c4135023bda0e2d67222c523635f63', role: "table", "aria-label": this.label, style: this.columns ? { '--uai-table-columns': this.columns } : undefined }, index.h("slot", { key: '1316ba51985c464482516d605d3be1fb9412c6ca' })));
     }
     get el() { return index.getElement(this); }
 };

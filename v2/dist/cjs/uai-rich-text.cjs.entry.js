@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 var deprecation = require('./deprecation-DQqFZBv-.js');
 var uaiFormControl = require('./uai-form-control-B_Rr3WRq.js');
 
@@ -31382,12 +31382,12 @@ const UaiRichText = class {
         const success = this.success && !invalid;
         const message = this.message();
         const enabled = this.features();
-        return (index.h(index.Host, { key: '36567c050350b8f9af05c13772e4dd933184c96d', "aria-disabled": disabled ? 'true' : null, class: {
+        return (index.h(index.Host, { key: '122e1646912066ab83e1c3e165fc6132fa1d2adf', "aria-disabled": disabled ? 'true' : null, class: {
                 'uai-rich-text--danger': invalid,
                 'uai-rich-text--success': success,
                 'uai-rich-text--disabled': disabled,
                 'uai-rich-text--readonly': this.readonly && !disabled,
-            } }, index.h("div", { key: '127612dd43af305ca75f98126d5b3a87d1a909a2', class: "rich-text" }, this.label && (index.h("span", { key: 'b1a56e7f07aa4a7fbb69819daba9fae242a243e9', id: `${this.id}-label`, class: "rich-text__label" }, index.h("uai-typo", { key: '71fae08b081f8cbd2e0b86c8ae2361aa233452cd', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), index.h("div", { key: '9c7568b2203b96c09c070cb5a7d8a4feba296119', class: "rich-text__control", part: "input-container" }, !this.readonly && enabled.size > 0 && this.renderToolbar(enabled, disabled), index.h("div", { key: 'f3609d861a5dd9a8cf80971359f1cdd4bbe76d57', class: "rich-text__editor", part: "editor", ref: (element) => (this.editorEl = element), style: Object.assign(Object.assign({}, (this.minHeight !== undefined ? { minHeight: `${this.minHeight}px` } : {})), (this.maxHeight !== undefined ? { maxHeight: `${this.maxHeight}px` } : {})) })), message && (index.h("div", { key: 'c9f0bb1b4ace4143b98ab83d8494528958df59ed', id: `${this.id}-message`, class: "rich-text__message", part: "input__message" }, index.h("uai-typo", { key: '677e616c1e3f7ac27e15c28aaa895271d7c0fcd8', variant: "caption", tag: "span", margin: false }, message))))));
+            } }, index.h("div", { key: 'ae88e9e9537318e0b7ece8c076ed68878a342ab4', class: "rich-text" }, this.label && (index.h("span", { key: '191786da692ea526bdbe1d9268dc9f66b17c1d40', id: `${this.id}-label`, class: "rich-text__label" }, index.h("uai-typo", { key: '92261ab2768a00e8fbdb07ec49d713fc1d1e923d', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), index.h("div", { key: '70b4c969ef00abc966e246feec689a4e002b770f', class: "rich-text__control", part: "input-container" }, !this.readonly && enabled.size > 0 && this.renderToolbar(enabled, disabled), index.h("div", { key: '3a820a3fb8d376ae7329f4cc38d44aaf4d8988fe', class: "rich-text__editor", part: "editor", ref: (element) => (this.editorEl = element), style: Object.assign(Object.assign({}, (this.minHeight !== undefined ? { minHeight: `${this.minHeight}px` } : {})), (this.maxHeight !== undefined ? { maxHeight: `${this.maxHeight}px` } : {})) })), message && (index.h("div", { key: '9458931f4154a17d7e563ab5947c99925f4c6623', id: `${this.id}-message`, class: "rich-text__message", part: "input__message" }, index.h("uai-typo", { key: '02841ccdb7c3632052dad09a0041abcfe8c67262', variant: "caption", tag: "span", margin: false }, message))))));
     }
     static get delegatesFocus() { return true; }
     static get formAssociated() { return true; }

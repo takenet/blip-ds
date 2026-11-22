@@ -1,96 +1,9 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { t as transformTag, r as registerInstance, c as createEvent, f as forceUpdate, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 import { U as UaiFormControl } from './uai-form-control-BkRP7pRQ.js';
+import { U as UaiOverlay } from './uai-overlay-BCD7g-De.js';
+import { t as todayIso, g as groupDigits, e as displayToIso, j as isIsoDate, c as clampIso, o as outOfRange, i as isoToDisplay, d as dateForKey, p as parseIso, b as toIso, Y as YEARS_PER_PAGE, k as dateLocale, a as addMonths, C as CalendarHeader, f as CalendarDays, h as CalendarList, r as regionalDateFormat } from './uai-input-date-format-BkcYZfwW.js';
 
-const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
-const LENGTHS = { day: 2, month: 2, year: 4 };
-const LOCALES = {
-    pt_BR: {
-        label: 'Data',
-        calendar: 'Abrir calendário',
-        required: 'Informe a data.',
-        date: 'Informe uma data válida.',
-        min: (date) => `Informe uma data a partir de ${date}.`,
-        max: (date) => `Informe uma data até ${date}.`,
-    },
-    en_US: {
-        label: 'Date',
-        calendar: 'Open calendar',
-        required: 'Enter the date.',
-        date: 'Enter a valid date.',
-        min: (date) => `Enter a date on or after ${date}.`,
-        max: (date) => `Enter a date on or before ${date}.`,
-    },
-    es_ES: {
-        label: 'Fecha',
-        calendar: 'Abrir calendario',
-        required: 'Ingrese la fecha.',
-        date: 'Ingrese una fecha válida.',
-        min: (date) => `Ingrese una fecha a partir del ${date}.`,
-        max: (date) => `Ingrese una fecha hasta el ${date}.`,
-    },
-};
-const dateLocale = (language) => LOCALES[language];
-function regionalDateFormat(locale = typeof window === 'undefined' ? undefined : window.navigator.language) {
-    const parts = new Intl.DateTimeFormat(locale, {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        calendar: 'gregory',
-        numberingSystem: 'latn',
-    }).formatToParts(new Date(2026, 11, 25));
-    const order = parts
-        .map((part) => part.type)
-        .filter((part) => part === 'day' || part === 'month' || part === 'year');
-    const separator = parts.find((part) => part.type === 'literal').value;
-    const labels = { day: 'DD', month: 'MM', year: 'YYYY' };
-    return { order, separator, placeholder: order.map((part) => labels[part]).join(separator) };
-}
-/** True when the text is an ISO YYYY-MM-DD date that exists in the calendar. */
-function isIsoDate(text) {
-    const match = ISO_DATE.exec(text || '');
-    if (!match)
-        return false;
-    const [year, month, day] = match.slice(1).map(Number);
-    const date = new Date(Date.UTC(year, month - 1, day));
-    return year > 0 && date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
-}
-/** Groups the typed digits in the browser's regional date format. */
-function groupDigits(digits, locale) {
-    const { order, separator } = regionalDateFormat(locale);
-    const groups = [];
-    let rest = digits;
-    for (const part of order) {
-        if (!rest)
-            break;
-        groups.push(rest.slice(0, LENGTHS[part]));
-        rest = rest.slice(LENGTHS[part]);
-    }
-    return groups.join(separator);
-}
-/** ISO date for eight typed digits, or '' when they are incomplete or name a day that does not exist. */
-function displayToIso(digits, locale) {
-    if (digits.length !== 8)
-        return '';
-    const parts = {};
-    let offset = 0;
-    for (const part of regionalDateFormat(locale).order) {
-        parts[part] = digits.slice(offset, offset + LENGTHS[part]);
-        offset += LENGTHS[part];
-    }
-    const iso = `${parts.year}-${parts.month}-${parts.day}`;
-    return isIsoDate(iso) ? iso : '';
-}
-/** Date in the browser's regional format for a valid ISO date, or ''. */
-function isoToDisplay(iso, locale) {
-    const match = ISO_DATE.exec(iso || '');
-    if (!match || !isIsoDate(iso))
-        return '';
-    const parts = { year: match[1], month: match[2], day: match[3] };
-    const { order, separator } = regionalDateFormat(locale);
-    return order.map((part) => parts[part]).join(separator);
-}
-
-const uaiInputDateCss = () => `:host{--input-height:var(--uai-control-height-medium, 2.5rem);--input-background:var(--uai-surface-paper, #ffffff);--input-border:var(--uai-border-input, #adb4b8);--input-content:var(--uai-content-primary, #242729);--input-label:var(--uai-content-primary, #242729);--input-message:var(--uai-content-secondary, #5f676d);--input-feedback:var(--input-content);--input-halo:color-mix(     in srgb,     var(--uai-border-ring, #242729) calc(var(--uai-opacity-focus-ring, 0.3) * 100%),     transparent   );display:block;width:var(--uai-input-date-width, 100%)}:host(.uai-input-date--size-short){--input-height:var(--uai-control-height-short, 2rem)}:host(.uai-input-date--danger){--input-border:var(--uai-feedback-error, #cf0022);--input-label:var(--uai-feedback-error, #cf0022);--input-message:var(--uai-feedback-error, #cf0022);--input-feedback:var(--uai-feedback-error, #cf0022)}:host(.uai-input-date--success){--input-border:var(--uai-feedback-success, #3da329);--input-message:var(--uai-feedback-success, #3da329);--input-feedback:var(--uai-feedback-success, #3da329)}:host(.uai-input-date--disabled){--input-background:var(--uai-surface-muted, #f2f3f3);--input-border:var(--uai-border-default, #e4e6e7);--input-content:var(--uai-content-disabled, #848e94);--input-label:var(--uai-content-disabled, #848e94);--input-message:var(--uai-content-disabled, #848e94);--input-feedback:var(--uai-content-disabled, #848e94)}.input{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;gap:var(--uai-spacing-2xs, 0.25rem)}.input__label,.input__message{--uai-typo-color:currentColor}.input__label{color:var(--input-label)}.input__message{padding:0 var(--uai-spacing-xs, 0.5rem);color:var(--input-message)}.input__control{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem);height:var(--input-height);position:relative;padding:0 var(--uai-spacing-xs, 0.5rem);border:var(--uai-border-width-default, 1px) solid var(--input-border);border-radius:var(--uai-radius-lg, 0.75rem);background-color:var(--input-background);color:var(--input-content);cursor:text;-webkit-transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.input__control{-webkit-transition:none;transition:none}}.input__control:focus-within{--input-border:var(--uai-border-ring, #242729);-webkit-box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo);box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo)}@media (forced-colors: active){.input__control:focus-within{-webkit-box-shadow:none;box-shadow:none;outline:var(--uai-border-width-thick, 2px) solid CanvasText}}:host(:not(.uai-input-date--disabled):not(.uai-input-date--readonly):not(.uai-input-date--danger):not(.uai-input-date--success)) .input__control:hover:not(:focus-within){--input-border:var(--uai-content-secondary, #5f676d)}:host(.uai-input-date--disabled) .input__control{cursor:not-allowed}.input__icon{-ms-flex:none;flex:none;color:var(--input-content)}.input__feedback{-ms-flex:none;flex:none;color:var(--input-feedback)}.input__field{display:-ms-flexbox;display:flex;-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-align:center;align-items:center;min-width:0;height:100%}.input__native{-ms-flex:1 1 auto;flex:1 1 auto;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:0;height:100%;margin:0;padding:0;border:0;outline:none;background:transparent;color:inherit;font-family:var(--uai-font-family-sans, Figtree), sans-serif;font-size:var(--uai-body-base-font-size, 0.875rem);font-weight:var(--uai-font-weight-regular, 400);line-height:var(--uai-body-base-line-height, 1.375rem);text-overflow:ellipsis;-webkit-appearance:none;-moz-appearance:none;appearance:none}.input__native::-webkit-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::-moz-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native:-ms-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::-ms-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native:disabled{cursor:not-allowed;opacity:1;-webkit-text-fill-color:currentColor}.input__native:disabled::-webkit-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::-moz-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled:-ms-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::-ms-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::placeholder{color:var(--uai-content-disabled, #848e94)}.calendar{display:-ms-inline-flexbox;display:inline-flex;-ms-flex:none;flex:none;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;margin:0;padding:var(--uai-spacing-2xs, 0.25rem);border:0;border-radius:var(--uai-radius-md, 0.5rem);background:transparent;color:var(--input-content);cursor:pointer;-webkit-transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.calendar{-webkit-transition:none;transition:none}}.calendar:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}.calendar:hover:not(:disabled){background:var(--uai-overlay-hover, rgba(0, 0, 0, 0.08))}.calendar:disabled{cursor:not-allowed}@media (forced-colors: active){.calendar{border:var(--uai-border-width-default, 1px) solid ButtonText}}.picker{position:absolute;right:0;bottom:0;width:0;height:0;margin:0;padding:0;border:0;opacity:0;pointer-events:none}`;
+const uaiInputDateCss = () => `:host{--input-height:var(--uai-control-height-medium, 2.5rem);--input-background:var(--uai-surface-paper, #ffffff);--input-border:var(--uai-border-input, #adb4b8);--input-content:var(--uai-content-primary, #242729);--input-label:var(--uai-content-primary, #242729);--input-message:var(--uai-content-secondary, #5f676d);--input-feedback:var(--input-content);--input-halo:color-mix(     in srgb,     var(--uai-border-ring, #242729) calc(var(--uai-opacity-focus-ring, 0.3) * 100%),     transparent   );display:block;width:var(--uai-input-date-width, 100%)}:host(.uai-input-date--size-short){--input-height:var(--uai-control-height-short, 2rem)}:host(.uai-input-date--danger){--input-border:var(--uai-feedback-error, #cf0022);--input-label:var(--uai-feedback-error, #cf0022);--input-message:var(--uai-feedback-error, #cf0022);--input-feedback:var(--uai-feedback-error, #cf0022)}:host(.uai-input-date--success){--input-border:var(--uai-feedback-success, #3da329);--input-message:var(--uai-feedback-success, #3da329);--input-feedback:var(--uai-feedback-success, #3da329)}:host(.uai-input-date--disabled){--input-background:var(--uai-surface-muted, #f2f3f3);--input-border:var(--uai-border-default, #e4e6e7);--input-content:var(--uai-content-disabled, #848e94);--input-label:var(--uai-content-disabled, #848e94);--input-message:var(--uai-content-disabled, #848e94);--input-feedback:var(--uai-content-disabled, #848e94)}.input{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;gap:var(--uai-spacing-2xs, 0.25rem)}.input__label,.input__message{--uai-typo-color:currentColor}.input__label{color:var(--input-label)}.input__message{padding:0 var(--uai-spacing-xs, 0.5rem);color:var(--input-message)}.input__control{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-align:center;align-items:center;gap:var(--uai-spacing-xs, 0.5rem);height:var(--input-height);position:relative;padding:0 var(--uai-spacing-xs, 0.5rem);border:var(--uai-border-width-default, 1px) solid var(--input-border);border-radius:var(--uai-radius-lg, 0.75rem);background-color:var(--input-background);color:var(--input-content);cursor:text;-webkit-transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:border-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-box-shadow var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.input__control{-webkit-transition:none;transition:none}}.input__control:focus-within{--input-border:var(--uai-border-ring, #242729);-webkit-box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo);box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo)}@media (forced-colors: active){.input__control:focus-within{-webkit-box-shadow:none;box-shadow:none;outline:var(--uai-border-width-thick, 2px) solid CanvasText}}:host(:not(.uai-input-date--disabled):not(.uai-input-date--readonly):not(.uai-input-date--danger):not(.uai-input-date--success)) .input__control:hover:not(:focus-within){--input-border:var(--uai-content-secondary, #5f676d)}:host(.uai-input-date--disabled) .input__control{cursor:not-allowed}.input__icon{-ms-flex:none;flex:none;color:var(--input-content)}.input__feedback{-ms-flex:none;flex:none;color:var(--input-feedback)}.input__field{display:-ms-flexbox;display:flex;-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-align:center;align-items:center;min-width:0;height:100%}.input__native{-ms-flex:1 1 auto;flex:1 1 auto;-webkit-box-sizing:border-box;box-sizing:border-box;min-width:0;height:100%;margin:0;padding:0;border:0;outline:none;background:transparent;color:inherit;font-family:var(--uai-font-family-sans, Figtree), sans-serif;font-size:var(--uai-body-base-font-size, 0.875rem);font-weight:var(--uai-font-weight-regular, 400);line-height:var(--uai-body-base-line-height, 1.375rem);text-overflow:ellipsis;-webkit-appearance:none;-moz-appearance:none;appearance:none}.input__native::-webkit-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::-moz-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native:-ms-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::-ms-input-placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native::placeholder{color:var(--uai-content-placeholder, #adb4b8);opacity:1}.input__native:disabled{cursor:not-allowed;opacity:1;-webkit-text-fill-color:currentColor}.input__native:disabled::-webkit-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::-moz-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled:-ms-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::-ms-input-placeholder{color:var(--uai-content-disabled, #848e94)}.input__native:disabled::placeholder{color:var(--uai-content-disabled, #848e94)}.calendar-toggle{display:-ms-inline-flexbox;display:inline-flex;-ms-flex:none;flex:none;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;margin:0;padding:var(--uai-spacing-2xs, 0.25rem);border:0;border-radius:var(--uai-radius-md, 0.5rem);background:transparent;color:var(--input-content);cursor:pointer;-webkit-transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.calendar-toggle{-webkit-transition:none;transition:none}}.calendar-toggle:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}.calendar-toggle:hover:not(:disabled){background:var(--uai-overlay-hover, rgba(0, 0, 0, 0.08))}.calendar-toggle:disabled{cursor:not-allowed}@media (forced-colors: active){.calendar-toggle{border:var(--uai-border-width-default, 1px) solid ButtonText}}:host(.uai-input-date--open) .input__control{--input-border:var(--uai-border-ring, #242729);-webkit-box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo);box-shadow:0 0 0 var(--uai-border-width-thick, 2px) var(--input-halo)}.calendar-panel{--uai-overlay-gap:var(--uai-spacing-2xs, 0.25rem);--uai-overlay-margin:var(--uai-spacing-xs, 0.5rem);position:fixed;inset:auto;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;border:0;overflow:auto;background:transparent;color:inherit;opacity:0;-webkit-transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, overlay var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete;transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, overlay var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete}.calendar-panel:not(.uai-overlay--open){display:none}.calendar-panel.uai-overlay--open{opacity:1}@starting-style{.calendar-panel.uai-overlay--open{opacity:0}}@media (prefers-reduced-motion: reduce){.calendar-panel{-webkit-transition:none;transition:none}}.calendar-panel{border:var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7);border-radius:var(--uai-radius-xl, 1rem);background:var(--uai-surface-paper, #ffffff);-webkit-box-shadow:var(--uai-elevation-2, 0px 6px 16px -4px rgba(0, 0, 0, 0.16));box-shadow:var(--uai-elevation-2, 0px 6px 16px -4px rgba(0, 0, 0, 0.16));color:var(--uai-content-primary, #242729);overflow-x:hidden;-webkit-transform:scale(0.8);transform:scale(0.8);-webkit-transform-origin:top left;transform-origin:top left;-webkit-transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, overlay var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, overlay var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, overlay var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete;transition:opacity var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), display var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, overlay var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) allow-discrete, -webkit-transform var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}.calendar-panel[data-align=end]{-webkit-transform-origin:top right;transform-origin:top right}.calendar-panel[data-side=top]{-webkit-transform-origin:bottom left;transform-origin:bottom left}.calendar-panel[data-side=top][data-align=end]{-webkit-transform-origin:bottom right;transform-origin:bottom right}.calendar-panel.uai-overlay--open{-webkit-transform:none;transform:none}@starting-style{.calendar-panel.uai-overlay--open{-webkit-transform:scale(0.8);transform:scale(0.8)}}@media (prefers-reduced-motion: reduce){.calendar-panel{-webkit-transform:none;transform:none;-webkit-transition:none;transition:none}}@media (forced-colors: active){.calendar-panel{border-color:CanvasText}}@-webkit-keyframes uai-calendar-from-next{from{opacity:0;-webkit-transform:translateX(var(--uai-spacing-lg, 1.5rem));transform:translateX(var(--uai-spacing-lg, 1.5rem))}}@keyframes uai-calendar-from-next{from{opacity:0;-webkit-transform:translateX(var(--uai-spacing-lg, 1.5rem));transform:translateX(var(--uai-spacing-lg, 1.5rem))}}@-webkit-keyframes uai-calendar-from-previous{from{opacity:0;-webkit-transform:translateX(calc(-1 * var(--uai-spacing-lg, 1.5rem)));transform:translateX(calc(-1 * var(--uai-spacing-lg, 1.5rem)))}}@keyframes uai-calendar-from-previous{from{opacity:0;-webkit-transform:translateX(calc(-1 * var(--uai-spacing-lg, 1.5rem)));transform:translateX(calc(-1 * var(--uai-spacing-lg, 1.5rem)))}}@-webkit-keyframes uai-calendar-view{from{opacity:0;-webkit-transform:scale(0.96);transform:scale(0.96)}}@keyframes uai-calendar-view{from{opacity:0;-webkit-transform:scale(0.96);transform:scale(0.96)}}@-webkit-keyframes uai-calendar-pick{from{-webkit-transform:scale(0.8);transform:scale(0.8)}}@keyframes uai-calendar-pick{from{-webkit-transform:scale(0.8);transform:scale(0.8)}}.calendar__body{-webkit-animation-duration:var(--uai-duration-moderate, 200ms);animation-duration:var(--uai-duration-moderate, 200ms);-webkit-animation-timing-function:var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));animation-timing-function:var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}.calendar__body--next{-webkit-animation-name:uai-calendar-from-next;animation-name:uai-calendar-from-next}.calendar__body--previous{-webkit-animation-name:uai-calendar-from-previous;animation-name:uai-calendar-from-previous}.calendar__body--view{-webkit-animation-name:uai-calendar-view;animation-name:uai-calendar-view}@media (prefers-reduced-motion: reduce){.calendar__body{-webkit-animation:none;animation:none}}.calendar__header{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:justify;justify-content:space-between;gap:var(--uai-spacing-xs, 0.5rem);padding:var(--uai-spacing-md, 1rem);border-bottom:var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7)}.calendar__pickers{display:-ms-flexbox;display:flex;-ms-flex:1 1 auto;flex:1 1 auto;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;gap:var(--uai-spacing-xs, 0.5rem)}.calendar__arrow,.calendar__picker,.calendar__day,.calendar__option{--uai-typo-color:currentColor;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;margin:0;padding:0;border:0;background:transparent;color:var(--uai-content-primary, #242729);font:inherit;cursor:pointer;-webkit-transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.calendar__arrow,.calendar__picker,.calendar__day,.calendar__option{-webkit-transition:none;transition:none}}.calendar__arrow:focus-visible,.calendar__picker:focus-visible,.calendar__day:focus-visible,.calendar__option:focus-visible{outline:var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);outline-offset:var(--uai-spacing-3xs, 0.125rem)}.calendar__arrow:hover:not(:disabled):not([aria-disabled=true]),.calendar__picker:hover:not(:disabled):not([aria-disabled=true]),.calendar__day:hover:not(:disabled):not([aria-disabled=true]),.calendar__option:hover:not(:disabled):not([aria-disabled=true]){background:var(--uai-overlay-hover, rgba(0, 0, 0, 0.08))}.calendar__arrow:disabled,.calendar__arrow[aria-disabled=true],.calendar__picker:disabled,.calendar__picker[aria-disabled=true],.calendar__day:disabled,.calendar__day[aria-disabled=true],.calendar__option:disabled,.calendar__option[aria-disabled=true]{color:var(--uai-content-disabled, #848e94);cursor:not-allowed}.calendar__arrow{-ms-flex:none;flex:none;width:var(--uai-sizing-xl, 2rem);height:var(--uai-sizing-xl, 2rem);border-radius:var(--uai-radius-lg, 0.75rem)}.calendar__arrow--hidden{visibility:hidden}.calendar__picker{gap:var(--uai-spacing-2xs, 0.25rem);height:var(--uai-sizing-lg, 1.5rem);padding:0 var(--uai-spacing-2xs, 0.25rem);border-radius:var(--uai-radius-md, 0.5rem)}.calendar__picker ${transformTag("uai-icon")}{-webkit-transition:-webkit-transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:-webkit-transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));transition:transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), -webkit-transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.calendar__picker ${transformTag("uai-icon")}{-webkit-transition:none;transition:none}}.calendar__picker--open ${transformTag("uai-icon")}{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.calendar__body{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;gap:var(--uai-spacing-md, 1rem);padding:var(--uai-spacing-md, 1rem)}.calendar__grid{border-collapse:separate;border-spacing:0 var(--uai-spacing-3xs, 0.125rem);margin:calc(-1 * var(--uai-spacing-3xs, 0.125rem)) 0}.calendar__weekday{--uai-typo-color:currentColor;width:var(--uai-sizing-xl, 2rem);height:var(--uai-sizing-xl, 2rem);padding:0;color:var(--uai-content-secondary, #5f676d);font-weight:inherit;text-align:center}.calendar__cell{position:relative;width:var(--uai-sizing-xl, 2rem);height:var(--uai-sizing-xl, 2rem);padding:0}.calendar__cell--between{background:var(--uai-surface-muted, #f2f3f3)}.calendar__cell--start,.calendar__cell--end{background:linear-gradient(to var(--calendar-fill-side), transparent 50%, var(--uai-surface-muted, #f2f3f3) 50%)}.calendar__cell--start{--calendar-fill-side:right}.calendar__cell--end{--calendar-fill-side:left}.calendar__cell--start.calendar__cell--end{background:none}.calendar__cell--between.calendar__cell--week-start{border-top-left-radius:var(--uai-radius-lg, 0.75rem);border-bottom-left-radius:var(--uai-radius-lg, 0.75rem)}.calendar__cell--between.calendar__cell--week-end{border-top-right-radius:var(--uai-radius-lg, 0.75rem);border-bottom-right-radius:var(--uai-radius-lg, 0.75rem)}.calendar__day{position:relative;width:var(--uai-sizing-xl, 2rem);height:var(--uai-sizing-xl, 2rem);border-radius:var(--uai-radius-lg, 0.75rem)}.calendar__day--today{font-weight:var(--uai-font-weight-semibold, 600);-webkit-box-shadow:inset 0 0 0 var(--uai-border-width-default, 1px) var(--uai-border-input, #adb4b8);box-shadow:inset 0 0 0 var(--uai-border-width-default, 1px) var(--uai-border-input, #adb4b8)}.calendar__day--selected,.calendar__day--selected:hover:not(:disabled):not([aria-disabled=true]){background:var(--uai-action-primary-default, #242729);color:var(--uai-action-primary-foreground, #ffffff)}.calendar__day--selected{-webkit-animation:uai-calendar-pick var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));animation:uai-calendar-pick var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1))}@media (prefers-reduced-motion: reduce){.calendar__day--selected{-webkit-animation:none;animation:none}}@media (forced-colors: active){.calendar__day--selected{outline:var(--uai-border-width-thick, 2px) solid Highlight}}.calendar__list{display:grid;grid-template-columns:repeat(3, 1fr);gap:var(--uai-spacing-xs, 0.5rem);min-width:calc(7 * var(--uai-sizing-xl, 2rem))}.calendar__option{height:var(--uai-control-height-short, 2rem);padding:0 var(--uai-spacing-xs, 0.5rem);border-radius:var(--uai-radius-lg, 0.75rem)}.calendar__option--current,.calendar__option--current:hover:not(:disabled){background:var(--uai-action-primary-default, #242729);color:var(--uai-action-primary-foreground, #ffffff)}`;
 
 const SIZES = ['short', 'medium'];
 const LANGUAGES = ['pt_BR', 'en_US', 'es_ES'];
@@ -112,6 +25,15 @@ const UaiInputDate = class {
         this.display = '';
         this.validationDanger = false;
         this.disabledByForm = false;
+        this.isOpen = false;
+        this.view = 'days';
+        /** The day with the focus in the calendar grid; its month is the month shown. */
+        this.focusedDate = todayIso();
+        this.firstYear = 0;
+        /** Where the next month or page of years comes from, for the slide animation. */
+        this.slide = null;
+        /** Moves the focus into the grid on the next render (opened by the keyboard or the calendar button). */
+        this.focusGrid = false;
         this.defaultValue = '';
         this.typing = false;
         this.inputId = `uai-input-date-${++instances}`;
@@ -189,54 +111,122 @@ const UaiInputDate = class {
             this.typing = true;
             this.value = displayToIso(digits);
             this.typing = false;
+            // A complete date typed with the calendar open shows its month.
+            if (this.isOpen && isIsoDate(this.value))
+                this.moveTo(clampIso(this.value, this.min, this.max));
             this.uaiInput.emit(event);
         };
         this.onFocus = () => {
             this.uaiFocus.emit();
         };
+        // Going into the calendar is not leaving the field: the validation waits until the calendar closes.
         this.onBlur = () => {
-            this.showValidation(true);
+            if (!this.isOpen)
+                this.showValidation(true);
             this.uaiOnBlur.emit();
         };
         this.onKeyDown = (event) => {
             var _a, _b;
-            if (event.key === 'ArrowDown' && event.altKey) {
+            if (event.key === 'ArrowDown' && (event.altKey || this.isOpen)) {
                 event.preventDefault();
-                this.openCalendar();
+                this.openCalendar(true);
+            }
+            else if (event.key === 'Tab' && this.isOpen) {
+                this.closeCalendar();
             }
             else if (event.key === 'Enter' && !event.isComposing) {
                 (_b = (_a = this.formControl) === null || _a === void 0 ? void 0 : _a.form) === null || _b === void 0 ? void 0 : _b.requestSubmit();
             }
         };
-        this.openCalendar = () => {
+        this.onOverlayClose = (reason) => {
             var _a;
-            if (!this.picker || this.disabled || this.disabledByForm || this.readonly)
-                return;
-            this.picker.value = isIsoDate(this.value) ? this.value : '';
-            try {
-                this.picker.showPicker();
-            }
-            catch (_b) {
+            if (this.isOpen)
+                this.isOpen = false;
+            if (reason === 'escape')
                 (_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.focus();
+            if (reason === 'outside')
+                this.showValidation(true);
+        };
+        this.pickDate = (iso) => {
+            var _a;
+            if (outOfRange(iso, this.min, this.max))
+                return;
+            this.display = isoToDisplay(iso);
+            this.value = iso;
+            this.showValidation(true);
+            this.closeCalendar();
+            (_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.focus();
+        };
+        // Keys move from the active day in the state, not from the button that got the event: a fast key can reach the
+        // previous button before the focus moves.
+        this.onDayKeyDown = (event) => {
+            const target = dateForKey(this.focusedDate, event);
+            if (target) {
+                event.preventDefault();
+                this.moveFocus(target);
+            }
+            else if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                this.pickDate(this.focusedDate);
             }
         };
-        this.onPick = () => {
-            var _a, _b;
-            const value = ((_a = this.picker) === null || _a === void 0 ? void 0 : _a.value) || '';
-            if (!isIsoDate(value))
-                return;
-            this.display = isoToDisplay(value);
-            this.value = value;
-            this.showValidation(true);
-            (_b = this.nativeInput) === null || _b === void 0 ? void 0 : _b.focus();
+        this.onView = (view) => {
+            // The page of years opens with the current year in its first row, leaving the years ahead in view.
+            if (view === 'years')
+                this.firstYear = this.viewYear - 4;
+            this.changeView(view);
+        };
+        this.onPickMonth = (month) => {
+            const { year, day } = parseIso(this.focusedDate);
+            const last = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+            this.focusedDate = clampIso(toIso(year, month, Math.min(day, last)), this.min, this.max);
+            this.changeView('days');
+        };
+        this.onPickYear = (year) => {
+            const { month, day } = parseIso(this.focusedDate);
+            const last = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+            this.focusedDate = clampIso(toIso(year, month, Math.min(day, last)), this.min, this.max);
+            this.changeView('months');
+        };
+        // The arrows turn a month, a year in the month picker, or a page of years in the year picker.
+        this.onPrevious = () => {
+            if (this.view === 'years') {
+                this.firstYear -= YEARS_PER_PAGE;
+                this.slide = 'previous';
+            }
+            else
+                this.showMonth(this.view === 'months' ? -12 : -1);
+        };
+        this.onNext = () => {
+            if (this.view === 'years') {
+                this.firstYear += YEARS_PER_PAGE;
+                this.slide = 'next';
+            }
+            else
+                this.showMonth(this.view === 'months' ? 12 : 1);
+        };
+        this.onInputClick = () => {
+            this.openCalendar(false);
+        };
+        this.onButtonClick = () => {
+            var _a;
+            if (this.isOpen) {
+                this.closeCalendar();
+                (_a = this.nativeInput) === null || _a === void 0 ? void 0 : _a.focus();
+            }
+            else {
+                this.openCalendar(true);
+            }
         };
         // Clicks on the field box (outside the button and slotted content) focus the input, as a native field does.
         this.onControlClick = (event) => {
             var _a, _b, _c;
             if ((_b = (_a = event.target) === null || _a === void 0 ? void 0 : _a.closest) === null || _b === void 0 ? void 0 : _b.call(_a, 'button'))
                 return;
-            if (!this.el.contains(event.target))
+            if (!this.el.contains(event.target)) {
                 (_c = this.nativeInput) === null || _c === void 0 ? void 0 : _c.focus();
+                this.openCalendar(false);
+            }
         };
     }
     /**
@@ -266,6 +256,18 @@ const UaiInputDate = class {
         this.display = '';
         this.value = '';
     }
+    /**
+     * Opens the calendar. Use for imperative control; pair with close.
+     */
+    async open() {
+        this.openCalendar(false);
+    }
+    /**
+     * Closes the calendar.
+     */
+    async close() {
+        this.closeCalendar();
+    }
     inputNameChanged() {
         if (!this.name && this.inputName)
             this.name = this.inputName;
@@ -280,6 +282,14 @@ const UaiInputDate = class {
     }
     onInvalid() {
         this.showValidation(true);
+    }
+    // The focus moving to something outside the field and the calendar closes it. Without a target (a day button
+    // replaced when the month changes, or a click on nothing), it stays: a click outside is the overlay's.
+    onFocusOut(event) {
+        var _a;
+        const next = event.relatedTarget;
+        if (next && !this.el.contains(next) && !((_a = this.el.shadowRoot) === null || _a === void 0 ? void 0 : _a.contains(next)))
+            this.closeCalendar();
     }
     componentWillLoad() {
         var _a;
@@ -307,12 +317,35 @@ const UaiInputDate = class {
             });
         }
     }
+    componentDidLoad() {
+        if (this.control && this.panel) {
+            this.overlay = new UaiOverlay({
+                trigger: this.control,
+                panel: this.panel,
+                side: 'bottom',
+                align: 'start',
+                onClose: this.onOverlayClose,
+            });
+        }
+    }
     componentDidRender() {
-        var _a;
+        var _a, _b, _c, _d;
         if (this.nativeInput && this.nativeInput.value !== this.display)
             this.nativeInput.value = this.display;
         const { flags, message } = this.validity();
         (_a = this.formControl) === null || _a === void 0 ? void 0 : _a.setValidity(flags, message, this.nativeInput);
+        if (this.isOpen && this.overlay && !this.overlay.isOpen)
+            this.overlay.open();
+        if (this.isOpen)
+            (_b = this.overlay) === null || _b === void 0 ? void 0 : _b.update();
+        if (this.isOpen && this.focusGrid) {
+            this.focusGrid = false;
+            (_d = (_c = this.panel) === null || _c === void 0 ? void 0 : _c.querySelector(`[data-iso="${this.focusedDate}"]`)) === null || _d === void 0 ? void 0 : _d.focus();
+        }
+    }
+    disconnectedCallback() {
+        var _a;
+        (_a = this.overlay) === null || _a === void 0 ? void 0 : _a.destroy();
     }
     formResetCallback() {
         var _a;
@@ -363,6 +396,85 @@ const UaiInputDate = class {
         if (danger !== this.validationDanger)
             this.validationDanger = danger;
     }
+    get isDisabled() {
+        return this.disabled || this.disabledByForm;
+    }
+    get viewYear() {
+        return parseIso(this.focusedDate).year;
+    }
+    get viewMonth() {
+        return parseIso(this.focusedDate).month;
+    }
+    // The calendar starts on the chosen date, or today, within min and max.
+    openCalendar(focusGrid) {
+        if (this.isDisabled || this.readonly)
+            return;
+        if (!this.isOpen) {
+            const start = isIsoDate(this.value) ? this.value : todayIso();
+            this.focusedDate = clampIso(start, this.min, this.max);
+            this.view = 'days';
+            this.slide = null;
+            this.isOpen = true;
+        }
+        this.focusGrid = focusGrid;
+        if (focusGrid)
+            this.forceFocus();
+    }
+    // Asks for a render when the calendar is already open and only the focus has to move.
+    forceFocus() {
+        forceUpdate(this.el);
+    }
+    closeCalendar(reason = 'api') {
+        var _a, _b;
+        if (!this.isOpen)
+            return;
+        this.isOpen = false;
+        (_a = this.overlay) === null || _a === void 0 ? void 0 : _a.close(reason);
+        if (!((_b = this.el.shadowRoot) === null || _b === void 0 ? void 0 : _b.activeElement))
+            this.showValidation(true);
+    }
+    moveFocus(iso) {
+        this.moveTo(clampIso(iso, this.min, this.max));
+        this.focusGrid = true;
+        forceUpdate(this.el);
+    }
+    showMonth(months) {
+        this.moveTo(clampIso(addMonths(this.focusedDate, months), this.min, this.max));
+    }
+    // Moves the calendar to a date; a new month slides in from the side it comes from.
+    moveTo(iso) {
+        const from = this.viewYear * 12 + this.viewMonth;
+        const { year, month } = parseIso(iso);
+        const to = year * 12 + month;
+        if (to !== from)
+            this.slide = to > from ? 'next' : 'previous';
+        this.focusedDate = iso;
+    }
+    changeView(view) {
+        if (view === this.view)
+            return;
+        this.slide = 'view';
+        this.view = view;
+    }
+    renderCalendar() {
+        if (!this.isOpen)
+            return null;
+        const language = this.languageValue;
+        const min = parseIso(this.min);
+        const max = parseIso(this.max);
+        const year = this.viewYear;
+        const month = this.viewMonth;
+        // The arrows stop at min and max: by month, by year in the month picker, by page in the year picker.
+        const position = this.view === 'days' ? year * 12 + month : year;
+        const limit = (date) => (this.view === 'days' ? date.year * 12 + date.month : date.year);
+        const atMin = !!min && (this.view === 'years' ? this.firstYear <= min.year : position <= limit(min));
+        const atMax = !!max && (this.view === 'years' ? this.firstYear + YEARS_PER_PAGE - 1 >= max.year : position >= limit(max));
+        return [
+            h(CalendarHeader, { year: year, month: month, view: this.view, language: language, disablePrevious: atMin, disableNext: atMax, onPrevious: this.onPrevious, onNext: this.onNext, onView: this.onView }),
+            // A new key per month, page of years or view: the body is created again and its entry animation runs.
+            h("div", { key: `${this.view}-${this.view === 'years' ? this.firstYear : this.view === 'months' ? year : `${year}-${month}`}`, class: { calendar__body: true, [`calendar__body--${this.slide}`]: !!this.slide } }, this.view === 'days' ? (h(CalendarDays, { year: year, month: month, language: language, focused: this.focusedDate, min: this.min, max: this.max, idPrefix: `${this.inputId}-day`, isSelected: (iso) => iso === this.value, onPick: this.pickDate, onKeyDown: this.onDayKeyDown })) : (h(CalendarList, { kind: this.view, year: year, month: month, language: language, min: this.min, max: this.max, firstYear: this.firstYear, onPick: this.view === 'months' ? this.onPickMonth : this.onPickYear }))),
+        ];
+    }
     render() {
         var _a, _b;
         const disabled = this.disabled || this.disabledByForm;
@@ -379,13 +491,18 @@ const UaiInputDate = class {
                     : this.helperMessage;
         const locale = dateLocale(this.languageValue);
         const label = (_a = this.label) !== null && _a !== void 0 ? _a : locale.label;
-        return (h(Host, { key: '54fe343217a7330ea4d222e79df8ab4c32838de9', "aria-disabled": disabled ? 'true' : null, class: {
+        return (h(Host, { key: '9efd31e9acba317390e61ccf46e2f4fd9b5ab02e', "aria-disabled": disabled ? 'true' : null, class: {
                 [`uai-input-date--size-${this.sizeValue}`]: true,
                 'uai-input-date--danger': invalid,
                 'uai-input-date--success': success,
                 'uai-input-date--disabled': disabled,
                 'uai-input-date--readonly': this.readonly && !disabled,
-            } }, h("div", { key: '11d3fc7cc1c28fa3ed240558ff27018aa815c559', class: "input" }, label && (h("label", { key: '043aa3a45407bb0022cd7ccd98202060cf0c89e7', class: "input__label", for: this.inputId }, h("uai-typo", { key: 'cebd1ea7fe92389af8fd195195dc7ea1675f4dc8', variant: "caption", bold: "semibold", tag: "span", margin: false }, label))), h("div", { key: '3e09f4839094da8223fa4c6cbf740bbb788ef337', class: "input__control", part: "input-container", onClick: this.onControlClick }, this.icon && h("uai-icon", { key: 'd343c411161f9fc525cc3c41216606cdd1414afb', class: "input__icon", name: this.icon, size: "medium" }), h("div", { key: '825408d5083cd312ae507b642e26afe7acdb44c9', class: "input__field" }, h("input", { key: 'caf1166e15e99e957f2bac6c571e316b7cfff9e7', id: this.inputId, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "text", inputMode: "numeric", autocomplete: "off", maxLength: regionalDateFormat().placeholder.length, value: this.display, placeholder: (_b = this.placeholder) !== null && _b !== void 0 ? _b : regionalDateFormat().placeholder, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.ariaLabel || null, "aria-invalid": invalid ? 'true' : null, "aria-describedby": message ? `${this.inputId}-message` : null, "data-test": this.dataTest, onInput: this.onInput, onFocus: this.onFocus, onBlur: this.onBlur, onKeyDown: this.onKeyDown })), invalid && h("uai-icon", { key: '4f1e8b1c41af65f555c47f830f87f72cd3c74e96', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && h("uai-icon", { key: '7dae8ab55539df85fb89d8ac99db9088789ddc75', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), !this.readonly && (h("button", { key: '6b66d3b00f2ea690489e642960276542ce5eec8b', type: "button", class: "calendar", part: "calendar-button", "aria-label": locale.calendar, disabled: disabled, onClick: this.openCalendar }, h("uai-icon", { key: '23f6513fd87d672b7dbbbf87024e61193945b652', name: "calendar", size: "medium" }))), h("input", { key: 'c610d102c58bd9bf982e2c392300e910a22cbab4', ref: (picker) => (this.picker = picker), class: "picker", type: "date", tabindex: "-1", "aria-hidden": "true", min: isIsoDate(this.min) ? this.min : undefined, max: isIsoDate(this.max) ? this.max : undefined, disabled: disabled, onChange: this.onPick }), h("slot", { key: '113bc0ea49c4797505b1c9b0402a8f9fc9ebddaa', name: "input-right" })), message && (h("div", { key: '31b8afbf08c108fde1daf1ec9d7374ec4445ee1f', id: `${this.inputId}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '816b961259cae8dac129a129b017609f820d0048', variant: "caption", tag: "span", margin: false }, message))))));
+                'uai-input-date--open': this.isOpen,
+            } }, h("div", { key: '909153c3e23c284aa1c54b140ab39abf73cc72d3', class: "input" }, label && (h("label", { key: '060cd637cc395c24df8ce721235fe00ca10a7a57', class: "input__label", for: this.inputId }, h("uai-typo", { key: '8a7069b3020eb153b841fbda7ad1ac70a3af04b9', variant: "caption", bold: "semibold", tag: "span", margin: false }, label))), h("div", { key: '10f01e7bcae8fa55bf39b93d48471bfecd373cc5', class: "input__control", part: "input-container", ref: (control) => (this.control = control), onClick: this.onControlClick }, this.icon && h("uai-icon", { key: '8a868c6398deeddf7a44c68d1823508201c84c29', class: "input__icon", name: this.icon, size: "medium" }), h("div", { key: 'b17a316ec5a9762c7fff92add6569332c66b7f17', class: "input__field" }, h("input", { key: 'eb10a900e41130fe6e25ae360bc3ba7771d2e199', id: this.inputId, ref: (input) => (this.nativeInput = input), class: "input__native", part: "input", type: "text", inputMode: "numeric", autocomplete: "off", maxLength: regionalDateFormat().placeholder.length, value: this.display, placeholder: (_b = this.placeholder) !== null && _b !== void 0 ? _b : regionalDateFormat().placeholder, required: this.required, readOnly: this.readonly, disabled: disabled, "aria-label": this.ariaLabel || null, "aria-haspopup": "dialog", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-controls": `${this.inputId}-calendar`, "aria-invalid": invalid ? 'true' : null, "aria-describedby": message ? `${this.inputId}-message` : null, "data-test": this.dataTest, onInput: this.onInput, onClick: this.onInputClick, onFocus: this.onFocus, onBlur: this.onBlur, onKeyDown: this.onKeyDown })), invalid && h("uai-icon", { key: 'd04965fe1bd48ff2aa90dce4fe98dd226b467e40', class: "input__feedback", name: "error", theme: "outline", size: "medium" }), success && h("uai-icon", { key: '0ea1943b8b9c0d36fb321665bb503a2da92b5afe', class: "input__feedback", name: "checkball", theme: "solid", size: "medium" }), !this.readonly && (h("button", { key: '3a68480e73348b64b43891b1f86e023b1eff2a76', type: "button", class: "calendar-toggle", part: "calendar-button", "aria-label": locale.calendar, "aria-haspopup": "dialog", "aria-expanded": this.isOpen ? 'true' : 'false', "aria-controls": `${this.inputId}-calendar`, disabled: disabled, onClick: this.onButtonClick }, h("uai-icon", { key: '3cb6bacd7764e68e8c87ed5dd5db295ce5487c55', name: "calendar", size: "medium" }))), h("slot", { key: 'bc70059038f4e335c1eef69318fa895fb9bab2fe', name: "input-right" })), message && (h("div", { key: '3571e4ea271079cd7050c5889e5a1ca2de01b35b', id: `${this.inputId}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '6e070b1e19c00fd45757e6eff68c0998ba6e9feb', variant: "caption", tag: "span", margin: false }, message)))), h("div", { key: 'cc8ac63bf27ed9883d4b6b5ecbb0e2f289d358f4', id: `${this.inputId}-calendar`, ref: (panel) => (this.panel = panel), class: "calendar-panel", part: "calendar", role: "dialog", "aria-label": locale.calendar, onPointerDown: (event) => {
+                var _a, _b;
+                if (!((_b = (_a = event.target) === null || _a === void 0 ? void 0 : _a.closest) === null || _b === void 0 ? void 0 : _b.call(_a, 'button')))
+                    event.preventDefault();
+            } }, this.renderCalendar())));
     }
     static get delegatesFocus() { return true; }
     static get formAssociated() { return true; }

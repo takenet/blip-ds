@@ -1,1 +1,1 @@
-import{T as o,d as p}from"./p-CzG-NjVp.js";const s=o,r=p;export{s as BdsTableCell,r as defineCustomElement}
+import{T as o,d as s}from"./p-Y4ReiHNg.js";const p=o,r=s;export{p as BdsTableCell,r as defineCustomElement}

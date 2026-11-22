@@ -1,4 +1,4 @@
-import { r as registerInstance, t as transformTag, h, H as Host } from './index-D799VfbI.js';
+import { r as registerInstance, t as transformTag, h, H as Host } from './index-B3G05Lxx.js';
 import { l as loadAssetSvg } from './asset-loader-BG87Jd1l.js';
 import './asset-config-DjyCVRUn.js';
 
@@ -34,7 +34,7 @@ const BdsLoading = class {
         this.setSvgContent();
     }
     render() {
-        return (h(Host, { key: 'b59e35109f234bce906325752300e6a8bec2f356' }, h("div", { key: '16720c4e122ac90a78faaac33014dd507c35aac2', class: "loading-container", "data-test": this.dataTest }, h("div", { key: 'de8c4a56a9c004e782d972d876178a8eac8a42bc', class: { page_loading: true }, innerHTML: this.svgContent }))));
+        return (h(Host, { key: 'd31b3ce732a1b3294c36b58bce904b00b916dd07' }, h("div", { key: 'bba74e853a21a7d344c0a4a868b02d638857f120', class: "loading-container", "data-test": this.dataTest }, h("div", { key: '83bd24318f6a3ba0867fb832a2eb647e5178176b', class: { page_loading: true }, innerHTML: this.svgContent }))));
     }
 };
 BdsLoading.style = loadingPageCss();

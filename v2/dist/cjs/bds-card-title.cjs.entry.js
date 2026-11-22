@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 
 const cardTitleCss = () => ``;
 
@@ -9,7 +9,7 @@ const CardTitle = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h("bds-typo", { key: '56fe55a85ffe6392ad1407e7ab6928de2e2efe3c', variant: "fs-20", tag: "h4", margin: false, bold: "bold" }, this.text));
+        return (index.h("bds-typo", { key: 'bf11db0f59de27ca8dc35548c5f2fb8004cfdcf4', variant: "fs-20", tag: "h4", margin: false, bold: "bold" }, this.text));
     }
 };
 CardTitle.style = cardTitleCss();

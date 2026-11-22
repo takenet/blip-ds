@@ -4,6 +4,9 @@ import { BannerVariant } from '../banner/banner';
 export type typeDate = 'single' | 'period';
 export type stateSelect = 'start' | 'end';
 export type DropdownPostionType = 'auto' | 'top-center' | 'top-left' | 'top-right' | 'bottom-center' | 'bottom-right' | 'bottom-left' | 'right-center' | 'right-top' | 'right-bottom' | 'left-center' | 'left-top' | 'left-bottom';
+/**
+ * @deprecated Use uai-datepicker (or uai-input-date for a single typed date) with UaiThemeProvider for tokenized styling.
+ */
 export declare class DatePicker {
     private menuElement?;
     private inputSetDate?;

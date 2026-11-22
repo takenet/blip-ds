@@ -1,6 +1,6 @@
 'use strict';
 
-var index = require('./index-Bq8uwDLK.js');
+var index = require('./index-GTJCA4wH.js');
 var assetLoader = require('./asset-loader-CO6wtD2Y.js');
 require('./asset-config-CKVSo2i2.js');
 
@@ -36,7 +36,7 @@ const BdsLoading = class {
         this.setSvgContent();
     }
     render() {
-        return (index.h(index.Host, { key: 'b59e35109f234bce906325752300e6a8bec2f356' }, index.h("div", { key: '16720c4e122ac90a78faaac33014dd507c35aac2', class: "loading-container", "data-test": this.dataTest }, index.h("div", { key: 'de8c4a56a9c004e782d972d876178a8eac8a42bc', class: { page_loading: true }, innerHTML: this.svgContent }))));
+        return (index.h(index.Host, { key: 'd31b3ce732a1b3294c36b58bce904b00b916dd07' }, index.h("div", { key: 'bba74e853a21a7d344c0a4a868b02d638857f120', class: "loading-container", "data-test": this.dataTest }, index.h("div", { key: '83bd24318f6a3ba0867fb832a2eb647e5178176b', class: { page_loading: true }, innerHTML: this.svgContent }))));
     }
 };
 BdsLoading.style = loadingPageCss();

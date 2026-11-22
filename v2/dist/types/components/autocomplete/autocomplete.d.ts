@@ -2,6 +2,9 @@ import { EventEmitter } from '../../stencil-public-runtime';
 import { AutocompleteOption, AutocompleteChangeEventDetail, AutocompleteSelectedChangeEventDetail, AutocompleteOptionsPositionType, AutocompleteMultiSelectedChangeEventDetail } from './autocomplete-select-interface';
 import { languages } from './languages';
 export type SelectionType = 'single' | 'multiple';
+/**
+ * @deprecated Use uai-autocomplete with UaiThemeProvider for tokenized styling.
+ */
 export declare class BdsAutocomplete {
     private checkAllInput?;
     private nativeInput?;

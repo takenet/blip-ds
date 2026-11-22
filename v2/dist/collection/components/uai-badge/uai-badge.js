@@ -35,13 +35,13 @@ export class UaiBadge {
         const hasNumber = this.number !== null && this.number !== undefined;
         const type = hasNumber ? (this.number === 0 ? 'empty' : 'number') : this.icon ? 'icon' : 'status';
         const compactIcon = shape === 'triangle' || shape === 'triangle-reverse' || shape === 'polygon';
-        return (h(Host, { key: 'f663f5076facfc8648d365d78f8424e89feac768', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel || undefined }, h("div", { key: '7da2c30e2946d975aa7b4a5a66e5beae64a26b89', class: {
+        return (h(Host, { key: '24cd84676a67da348bccd717c0f1a73b2f53f43c', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel || undefined }, h("div", { key: '01c6f6bf94571ccb7958204db7652cb2c107d485', class: {
                 badge: true,
                 [`badge--${color}`]: true,
                 [`badge--${type}`]: true,
                 [`badge--${type === 'number' ? 'circle' : shape}`]: true,
                 'badge--animated': this.animation,
-            }, "data-test": this.dataTest, "aria-hidden": this.ariaLabel ? 'true' : undefined }, h("span", { key: '717259bcf2e60e80c3b449772e9e04cc23483556', class: "badge__shape", "aria-hidden": "true" }), this.animation && h("span", { key: '0c20a87d23a5d73cd67166eb5552a00fe0fff999', class: "badge__pulse", "aria-hidden": "true" }), h("div", { key: '9d99f5ef118f7f90f58b02fbe24892cfa883267b', class: "badge__content" }, type === 'number' && (h("uai-typo", { key: '0be91c44e91227391ae3deda2c272550b64a256a', tag: "span", variant: "caption", bold: "bold", margin: false }, this.number >= 999 ? '999+' : this.number)), type === 'icon' &&
+            }, "data-test": this.dataTest, "aria-hidden": this.ariaLabel ? 'true' : undefined }, h("span", { key: '1d19fef8ca0aa90d0b5e3a8bb0d890ae3c567e16', class: "badge__shape", "aria-hidden": "true" }), this.animation && h("span", { key: '2aadcf3a2c06c5e5bceeaa84d3cccc9568aa9754', class: "badge__pulse", "aria-hidden": "true" }), h("div", { key: 'd6796e66d636dd696d30e1cf2c13bfde31b9dc5a', class: "badge__content" }, type === 'number' && (h("uai-typo", { key: '99a31f46cf761f02188f559c77a83b509bfde245', tag: "span", variant: "caption", bold: "bold", margin: false }, this.number >= 999 ? '999+' : this.number)), type === 'icon' &&
             (isUaiIcon('outline', this.icon) ? (h("uai-icon", { class: "badge__icon", name: this.icon, size: "x-small", "aria-hidden": "true" })) : (h("bds-icon", { class: "badge__icon", name: this.icon, theme: "outline", size: compactIcon ? 'xx-small' : 'x-small', color: "currentColor", "aria-hidden": "true" })))))));
     }
     static get is() { return "uai-badge"; }

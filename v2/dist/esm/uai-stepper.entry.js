@@ -1,5 +1,5 @@
-import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
-import { i as isTag } from './tag-name-D0YfnSi8.js';
+import { t as transformTag, r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
+import { i as isTag } from './tag-name-C_DDxI_a.js';
 
 const uaiStepperCss = () => `:host{display:-ms-flexbox;display:flex;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%}:host([orientation=horizontal]){-ms-flex-align:start;align-items:flex-start;border-bottom:var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7)}:host([orientation=horizontal]) ::slotted(${transformTag("uai-step")}){-ms-flex:1 1 0px;flex:1 1 0}:host([orientation=vertical]){-ms-flex-direction:column;flex-direction:column;-ms-flex-align:stretch;align-items:stretch}`;
 
@@ -83,7 +83,7 @@ const UaiStepper = class {
         this.steps.forEach((step) => (step.completed = false));
     }
     render() {
-        return (h(Host, { key: '1ebb25389d37fe4d9a8b70cb4e9ae93e2abb76f3', role: "list" }, h("slot", { key: '6f03a22490860d3c71adf04e3eeebb056a2eb209', onSlotchange: this.syncSteps })));
+        return (h(Host, { key: '77a0e59ebfbe6d93e75471af98e983064b3cc9e5', role: "list" }, h("slot", { key: 'fd1e96d00390d6aae75d67bdb6d3a9dc1ff5b76e', onSlotchange: this.syncSteps })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

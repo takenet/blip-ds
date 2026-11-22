@@ -103,7 +103,7 @@ export class Icon {
         }
     }
     render() {
-        return (h(Host, { key: '4e20ee89c3be10e6a67343ae681d8365148627d6', role: "img", class: {
+        return (h(Host, { key: 'da6971385780cd8b351e098afbac7c40feb8afde', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (h("div", { class: {

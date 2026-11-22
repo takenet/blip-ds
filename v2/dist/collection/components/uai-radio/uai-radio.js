@@ -187,12 +187,12 @@ export class UaiRadio {
         var _a;
         const disabled = this.effectiveDisabled;
         const hasVisibleName = !!(this.label || ((_a = this.el.textContent) === null || _a === void 0 ? void 0 : _a.trim()));
-        return (h(Host, { key: '19252464658cc5cef601b090a6419ce8c634d977', "aria-disabled": disabled ? 'true' : null, class: {
+        return (h(Host, { key: '2c662bd43b2fb5d03e98ca1720a7b6a3fc3c69ca', "aria-disabled": disabled ? 'true' : null, class: {
                 'uai-radio--disabled': disabled,
                 'uai-radio--checked': this.checked,
                 'uai-radio--short': this.size === 'short',
                 'uai-radio--tall': this.size === 'tall',
-            } }, h("label", { key: 'baa09d1ce7f0b7c431f7d160b3d474f6d554bf11', class: "radio", part: "label" }, h("span", { key: '1886b234c09fc6da0f633cf21f6db481380d3f26', class: "radio__control", part: "control" }, h("input", { key: 'ed5d59ea8b5afae047ef8065ca6d1ac7200ab390', id: this.inputId, class: "radio__input", part: "input", type: "radio", value: this.value, name: this.isGrouped ? undefined : this.name, checked: this.checked, disabled: disabled, tabIndex: this.groupTabIndex, "aria-label": hasVisibleName ? null : this.ariaLabel, "data-test": this.dataTest, onClick: this.onClick, onKeyDown: this.onKeyDown, ref: (input) => (this.nativeInput = input) }), h("span", { key: 'd4b0d30bdb8e6e1e5e1d4748f6cda6695424d563', class: "radio__dot", "aria-hidden": "true" })), h("span", { key: 'af2ebcab442876040256f6b5859173f69e949302', class: "radio__text" }, this.label, h("slot", { key: '555b3ef97efca243a4fac3fc1e8a462395e33c4d' })))));
+            } }, h("label", { key: 'a8a5602b9dc6954cdabf78cc8dcb2e8d1dd785cc', class: "radio", part: "label" }, h("span", { key: '8a92ed8222435a0b252831f8c2b883a88c4645ef', class: "radio__control", part: "control" }, h("input", { key: 'caeb0d728e4625ccd1d71d51d647e6beedfdf9a1', id: this.inputId, class: "radio__input", part: "input", type: "radio", value: this.value, name: this.isGrouped ? undefined : this.name, checked: this.checked, disabled: disabled, tabIndex: this.groupTabIndex, "aria-label": hasVisibleName ? null : this.ariaLabel, "data-test": this.dataTest, onClick: this.onClick, onKeyDown: this.onKeyDown, ref: (input) => (this.nativeInput = input) }), h("span", { key: '7fdd666c80036792859b17829820767ed6c94e38', class: "radio__dot", "aria-hidden": "true" })), h("span", { key: '6d6894e903ee30532e2ec60f5748314fa6c2edfa', class: "radio__text" }, this.label, h("slot", { key: '81145499b4fd8594c123f12be3756da01a95c30b' })))));
     }
     static get is() { return "uai-radio"; }
     static get encapsulation() { return "shadow"; }

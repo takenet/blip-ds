@@ -13,7 +13,7 @@ export class TableBody {
         }
     }
     render() {
-        return (h(Host, { key: '73caca68b4527e5893a9e24bd5fa0cfa34864937', class: { host: true, multiple: this.multipleRows } }, h("slot", { key: 'db98cba6e1e7abdab0cc85809b9f60223c827ee1' })));
+        return (h(Host, { key: '9506ca46c88653fa96e80bf11753a3b8c243ee7c', class: { host: true, multiple: this.multipleRows } }, h("slot", { key: '7003eff7715a0e909a904b79e8cd95409af34313' })));
     }
     static get is() { return "bds-table-body"; }
     static get encapsulation() { return "scoped"; }

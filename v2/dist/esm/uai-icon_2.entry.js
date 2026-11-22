@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { r as registerInstance, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 import { i as isUaiIcon } from './uai-icons-Cjai80Zd.js';
 import { w as warnOnce } from './deprecation-B4L0JRQZ.js';
 import { a as assets } from './asset-config-DjyCVRUn.js';
@@ -86,7 +86,7 @@ const UaiIcon = class {
         if (!known) {
             warnOnce('uai-icon', `name:${theme}:${this.name}`, `"${this.name}" is not a ${theme} icon of the UAI icon font.`);
         }
-        return (h(Host, { key: '62fada47406060ea3f8eca9cedc66617a0aead8c', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: '70fd5db600e4058b4ac881d45d7a55e2f794989b', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, style: { '--uai-icon-font-family': `"${ICON_FONT_FAMILY}"` }, part: "glyph", "data-test": this.dataTest })));
+        return (h(Host, { key: 'f901d0bdf941371e11f465d590385dec1941c109', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: '590be007e5341cb521b2b3e607dc0a1dc8729742', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, style: { '--uai-icon-font-family': `"${ICON_FONT_FAMILY}"` }, part: "glyph", "data-test": this.dataTest })));
     }
 };
 UaiIcon.style = uaiIconCss();
@@ -183,7 +183,7 @@ const UaiTypo = class {
         const bold = supported('bold', this.bold, BOLDS, 'regular');
         const letterSpacing = supported('letterSpacing', this.letterSpacing, LETTER_SPACINGS, 'normal');
         const Tag = supported('tag', this.tag, TAGS, 'p');
-        return (h(Tag, { key: '011a733fd66578d2e17b683e045e238d951a2542', class: {
+        return (h(Tag, { key: '63e87131bfa4e60ff339b8139d8cbe7e5f6bce1f', class: {
                 typo: true,
                 [`typo--variant-${variant}`]: true,
                 [`typo--bold-${bold}`]: true,
@@ -192,7 +192,7 @@ const UaiTypo = class {
                 'typo--paragraph': this.paragraph,
                 'typo--italic': this.italic,
                 'typo--no-wrap': this.noWrap,
-            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: 'a266ac57cbadd21b5bfe3f481a426b3928c227a6' })));
+            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: 'ad83e726be9a885ac97035014972afa80f43a830' })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

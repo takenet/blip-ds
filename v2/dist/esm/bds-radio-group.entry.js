@@ -1,4 +1,4 @@
-import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-D799VfbI.js';
+import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './index-B3G05Lxx.js';
 
 const RadioGroup = class {
     constructor(hostRef) {
@@ -32,7 +32,7 @@ const RadioGroup = class {
         }
     }
     render() {
-        return (h(Host, { key: 'cbf44f029873bb081c5152660ab743b1da286632' }, h("slot", { key: '6dad86e2e8fd8d43fb1a940c4bd63ec2ea5eb330' })));
+        return (h(Host, { key: '8110cd466d779c3e6dd66392ad2251236d72e8b0' }, h("slot", { key: '8e122bb5bafbb189e6e578fad551f2d01989afee' })));
     }
     get element() { return getElement(this); }
     static get watchers() { return {
