@@ -174,6 +174,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [uai-breadcrumb](../uai-breadcrumb)
+ - [uai-datepicker](../uai-datepicker)
  - [uai-pagination](../uai-pagination)
  - [uai-rich-text](../uai-rich-text)
  - [uai-tab-group](../uai-tab-group)
@@ -191,6 +192,7 @@ graph TD;
   uai-button --> bds-icon
   uai-button --> uai-typo
   uai-breadcrumb --> uai-button
+  uai-datepicker --> uai-button
   uai-pagination --> uai-button
   uai-rich-text --> uai-button
   uai-tab-group --> uai-button

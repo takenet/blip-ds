@@ -85,6 +85,8 @@ import { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBre
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiButtonColor as UaiButtonColor1, UaiButtonDirection as UaiButtonDirection1, UaiButtonSize as UaiButtonSize1 } from "./components/uai-button/uai-button";
 import { UaiButtonGroupSelectedDetail } from "./components/uai-button-group/uai-button-group";
+import { UaiDatepickerBannerVariant, UaiDatepickerConclude, UaiDatepickerLanguage, UaiDatepickerPosition, UaiDatepickerType } from "./components/uai-datepicker/uai-datepicker-interface";
+import { UaiDatepickerSize } from "./components/uai-datepicker/uai-datepicker";
 import { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -193,6 +195,8 @@ export { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBre
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiButtonColor as UaiButtonColor1, UaiButtonDirection as UaiButtonDirection1, UaiButtonSize as UaiButtonSize1 } from "./components/uai-button/uai-button";
 export { UaiButtonGroupSelectedDetail } from "./components/uai-button-group/uai-button-group";
+export { UaiDatepickerBannerVariant, UaiDatepickerConclude, UaiDatepickerLanguage, UaiDatepickerPosition, UaiDatepickerType } from "./components/uai-datepicker/uai-datepicker-interface";
+export { UaiDatepickerSize } from "./components/uai-datepicker/uai-datepicker";
 export { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
@@ -1149,6 +1153,9 @@ export namespace Components {
          */
         "sorting"?: boolean;
     }
+    /**
+     * @deprecated Use uai-datepicker (or uai-input-date for a single typed date) with UaiThemeProvider for tokenized styling.
+     */
     interface BdsDatepicker {
         /**
           * Disabled input.
@@ -4423,6 +4430,158 @@ export namespace Components {
         "icon"?: string;
     }
     /**
+     * Field to choose a date or a period in the UAI calendar. With typeOfDate "single" (default) the panel shows a month
+     * and a date field; with "period" it shows two months side by side with the "Starts" and "Ends" fields, fills the days
+     * between them and previews the period under the pointer. The choice is a draft until Apply; Reset clears it and
+     * closing without applying discards it. Dates are ISO YYYY-MM-DD. Use it for filters and reports over a period, or
+     * when the choice should be confirmed. Pair with a visible label. Avoid it for a single date typed in a form (use
+     * uai-input-date). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiDatepicker {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel": string;
+        /**
+          * Clears the chosen date or period.
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Closes the panel, discarding the draft.
+         */
+        "close": () => Promise<void>;
+        /**
+          * If true, shows the error state and errorMessage.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * If true, the field cannot be used and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id of the Reset button.
+          * @default null
+         */
+        "dtButtonClear"?: string;
+        /**
+          * Data test id of the Apply button.
+          * @default null
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test id of the next month button.
+          * @default null
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test id of the previous month button.
+          * @default null
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test id of the end date field of the panel.
+          * @default null
+         */
+        "dtInputEnd"?: string;
+        /**
+          * Data test id of the start date field of the panel (or the only one).
+          * @default null
+         */
+        "dtInputStart"?: string;
+        /**
+          * Data test id of the field that opens the panel. Kept from bds-datepicker, where it was the outside area.
+          * @default null
+         */
+        "dtOutzone"?: string;
+        /**
+          * Data test id of the month button.
+          * @default null
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test id of the year button.
+          * @default null
+         */
+        "dtSelectYear"?: string;
+        /**
+          * Latest date that can be chosen, as ISO YYYY-MM-DD. The legacy DD/MM/YYYY still works, with a warning. Later days are disabled.
+         */
+        "endDateLimit"?: string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Data").
+         */
+        "label"?: string;
+        /**
+          * Language of the texts and of the calendar. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiDatepickerLanguage;
+        /**
+          * Message shown inside the panel, above the buttons, such as a rule about the period.
+          * @default null
+         */
+        "message"?: string;
+        /**
+          * Name of the value in the submitted form data: the date, or the start and the end of the period.
+         */
+        "name"?: string;
+        /**
+          * Opens the panel.
+         */
+        "open": () => Promise<void>;
+        /**
+          * Text shown in the field while nothing is chosen. Defaults to the browser's regional date format.
+         */
+        "placeholder"?: string;
+        /**
+          * Side and alignment of the panel. Can be 'auto' (default) or a side and an edge such as 'bottom-left', 'bottom-right', 'top-left', 'top-right'. 'top-center' and 'bottom-center' keep only the side; the right and left sides of the legacy fall back to 'auto'.
+          * @default 'auto'
+         */
+        "positionOptions"?: UaiDatepickerPosition | string;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiDatepickerSize;
+        /**
+          * Earliest date that can be chosen, as ISO YYYY-MM-DD. The legacy DD/MM/YYYY still works, with a warning. Earlier days are disabled.
+         */
+        "startDateLimit"?: string;
+        /**
+          * One date or a period. Can be one of: 'single' (default), 'period'.
+          * @default 'single'
+         */
+        "typeOfDate"?: UaiDatepickerType;
+        /**
+          * Chosen date, or the start of the period, as ISO YYYY-MM-DD (the legacy DD/MM/YYYY still works, with a warning).
+          * @default null
+         */
+        "valueDateSelected"?: string;
+        /**
+          * End of the period, as ISO YYYY-MM-DD (the legacy DD/MM/YYYY still works, with a warning).
+          * @default null
+         */
+        "valueEndDateSelected"?: string;
+        /**
+          * Tone of the message inside the panel. Can be one of: 'system', 'info', 'success', 'warning' (default), 'error'.
+          * @default 'warning'
+         */
+        "variantBanner"?: UaiDatepickerBannerVariant;
+    }
+    /**
      * Floating panel opened by an activator, with an optional fixed header, a scrollable body and an optional fixed footer.
      * Use for filters, pickers and short forms next to a trigger; pair with uai-button as the activator and
      * UaiThemeProvider; avoid it for a plain list of choices (use uai-select) or for blocking tasks (use uai-modal).
@@ -7533,6 +7692,10 @@ export interface UaiCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiCheckboxElement;
 }
+export interface UaiDatepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiDatepickerElement;
+}
 export interface UaiDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiDropdownElement;
@@ -8077,6 +8240,9 @@ declare global {
         "concludeDatepicker": { startDate: string; endDate?: string } | { startDate: string } | any;
         "emptyConcludeDatepicker": void;
     }
+    /**
+     * @deprecated Use uai-datepicker (or uai-input-date for a single typed date) with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsDatepickerElement extends Components.BdsDatepicker, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsDatepickerElementEventMap>(type: K, listener: (this: HTMLBdsDatepickerElement, ev: BdsDatepickerCustomEvent<HTMLBdsDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -9214,6 +9380,34 @@ declare global {
         prototype: HTMLUaiChipTagElement;
         new (): HTMLUaiChipTagElement;
     };
+    interface HTMLUaiDatepickerElementEventMap {
+        "uaiStartDate": { value: string | null };
+        "uaiEndDate": { value: string | null };
+        "uaiConcludeDatepicker": UaiDatepickerConclude;
+        "uaiEmptyConcludeDatepicker": void;
+    }
+    /**
+     * Field to choose a date or a period in the UAI calendar. With typeOfDate "single" (default) the panel shows a month
+     * and a date field; with "period" it shows two months side by side with the "Starts" and "Ends" fields, fills the days
+     * between them and previews the period under the pointer. The choice is a draft until Apply; Reset clears it and
+     * closing without applying discards it. Dates are ISO YYYY-MM-DD. Use it for filters and reports over a period, or
+     * when the choice should be confirmed. Pair with a visible label. Avoid it for a single date typed in a form (use
+     * uai-input-date). Wrap the app in UaiThemeProvider.
+     */
+    interface HTMLUaiDatepickerElement extends Components.UaiDatepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiDatepickerElementEventMap>(type: K, listener: (this: HTMLUaiDatepickerElement, ev: UaiDatepickerCustomEvent<HTMLUaiDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiDatepickerElementEventMap>(type: K, listener: (this: HTMLUaiDatepickerElement, ev: UaiDatepickerCustomEvent<HTMLUaiDatepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiDatepickerElement: {
+        prototype: HTMLUaiDatepickerElement;
+        new (): HTMLUaiDatepickerElement;
+    };
     interface HTMLUaiDropdownElementEventMap {
         "uaiToggle": { value: boolean };
     }
@@ -10081,6 +10275,7 @@ declare global {
         "uai-button-group": HTMLUaiButtonGroupElement;
         "uai-checkbox": HTMLUaiCheckboxElement;
         "uai-chip-tag": HTMLUaiChipTagElement;
+        "uai-datepicker": HTMLUaiDatepickerElement;
         "uai-dropdown": HTMLUaiDropdownElement;
         "uai-emoji": HTMLUaiEmojiElement;
         "uai-grid": HTMLUaiGridElement;
@@ -11112,6 +11307,9 @@ declare namespace LocalJSX {
          */
         "sorting"?: boolean;
     }
+    /**
+     * @deprecated Use uai-datepicker (or uai-input-date for a single typed date) with UaiThemeProvider for tokenized styling.
+     */
     interface BdsDatepicker {
         /**
           * Disabled input.
@@ -14615,6 +14813,166 @@ declare namespace LocalJSX {
           * Icon name shown before the text. Use to reinforce the meaning; pair with the text; avoid decorative icons.
          */
         "icon"?: string;
+    }
+    /**
+     * Field to choose a date or a period in the UAI calendar. With typeOfDate "single" (default) the panel shows a month
+     * and a date field; with "period" it shows two months side by side with the "Starts" and "Ends" fields, fills the days
+     * between them and previews the period under the pointer. The choice is a draft until Apply; Reset clears it and
+     * closing without applying discards it. Dates are ISO YYYY-MM-DD. Use it for filters and reports over a period, or
+     * when the choice should be confirmed. Pair with a visible label. Avoid it for a single date typed in a form (use
+     * uai-input-date). Wrap the app in UaiThemeProvider.
+     */
+    interface UaiDatepicker {
+        /**
+          * Accessible name of the field when the visible label is not enough.
+          * @default null
+         */
+        "ariaLabel"?: string;
+        /**
+          * If true, shows the error state and errorMessage.
+          * @default false
+         */
+        "danger"?: boolean;
+        /**
+          * If true, the field cannot be used and is left out of the form data.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Data test id of the Reset button.
+          * @default null
+         */
+        "dtButtonClear"?: string;
+        /**
+          * Data test id of the Apply button.
+          * @default null
+         */
+        "dtButtonConfirm"?: string;
+        /**
+          * Data test id of the next month button.
+          * @default null
+         */
+        "dtButtonNext"?: string;
+        /**
+          * Data test id of the previous month button.
+          * @default null
+         */
+        "dtButtonPrev"?: string;
+        /**
+          * Data test id of the end date field of the panel.
+          * @default null
+         */
+        "dtInputEnd"?: string;
+        /**
+          * Data test id of the start date field of the panel (or the only one).
+          * @default null
+         */
+        "dtInputStart"?: string;
+        /**
+          * Data test id of the field that opens the panel. Kept from bds-datepicker, where it was the outside area.
+          * @default null
+         */
+        "dtOutzone"?: string;
+        /**
+          * Data test id of the month button.
+          * @default null
+         */
+        "dtSelectMonth"?: string;
+        /**
+          * Data test id of the year button.
+          * @default null
+         */
+        "dtSelectYear"?: string;
+        /**
+          * Latest date that can be chosen, as ISO YYYY-MM-DD. The legacy DD/MM/YYYY still works, with a warning. Later days are disabled.
+         */
+        "endDateLimit"?: string;
+        /**
+          * Message below the field while danger is true.
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * The `id` of a `<form>` element to associate this element with.
+         */
+        "form"?: string;
+        /**
+          * Message below the field that helps to fill it.
+          * @default ''
+         */
+        "helperMessage"?: string;
+        /**
+          * Label shown above the field. Without it, the default text of the language is shown ("Data").
+         */
+        "label"?: string;
+        /**
+          * Language of the texts and of the calendar. Can be one of: 'pt_BR' (default), 'en_US', 'es_ES'.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiDatepickerLanguage;
+        /**
+          * Message shown inside the panel, above the buttons, such as a rule about the period.
+          * @default null
+         */
+        "message"?: string;
+        /**
+          * Name of the value in the submitted form data: the date, or the start and the end of the period.
+         */
+        "name"?: string;
+        /**
+          * Emitted on Apply with a choice. detail: { startDate, endDate? } as ISO.
+         */
+        "onUaiConcludeDatepicker"?: (event: UaiDatepickerCustomEvent<UaiDatepickerConclude>) => void;
+        /**
+          * Emitted on Apply with nothing chosen.
+         */
+        "onUaiEmptyConcludeDatepicker"?: (event: UaiDatepickerCustomEvent<void>) => void;
+        /**
+          * Emitted when the end date of the draft changes. detail: { value } as ISO or null.
+         */
+        "onUaiEndDate"?: (event: UaiDatepickerCustomEvent<{ value: string | null }>) => void;
+        /**
+          * Emitted when the start date of the draft changes (or the date, with "single"). detail: { value } as ISO or null.
+         */
+        "onUaiStartDate"?: (event: UaiDatepickerCustomEvent<{ value: string | null }>) => void;
+        /**
+          * Text shown in the field while nothing is chosen. Defaults to the browser's regional date format.
+         */
+        "placeholder"?: string;
+        /**
+          * Side and alignment of the panel. Can be 'auto' (default) or a side and an edge such as 'bottom-left', 'bottom-right', 'top-left', 'top-right'. 'top-center' and 'bottom-center' keep only the side; the right and left sides of the legacy fall back to 'auto'.
+          * @default 'auto'
+         */
+        "positionOptions"?: UaiDatepickerPosition | string;
+        /**
+          * Height of the field. Can be one of: 'short', 'medium' (default).
+          * @default 'medium'
+         */
+        "size"?: UaiDatepickerSize;
+        /**
+          * Earliest date that can be chosen, as ISO YYYY-MM-DD. The legacy DD/MM/YYYY still works, with a warning. Earlier days are disabled.
+         */
+        "startDateLimit"?: string;
+        /**
+          * One date or a period. Can be one of: 'single' (default), 'period'.
+          * @default 'single'
+         */
+        "typeOfDate"?: UaiDatepickerType;
+        /**
+          * Chosen date, or the start of the period, as ISO YYYY-MM-DD (the legacy DD/MM/YYYY still works, with a warning).
+          * @default null
+         */
+        "valueDateSelected"?: string;
+        /**
+          * End of the period, as ISO YYYY-MM-DD (the legacy DD/MM/YYYY still works, with a warning).
+          * @default null
+         */
+        "valueEndDateSelected"?: string;
+        /**
+          * Tone of the message inside the panel. Can be one of: 'system', 'info', 'success', 'warning' (default), 'error'.
+          * @default 'warning'
+         */
+        "variantBanner"?: UaiDatepickerBannerVariant;
     }
     /**
      * Floating panel opened by an activator, with an optional fixed header, a scrollable body and an optional fixed footer.
@@ -18529,6 +18887,35 @@ declare namespace LocalJSX {
         "color": string;
         "dataTest": string;
     }
+    interface UaiDatepickerAttributes {
+        "name": string;
+        "typeOfDate": UaiDatepickerType;
+        "startDateLimit": string;
+        "endDateLimit": string;
+        "label": string;
+        "placeholder": string;
+        "message": string;
+        "variantBanner": UaiDatepickerBannerVariant;
+        "language": UaiDatepickerLanguage;
+        "disabled": boolean;
+        "valueDateSelected": string;
+        "valueEndDateSelected": string;
+        "positionOptions": UaiDatepickerPosition | string;
+        "size": UaiDatepickerSize;
+        "helperMessage": string;
+        "danger": boolean;
+        "errorMessage": string;
+        "ariaLabel": string;
+        "dtInputStart": string;
+        "dtInputEnd": string;
+        "dtOutzone": string;
+        "dtButtonPrev": string;
+        "dtButtonNext": string;
+        "dtSelectMonth": string;
+        "dtSelectYear": string;
+        "dtButtonClear": string;
+        "dtButtonConfirm": string;
+    }
     interface UaiDropdownAttributes {
         "open": boolean;
         "position": UaiDropdownPosition;
@@ -19207,6 +19594,7 @@ declare namespace LocalJSX {
         "uai-button-group": Omit<UaiButtonGroup, keyof UaiButtonGroupAttributes> & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes]?: UaiButtonGroup[K] } & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes as `attr:${K}`]?: UaiButtonGroupAttributes[K] } & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes as `prop:${K}`]?: UaiButtonGroup[K] };
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
         "uai-chip-tag": Omit<UaiChipTag, keyof UaiChipTagAttributes> & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes]?: UaiChipTag[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `attr:${K}`]?: UaiChipTagAttributes[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `prop:${K}`]?: UaiChipTag[K] };
+        "uai-datepicker": Omit<UaiDatepicker, keyof UaiDatepickerAttributes> & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes]?: UaiDatepicker[K] } & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes as `attr:${K}`]?: UaiDatepickerAttributes[K] } & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes as `prop:${K}`]?: UaiDatepicker[K] };
         "uai-dropdown": Omit<UaiDropdown, keyof UaiDropdownAttributes> & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes]?: UaiDropdown[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `attr:${K}`]?: UaiDropdownAttributes[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `prop:${K}`]?: UaiDropdown[K] };
         "uai-emoji": Omit<UaiEmoji, keyof UaiEmojiAttributes> & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes]?: UaiEmoji[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `attr:${K}`]?: UaiEmojiAttributes[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `prop:${K}`]?: UaiEmoji[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
@@ -19310,6 +19698,9 @@ declare module "@stencil/core" {
             "bds-chip-tag": LocalJSX.IntrinsicElements["bds-chip-tag"] & JSXBase.HTMLAttributes<HTMLBdsChipTagElement>;
             "bds-counter-text": LocalJSX.IntrinsicElements["bds-counter-text"] & JSXBase.HTMLAttributes<HTMLBdsCounterTextElement>;
             "bds-data-table": LocalJSX.IntrinsicElements["bds-data-table"] & JSXBase.HTMLAttributes<HTMLBdsDataTableElement>;
+            /**
+             * @deprecated Use uai-datepicker (or uai-input-date for a single typed date) with UaiThemeProvider for tokenized styling.
+             */
             "bds-datepicker": LocalJSX.IntrinsicElements["bds-datepicker"] & JSXBase.HTMLAttributes<HTMLBdsDatepickerElement>;
             "bds-datepicker-period": LocalJSX.IntrinsicElements["bds-datepicker-period"] & JSXBase.HTMLAttributes<HTMLBdsDatepickerPeriodElement>;
             "bds-datepicker-single": LocalJSX.IntrinsicElements["bds-datepicker-single"] & JSXBase.HTMLAttributes<HTMLBdsDatepickerSingleElement>;
@@ -19525,6 +19916,15 @@ declare module "@stencil/core" {
              * pair with a text label; avoid using color alone to convey meaning or using it as an action.
              */
             "uai-chip-tag": LocalJSX.IntrinsicElements["uai-chip-tag"] & JSXBase.HTMLAttributes<HTMLUaiChipTagElement>;
+            /**
+             * Field to choose a date or a period in the UAI calendar. With typeOfDate "single" (default) the panel shows a month
+             * and a date field; with "period" it shows two months side by side with the "Starts" and "Ends" fields, fills the days
+             * between them and previews the period under the pointer. The choice is a draft until Apply; Reset clears it and
+             * closing without applying discards it. Dates are ISO YYYY-MM-DD. Use it for filters and reports over a period, or
+             * when the choice should be confirmed. Pair with a visible label. Avoid it for a single date typed in a form (use
+             * uai-input-date). Wrap the app in UaiThemeProvider.
+             */
+            "uai-datepicker": LocalJSX.IntrinsicElements["uai-datepicker"] & JSXBase.HTMLAttributes<HTMLUaiDatepickerElement>;
             /**
              * Floating panel opened by an activator, with an optional fixed header, a scrollable body and an optional fixed footer.
              * Use for filters, pickers and short forms next to a trigger; pair with uai-button as the activator and

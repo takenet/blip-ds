@@ -116,6 +116,7 @@ import { UaiButtonGroup as UaiButtonGroupElement, defineCustomElement as defineU
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiChipTag as UaiChipTagElement, defineCustomElement as defineUaiChipTag } from "blip-ds/dist/components/uai-chip-tag.js";
+import { UaiDatepicker as UaiDatepickerElement, defineCustomElement as defineUaiDatepicker } from "blip-ds/dist/components/uai-datepicker.js";
 import { UaiDropdown as UaiDropdownElement, defineCustomElement as defineUaiDropdown } from "blip-ds/dist/components/uai-dropdown.js";
 import { UaiEmoji as UaiEmojiElement, defineCustomElement as defineUaiEmoji } from "blip-ds/dist/components/uai-emoji.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
@@ -1205,6 +1206,19 @@ export const UaiChipTag = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiChipTag,
+    transformTag
+});
+export const UaiDatepicker = createComponent({
+    tagName: 'uai-datepicker',
+    elementClass: UaiDatepickerElement,
+    react: React,
+    events: {
+        onUaiStartDate: 'uaiStartDate',
+        onUaiEndDate: 'uaiEndDate',
+        onUaiConcludeDatepicker: 'uaiConcludeDatepicker',
+        onUaiEmptyConcludeDatepicker: 'uaiEmptyConcludeDatepicker'
+    },
+    defineCustomElement: defineUaiDatepicker,
     transformTag
 });
 export const UaiDropdown = createComponent({

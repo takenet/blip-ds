@@ -195,6 +195,8 @@ export interface CalendarHeaderProps {
   onPrevious: () => void;
   onNext: () => void;
   onView: (view: UaiCalendarView) => void;
+  /** Test ids of the arrows and the month and year buttons. */
+  dataTest?: { previous?: string; next?: string; month?: string; year?: string };
 }
 
 /** The arrows and the month and year buttons; the month and year buttons switch to their pickers and back. */
@@ -209,6 +211,7 @@ export const CalendarHeader: FunctionalComponent<CalendarHeaderProps> = (props) 
         class="calendar__arrow"
         part="calendar-arrow"
         aria-label={side === 'previous' ? (years ? texts.previousYears : texts.previousMonth) : years ? texts.nextYears : texts.nextMonth}
+        data-test={props.dataTest?.[side] ?? null}
         disabled={disabled}
         onClick={side === 'previous' ? props.onPrevious : props.onNext}
       >
@@ -223,6 +226,7 @@ export const CalendarHeader: FunctionalComponent<CalendarHeaderProps> = (props) 
       class={{ calendar__picker: true, 'calendar__picker--open': props.view === kind }}
       part="calendar-picker"
       aria-label={`${name}: ${label}`}
+      data-test={props.dataTest?.[kind === 'months' ? 'month' : 'year'] ?? null}
       aria-expanded={props.view === kind ? 'true' : 'false'}
       onClick={() => props.onView(props.view === kind ? 'days' : kind)}
     >
@@ -266,6 +270,11 @@ export const CalendarDays: FunctionalComponent<CalendarDaysProps> = (props) => {
   const weekdays = weekdayNames(props.language);
   const months = monthNames(props.language);
   const today = todayIso();
+  // A period that goes on before or after the month fills the empty cells at its start or end.
+  const firstRange = props.rangeOf?.(toIso(props.year, props.month, 1)) ?? null;
+  const lastRange = props.rangeOf?.(toIso(props.year, props.month, daysInMonth(props.year, props.month))) ?? null;
+  const fillsBefore = firstRange === 'between' || firstRange === 'end';
+  const fillsAfter = lastRange === 'between' || lastRange === 'start';
   return (
     <table class="calendar__grid" role="grid" aria-label={`${months[props.month].long} ${props.year}`}>
       <thead>
@@ -280,10 +289,23 @@ export const CalendarDays: FunctionalComponent<CalendarDaysProps> = (props) => {
         </tr>
       </thead>
       <tbody>
-        {monthWeeks(props.year, props.month).map((week) => (
+        {monthWeeks(props.year, props.month).map((week, row) => (
           <tr>
             {week.map((iso, index) => {
-              if (!iso) return <td class="calendar__cell" role="gridcell"></td>;
+              if (!iso) {
+                const filled = row === 0 ? fillsBefore : fillsAfter;
+                return (
+                  <td
+                    class={{
+                      calendar__cell: true,
+                      'calendar__cell--between': filled,
+                      'calendar__cell--week-start': index === 0,
+                      'calendar__cell--week-end': index === 6,
+                    }}
+                    role="gridcell"
+                  ></td>
+                );
+              }
               const range = props.rangeOf?.(iso) ?? null;
               const selected = props.isSelected(iso);
               const disabled = outOfRange(iso, props.min, props.max);
@@ -292,8 +314,8 @@ export const CalendarDays: FunctionalComponent<CalendarDaysProps> = (props) => {
                   class={{
                     calendar__cell: true,
                     [`calendar__cell--${range}`]: !!range,
-                    'calendar__cell--week-start': index === 0 || !week[index - 1],
-                    'calendar__cell--week-end': index === 6 || !week[index + 1],
+                    'calendar__cell--week-start': index === 0 || (!week[index - 1] && !fillsBefore),
+                    'calendar__cell--week-end': index === 6 || (!week[index + 1] && !fillsAfter),
                   }}
                   role="gridcell"
                   aria-selected={selected ? 'true' : 'false'}

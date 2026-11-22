@@ -1,0 +1,97 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiDatepickerStories from './uai-datepicker.stories';
+
+<Meta isTemplate />
+
+# Datepicker
+
+Campo para escolher uma data ou um período no calendário UAI, com confirmação. Use em filtros e relatórios, ou quando a escolha precisa ser confirmada antes de valer. Para uma data digitada num formulário, use o `uai-input-date`; para um horário, o `uai-input-time`.
+
+## Playground
+
+<Canvas of={UaiDatepickerStories.Playground} />
+
+<Controls of={UaiDatepickerStories.Playground} />
+
+## Como usar
+
+Um período controlado por estado: o valor só muda quando a pessoa clica em Aplicar. O código abaixo pode ser copiado como ponto de partida.
+
+<Canvas of={UaiDatepickerStories.Usage} sourceState="shown" />
+
+- Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI uma vez na aplicação.
+- As datas (`valueDateSelected`, `valueEndDateSelected`, `startDateLimit`, `endDateLimit` e os eventos) são ISO `YYYY-MM-DD`. O formato legado `DD/MM/YYYY` ainda funciona, com um aviso. A exibição segue a região do navegador.
+- Clicar no campo abre o painel. O que a pessoa escolhe é um rascunho: **Aplicar** confirma e emite `uaiConcludeDatepicker`, **Redefinir** limpa o rascunho, e fechar sem aplicar (Esc, clique fora, Tab para fora) descarta.
+- Com `typeOfDate="period"`, o primeiro clique marca o início e o seguinte, o fim; um clique antes do início, ou depois de um período completo, recomeça. Entre os dois, o período fica preenchido, com uma prévia sob o ponteiro. Aplicar pede as duas pontas.
+- As datas também podem ser digitadas nos campos do painel ("Começa", "Termina" ou "Data"), só com números; Enter aplica.
+- Fora do React, use o custom element `<uai-datepicker>`, com as propriedades em kebab-case (`type-of-date`, `value-date-selected`) e os eventos `uaiConcludeDatepicker`, `uaiStartDate` etc.
+
+## Data única e período
+
+<Canvas of={UaiDatepickerStories.Single} />
+
+<Canvas of={UaiDatepickerStories.Period} />
+
+<Canvas of={UaiDatepickerStories.Limits} />
+
+<Canvas of={UaiDatepickerStories.States} />
+
+## Comportamento
+
+| Regra | Teste |
+| --- | --- |
+| O campo mostra a data, ou o período ("15/01/2026 – 15/02/2026"), no formato regional; vazio, o formato como placeholder | `test/uai-datepicker.spec.tsx` |
+| O painel abre no mês da data escolhida (ou de hoje, dentro dos limites); o período mostra esse mês e o seguinte | `test/uai-datepicker.spec.tsx` |
+| Dois cliques escolhem o período; Aplicar emite `uaiConcludeDatepicker` com `{ startDate, endDate }` e devolve o foco ao campo | `test/uai-datepicker.e2e.ts` |
+| Aplicar sem nada escolhido emite `uaiEmptyConcludeDatepicker` | `test/uai-datepicker.spec.tsx` |
+| Esc, o clique fora e o Tab para fora fecham e descartam o rascunho | `test/uai-datepicker.e2e.ts` |
+| Seta para baixo no campo abre o painel com o foco no dia; nos dias, o teclado do `uai-input-date` (setas, Home, End, PageUp, PageDown) e Enter escolhe | `test/uai-datepicker.e2e.ts` |
+| Uma data completa digitada num campo do painel entra no rascunho e mostra seu mês | `test/uai-datepicker.spec.tsx` |
+| Dias fora de `startDateLimit` e `endDateLimit` ficam desabilitados | `test/uai-datepicker.spec.tsx` |
+| Com `name`, envia a data, ou as duas pontas do período com o mesmo nome | `test/uai-datepicker.e2e.ts` |
+
+### Eventos e métodos
+
+| React | Custom element | Quando | `detail` |
+| --- | --- | --- | --- |
+| `onUaiStartDate` | `uaiStartDate` | O início (ou a data) do rascunho muda | `{ value }` em ISO ou `null` |
+| `onUaiEndDate` | `uaiEndDate` | O fim do rascunho muda | `{ value }` em ISO ou `null` |
+| `onUaiConcludeDatepicker` | `uaiConcludeDatepicker` | Aplicar com uma escolha | `{ startDate, endDate? }` em ISO |
+| `onUaiEmptyConcludeDatepicker` | `uaiEmptyConcludeDatepicker` | Aplicar sem nada escolhido | — |
+
+Métodos: `open()`, `close()` (descarta o rascunho) e `clear()`.
+
+### Movimento
+
+O painel cresce a partir do campo, um mês novo desliza do lado de onde vem, a troca entre dias, meses e anos aparece com um leve zoom e o dia escolhido cresce no lugar. Tudo com `duration/moderate` (ou `fast`) e `easing/standard`, e nada com `prefers-reduced-motion: reduce`.
+
+## Acessibilidade
+
+- O campo é um `<button>` com `aria-haspopup="dialog"` e `aria-expanded`; o painel é um `dialog` com nome ("Escolher data").
+- Os dias seguem o padrão de date picker da WAI-ARIA: cada mês é uma `grid` com o nome do mês, cada dia é um botão com a data completa, os escolhidos têm `aria-selected` e hoje tem `aria-current="date"`.
+- Os campos do painel têm rótulo visível e `aria-invalid` quando a data digitada não existe ou está fora dos limites.
+- A mensagem do painel (`message`) é anunciada como `status` e tem ícone além da cor.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Campo | Os mesmos do input: `control-height-*`, `radius-lg`, `border-input`, `surface-paper`, `border-ring` e `opacity-focus-ring` com o painel aberto |
+| Painel | `surface-paper`, `border-default`, `radius-xl`, `elevation-2`, `spacing-md` |
+| Dias | Os do calendário UAI: `sizing-xl`, `radius-lg`, `action-primary-default` e `action-primary-foreground` (pontas), `surface-muted` (período), `border-input` (hoje), `content-disabled` |
+| Campos do painel | `control-height-medium`, `radius-lg`, `border-input`, `border-ring` |
+| Mensagem | `feedback-info`, `feedback-success`, `feedback-warning`, `feedback-error`, `content-secondary` |
+
+## Migração do `bds-datepicker`
+
+Props e métodos têm os mesmos nomes do `BdsDatepicker`; os eventos trocam `bds` por `uai`. As diferenças:
+
+| `BdsDatepicker` | `UaiDatepicker` |
+| --- | --- |
+| Datas em `DD/MM/YYYY` | Datas em ISO `YYYY-MM-DD`; `DD/MM/YYYY` ainda funciona, com aviso |
+| `bdsStartDate` e `bdsEndDate` com `Date` | `uaiStartDate` e `uaiEndDate` com a data em ISO |
+| `concludeDatepicker`, `emptyConcludeDatepicker` | `uaiConcludeDatepicker` (datas em ISO), `uaiEmptyConcludeDatepicker` |
+| `positionOptions` com 13 posições | Lado e borda (`bottom-left`, `top-right`…); as posições à direita e à esquerda caem em `auto`, com aviso |
+| `dtOutzone` na área de fora | `dtOutzone` no campo que abre o painel |
+| Campo fora do `<form>` nativo | Participa do formulário: `name`, reset e `fieldset` |
+| — | `size`, `placeholder`, `helperMessage`, `danger`, `errorMessage`, `aria-label`, métodos `open()`, `close()` e `clear()` |

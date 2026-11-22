@@ -50,6 +50,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
  - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-button](../uai-button)
  - [uai-chip-tag](../uai-chip-tag)
+ - [uai-datepicker](../uai-datepicker)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
  - [uai-input-date](../uai-input-date)
@@ -79,6 +80,7 @@ graph TD;
   uai-breadcrumb --> uai-typo
   uai-button --> uai-typo
   uai-chip-tag --> uai-typo
+  uai-datepicker --> uai-typo
   uai-input --> uai-typo
   uai-input-chips --> uai-typo
   uai-input-date --> uai-typo
