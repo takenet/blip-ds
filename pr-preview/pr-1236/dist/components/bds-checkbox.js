@@ -1,0 +1,1 @@
+import{C as o,d as s}from"./p-CYII-af6.js";const a=o,p=s;export{a as BdsCheckbox,p as defineCustomElement}
