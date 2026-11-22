@@ -3,7 +3,7 @@ import DocumentationTemplate from './datepicker.mdx';
 import { BdsDatepicker } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Datepicker',
+  title: 'Components/[deprecated] Datepicker',
   parameters: {
     docs: {
       page: DocumentationTemplate,

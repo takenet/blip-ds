@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-datepicker (or uai-input-date for a single typed date) with UaiThemeProvider for tokenized styling.
+
 ## Properties
 
 | Property               | Attribute                 | Description                                                                                                                 | Type                                                                                                                                                                                                           | Default            |

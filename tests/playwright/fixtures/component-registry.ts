@@ -115,10 +115,10 @@ export const WAVE_2: ComponentEntry[] = [
   {
     tag: 'bds-datepicker',
     name: 'Datepicker',
-    primaryStory: 'components-datepicker--properties',
+    primaryStory: 'components-deprecated-datepicker--properties',
     stories: [
-      { storyId: 'components-datepicker--properties', label: 'Properties' },
-      { storyId: 'components-datepicker--events', label: 'Events' },
+      { storyId: 'components-deprecated-datepicker--properties', label: 'Properties' },
+      { storyId: 'components-deprecated-datepicker--events', label: 'Events' },
     ],
   },
   {
