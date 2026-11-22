@@ -14,7 +14,7 @@ export default {
   decorators: [
     (Story, context) => (
       <UaiThemeProvider theme={context.globals.hasTheme === 'dark' ? 'dark' : 'light'}>
-        <div style={{ minHeight: '34rem' }}>
+        <div style={{ minHeight: 'calc(12 * var(--uai-control-height-medium))' }}>
           <Story />
         </div>
       </UaiThemeProvider>
