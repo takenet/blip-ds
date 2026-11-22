@@ -1,1 +1,0 @@
-import{T as o,d as s}from"./p-Y4ReiHNg.js";const p=o,r=s;export{p as BdsTableCell,r as defineCustomElement}

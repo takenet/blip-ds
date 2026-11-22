@@ -1,1 +1,0 @@
-import{U as o,d as p}from"./p-CGb2Fp8B.js";const s=o,r=p;export{s as UaiTooltip,r as defineCustomElement}

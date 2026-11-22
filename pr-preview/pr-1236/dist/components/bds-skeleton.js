@@ -1,1 +1,0 @@
-import{S as s,d as o}from"./p-asmzfi-V.js";const a=s,m=o;export{a as BdsSkeleton,m as defineCustomElement}

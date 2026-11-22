@@ -1,1 +1,0 @@
-import{U as s,d as o}from"./p-DUPOpHsD.js";const p=s,r=o;export{p as UaiTypo,r as defineCustomElement}

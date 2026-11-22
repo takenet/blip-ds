@@ -1,1 +1,0 @@
-import{S as o,d as s}from"./p-Cffail04.js";const a=o,f=s;export{a as BdsSwitch,f as defineCustomElement}

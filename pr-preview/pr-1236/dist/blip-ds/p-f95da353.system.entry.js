@@ -1,4 +1,0 @@
-System.register(["./p-Btp-603e.system.js"],(function(t){"use strict";var e,n,a;return{setters:[function(t){e=t.r;n=t.h;a=t.H}],execute:function(){var s=function(){return'.bds-tab-panel{display:none;font-family:"Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}'};var i=t("bds_tab_panel",/** @class */function(){function t(t){e(this,t);
-/**
-                     * State to control if a tab panel is current active
-                     */this.isActive=false}t.prototype.handleTabChange=function(t){this.isActive=t.detail==this.group};t.prototype.render=function(){var t;return n(a,{key:"3edd3c699b0ab4fcc3da8f3688e635e813830141",class:(t={"bds-tab-panel":true},t["bds-tab-panel--selected"]=this.isActive,t)},n("slot",{key:"049d3bf8ae9af9564c3270cea1eaffb1ad067871"}))};return t}());i.style=s()}}}));

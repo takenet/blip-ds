@@ -1,1 +1,0 @@
-import{B as o,d as r}from"./p-Wx1r_kt2.js";const s=o,t=r;export{s as BdsButton,t as defineCustomElement}
