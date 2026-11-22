@@ -11,11 +11,27 @@ import {
   Prop,
   State,
   Watch,
+  forceUpdate,
   h,
 } from '@stencil/core';
 import { UaiControlSize } from '../input/input-interface';
 import { warnLegacyValue, warnOnce } from '../../utils/deprecation';
 import { UaiFormControl } from '../../utils/uai-form-control';
+import { UaiOverlay, UaiOverlayCloseReason } from '../../utils/uai-overlay';
+import {
+  CalendarDays,
+  CalendarHeader,
+  CalendarList,
+  UaiCalendarView,
+  YEARS_PER_PAGE,
+  addMonths,
+  clampIso,
+  dateForKey,
+  outOfRange,
+  parseIso,
+  toIso,
+  todayIso,
+} from '../../utils/uai-calendar';
 import {
   UaiInputDateLanguage,
   dateLocale,
@@ -35,16 +51,21 @@ const LANGUAGES: UaiInputDateLanguage[] = ['pt_BR', 'en_US', 'es_ES'];
 let instances = 0;
 
 /**
- * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
- * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
- * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
- * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+ * Date field. The person types the date in the browser's regional format or picks it in the UAI calendar that opens
+ * on a click; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it for a single known date, such
+ * as a birth or due date. Pair with uai-input-time for a date and time, and with UaiButton in forms. Avoid it for
+ * periods (use uai-datepicker) or times (use uai-input-time). Wrap the app in UaiThemeProvider.
  *
  * @slot input-right - Content after the calendar button (for example a clear button). Give actions an accessible name.
  * @part input-container - The field box with border, icon, the native input and the calendar button.
  * @part input - The native text input with the date in the browser's regional format.
  * @part input__message - The helper, error or success message below the field.
- * @part calendar-button - The button that opens the browser calendar.
+ * @part calendar-button - The button that opens and closes the calendar.
+ * @part calendar - The floating calendar panel.
+ * @part calendar-arrow - The previous and next buttons of the calendar header.
+ * @part calendar-picker - The month and year buttons of the calendar header.
+ * @part calendar-day - Each day button of the calendar.
+ * @part calendar-option - Each month or year in their pickers.
  */
 @Component({
   tag: 'uai-input-date',
@@ -60,9 +81,20 @@ export class UaiInputDate {
   @State() display = '';
   @State() validationDanger = false;
   @State() disabledByForm = false;
+  @State() isOpen = false;
+  @State() view: UaiCalendarView = 'days';
+  /** The day with the focus in the calendar grid; its month is the month shown. */
+  @State() focusedDate = todayIso();
+  @State() firstYear = 0;
+  /** Where the next month or page of years comes from, for the slide animation. */
+  @State() slide: 'next' | 'previous' | 'view' | null = null;
 
   private nativeInput?: HTMLInputElement;
-  private picker?: HTMLInputElement;
+  private control?: HTMLElement;
+  private panel?: HTMLElement;
+  private overlay?: UaiOverlay;
+  /** Moves the focus into the grid on the next render (opened by the keyboard or the calendar button). */
+  private focusGrid = false;
   private formControl?: UaiFormControl;
   private defaultValue = '';
   private typing = false;
@@ -243,6 +275,22 @@ export class UaiInputDate {
     this.value = '';
   }
 
+  /**
+   * Opens the calendar. Use for imperative control; pair with close.
+   */
+  @Method()
+  async open(): Promise<void> {
+    this.openCalendar(false);
+  }
+
+  /**
+   * Closes the calendar.
+   */
+  @Method()
+  async close(): Promise<void> {
+    this.closeCalendar();
+  }
+
   @Watch('inputName')
   protected inputNameChanged(): void {
     if (!this.name && this.inputName) this.name = this.inputName;
@@ -259,6 +307,14 @@ export class UaiInputDate {
   @Listen('invalid')
   protected onInvalid(): void {
     this.showValidation(true);
+  }
+
+  // The focus moving to something outside the field and the calendar closes it. Without a target (a day button
+  // replaced when the month changes, or a click on nothing), it stays: a click outside is the overlay's.
+  @Listen('focusout')
+  protected onFocusOut(event: FocusEvent): void {
+    const next = event.relatedTarget as Node | null;
+    if (next && !this.el.contains(next) && !this.el.shadowRoot?.contains(next)) this.closeCalendar();
   }
 
   componentWillLoad() {
@@ -288,10 +344,32 @@ export class UaiInputDate {
     }
   }
 
+  componentDidLoad() {
+    if (this.control && this.panel) {
+      this.overlay = new UaiOverlay({
+        trigger: this.control,
+        panel: this.panel,
+        side: 'bottom',
+        align: 'start',
+        onClose: this.onOverlayClose,
+      });
+    }
+  }
+
   componentDidRender() {
     if (this.nativeInput && this.nativeInput.value !== this.display) this.nativeInput.value = this.display;
     const { flags, message } = this.validity();
     this.formControl?.setValidity(flags, message, this.nativeInput);
+    if (this.isOpen && this.overlay && !this.overlay.isOpen) this.overlay.open();
+    if (this.isOpen) this.overlay?.update();
+    if (this.isOpen && this.focusGrid) {
+      this.focusGrid = false;
+      this.panel?.querySelector<HTMLElement>(`[data-iso="${this.focusedDate}"]`)?.focus();
+    }
+  }
+
+  disconnectedCallback() {
+    this.overlay?.destroy();
   }
 
   formResetCallback() {
@@ -363,6 +441,8 @@ export class UaiInputDate {
     this.typing = true;
     this.value = displayToIso(digits);
     this.typing = false;
+    // A complete date typed with the calendar open shows its month.
+    if (this.isOpen && isIsoDate(this.value)) this.moveTo(clampIso(this.value, this.min, this.max));
     this.uaiInput.emit(event);
   };
 
@@ -370,43 +450,227 @@ export class UaiInputDate {
     this.uaiFocus.emit();
   };
 
+  // Going into the calendar is not leaving the field: the validation waits until the calendar closes.
   private onBlur = (): void => {
-    this.showValidation(true);
+    if (!this.isOpen) this.showValidation(true);
     this.uaiOnBlur.emit();
   };
 
   private onKeyDown = (event: KeyboardEvent): void => {
-    if (event.key === 'ArrowDown' && event.altKey) {
+    if (event.key === 'ArrowDown' && (event.altKey || this.isOpen)) {
       event.preventDefault();
-      this.openCalendar();
+      this.openCalendar(true);
+    } else if (event.key === 'Tab' && this.isOpen) {
+      this.closeCalendar();
     } else if (event.key === 'Enter' && !event.isComposing) {
       this.formControl?.form?.requestSubmit();
     }
   };
 
-  private openCalendar = (): void => {
-    if (!this.picker || this.disabled || this.disabledByForm || this.readonly) return;
-    this.picker.value = isIsoDate(this.value) ? this.value : '';
-    try {
-      this.picker.showPicker();
-    } catch {
-      this.nativeInput?.focus();
+  private get isDisabled(): boolean {
+    return this.disabled || this.disabledByForm;
+  }
+
+  private get viewYear(): number {
+    return parseIso(this.focusedDate).year;
+  }
+
+  private get viewMonth(): number {
+    return parseIso(this.focusedDate).month;
+  }
+
+  // The calendar starts on the chosen date, or today, within min and max.
+  private openCalendar(focusGrid: boolean) {
+    if (this.isDisabled || this.readonly) return;
+    if (!this.isOpen) {
+      const start = isIsoDate(this.value) ? this.value : todayIso();
+      this.focusedDate = clampIso(start, this.min, this.max);
+      this.view = 'days';
+      this.slide = null;
+      this.isOpen = true;
+    }
+    this.focusGrid = focusGrid;
+    if (focusGrid) this.forceFocus();
+  }
+
+  // Asks for a render when the calendar is already open and only the focus has to move.
+  private forceFocus() {
+    forceUpdate(this.el);
+  }
+
+  private closeCalendar(reason: UaiOverlayCloseReason = 'api') {
+    if (!this.isOpen) return;
+    this.isOpen = false;
+    this.overlay?.close(reason);
+    if (!this.el.shadowRoot?.activeElement) this.showValidation(true);
+  }
+
+  private onOverlayClose = (reason: UaiOverlayCloseReason): void => {
+    if (this.isOpen) this.isOpen = false;
+    if (reason === 'escape') this.nativeInput?.focus();
+    if (reason === 'outside') this.showValidation(true);
+  };
+
+  private pickDate = (iso: string): void => {
+    if (outOfRange(iso, this.min, this.max)) return;
+    this.display = isoToDisplay(iso);
+    this.value = iso;
+    this.showValidation(true);
+    this.closeCalendar();
+    this.nativeInput?.focus();
+  };
+
+  private moveFocus(iso: string) {
+    this.moveTo(clampIso(iso, this.min, this.max));
+    this.focusGrid = true;
+    forceUpdate(this.el);
+  }
+
+  // Keys move from the active day in the state, not from the button that got the event: a fast key can reach the
+  // previous button before the focus moves.
+  private onDayKeyDown = (event: KeyboardEvent): void => {
+    const target = dateForKey(this.focusedDate, event);
+    if (target) {
+      event.preventDefault();
+      this.moveFocus(target);
+    } else if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.pickDate(this.focusedDate);
     }
   };
 
-  private onPick = (): void => {
-    const value = this.picker?.value || '';
-    if (!isIsoDate(value)) return;
-    this.display = isoToDisplay(value);
-    this.value = value;
-    this.showValidation(true);
-    this.nativeInput?.focus();
+  private showMonth(months: number) {
+    this.moveTo(clampIso(addMonths(this.focusedDate, months), this.min, this.max));
+  }
+
+  // Moves the calendar to a date; a new month slides in from the side it comes from.
+  private moveTo(iso: string) {
+    const from = this.viewYear * 12 + this.viewMonth;
+    const { year, month } = parseIso(iso);
+    const to = year * 12 + month;
+    if (to !== from) this.slide = to > from ? 'next' : 'previous';
+    this.focusedDate = iso;
+  }
+
+  private changeView(view: UaiCalendarView) {
+    if (view === this.view) return;
+    this.slide = 'view';
+    this.view = view;
+  }
+
+  private onView = (view: UaiCalendarView): void => {
+    // The page of years opens with the current year in its first row, leaving the years ahead in view.
+    if (view === 'years') this.firstYear = this.viewYear - 4;
+    this.changeView(view);
   };
+
+  private onPickMonth = (month: number): void => {
+    const { year, day } = parseIso(this.focusedDate);
+    const last = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+    this.focusedDate = clampIso(toIso(year, month, Math.min(day, last)), this.min, this.max);
+    this.changeView('days');
+  };
+
+  private onPickYear = (year: number): void => {
+    const { month, day } = parseIso(this.focusedDate);
+    const last = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+    this.focusedDate = clampIso(toIso(year, month, Math.min(day, last)), this.min, this.max);
+    this.changeView('months');
+  };
+
+  // The arrows turn a month, a year in the month picker, or a page of years in the year picker.
+  private onPrevious = (): void => {
+    if (this.view === 'years') {
+      this.firstYear -= YEARS_PER_PAGE;
+      this.slide = 'previous';
+    } else this.showMonth(this.view === 'months' ? -12 : -1);
+  };
+
+  private onNext = (): void => {
+    if (this.view === 'years') {
+      this.firstYear += YEARS_PER_PAGE;
+      this.slide = 'next';
+    } else this.showMonth(this.view === 'months' ? 12 : 1);
+  };
+
+  private onInputClick = (): void => {
+    this.openCalendar(false);
+  };
+
+  private onButtonClick = (): void => {
+    if (this.isOpen) {
+      this.closeCalendar();
+      this.nativeInput?.focus();
+    } else {
+      this.openCalendar(true);
+    }
+  };
+
+  private renderCalendar() {
+    if (!this.isOpen) return null;
+    const language = this.languageValue;
+    const min = parseIso(this.min);
+    const max = parseIso(this.max);
+    const year = this.viewYear;
+    const month = this.viewMonth;
+    // The arrows stop at min and max: by month, by year in the month picker, by page in the year picker.
+    const position = this.view === 'days' ? year * 12 + month : year;
+    const limit = (date: { year: number; month: number }) => (this.view === 'days' ? date.year * 12 + date.month : date.year);
+    const atMin = !!min && (this.view === 'years' ? this.firstYear <= min.year : position <= limit(min));
+    const atMax = !!max && (this.view === 'years' ? this.firstYear + YEARS_PER_PAGE - 1 >= max.year : position >= limit(max));
+    return [
+      <CalendarHeader
+        year={year}
+        month={month}
+        view={this.view}
+        language={language}
+        disablePrevious={atMin}
+        disableNext={atMax}
+        onPrevious={this.onPrevious}
+        onNext={this.onNext}
+        onView={this.onView}
+      />,
+      // A new key per month, page of years or view: the body is created again and its entry animation runs.
+      <div
+        key={`${this.view}-${this.view === 'years' ? this.firstYear : this.view === 'months' ? year : `${year}-${month}`}`}
+        class={{ calendar__body: true, [`calendar__body--${this.slide}`]: !!this.slide }}
+      >
+        {this.view === 'days' ? (
+          <CalendarDays
+            year={year}
+            month={month}
+            language={language}
+            focused={this.focusedDate}
+            min={this.min}
+            max={this.max}
+            idPrefix={`${this.inputId}-day`}
+            isSelected={(iso) => iso === this.value}
+            onPick={this.pickDate}
+            onKeyDown={this.onDayKeyDown}
+          />
+        ) : (
+          <CalendarList
+            kind={this.view}
+            year={year}
+            month={month}
+            language={language}
+            min={this.min}
+            max={this.max}
+            firstYear={this.firstYear}
+            onPick={this.view === 'months' ? this.onPickMonth : this.onPickYear}
+          />
+        )}
+      </div>,
+    ];
+  }
 
   // Clicks on the field box (outside the button and slotted content) focus the input, as a native field does.
   private onControlClick = (event: MouseEvent): void => {
     if ((event.target as HTMLElement)?.closest?.('button')) return;
-    if (!this.el.contains(event.target as Node)) this.nativeInput?.focus();
+    if (!this.el.contains(event.target as Node)) {
+      this.nativeInput?.focus();
+      this.openCalendar(false);
+    }
   };
 
   render() {
@@ -434,6 +698,7 @@ export class UaiInputDate {
           'uai-input-date--success': success,
           'uai-input-date--disabled': disabled,
           'uai-input-date--readonly': this.readonly && !disabled,
+          'uai-input-date--open': this.isOpen,
         }}
       >
         <div class="input">
@@ -444,7 +709,12 @@ export class UaiInputDate {
               </uai-typo>
             </label>
           )}
-          <div class="input__control" part="input-container" onClick={this.onControlClick}>
+          <div
+            class="input__control"
+            part="input-container"
+            ref={(control) => (this.control = control)}
+            onClick={this.onControlClick}
+          >
             {this.icon && <uai-icon class="input__icon" name={this.icon} size="medium"></uai-icon>}
             <div class="input__field">
               <input
@@ -462,10 +732,14 @@ export class UaiInputDate {
                 readOnly={this.readonly}
                 disabled={disabled}
                 aria-label={this.ariaLabel || null}
+                aria-haspopup="dialog"
+                aria-expanded={this.isOpen ? 'true' : 'false'}
+                aria-controls={`${this.inputId}-calendar`}
                 aria-invalid={invalid ? 'true' : null}
                 aria-describedby={message ? `${this.inputId}-message` : null}
                 data-test={this.dataTest}
                 onInput={this.onInput}
+                onClick={this.onInputClick}
                 onFocus={this.onFocus}
                 onBlur={this.onBlur}
                 onKeyDown={this.onKeyDown}
@@ -476,26 +750,18 @@ export class UaiInputDate {
             {!this.readonly && (
               <button
                 type="button"
-                class="calendar"
+                class="calendar-toggle"
                 part="calendar-button"
                 aria-label={locale.calendar}
+                aria-haspopup="dialog"
+                aria-expanded={this.isOpen ? 'true' : 'false'}
+                aria-controls={`${this.inputId}-calendar`}
                 disabled={disabled}
-                onClick={this.openCalendar}
+                onClick={this.onButtonClick}
               >
                 <uai-icon name="calendar" size="medium"></uai-icon>
               </button>
             )}
-            <input
-              ref={(picker) => (this.picker = picker)}
-              class="picker"
-              type="date"
-              tabindex="-1"
-              aria-hidden="true"
-              min={isIsoDate(this.min) ? this.min : undefined}
-              max={isIsoDate(this.max) ? this.max : undefined}
-              disabled={disabled}
-              onChange={this.onPick}
-            />
             <slot name="input-right"></slot>
           </div>
           {message && (
@@ -505,6 +771,20 @@ export class UaiInputDate {
               </uai-typo>
             </div>
           )}
+        </div>
+        {/* A press on the calendar keeps the focus where it is: in the field or on a day. */}
+        <div
+          id={`${this.inputId}-calendar`}
+          ref={(panel) => (this.panel = panel)}
+          class="calendar-panel"
+          part="calendar"
+          role="dialog"
+          aria-label={locale.calendar}
+          onPointerDown={(event) => {
+            if (!(event.target as HTMLElement)?.closest?.('button')) event.preventDefault();
+          }}
+        >
+          {this.renderCalendar()}
         </div>
       </Host>
     );

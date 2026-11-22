@@ -5052,10 +5052,10 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
-     * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
-     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
-     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
-     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     * Date field. The person types the date in the browser's regional format or picks it in the UAI calendar that opens
+     * on a click; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it for a single known date, such
+     * as a birth or due date. Pair with uai-input-time for a date and time, and with UaiButton in forms. Avoid it for
+     * periods (use uai-datepicker) or times (use uai-input-time). Wrap the app in UaiThemeProvider.
      */
     interface UaiInputDate {
         /**
@@ -5067,6 +5067,10 @@ export namespace Components {
           * Clears the date.
          */
         "clear": () => Promise<void>;
+        /**
+          * Closes the calendar.
+         */
+        "close": () => Promise<void>;
         /**
           * If true, shows the error state and errorMessage. Has priority over success.
           * @default false
@@ -5139,6 +5143,10 @@ export namespace Components {
           * Name of the value in the submitted form data, which is the ISO date. Without name (or inputName), the field is not submitted.
          */
         "name"?: string;
+        /**
+          * Opens the calendar. Use for imperative control; pair with close.
+         */
+        "open": () => Promise<void>;
         /**
           * Text shown while the field is empty. Defaults to the browser's regional date format, such as "DD/MM/YYYY".
          */
@@ -9328,10 +9336,10 @@ declare global {
         "uaiOnBlur": void;
     }
     /**
-     * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
-     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
-     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
-     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     * Date field. The person types the date in the browser's regional format or picks it in the UAI calendar that opens
+     * on a click; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it for a single known date, such
+     * as a birth or due date. Pair with uai-input-time for a date and time, and with UaiButton in forms. Avoid it for
+     * periods (use uai-datepicker) or times (use uai-input-time). Wrap the app in UaiThemeProvider.
      */
     interface HTMLUaiInputDateElement extends Components.UaiInputDate, HTMLStencilElement {
         addEventListener<K extends keyof HTMLUaiInputDateElementEventMap>(type: K, listener: (this: HTMLUaiInputDateElement, ev: UaiInputDateCustomEvent<HTMLUaiInputDateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -15250,10 +15258,10 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
-     * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
-     * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
-     * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
-     * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+     * Date field. The person types the date in the browser's regional format or picks it in the UAI calendar that opens
+     * on a click; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it for a single known date, such
+     * as a birth or due date. Pair with uai-input-time for a date and time, and with UaiButton in forms. Avoid it for
+     * periods (use uai-datepicker) or times (use uai-input-time). Wrap the app in UaiThemeProvider.
      */
     interface UaiInputDate {
         /**
@@ -19558,10 +19566,10 @@ declare module "@stencil/core" {
              */
             "uai-input-chips": LocalJSX.IntrinsicElements["uai-input-chips"] & JSXBase.HTMLAttributes<HTMLUaiInputChipsElement>;
             /**
-             * Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
-             * value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
-             * for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
-             * times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+             * Date field. The person types the date in the browser's regional format or picks it in the UAI calendar that opens
+             * on a click; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it for a single known date, such
+             * as a birth or due date. Pair with uai-input-time for a date and time, and with UaiButton in forms. Avoid it for
+             * periods (use uai-datepicker) or times (use uai-input-time). Wrap the app in UaiThemeProvider.
              */
             "uai-input-date": LocalJSX.IntrinsicElements["uai-input-date"] & JSXBase.HTMLAttributes<HTMLUaiInputDateElement>;
             /**
