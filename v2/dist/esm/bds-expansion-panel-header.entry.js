@@ -7,7 +7,7 @@ const ExpansionPanelHeader = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: 'e7cbbcbab0da92a11c9d1f58c35db39c1275c37a' }, h("div", { key: 'dd92ea14738fb533ac407343ef801e1f0a6ff81b', class: "header" }, h("slot", { key: '6b83b8c1ab7de8d71df1333ec2fda93a47129cf2' })), h("bds-typo", { key: '9bba2719a418ceeaadbcccba5870be44ca3aacf5', tag: "p", variant: "fs-12" }, this.text)));
+        return (h(Host, { key: 'a4b0602a9b41f5297fbe1c4b66a51069bbc3400b' }, h("div", { key: 'b395a39d5af70579d5ed55fac16b948b305734df', class: "header" }, h("slot", { key: '98b78301877d2034582fe32d8ed488c60d09e92c' })), h("bds-typo", { key: 'd7869851d3ce33ef74820cfc02ac888ee7c96f8b', tag: "p", variant: "fs-12" }, this.text)));
     }
 };
 ExpansionPanelHeader.style = expansionPanelHeaderCss();

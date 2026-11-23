@@ -1,0 +1,1 @@
+import{r as e,h as s,H as a}from"./p-B3G05Lxx.js";const t=class{constructor(s){e(this,s),this.disabled=!1,this.icon=null}render(){return s(a,{key:"088a7862fa55afd01795600f54ab9a0d68fc68f9",hidden:!0},s("slot",{key:"6e7c9340ec429a2be49758a8eb6d0f3028318deb"}))}};t.style=":host{display:none}";export{t as uai_select_option}

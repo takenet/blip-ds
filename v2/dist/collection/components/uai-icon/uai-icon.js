@@ -61,7 +61,7 @@ export class UaiIcon {
         if (!known) {
             warnOnce('uai-icon', `name:${theme}:${this.name}`, `"${this.name}" is not a ${theme} icon of the UAI icon font.`);
         }
-        return (h(Host, { key: 'f901d0bdf941371e11f465d590385dec1941c109', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: '590be007e5341cb521b2b3e607dc0a1dc8729742', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, style: { '--uai-icon-font-family': `"${ICON_FONT_FAMILY}"` }, part: "glyph", "data-test": this.dataTest })));
+        return (h(Host, { key: '632a66d639ed227b221e20db640ac879c952dd5d', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, h("span", { key: 'a688b436a6dccd13db53395f4b021bc1af95418c', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, style: { '--uai-icon-font-family': `"${ICON_FONT_FAMILY}"` }, part: "glyph", "data-test": this.dataTest })));
     }
     static get is() { return "uai-icon"; }
     static get encapsulation() { return "shadow"; }

@@ -9,7 +9,7 @@ const ExpansionPanelBody = class {
         this.text = null;
     }
     render() {
-        return (h(Host, { key: '0e5730edad17604d60924113cab8e7e8ba994cba' }, h("div", { key: 'a94b30a96cb07e4de47b2c23da7d1788caf1105e', class: "expansion-content", hidden: this.open }, h("div", { key: 'b24969b8eeeb75ce09e37677e1cb383a846955a3', class: "with-line" }, h("slot", { key: 'ebd3721879f1d15a4221fe88491fd00e46a64b2e' }), this.text ? (h("div", { class: "text" }, h("p", null, this.text))) : (h("div", { class: "circle" }))))));
+        return (h(Host, { key: 'aeb214141da040f582713e41c4f77b792a31a6e8' }, h("div", { key: 'f10248755268684bf79830c5cc0c7d249637bb98', class: "expansion-content", hidden: this.open }, h("div", { key: 'dceac2b1f1982823f794aa708435611ac6ce3878', class: "with-line" }, h("slot", { key: '3c50183dff075e11d35eb104afe13c3bcbd50007' }), this.text ? (h("div", { class: "text" }, h("p", null, this.text))) : (h("div", { class: "circle" }))))));
     }
 };
 ExpansionPanelBody.style = expansionPanelBodyCss();

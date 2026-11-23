@@ -43,11 +43,11 @@ const AccordionBody = class {
         }
     }
     render() {
-        return (h("div", { key: '69ebc598aed368735e36451d1fb109cb65dae13d', class: {
+        return (h("div", { key: '5994c681372de23a568d33c0d4904090c0663dc7', class: {
                 accordion_body: true,
                 accordion_body_divisor: this.hasDivisor,
                 accordion_body_isOpen: this.isOpenAftAnimation,
-            }, style: { height: `${this.heightContainer}px` }, "data-test": this.dataTest }, h("div", { key: 'd799bf6f0bcb1322864bc3a2c4fdc9c5cb1f6ba1', class: "container", ref: (el) => this.refContainer(el) }, h("slot", { key: '8dd0fe01b573e2cbcb3f04179ba744a7b82dd9df' }))));
+            }, style: { height: `${this.heightContainer}px` }, "data-test": this.dataTest }, h("div", { key: '87a6d2b3ebee177d0834a3138893d7df0ba35277', class: "container", ref: (el) => this.refContainer(el) }, h("slot", { key: '9816d2f705ca8edac82dd3d77bc3d0ff5a982452' }))));
     }
     static get watchers() { return {
         "isOpen": [{

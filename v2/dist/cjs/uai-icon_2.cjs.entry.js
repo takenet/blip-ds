@@ -88,7 +88,7 @@ const UaiIcon = class {
         if (!known) {
             deprecation.warnOnce('uai-icon', `name:${theme}:${this.name}`, `"${this.name}" is not a ${theme} icon of the UAI icon font.`);
         }
-        return (index.h(index.Host, { key: 'f901d0bdf941371e11f465d590385dec1941c109', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("span", { key: '590be007e5341cb521b2b3e607dc0a1dc8729742', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, style: { '--uai-icon-font-family': `"${ICON_FONT_FAMILY}"` }, part: "glyph", "data-test": this.dataTest })));
+        return (index.h(index.Host, { key: '632a66d639ed227b221e20db640ac879c952dd5d', class: { [`uai-icon--size-${size}`]: true, [`uai-icon--color-${color}`]: !!color }, role: this.ariaLabel ? 'img' : undefined, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("span", { key: 'a688b436a6dccd13db53395f4b021bc1af95418c', class: { 'uai-icon': true, [`uai-icon-${theme}-${this.name}`]: known }, style: { '--uai-icon-font-family': `"${ICON_FONT_FAMILY}"` }, part: "glyph", "data-test": this.dataTest })));
     }
 };
 UaiIcon.style = uaiIconCss();
@@ -185,7 +185,7 @@ const UaiTypo = class {
         const bold = supported('bold', this.bold, BOLDS, 'regular');
         const letterSpacing = supported('letterSpacing', this.letterSpacing, LETTER_SPACINGS, 'normal');
         const Tag = supported('tag', this.tag, TAGS, 'p');
-        return (index.h(Tag, { key: '63e87131bfa4e60ff339b8139d8cbe7e5f6bce1f', class: {
+        return (index.h(Tag, { key: 'dc2ba84e3dcae2e01ebf2c942f467746925c8f75', class: {
                 typo: true,
                 [`typo--variant-${variant}`]: true,
                 [`typo--bold-${bold}`]: true,
@@ -194,7 +194,7 @@ const UaiTypo = class {
                 'typo--paragraph': this.paragraph,
                 'typo--italic': this.italic,
                 'typo--no-wrap': this.noWrap,
-            }, part: "uai-typo__text", "data-test": this.dataTest }, index.h("slot", { key: 'ad83e726be9a885ac97035014972afa80f43a830' })));
+            }, part: "uai-typo__text", "data-test": this.dataTest }, index.h("slot", { key: 'ad6bf334f57b4ddc1663b990d47d4b547fb4533c' })));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

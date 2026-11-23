@@ -25,7 +25,7 @@ const UaiTableRow = class {
         };
     }
     render() {
-        return (index.h(index.Host, { key: '145e82f2a91119d2ee672b1acb0630666304d775', role: "row", "aria-selected": this.selected ? 'true' : undefined, tabindex: this.clickable ? 0 : undefined, "data-test": this.dataTest, onKeyDown: this.onKeyDown }, index.h("slot", { key: '76cc9f1917720d42d5540bd6bf6cd44b146cf66d' })));
+        return (index.h(index.Host, { key: 'ad6659625df1aad2dcc39bc5bc742b9ff6cb6cbb', role: "row", "aria-selected": this.selected ? 'true' : undefined, tabindex: this.clickable ? 0 : undefined, "data-test": this.dataTest, onKeyDown: this.onKeyDown }, index.h("slot", { key: '698e4658c9c76223e49ce7b13cee163ee8b10489' })));
     }
     get el() { return index.getElement(this); }
 };

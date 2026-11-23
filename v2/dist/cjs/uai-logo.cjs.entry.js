@@ -44,7 +44,7 @@ const UaiLogo = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: 'f682a41b0fc6c00e33cc3c86519263f3ff2cd747', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("div", { key: '5b36e0fab317ff4a57376eabb4a30705f452d4f8', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
+        return (index.h(index.Host, { key: 'd166d572a18bae3f84ce8a10b11b29c4dffd1522', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("div", { key: 'f22a8c76abcd74ca95f85d3f8f01e90f4f97c528', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
     }
     static get watchers() { return {
         "name": [{

@@ -105,14 +105,14 @@
   outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
   outline-offset: var(--uai-spacing-3xs, 0.125rem);
 }
-.button:disabled {
+.button:disabled, .button.button--disabled {
   opacity: var(--uai-opacity-disabled, 0.5);
   cursor: not-allowed;
 }
-.button:disabled, .button.button--loading {
+.button:disabled, .button.button--disabled, .button.button--loading {
   background-color: var(--button-bg);
 }
-.button:disabled::after, .button.button--loading::after {
+.button:disabled::after, .button.button--disabled::after, .button.button--loading::after {
   background-color: transparent;
 }
 .button.button--loading {

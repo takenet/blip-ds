@@ -28,11 +28,12 @@ const hasThemeRoot = (el) => {
 };
 /**
  * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
- * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+ * color says what the action does (primary, content, positive, negative). With `href` it is a link that looks the same, for
+ * navigation to another page: it opens in another tab with the browser's own gestures.
  * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
  *
  * @slot - Label of the button. Put the left icon and the label together here when using groupIcon.
- * @part button - The native button element.
+ * @part button - The native button element, or the native link (`a`) with href.
  */
 export class UaiButton {
     constructor() {
@@ -87,6 +88,21 @@ export class UaiButton {
          */
         this.arrow = false;
         /**
+         * Address the button leads to. With it, the button renders a link (an `a` element) with the same look: it opens in another
+         * tab with the browser's own gestures (right click, Ctrl+click, the middle button). Use for navigation; keep the button for
+         * actions. uaiClick still fires with the native click, so an app router can call `preventDefault()` on a plain click and
+         * navigate itself. Disabled or loading, the link has no address.
+         */
+        this.href = null;
+        /**
+         * Where the link opens, such as `_blank` for another tab. Only with href.
+         */
+        this.target = null;
+        /**
+         * Relationship of the link to the page it leads to. Only with href; `noopener` is added for `_blank`.
+         */
+        this.rel = null;
+        /**
          * Type of the button. Can be one of:
          * 'button', 'submit', 'reset'. 'submit' and 'reset' act on the enclosing form.
          */
@@ -132,15 +148,16 @@ export class UaiButton {
                 return;
             }
             this.uaiClick.emit(ev);
-            this.actOnForm();
+            if (!this.href)
+                this.actOnForm();
         };
     }
     /**
-     * Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+     * Focuses the native button (or link). Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
      */
     async setFocus() {
         var _a, _b;
-        (_b = (_a = this.el.shadowRoot) === null || _a === void 0 ? void 0 : _a.querySelector('button')) === null || _b === void 0 ? void 0 : _b.focus();
+        (_b = (_a = this.el.shadowRoot) === null || _a === void 0 ? void 0 : _a.querySelector('.button')) === null || _b === void 0 ? void 0 : _b.focus();
     }
     /**
      * Sets the active (pressed) state of the button.
@@ -235,22 +252,34 @@ export class UaiButton {
         }
         const left = this.loading ? (h("span", { class: "button__spinner", "aria-hidden": "true" })) : leftIconName ? (this.renderIcon(leftIconName, size, 'left')) : null;
         const right = rightIconName && !(iconOnly && this.loading) ? this.renderIcon(rightIconName, size, 'right') : null;
-        const label = (h("span", { key: '468b492e63700908e762f0254dea5b06c2e26de1', class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { key: '2ac419493426615ba40da58320258d1f22635e82', class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { key: 'cc0daac15d5035517ffa15055b32aa3a6e5945e6', onSlotchange: this.updateHasLabel }))));
+        const label = (h("span", { class: { button__label: true, 'button__label--hidden': !this.hasLabel } }, h("uai-typo", { class: "button__typo", tag: "span", variant: size === 'compact' ? 'caption' : 'body-base', bold: "medium", margin: false, noWrap: true }, h("slot", { onSlotchange: this.updateHasLabel }))));
         const grouped = this.groupIcon && justify === 'space-between' && left;
-        return (h(Host, { key: '2d10b9501e91bc7bd6c8194a0074b46c907b0b0c', class: {
-                'uai-button--block': this.block || this.fullWidth,
-                'uai-button--group': !!this.position,
-            } }, h("button", { key: 'dcff1a7e124c4990cfd19d2dfdb155178a607a1b', class: {
-                button: true,
-                [`button--${variant}`]: true,
-                [`button--color-${color}`]: true,
-                [`button--size-${size}`]: true,
-                [`button--justify-${justify}`]: true,
-                [`button--position-${this.direction}-${this.position}`]: !!this.position,
-                'button--icon-only': iconOnly,
-                'button--active': !!this.active,
-                'button--loading': this.loading,
-            }, part: "button", type: "button", disabled: this.disabled, "aria-disabled": this.loading ? 'true' : undefined, "aria-busy": this.loading ? 'true' : undefined, "aria-label": this.ariaLabel || undefined, "aria-expanded": this.ariaExpanded, "aria-haspopup": this.ariaHaspopup || undefined, "aria-pressed": this.active === undefined ? undefined : String(this.active), "data-test": this.dataTest, onClick: this.handleClick }, grouped ? (h("span", { class: "button__group" }, left, label)) : ([left, label]), right)));
+        const classes = {
+            button: true,
+            [`button--${variant}`]: true,
+            [`button--color-${color}`]: true,
+            [`button--size-${size}`]: true,
+            [`button--justify-${justify}`]: true,
+            [`button--position-${this.direction}-${this.position}`]: !!this.position,
+            'button--icon-only': iconOnly,
+            'button--active': !!this.active,
+            'button--loading': this.loading,
+        };
+        const content = [
+            grouped ? (h("span", { class: "button__group" }, left, label)) : ([left, label]),
+            right,
+        ];
+        const host = {
+            'uai-button--block': this.block || this.fullWidth,
+            'uai-button--group': !!this.position,
+        };
+        if (this.href) {
+            // A link: no address while disabled or loading (it does not navigate, and says so).
+            const inactive = this.disabled || this.loading;
+            const rel = this.target === '_blank' ? [this.rel, 'noopener'].filter(Boolean).join(' ') : this.rel || undefined;
+            return (h(Host, { class: host }, h("a", { class: Object.assign(Object.assign({}, classes), { 'button--disabled': this.disabled }), part: "button", href: inactive ? undefined : this.href, target: inactive ? undefined : this.target || undefined, rel: inactive ? undefined : rel, role: inactive ? 'link' : undefined, "aria-disabled": inactive ? 'true' : undefined, "aria-busy": this.loading ? 'true' : undefined, "aria-label": this.ariaLabel || undefined, "data-test": this.dataTest, onClick: this.handleClick }, content)));
+        }
+        return (h(Host, { class: host }, h("button", { class: classes, part: "button", type: "button", disabled: this.disabled, "aria-disabled": this.loading ? 'true' : undefined, "aria-busy": this.loading ? 'true' : undefined, "aria-label": this.ariaLabel || undefined, "aria-expanded": this.ariaExpanded, "aria-haspopup": this.ariaHaspopup || undefined, "aria-pressed": this.active === undefined ? undefined : String(this.active), "data-test": this.dataTest, onClick: this.handleClick }, content)));
     }
     static get is() { return "uai-button"; }
     static get encapsulation() { return "shadow"; }
@@ -532,6 +561,66 @@ export class UaiButton {
                 "attribute": "arrow",
                 "defaultValue": "false"
             },
+            "href": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Address the button leads to. With it, the button renders a link (an `a` element) with the same look: it opens in another\ntab with the browser's own gestures (right click, Ctrl+click, the middle button). Use for navigation; keep the button for\nactions. uaiClick still fires with the native click, so an app router can call `preventDefault()` on a plain click and\nnavigate itself. Disabled or loading, the link has no address."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "href",
+                "defaultValue": "null"
+            },
+            "target": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Where the link opens, such as `_blank` for another tab. Only with href."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "target",
+                "defaultValue": "null"
+            },
+            "rel": {
+                "type": "string",
+                "mutable": false,
+                "complexType": {
+                    "original": "string",
+                    "resolved": "string",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": "Relationship of the link to the page it leads to. Only with href; `noopener` is added for `_blank`."
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": false,
+                "attribute": "rel",
+                "defaultValue": "null"
+            },
             "type": {
                 "type": "string",
                 "mutable": false,
@@ -811,12 +900,16 @@ export class UaiButton {
                         "Promise": {
                             "location": "global",
                             "id": "global::Promise"
+                        },
+                        "HTMLElement": {
+                            "location": "global",
+                            "id": "global::HTMLElement"
                         }
                     },
                     "return": "Promise<void>"
                 },
                 "docs": {
-                    "text": "Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.",
+                    "text": "Focuses the native button (or link). Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.",
                     "tags": []
                 }
             },

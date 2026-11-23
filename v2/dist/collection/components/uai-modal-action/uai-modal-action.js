@@ -8,7 +8,7 @@ import { Host, h } from "@stencil/core";
  */
 export class UaiModalAction {
     render() {
-        return (h(Host, { key: '661d616b9eff11ff559b3c2ae003864c0eafa35b' }, h("div", { key: 'df298c58bf832f0f1660bf13b15a940f0a367af4', class: "modal__action", part: "action" }, h("slot", { key: '73f376bf01372a2f0fc32c19cf514747f2ea2a48' }))));
+        return (h(Host, { key: 'd6806bdbf673343d900b90d0f0f835499c587c11' }, h("div", { key: 'd2bccf6780130f1f0dc0a0cc548bbac4da9de9b9', class: "modal__action", part: "action" }, h("slot", { key: '3cd7375a6c40a2ae7b275b15973834a3efb4ffd9' }))));
     }
     static get is() { return "uai-modal-action"; }
     static get encapsulation() { return "shadow"; }

@@ -1,4 +1,4 @@
-import{a as setTagTransformer,t as transformTag}from"./index-B3G05Lxx.js";export{U as UAI_TOAST_POSITIONS,s as showToast}from"./uai-toast-4p87iJPi.js";var prefix="ds-4bb9b80f";var scope={prefix:prefix};
+import{a as setTagTransformer,t as transformTag}from"./index-B3G05Lxx.js";export{U as UAI_TOAST_POSITIONS,s as showToast}from"./uai-toast-4p87iJPi.js";var prefix="ds-b8bd9f39";var scope={prefix:prefix};
 /**
  * Tag prefix of this build of blip-ds, such as `ds-1a2b3c4d`. It is a hash of the component sources, so every app on
  * the same release gets the same prefix and shares the same registered components, and different releases never clash.

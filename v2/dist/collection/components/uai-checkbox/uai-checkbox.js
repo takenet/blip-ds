@@ -178,11 +178,11 @@ export class UaiCheckbox {
     }
     render() {
         const disabled = this.effectiveDisabled;
-        return (h(Host, { key: '2bedf3207555ac3def4d2357b27f2e8d6c256e75', "aria-disabled": disabled ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, class: {
+        return (h(Host, { key: '2a28cdc295d7313f7cc17aa958b6d69fdb16da2a', "aria-disabled": disabled ? 'true' : null, "aria-invalid": this.invalid ? 'true' : null, class: {
                 'uai-checkbox--disabled': disabled,
                 'uai-checkbox--short': this.size === 'short',
                 'uai-checkbox--tall': this.size === 'tall',
-            } }, h("label", { key: 'bc91e51db950be8787c740dcbe72e04408eaa48b', class: "checkbox", part: "label" }, h("span", { key: '6dbbf142907bac90a958f9dc0be908a4e50162ad', class: "checkbox__box" }, h("input", { key: '2618f2cba347d214bab59f62d37873d20935768c', id: this.inputId, class: "checkbox__control", part: "control", type: "checkbox", name: this.name, value: this.value, checked: this.checked, disabled: disabled, required: this.required, "aria-checked": this.indeterminate ? 'mixed' : String(this.checked), "aria-required": this.required ? 'true' : null, "aria-label": this.label ? null : this.ariaLabel, "data-test": this.dataTest, onChange: this.onChange, onKeyDown: this.onKeyDown, ref: (input) => (this.nativeInput = input) }), h("span", { key: '1c599a80f4a579c5f9b0e95616b1587b210ab021', class: "checkbox__indicator", part: "indicator", "aria-hidden": "true" })), this.label && h("span", { key: '64ce500e592c53b99f71ba652e8bf01196ea1112', class: "checkbox__text" }, this.label))));
+            } }, h("label", { key: 'ff51895b8146135786c95e608c754fbdd0686a3c', class: "checkbox", part: "label" }, h("span", { key: '41b3c2134ee8a2eebd8103ff34a437d879e2f2d9', class: "checkbox__box" }, h("input", { key: 'edc0516ac5f2a7f6d933732598fe30fdfa91e7e9', id: this.inputId, class: "checkbox__control", part: "control", type: "checkbox", name: this.name, value: this.value, checked: this.checked, disabled: disabled, required: this.required, "aria-checked": this.indeterminate ? 'mixed' : String(this.checked), "aria-required": this.required ? 'true' : null, "aria-label": this.label ? null : this.ariaLabel, "data-test": this.dataTest, onChange: this.onChange, onKeyDown: this.onKeyDown, ref: (input) => (this.nativeInput = input) }), h("span", { key: '9534c037f9bd0626250c78cf2348b1d70d029f08', class: "checkbox__indicator", part: "indicator", "aria-hidden": "true" })), this.label && h("span", { key: 'a48aa26b383f1f2fcdfcee357c95b7f80039275c', class: "checkbox__text" }, this.label))));
     }
     static get is() { return "uai-checkbox"; }
     static get encapsulation() { return "shadow"; }

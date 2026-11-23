@@ -102,7 +102,7 @@ export class UaiButtonGroup {
     }
     render() {
         const direction = DIRECTIONS.includes(this.direction) ? this.direction : 'row';
-        return (h(Host, { key: '71679c54d6ee8f7bae6ceea6ff45cbe88e979fe5', role: "group", "aria-label": this.label, onClick: this.onClick }, h("div", { key: 'faa475e55878c8fdaedf70c4157722e16a30bcf3', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, h("slot", { key: '608c79b87543af7824f8449c346d0999eacd287a', onSlotchange: this.onSlotChange }))));
+        return (h(Host, { key: 'b5ca3cf82e79d1f8df974755a18c4b0fc98a4fbe', role: "group", "aria-label": this.label, onClick: this.onClick }, h("div", { key: '1b76a06efbfc584fb5ea1013a2f797cc6c34e2c8', class: { 'button-group': true, [`button-group--${direction}`]: true }, part: "group" }, h("slot", { key: '62252521d1b5308023e116819a1738eb674a06f5', onSlotchange: this.onSlotChange }))));
     }
     static get is() { return "uai-button-group"; }
     static get encapsulation() { return "shadow"; }

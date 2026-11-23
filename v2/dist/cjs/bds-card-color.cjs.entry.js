@@ -27,10 +27,10 @@ const CardColor = class {
         };
     }
     render() {
-        return (index.h("bds-paper", { key: '1e0ebb3b32694346048d2e276b0f062a58a50e33', class: "card", width: "240px", height: "140px", onClick: () => this.handleCopyVariable(this.variable) }, index.h("bds-grid", { key: '8d469052a39ab4f3235f5cc7b48d2a9b97054512', direction: "column", height: "100%" }, index.h("bds-grid", { key: '54c3213bdc6bdaa390ac891892cb5ec31974ff5a', height: "70%", xxs: "12", class: {
+        return (index.h("bds-paper", { key: '54a2c14268a610ee9af8f9fcbacc4313e42b808f', class: "card", width: "240px", height: "140px", onClick: () => this.handleCopyVariable(this.variable) }, index.h("bds-grid", { key: '7e333d9721525afe0e9f9e9bc1174cd8d9b115b7', direction: "column", height: "100%" }, index.h("bds-grid", { key: '04080e1149c9053abbaa807bfec4a4fe098bed79', height: "70%", xxs: "12", class: {
                 'card-color--color': true,
                 [`card-color--${this.variable}`]: true,
-            } }), index.h("bds-grid", { key: '40196dd56bcad8fe5239dec32885b81a0e0de902', "justify-content": "center", "align-items": "center", height: "30%" }, !this.showMessage ? (index.h("bds-typo", { class: "card-text", variant: "fs-14", bold: "bold" }, "$", this.variable)) : (index.h("bds-typo", { class: "card-text-copie", variant: "fs-14", bold: "bold" }, "Cor copiada!"))))));
+            } }), index.h("bds-grid", { key: '6fc4a7df0c7e51da0fd234aae33c417aa855e5d9', "justify-content": "center", "align-items": "center", height: "30%" }, !this.showMessage ? (index.h("bds-typo", { class: "card-text", variant: "fs-14", bold: "bold" }, "$", this.variable)) : (index.h("bds-typo", { class: "card-text-copie", variant: "fs-14", bold: "bold" }, "Cor copiada!"))))));
     }
 };
 CardColor.style = cardColorCss();

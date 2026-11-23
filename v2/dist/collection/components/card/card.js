@@ -80,12 +80,12 @@ export class Card {
         const styleHost = {
             width: this.width,
         };
-        return (h(Host, { key: 'ce5f5721d866ff379a0b69de2546e0339cb4a415', style: styleHost }, h("bds-paper", { key: '320add1ae78725f441841796c86b7673bbc03625', border: this.clickable ? false : true, elevation: this.elevation, class: {
+        return (h(Host, { key: '59cff8f5cb7e329694d16945404e2250f4b149bf', style: styleHost }, h("bds-paper", { key: 'badae6dc8338a4250d9441a22f9b1226dcac0704', border: this.clickable ? false : true, elevation: this.elevation, class: {
                 card: true,
                 card_hover: this.clickable,
                 card_hover_selectable: this.isHovered && this.selectable ? true : false,
                 card_hover_pressed: this.isHovered && this.selectable ? true : false
-            }, height: this.height, width: this.width, bgColor: this.bgColor, "data-test": this.dataTest, "border-color": this.borderColor ? this.borderColor : 'border-1' }, h("div", { key: '9a6458612800c08fbc9e741ca1ec78d92eb7b004', tabindex: "0", class: "focus", onKeyDown: this.handleKeyDown.bind(this) }), h("bds-grid", { key: '6758f578d5252cd73926ab5cf3e32fdf5b9b9d0d', xxs: "12", direction: "column", gap: "2", padding: "2" }, h("slot", { key: '3dc5bc22b915d99a9fbf7f33fa3b3ed74d6b5a47' })))));
+            }, height: this.height, width: this.width, bgColor: this.bgColor, "data-test": this.dataTest, "border-color": this.borderColor ? this.borderColor : 'border-1' }, h("div", { key: '1f07160f4670a0813c6b11c085e2b5bbd1a660f0', tabindex: "0", class: "focus", onKeyDown: this.handleKeyDown.bind(this) }), h("bds-grid", { key: '4a6e17cad523bc5e5840bfbe8a7f418ccd4cbd4b', xxs: "12", direction: "column", gap: "2", padding: "2" }, h("slot", { key: '69c7aeb4ff27dd119109a422097b5aa1d22a63a2' })))));
     }
     static get is() { return "bds-card"; }
     static get encapsulation() { return "shadow"; }

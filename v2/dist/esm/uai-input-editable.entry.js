@@ -339,13 +339,13 @@ const UaiInputEditable = class {
                     ? this.successMessage
                     : this.helperMessage;
         const describedBy = message ? `${this.inputId}-message` : null;
-        return (h(Host, { key: '5804473a22fc31c0cc0aaaec0e885b94f9a1d82f', "aria-disabled": disabled ? 'true' : null, class: {
+        return (h(Host, { key: 'bf63058936222614a4b014fddc4d482c51df99f0', "aria-disabled": disabled ? 'true' : null, class: {
                 [`uai-input-editable--size-${this.sizeValue}`]: true,
                 'uai-input-editable--editing': editing,
                 'uai-input-editable--danger': invalid,
                 'uai-input-editable--success': success,
                 'uai-input-editable--disabled': disabled,
-            } }, h("div", { key: 'd53e201510dfbfb1d3372a8d443315b5eb628c66', class: "input" }, this.label && (h("label", Object.assign({ key: 'b803e9cb2b7ceb446233d57cb0c249497c63387a', class: "input__label" }, (editing ? { for: this.inputId } : {})), h("uai-typo", { key: '64dba93579bb3ac9020586bb3f55fe764d19d32e', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), h("div", { key: 'dc779cc447844662dd564d8dacb20379d91c250b', class: "input__control", part: "input-container" }, editing ? this.renderEdit(invalid, describedBy) : this.renderView(disabled)), message && (h("div", { key: 'b3d725975e765c28c9d1374dcf977b65eba8ebc3', id: `${this.inputId}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '246aebddae63104dcf7719619fd583d0cfb9284a', variant: "caption", tag: "span", margin: false }, message))))));
+            } }, h("div", { key: '3c70aadf5666aff415eae139ba42b9350e567ff2', class: "input" }, this.label && (h("label", Object.assign({ key: '64aaf439c88deb469f08f1e705ad8d3d39831d72', class: "input__label" }, (editing ? { for: this.inputId } : {})), h("uai-typo", { key: 'a01f169241984a495fe0990b0eca7b5e6d00e98b', variant: "caption", bold: "semibold", tag: "span", margin: false }, this.label))), h("div", { key: 'd320a799d435779e3a8b3d83608e45c484a861fd', class: "input__control", part: "input-container" }, editing ? this.renderEdit(invalid, describedBy) : this.renderView(disabled)), message && (h("div", { key: '6b477b6ac8f7cd9e0cb087a5b3c6f4d283619a98', id: `${this.inputId}-message`, class: "input__message", part: "input__message" }, h("uai-typo", { key: '6426a823248e11a485cf62e4db8f45b8bb12bd9f', variant: "caption", tag: "span", margin: false }, message))))));
     }
     static get delegatesFocus() { return true; }
     static get formAssociated() { return true; }

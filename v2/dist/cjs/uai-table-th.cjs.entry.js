@@ -29,8 +29,8 @@ const UaiTableTh = class {
     }
     render() {
         const direction = DIRECTIONS.find((candidate) => candidate === this.sortDirection) || 'none';
-        const title = (index.h("uai-typo", { key: '330d27e787ecc6c67e288a8d5c33494af80eab3f', tag: "span", variant: "body-lg", bold: "semibold", margin: false }, index.h("slot", { key: '71f691d9b41dd3e63ebdb6c27444427178ad054b' })));
-        return (index.h(index.Host, { key: 'dc0941a1d93f01540dd42fb7ec73ca5ebd66baa5', role: "columnheader", "aria-sort": this.sortable ? direction : undefined }, this.sortable ? (index.h("button", { type: "button", class: "th__button", "aria-label": this.sortLabel, onClick: this.onSort }, title, index.h("uai-icon", { class: {
+        const title = (index.h("uai-typo", { key: 'd90f5661fc52c6f26e65e3746393070f0a2ace5d', tag: "span", variant: "body-lg", bold: "semibold", margin: false }, index.h("slot", { key: 'c342148249ec74944cb36b26972e4cd317dfe388' })));
+        return (index.h(index.Host, { key: '5e32a3278365cab75f83d8e44661211715a7b574', role: "columnheader", "aria-sort": this.sortable ? direction : undefined }, this.sortable ? (index.h("button", { type: "button", class: "th__button", "aria-label": this.sortLabel, onClick: this.onSort }, title, index.h("uai-icon", { class: {
                 th__icon: true,
                 'th__icon--active': direction !== 'none',
                 'th__icon--descending': direction === 'descending',

@@ -106,20 +106,20 @@ const BdsMenuAction = class {
         const zIndexSubmenu = {
             zIndex: `${this.zIndex}`,
         };
-        return (index.h("div", { key: '2adc2e1ae8eda3e862e60b351a6fd514604ccc3f', class: {
+        return (index.h("div", { key: 'f72008b96ae2e6211accd05d69157251ce19ee51', class: {
                 menuaction: true,
                 [`position-${this.positionSubMenu}`]: true,
-            }, onMouseOver: openSubmenu, onMouseOut: closeSubmenu }, index.h("button", { key: '33d6c8062cbfe6b6997eda7c439591c4331bff3f', class: {
+            }, onMouseOver: openSubmenu, onMouseOut: closeSubmenu }, index.h("button", { key: 'ad8b06f333f7743015ad9ad24cf04109c247015c', class: {
                 menuaction__button: true,
                 [`menuaction__button__activeicleft`]: actLeft,
                 [`menuaction__button__activeicright`]: actRight,
                 [`menuaction__button__activeicleftright`]: actLeftright,
                 [`menuaction__button__lipstick`]: this.lipstick,
                 [`menuaction__button__disabled`]: this.disabled,
-            } }, this.iconLeft && index.h("bds-icon", { key: '582b7bcca3624f05f1a278aacdc14f741ab7767c', class: "icon-item", name: this.iconLeft, theme: "outline", size: "small" }), index.h("div", { key: 'f155ef462ab0ae3e54f812903a724b2d4dac52c2', class: "content-item" }, this.buttonText && (index.h("bds-typo", { key: 'dffd4303a48a35d8a64e7eab14d20582c28870fb', class: "title-item", variant: "fs-16", tag: "span" }, this.buttonText)), this.subtitle && (index.h("bds-typo", { key: '921c6eb84351e73034f334da7b050fdd4963e40e', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (index.h("bds-typo", { key: 'e6c63708e82c6779932df49e5963dd48b73d892a', class: "description-item", variant: "fs-10", tag: "span" }, this.description))), this.subMenu && (index.h("bds-icon", { key: 'f75eeb844ae1a5b3f1f434b801bf4a0918a2f57a', class: { arrow: true }, name: `arrow-${this.positionSubMenu}`, theme: "outline", size: "small" }))), this.subMenu && (index.h("div", { key: '3fcd2133e7c225eee4b8369acfc028e612d8a127', class: {
+            } }, this.iconLeft && index.h("bds-icon", { key: 'f4c36fd82d2fd2d48ab529b9dae8c5bed9cc156c', class: "icon-item", name: this.iconLeft, theme: "outline", size: "small" }), index.h("div", { key: '20cb9adc84a8aeff9094bc307e2542608349a1c5', class: "content-item" }, this.buttonText && (index.h("bds-typo", { key: '8e9b3921b55a985dfb82039487da13587bd8e18d', class: "title-item", variant: "fs-16", tag: "span" }, this.buttonText)), this.subtitle && (index.h("bds-typo", { key: 'c1c2071e130f40b823b1dec210cbd0b02cd25978', class: "subtitle-item", variant: "fs-10", tag: "span" }, this.subtitle)), this.description && (index.h("bds-typo", { key: '6d2b7def719f46e1314a6fbf3371aba1ac331420', class: "description-item", variant: "fs-10", tag: "span" }, this.description))), this.subMenu && (index.h("bds-icon", { key: '5974f251fd16cb257e99375b93a9005dc809d7c6', class: { arrow: true }, name: `arrow-${this.positionSubMenu}`, theme: "outline", size: "small" }))), this.subMenu && (index.h("div", { key: 'b105a45101a45048063ab06de9cb59ca369edb4e', class: {
                 menuaction__submenu: true,
                 menuaction__submenu__open: this.delaySubMenu,
-            }, style: zIndexSubmenu }, index.h("slot", { key: 'e03128dc43db0e70e8266e9d8cf6b54baa15ede7' })))));
+            }, style: zIndexSubmenu }, index.h("slot", { key: '9e387a024e3ce7f9303d4411d966d88eb0a2091a' })))));
     }
     get element() { return index.getElement(this); }
     static get watchers() { return {

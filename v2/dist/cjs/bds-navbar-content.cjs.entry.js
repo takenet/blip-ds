@@ -9,7 +9,7 @@ const NavbarContent = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: 'af943293fea08b94bd31d14130252824bb07200a', class: { NavbarContent: true } }, index.h("slot", { key: 'af7a915aa6837d0f426f2df99675ba00b83f998d' })));
+        return (index.h(index.Host, { key: '8671078d51d8f0d3c7f5caa51809ef4d708f090f', class: { NavbarContent: true } }, index.h("slot", { key: '7208358f877fb03d419d308d4f04a8823ffd7800' })));
     }
     get hostElement() { return index.getElement(this); }
 };

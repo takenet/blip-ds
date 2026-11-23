@@ -36,12 +36,12 @@ export class Paper {
         this.border === true ? (this.hasBorder = false) : (this.hasBorder = true);
     }
     render() {
-        return (h(Host, { key: '73ebdb0d5079274f7c676b040f97b7e974be709d', class: {
+        return (h(Host, { key: 'e31b1a222cb9325dad279fb8519c08320af6bd9c', class: {
                 [`paper__elevation--${this.elevation}`]: this.hasBorder,
                 border: this.border,
                 [`bg-${this.bgColor}`]: true,
                 [`border-${this.borderColor}`]: true,
-            }, style: { height: `${this.height}`, width: `${this.width}` } }, h("div", { key: '2bb65a5b4776f8d2b3f28cfc8d7e1a2a14809314', class: "paper__display", "data-test": this.dataTest }, h("slot", { key: '0232fb36da715e6d7193f7626effa98afaee3c02' }))));
+            }, style: { height: `${this.height}`, width: `${this.width}` } }, h("div", { key: 'df1e850984734843bd358b681d39616bbfba5318', class: "paper__display", "data-test": this.dataTest }, h("slot", { key: 'f4af31d89769a31ca682bb0ef0f737a35f1030ed' }))));
     }
     static get is() { return "bds-paper"; }
     static get encapsulation() { return "shadow"; }

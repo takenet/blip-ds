@@ -11,11 +11,12 @@ export type UaiButtonPosition = 'first' | 'middle' | 'last';
 export type UaiButtonDirection = 'row' | 'column';
 /**
  * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
- * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+ * color says what the action does (primary, content, positive, negative). With `href` it is a link that looks the same, for
+ * navigation to another page: it opens in another tab with the browser's own gestures.
  * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
  *
  * @slot - Label of the button. Put the left icon and the label together here when using groupIcon.
- * @part button - The native button element.
+ * @part button - The native button element, or the native link (`a`) with href.
  */
 export declare class UaiButton {
     el: HTMLElement;
@@ -77,6 +78,21 @@ export declare class UaiButton {
      */
     arrow?: boolean;
     /**
+     * Address the button leads to. With it, the button renders a link (an `a` element) with the same look: it opens in another
+     * tab with the browser's own gestures (right click, Ctrl+click, the middle button). Use for navigation; keep the button for
+     * actions. uaiClick still fires with the native click, so an app router can call `preventDefault()` on a plain click and
+     * navigate itself. Disabled or loading, the link has no address.
+     */
+    href?: string;
+    /**
+     * Where the link opens, such as `_blank` for another tab. Only with href.
+     */
+    target?: string;
+    /**
+     * Relationship of the link to the page it leads to. Only with href; `noopener` is added for `_blank`.
+     */
+    rel?: string;
+    /**
      * Type of the button. Can be one of:
      * 'button', 'submit', 'reset'. 'submit' and 'reset' act on the enclosing form.
      */
@@ -126,7 +142,7 @@ export declare class UaiButton {
      */
     uaiClick: EventEmitter<MouseEvent>;
     /**
-     * Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+     * Focuses the native button (or link). Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
      */
     setFocus(): Promise<void>;
     /**

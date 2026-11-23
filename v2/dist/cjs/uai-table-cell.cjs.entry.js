@@ -11,7 +11,7 @@ const UaiTableCell = class {
         this.justifyContent = 'left';
     }
     render() {
-        return (index.h(index.Host, { key: '70047af244a928bd0ec81be30d32b0533e99d4aa', role: "cell" }, index.h("uai-typo", { key: '4d397ba2029c57705801aeacd53950588cac355c', tag: "span", variant: "body-base", margin: false }, index.h("slot", { key: '8f92db57522def2ab6c2224be14c60834c1847d7' }))));
+        return (index.h(index.Host, { key: '11c3fc3ca4cb765998a0ba8b80d5687e52b7275e', role: "cell" }, index.h("uai-typo", { key: '3aa452899fbef4876baebee68346319265544154', tag: "span", variant: "body-base", margin: false }, index.h("slot", { key: '1e8923777f89441f34a0395a4254243e7b6940a4' }))));
     }
 };
 UaiTableCell.style = uaiTableCellCss();

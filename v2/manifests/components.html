@@ -620,13 +620,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">104/104 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">104/104 infos</a><span class="filter-pill ok" aria-disabled="true">475 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">2/475 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">29 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">104/104 API errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">104/104 infos</a><span class="filter-pill ok" aria-disabled="true">476 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">2/476 incomplete snippets</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">29 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>2.2s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.7s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -39132,7 +39132,7 @@ export const UaiTypo = createComponent({
       <div class="badges">
         <label for="c-69-uai-button-err" class="badge err as-toggle">API error</label>
         <label for="c-69-uai-button-info" class="badge info as-toggle">1 info</label>
-        <label for="c-69-uai-button-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-69-uai-button-stories" class="badge ok as-toggle">7 stories</label>
         
         
       </div>
@@ -40960,6 +40960,39 @@ import { UaiButton, UaiThemeProvider } from 'blip-ds-react';</code></pre>
     &lt;/div&gt;
   );
 };</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Link</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Com href o botão é um link com a mesma aparência: abre em outra aba pelo próprio navegador (botão direito, Ctrl+clique,
+botão do meio). Use para navegar; para ações, mantenha o botão.</div>
+              <pre><code>const Link = () =&gt; (
+  &lt;div style={column}&gt;
+    &lt;div style={row}&gt;
+      &lt;UaiButton href=&quot;https://www.blip.ai&quot; target=&quot;_blank&quot; variant=&quot;outline&quot; color=&quot;content&quot; iconRight=&quot;external-file&quot;&gt;
+        Abrir em outra aba
+      &lt;/UaiButton&gt;
+      &lt;UaiButton href=&quot;#ajustes&quot; variant=&quot;text&quot; color=&quot;content&quot; iconLeft=&quot;info&quot;&gt;
+        Link com ícone
+      &lt;/UaiButton&gt;
+      &lt;UaiButton href=&quot;#ajustes&quot; variant=&quot;text&quot; color=&quot;content&quot; disabled&gt;
+        Desabilitado
+      &lt;/UaiButton&gt;
+    &lt;/div&gt;
+    &lt;div style={{ width: &#39;var(--uai-width-panel)&#39; }}&gt;
+      &lt;UaiButton href=&quot;#distribuicao&quot; variant=&quot;text&quot; color=&quot;content&quot; block justifyContent=&quot;space-between&quot;&gt;
+        Ajustar distribuição
+      &lt;/UaiButton&gt;
+      &lt;UaiButton href=&quot;#dashboard&quot; variant=&quot;text&quot; color=&quot;content&quot; block justifyContent=&quot;space-between&quot;&gt;
+        Dashboard
+      &lt;/UaiButton&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
               
             </div>
         </div>
@@ -141520,7 +141553,7 @@ export const UaiTypo = createComponent({
       <div class="badges">
         <label for="c-error-5-uai-button-err" class="badge err as-toggle">API error</label>
         <label for="c-error-5-uai-button-info" class="badge info as-toggle">1 info</label>
-        <label for="c-error-5-uai-button-stories" class="badge ok as-toggle">6 stories</label>
+        <label for="c-error-5-uai-button-stories" class="badge ok as-toggle">7 stories</label>
         
         
       </div>
@@ -143348,6 +143381,39 @@ import { UaiButton, UaiThemeProvider } from 'blip-ds-react';</code></pre>
     &lt;/div&gt;
   );
 };</code></pre>
+              
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Link</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              <div class="hint">Com href o botão é um link com a mesma aparência: abre em outra aba pelo próprio navegador (botão direito, Ctrl+clique,
+botão do meio). Use para navegar; para ações, mantenha o botão.</div>
+              <pre><code>const Link = () =&gt; (
+  &lt;div style={column}&gt;
+    &lt;div style={row}&gt;
+      &lt;UaiButton href=&quot;https://www.blip.ai&quot; target=&quot;_blank&quot; variant=&quot;outline&quot; color=&quot;content&quot; iconRight=&quot;external-file&quot;&gt;
+        Abrir em outra aba
+      &lt;/UaiButton&gt;
+      &lt;UaiButton href=&quot;#ajustes&quot; variant=&quot;text&quot; color=&quot;content&quot; iconLeft=&quot;info&quot;&gt;
+        Link com ícone
+      &lt;/UaiButton&gt;
+      &lt;UaiButton href=&quot;#ajustes&quot; variant=&quot;text&quot; color=&quot;content&quot; disabled&gt;
+        Desabilitado
+      &lt;/UaiButton&gt;
+    &lt;/div&gt;
+    &lt;div style={{ width: &#39;var(--uai-width-panel)&#39; }}&gt;
+      &lt;UaiButton href=&quot;#distribuicao&quot; variant=&quot;text&quot; color=&quot;content&quot; block justifyContent=&quot;space-between&quot;&gt;
+        Ajustar distribuição
+      &lt;/UaiButton&gt;
+      &lt;UaiButton href=&quot;#dashboard&quot; variant=&quot;text&quot; color=&quot;content&quot; block justifyContent=&quot;space-between&quot;&gt;
+        Dashboard
+      &lt;/UaiButton&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
               
             </div>
         </div>
