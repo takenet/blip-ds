@@ -1,1 +1,0 @@
-import{U as o,d as s}from"./p-OZximuP1.js";const m=o,p=s;export{m as UaiSelect,p as defineCustomElement}
