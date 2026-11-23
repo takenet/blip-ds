@@ -79,12 +79,15 @@
 
   @include uai-focus-visible;
 
-  &:disabled {
+  // A link (href) has no :disabled: the class says it.
+  &:disabled,
+  &.button--disabled {
     opacity: var(--uai-opacity-disabled, #{$uai-opacity-disabled});
     cursor: not-allowed;
   }
 
   &:disabled,
+  &.button--disabled,
   &.button--loading {
     background-color: var(--button-bg);
 

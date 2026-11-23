@@ -59,6 +59,16 @@ Nomes que não existem na fonte UAI, e `typeIcon` `logo` ou `emoji`, usam o `bds
 
 <Canvas of={UaiButtonStories.Icons} />
 
+## Link (`href`)
+
+Com `href`, o botão desenha um link (`a`) com a mesma aparência: variante, cor, tamanho, ícones e `block`. O link abre em outra aba pelo próprio navegador (botão direito, Ctrl+clique, botão do meio). Use para navegar para outra página; para ações, mantenha o botão.
+
+- `target` diz onde o link abre (`_blank` para outra aba); com `_blank`, `rel` ganha `noopener`.
+- Desabilitado ou em `loading`, o link fica sem endereço e com `aria-disabled`.
+- `onUaiClick` continua rodando, com o clique nativo. Um roteador de SPA pode chamar `event.detail.preventDefault()` no clique comum e navegar por conta própria; os gestos de abrir em outra aba continuam com o navegador.
+
+<Canvas of={UaiButtonStories.Link} />
+
 ## Eventos
 
 | React | Custom element | Quando | `detail` |

@@ -233,6 +233,58 @@ describe('uai-button', () => {
     });
   });
 
+  describe('href', () => {
+    const innerLink = (page) => page.root.shadowRoot.querySelector('a') as HTMLAnchorElement;
+
+    it('renders a link with the same classes as the button, so it looks the same', async () => {
+      const page = await render(`<uai-button variant="text" color="content" icon="edit" href="/jornadas/a">Ajustar</uai-button>`);
+      const link = innerLink(page);
+
+      expect(innerButton(page)).toBeNull();
+      expect(link.getAttribute('href')).toBe('/jornadas/a');
+      expect(link.getAttribute('part')).toBe('button');
+      expect(link.classList.contains('button')).toBe(true);
+      expect(link.classList.contains('button--text')).toBe(true);
+      expect(link.classList.contains('button--color-content')).toBe(true);
+      expect(link.classList.contains('button--size-medium')).toBe(true);
+      expect(link.querySelector('uai-icon').getAttribute('name')).toBe('edit');
+      expect(link.hasAttribute('target')).toBe(false);
+    });
+
+    it('opens in another tab with target _blank, adding noopener to the rel', async () => {
+      const page = await render(`<uai-button href="https://blip.ai" target="_blank" rel="external">Blip</uai-button>`);
+      expect(innerLink(page).getAttribute('target')).toBe('_blank');
+      expect(innerLink(page).getAttribute('rel')).toBe('external noopener');
+    });
+
+    it.each(['disabled', 'loading'])('has no address while %s, and says it is disabled', async (attr) => {
+      const page = await render(`<uai-button ${attr} href="/jornadas/a">Ajustar</uai-button>`);
+      const link = innerLink(page);
+      expect(link.hasAttribute('href')).toBe(false);
+      expect(link.getAttribute('aria-disabled')).toBe('true');
+      expect(link.getAttribute('role')).toBe('link');
+    });
+
+    it('still emits uaiClick with the native click, for an app router to take over', async () => {
+      const page = await render(`<uai-button href="/jornadas/a">Ajustar</uai-button>`);
+      const spy = jest.fn();
+      page.root.addEventListener('uaiClick', spy);
+
+      innerLink(page).click();
+      await page.waitForChanges();
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy.mock.calls[0][0].detail).toBeDefined();
+    });
+
+    it('focuses the link through its public method', async () => {
+      const page = await render(`<uai-button href="/jornadas/a">Ajustar</uai-button>`);
+      const focus = jest.spyOn(innerLink(page), 'focus');
+      await page.root.setFocus();
+      expect(focus).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('methods used by button groups', () => {
     it('updates variant, color and size', async () => {
       const page = await render(`<uai-button>Save</uai-button>`);

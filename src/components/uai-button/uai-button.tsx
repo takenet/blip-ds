@@ -43,11 +43,12 @@ const hasThemeRoot = (el: HTMLElement): boolean => {
 
 /**
  * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
- * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+ * color says what the action does (primary, content, positive, negative). With `href` it is a link that looks the same, for
+ * navigation to another page: it opens in another tab with the browser's own gestures.
  * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
  *
  * @slot - Label of the button. Put the left icon and the label together here when using groupIcon.
- * @part button - The native button element.
+ * @part button - The native button element, or the native link (`a`) with href.
  */
 @Component({
   tag: 'uai-button',
@@ -128,6 +129,24 @@ export class UaiButton {
   @Prop() arrow?: boolean = false;
 
   /**
+   * Address the button leads to. With it, the button renders a link (an `a` element) with the same look: it opens in another
+   * tab with the browser's own gestures (right click, Ctrl+click, the middle button). Use for navigation; keep the button for
+   * actions. uaiClick still fires with the native click, so an app router can call `preventDefault()` on a plain click and
+   * navigate itself. Disabled or loading, the link has no address.
+   */
+  @Prop() href?: string = null;
+
+  /**
+   * Where the link opens, such as `_blank` for another tab. Only with href.
+   */
+  @Prop() target?: string = null;
+
+  /**
+   * Relationship of the link to the page it leads to. Only with href; `noopener` is added for `_blank`.
+   */
+  @Prop() rel?: string = null;
+
+  /**
    * Type of the button. Can be one of:
    * 'button', 'submit', 'reset'. 'submit' and 'reset' act on the enclosing form.
    */
@@ -188,11 +207,11 @@ export class UaiButton {
   @Event() uaiClick: EventEmitter<MouseEvent>;
 
   /**
-   * Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+   * Focuses the native button (or link). Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
    */
   @Method()
   async setFocus(): Promise<void> {
-    this.el.shadowRoot?.querySelector('button')?.focus();
+    this.el.shadowRoot?.querySelector<HTMLElement>('.button')?.focus();
   }
 
   /**
@@ -286,7 +305,7 @@ export class UaiButton {
       return;
     }
     this.uaiClick.emit(ev);
-    this.actOnForm();
+    if (!this.href) this.actOnForm();
   };
 
   // The native button lives in the shadow root, outside the light-DOM form, so a temporary native button
@@ -364,26 +383,62 @@ export class UaiButton {
       </span>
     );
     const grouped = this.groupIcon && justify === 'space-between' && left;
+    const classes = {
+      button: true,
+      [`button--${variant}`]: true,
+      [`button--color-${color}`]: true,
+      [`button--size-${size}`]: true,
+      [`button--justify-${justify}`]: true,
+      [`button--position-${this.direction}-${this.position}`]: !!this.position,
+      'button--icon-only': iconOnly,
+      'button--active': !!this.active,
+      'button--loading': this.loading,
+    };
+    const content = [
+      grouped ? (
+        <span class="button__group">
+          {left}
+          {label}
+        </span>
+      ) : (
+        [left, label]
+      ),
+      right,
+    ];
+    const host = {
+      'uai-button--block': this.block || this.fullWidth,
+      'uai-button--group': !!this.position,
+    };
+
+    if (this.href) {
+      // A link: no address while disabled or loading (it does not navigate, and says so).
+      const inactive = this.disabled || this.loading;
+      const rel = this.target === '_blank' ? [this.rel, 'noopener'].filter(Boolean).join(' ') : this.rel || undefined;
+      return (
+        <Host class={host}>
+          <a
+            class={{ ...classes, 'button--disabled': this.disabled }}
+            part="button"
+            href={inactive ? undefined : this.href}
+            target={inactive ? undefined : this.target || undefined}
+            rel={inactive ? undefined : rel}
+            role={inactive ? 'link' : undefined}
+            aria-disabled={inactive ? 'true' : undefined}
+            aria-busy={this.loading ? 'true' : undefined}
+            aria-label={this.ariaLabel || undefined}
+            data-test={this.dataTest}
+            onClick={this.handleClick}
+          >
+            {content}
+          </a>
+        </Host>
+      );
+    }
 
     return (
-      <Host
-        class={{
-          'uai-button--block': this.block || this.fullWidth,
-          'uai-button--group': !!this.position,
-        }}
-      >
+      <Host class={host}>
         <button
-          class={{
-            button: true,
-            [`button--${variant}`]: true,
-            [`button--color-${color}`]: true,
-            [`button--size-${size}`]: true,
-            [`button--justify-${justify}`]: true,
-            [`button--position-${this.direction}-${this.position}`]: !!this.position,
-            'button--icon-only': iconOnly,
-            'button--active': !!this.active,
-            'button--loading': this.loading,
-          }}
+          class={classes}
           part="button"
           type="button"
           disabled={this.disabled}
@@ -396,15 +451,7 @@ export class UaiButton {
           data-test={this.dataTest}
           onClick={this.handleClick}
         >
-          {grouped ? (
-            <span class="button__group">
-              {left}
-              {label}
-            </span>
-          ) : (
-            [left, label]
-          )}
-          {right}
+          {content}
         </button>
       </Host>
     );
