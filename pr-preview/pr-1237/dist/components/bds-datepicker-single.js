@@ -1,0 +1,1 @@
+import{B as p,d as o}from"./p-B_w3ppfa.js";const s=p,a=o;export{s as BdsDatepickerSingle,a as defineCustomElement}

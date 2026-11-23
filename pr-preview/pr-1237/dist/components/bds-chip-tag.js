@@ -1,0 +1,1 @@
+import{C as o,d as s}from"./p-CGa2QzED.js";const a=o,p=s;export{a as BdsChipTag,p as defineCustomElement}
