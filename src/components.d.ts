@@ -4160,7 +4160,8 @@ export namespace Components {
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
-     * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+     * color says what the action does (primary, content, positive, negative). With `href` it is a link that looks the same, for
+     * navigation to another page: it opens in another tab with the browser's own gestures.
      * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
      */
     interface UaiButton {
@@ -4222,6 +4223,11 @@ export namespace Components {
          */
         "groupIcon"?: boolean;
         /**
+          * Address the button leads to. With it, the button renders a link (an `a` element) with the same look: it opens in another tab with the browser's own gestures (right click, Ctrl+click, the middle button). Use for navigation; keep the button for actions. uaiClick still fires with the native click, so an app router can call `preventDefault()` on a plain click and navigate itself. Disabled or loading, the link has no address.
+          * @default null
+         */
+        "href"?: string;
+        /**
           * Icon rendered before the label. Uses the bds-icon component. Takes precedence over iconLeft.
           * @default null
          */
@@ -4256,6 +4262,11 @@ export namespace Components {
          */
         "loading"?: boolean;
         /**
+          * Relationship of the link to the page it leads to. Only with href; `noopener` is added for `_blank`.
+          * @default null
+         */
+        "rel"?: string;
+        /**
           * Sets the color of the button.
          */
         "setColor": (color: UaiButtonColor) => Promise<void>;
@@ -4264,7 +4275,7 @@ export namespace Components {
          */
         "setDirection": (direction: UaiButtonDirection) => Promise<void>;
         /**
-          * Focuses the native button. Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
+          * Focuses the native button (or link). Use to restore keyboard focus; pair with overlays; avoid accessing the button Shadow DOM.
          */
         "setFocus": () => Promise<void>;
         /**
@@ -4284,6 +4295,11 @@ export namespace Components {
           * @default 'medium'
          */
         "size"?: UaiButtonSize;
+        /**
+          * Where the link opens, such as `_blank` for another tab. Only with href.
+          * @default null
+         */
+        "target"?: string;
         /**
           * Type of the button. Can be one of: 'button', 'submit', 'reset'. 'submit' and 'reset' act on the enclosing form.
           * @default 'button'
@@ -9311,7 +9327,8 @@ declare global {
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
-     * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+     * color says what the action does (primary, content, positive, negative). With `href` it is a link that looks the same, for
+     * navigation to another page: it opens in another tab with the browser's own gestures.
      * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
      */
     interface HTMLUaiButtonElement extends Components.UaiButton, HTMLStencilElement {
@@ -14573,7 +14590,8 @@ declare namespace LocalJSX {
     }
     /**
      * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
-     * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+     * color says what the action does (primary, content, positive, negative). With `href` it is a link that looks the same, for
+     * navigation to another page: it opens in another tab with the browser's own gestures.
      * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
      */
     interface UaiButton {
@@ -14635,6 +14653,11 @@ declare namespace LocalJSX {
          */
         "groupIcon"?: boolean;
         /**
+          * Address the button leads to. With it, the button renders a link (an `a` element) with the same look: it opens in another tab with the browser's own gestures (right click, Ctrl+click, the middle button). Use for navigation; keep the button for actions. uaiClick still fires with the native click, so an app router can call `preventDefault()` on a plain click and navigate itself. Disabled or loading, the link has no address.
+          * @default null
+         */
+        "href"?: string;
+        /**
           * Icon rendered before the label. Uses the bds-icon component. Takes precedence over iconLeft.
           * @default null
          */
@@ -14669,10 +14692,20 @@ declare namespace LocalJSX {
          */
         "onUaiClick"?: (event: UaiButtonCustomEvent<MouseEvent>) => void;
         /**
+          * Relationship of the link to the page it leads to. Only with href; `noopener` is added for `_blank`.
+          * @default null
+         */
+        "rel"?: string;
+        /**
           * Size of the button. Can be one of: 'compact' (`control-height/compact`), 'short' (`control-height/short`), 'medium' (`control-height/medium`), 'large' (`control-height/large`).
           * @default 'medium'
          */
         "size"?: UaiButtonSize;
+        /**
+          * Where the link opens, such as `_blank` for another tab. Only with href.
+          * @default null
+         */
+        "target"?: string;
         /**
           * Type of the button. Can be one of: 'button', 'submit', 'reset'. 'submit' and 'reset' act on the enclosing form.
           * @default 'button'
@@ -18856,6 +18889,9 @@ declare namespace LocalJSX {
         "iconLeft": string;
         "iconRight": string;
         "arrow": boolean;
+        "href": string;
+        "target": string;
+        "rel": string;
         "type": UaiButtonType;
         "iconTheme": UaiButtonIconTheme;
         "typeIcon": UaiButtonIconType;
@@ -19902,7 +19938,8 @@ declare module "@stencil/core" {
             "uai-breadcrumb": LocalJSX.IntrinsicElements["uai-breadcrumb"] & JSXBase.HTMLAttributes<HTMLUaiBreadcrumbElement>;
             /**
              * Button that triggers an action. Use variant "solid" for the main action of a screen and "outline" or "text" for the others;
-             * color says what the action does (primary, content, positive, negative). For navigation to another page, use a link.
+             * color says what the action does (primary, content, positive, negative). With `href` it is a link that looks the same, for
+             * navigation to another page: it opens in another tab with the browser's own gestures.
              * The label is the children. Icons use UaiIcon names. Wrap the app in UaiThemeProvider.
              */
             "uai-button": LocalJSX.IntrinsicElements["uai-button"] & JSXBase.HTMLAttributes<HTMLUaiButtonElement>;
