@@ -1,1 +1,0 @@
-import{S as o,d as s}from"./p-CMuNitzi.js";const t=o,i=s;export{t as BdsSelectOption,i as defineCustomElement}

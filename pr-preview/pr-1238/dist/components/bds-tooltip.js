@@ -1,1 +1,0 @@
-import{T as s,d as o}from"./p-CgeClsrk.js";const r=s,p=o;export{r as BdsTooltip,p as defineCustomElement}
