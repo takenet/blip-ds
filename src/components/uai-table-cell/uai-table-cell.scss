@@ -28,7 +28,6 @@ uai-typo {
   gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
   align-items: center;
   min-width: 0;
-  max-width: calc(100% + 2 * var(--uai-spacing-xs, #{$uai-spacing-xs}));
   margin: calc(-1 * var(--uai-spacing-xs, #{$uai-spacing-xs}));
   padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
   overflow: hidden;
