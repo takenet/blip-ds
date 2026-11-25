@@ -1,0 +1,333 @@
+'use strict';
+
+var index = require('./index-GTJCA4wH.js');
+
+const LOCALES$1 = { pt_BR: 'pt-BR', en_US: 'en-US', es_ES: 'es-ES' };
+const ISO = /^(\d{4})-(\d{2})-(\d{2})$/;
+const YEARS_PER_PAGE = 12;
+const TEXTS = {
+    pt_BR: {
+        previousMonth: 'Mês anterior',
+        nextMonth: 'Próximo mês',
+        chooseMonth: 'Escolher mês',
+        chooseYear: 'Escolher ano',
+        previousYears: 'Anos anteriores',
+        nextYears: 'Próximos anos',
+    },
+    en_US: {
+        previousMonth: 'Previous month',
+        nextMonth: 'Next month',
+        chooseMonth: 'Choose month',
+        chooseYear: 'Choose year',
+        previousYears: 'Previous years',
+        nextYears: 'Next years',
+    },
+    es_ES: {
+        previousMonth: 'Mes anterior',
+        nextMonth: 'Mes siguiente',
+        chooseMonth: 'Elegir mes',
+        chooseYear: 'Elegir año',
+        previousYears: 'Años anteriores',
+        nextYears: 'Años siguientes',
+    },
+};
+const calendarTexts = (language) => TEXTS[language];
+const pad = (value) => String(value).padStart(2, '0');
+const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+// ---- dates -----------------------------------------------------------------------------------
+function toIso(year, month, day) {
+    return `${String(year).padStart(4, '0')}-${pad(month + 1)}-${pad(day)}`;
+}
+/** Year, month (0 to 11) and day of an ISO date, or null when it is not one. */
+function parseIso(iso) {
+    const match = ISO.exec(iso || '');
+    if (!match)
+        return null;
+    const [year, month, day] = match.slice(1).map(Number);
+    const date = new Date(Date.UTC(year, month - 1, day));
+    if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day)
+        return null;
+    return { year, month: month - 1, day };
+}
+const daysInMonth = (year, month) => new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+/** The ISO date a number of days away. */
+function addDays(iso, days) {
+    const { year, month, day } = parseIso(iso);
+    const date = new Date(Date.UTC(year, month, day + days));
+    return toIso(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+}
+/** The same day a number of months away, kept within the length of the target month (31 Jan + 1 is 28/29 Feb). */
+function addMonths(iso, months) {
+    const { year, month, day } = parseIso(iso);
+    const target = new Date(Date.UTC(year, month + months, 1));
+    const targetYear = target.getUTCFullYear();
+    const targetMonth = target.getUTCMonth();
+    return toIso(targetYear, targetMonth, Math.min(day, daysInMonth(targetYear, targetMonth)));
+}
+/** Today in the person's time zone, as ISO. */
+function todayIso() {
+    const now = new Date();
+    return toIso(now.getFullYear(), now.getMonth(), now.getDate());
+}
+/** The ISO date within min and max (both optional). */
+function clampIso(iso, min, max) {
+    if (parseIso(min) && iso < min)
+        return min;
+    if (parseIso(max) && iso > max)
+        return max;
+    return iso;
+}
+const outOfRange = (iso, min, max) => (!!parseIso(min) && iso < min) || (!!parseIso(max) && iso > max);
+/** The weeks of a month, Sunday first: each cell is an ISO date, or null outside the month. */
+function monthWeeks(year, month) {
+    const first = new Date(Date.UTC(year, month, 1)).getUTCDay();
+    const cells = Array.from({ length: first }, () => null);
+    for (let day = 1; day <= daysInMonth(year, month); day++)
+        cells.push(toIso(year, month, day));
+    while (cells.length % 7)
+        cells.push(null);
+    const weeks = [];
+    for (let index = 0; index < cells.length; index += 7)
+        weeks.push(cells.slice(index, index + 7));
+    return weeks;
+}
+// ---- texts -----------------------------------------------------------------------------------
+/** One-letter weekday names, Sunday first ("D S T Q Q S S" in pt_BR). */
+function weekdayNames(language) {
+    const locale = LOCALES$1[language];
+    return Array.from({ length: 7 }, (_, index) => {
+        const date = new Date(Date.UTC(2026, 1, 1 + index)); // 1 Feb 2026 is a Sunday.
+        const short = new Intl.DateTimeFormat(locale, { weekday: 'narrow', timeZone: 'UTC' }).format(date);
+        const long = new Intl.DateTimeFormat(locale, { weekday: 'long', timeZone: 'UTC' }).format(date);
+        return { short: short.toUpperCase(), long };
+    });
+}
+/** Month names: short ("Dez") for the header and long ("dezembro") for screen readers. */
+function monthNames(language) {
+    const locale = LOCALES$1[language];
+    return Array.from({ length: 12 }, (_, month) => {
+        const date = new Date(Date.UTC(2026, month, 1));
+        const short = new Intl.DateTimeFormat(locale, { month: 'short', timeZone: 'UTC' }).format(date).replace('.', '');
+        const long = new Intl.DateTimeFormat(locale, { month: 'long', timeZone: 'UTC' }).format(date);
+        return { short: capitalize(short), long };
+    });
+}
+/** The full date read by screen readers and shown in the day's title, such as "quarta-feira, 15 de janeiro de 2026". */
+function longDate(iso, language) {
+    const { year, month, day } = parseIso(iso);
+    return new Intl.DateTimeFormat(LOCALES$1[language], { dateStyle: 'full', timeZone: 'UTC' }).format(new Date(Date.UTC(year, month, day)));
+}
+// ---- keyboard --------------------------------------------------------------------------------
+/**
+ * The date a key moves to in the day grid, as in the WAI-ARIA date picker: arrows by a day or a week, Home and
+ * End to the start and end of the week, PageUp and PageDown by a month (with Shift, by a year). Null for other keys.
+ */
+function dateForKey(iso, event) {
+    const { year, month, day } = parseIso(iso);
+    const weekday = new Date(Date.UTC(year, month, day)).getUTCDay();
+    switch (event.key) {
+        case 'ArrowLeft':
+            return addDays(iso, -1);
+        case 'ArrowRight':
+            return addDays(iso, 1);
+        case 'ArrowUp':
+            return addDays(iso, -7);
+        case 'ArrowDown':
+            return addDays(iso, 7);
+        case 'Home':
+            return addDays(iso, -weekday);
+        case 'End':
+            return addDays(iso, 6 - weekday);
+        case 'PageUp':
+            return addMonths(iso, event.shiftKey ? -12 : -1);
+        case 'PageDown':
+            return addMonths(iso, event.shiftKey ? 12 : 1);
+        default:
+            return null;
+    }
+}
+/** The arrows and the month and year buttons; the month and year buttons switch to their pickers and back. */
+const CalendarHeader = (props) => {
+    var _a, _b;
+    const texts = calendarTexts(props.language);
+    const months = monthNames(props.language);
+    const years = props.view === 'years';
+    const arrow = (side, show = true, disabled = false) => {
+        var _a, _b;
+        return show ? (index.h("button", { type: "button", class: "calendar__arrow", part: "calendar-arrow", "aria-label": side === 'previous' ? (years ? texts.previousYears : texts.previousMonth) : years ? texts.nextYears : texts.nextMonth, "data-test": (_b = (_a = props.dataTest) === null || _a === void 0 ? void 0 : _a[side]) !== null && _b !== void 0 ? _b : null, disabled: disabled, onClick: side === 'previous' ? props.onPrevious : props.onNext }, index.h("uai-icon", { name: side === 'previous' ? 'arrow-left' : 'arrow-right', size: "medium" }))) : (index.h("span", { class: "calendar__arrow calendar__arrow--hidden", "aria-hidden": "true" }));
+    };
+    const picker = (kind, label, name) => {
+        var _a, _b;
+        return (index.h("button", { type: "button", class: { calendar__picker: true, 'calendar__picker--open': props.view === kind }, part: "calendar-picker", "aria-label": `${name}: ${label}`, "data-test": (_b = (_a = props.dataTest) === null || _a === void 0 ? void 0 : _a[kind === 'months' ? 'month' : 'year']) !== null && _b !== void 0 ? _b : null, "aria-expanded": props.view === kind ? 'true' : 'false', onClick: () => props.onView(props.view === kind ? 'days' : kind) }, index.h("uai-typo", { variant: "body-base", tag: "span", margin: false }, label), index.h("uai-icon", { name: "arrow-down", size: "small" })));
+    };
+    return (index.h("div", { class: "calendar__header" }, arrow('previous', (_a = props.showPrevious) !== null && _a !== void 0 ? _a : true, props.disablePrevious), index.h("div", { class: "calendar__pickers" }, picker('months', months[props.month].short, texts.chooseMonth), picker('years', String(props.year), texts.chooseYear)), arrow('next', (_b = props.showNext) !== null && _b !== void 0 ? _b : true, props.disableNext)));
+};
+/** The weekday names and the days of the month, as an ARIA grid of buttons. */
+const CalendarDays = (props) => {
+    var _a, _b, _c, _d;
+    const weekdays = weekdayNames(props.language);
+    const months = monthNames(props.language);
+    const today = todayIso();
+    // A period that goes on before or after the month fills the empty cells at its start or end.
+    const firstRange = (_b = (_a = props.rangeOf) === null || _a === void 0 ? void 0 : _a.call(props, toIso(props.year, props.month, 1))) !== null && _b !== void 0 ? _b : null;
+    const lastRange = (_d = (_c = props.rangeOf) === null || _c === void 0 ? void 0 : _c.call(props, toIso(props.year, props.month, daysInMonth(props.year, props.month)))) !== null && _d !== void 0 ? _d : null;
+    const fillsBefore = firstRange === 'between' || firstRange === 'end';
+    const fillsAfter = lastRange === 'between' || lastRange === 'start';
+    return (index.h("table", { class: "calendar__grid", role: "grid", "aria-label": `${months[props.month].long} ${props.year}` }, index.h("thead", null, index.h("tr", null, weekdays.map((weekday) => (index.h("th", { class: "calendar__weekday", scope: "col", abbr: weekday.long }, index.h("uai-typo", { variant: "body-base", tag: "span", margin: false }, weekday.short)))))), index.h("tbody", null, monthWeeks(props.year, props.month).map((week, row) => (index.h("tr", null, week.map((iso, index$1) => {
+        var _a, _b;
+        if (!iso) {
+            const filled = row === 0 ? fillsBefore : fillsAfter;
+            return (index.h("td", { class: {
+                    calendar__cell: true,
+                    'calendar__cell--between': filled,
+                    'calendar__cell--week-start': index$1 === 0,
+                    'calendar__cell--week-end': index$1 === 6,
+                }, role: "gridcell" }));
+        }
+        const range = (_b = (_a = props.rangeOf) === null || _a === void 0 ? void 0 : _a.call(props, iso)) !== null && _b !== void 0 ? _b : null;
+        const selected = props.isSelected(iso);
+        const disabled = outOfRange(iso, props.min, props.max);
+        return (index.h("td", { class: {
+                calendar__cell: true,
+                [`calendar__cell--${range}`]: !!range,
+                'calendar__cell--week-start': index$1 === 0 || (!week[index$1 - 1] && !fillsBefore),
+                'calendar__cell--week-end': index$1 === 6 || (!week[index$1 + 1] && !fillsAfter),
+            }, role: "gridcell", "aria-selected": selected ? 'true' : 'false' }, index.h("button", { type: "button", id: `${props.idPrefix}-${iso}`, class: {
+                calendar__day: true,
+                'calendar__day--selected': selected,
+                'calendar__day--today': iso === today,
+            }, part: "calendar-day", "data-iso": iso, tabindex: iso === props.focused ? '0' : '-1', "aria-label": longDate(iso, props.language), "aria-current": iso === today ? 'date' : null, "aria-disabled": disabled ? 'true' : null, onClick: () => !disabled && props.onPick(iso), onKeyDown: (event) => props.onKeyDown(event, iso), onPointerEnter: () => { var _a; return (_a = props.onHover) === null || _a === void 0 ? void 0 : _a.call(props, iso); } }, index.h("uai-typo", { variant: "body-base", tag: "span", margin: false }, parseIso(iso).day))));
+    })))))));
+};
+/** The 12 months, or a page of 12 years, to jump to; out of min and max they are disabled. */
+const CalendarList = (props) => {
+    const minDate = parseIso(props.min);
+    const maxDate = parseIso(props.max);
+    const items = props.kind === 'months'
+        ? monthNames(props.language).map((name, month) => ({
+            value: month,
+            label: name.short,
+            long: `${name.long} ${props.year}`,
+            current: month === props.month,
+            disabled: (minDate && (props.year < minDate.year || (props.year === minDate.year && month < minDate.month))) ||
+                (maxDate && (props.year > maxDate.year || (props.year === maxDate.year && month > maxDate.month))),
+        }))
+        : Array.from({ length: YEARS_PER_PAGE }, (_, index) => {
+            const year = props.firstYear + index;
+            return {
+                value: year,
+                label: String(year),
+                long: String(year),
+                current: year === props.year,
+                disabled: (minDate && year < minDate.year) || (maxDate && year > maxDate.year),
+            };
+        });
+    return (index.h("div", { class: "calendar__list", role: "group", "aria-label": calendarTexts(props.language)[props.kind === 'months' ? 'chooseMonth' : 'chooseYear'] }, items.map((item) => (index.h("button", { type: "button", class: { calendar__option: true, 'calendar__option--current': item.current }, part: "calendar-option", "aria-label": item.long, "aria-pressed": item.current ? 'true' : 'false', disabled: !!item.disabled, onClick: () => props.onPick(item.value) }, index.h("uai-typo", { variant: "body-base", tag: "span", margin: false }, item.label))))));
+};
+
+const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
+const LENGTHS = { day: 2, month: 2, year: 4 };
+const LOCALES = {
+    pt_BR: {
+        label: 'Data',
+        calendar: 'Abrir calendário',
+        required: 'Informe a data.',
+        date: 'Informe uma data válida.',
+        min: (date) => `Informe uma data a partir de ${date}.`,
+        max: (date) => `Informe uma data até ${date}.`,
+    },
+    en_US: {
+        label: 'Date',
+        calendar: 'Open calendar',
+        required: 'Enter the date.',
+        date: 'Enter a valid date.',
+        min: (date) => `Enter a date on or after ${date}.`,
+        max: (date) => `Enter a date on or before ${date}.`,
+    },
+    es_ES: {
+        label: 'Fecha',
+        calendar: 'Abrir calendario',
+        required: 'Ingrese la fecha.',
+        date: 'Ingrese una fecha válida.',
+        min: (date) => `Ingrese una fecha a partir del ${date}.`,
+        max: (date) => `Ingrese una fecha hasta el ${date}.`,
+    },
+};
+const dateLocale = (language) => LOCALES[language];
+function regionalDateFormat(locale = typeof window === 'undefined' ? undefined : window.navigator.language) {
+    const parts = new Intl.DateTimeFormat(locale, {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        calendar: 'gregory',
+        numberingSystem: 'latn',
+    }).formatToParts(new Date(2026, 11, 25));
+    const order = parts
+        .map((part) => part.type)
+        .filter((part) => part === 'day' || part === 'month' || part === 'year');
+    const separator = parts.find((part) => part.type === 'literal').value;
+    const labels = { day: 'DD', month: 'MM', year: 'YYYY' };
+    return { order, separator, placeholder: order.map((part) => labels[part]).join(separator) };
+}
+/** True when the text is an ISO YYYY-MM-DD date that exists in the calendar. */
+function isIsoDate(text) {
+    const match = ISO_DATE.exec(text || '');
+    if (!match)
+        return false;
+    const [year, month, day] = match.slice(1).map(Number);
+    const date = new Date(Date.UTC(year, month - 1, day));
+    return year > 0 && date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
+}
+/** Groups the typed digits in the browser's regional date format. */
+function groupDigits(digits, locale) {
+    const { order, separator } = regionalDateFormat(locale);
+    const groups = [];
+    let rest = digits;
+    for (const part of order) {
+        if (!rest)
+            break;
+        groups.push(rest.slice(0, LENGTHS[part]));
+        rest = rest.slice(LENGTHS[part]);
+    }
+    return groups.join(separator);
+}
+/** ISO date for eight typed digits, or '' when they are incomplete or name a day that does not exist. */
+function displayToIso(digits, locale) {
+    if (digits.length !== 8)
+        return '';
+    const parts = {};
+    let offset = 0;
+    for (const part of regionalDateFormat(locale).order) {
+        parts[part] = digits.slice(offset, offset + LENGTHS[part]);
+        offset += LENGTHS[part];
+    }
+    const iso = `${parts.year}-${parts.month}-${parts.day}`;
+    return isIsoDate(iso) ? iso : '';
+}
+/** Date in the browser's regional format for a valid ISO date, or ''. */
+function isoToDisplay(iso, locale) {
+    const match = ISO_DATE.exec(iso || '');
+    if (!match || !isIsoDate(iso))
+        return '';
+    const parts = { year: match[1], month: match[2], day: match[3] };
+    const { order, separator } = regionalDateFormat(locale);
+    return order.map((part) => parts[part]).join(separator);
+}
+
+exports.CalendarDays = CalendarDays;
+exports.CalendarHeader = CalendarHeader;
+exports.CalendarList = CalendarList;
+exports.YEARS_PER_PAGE = YEARS_PER_PAGE;
+exports.addMonths = addMonths;
+exports.clampIso = clampIso;
+exports.dateForKey = dateForKey;
+exports.dateLocale = dateLocale;
+exports.displayToIso = displayToIso;
+exports.groupDigits = groupDigits;
+exports.isIsoDate = isIsoDate;
+exports.isoToDisplay = isoToDisplay;
+exports.outOfRange = outOfRange;
+exports.parseIso = parseIso;
+exports.regionalDateFormat = regionalDateFormat;
+exports.toIso = toIso;
+exports.todayIso = todayIso;
