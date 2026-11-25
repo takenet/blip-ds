@@ -1,4 +1,4 @@
-import { Component, Element, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
 import { warnDeprecated, warnLegacyValue, warnOnce } from '../../utils/deprecation';
 
 export type UaiTypoVariant =
@@ -135,7 +135,11 @@ export class UaiTypo {
 
   componentDidLoad(): void {
     if (!hasThemeRoot(this.el)) {
-      warnOnce('uai-typo', 'theme-root', 'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.');
+      warnOnce(
+        'uai-typo',
+        'theme-root',
+        'No [data-uai-theme] ancestor found. Wrap UAI components in <uai-theme-provider>.',
+      );
     }
   }
 
@@ -146,22 +150,24 @@ export class UaiTypo {
     const Tag = supported('tag', this.tag, TAGS, 'p');
 
     return (
-      <Tag
-        class={{
-          typo: true,
-          [`typo--variant-${variant}`]: true,
-          [`typo--bold-${bold}`]: true,
-          [`typo--letter-spacing-${letterSpacing}`]: true,
-          'typo--margin': this.margin && MARGIN_VARIANTS.includes(variant),
-          'typo--paragraph': this.paragraph,
-          'typo--italic': this.italic,
-          'typo--no-wrap': this.noWrap,
-        }}
-        part="uai-typo__text"
-        data-test={this.dataTest}
-      >
-        <slot></slot>
-      </Tag>
+      <Host class={{ 'uai-typo--no-wrap': this.noWrap }}>
+        <Tag
+          class={{
+            typo: true,
+            [`typo--variant-${variant}`]: true,
+            [`typo--bold-${bold}`]: true,
+            [`typo--letter-spacing-${letterSpacing}`]: true,
+            'typo--margin': this.margin && MARGIN_VARIANTS.includes(variant),
+            'typo--paragraph': this.paragraph,
+            'typo--italic': this.italic,
+            'typo--no-wrap': this.noWrap,
+          }}
+          part="uai-typo__text"
+          data-test={this.dataTest}
+        >
+          <slot></slot>
+        </Tag>
+      </Host>
     );
   }
 }

@@ -20,6 +20,14 @@ $font-fallback: 'Nunito Sans', 'Carbona', 'Tahoma', 'Helvetica', 'Arial', sans-s
   color: var(--uai-typo-color, var(--uai-content-primary, #{$uai-content-primary}));
 }
 
+// An ellipsis needs a box no wider than its container: inline, the text would push its container instead of being cut.
+:host(.uai-typo--no-wrap) {
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
+  vertical-align: top;
+}
+
 .typo {
   margin: 0;
   padding: 0;
@@ -57,6 +65,7 @@ $font-fallback: 'Nunito Sans', 'Carbona', 'Tahoma', 'Helvetica', 'Arial', sans-s
   }
 
   &--no-wrap {
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

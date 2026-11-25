@@ -6993,7 +6993,8 @@ export namespace Components {
     }
     /**
      * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
-     * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+     * pair with UaiTableRow. The content stays in its column: text wraps, even a long word such as an e-mail or a URL; a UaiTypo
+     * with noWrap, a chip or a button ends with an ellipsis. Avoid long paragraphs, which make tall rows.
      */
     interface UaiTableCell {
         /**
@@ -10037,7 +10038,8 @@ declare global {
     };
     /**
      * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
-     * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+     * pair with UaiTableRow. The content stays in its column: text wraps, even a long word such as an e-mail or a URL; a UaiTypo
+     * with noWrap, a chip or a button ends with an ellipsis. Avoid long paragraphs, which make tall rows.
      */
     interface HTMLUaiTableCellElement extends Components.UaiTableCell, HTMLStencilElement {
     }
@@ -17461,7 +17463,8 @@ declare namespace LocalJSX {
     }
     /**
      * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
-     * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+     * pair with UaiTableRow. The content stays in its column: text wraps, even a long word such as an e-mail or a URL; a UaiTypo
+     * with noWrap, a chip or a button ends with an ellipsis. Avoid long paragraphs, which make tall rows.
      */
     interface UaiTableCell {
         /**
@@ -20156,7 +20159,8 @@ declare module "@stencil/core" {
             "uai-table-body": LocalJSX.IntrinsicElements["uai-table-body"] & JSXBase.HTMLAttributes<HTMLUaiTableBodyElement>;
             /**
              * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
-             * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+             * pair with UaiTableRow. The content stays in its column: text wraps, even a long word such as an e-mail or a URL; a UaiTypo
+             * with noWrap, a chip or a button ends with an ellipsis. Avoid long paragraphs, which make tall rows.
              */
             "uai-table-cell": LocalJSX.IntrinsicElements["uai-table-cell"] & JSXBase.HTMLAttributes<HTMLUaiTableCellElement>;
             /**

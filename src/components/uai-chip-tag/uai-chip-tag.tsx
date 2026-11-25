@@ -41,7 +41,7 @@ export class UaiChipTag {
       <Host>
         <div class={{ chip: true, [`chip--${color}`]: true }} part="chip" data-test={this.dataTest}>
           {this.icon && <uai-icon class="chip__icon" size="x-small" name={this.icon} />}
-          <uai-typo class="chip__text" tag="span" variant="caption" margin={false}>
+          <uai-typo class="chip__text" tag="span" variant="caption" margin={false} noWrap>
             <slot />
           </uai-typo>
         </div>
