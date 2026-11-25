@@ -3,7 +3,8 @@ import { warnLegacyValue } from "../../utils/deprecation";
 const JUSTIFY = ['left', 'center', 'right'];
 /**
  * Data cell of UaiTableRow. Use it for text or composed content such as avatars, badges and buttons;
- * pair with UaiTableRow; avoid long paragraphs, which are truncated with an ellipsis.
+ * pair with UaiTableRow. The content stays in its column: text wraps, even a long word such as an e-mail or a URL; a UaiTypo
+ * with noWrap, a chip or a button ends with an ellipsis. Avoid long paragraphs, which make tall rows.
  *
  * @slot - Cell content.
  */
@@ -16,7 +17,7 @@ export class UaiTableCell {
         const justify = JUSTIFY.find((candidate) => candidate === this.justifyContent) || 'left';
         if (justify !== this.justifyContent)
             warnLegacyValue('uai-table-cell', 'justifyContent', this.justifyContent, justify);
-        return (h(Host, { key: '11c3fc3ca4cb765998a0ba8b80d5687e52b7275e', role: "cell" }, h("uai-typo", { key: '3aa452899fbef4876baebee68346319265544154', tag: "span", variant: "body-base", margin: false }, h("slot", { key: '1e8923777f89441f34a0395a4254243e7b6940a4' }))));
+        return (h(Host, { key: '4b8fcdd09cefd4e7e528a11e857316d0ed94dd82', role: "cell" }, h("uai-typo", { key: 'e0c79a2aeadab081ecee48e929d2a8175eb35ec6', tag: "span", variant: "body-base", margin: false }, h("slot", { key: '6960a421ee7405b20542965793e69bba4eb91391' }))));
     }
     static get is() { return "uai-table-cell"; }
     static get encapsulation() { return "shadow"; }

@@ -28,6 +28,7 @@
   box-sizing: border-box;
   min-width: 0;
   padding: var(--uai-spacing-sm, 0.75rem) var(--uai-spacing-md, 1rem);
+  overflow-wrap: anywhere;
 }
 
 :host([justify-content=center]) {

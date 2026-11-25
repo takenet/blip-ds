@@ -22,11 +22,11 @@ export class CounterText {
     render() {
         const state = this.getState();
         const actualLength = this.getActualLength();
-        return (h("div", { key: '4ff050f074779dd8cc7ff6206aeb9b9aa390a283', class: {
+        return (h("div", { key: '6826de67180b7699bcb6c3f763023a6258a91752', class: {
                 'counter-text': true,
                 'counter-text--active': this.active,
                 [`counter-text--${state}`]: true,
-            } }, h("bds-typo", { key: '8ebbe041b67fde2d5d7b82de2bbb2f9f6c0e2da2', variant: "fs-10" }, actualLength)));
+            } }, h("bds-typo", { key: 'dd67d6fcc0a0c4b05a903bedc0cf19dacb4cc8fa', variant: "fs-10" }, actualLength)));
     }
     static get is() { return "bds-counter-text"; }
     static get originalStyleUrls() {

@@ -105,7 +105,7 @@ const Icon = class {
         }
     }
     render() {
-        return (index.h(index.Host, { key: '6c61ae472389658c5aa953baffc76eade42ffa36', role: "img", class: {
+        return (index.h(index.Host, { key: 'd76a0397a09a777bd2d50fca983230cd38e7a079', role: "img", class: {
                 'bds-icon': true,
                 [`bds-icon__size--${this.size}`]: true,
             } }, this.svgContent ? (index.h("div", { class: {

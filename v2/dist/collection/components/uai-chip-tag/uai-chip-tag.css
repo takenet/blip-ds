@@ -23,6 +23,7 @@
 */
 :host {
   display: inline-flex;
+  max-width: 100%;
   vertical-align: middle;
 }
 
@@ -35,6 +36,7 @@
   align-items: center;
   gap: var(--uai-spacing-2xs, 0.25rem);
   min-width: 0;
+  max-width: 100%;
   padding: var(--uai-spacing-3xs, 0.125rem) var(--uai-spacing-xs, 0.5rem);
   border: var(--uai-border-width-default, 1px) solid var(--chip-border);
   border-radius: var(--uai-radius-md, 0.5rem);

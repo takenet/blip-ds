@@ -44,7 +44,7 @@ const UaiEmoji = class {
         });
     }
     render() {
-        return (index.h(index.Host, { key: '680302ca25eabcff99e8dbb33e91c05bbfcacaf5', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("div", { key: '3a388f4f515cb8dbf0dfe22c656dcc7a28864b7e', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
+        return (index.h(index.Host, { key: '7f630b6e73f21c06b3b465efbf8fe41b794e1062', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("div", { key: '32b0b9ca92fa0e67b2ba46a3b2857396f2e3aa35', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
     }
     static get watchers() { return {
         "name": [{

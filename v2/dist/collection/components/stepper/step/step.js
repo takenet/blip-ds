@@ -34,24 +34,24 @@ export class BdsStep {
         this.dataTest = null;
     }
     render() {
-        return (h("div", { key: '677be2556b278648acede6cd15eb453a66548a86', class: "step" }, h("div", { key: 'e43a19e500aca6dd7c342c4da379cc311a829f75', class: {
+        return (h("div", { key: 'a4a0f9e6d4a833a0707315e9cb5e552be80e9e1d', class: "step" }, h("div", { key: '8f4bcaafa40bc34d75d5a2f76228f435a4d9b331', class: {
                 step__content: true,
                 'step__content--active': this.active,
                 'step__content--completed': this.completed,
                 'step__content--disabled': this.disabled,
                 'step__content--pointer': this.pointer,
                 'step--last': this.last,
-            }, "data-test": this.dataTest }, h("div", { key: 'f7e87cbd6044f679bb569dd06597075b627dee61', class: {
+            }, "data-test": this.dataTest }, h("div", { key: 'a86316f8724e744fcc08ac40c1a0746798188a58', class: {
                 step__content__ellipse: true,
                 'step__content__ellipse--active': this.active,
                 'step__content__ellipse--completed': this.completed,
                 'step__content__ellipse--disabled': this.disabled,
-            } }, this.completed && h("bds-icon", { key: '7a7911cf4a126b38fd0b71802a637b6fdb05ec6c', name: "true" }), !this.completed && h("bds-typo", { key: '827d3b39914eaad1848e807eb9dae50a347f94da' }, this.index + 1)), h("bds-typo", { key: '2b319fc0f7e8335a9309b2b502e7887507f22130', variant: "fs-16", class: {
+            } }, this.completed && h("bds-icon", { key: '7fb97b766c6d173c1d22b0cafec98606f89cdf83', name: "true" }), !this.completed && h("bds-typo", { key: 'eb0ce6913629934839d1bb3d7cfba8ba5a35598f' }, this.index + 1)), h("bds-typo", { key: '65f5c6ff4b01e7615452aa315deea0592044927f', variant: "fs-16", class: {
                 step__content__text: true,
                 'step__content__text--completed': this.completed && !this.active,
                 'step__content__text--active': this.active,
                 'step__content__text--disabled': this.disabled,
-            }, bold: this.active ? 'bold' : 'regular' }, h("slot", { key: 'd8f622a7c09817e233bb912b98b9c0040c677b1b' })))));
+            }, bold: this.active ? 'bold' : 'regular' }, h("slot", { key: '334b3293550b1628dab7f28bbdea6c936855ba3e' })))));
     }
     static get is() { return "bds-step"; }
     static get encapsulation() { return "shadow"; }

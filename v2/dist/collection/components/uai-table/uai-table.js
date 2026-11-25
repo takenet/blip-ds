@@ -13,7 +13,7 @@ export class UaiTable {
         this.label = null;
     }
     render() {
-        return (h(Host, { key: '92653ba9b4f977be2acb6f084060e2c0529382a8', role: "table", "aria-label": this.label, style: this.columns ? { '--uai-table-columns': this.columns } : undefined }, h("slot", { key: '98a5ad568c1b0ae238f7d4b8d310b73211abf662' })));
+        return (h(Host, { key: 'a0d00fc9c64cc055f068b173ba920959de67166e', role: "table", "aria-label": this.label, style: this.columns ? { '--uai-table-columns': this.columns } : undefined }, h("slot", { key: '250201da681eed4f13384c994a4a48de080e020b' })));
     }
     static get is() { return "uai-table"; }
     static get encapsulation() { return "shadow"; }

@@ -1,4 +1,0 @@
-System.register(["./p-Btp-603e.system.js"],(function(t){"use strict";var e,o;return{setters:[function(t){e=t.r;o=t.h}],execute:function(){var i=function(){return".modal__close__button-icon{opacity:0;visibility:hidden;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:16px}.modal__close__button-icon--active{opacity:1;visibility:visible}"};var n=t("bds_modal_close_button",/** @class */function(){function t(t){e(this,t);
-/**
-                     * Used to hide or show the close button
-                     */this.active=true}t.prototype.render=function(){return o("div",{key:"e4417b88e6c50cc72b6986d59b8f7b6ec9aa591f",class:{"modal__close__button-icon":true,"modal__close__button-icon--active":this.active}},o("bds-icon",{key:"06723e6f72c675aed7b4ed36b76fac5d4dd1259f",size:"medium",name:"close"}))};return t}());n.style=i()}}}));

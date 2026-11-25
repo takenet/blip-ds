@@ -9,7 +9,7 @@ const Table = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '1b8d11343fde82544f6e8f4991e53fd1b1d3e99d', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, index.h("div", { key: 'e90f92b02dfd649fc6b92ef3cd386ef28fe9de43', class: "bds-table" }, index.h("slot", { key: '02175c963884b8a531a8336ab50578f45fda839d' }))));
+        return (index.h(index.Host, { key: '225c53c8d27d236b0c8aa6b7158877b4e00d38e8', class: { scrollable: this.scrollable, 'dense-table': this.denseTable } }, index.h("div", { key: 'e7a63eae70b16416470eb5a13057793907109b96', class: "bds-table" }, index.h("slot", { key: '830a22db2fd37c8b265b6ff6eb0860b31a5e250f' }))));
     }
 };
 Table.style = tableCss();

@@ -10,10 +10,10 @@ export class TabPanel {
         this.isActive = event.detail == this.group;
     }
     render() {
-        return (h(Host, { key: 'dca7230e20e53d8656c43b2c575bbf335cb1582e', class: {
+        return (h(Host, { key: '7145ed24f62b80f2d31e66b1972e1aec4131a683', class: {
                 'bds-tab-panel': true,
                 ['bds-tab-panel--selected']: this.isActive,
-            } }, h("slot", { key: 'e92c4c859f2172957554fcb1ac39b0b016ce94d7' })));
+            } }, h("slot", { key: '26cb2a0a9712cde51ecf589acfdf1d1cbfe4e324' })));
     }
     static get is() { return "bds-tab-panel"; }
     static get originalStyleUrls() {

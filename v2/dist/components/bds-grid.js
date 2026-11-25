@@ -1,1 +1,1 @@
-import{G as o,d as s}from"./p-DQvgnkCH.js";const p=o,r=s;export{p as BdsGrid,r as defineCustomElement}
+import{G as o,d as s}from"./p-BxWEUFd2.js";const p=o,r=s;export{p as BdsGrid,r as defineCustomElement}

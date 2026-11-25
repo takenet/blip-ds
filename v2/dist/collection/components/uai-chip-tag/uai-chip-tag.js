@@ -26,7 +26,7 @@ export class UaiChipTag {
     }
     render() {
         const color = this.resolveColor();
-        return (h(Host, { key: 'a02eca4ac7259101dd7ca8db568e194fc15667cf' }, h("div", { key: 'b4ed7e9eebbadb216b8b454a7cce451ee3ba18e2', class: { chip: true, [`chip--${color}`]: true }, part: "chip", "data-test": this.dataTest }, this.icon && h("uai-icon", { key: 'bd8577d21c7fbae2da1688d4b8c4fb015632ef8f', class: "chip__icon", size: "x-small", name: this.icon }), h("uai-typo", { key: '7c99736358f4750ae5e7611263b981210dee4f5a', class: "chip__text", tag: "span", variant: "caption", margin: false }, h("slot", { key: '1f919655e9403714f420b3f173f03eec78d67d06' })))));
+        return (h(Host, { key: 'f0f7c1c1927aed9c72fe25f8695c0dd7fa6e0882' }, h("div", { key: '415caf1cbe4e44150e8199ca7d699210db65391f', class: { chip: true, [`chip--${color}`]: true }, part: "chip", "data-test": this.dataTest }, this.icon && h("uai-icon", { key: '7142156cb5295c8d97e964d0c7cf161b369736df', class: "chip__icon", size: "x-small", name: this.icon }), h("uai-typo", { key: 'f51fc663dff6d0b659b07c5c9b7e8bbe4f880935', class: "chip__text", tag: "span", variant: "caption", margin: false, noWrap: true }, h("slot", { key: '6898586bfada744016f7872c48e4c6ed97ff28d4' })))));
     }
     static get is() { return "uai-chip-tag"; }
     static get encapsulation() { return "shadow"; }

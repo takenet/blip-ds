@@ -80,7 +80,7 @@ const Accordion = class {
         }
     }
     render() {
-        return (h("div", { key: 'b39819e0bd701621ea56ba6345303d73b5df6169', class: "accordion_group" }, h("slot", { key: 'b7406c56fd0e1ce94b29285c342f6a345c263181' })));
+        return (h("div", { key: 'aafd112b162db0297b36bdbf5de893ec110c492b', class: "accordion_group" }, h("slot", { key: 'ed7c98bc766ebc25940a4638daada8aaa89d0905' })));
     }
     get element() { return getElement(this); }
     static get watchers() { return {

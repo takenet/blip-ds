@@ -1,4 +1,4 @@
-import { h } from "@stencil/core";
+import { Host, h } from "@stencil/core";
 import { warnDeprecated, warnLegacyValue, warnOnce } from "../../utils/deprecation";
 const VARIANTS = [
     'display',
@@ -100,7 +100,7 @@ export class UaiTypo {
         const bold = supported('bold', this.bold, BOLDS, 'regular');
         const letterSpacing = supported('letterSpacing', this.letterSpacing, LETTER_SPACINGS, 'normal');
         const Tag = supported('tag', this.tag, TAGS, 'p');
-        return (h(Tag, { key: 'dc2ba84e3dcae2e01ebf2c942f467746925c8f75', class: {
+        return (h(Host, { key: 'a292875e7fe4c377aa1f5c52e92d98f6f482ec43', class: { 'uai-typo--no-wrap': this.noWrap } }, h(Tag, { key: '7feb1b671401f5b24aa41e898e28f9a16089f5a9', class: {
                 typo: true,
                 [`typo--variant-${variant}`]: true,
                 [`typo--bold-${bold}`]: true,
@@ -109,7 +109,7 @@ export class UaiTypo {
                 'typo--paragraph': this.paragraph,
                 'typo--italic': this.italic,
                 'typo--no-wrap': this.noWrap,
-            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: 'ad6bf334f57b4ddc1663b990d47d4b547fb4533c' })));
+            }, part: "uai-typo__text", "data-test": this.dataTest }, h("slot", { key: 'cd9409b34142e430a1cbd87bdd4fae9d2a174102' }))));
     }
     static get is() { return "uai-typo"; }
     static get encapsulation() { return "shadow"; }

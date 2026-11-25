@@ -25,6 +25,13 @@
   color: var(--uai-typo-color, var(--uai-content-primary, #242729));
 }
 
+:host(.uai-typo--no-wrap) {
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
+  vertical-align: top;
+}
+
 .typo {
   margin: 0;
   padding: 0;
@@ -109,6 +116,7 @@
   font-style: italic;
 }
 .typo--no-wrap {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
