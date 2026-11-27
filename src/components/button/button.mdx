@@ -34,6 +34,72 @@ As propriedades abaixo estão disponíveis para o componente Button.
 
 <br></br>
 
+## Variantes
+
+O botão suporta as seguintes variantes:
+
+- **Modernas** (recomendadas): `solid`, `outline`, `text`
+- **Especial**: `delete` — atalho semântico para `solid` + cor `negative`
+- **Legadas** (retrocompatibilidade): `ghost`, `dashed`, `primary`, `secondary`, `tertiary`, `secondary--white`, `facebook`
+
+<Canvas of={ButtonStories.Variants}></Canvas>
+
+<br></br>
+
+## Cores
+
+Cada variante pode ser combinada com as cores **primary**, **content**, **positive** e **negative**.
+
+<Canvas of={ButtonStories.Colors}></Canvas>
+
+<br></br>
+
+## Tamanhos
+
+Três tamanhos estão disponíveis: **short** (32px), **medium** (40px) e **large** (56px).
+
+<Canvas of={ButtonStories.Sizes}></Canvas>
+
+<br></br>
+
+## Com Ícones
+
+Os ícones podem ser posicionados à esquerda (`iconLeft` / `icon`), à direita (`iconRight`) ou como seta (`arrow`).
+
+<Canvas of={ButtonStories.WithIcons}></Canvas>
+
+<br></br>
+
+## Apenas Ícone
+
+Quando nenhum texto é fornecido, o botão ajusta o padding automaticamente para exibir somente o ícone.
+
+<Canvas of={ButtonStories.IconOnly}></Canvas>
+
+<br></br>
+
+## Estado Desabilitado
+
+<Canvas of={ButtonStories.DisabledState}></Canvas>
+
+<br></br>
+
+## Estado de Carregamento
+
+Quando `bdsLoading` está ativo, o conteúdo do botão fica oculto e um spinner é exibido.
+
+<Canvas of={ButtonStories.LoadingState}></Canvas>
+
+<br></br>
+
+## Layouts Flexíveis
+
+Use `fullWidth`, `justifyContent` e `groupIcon` para criar botões que se adaptam ao layout.
+
+<Canvas of={ButtonStories.FlexibleLayouts}></Canvas>
+
+<br></br>
+
 ## Eventos
 
 Exemplos de eventos disponíveis no Button.
