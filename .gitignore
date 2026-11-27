@@ -40,3 +40,4 @@ scripts/*.js
 /blob-report/
 /playwright/.cache/
 /src/utils/asset-config.json
+/src/utils/tag-scope.json

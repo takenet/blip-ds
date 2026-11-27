@@ -1,0 +1,78 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as ButtonGroupStories from './uai-button-group.stories';
+
+<Meta isTemplate />
+
+# Button Group
+
+## Visão geral
+
+Conjunto de `UaiButton` com contorno unidos, como o `uaiButtonGroup` do UAI Core: o grupo tem uma única borda `border-default` com cantos `radius-lg` (os botões não têm raio nem borda própria) e uma divisória de 1px entre os botões. Clicar em um item o seleciona (ou vários, com `multiple`): o selecionado fica no estado pressionado do `UaiButton` (Pressed no UAI Core). Use para poucas opções relacionadas, como modos de visualização, períodos ou filtros; para ações que não mantêm um estado selecionado, use botões separados.
+
+## Como usar
+
+No React, importe `UaiButtonGroup`, `UaiButton` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+
+<Canvas of={ButtonGroupStories.Usage} sourceState="shown" />
+
+Coloque os `UaiButton` direto dentro do grupo. O grupo define posição, direção, tamanho, cor e variante de cada botão, então não defina `variant`, `size` nem `color` nos botões. Fora do React, use o custom element `<uai-button-group>` com as mesmas propriedades e o evento `uaiButtonSelected`.
+
+## Playground
+
+<Canvas of={ButtonGroupStories.Playground} />
+<Controls of={ButtonGroupStories.Playground} />
+
+## Com texto
+
+Os botões podem ter texto, com ou sem ícone.
+
+<Canvas of={ButtonGroupStories.WithLabels} />
+
+Para ações que abrem um menu, use `iconRight="arrow-down"`, como no UAI Core.
+
+<Canvas of={ButtonGroupStories.WithMenuIcons} />
+
+## Direção
+
+`direction="row"` (padrão) une os botões lado a lado; `column`, um embaixo do outro.
+
+<Canvas of={ButtonGroupStories.Directions} />
+
+## Tamanhos e cores
+
+`size` (`compact`, `short`, `medium` e `large`) e `color` valem para todos os botões do grupo. `primary` (padrão) é o grupo do UAI Core; `content`, `positive` e `negative` mudam a cor do texto e dos ícones dos botões, para outro tom ou para destacar um acento.
+
+<Canvas of={ButtonGroupStories.SizesAndColors} />
+
+## Seleção múltipla
+
+Com `multiple`, cada botão liga e desliga sozinho. Sem ele, selecionar um botão desmarca o anterior, e clicar no selecionado o desmarca. Ao voltar de `multiple` para seleção única, só o primeiro selecionado continua.
+
+<Canvas of={ButtonGroupStories.Multiple} />
+
+## Eventos
+
+`uaiButtonSelected` é emitido a cada clique, com `{ id, index, active, selected }`: o `id` e o índice do botão clicado, se ele ficou selecionado e os índices de todos os selecionados, em ordem.
+
+## Métodos
+
+`activateButton(index)` seleciona ou desmarca o botão do índice, como um clique. Índices fora do grupo são ignorados.
+
+<Canvas of={ButtonGroupStories.Methods} sourceState="shown" />
+
+## Acessibilidade
+
+O grupo tem `role="group"`, e `label` define o nome acessível dele: use uma frase curta que diga o que os botões escolhem. Cada botão expõe `aria-pressed` com o seu estado. Botões só com ícone precisam de `aria-label`. Cada botão recebe foco pelo Tab e é acionado com Enter ou Espaço.
+
+## Migração do bds-button-group
+
+Troque `BdsButtonGroup` por `UaiButtonGroup`, `BdsButton` por `UaiButton` e `onButtonSelected` por `onUaiButtonSelected`, e envolva a aplicação em `UaiThemeProvider`. `size`, `direction`, `color`, `multiple` e o método `activateButton()` são preservados. Diferenças:
+
+- **Evento:** `buttonSelected` emitia só o `id` do botão; `uaiButtonSelected` emite `{ id, index, active, selected }`.
+- **Visual:** como o `uaiButtonGroup` do UAI Core: uma borda e um raio para o grupo todo, botões sem raio nem borda e uma divisória entre eles. O selecionado fica no estado pressionado, e não mais sólido.
+- **Tamanhos:** além de `medium` e `large`, valem `compact` e `short`, como no `UaiButton`.
+- **Correções:** cada clique conta uma vez (o legado somava um novo listener a cada atualização das props), botões adicionados depois são configurados e o grupo tem `role="group"` com `label`.
+
+Tokens: `border-default`, `border-width-default` e `radius-lg` no grupo e nas divisórias, além dos do `UaiButton` com contorno (incluindo `action-outline-pressed` no selecionado).
+
+[Componente no UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4498-9484).

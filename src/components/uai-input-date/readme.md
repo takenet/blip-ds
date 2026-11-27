@@ -7,10 +7,10 @@
 
 ## Overview
 
-Date field. The person types the date in the browser's regional format or picks it in the browser calendar;
-value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it
-for a single known date, such as a birth or due date. Pair with UaiButton in forms. Avoid it for periods, presets or
-times (use uai-datepicker when available). Wrap the app in UaiThemeProvider.
+Date field. The person types the date in the browser's regional format or picks it in the UAI calendar that opens
+on a click; value, min, max and the submitted form value are ISO YYYY-MM-DD. Use it for a single known date, such
+as a birth or due date. Pair with uai-input-time for a date and time, and with UaiButton in forms. Avoid it for
+periods (use uai-datepicker) or times (use uai-input-time). Wrap the app in UaiThemeProvider.
 
 ## Properties
 
@@ -64,6 +64,16 @@ Type: `Promise<void>`
 
 
 
+### `close() => Promise<void>`
+
+Closes the calendar.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `isValid() => Promise<boolean>`
 
 Returns true when the date is complete, exists, is within min and max, and is present when required.
@@ -71,6 +81,16 @@ Returns true when the date is complete, exists, is within min and max, and is pr
 #### Returns
 
 Type: `Promise<boolean>`
+
+
+
+### `open() => Promise<void>`
+
+Opens the calendar. Use for imperative control; pair with close.
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 
@@ -106,7 +126,12 @@ Type: `Promise<void>`
 
 | Part                | Description                                                                |
 | ------------------- | -------------------------------------------------------------------------- |
-| `"calendar-button"` | The button that opens the browser calendar.                                |
+| `"calendar"`        | The floating calendar panel.                                               |
+| `"calendar-arrow"`  | The previous and next buttons of the calendar header.                      |
+| `"calendar-button"` | The button that opens and closes the calendar.                             |
+| `"calendar-day"`    | Each day button of the calendar.                                           |
+| `"calendar-option"` | Each month or year in their pickers.                                       |
+| `"calendar-picker"` | The month and year buttons of the calendar header.                         |
 | `"input"`           | The native text input with the date in the browser's regional format.      |
 | `"input-container"` | The field box with border, icon, the native input and the calendar button. |
 | `"input__message"`  | The helper, error or success message below the field.                      |

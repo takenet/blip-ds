@@ -1,0 +1,82 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiLogoStories from './uai-logo.stories';
+
+<Meta isTemplate />
+
+# Logo
+
+`<uai-logo>` exibe um logo SVG publicado em `blip-tokens`. Use-o para identificar uma marca; para ilustrações de expressão, use `<uai-emoji>`, e para ícones de interface, use `<uai-icon>`.
+
+## Visão geral
+
+O nome seleciona um asset do manifesto instalado. O componente mantém as cores originais e não define uma escala: aplique a largura ao host; o SVG acompanha essa largura e preserva a proporção intrínseca do `viewBox`.
+
+O componente não depende da fonte de ícones. Em React, importe o wrapper e o provider de tema:
+
+```jsx
+import { UaiLogo, UaiThemeProvider } from 'blip-ds-react/dist/components';
+
+<UaiThemeProvider theme="light">
+  <UaiLogo name="whatsapp" ariaLabel="WhatsApp" />
+</UaiThemeProvider>;
+```
+
+Em HTML, use o custom element:
+
+```html
+<uai-logo name="whatsapp" aria-label="WhatsApp" style="width: var(--uai-sizing-5xl)"></uai-logo>
+```
+
+## Playground
+
+<Canvas of={UaiLogoStories.Playground} />
+
+<Controls of={UaiLogoStories.Playground} />
+
+## Como usar
+
+- `name` é o nome do manifesto sem o prefixo `asset-logo-`; por exemplo, `asset-logo-whatsapp` corresponde a `name="whatsapp"`.
+- `ariaLabel` no wrapper React corresponde ao atributo HTML `aria-label`.
+- `dataTest` é destinado a testes e é encaminhado como `data-test` ao SVG.
+- Não existe prop `size`. Defina a dimensão no host com `style` ou CSS; por exemplo, `style={{ width: 'var(--uai-sizing-5xl)' }}` em React.
+- Os exemplos de React usam o wrapper gerado `UaiLogo`. Fora de React, use `<uai-logo>`.
+
+## Comportamento
+
+| Situação | Comportamento |
+| --- | --- |
+| `name` conhecido | Carrega o SVG original da chave `asset-logo-<name>` no manifesto versionado. |
+| `name` desconhecido | Não renderiza imagem inválida nem interrompe a tela; emite aviso uma única vez para o nome. |
+| Largura do host alterada | O SVG acompanha a largura e mantém a razão de aspecto do `viewBox`. |
+| `name` alterado | O asset é atualizado para o novo nome. |
+
+<Canvas of={UaiLogoStories.Dimensions} />
+
+## Acessibilidade
+
+- Com `ariaLabel`/`aria-label`, o host expõe `role="img"` e o nome fornecido.
+- Sem o rótulo, o logo é decorativo e fica oculto para tecnologias assistivas por `aria-hidden="true"`.
+- O componente não é interativo, não recebe foco e não deve ser usado como substituto do nome acessível de um botão ou link.
+- Se a marca já estiver identificada por texto adjacente, deixe o logo decorativo para evitar anúncio duplicado.
+
+<Canvas of={UaiLogoStories.Accessibility} />
+
+## Tokens e origem
+
+O componente não aplica tokens de cor, espaçamento ou tamanho ao artwork. A largura pertence ao estilo do host e o SVG preserva suas cores e proporções originais. Os nomes vêm de `src/utils/asset-config.json`, gerado a partir do manifesto de `blip-tokens@2.4.1`; o carregador resolve os SVGs no CDN da versão instalada.
+
+O catálogo abaixo deriva automaticamente as chaves `asset-logo-*` do manifesto instalado (62 logos) e substitui visualmente Google Ads, Google RCS e Meta pelas prévias locais dos SVGs fornecidos. As três prévias são exclusivas do Storybook; `<uai-logo>` ainda carrega as versões publicadas em `blip-tokens@2.4.1`, e `name="google-ads"` ainda não está disponível na API. Quando as novas artes forem publicadas no manifesto, o catálogo passará a renderizá-las pelo `<uai-logo>` como os demais. Os assets são imagens, não nós de componente individual no Figma; por isso, não há Code Connect por asset.
+
+<Canvas of={UaiLogoStories.Catalog} />
+
+## Migração do `bds-icon`
+
+| `BdsIcon` | `UaiLogo` |
+| --- | --- |
+| `type="logo"` e `name="whatsapp"` | `<UaiLogo name="whatsapp" />` |
+| `size` | Remova a prop e defina a largura no host por estilo. |
+| `ariaLabel` | Mantenha como `ariaLabel` no React ou `aria-label` no custom element. |
+| `dataTest` | Mantenha como `dataTest` no React ou `data-test` no custom element. |
+| `src`, `icon`, `lazy`, `theme`, `color` | Não aplicável; o asset é escolhido pelo `name` e mantém a aparência de origem. |
+
+`bds-icon` continua suportado. Para experiências novas, use a tag específica da família de asset.

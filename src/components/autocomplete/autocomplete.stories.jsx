@@ -3,7 +3,7 @@ import DocumentationTemplate from './autocomplete.mdx';
 import { BdsAutocomplete, BdsSelectOption } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'BDS Components/Autocomplete',
+  title: 'BDS Components/[deprecated] Autocomplete',
   tags: ['autodocs'],
   parameters: {
     docs: {

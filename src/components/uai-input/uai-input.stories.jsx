@@ -310,3 +310,39 @@ export const Usage = () => {
 Usage.parameters = {
   docs: { source: { code: usageSource, language: 'jsx' } },
 };
+
+/**
+ * Números decimais com `step`: `"1"` (padrão do navegador) aceita só inteiros, `"0.1"` uma casa decimal e `"any"`
+ * qualquer decimal. As setas e as teclas de seta andam pelo `step`; fora dele, aparece `stepErrorMessage`.
+ */
+export const Step = () => (
+  <div style={grid}>
+    <UaiInput label="Quantidade" type="number" min="1" helperMessage="Só inteiros (step padrão)." />
+    <UaiInput
+      label="Temperatura"
+      type="number"
+      min="0"
+      max="2"
+      step="0.1"
+      value="0.7"
+      helperMessage="De 0 a 2, com uma casa decimal."
+      stepErrorMessage="Use uma casa decimal."
+    />
+    <UaiInput label="Valor" type="number" step="any" helperMessage="Qualquer decimal." />
+  </div>
+);
+
+/**
+ * Sugestões enquanto a pessoa digita, que ela pode escolher ou ignorar. Para restringir a uma lista, use
+ * `uai-select`.
+ */
+export const Suggestions = () => (
+  <div style={grid}>
+    <UaiInput
+      label="Variável da jornada"
+      placeholder="Digite ou escolha"
+      suggestions={['nome', 'cpf', 'email', 'telefone']}
+      helperMessage="Escolha uma variável existente ou crie outra."
+    />
+  </div>
+);

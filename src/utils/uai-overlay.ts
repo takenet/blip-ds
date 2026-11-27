@@ -6,6 +6,9 @@
  * which provides the spacing/2xs gap, the spacing/xs viewport margin and the duration/moderate fade.
  */
 
+export type UaiOverlaySide = 'top' | 'bottom';
+export type UaiOverlayAlign = 'start' | 'end';
+
 export type UaiOverlayCloseReason = 'escape' | 'outside' | 'trigger-hidden' | 'api';
 
 export interface UaiOverlayRect {
@@ -27,6 +30,10 @@ export interface UaiOverlayLayoutInput {
   margin: number;
   /** The panel is at least as wide as the trigger. */
   matchTriggerWidth?: boolean;
+  /** Preferred side. The panel still flips when it does not fit and the other side has more room. */
+  side?: UaiOverlaySide;
+  /** Preferred alignment with the trigger. The panel still moves to the other edge when it would leave the viewport. */
+  align?: UaiOverlayAlign;
 }
 
 export interface UaiOverlayLayout {
@@ -35,14 +42,18 @@ export interface UaiOverlayLayout {
   minWidth: number;
   maxWidth: number;
   maxHeight: number;
-  side: 'top' | 'bottom';
-  align: 'start' | 'end';
+  side: UaiOverlaySide;
+  align: UaiOverlayAlign;
 }
 
 export interface UaiOverlayOptions {
   trigger: HTMLElement;
   panel: HTMLElement;
   matchTriggerWidth?: boolean;
+  /** Preferred side; without it the side is chosen by the room available. */
+  side?: UaiOverlaySide;
+  /** Preferred alignment; without it the panel aligns to the half of the viewport the trigger is in. */
+  align?: UaiOverlayAlign;
   onClose?: (reason: UaiOverlayCloseReason) => void;
 }
 
@@ -58,14 +69,27 @@ export function computeOverlayLayout(input: UaiOverlayLayoutInput): UaiOverlayLa
 
   const below = viewport.height - trigger.bottom - gap - margin;
   const above = trigger.top - gap - margin;
-  const side = panel.height > below && above > below ? 'top' : 'bottom';
+  const preferredSide = input.side;
+  let side: UaiOverlaySide = panel.height > below && above > below ? 'top' : 'bottom';
+  if (preferredSide) {
+    const room = preferredSide === 'top' ? above : below;
+    const otherRoom = preferredSide === 'top' ? below : above;
+    const other: UaiOverlaySide = preferredSide === 'top' ? 'bottom' : 'top';
+    side = panel.height <= room || room >= otherRoom ? preferredSide : other;
+  }
   const maxHeight = Math.max(0, side === 'top' ? above : below);
   const height = Math.min(panel.height, maxHeight);
   const top = side === 'top' ? trigger.top - gap - height : trigger.bottom + gap;
 
   const inRightHalf = trigger.left + trigger.width / 2 > viewport.width / 2;
   const fitsFromStart = trigger.left + width <= viewport.width - margin;
-  const align = inRightHalf || !fitsFromStart ? 'end' : 'start';
+  const fitsFromEnd = trigger.right - width >= margin;
+  let align: UaiOverlayAlign = inRightHalf || !fitsFromStart ? 'end' : 'start';
+  if (input.align) {
+    const preferredFits = input.align === 'start' ? fitsFromStart : fitsFromEnd;
+    const otherFits = input.align === 'start' ? fitsFromEnd : fitsFromStart;
+    align = preferredFits || !otherFits ? input.align : input.align === 'start' ? 'end' : 'start';
+  }
   const preferredLeft = align === 'end' ? trigger.right - width : trigger.left;
   const left = clamp(preferredLeft, margin, viewport.width - margin - width);
 
@@ -183,15 +207,23 @@ export class UaiOverlay {
       gap: readLength(panel, '--uai-overlay-gap'),
       margin: readLength(panel, '--uai-overlay-margin'),
       matchTriggerWidth,
+      side: this.options.side,
+      align: this.options.align,
     });
     style.top = `${layout.top}px`;
     style.left = `${layout.left}px`;
     style.minWidth = `${layout.minWidth}px`;
     style.maxWidth = `${layout.maxWidth}px`;
-    style.maxHeight =
-      maxHeight === 'none' ? `${layout.maxHeight}px` : `min(${layout.maxHeight}px, ${maxHeight})`;
+    style.maxHeight = maxHeight === 'none' ? `${layout.maxHeight}px` : `min(${layout.maxHeight}px, ${maxHeight})`;
     panel.dataset.side = layout.side;
     panel.dataset.align = layout.align;
+  }
+
+  /** Changes the preferred side and alignment, and repositions when open. `undefined` goes back to automatic. */
+  setPlacement(placement: { side?: UaiOverlaySide; align?: UaiOverlayAlign }) {
+    this.options.side = placement.side;
+    this.options.align = placement.align;
+    this.update();
   }
 
   /** True when the event path goes through this overlay's panel or trigger. */

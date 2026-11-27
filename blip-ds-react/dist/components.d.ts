@@ -1,5 +1,5 @@
 import type { EventName, StencilReactComponent } from '@stencil/react-output-target/runtime';
-import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAppliedFilters, type UaiAvatarCustomEvent, type UaiBannerCustomEvent, type UaiBarChartCustomEvent, type UaiBarChartItem, type UaiBreadcrumbCustomEvent, type UaiBreadcrumbEditDetail, type UaiBreadcrumbItem, type UaiButtonCustomEvent, type UaiCheckboxCustomEvent, type UaiFilterBarCustomEvent, type UaiGridAddDetail, type UaiGridCustomEvent, type UaiGridReorderDetail, type UaiIconButtonCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiLineChartCustomEvent, type UaiLineChartDatum, type UaiPageHeaderCustomEvent, type UaiPaginationCustomEvent, type UaiPhoneNumberChange, type UaiRadioCustomEvent, type UaiRadioGroupCustomEvent, type UaiSelectChange, type UaiSelectCustomEvent, type UaiStepCustomEvent, type UaiStepperCustomEvent, type UaiSwitchCustomEvent, type UaiTabGroupCustomEvent, type UaiTabItemCustomEvent, type UaiTableSortDirection, type UaiTableThCustomEvent, type UaiTextareaCustomEvent, type stateSelect } from "blip-ds";
+import { type AutocompleteChangeEventDetail, type AutocompleteMultiSelectedChangeEventDetail, type AutocompleteSelectedChangeEventDetail, type BdsAccordionCustomEvent, type BdsAccordionGroupCustomEvent, type BdsAlertCustomEvent, type BdsAutocompleteCustomEvent, type BdsAvatarCustomEvent, type BdsAvatarGroupCustomEvent, type BdsBannerCustomEvent, type BdsBannerLinkCustomEvent, type BdsButtonCustomEvent, type BdsButtonGroupCustomEvent, type BdsButtonIconCustomEvent, type BdsCardCustomEvent, type BdsCarouselCustomEvent, type BdsCheckboxCustomEvent, type BdsChipClickableCustomEvent, type BdsChipCustomEvent, type BdsChipSelectedCustomEvent, type BdsDataTableCustomEvent, type BdsDatepickerCustomEvent, type BdsDatepickerPeriodCustomEvent, type BdsDatepickerSingleCustomEvent, type BdsDropdownCustomEvent, type BdsInputChipsCustomEvent, type BdsInputCustomEvent, type BdsInputEditableCustomEvent, type BdsInputPasswordCustomEvent, type BdsInputPhoneNumberCustomEvent, type BdsListCustomEvent, type BdsListItemCustomEvent, type BdsMenuCustomEvent, type BdsModalCustomEvent, type BdsNavTreeCustomEvent, type BdsNavTreeGroupCustomEvent, type BdsNavTreeItemCustomEvent, type BdsPaginationCustomEvent, type BdsRadioCustomEvent, type BdsRadioGroupCustomEvent, type BdsRichTextCustomEvent, type BdsSelectChipsCustomEvent, type BdsSelectCustomEvent, type BdsSelectOptionCustomEvent, type BdsSidebarCustomEvent, type BdsSliderCustomEvent, type BdsSwitchCustomEvent, type BdsTabCustomEvent, type BdsTabGroupCustomEvent, type BdsTabItemCustomEvent, type BdsTabsCustomEvent, type BdsToastCustomEvent, type BdsUploadCustomEvent, type InputEditableEventDetail, type Itens, type Overflow, type SelectChangeEvent, type SelectChangeEventDetail, type TypeList, type UaiAppliedFilters, type UaiAutocompleteChange, type UaiAutocompleteCustomEvent, type UaiAutocompleteMultiselectedChange, type UaiAutocompleteSelectedChange, type UaiAvatarCustomEvent, type UaiBannerCustomEvent, type UaiBarChartCustomEvent, type UaiBarChartItem, type UaiBreadcrumbCustomEvent, type UaiBreadcrumbEditDetail, type UaiBreadcrumbItem, type UaiButtonCustomEvent, type UaiButtonGroupCustomEvent, type UaiButtonGroupSelectedDetail, type UaiCheckboxCustomEvent, type UaiDatepickerConclude, type UaiDatepickerCustomEvent, type UaiDropdownCustomEvent, type UaiFilterBarCustomEvent, type UaiGridAddDetail, type UaiGridCustomEvent, type UaiGridReorderDetail, type UaiIconButtonCustomEvent, type UaiInputChipsChange, type UaiInputChipsCustomEvent, type UaiInputCustomEvent, type UaiInputDateCustomEvent, type UaiInputEditableCustomEvent, type UaiInputEditableEventDetail, type UaiInputPasswordCustomEvent, type UaiInputPhoneCustomEvent, type UaiInputTimeCustomEvent, type UaiLineChartCustomEvent, type UaiLineChartDatum, type UaiModalCustomEvent, type UaiPageHeaderCustomEvent, type UaiPaginationCustomEvent, type UaiPhoneNumberChange, type UaiRadioCustomEvent, type UaiRadioGroupCustomEvent, type UaiRichTextCustomEvent, type UaiSelectChange, type UaiSelectCustomEvent, type UaiStepCustomEvent, type UaiStepperCustomEvent, type UaiSwitchCustomEvent, type UaiTabGroupCustomEvent, type UaiTabItemCustomEvent, type UaiTableSortDirection, type UaiTableThCustomEvent, type UaiTextareaCustomEvent, type UaiToastCloseReason, type UaiToastCustomEvent, type stateSelect } from "blip-ds";
 import type { Components } from "blip-ds/dist/components";
 import { BdsAccordionBody as BdsAccordionBodyElement } from "blip-ds/dist/components/bds-accordion-body.js";
 import { BdsAccordionGroup as BdsAccordionGroupElement } from "blip-ds/dist/components/bds-accordion-group.js";
@@ -106,11 +106,13 @@ import { BdsTooltip as BdsTooltipElement } from "blip-ds/dist/components/bds-too
 import { BdsTypo as BdsTypoElement } from "blip-ds/dist/components/bds-typo.js";
 import { BdsUpload as BdsUploadElement } from "blip-ds/dist/components/bds-upload.js";
 import { BdsWarning as BdsWarningElement } from "blip-ds/dist/components/bds-warning.js";
+import { UaiAutocomplete as UaiAutocompleteElement } from "blip-ds/dist/components/uai-autocomplete.js";
 import { UaiAvatar as UaiAvatarElement } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiBadge as UaiBadgeElement } from "blip-ds/dist/components/uai-badge.js";
 import { UaiBanner as UaiBannerElement } from "blip-ds/dist/components/uai-banner.js";
 import { UaiBarChart as UaiBarChartElement } from "blip-ds/dist/components/uai-bar-chart.js";
 import { UaiBreadcrumb as UaiBreadcrumbElement } from "blip-ds/dist/components/uai-breadcrumb.js";
+import { UaiButtonGroup as UaiButtonGroupElement } from "blip-ds/dist/components/uai-button-group.js";
 import { UaiButton as UaiButtonElement } from "blip-ds/dist/components/uai-button.js";
 import { UaiCardBody as UaiCardBodyElement } from "blip-ds/dist/components/uai-card-body.js";
 import { UaiCardFooter as UaiCardFooterElement } from "blip-ds/dist/components/uai-card-footer.js";
@@ -120,6 +122,9 @@ import { UaiCardTitle as UaiCardTitleElement } from "blip-ds/dist/components/uai
 import { UaiCard as UaiCardElement } from "blip-ds/dist/components/uai-card.js";
 import { UaiCheckbox as UaiCheckboxElement } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiChipTag as UaiChipTagElement } from "blip-ds/dist/components/uai-chip-tag.js";
+import { UaiDatepicker as UaiDatepickerElement } from "blip-ds/dist/components/uai-datepicker.js";
+import { UaiDropdown as UaiDropdownElement } from "blip-ds/dist/components/uai-dropdown.js";
+import { UaiEmoji as UaiEmojiElement } from "blip-ds/dist/components/uai-emoji.js";
 import { UaiFilterBar as UaiFilterBarElement } from "blip-ds/dist/components/uai-filter-bar.js";
 import { UaiGrid as UaiGridElement } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIconBox as UaiIconBoxElement } from "blip-ds/dist/components/uai-icon-box.js";
@@ -130,8 +135,13 @@ import { UaiInputDate as UaiInputDateElement } from "blip-ds/dist/components/uai
 import { UaiInputEditable as UaiInputEditableElement } from "blip-ds/dist/components/uai-input-editable.js";
 import { UaiInputPassword as UaiInputPasswordElement } from "blip-ds/dist/components/uai-input-password.js";
 import { UaiInputPhone as UaiInputPhoneElement } from "blip-ds/dist/components/uai-input-phone.js";
+import { UaiInputTime as UaiInputTimeElement } from "blip-ds/dist/components/uai-input-time.js";
 import { UaiInput as UaiInputElement } from "blip-ds/dist/components/uai-input.js";
 import { UaiLineChart as UaiLineChartElement } from "blip-ds/dist/components/uai-line-chart.js";
+import { UaiLogo as UaiLogoElement } from "blip-ds/dist/components/uai-logo.js";
+import { UaiModalAction as UaiModalActionElement } from "blip-ds/dist/components/uai-modal-action.js";
+import { UaiModalCloseButton as UaiModalCloseButtonElement } from "blip-ds/dist/components/uai-modal-close-button.js";
+import { UaiModal as UaiModalElement } from "blip-ds/dist/components/uai-modal.js";
 import { UaiNavbarContent as UaiNavbarContentElement } from "blip-ds/dist/components/uai-navbar-content.js";
 import { UaiNavbar as UaiNavbarElement } from "blip-ds/dist/components/uai-navbar.js";
 import { UaiPageHeader as UaiPageHeaderElement } from "blip-ds/dist/components/uai-page-header.js";
@@ -140,6 +150,7 @@ import { UaiPaper as UaiPaperElement } from "blip-ds/dist/components/uai-paper.j
 import { UaiProgressBar as UaiProgressBarElement } from "blip-ds/dist/components/uai-progress-bar.js";
 import { UaiRadioGroup as UaiRadioGroupElement } from "blip-ds/dist/components/uai-radio-group.js";
 import { UaiRadio as UaiRadioElement } from "blip-ds/dist/components/uai-radio.js";
+import { UaiRichText as UaiRichTextElement } from "blip-ds/dist/components/uai-rich-text.js";
 import { UaiSectionTitle as UaiSectionTitleElement } from "blip-ds/dist/components/uai-section-title.js";
 import { UaiSelectOption as UaiSelectOptionElement } from "blip-ds/dist/components/uai-select-option.js";
 import { UaiSelect as UaiSelectElement } from "blip-ds/dist/components/uai-select.js";
@@ -157,6 +168,8 @@ import { UaiTableTh as UaiTableThElement } from "blip-ds/dist/components/uai-tab
 import { UaiTable as UaiTableElement } from "blip-ds/dist/components/uai-table.js";
 import { UaiTextarea as UaiTextareaElement } from "blip-ds/dist/components/uai-textarea.js";
 import { UaiThemeProvider as UaiThemeProviderElement } from "blip-ds/dist/components/uai-theme-provider.js";
+import { UaiToastContainer as UaiToastContainerElement } from "blip-ds/dist/components/uai-toast-container.js";
+import { UaiToast as UaiToastElement } from "blip-ds/dist/components/uai-toast.js";
 import { UaiTooltip as UaiTooltipElement } from "blip-ds/dist/components/uai-tooltip.js";
 import { UaiTypo as UaiTypoElement } from "blip-ds/dist/components/uai-typo.js";
 export type BdsAccordionEvents = {
@@ -675,6 +688,16 @@ export type BdsUploadEvents = {
 export declare const BdsUpload: StencilReactComponent<BdsUploadElement, BdsUploadEvents, Components.BdsUpload>;
 export type BdsWarningEvents = NonNullable<unknown>;
 export declare const BdsWarning: StencilReactComponent<BdsWarningElement, BdsWarningEvents, Components.BdsWarning>;
+export type UaiAutocompleteEvents = {
+    onUaiChange: EventName<UaiAutocompleteCustomEvent<UaiAutocompleteChange>>;
+    onUaiSelectedChange: EventName<UaiAutocompleteCustomEvent<UaiAutocompleteSelectedChange>>;
+    onUaiMultiselectedChange: EventName<UaiAutocompleteCustomEvent<UaiAutocompleteMultiselectedChange>>;
+    onUaiInput: EventName<UaiAutocompleteCustomEvent<InputEvent>>;
+    onUaiCancel: EventName<UaiAutocompleteCustomEvent<UaiAutocompleteChange>>;
+    onUaiFocus: EventName<UaiAutocompleteCustomEvent<void>>;
+    onUaiBlur: EventName<UaiAutocompleteCustomEvent<void>>;
+};
+export declare const UaiAutocomplete: StencilReactComponent<UaiAutocompleteElement, UaiAutocompleteEvents, Components.UaiAutocomplete>;
 export type UaiAvatarEvents = {
     onUaiClickAvatar: EventName<UaiAvatarCustomEvent<PointerEvent | KeyboardEvent>>;
     onUaiImageUpload: EventName<UaiAvatarCustomEvent<string>>;
@@ -700,6 +723,10 @@ export type UaiButtonEvents = {
     onUaiClick: EventName<UaiButtonCustomEvent<MouseEvent>>;
 };
 export declare const UaiButton: StencilReactComponent<UaiButtonElement, UaiButtonEvents, Components.UaiButton>;
+export type UaiButtonGroupEvents = {
+    onUaiButtonSelected: EventName<UaiButtonGroupCustomEvent<UaiButtonGroupSelectedDetail>>;
+};
+export declare const UaiButtonGroup: StencilReactComponent<UaiButtonGroupElement, UaiButtonGroupEvents, Components.UaiButtonGroup>;
 export type UaiCardEvents = NonNullable<unknown>;
 export declare const UaiCard: StencilReactComponent<UaiCardElement, UaiCardEvents, Components.UaiCard>;
 export type UaiCardBodyEvents = NonNullable<unknown>;
@@ -722,6 +749,25 @@ export type UaiCheckboxEvents = {
 export declare const UaiCheckbox: StencilReactComponent<UaiCheckboxElement, UaiCheckboxEvents, Components.UaiCheckbox>;
 export type UaiChipTagEvents = NonNullable<unknown>;
 export declare const UaiChipTag: StencilReactComponent<UaiChipTagElement, UaiChipTagEvents, Components.UaiChipTag>;
+export type UaiDatepickerEvents = {
+    onUaiStartDate: EventName<UaiDatepickerCustomEvent<{
+        value: string | null;
+    }>>;
+    onUaiEndDate: EventName<UaiDatepickerCustomEvent<{
+        value: string | null;
+    }>>;
+    onUaiConcludeDatepicker: EventName<UaiDatepickerCustomEvent<UaiDatepickerConclude>>;
+    onUaiEmptyConcludeDatepicker: EventName<UaiDatepickerCustomEvent<void>>;
+};
+export declare const UaiDatepicker: StencilReactComponent<UaiDatepickerElement, UaiDatepickerEvents, Components.UaiDatepicker>;
+export type UaiDropdownEvents = {
+    onUaiToggle: EventName<UaiDropdownCustomEvent<{
+        value: boolean;
+    }>>;
+};
+export declare const UaiDropdown: StencilReactComponent<UaiDropdownElement, UaiDropdownEvents, Components.UaiDropdown>;
+export type UaiEmojiEvents = NonNullable<unknown>;
+export declare const UaiEmoji: StencilReactComponent<UaiEmojiElement, UaiEmojiEvents, Components.UaiEmoji>;
 export type UaiFilterBarEvents = {
     onUaiPeriodChange: EventName<UaiFilterBarCustomEvent<{
         id: string;
@@ -826,6 +872,15 @@ export type UaiInputPhoneEvents = {
     onUaiBlur: EventName<UaiInputPhoneCustomEvent<void>>;
 };
 export declare const UaiInputPhone: StencilReactComponent<UaiInputPhoneElement, UaiInputPhoneEvents, Components.UaiInputPhone>;
+export type UaiInputTimeEvents = {
+    onUaiChange: EventName<UaiInputTimeCustomEvent<{
+        value: string;
+    }>>;
+    onUaiInput: EventName<UaiInputTimeCustomEvent<InputEvent>>;
+    onUaiFocus: EventName<UaiInputTimeCustomEvent<void>>;
+    onUaiOnBlur: EventName<UaiInputTimeCustomEvent<void>>;
+};
+export declare const UaiInputTime: StencilReactComponent<UaiInputTimeElement, UaiInputTimeEvents, Components.UaiInputTime>;
 export type UaiLineChartEvents = {
     onUaiPointHover: EventName<UaiLineChartCustomEvent<{
         index: number;
@@ -833,6 +888,18 @@ export type UaiLineChartEvents = {
     } | null>>;
 };
 export declare const UaiLineChart: StencilReactComponent<UaiLineChartElement, UaiLineChartEvents, Components.UaiLineChart>;
+export type UaiLogoEvents = NonNullable<unknown>;
+export declare const UaiLogo: StencilReactComponent<UaiLogoElement, UaiLogoEvents, Components.UaiLogo>;
+export type UaiModalEvents = {
+    onUaiModalChanged: EventName<UaiModalCustomEvent<{
+        modalStatus: 'opened' | 'closed';
+    }>>;
+};
+export declare const UaiModal: StencilReactComponent<UaiModalElement, UaiModalEvents, Components.UaiModal>;
+export type UaiModalActionEvents = NonNullable<unknown>;
+export declare const UaiModalAction: StencilReactComponent<UaiModalActionElement, UaiModalActionEvents, Components.UaiModalAction>;
+export type UaiModalCloseButtonEvents = NonNullable<unknown>;
+export declare const UaiModalCloseButton: StencilReactComponent<UaiModalCloseButtonElement, UaiModalCloseButtonEvents, Components.UaiModalCloseButton>;
 export type UaiNavbarEvents = NonNullable<unknown>;
 export declare const UaiNavbar: StencilReactComponent<UaiNavbarElement, UaiNavbarEvents, Components.UaiNavbar>;
 export type UaiNavbarContentEvents = NonNullable<unknown>;
@@ -866,6 +933,17 @@ export type UaiRadioGroupEvents = {
     }>>;
 };
 export declare const UaiRadioGroup: StencilReactComponent<UaiRadioGroupElement, UaiRadioGroupEvents, Components.UaiRadioGroup>;
+export type UaiRichTextEvents = {
+    onUaiInput: EventName<UaiRichTextCustomEvent<{
+        value: string;
+    }>>;
+    onUaiChange: EventName<UaiRichTextCustomEvent<{
+        value: string;
+    }>>;
+    onUaiFocus: EventName<UaiRichTextCustomEvent<void>>;
+    onUaiBlur: EventName<UaiRichTextCustomEvent<void>>;
+};
+export declare const UaiRichText: StencilReactComponent<UaiRichTextElement, UaiRichTextEvents, Components.UaiRichText>;
 export type UaiSectionTitleEvents = NonNullable<unknown>;
 export declare const UaiSectionTitle: StencilReactComponent<UaiSectionTitleElement, UaiSectionTitleEvents, Components.UaiSectionTitle>;
 export type UaiSelectEvents = {
@@ -942,6 +1020,16 @@ export type UaiTextareaEvents = {
 export declare const UaiTextarea: StencilReactComponent<UaiTextareaElement, UaiTextareaEvents, Components.UaiTextarea>;
 export type UaiThemeProviderEvents = NonNullable<unknown>;
 export declare const UaiThemeProvider: StencilReactComponent<UaiThemeProviderElement, UaiThemeProviderEvents, Components.UaiThemeProvider>;
+export type UaiToastEvents = {
+    onUaiToastOpen: EventName<UaiToastCustomEvent<void>>;
+    onUaiToastClose: EventName<UaiToastCustomEvent<{
+        reason: UaiToastCloseReason;
+    }>>;
+    onUaiToastAction: EventName<UaiToastCustomEvent<void>>;
+};
+export declare const UaiToast: StencilReactComponent<UaiToastElement, UaiToastEvents, Components.UaiToast>;
+export type UaiToastContainerEvents = NonNullable<unknown>;
+export declare const UaiToastContainer: StencilReactComponent<UaiToastContainerElement, UaiToastContainerEvents, Components.UaiToastContainer>;
 export type UaiTooltipEvents = NonNullable<unknown>;
 export declare const UaiTooltip: StencilReactComponent<UaiTooltipElement, UaiTooltipEvents, Components.UaiTooltip>;
 export type UaiTypoEvents = NonNullable<unknown>;

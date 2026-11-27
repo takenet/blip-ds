@@ -84,20 +84,20 @@ export const WAVE_1: ComponentEntry[] = [
   },
   {
     tag: 'bds-modal',
-    name: 'Modal',
-    primaryStory: 'bds-components-modal--properties',
+    name: '[deprecated] Modal',
+    primaryStory: 'bds-components-deprecated-modal--properties',
     stories: [
-      { storyId: 'bds-components-modal--properties', label: 'Properties' },
-      { storyId: 'bds-components-modal--events', label: 'Events' },
+      { storyId: 'bds-components-deprecated-modal--properties', label: 'Properties' },
+      { storyId: 'bds-components-deprecated-modal--events', label: 'Events' },
     ],
   },
   {
     tag: 'bds-toast',
-    name: 'Toast',
-    primaryStory: 'bds-components-toast--properties',
+    name: '[deprecated] Toast',
+    primaryStory: 'bds-components-deprecated-toast--properties',
     stories: [
-      { storyId: 'bds-components-toast--properties', label: 'Properties' },
-      { storyId: 'bds-components-toast--events', label: 'Events' },
+      { storyId: 'bds-components-deprecated-toast--properties', label: 'Properties' },
+      { storyId: 'bds-components-deprecated-toast--events', label: 'Events' },
     ],
   },
 ];
@@ -114,11 +114,11 @@ export const WAVE_2: ComponentEntry[] = [
   },
   {
     tag: 'bds-datepicker',
-    name: 'Datepicker',
-    primaryStory: 'bds-components-datepicker--properties',
+    name: '[deprecated] Datepicker',
+    primaryStory: 'bds-components-deprecated-datepicker--properties',
     stories: [
-      { storyId: 'bds-components-datepicker--properties', label: 'Properties' },
-      { storyId: 'bds-components-datepicker--events', label: 'Events' },
+      { storyId: 'bds-components-deprecated-datepicker--properties', label: 'Properties' },
+      { storyId: 'bds-components-deprecated-datepicker--events', label: 'Events' },
     ],
   },
   {
@@ -144,9 +144,9 @@ export const WAVE_2: ComponentEntry[] = [
   },
   {
     tag: 'bds-dropdown',
-    name: 'Dropdown',
-    primaryStory: 'bds-components-dropdown--properties',
-    stories: [{ storyId: 'bds-components-dropdown--properties', label: 'Properties' }],
+    name: '[deprecated] Dropdown',
+    primaryStory: 'bds-components-deprecated-dropdown--properties',
+    stories: [{ storyId: 'bds-components-deprecated-dropdown--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-menu',
@@ -337,6 +337,15 @@ export const WAVE_4: ComponentEntry[] = [
     ],
   },
   {
+    tag: 'uai-emoji',
+    name: 'UaiEmoji',
+    primaryStory: 'uai-components-emoji--playground',
+    stories: [
+      { storyId: 'uai-components-emoji--playground', label: 'Playground' },
+      { storyId: 'uai-components-emoji--catalog', label: 'Catalog' },
+    ],
+  },
+  {
     tag: 'uai-icon',
     name: 'UaiIcon',
     primaryStory: 'uai-components-icon--colors',
@@ -344,6 +353,15 @@ export const WAVE_4: ComponentEntry[] = [
       { storyId: 'uai-components-icon--sizes', label: 'Sizes' },
       { storyId: 'uai-components-icon--colors', label: 'Colors' },
       { storyId: 'uai-components-icon--themes', label: 'Themes' },
+    ],
+  },
+  {
+    tag: 'uai-logo',
+    name: 'UaiLogo',
+    primaryStory: 'uai-components-logo--playground',
+    stories: [
+      { storyId: 'uai-components-logo--playground', label: 'Playground' },
+      { storyId: 'uai-components-logo--catalog', label: 'Catalog' },
     ],
   },
   {

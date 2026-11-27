@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-modal-close-button with UaiThemeProvider for tokenized styling.
+
 ## Properties
 
 | Property | Attribute | Description                           | Type      | Default |

@@ -30,7 +30,9 @@ assert.match(JSON.stringify(documentation), /onUaiClick/);
 const story = await rpc('tools/call', { name: 'docs-show-story', arguments: { storyId: 'uai-button--playground' } });
 assert.match(JSON.stringify(story), /<UaiButton/);
 const list = JSON.stringify(await rpc('tools/call', { name: 'docs-list', arguments: {} }));
-assert.doesNotMatch(list, /components-deprecated-(button|navbar)|tokens-deprecated-colors/);
+// Hidden docs: the exact ids only (components-deprecated-button-group is a listed doc of its own).
+assert.doesNotMatch(list, /\((?:components-deprecated-(?:button|navbar)|tokens-deprecated-colors)\)/);
+assert.match(list, /components-deprecated-button-group\): Depreciado \(v1\)\. Use <UaiButtonGroup>/);
 assert.match(list, /components-deprecated-icon\): Depreciado \(v1\)\. Use <UaiIcon>/);
 const tokens = await rpc('tools/call', { name: 'docs-show', arguments: { id: 'uai-tokens' } });
 assert.match(JSON.stringify(tokens), /--uai-surface-paper/);

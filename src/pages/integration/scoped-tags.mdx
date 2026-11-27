@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Integrações/Tags com prefixo (micro frontends)" />
+
+# Tags com prefixo (micro frontends)
+
+Os custom elements usam um registro global por página: o primeiro `customElements.define('uai-button')` vence. Quando um micro frontend (MFE) roda dentro de uma aplicação que já registrou o blip-ds (como o Portal), o MFE renderiza com a versão da aplicação, e não com a dele. Um componente novo ou uma correção só chegariam ao MFE depois de a aplicação atualizar o blip-ds.
+
+Com as tags com prefixo, o MFE registra os componentes da versão dele com outro nome (por exemplo, `ds-1a2b3c4d-uai-button`). As duas versões convivem na mesma página, cada uma com o seu nome. Quem não liga o prefixo não muda nada.
+
+## Como ligar no React
+
+Importe **todos** os componentes de `blip-ds-react/dist/scoped`, no lugar de `blip-ds-react` ou `blip-ds-react/dist/components`:
+
+```tsx
+import { UaiButton, UaiSelect, UaiSelectOption, TAG_PREFIX, scopedTag } from 'blip-ds-react/dist/scoped';
+
+<UaiButton onClick={save}>Salvar</UaiButton>;
+```
+
+Esse entry liga o prefixo antes de criar os wrappers. Os componentes, as props e os eventos (`uaiChange`, `uaiClick`...) são os mesmos; só o nome da tag no DOM muda.
+
+- **Não importe** `blip-ds-react` nem `blip-ds-react/dist/components` em nenhum lugar do MFE. Se um desses imports for carregado antes do `scoped`, os wrappers são criados sem o prefixo e renderizam a versão da página.
+- **Não chame** `defineCustomElements` do loader (`blip-ds/loader`) no MFE. Os wrappers do `scoped` já registram os componentes que usam. Em desenvolvimento, sem o Portal em volta, também não é preciso: o `scoped` funciona sozinho.
+
+## Como ligar sem React
+
+Chame `scopeTags()` uma vez, antes de registrar qualquer componente de `blip-ds/dist/components`:
+
+```js
+import { scopeTags } from 'blip-ds/dist/components/index.js';
+import { defineCustomElement as defineUaiButton } from 'blip-ds/dist/components/uai-button.js';
+
+const prefix = scopeTags(); // por exemplo "ds-1a2b3c4d"
+defineUaiButton();
+document.body.insertAdjacentHTML('beforeend', `<${prefix}-uai-button>Salvar</${prefix}-uai-button>`);
+```
+
+## O prefixo
+
+- O padrão é o prefixo da release do blip-ds, `ds-` seguido de um hash do código dos componentes. É o mesmo para todos os apps na mesma release, que então compartilham os mesmos componentes registrados, e é diferente entre releases, que então nunca colidem. O número de cópias do blip-ds na página é o número de releases diferentes em uso, não o número de MFEs.
+- Um prefixo próprio também é aceito: `scopeTags('meu-app')`. Use só letras minúsculas, números e hífens internos, começando por letra.
+- Só as tags `uai-*` e `bds-*` recebem o prefixo.
+- O prefixo é ligado uma vez por página: chamar de novo com o mesmo prefixo não faz nada, e com outro prefixo lança um erro, porque os componentes já registrados manteriam o nome antigo.
+
+## Seletores, CSS e testes do MFE
+
+Seletores escritos com o nome da tag deixam de achar os componentes do MFE. Use o nome registrado:
+
+```ts
+import { scopedTag, TAG_PREFIX } from 'blip-ds-react/dist/scoped';
+
+document.querySelector(scopedTag('uai-select')); // "ds-1a2b3c4d-uai-select"
+```
+
+Isso vale para `querySelector`, `closest`, CSS do MFE que mire a tag (`uai-button { ... }`) e testes (Testing Library por `role` continua funcionando; seletores de tag precisam de `scopedTag`).
+
+## Ícones
+
+Os ícones UAI são uma fonte, e cada release do `blip-tokens` atribui os códigos dos glifos em ordem alfabética: adicionar um ícone desloca o código dos que vêm depois dele. Por isso o `uai-icon` registra a fonte da própria release com um nome versionado (por exemplo, `uai-icon-2-5-0`), direto da CDN, sem depender do CSS global `blip-tokens/uai-icons/css`. Assim um ícone novo aparece no MFE sem que a aplicação em volta precise atualizar, e as duas versões nunca trocam glifos entre si. Isso vale com ou sem o prefixo.
+
+O CSS global continua funcionando como reserva para navegadores sem a API `FontFace`.
+
+## Limites
+
+- O isolamento é dos nomes das tags e da fonte de ícones. Variáveis CSS globais definidas pela aplicação em volta (`--uai-*`) continuam visíveis; o `UaiThemeProvider` do MFE define as dele no trecho que envolve.
+- Componentes com o prefixo e sem o prefixo não se combinam: um `uai-select` da página não reconhece um `ds-…-uai-select-option` do MFE, e vice-versa. Monte cada componente composto inteiro com uma versão só.

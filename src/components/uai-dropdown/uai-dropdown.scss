@@ -1,0 +1,74 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-block;
+}
+
+.dropdown__activator {
+  display: inline-flex;
+}
+
+.dropdown__panel {
+  @include uai-overlay-panel;
+
+  // 21rem, as in the UAI Core dropdown: panel width + sizing/3xl. `--dropdown-width` is set by the `width` prop.
+  --dropdown-default-width: calc(
+    var(--uai-width-panel, #{$uai-width-panel}) + var(--uai-sizing-3xl, #{$uai-sizing-3xl})
+  );
+
+  flex-direction: column;
+  width: var(--dropdown-width, var(--dropdown-default-width));
+  overflow: hidden;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+
+  &.uai-overlay--open {
+    display: flex;
+  }
+
+  // The panel takes the focus when it opens so Tab starts inside it; the ring is not needed on the container.
+  &:focus {
+    outline: none;
+  }
+}
+
+// Header and footer stay fixed; only the body scrolls when the panel is taller than the room available.
+.dropdown__header,
+.dropdown__footer {
+  display: flex;
+  flex-shrink: 0;
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+
+  &--empty {
+    display: none;
+  }
+}
+
+.dropdown__header {
+  flex-direction: column;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}
+
+.dropdown__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+.dropdown__footer {
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border-top: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}

@@ -291,6 +291,38 @@ describe('uai-input e2e', () => {
         'Use 4 caracteres ou mais.',
       );
     });
+    it('accepts decimals with step and shows the contract message off the step', async () => {
+      const page = await setup(
+        `<uai-input label="Temperatura" type="number" min="0" max="2" step="0.1" step-error-message="Use uma casa decimal."></uai-input>`,
+      );
+      await page.click('uai-input >>> input');
+      await typeInto(page, 'uai-input', '0.7');
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+
+      expect(await page.$eval('uai-input', (el: any) => el.isValid())).toBe(true);
+      expect(await page.find('uai-input')).not.toHaveClass('uai-input--danger');
+
+      await page.$eval('uai-input', (el: any) => (el.value = '0.75'));
+      await page.click('uai-input >>> input');
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+
+      expect(await page.$eval('uai-input', (el: any) => el.isValid())).toBe(false);
+      expect(await page.$eval('uai-input', (el) => el.shadowRoot.querySelector('.input__message').textContent)).toBe(
+        'Use uma casa decimal.',
+      );
+    });
+
+    it('links the native input to the suggestions datalist', async () => {
+      const page = await setup(`<uai-input label="Variável" suggestions='["nome", "cpf"]'></uai-input>`);
+      const options = await page.$eval('uai-input', (el) => {
+        const input = el.shadowRoot.querySelector('input');
+        return [...input.list.options].map((option) => option.value);
+      });
+
+      expect(options).toEqual(['nome', 'cpf']);
+    });
   });
 
   describe('tokens by state', () => {

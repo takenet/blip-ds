@@ -98,6 +98,7 @@ Type: `Promise<void>`
 ### Used by
 
  - [uai-pagination](../uai-pagination)
+ - [uai-rich-text](../uai-rich-text)
 
 ### Depends on
 
@@ -110,6 +111,7 @@ graph TD;
   uai-select --> uai-icon
   uai-select --> uai-typo
   uai-pagination --> uai-select
+  uai-rich-text --> uai-select
   style uai-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

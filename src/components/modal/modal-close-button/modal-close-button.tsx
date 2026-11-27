@@ -1,5 +1,8 @@
 import { Component, ComponentInterface, Prop, h } from '@stencil/core';
 
+/**
+ * @deprecated Use uai-modal-close-button with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-modal-close-button',
   styleUrl: 'modal-close-button.scss',

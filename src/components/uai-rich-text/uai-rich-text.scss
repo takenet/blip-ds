@@ -1,0 +1,335 @@
+@use '../../globals/helpers' as *;
+
+// Field shell: the same tokens and states as uai-textarea, so both fields look alike in a form.
+:host {
+  --rich-text-background: var(--uai-surface-paper, #{$uai-surface-paper});
+  --rich-text-border: var(--uai-border-input, #{$uai-border-input});
+  --rich-text-content: var(--uai-content-primary, #{$uai-content-primary});
+  --rich-text-label: var(--uai-content-primary, #{$uai-content-primary});
+  --rich-text-message: var(--uai-content-secondary, #{$uai-content-secondary});
+  --rich-text-halo: color-mix(
+    in srgb,
+    var(--uai-border-ring, #{$uai-border-ring}) calc(var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring}) * 100%),
+    transparent
+  );
+  display: block;
+  width: 100%;
+}
+
+:host(.uai-rich-text--danger) {
+  --rich-text-border: var(--uai-feedback-error, #{$uai-feedback-error});
+  --rich-text-label: var(--uai-feedback-error, #{$uai-feedback-error});
+  --rich-text-message: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+:host(.uai-rich-text--success) {
+  --rich-text-border: var(--uai-feedback-success, #{$uai-feedback-success});
+  --rich-text-message: var(--uai-feedback-success, #{$uai-feedback-success});
+}
+
+:host(.uai-rich-text--disabled) {
+  --rich-text-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  --rich-text-border: var(--uai-border-default, #{$uai-border-default});
+  --rich-text-content: var(--uai-content-disabled, #{$uai-content-disabled});
+  --rich-text-label: var(--uai-content-disabled, #{$uai-content-disabled});
+  --rich-text-message: var(--uai-content-disabled, #{$uai-content-disabled});
+}
+
+:host(.uai-rich-text--readonly) {
+  --rich-text-background: var(--uai-surface-muted, #{$uai-surface-muted});
+}
+
+.rich-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+}
+
+.rich-text__label,
+.rich-text__message {
+  --uai-typo-color: currentColor;
+}
+
+.rich-text__label {
+  color: var(--rich-text-label);
+}
+
+.rich-text__message {
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  color: var(--rich-text-message);
+}
+
+.rich-text__control {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--rich-text-border);
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background-color: var(--rich-text-background);
+  color: var(--rich-text-content);
+  @include uai-transition((border-color, box-shadow));
+
+  &:focus-within {
+    border-color: var(--uai-border-ring, #{$uai-border-ring});
+    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--rich-text-halo);
+  }
+}
+
+:host(.uai-rich-text--danger) .rich-text__control:focus-within {
+  border-color: var(--uai-feedback-error, #{$uai-feedback-error});
+}
+
+// Toolbar
+.rich-text__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+  padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs}) var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+}
+
+.rich-text__divider {
+  align-self: stretch;
+  margin: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  border-inline-start: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}
+
+.rich-text__heading {
+  width: calc(var(--uai-width-menu, #{$uai-width-menu}) * 0.75);
+}
+
+.rich-text__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-sm, #{$uai-spacing-sm});
+}
+
+.rich-text__form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.rich-text__table-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.rich-text__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.rich-text__swatch {
+  width: var(--uai-sizing-xl, #{$uai-sizing-xl});
+  height: var(--uai-sizing-xl, #{$uai-sizing-xl});
+  padding: 0;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-input, #{$uai-border-input});
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background-color: var(--swatch-color);
+  cursor: pointer;
+  @include uai-focus-visible;
+
+  &--selected {
+    box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick})
+      var(--uai-border-ring, #{$uai-border-ring});
+  }
+}
+
+// Content area
+.rich-text__editor {
+  box-sizing: border-box;
+  min-height: calc(var(--uai-sizing-5xl, #{$uai-sizing-5xl}) * 2);
+  overflow-y: auto;
+  cursor: text;
+}
+
+// Base rules ProseMirror expects; Tiptap injects them into the document, which does not reach the Shadow DOM.
+.rich-text__content {
+  box-sizing: border-box;
+  min-height: inherit;
+  padding: var(--uai-spacing-sm, #{$uai-spacing-sm});
+  outline: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0;
+
+  [contenteditable='false'] {
+    white-space: normal;
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin: 0 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: var(--uai-spacing-md, #{$uai-spacing-md}) 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+    font-weight: var(--uai-font-weight-semibold, #{$uai-font-weight-semibold});
+  }
+
+  h1 {
+    font-size: var(--uai-heading-md-font-size, #{$uai-heading-md-font-size});
+    line-height: var(--uai-heading-md-line-height, #{$uai-heading-md-line-height});
+  }
+
+  h2 {
+    font-size: var(--uai-title-lg-font-size, #{$uai-title-lg-font-size});
+    line-height: var(--uai-title-lg-line-height, #{$uai-title-lg-line-height});
+  }
+
+  h3 {
+    font-size: var(--uai-title-md-font-size, #{$uai-title-md-font-size});
+    line-height: var(--uai-title-md-line-height, #{$uai-title-md-line-height});
+  }
+
+  ul,
+  ol {
+    margin: 0 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+    padding-inline-start: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  }
+
+  li {
+    position: relative;
+
+    > p {
+      margin: 0;
+    }
+  }
+
+  blockquote {
+    margin: 0 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+    padding-inline-start: var(--uai-spacing-sm, #{$uai-spacing-sm});
+    border-inline-start: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid
+      var(--uai-border-default, #{$uai-border-default});
+    color: var(--uai-content-secondary, #{$uai-content-secondary});
+  }
+
+  code {
+    padding: 0 var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+    border-radius: var(--uai-radius-sm, #{$uai-radius-sm});
+    background-color: var(--uai-surface-muted, #{$uai-surface-muted});
+    font-family: monospace;
+  }
+
+  pre {
+    margin: 0 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+    padding: var(--uai-spacing-sm, #{$uai-spacing-sm});
+    overflow-x: auto;
+    border-radius: var(--uai-radius-md, #{$uai-radius-md});
+    background-color: var(--uai-surface-muted, #{$uai-surface-muted});
+
+    code {
+      padding: 0;
+      background: none;
+    }
+  }
+
+  a {
+    color: var(--uai-content-link, #{$uai-content-link});
+    text-decoration: underline;
+  }
+
+  hr {
+    margin: var(--uai-spacing-md, #{$uai-spacing-md}) 0;
+    border: 0;
+    border-top: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+      var(--uai-border-default, #{$uai-border-default});
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  }
+
+  table {
+    width: 100%;
+    margin: 0 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+    overflow: hidden;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    position: relative;
+    box-sizing: border-box;
+    min-width: var(--uai-sizing-4xl, #{$uai-sizing-4xl});
+    padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs}) var(--uai-spacing-xs, #{$uai-spacing-xs});
+    border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+      var(--uai-border-default, #{$uai-border-default});
+    vertical-align: top;
+
+    > p {
+      margin: 0;
+    }
+  }
+
+  th {
+    background-color: var(--uai-surface-muted, #{$uai-surface-muted});
+    font-weight: var(--uai-font-weight-semibold, #{$uai-font-weight-semibold});
+    text-align: start;
+  }
+
+  .selectedCell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--uai-overlay-selected, #{$uai-overlay-selected});
+    pointer-events: none;
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+  }
+
+  // Placeholder of the empty editor (Placeholder extension).
+  p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: inline-start;
+    height: 0;
+    color: var(--uai-content-secondary, #{$uai-content-secondary});
+    pointer-events: none;
+  }
+
+  .ProseMirror-selectednode {
+    outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--uai-border-ring, #{$uai-border-ring});
+  }
+
+  .ProseMirror-gapcursor {
+    display: none;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &.ProseMirror-focused .ProseMirror-gapcursor {
+    display: block;
+  }
+}
+
+:host(.uai-rich-text--disabled) .rich-text__editor {
+  cursor: not-allowed;
+}

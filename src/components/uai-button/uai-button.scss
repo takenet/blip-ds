@@ -4,6 +4,7 @@
   display: inline-flex;
   position: relative;
   width: fit-content;
+  max-width: 100%;
   vertical-align: middle;
 }
 
@@ -36,6 +37,7 @@
   justify-content: center;
   gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
   box-sizing: border-box;
+  min-width: 0;
   min-height: var(--button-height);
   margin: 0;
   padding: 0 var(--button-padding-x);
@@ -79,12 +81,15 @@
 
   @include uai-focus-visible;
 
-  &:disabled {
+  // A link (href) has no :disabled: the class says it.
+  &:disabled,
+  &.button--disabled {
     opacity: var(--uai-opacity-disabled, #{$uai-opacity-disabled});
     cursor: not-allowed;
   }
 
   &:disabled,
+  &.button--disabled,
   &.button--loading {
     background-color: var(--button-bg);
 
@@ -240,6 +245,7 @@
 .button__label {
   display: inline-flex;
   align-items: center;
+  min-width: 0;
 
   &--hidden {
     display: none;
@@ -282,5 +288,17 @@
 @keyframes uai-button-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+// Item of a uai-button-group (UAI Core uaiButtonGroup): the group draws the border, the rounded corners and the
+// dividers, so a grouped button has neither its own border nor a radius. The group clips its corners, so the focus
+// ring is drawn inside the button. A selected item is the button in its active state (Pressed in UAI Core).
+:host(.uai-button--group) .button {
+  --button-border: transparent;
+  border-radius: 0;
+
+  &:focus-visible {
+    outline-offset: calc(-1 * var(--uai-spacing-3xs, #{$uai-spacing-3xs}));
   }
 }

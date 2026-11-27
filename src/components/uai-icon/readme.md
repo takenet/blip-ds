@@ -8,7 +8,9 @@
 Interface icon from the UAI icon font of blip-tokens. Use it for icons in UAI screens and inside UAI components.
 Sizes keep the bds-icon names: x-small is `sizing/sm`, small is `sizing/md` and medium (default) is `sizing/lg`.
 Without `color`, the icon takes the text color around it, so it matches the label next to it.
-The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
+The icon registers the font of its own blip-tokens release (see uai-icon-font.ts), so different releases on the same
+page never mix glyphs. Loading the global font (`import 'blip-tokens/uai-icons/css';`) is only a fallback for browsers
+without the FontFace API.
 
 ## Properties
 
@@ -40,12 +42,14 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
 
 ### Used by
 
+ - [uai-autocomplete](../uai-autocomplete)
  - [uai-avatar](../uai-avatar)
  - [uai-badge](../uai-badge)
  - [uai-banner](../uai-banner)
  - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-button](../uai-button)
  - [uai-chip-tag](../uai-chip-tag)
+ - [uai-datepicker](../uai-datepicker)
  - [uai-filter-bar](../uai-filter-bar)
  - [uai-grid](../uai-grid)
  - [uai-icon-box](../uai-icon-box)
@@ -56,21 +60,27 @@ The app must load the font once: `import 'blip-tokens/uai-icons/css';`.
  - [uai-input-editable](../uai-input-editable)
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
+ - [uai-input-time](../uai-input-time)
+ - [uai-modal](../uai-modal)
+ - [uai-modal-close-button](../uai-modal-close-button)
  - [uai-select](../uai-select)
  - [uai-step](../uai-step)
  - [uai-tab-group](../uai-tab-group)
  - [uai-table-th](../uai-table-th)
  - [uai-textarea](../uai-textarea)
+ - [uai-toast](../uai-toast)
 
 ### Graph
 ```mermaid
 graph TD;
+  uai-autocomplete --> uai-icon
   uai-avatar --> uai-icon
   uai-badge --> uai-icon
   uai-banner --> uai-icon
   uai-breadcrumb --> uai-icon
   uai-button --> uai-icon
   uai-chip-tag --> uai-icon
+  uai-datepicker --> uai-icon
   uai-filter-bar --> uai-icon
   uai-grid --> uai-icon
   uai-icon-box --> uai-icon
@@ -81,11 +91,15 @@ graph TD;
   uai-input-editable --> uai-icon
   uai-input-password --> uai-icon
   uai-input-phone --> uai-icon
+  uai-input-time --> uai-icon
+  uai-modal --> uai-icon
+  uai-modal-close-button --> uai-icon
   uai-select --> uai-icon
   uai-step --> uai-icon
   uai-tab-group --> uai-icon
   uai-table-th --> uai-icon
   uai-textarea --> uai-icon
+  uai-toast --> uai-icon
   style uai-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

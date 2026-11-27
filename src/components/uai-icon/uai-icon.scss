@@ -47,3 +47,9 @@ $colors:
   font-size: inherit;
   line-height: inherit;
 }
+
+// The glyphs use the font of this release, registered under a versioned family (uai-icon-font.ts), so another release
+// of blip-tokens on the page cannot replace it. "uai-icon" (the global font) is only the fallback.
+.uai-icon {
+  font-family: var(--uai-icon-font-family, 'uai-icon'), 'uai-icon' !important;
+}

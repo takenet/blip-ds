@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use uai-rich-text with UaiThemeProvider: a form field with headings, colors, links, images and tables.
+
 ## Properties
 
 | Property              | Attribute               | Description                                                             | Type                            | Default   |

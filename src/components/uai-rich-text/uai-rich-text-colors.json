@@ -1,0 +1,54 @@
+{
+  "text": [
+    {
+      "label": "Cinza escuro",
+      "value": "#242729"
+    },
+    {
+      "label": "Cinza",
+      "value": "#5f676d"
+    },
+    {
+      "label": "Azul",
+      "value": "#0073e5"
+    },
+    {
+      "label": "Verde",
+      "value": "#3da329"
+    },
+    {
+      "label": "Laranja",
+      "value": "#ff8000"
+    },
+    {
+      "label": "Vermelho",
+      "value": "#cf0022"
+    },
+    {
+      "label": "Roxo",
+      "value": "#a855f7"
+    },
+    {
+      "label": "Ciano",
+      "value": "#00c6d7"
+    }
+  ],
+  "highlight": [
+    {
+      "label": "Azul claro",
+      "value": "#eff6ff"
+    },
+    {
+      "label": "Verde claro",
+      "value": "#ecfdf5"
+    },
+    {
+      "label": "Laranja claro",
+      "value": "#fff7ed"
+    },
+    {
+      "label": "Vermelho claro",
+      "value": "#fef2f2"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as ModalStories from './uai-modal.stories';
+
+<Meta isTemplate />
+
+# Modal
+
+## Visão geral
+
+Diálogo que bloqueia a página com um fundo escurecido para pedir uma decisão ou mostrar um conteúdo focado. Use para confirmações e tarefas curtas; para avisos passivos, use um banner.
+
+## Como usar
+
+No React, importe `UaiModal`, `UaiModalAction` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Envolva a tela em um `UaiThemeProvider` e carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+
+<Canvas of={ModalStories.Usage} sourceState="shown" />
+
+Controle `open` pelo estado e ouça `uaiModalChanged` para refletir o fechamento feito pelo botão de fechar, pelo fundo ou pelo teclado. Fora do React, use o custom element `<uai-modal>`, com as mesmas propriedades em kebab-case (`close-button`) e o evento `uaiModalChanged`.
+
+## Playground
+
+<Canvas of={ModalStories.Playground} />
+<Controls of={ModalStories.Playground} />
+
+## Estrutura
+
+O painel tem três áreas, como no UAI Core:
+
+- **Cabeçalho:** `heading` (título) à esquerda e o botão de fechar à direita, separados do conteúdo por uma linha.
+- **Conteúdo:** o slot padrão, com rolagem própria quando passa da altura da tela.
+- **Rodapé:** o slot `footer`, com as ações alinhadas à direita. Use `UaiModalAction slot="footer"` com um botão `outline` (Cancelar) e um sólido (Salvar). Sem nada no slot, o rodapé não aparece.
+
+## Tamanhos
+
+`fixed` (padrão) tem largura de 41rem e conteúdo com altura mínima de 16rem; `dynamic` cresce com o conteúdo, até a mesma largura máxima.
+
+## Largura
+
+`width` define a largura do painel em rem (`width={30}` = 30rem). No `fixed` é a largura; no `dynamic` é a largura máxima. Valores ausentes, zero ou negativos voltam para 41. O painel nunca passa da largura da tela.
+
+<Canvas of={ModalStories.Sizes} />
+
+## Eventos
+
+`uaiModalChanged` é emitido ao abrir ou fechar, com `{ modalStatus: 'opened' | 'closed' }`.
+
+<Canvas of={ModalStories.Events} sourceState="shown" />
+
+## Métodos
+
+`toggle()` abre o modal fechado e fecha o aberto.
+
+<Canvas of={ModalStories.Methods} sourceState="shown" />
+
+## Animação
+
+Abrir e fechar usam os tokens de motion do UAI (`duration-moderate` com `easing-standard`): o fundo faz fade e o painel sobe suavemente ao entrar e desce ao sair. O modal só sai da tela depois da animação de saída. Com `prefers-reduced-motion`, a animação é desligada.
+
+## Fechamento
+
+O modal fecha pelo botão de fechar (`closeButton`), ao clicar no fundo (`outzoneClose`), com Escape (`escapeClose`) e com Enter (`enterClose`).
+
+O Enter só fecha quando nenhum controle está em foco. Em botões, links, campos e elementos com papel interativo, o Enter faz o que o controle faz: ativa o botão, envia o formulário, quebra a linha. Assim, ele nunca fecha o modal enquanto alguém aciona um botão, e um clique por teclado não reabre o modal por meio de `toggle()`. Um `keydown` com `preventDefault()` também é respeitado.
+
+`enterClose` e `escapeClose` são independentes: desative só o `enterClose` em formulários e o Escape continua dispensando o diálogo. Para exigir uma escolha explícita, desative `escapeClose` e `outzoneClose`.
+
+Com modais empilhados (uma confirmação sobre um formulário, por exemplo), o teclado vale só para o modal do topo: um Escape fecha um modal por vez.
+
+## Rolagem da página
+
+Enquanto houver um modal aberto, o `uai-modal` bloqueia a rolagem do documento (`overflow: hidden` no `body`) e restaura o valor anterior ao fechar o último modal aberto. Se a aplicação rola em outro contêiner, bloqueie-o por conta própria.
+
+## Acessibilidade
+
+O painel é um `<dialog>` nativo aberto em modo modal, o que dá, sem código extra:
+
+- O foco vai para dentro do modal ao abrir, o Tab fica preso nele e o conteúdo de fundo fica inerte (sem foco, clique ou leitura por tecnologia assistiva).
+- Ao fechar, o foco volta ao elemento que o tinha antes.
+- A camada superior do navegador mantém o modal acima de qualquer contexto de empilhamento.
+
+O `heading` nomeia o diálogo (`aria-labelledby`); `label` serve de nome acessível quando não há título. O botão de fechar é um `<button>` nativo com `aria-label` (`closeLabel`) e foco visível. `UaiModalCloseButton` também é um `<button>` nativo (`label` define o nome); ouça o `click` nele para fechar o modal.
+
+## Migração do bds-modal
+
+Troque `BdsModal` por `UaiModal`, `BdsModalAction` por `UaiModalAction`, `BdsModalCloseButton` por `UaiModalCloseButton`, `onBdsModalChanged` por `onUaiModalChanged` e envolva a aplicação em `UaiThemeProvider`. `open`, `closeButton`, `size`, `outzoneClose`, `enterClose`, `dtOutzone`, `dtButtonClose` e o método `toggle()` são preservados. Diferenças:
+
+- O botão de fechar é um `<button>` com `aria-label`, e o painel tem `role="dialog"`.
+- O teclado também vale quando o modal já nasce aberto (no legado só após a primeira mudança de `open`). O Enter não fecha mais o modal quando está em um botão, link ou campo.
+- A rolagem do documento é bloqueada enquanto o modal está aberto.
+- O foco fica preso no modal e o fundo fica inerte; o foco volta ao elemento anterior ao fechar.
+- `UaiModalCloseButton` é um `<button>` nativo com `label` (no legado era um ícone sem foco).
+- `heading`, o slot `footer`, `escapeClose`, `width`, `closeLabel` e `label` são adições. No legado o Escape dependia de `enterClose`; agora tem prop própria. O layout segue o UAI Core: cabeçalho com título e fechar, conteúdo rolável e rodapé de ações, sem o espaçamento externo de 32px do legado.
+
+Tokens: `overlay-default`, `border-default`, `surface-paper`, `content-primary`, `elevation-dialog`, `overlay-hover`, `border-ring`, `border-width-thick`, `radius-xl`, `radius-lg`, `spacing-md`, `spacing-xs`, `spacing-lg`, `spacing-2xl`, `spacing-2xs`, `sizing-lg`, `sizing-xl`, `sizing-2xl`, `sizing-4xl`, `sizing-5xl`, `title-md`, `width-dialog`, `width-content`, `control-height-medium`, `duration-fast`, `duration-moderate` e `easing-standard`.

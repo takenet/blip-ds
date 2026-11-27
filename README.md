@@ -65,6 +65,12 @@ npm install blip-ds-react
 
 For detailed installation and usage instructions, visit the [Design Portal](https://design.take.net/240287753/p/216ef2-instalao/b/8176c4).
 
+### Scoped tags (micro frontends)
+
+A micro frontend that runs inside an app which already registered blip-ds (such as the Portal) can register its own version under a tag prefix (`ds-<hash>-uai-button`), so it does not depend on the version of the app around it. Import every component from `blip-ds-react/dist/scoped` (or call `scopeTags()` from `blip-ds/dist/components` before defining any component). UAI icons register the icon font of their own blip-tokens release, so a new icon works in the micro frontend without updating the app around it.
+
+See **Integrações/Tags com prefixo (micro frontends)** in the Storybook for the setup and the pitfalls.
+
 ## 🛠️ Development
 
 ### Prerequisites

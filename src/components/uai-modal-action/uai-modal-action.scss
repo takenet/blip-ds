@@ -1,0 +1,13 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.modal__action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}

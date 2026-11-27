@@ -153,7 +153,7 @@
   }
 }
 
-.calendar {
+.calendar-toggle {
   display: inline-flex;
   flex: none;
   align-items: center;
@@ -181,16 +181,26 @@
   }
 }
 
-// Native date input used only to open the browser calendar next to the button; never visible or focusable.
-.picker {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  opacity: 0;
-  pointer-events: none;
+// Open while the calendar is: the field keeps the focus look, as uai-select does.
+:host(.uai-input-date--open) .input__control {
+  --input-border: var(--uai-border-ring, #{$uai-border-ring});
+  box-shadow: 0 0 0 var(--uai-border-width-thick, #{$uai-border-width-thick}) var(--input-halo);
 }
+
+// The calendar panel (src/utils/uai-calendar.tsx), as in the UAI Core calendar.
+.calendar-panel {
+  @include uai-overlay-panel;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+  background: var(--uai-surface-paper, #{$uai-surface-paper});
+  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  @include uai-picker-panel;
+
+  @media (forced-colors: active) {
+    border-color: CanvasText;
+  }
+}
+
+@include uai-calendar;

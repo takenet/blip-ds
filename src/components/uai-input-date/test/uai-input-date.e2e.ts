@@ -3,12 +3,12 @@ import { E2EPage, newE2EPage } from '@stencil/core/testing';
 const TAG = 'uai-input-date';
 const INPUT = 'input[part="input"]';
 const BUTTON = 'button[part="calendar-button"]';
-const PICKER = 'input.picker';
+const PANEL = '[part="calendar"]';
 
 const themed = (content: string, theme = 'light') =>
   `<uai-theme-provider theme="${theme}">${content}</uai-theme-provider>`;
 
-const setup = async (content: string, theme = 'light', { showPicker = true, region = 'pt-BR' } = {}) => {
+const setup = async (content: string, theme = 'light', { region = 'pt-BR' } = {}) => {
   const page = await newE2EPage();
   await page.evaluateOnNewDocument((language: string) => {
     Object.defineProperty(navigator, 'language', { configurable: true, value: language });
@@ -18,16 +18,6 @@ const setup = async (content: string, theme = 'light', { showPicker = true, regi
     if (message.type() === 'warn' || (message.type() as string) === 'warning') warnings.push(message.text());
   });
   (page as any).warnings = warnings;
-  // The native picker cannot be driven by the test; count the calls instead (or remove it to test the fallback).
-  await page.evaluateOnNewDocument((supported: boolean) => {
-    if (supported) {
-      HTMLInputElement.prototype.showPicker = function () {
-        (window as any).__picked = ((window as any).__picked || 0) + 1;
-      };
-    } else {
-      delete (HTMLInputElement.prototype as any).showPicker;
-    }
-  }, showPicker);
   await page.setContent(themed(content, theme));
   // Tests run in parallel tabs; keep this page focused so focus and blur come only from the test.
   const session = await page.target().createCDPSession();
@@ -58,16 +48,17 @@ const warningsAbout = (page: E2EPage, pattern: RegExp) =>
 const submissions = (page: E2EPage) => page.evaluate(() => (window as any).submissions);
 const events = (page: E2EPage, name?: string) =>
   page.evaluate((n: string) => (window as any).events.filter(([event]) => !n || event === n), name);
-const picked = (page: E2EPage) => page.evaluate(() => (window as any).__picked || 0);
+const isOpen = (page: E2EPage, selector = TAG) =>
+  page.$eval(selector, (el) => el.classList.contains('uai-input-date--open'));
 
 // Snapshot of the shadow DOM pieces the contract exposes.
 const state = (page: E2EPage, selector = TAG) =>
   page.evaluate(
-    (sel: string, inputSel: string, buttonSel: string, pickerSel: string) => {
+    (sel: string, inputSel: string, buttonSel: string, panelSel: string) => {
       const root = document.querySelector(sel).shadowRoot;
       const input = root.querySelector(inputSel) as HTMLInputElement;
       const button = root.querySelector(buttonSel) as HTMLButtonElement;
-      const picker = root.querySelector(pickerSel) as HTMLInputElement;
+      const panel = root.querySelector(panelSel) as HTMLElement;
       const focused = root.activeElement;
       return {
         label: root.querySelector('label.input__label')?.textContent.trim() ?? null,
@@ -79,22 +70,15 @@ const state = (page: E2EPage, selector = TAG) =>
         buttonLabel: button?.getAttribute('aria-label') ?? null,
         buttonDisabled: button?.disabled ?? null,
         feedback: !!root.querySelector('uai-icon.input__feedback'),
-        picker: picker
-          ? {
-              type: picker.getAttribute('type'),
-              tabindex: picker.getAttribute('tabindex'),
-              hidden: picker.getAttribute('aria-hidden'),
-              min: picker.getAttribute('min'),
-              max: picker.getAttribute('max'),
-            }
-          : null,
-        focused: focused ? focused.getAttribute('part') || focused.tagName : null,
+        panelRole: panel?.getAttribute('role') ?? null,
+        legacyPicker: !!root.querySelector('input.picker'),
+        focused: focused ? focused.getAttribute('data-iso') || focused.getAttribute('part') || focused.tagName : null,
       };
     },
     selector,
     INPUT,
     BUTTON,
-    PICKER,
+    PANEL,
   );
 
 const prop = (page: E2EPage, name: string, selector = TAG) => page.$eval(selector, (el: any, n: string) => el[n], name);
@@ -111,15 +95,11 @@ const blur = async (page: E2EPage) => {
   await page.waitForChanges();
 };
 
+// Clicks a day of the open calendar.
 const choose = async (page: E2EPage, iso: string, selector = TAG) => {
   await page.$eval(
     selector,
-    (el, pickerSel: string, value: string) => {
-      const picker = el.shadowRoot.querySelector(pickerSel) as HTMLInputElement;
-      picker.value = value;
-      picker.dispatchEvent(new Event('change', { bubbles: true }));
-    },
-    PICKER,
+    (el, value: string) => (el.shadowRoot.querySelector(`[data-iso="${value}"]`) as HTMLButtonElement).click(),
     iso,
   );
   await page.waitForChanges();
@@ -270,9 +250,9 @@ describe('uai-input-date e2e', () => {
   });
 
   describe('Requirement: Calendário', () => {
-    it('exposes a native button named in each language and a hidden native date picker with min and max', async () => {
+    it('exposes a native button named in each language that controls the UAI calendar dialog', async () => {
       const page = await setup(`
-        <uai-input-date id="pt" min="2026-01-01" max="2026-12-31"></uai-input-date>
+        <uai-input-date id="pt"></uai-input-date>
         <uai-input-date id="en" language="en_US"></uai-input-date>
         <uai-input-date id="es" language="es_ES"></uai-input-date>`);
       const button = await page.$eval(
@@ -287,42 +267,99 @@ describe('uai-input-date e2e', () => {
 
       const pt = await state(page, '#pt');
       expect(pt.buttonLabel).toBe('Abrir calendário');
-      expect(pt.picker).toEqual({ type: 'date', tabindex: '-1', hidden: 'true', min: '2026-01-01', max: '2026-12-31' });
+      expect(pt.panelRole).toBe('dialog');
+      expect(pt.legacyPicker).toBe(false);
       expect((await state(page, '#en')).buttonLabel).toBe('Open calendar');
       expect((await state(page, '#es')).buttonLabel).toBe('Abrir calendario');
     });
 
+    it('opens on a click on the field and keeps the focus there, so typing still works', async () => {
+      const page = await setup(`<uai-input-date value="2026-12-01"></uai-input-date>`);
+      await page.click(`${TAG} >>> ${INPUT}`);
+      await page.waitForChanges();
+
+      expect(await isOpen(page)).toBe(true);
+      expect((await state(page)).focused).toBe('input');
+    });
+
     it('Scenario: Escolher pelo calendário — the chosen date shows 25/12/2026, value is 2026-12-25 and uaiChange is emitted', async () => {
-      const page = await setup(`<uai-input-date></uai-input-date>`);
+      const page = await setup(`<uai-input-date value="2026-12-01"></uai-input-date>`);
       await page.click(`${TAG} >>> ${BUTTON}`);
       await page.waitForChanges();
-      expect(await picked(page)).toBe(1);
+      expect(await isOpen(page)).toBe(true);
+      expect((await state(page)).focused).toBe('2026-12-01');
 
       await choose(page, '2026-12-25');
       expect((await state(page)).inputValue).toBe('25/12/2026');
       expect(await prop(page, 'value')).toBe('2026-12-25');
       expect((await events(page, 'uaiChange')).pop()).toEqual(['uaiChange', { value: '2026-12-25' }]);
+      expect(await isOpen(page)).toBe(false);
+      expect((await state(page)).focused).toBe('input');
     });
 
-    it('opens the same picker with Alt+ArrowDown on the field', async () => {
-      const page = await setup(`<uai-input-date></uai-input-date>`);
+    it('opens with Alt+ArrowDown, moves with the keyboard, picks with Enter and gives the focus back to the field', async () => {
+      const page = await setup(`<uai-input-date value="2026-01-15"></uai-input-date>`);
       await page.click(`${TAG} >>> ${INPUT}`);
+      await page.waitForChanges();
+      await page.keyboard.press('Escape');
+      await page.waitForChanges();
+      expect(await isOpen(page)).toBe(false);
+
       await page.keyboard.down('Alt');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.up('Alt');
       await page.waitForChanges();
-      expect(await picked(page)).toBe(1);
+      expect((await state(page)).focused).toBe('2026-01-15');
 
-      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowRight');
+      await page.keyboard.press('PageDown');
       await page.waitForChanges();
-      expect(await picked(page)).toBe(1);
+      expect((await state(page)).focused).toBe('2026-02-16');
+
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+      expect(await prop(page, 'value')).toBe('2026-02-16');
+      expect(await isOpen(page)).toBe(false);
+      expect((await state(page)).focused).toBe('input');
     });
 
-    it('moves the focus to the field when the browser has no showPicker', async () => {
-      const page = await setup(`<uai-input-date></uai-input-date>`, 'light', { showPicker: false });
+    it('closes with Escape from the days, giving the focus back to the field', async () => {
+      const page = await setup(`<uai-input-date value="2026-01-15"></uai-input-date>`);
       await page.click(`${TAG} >>> ${BUTTON}`);
       await page.waitForChanges();
+
+      await page.keyboard.press('Escape');
+      await page.waitForChanges();
+
+      expect(await isOpen(page)).toBe(false);
       expect((await state(page)).focused).toBe('input');
+    });
+
+    it('closes on a click outside and on Tab out of the field', async () => {
+      // Above the field: the calendar opens below it and would cover what is there.
+      const page = await setup(`<button id="outside">Fora</button><uai-input-date value="2026-01-15"></uai-input-date>`);
+      await page.click(`${TAG} >>> ${INPUT}`);
+      await page.waitForChanges();
+      await page.click('#outside');
+      await page.waitForChanges();
+      expect(await isOpen(page)).toBe(false);
+
+      await page.click(`${TAG} >>> ${INPUT}`);
+      await page.waitForChanges();
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+      expect(await isOpen(page)).toBe(false);
+    });
+
+    it('waits for the calendar to close before showing a validation error', async () => {
+      const page = await setup(`<button id="outside">Fora</button><uai-input-date min="2026-01-10" value="2026-01-05"></uai-input-date>`);
+      await page.click(`${TAG} >>> ${BUTTON}`);
+      await page.waitForChanges();
+      expect(await page.find(TAG)).not.toHaveClass('uai-input-date--danger');
+
+      await page.click('#outside');
+      await page.waitForChanges();
+      expect(await page.find(TAG)).toHaveClass('uai-input-date--danger');
     });
 
     it('Scenario: Somente leitura — the calendar button does not appear; disabled keeps it disabled', async () => {
@@ -340,7 +377,7 @@ describe('uai-input-date e2e', () => {
       await page.keyboard.press('ArrowDown');
       await page.keyboard.up('Alt');
       await page.waitForChanges();
-      expect(await picked(page)).toBe(0);
+      expect(await isOpen(page, '#ro')).toBe(false);
 
       const disabled = await state(page, '#off');
       expect(disabled.button).toBe(true);
@@ -362,6 +399,8 @@ describe('uai-input-date e2e', () => {
         </form>`);
       await page.click(`${TAG} >>> ${INPUT}`);
       await typeInto(page, '25122026');
+      // The open calendar floats over the button below the field: close it first, as a person does.
+      await page.keyboard.press('Escape');
       await page.click('#submit');
 
       expect(await submissions(page)).toEqual([

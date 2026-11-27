@@ -2,6 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { UAI_OUTLINE_ICONS, UAI_SOLID_ICONS } from '../../../globals/uai-icons';
+import * as iconFont from '../../../utils/uai-icon-font';
 import { UaiIcon } from '../uai-icon';
 
 const render = (html: string) => newSpecPage({ components: [UaiIcon], html });
@@ -26,6 +27,15 @@ describe('uai-icon', () => {
     expect(page.root.getAttribute('aria-hidden')).toBe('true');
     expect(page.root.getAttribute('role')).toBeNull();
     expect(warn).not.toHaveBeenCalled();
+  });
+
+  it('draws the glyph with the versioned font of its blip-tokens release and registers that font', async () => {
+    const register = jest.spyOn(iconFont, 'registerIconFont');
+    const page = await render(`<uai-icon name="info"></uai-icon>`);
+
+    expect(glyph(page).style.getPropertyValue('--uai-icon-font-family')).toBe(`"${iconFont.ICON_FONT_FAMILY}"`);
+    expect(register).toHaveBeenCalled();
+    register.mockRestore();
   });
 
   it('renders the solid glyph when theme is solid', async () => {

@@ -1,0 +1,43 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-flex;
+  width: fit-content;
+}
+
+// UAI Core uaiButtonGroup: one border and one radius for the whole group, corners clipped, and a divider between the
+// buttons. The divider is a border on each button after the first, so no element is added to the page.
+.button-group {
+  --group-divider: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+
+  display: flex;
+  overflow: hidden;
+  border: var(--group-divider);
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+
+  &--row {
+    flex-direction: row;
+
+    ::slotted(uai-button:not(:first-child)) {
+      border-inline-start: var(--group-divider);
+    }
+  }
+
+  &--column {
+    flex-direction: column;
+
+    ::slotted(uai-button:not(:first-child)) {
+      border-block-start: var(--group-divider);
+    }
+  }
+}
+
+// The focused button is raised so its focus ring is not covered by the next button.
+::slotted(uai-button) {
+  position: relative;
+}
+
+::slotted(uai-button:focus-within) {
+  z-index: 1;
+}

@@ -228,3 +228,31 @@ export const Events = () => {
     </div>
   );
 };
+
+/**
+ * Com href o botão é um link com a mesma aparência: abre em outra aba pelo próprio navegador (botão direito, Ctrl+clique,
+ * botão do meio). Use para navegar; para ações, mantenha o botão.
+ */
+export const Link = () => (
+  <div style={column}>
+    <div style={row}>
+      <UaiButton href="https://www.blip.ai" target="_blank" variant="outline" color="content" iconRight="external-file">
+        Abrir em outra aba
+      </UaiButton>
+      <UaiButton href="#ajustes" variant="text" color="content" iconLeft="info">
+        Link com ícone
+      </UaiButton>
+      <UaiButton href="#ajustes" variant="text" color="content" disabled>
+        Desabilitado
+      </UaiButton>
+    </div>
+    <div style={{ width: 'var(--uai-width-panel)' }}>
+      <UaiButton href="#distribuicao" variant="text" color="content" block justifyContent="space-between">
+        Ajustar distribuição
+      </UaiButton>
+      <UaiButton href="#dashboard" variant="text" color="content" block justifyContent="space-between">
+        Dashboard
+      </UaiButton>
+    </div>
+  </div>
+);
