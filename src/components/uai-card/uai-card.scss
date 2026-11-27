@@ -1,0 +1,182 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  text-align: start;
+}
+
+.card__media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  max-height: calc(var(--uai-sizing-4xl, #{$uai-sizing-4xl}) * 2.5);
+  object-fit: cover;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-right: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-bottom: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding-left: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  flex-shrink: 0;
+}
+
+.card__header--with-actions {
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding-top: var(--uai-spacing-md, #{$uai-spacing-md});
+  padding-right: var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+.card--size-md .card__header {
+  gap: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-top: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-right: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-bottom: var(--uai-spacing-md, #{$uai-spacing-md});
+  padding-left: var(--uai-spacing-lg, #{$uai-spacing-lg});
+}
+
+.card--size-md .card__header--with-actions {
+  padding-right: var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+.card__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.card__header-main {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  min-width: 0;
+}
+
+.card__heading {
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-title-font-size, #{$uai-title-font-size});
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  line-height: var(--uai-title-line-height, #{$uai-title-line-height});
+  letter-spacing: var(--uai-letter-spacing-normal, #{$uai-letter-spacing-normal});
+}
+
+.card__description {
+  margin: 0;
+  width: 100%;
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  letter-spacing: var(--uai-letter-spacing-normal, #{$uai-letter-spacing-normal});
+}
+
+.card__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  flex-shrink: 0;
+}
+
+.card__body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding-top: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-right: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-bottom: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-left: var(--uai-spacing-lg, #{$uai-spacing-lg});
+}
+
+.card--has-header .card__body {
+  padding-top: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.card--size-md.card--has-header .card__body {
+  padding-top: var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+.card--has-footer .card__body {
+  padding-bottom: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.card--size-md.card--has-footer .card__body {
+  padding-bottom: var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  box-sizing: border-box;
+  width: 100%;
+  padding-top: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding-right: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-bottom: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-left: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  flex-shrink: 0;
+}
+
+.card--size-md .card__footer {
+  padding-top: var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+// Keep after all `.card__*` display declarations so hidden wrappers
+// never participate as flex items or generate phantom flex gaps.
+.card__region--empty,
+.card [hidden] {
+  display: none;
+}

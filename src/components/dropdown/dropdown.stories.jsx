@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import DocumentationTemplate from './dropdown.mdx';
 
 export default {
-  title: 'Components/Dropdown',
+  title: 'BDS Components/Dropdown',
   parameters: {
     docs: {
       page: DocumentationTemplate,

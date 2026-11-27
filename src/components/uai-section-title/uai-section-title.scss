@@ -1,0 +1,55 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.section-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  box-sizing: border-box;
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs}) var(--uai-spacing-md, #{$uai-spacing-md});
+}
+
+.section-title__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: var(--uai-spacing-none, #{$uai-spacing-none});
+  min-width: 0;
+}
+
+.section-title__heading {
+  margin: 0;
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-heading-md-font-size, #{$uai-heading-md-font-size});
+  line-height: var(--uai-heading-md-line-height, #{$uai-heading-md-line-height});
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  letter-spacing: var(--uai-letter-spacing-normal, #{$uai-letter-spacing-normal});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  overflow-wrap: anywhere;
+}
+
+.section-title__description {
+  margin: 0;
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  letter-spacing: var(--uai-letter-spacing-normal, #{$uai-letter-spacing-normal});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+  overflow-wrap: anywhere;
+}
+
+.section-title__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  margin-inline-start: auto;
+}

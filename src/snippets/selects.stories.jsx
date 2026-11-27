@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Snippets/Selects',
+  title: 'BDS Snippets/Selects',
 };
 
 export const BasicSelect = () => {

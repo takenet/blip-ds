@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Snippets/Form',
+  title: 'BDS Snippets/Form',
 };
 
 export const BasicForm = (args) => {

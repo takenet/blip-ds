@@ -1,5 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
 
+/**
+ * @deprecated Use `uai-card-subtitle` instead.
+ */
 @Component({
   tag: 'bds-card-subtitle',
   shadow: true,

@@ -38,7 +38,7 @@ Rode: npm run lint:uai-tokens && node --test code-connect/templates.test.mjs
 ## Agente de deprecação (`general-purpose`, só se existir `bds-*` equivalente)
 
 ```text
-Arquivos: src/components/<bds>/<bds>.tsx (só a tag @deprecated na classe), <bds>.mdx (aviso no topo), <bds>.stories.jsx (título "Components/[deprecated] <Nome>"), .storybook/preview.js (ordem do storySort), tests/playwright/fixtures/component-registry.ts e specs Playwright do legado (IDs components-deprecated-<nome>--).
+Arquivos: src/components/<bds>/<bds>.tsx (só a tag @deprecated na classe), <bds>.mdx (aviso no topo), <bds>.stories.jsx (título "BDS Components/[deprecated] <Nome>"), .storybook/preview.js (ordem do storySort), tests/playwright/fixtures/component-registry.ts e specs Playwright do legado (IDs bds-components-deprecated-<nome>--).
 Não altere comportamento nem remova props do bds-*. O manifesto MCP marca o legado sozinho a partir do @deprecated.
 Rode: npm run test:unit -- -- src/components/<bds>/test
 ```

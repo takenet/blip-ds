@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Accordion - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-accordion--properties');
+    await storybook.goto('bds-components-accordion--properties');
   });
 
   test('toggle opens and closes accordion', async ({ page }) => {

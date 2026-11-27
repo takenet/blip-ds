@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/storybook.fixture';
 
 test.describe('Card - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-card--properties');
+    await storybook.goto('bds-components-deprecated-card--properties');
   });
 
   test('renders correctly', async ({ page }) => {

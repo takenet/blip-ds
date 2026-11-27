@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Alert - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-alert--properties');
+    await storybook.goto('bds-components-alert--properties');
   });
 
   test('renders correctly', async ({ page }) => {

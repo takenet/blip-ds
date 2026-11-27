@@ -4,7 +4,7 @@ import DocumentationTemplate from './accordion.mdx';
 import { BdsAccordion, BdsAccordionBody, BdsAccordionHeader, BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Accordion',
+  title: 'BDS Components/Accordion',
   tags: ['autodocs'],
   parameters: {
     docs: {

@@ -54,7 +54,7 @@ export const config: Config = {
       '--disable-features=VizDisplayCompositor',
     ],
     collectCoverageFrom: ['src/**/*.{ts,tsx}'],
-    testPathIgnorePatterns: ['/node_modules/', '/tests/playwright/', '/\\.worktrees/'],
+    testPathIgnorePatterns: ['/node_modules/', '/tests/playwright/', '<rootDir>/\\.worktrees/'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     transform: {
       '^.+\\.svg$': '<rootDir>/jest.svg-transform.js',

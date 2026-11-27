@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Releases/v2.0.0-rc.63" name="v2.0.0-rc.63" />
+
+# v2.0.0-rc.63
+
+Superfícies analíticas UAI, padronização de bordas e estados desabilitados dos controles e reorganização do Storybook. Versão prevista; o número final é definido pelo semantic-release no merge.
+
+## Features
+
+### Novos componentes UAI
+
+- **UaiCard** (`uai-card`, com `uai-card-header`, `-body`, `-footer`, `-title` e `-subtitle`): superfície com `heading`, `description` e slots `media`, `icon`, `header`, `actions`, padrão e `footer`; tamanhos `sm` e `md` do Figma.
+- **UaiFilterBar** (`uai-filter-bar`): períodos, busca e painel de filtros em dois níveis com chips de filtros aplicados.
+- **UaiIconButton** (`uai-icon-button`): variantes `solid`, `outline` e `ghost`, tamanhos `compact`, `short`, `medium` e `large`.
+- **UaiIconBox** (`uai-icon-box`), **UaiSectionTitle** (`uai-section-title`) e **UaiProgressBar** (`uai-progress-bar`).
+- **Gráficos**: **UaiSparkline** (tendências `neutral`, `positive` e `negative` com área em gradiente), **UaiBarChart** e **UaiLineChart**.
+
+### Melhorias
+
+- **UaiGrid**: `type="draggable"` com alça de arrastar e botão de adicionar, `sortable` no pai (arrastar e `Alt` + setas), `maxItems` e eventos `uaiReorder` e `uaiAddClick`.
+- **Animação de entrada dos gráficos**: sparkline e line chart se revelam da esquerda para a direita; barras e progress bar crescem a partir do início. Usa `duration/loop` e `easing/standard` e respeita `prefers-reduced-motion`.
+- **Code Connect**: 23 componentes UAI conectados ao Figma UAI Core, incluindo Checkbox, Radio e Switch nos nós UAI.
+- **Documentação**: anatomia de página do MFE (Shell ↔ conteúdo) em UAI Foundation/Layout, snippets de cards, analytics e borda de controle, e template de página analítica.
+
+## Bug Fixes
+
+- **Borda de controle**: `uai-button` e `uai-icon-button` outline `content`, e os controles do `uai-filter-bar`, usam as mesmas variáveis do `uai-input` em cada estado (`border/input` em repouso, `content/secondary` em hover). Antes usavam `border/default`, quase invisível no modo dark.
+- **Desabilitado**: os campos (`uai-input`, `uai-textarea`, `uai-select`, `uai-input-chips`, `uai-input-editable`, `uai-input-phone`, `uai-input-date` e `uai-input-password`) seguem o `uai-button` — cores do repouso, borda `border/default` e o controle inteiro em `opacity/disabled`.
+- **UaiSectionTitle**: ações adicionadas depois do carregamento passam a aparecer.
+- **UaiGrid**: ligar ou desligar `sortable` depois da montagem passa a ter efeito.
+
+## Depreciações
+
+Sem mudança de comportamento; use o substituto UAI.
+
+| Legado | Substituto |
+| --- | --- |
+| `bds-card` e `bds-card-*` | `uai-card` e `uai-card-*` |
+| `bds-button-icon` | `uai-icon-button` |
+| `bds-progress-bar` | `uai-progress-bar` |
+
+## Storybook
+
+A barra lateral foi reorganizada em: Vamos Começar, Integrações, UAI Foundation, UAI Components, UAI Snippets, [deprecated] BDS Tokens, BDS Components, BDS Snippets, Templates, Getting Started e Releases.
+
+**Atenção a links diretos**: os IDs das stories de componentes mudaram. Atualize links salvos:
+
+| Antes | Depois |
+| --- | --- |
+| `uai-<componente>--…` | `uai-components-<componente>--…` |
+| `components-…` | `bds-components-…` |
+| `snippets-…` | `bds-snippets-…` |
+| `tokens-…` | `deprecated-bds-tokens-…` |
+
+Os IDs de UAI Foundation (`uai-foundation-…`) e UAI Snippets (`uai-snippets-…`) não mudaram.

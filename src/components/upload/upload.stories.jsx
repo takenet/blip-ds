@@ -3,7 +3,7 @@ import DocumentationTemplate from './upload.mdx';
 import { BdsUpload } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Upload',
+  title: 'BDS Components/Upload',
   parameters: {
     docs: {
       page: DocumentationTemplate,

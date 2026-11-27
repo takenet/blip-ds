@@ -3,7 +3,7 @@ import { BdsButton } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './button.mdx';
 
 export default {
-  title: 'Components/[deprecated] Button',
+  title: 'BDS Components/[deprecated] Button',
   // Deprecated: kept out of the Storybook MCP manifest so agents use uai-button.
   tags: ['autodocs', '!manifest'],
   parameters: {

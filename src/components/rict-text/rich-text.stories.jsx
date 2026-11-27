@@ -3,7 +3,7 @@ import DocumentationTemplate from './rich-text.mdx';
 import { BdsRichText } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/RichText',
+  title: 'BDS Components/RichText',
   parameters: {
     docs: {
       page: DocumentationTemplate,

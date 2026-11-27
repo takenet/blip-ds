@@ -3,7 +3,7 @@ import { UaiIcon, UaiThemeProvider } from '../../../blip-ds-react/dist/component
 import DocumentationTemplate from './uai-icon.mdx';
 
 export default {
-  title: 'UAI/Icon',
+  title: 'UAI Components/Icon',
   component: UaiIcon,
   tags: ['autodocs'],
   parameters: {

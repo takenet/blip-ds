@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use `uai-card-body` instead.
+
 ## Slots
 
 | Slot | Description      |

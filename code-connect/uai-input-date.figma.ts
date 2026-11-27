@@ -4,11 +4,16 @@
 import figma from 'figma';
 
 const instance = figma.selectedInstance;
-const label = instance.getString('Label');
-const text = instance.getString('Text');
-const helperMessage = instance.getString('Helper Message');
-const errorMessage = instance.getString('Error Message');
-const successMessage = instance.getString('Success Message');
+// Label, Text and messages are text layers (not component properties) in this node.
+const layer = (name) => {
+  const node = instance.findText(name);
+  return node && node.type !== 'ERROR' ? node.textContent || '' : '';
+};
+const label = layer('Label');
+const text = layer('Text');
+const helperMessage = layer('Helper Message');
+const errorMessage = layer('Error Message');
+const successMessage = layer('Success Message');
 const feedback = instance.getEnum('Feedback', { Default: 'default', Error: 'danger', Success: 'success' });
 // Hover and Focus are CSS states. In Default and Hover, Text is the placeholder. In Filled, Focus, Disabled and
 // Readonly, Text is the displayed date (for example "Value" or "25/12/2026"), not an ISO YYYY-MM-DD value, so it is

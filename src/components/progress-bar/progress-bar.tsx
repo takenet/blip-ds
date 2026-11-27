@@ -4,6 +4,9 @@ export type progressBarSize = 'small' | 'default';
 
 export type progressBarColor = 'default' | 'positive' | 'information' | 'warning';
 
+/**
+ * @deprecated Use `uai-progress-bar` instead.
+ */
 @Component({
   tag: 'bds-progress-bar',
   styleUrl: 'progress-bar.scss',

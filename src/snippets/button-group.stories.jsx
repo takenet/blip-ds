@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default {
-  title: 'Snippets/Button Group',
+  title: 'BDS Snippets/Button Group',
 };
 
 export const SimpleButtonGroup = (args) => (

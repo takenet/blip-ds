@@ -3,7 +3,7 @@ import { BdsDataTable } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './data-table.mdx';
 
 export default {
-  title: 'Components/Data Table',
+  title: 'BDS Components/Data Table',
   parameters: {
     docs: {
       page: DocumentationTemplate,

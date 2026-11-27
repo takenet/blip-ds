@@ -12,7 +12,7 @@ import {
 } from '../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Snippets/Cards',
+  title: 'BDS Snippets/Cards',
 };
 
 export const BotsCardClickable = () => {

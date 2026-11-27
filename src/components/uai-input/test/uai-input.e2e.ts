@@ -341,15 +341,17 @@ describe('uai-input e2e', () => {
           expect((await controlStyle(page, '#ok')).border).toBe(await token(page, 'uai-feedback-success'));
         });
 
-        it('uses surface/muted, border/default and content/disabled when disabled, without opacity', async () => {
+        it('matches uai-button when disabled: rest colors, border/default and opacity/disabled', async () => {
           const page = await setup(`<uai-input label="Nome" value="Ana" disabled></uai-input>`, theme);
           const style = await controlStyle(page);
 
-          expect(style.background).toBe(await token(page, 'uai-surface-muted'));
+          expect(style.background).toBe(await token(page, 'uai-surface-paper'));
           expect(style.border).toBe(await token(page, 'uai-border-default'));
-          expect(style.color).toBe(await token(page, 'uai-content-disabled'));
-          expect(style.label).toBe(await token(page, 'uai-content-disabled'));
-          expect(await page.$eval('uai-input', (el) => getComputedStyle(el).opacity)).toBe('1');
+          expect(style.color).toBe(await token(page, 'uai-content-primary'));
+          expect(style.label).toBe(await token(page, 'uai-content-primary'));
+          expect(await page.$eval('uai-input', (el) => getComputedStyle(el).opacity)).toBe(
+            await token(page, 'uai-opacity-disabled', 'opacity'),
+          );
         });
       });
     }

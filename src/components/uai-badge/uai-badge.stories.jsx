@@ -31,7 +31,7 @@ const Labeled = ({ label, children }) => (
 );
 
 export default {
-  title: 'UAI/Badge',
+  title: 'UAI Components/Badge',
   component: UaiBadge,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

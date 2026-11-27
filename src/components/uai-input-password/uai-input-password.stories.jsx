@@ -3,7 +3,7 @@ import { UaiButton, UaiInputPassword, UaiThemeProvider } from '../../../blip-ds-
 import DocumentationTemplate from './uai-input-password.mdx';
 
 export default {
-  title: 'UAI/Input Password',
+  title: 'UAI Components/Input Password',
   component: UaiInputPassword,
   tags: ['autodocs'],
   parameters: {

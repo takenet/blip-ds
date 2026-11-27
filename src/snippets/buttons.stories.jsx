@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default {
-  title: 'Snippets/Buttons',
+  title: 'BDS Snippets/Buttons',
 };
 
 export const BasicButton = (args) => <bds-button>Click Me</bds-button>;

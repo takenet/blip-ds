@@ -10,7 +10,7 @@ import {
 } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Accordion Group',
+  title: 'BDS Components/Accordion Group',
   tags: ['autodocs'],
   parameters: {
     docs: {

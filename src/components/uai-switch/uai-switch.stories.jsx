@@ -3,7 +3,7 @@ import { UaiSwitch, UaiThemeProvider } from '../../../blip-ds-react/dist/compone
 import DocumentationTemplate from './uai-switch.mdx';
 
 export default {
-  title: 'UAI/Switch',
+  title: 'UAI Components/Switch',
   component: UaiSwitch,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

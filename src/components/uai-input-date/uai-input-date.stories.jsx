@@ -3,7 +3,7 @@ import { UaiButton, UaiInputDate, UaiThemeProvider } from '../../../blip-ds-reac
 import DocumentationTemplate from './uai-input-date.mdx';
 
 export default {
-  title: 'UAI/Input Date',
+  title: 'UAI Components/Input Date',
   component: UaiInputDate,
   tags: ['autodocs'],
   parameters: {

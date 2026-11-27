@@ -10,7 +10,7 @@ import {
 } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Carousel',
+  title: 'BDS Components/Carousel',
   tags: ['autodocs'],
   parameters: {
     docs: {

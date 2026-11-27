@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { DimensionTokens, TokenTable } from './foundation-blocks';
 
-<Meta title="UAI/Foundation/Layout" />
+<Meta title="UAI Foundation/Layout" />
 
 # Layout
 
@@ -68,3 +68,72 @@ Larguras de tela para media queries de largura máxima. Media query não lê var
 ```
 
 <TokenTable category="layout" group="breakpoint" />
+
+## Anatomia de página e relação Shell ↔ MFE
+
+Nos frames de referência do UAI Core ([Light](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4649-22352) e [Dark](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4649-21730)), a tela divide responsabilidades entre o **Shell do Portal** e a **Página do MFE (`Content`)**:
+
+1. **Responsabilidade do Shell (fora do MFE):** renderiza o `Header` global superior e o `UaiSidemenu` lateral (`width-side-menu-collapsed` recolhido / `width-side-menu` expandido), entregando ao módulo uma área de visualização com fundo `--uai-surface-background`, borda `--uai-border-default` e canto superior esquerdo `--uai-radius-2xl`. Dentro do MFE isolado, o contêiner raiz ocupa `width: 100%; min-width: 0; container-type: inline-size`.
+2. **Eixo horizontal unificado das 5 zonas do MFE:** todas as seções verticais do MFE compartilham a mesma calha lateral (`--uai-spacing-6xl` em desktop; reduzindo para `--uai-spacing-md` em viewports estreitos abaixo de `$uai-breakpoint-sm`) e a mesma largura útil centralizada (`max-width: var(--uai-width-content)`).
+   - **Por que a calha `--uai-spacing-6xl` é essencial:** além de alinhar `UaiPageHeader`, Hero, `UaiFilterBar`, `Content` e rodapé institucional, ela reserva espaço lateral suficiente para as orelhas flutuantes (`calc(-1 * var(--uai-spacing-lg))`) do `UaiGrid type="draggable"` sem cortar os botões de arrasto e adição (`+`).
+
+| Zona vertical do MFE | Padding horizontal (calha) | Padding vertical | Largura útil interna | Gap entre itens |
+| --- | --- | --- | --- | --- |
+| **1. `UaiPageHeader`** | `--uai-spacing-6xl` (`--uai-spacing-md` estreito) | `--uai-spacing-md` | `--uai-width-content` | `--uai-spacing-md` |
+| **2. Hero de página** *(opcional)* | `--uai-spacing-6xl` (`--uai-spacing-md` estreito) | `--uai-spacing-3xl` | `--uai-width-content` | `--uai-spacing-md` |
+| **3. `UaiFilterBar`** *(opcional)* | `--uai-spacing-6xl` (`--uai-spacing-md` estreito) | `--uai-spacing-none` externo; `--uai-spacing-lg` no card | `--uai-width-content` | `--uai-spacing-xs` |
+| **4. Corpo `Content` (pilha `UaiGrid`)** | `--uai-spacing-6xl` (`--uai-spacing-md` estreito) | `--uai-spacing-xl` *(sem `padding-top` quando colado direto ao Hero sem `UaiFilterBar`)* | Cada `UaiGrid`: `--uai-width-content` | Vertical entre linhas: `--uai-spacing-md` (`gap="2"`) · Horizontal entre `UaiCard`s: `--uai-spacing-md` (`gap="2"`) |
+| **5. Rodapé institucional** *(opcional)* | `--uai-spacing-6xl` sobre `--uai-surface-contrast` | `--uai-spacing-xl` | `--uai-width-content` | `--uai-spacing-lg` entre `UaiSectionTitle` e `UaiGrid` |
+
+### Receita CSS/JSX recomendada para o MFE
+
+```scss
+@use 'blip-tokens/build/scss/uai-dimensions' as *;
+@use 'blip-tokens/build/scss/uai-layout' as *;
+@use 'blip-tokens/build/scss/uai-colors-light' as *;
+
+.mfe-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  background-color: var(--uai-surface-background, #{$uai-surface-background});
+  container-type: inline-size;
+  container-name: mfe-main;
+}
+
+.mfe-zone {
+  box-sizing: border-box;
+  width: 100%;
+  padding-inline: var(--uai-spacing-6xl, #{$uai-spacing-6xl});
+}
+
+.mfe-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  padding-block: var(--uai-spacing-xl, #{$uai-spacing-xl});
+}
+
+.mfe-content--flush-top {
+  padding-top: var(--uai-spacing-none, #{$uai-spacing-none});
+}
+
+.mfe-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  padding-block: var(--uai-spacing-xl, #{$uai-spacing-xl});
+  background-color: var(--uai-surface-contrast, #{$uai-surface-contrast});
+}
+
+@media (max-width: $uai-breakpoint-sm) {
+  .mfe-zone {
+    padding-inline: var(--uai-spacing-md, #{$uai-spacing-md});
+  }
+}
+```
+
+Consulte também o template interativo **`Templates/MFE/Página Analítica UAI`** no Storybook para inspecionar visualmente as guias de `padding` e `gap` em Light e Dark.

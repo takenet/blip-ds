@@ -20,7 +20,7 @@ import {
 } from '../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Snippets/Pagination',
+  title: 'BDS Snippets/Pagination',
 };
 
 export const TableWithPagination = () => {

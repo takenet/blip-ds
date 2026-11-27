@@ -3,7 +3,7 @@ import DocumentationTemplate from './stepper.mdx';
 import { BdsStepper, BdsStep, BdsPaper, BdsButton } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/[deprecated] Stepper',
+  title: 'BDS Components/[deprecated] Stepper',
   parameters: {
     docs: {
       page: DocumentationTemplate,

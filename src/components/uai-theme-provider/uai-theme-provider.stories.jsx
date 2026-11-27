@@ -2,7 +2,7 @@ import React from 'react';
 import { UaiButton, UaiThemeProvider } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'UAI/Theme provider',
+  title: 'UAI Components/Theme provider',
   component: UaiThemeProvider,
   tags: ['autodocs'],
   parameters: {

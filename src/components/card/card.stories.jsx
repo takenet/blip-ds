@@ -3,7 +3,7 @@ import DocumentationTemplate from './card.mdx';
 import { BdsButton, BdsCard, BdsCardBody, BdsCardFooter, BdsCardHeader, BdsCardTitle, BdsGrid, BdsIcon } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Card',
+  title: 'BDS Components/[deprecated] Card',
   parameters: {
     docs: {
       page: DocumentationTemplate,

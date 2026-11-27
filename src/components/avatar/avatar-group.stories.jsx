@@ -3,7 +3,7 @@ import DocumentationTemplate from './avatar-group.mdx';
 import { BdsAvatarGroup } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Avatar Group',
+  title: 'BDS Components/Avatar Group',
   parameters: {
     docs: {
       page: DocumentationTemplate

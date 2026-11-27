@@ -3,7 +3,7 @@ import { UaiButton, UaiIcon, UaiThemeProvider, UaiTooltip } from '../../../blip-
 import DocumentationTemplate from './uai-tooltip.mdx';
 
 export default {
-  title: 'UAI/Tooltip',
+  title: 'UAI Components/Tooltip',
   component: UaiTooltip,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

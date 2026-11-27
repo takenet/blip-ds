@@ -3,7 +3,7 @@ import DocumentationTemplate from './uai-grid.mdx';
 import { UaiGrid } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'UAI/Grid',
+  title: 'UAI Components/Grid',
   component: UaiGrid,
   parameters: {
     docs: {
@@ -243,3 +243,61 @@ export const FluidContainer = () => (
     </UaiGrid>
   </UaiGrid>
 );
+
+export const DraggableRows = () => {
+  const [rows, setRows] = React.useState([
+    { id: 'row-1', items: ['Investimentos', 'Leads Engajados', 'ROAS'] },
+    { id: 'row-2', items: ['Anúncios', 'Disparos'] },
+  ]);
+
+  const handleReorder = (ev) => {
+    const { fromIndex, toIndex } = ev.detail;
+    setRows((prev) => {
+      const next = [...prev];
+      const [moved] = next.splice(fromIndex, 1);
+      next.splice(toIndex, 0, moved);
+      return next;
+    });
+  };
+
+  const handleAdd = (rowId) => {
+    setRows((prev) =>
+      prev.map((row) =>
+        row.id === rowId && row.items.length < 4
+          ? { ...row, items: [...row.items, `Novo bloco ${row.items.length + 1}`] }
+          : row,
+      ),
+    );
+  };
+
+  return (
+    <div style={{ padding: 'var(--uai-spacing-xl) var(--uai-spacing-6xl)' }}>
+      <UaiGrid direction="column" gap="2" sortable controlledReorder onUaiReorder={handleReorder}>
+        {rows.map((row) => (
+          <UaiGrid
+            key={row.id}
+            type="draggable"
+            gap="2"
+            maxItems={4}
+            onUaiAddClick={() => handleAdd(row.id)}
+          >
+            {row.items.map((label) => (
+              <div
+                key={label}
+                style={{
+                  ...cellStyle,
+                  backgroundColor: 'var(--uai-surface-paper)',
+                  border: 'var(--uai-border-width-default) solid var(--uai-border-default)',
+                  borderRadius: 'var(--uai-radius-xl)',
+                  color: 'var(--uai-content-primary)',
+                }}
+              >
+                {label}
+              </div>
+            ))}
+          </UaiGrid>
+        ))}
+      </UaiGrid>
+    </div>
+  );
+};

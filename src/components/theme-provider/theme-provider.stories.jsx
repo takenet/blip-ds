@@ -3,7 +3,7 @@ import DocumentationTemplate from './theme-provider.mdx';
 import { BdsAvatar, BdsBanner, BdsGrid, BdsInputChips, BdsPaper, BdsThemeProvider, BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Theme provider',
+  title: 'BDS Components/Theme provider',
   parameters: {
     docs: {
       page: DocumentationTemplate,

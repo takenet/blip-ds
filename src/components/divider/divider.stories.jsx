@@ -3,7 +3,7 @@ import { BdsDivider } from '../../../blip-ds-react/dist/components';
 import DocumentationTemplate from './divider.mdx';
 
 export default {
-  title: 'Components/Divider',
+  title: 'BDS Components/Divider',
   tags: ['autodocs'],
   parameters: {
     docs: {

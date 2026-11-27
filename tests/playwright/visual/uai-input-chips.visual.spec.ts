@@ -7,13 +7,13 @@ test.describe('UaiInputChips - Visual Regression', () => {
     ['email', 'uai-input-chips-email'],
   ]) {
     test(story, async ({ storybook }) => {
-      await storybook.screenshotStory(`uai-input-chips--${story}`, name);
+      await storybook.screenshotStory(`uai-components-input-chips--${story}`, name);
     });
   }
 
   for (const story of ['states', 'email']) {
     test(`${story} in the dark theme`, async ({ page, storybook }) => {
-      await gotoStoryUrl(page, `/iframe.html?id=uai-input-chips--${story}&viewMode=story&globals=hasTheme:dark`);
+      await gotoStoryUrl(page, `/iframe.html?id=uai-components-input-chips--${story}&viewMode=story&globals=hasTheme:dark`);
       await expect(storybook.root()).toHaveScreenshot(`uai-input-chips-${story}-dark.png`);
     });
   }

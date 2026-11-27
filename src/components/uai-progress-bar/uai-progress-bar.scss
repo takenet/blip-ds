@@ -1,0 +1,51 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  width: 100%;
+}
+
+.progress__track {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uai-sizing-2xs, #{$uai-sizing-2xs});
+  border-radius: var(--uai-radius-2xl, #{$uai-radius-2xl});
+  background-color: var(--uai-surface-background, #{$uai-surface-background});
+  overflow: hidden;
+}
+
+.progress__fill {
+  height: 100%;
+  border-radius: var(--uai-radius-2xl, #{$uai-radius-2xl});
+  background-color: var(--uai-accent-ai-start, #{$uai-accent-ai-start});
+  @include uai-transition(width, moderate);
+  @include uai-enter-animation(uai-chart-grow);
+
+  &--instant {
+    transition: none;
+  }
+}
+
+.progress__text {
+  margin: 0;
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  letter-spacing: var(--uai-letter-spacing-normal, #{$uai-letter-spacing-normal});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+// Grows the fill from the start edge on entrance; later updates use the width transition.
+@keyframes uai-chart-grow {
+  from {
+    width: 0;
+  }
+}

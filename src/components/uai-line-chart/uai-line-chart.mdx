@@ -1,0 +1,42 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as LineChartStories from './uai-line-chart.stories';
+
+<Meta isTemplate />
+
+# Line Chart
+
+## Visão geral
+
+`uai-line-chart` renderiza um gráfico de linhas multissérie em SVG responsivo usando a paleta semântica UAI (`accent/ai-start`, `accent/ai-middle`, `accent/ai-end` e `fixed/blue`). A área de plotagem pode ser inspecionada por ponteiro ou teclado (`Tab`, `ArrowLeft`, `ArrowRight`, `Home`, `End`, `Escape`).
+
+No React, importe `UaiLineChart` e `UaiThemeProvider` de `blip-ds-react/dist/components`.
+
+```jsx
+<UaiLineChart
+  tooltipTitle="Evolução"
+  series={[
+    { key: 'invested', label: 'Valor investido' },
+    { key: 'conversations', label: 'Conversas iniciadas' },
+    { key: 'revenue', label: 'Receita' },
+  ]}
+  data={[
+    { key: '20/07', invested: 90000, conversations: 140000, revenue: 210000 },
+    { key: '01/08', invested: 120000, conversations: 185000, revenue: 260000 },
+    { key: '10/08', invested: 150000, conversations: 240000, revenue: 310000 },
+    { key: 'Hoje', invested: 170000, conversations: 280000, revenue: 350000 },
+  ]}
+/>
+```
+
+## Playground
+
+<Canvas of={LineChartStories.Playground} />
+<Controls of={LineChartStories.Playground} />
+
+## Evolução monetária
+
+<Canvas of={LineChartStories.CurrencyEvolution} />
+
+## Estado vazio
+
+<Canvas of={LineChartStories.EmptyState} />

@@ -3,7 +3,7 @@ import DocumentationTemplate from './loading-page.mdx';
 import { BdsLoadingPage } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Loading page',
+  title: 'BDS Components/Loading page',
   parameters: {
     docs: {
       page: DocumentationTemplate,

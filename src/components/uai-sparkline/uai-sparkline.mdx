@@ -1,0 +1,37 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as SparklineStories from './uai-sparkline.stories';
+
+<Meta isTemplate />
+
+# Sparkline
+
+## Visão geral
+
+`uai-sparkline` exibe uma microtendência responsiva em SVG sem eixos, ideal para acompanhar indicadores numéricos em cards de KPI. Combine sempre com um valor textual visível e um `label` descritivo para tecnologias assistivas.
+
+No React, importe `UaiSparkline` e `UaiThemeProvider` de `blip-ds-react/dist/components`.
+
+```jsx
+<UaiSparkline
+  data={[12, 18, 15, 26, 22, 34]}
+  variant="positive"
+  label="Crescimento de 28% nos últimos 7 dias"
+/>
+```
+
+## Playground
+
+<Canvas of={SparklineStories.Playground} />
+<Controls of={SparklineStories.Playground} />
+
+## Variantes semânticas
+
+`neutral` aplica `--uai-content-disabled`, `positive` aplica `--uai-feedback-success` e `negative` aplica `--uai-feedback-error`. Todas as variantes, inclusive `neutral`, exibem a área com gradiente sutil do Figma: a cor vai de opaca no topo a transparente na base, com camada em `--uai-opacity-focus-ring` e preenchimento em `--uai-opacity-disabled`. Use `showArea={false}` para ocultá-la.
+
+<Canvas of={SparklineStories.Variants} />
+
+## Série constante
+
+Quando todos os pontos têm o mesmo valor (ou há apenas um ponto), o componente desenha uma linha horizontal centralizada, mantendo o gradiente abaixo dela.
+
+<Canvas of={SparklineStories.ConstantSeries} />

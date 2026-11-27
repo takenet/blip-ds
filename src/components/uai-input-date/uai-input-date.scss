@@ -39,12 +39,9 @@
 }
 
 :host(.uai-input-date--disabled) {
-  --input-background: var(--uai-surface-muted, #{$uai-surface-muted});
+  // Same as uai-button: rest colors, border/default and the whole control at opacity/disabled.
   --input-border: var(--uai-border-default, #{$uai-border-default});
-  --input-content: var(--uai-content-disabled, #{$uai-content-disabled});
-  --input-label: var(--uai-content-disabled, #{$uai-content-disabled});
-  --input-message: var(--uai-content-disabled, #{$uai-content-disabled});
-  --input-feedback: var(--uai-content-disabled, #{$uai-content-disabled});
+  opacity: var(--uai-opacity-disabled, #{$uai-opacity-disabled});
 }
 
 .input {
@@ -153,10 +150,6 @@
     cursor: not-allowed;
     opacity: 1;
     -webkit-text-fill-color: currentColor;
-
-    &::placeholder {
-      color: var(--uai-content-disabled, #{$uai-content-disabled});
-    }
   }
 }
 

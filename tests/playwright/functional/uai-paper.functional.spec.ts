@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('UaiPaper - Storybook', () => {
   test('updates the paper through its controls', async ({ page }) => {
-    await page.goto('/?path=/story/uai-paper--properties');
+    await page.goto('/?path=/story/uai-components-paper--properties');
 
     const preview = page.frameLocator('#storybook-preview-iframe');
     const paper = preview.locator('uai-paper').first();

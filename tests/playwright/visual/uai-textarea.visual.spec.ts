@@ -7,12 +7,12 @@ test.describe('UaiTextarea - Visual Regression', () => {
     ['form', 'uai-textarea-form'],
   ]) {
     test(story, async ({ storybook }) => {
-      await storybook.screenshotStory(`uai-textarea--${story}`, name);
+      await storybook.screenshotStory(`uai-components-textarea--${story}`, name);
     });
   }
 
   test('states in the dark theme', async ({ page, storybook }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=uai-textarea--states&viewMode=story&globals=hasTheme:dark');
+    await gotoStoryUrl(page, '/iframe.html?id=uai-components-textarea--states&viewMode=story&globals=hasTheme:dark');
     await expect(storybook.root()).toHaveScreenshot('uai-textarea-states-dark.png');
   });
 });

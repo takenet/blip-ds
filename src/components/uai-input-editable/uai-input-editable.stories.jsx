@@ -3,7 +3,7 @@ import { UaiButton, UaiInputEditable, UaiThemeProvider } from '../../../blip-ds-
 import DocumentationTemplate from './uai-input-editable.mdx';
 
 export default {
-  title: 'UAI/Input Editable',
+  title: 'UAI Components/Input Editable',
   component: UaiInputEditable,
   tags: ['autodocs'],
   parameters: {

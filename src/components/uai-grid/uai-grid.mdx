@@ -54,3 +54,9 @@ import { UaiGrid } from 'blip-ds-react/dist/components';
 ```
 
 <Source of={UaiGridStories.EqualColumns} />
+
+## Linhas reordenáveis (`type="draggable"` + `sortable`)
+
+Em painéis configuráveis (nó [UaiGrid Draggable no Figma UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4670-30584)), use `sortable` no `UaiGrid` vertical pai (`direction="column" gap="2"`) e `type="draggable"` em cada linha. A alça lateral exibe `cursor: grab` / `cursor: grabbing` e suporta `Alt+ArrowUp` / `Alt+ArrowDown`; o botão `+` à direita emite `uaiAddClick` mantendo o `gap` entre os itens internos até atingir `maxItems` (quando marca `aria-disabled="true"`).
+
+<Canvas of={UaiGridStories.DraggableRows} />

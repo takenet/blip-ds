@@ -3,7 +3,7 @@ import { UaiAvatar, UaiThemeProvider } from '../../../blip-ds-react/dist/compone
 import DocumentationTemplate from './uai-avatar.mdx';
 
 export default {
-  title: 'UAI/Avatar',
+  title: 'UAI Components/Avatar',
   component: UaiAvatar,
   tags: ['autodocs'],
   parameters: {

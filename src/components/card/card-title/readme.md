@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use `uai-card-title` instead.
+
 ## Properties
 
 | Property | Attribute | Description         | Type     | Default     |

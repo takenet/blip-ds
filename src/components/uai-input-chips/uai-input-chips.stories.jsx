@@ -3,7 +3,7 @@ import { UaiButton, UaiInputChips, UaiThemeProvider } from '../../../blip-ds-rea
 import DocumentationTemplate from './uai-input-chips.mdx';
 
 export default {
-  title: 'UAI/Input Chips',
+  title: 'UAI Components/Input Chips',
   component: UaiInputChips,
   tags: ['autodocs'],
   parameters: {

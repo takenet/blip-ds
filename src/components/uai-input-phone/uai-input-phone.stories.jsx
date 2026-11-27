@@ -3,7 +3,7 @@ import { UaiButton, UaiInputPhone, UaiThemeProvider } from '../../../blip-ds-rea
 import DocumentationTemplate from './uai-input-phone.mdx';
 
 export default {
-  title: 'UAI/Input Phone',
+  title: 'UAI Components/Input Phone',
   component: UaiInputPhone,
   tags: ['autodocs'],
   parameters: {

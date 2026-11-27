@@ -3,7 +3,7 @@ import { UaiButton, UaiTextarea, UaiThemeProvider } from '../../../blip-ds-react
 import DocumentationTemplate from './uai-textarea.mdx';
 
 export default {
-  title: 'UAI/Textarea',
+  title: 'UAI Components/Textarea',
   component: UaiTextarea,
   tags: ['autodocs'],
   parameters: {

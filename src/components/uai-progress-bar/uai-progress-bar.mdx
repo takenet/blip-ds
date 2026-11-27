@@ -1,0 +1,46 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiProgressBarStories from './uai-progress-bar.stories';
+
+<Meta isTemplate />
+
+# Progress Bar
+
+## Visão geral
+
+Barra horizontal de progresso para exibir conclusão de tarefas, consumo de cotas e distribuição proporcional em indicadores analíticos. Qualquer valor de `percent` fora da faixa válida é limitado com segurança entre `0` e `100`.
+
+```jsx
+import { UaiProgressBar, UaiThemeProvider } from 'blip-ds-react/dist/components';
+
+<UaiThemeProvider theme="light">
+  <UaiProgressBar percent={64} text="64% processado" />
+</UaiThemeProvider>;
+```
+
+## Playground
+
+<Canvas of={UaiProgressBarStories.Playground} />
+<Controls of={UaiProgressBarStories.Playground} />
+
+## Anatomia visual
+
+O componente tem uma única aparência, definida no Figma (`UaiProgressBar`); não há variações de tamanho ou cor.
+
+- Trilha: altura `sizing/2xs`, raio `radius/2xl`, fundo `surface/background`
+- Preenchimento: `accent/ai/start`, raio `radius/2xl`
+
+<Canvas of={UaiProgressBarStories.WithoutText} />
+
+## Movimento e acessibilidade
+
+- Expõe `role="progressbar"` com `aria-valuemin="0"`, `aria-valuemax="100"` e `aria-valuenow` sincronizado com o valor limitado.
+- Associa o nome acessível via `aria-label`, `aria-labelledby` ou automaticamente pelo `text` quando presente.
+- Anima avanços com `duration/moderate` e `easing/standard`, mas atualiza sem transição animada quando o percentual diminui (reset/regressão) ou sob `prefers-reduced-motion: reduce`.
+
+## Migração de `bds-progress-bar`
+
+| `bds-progress-bar` | `uai-progress-bar` |
+| --- | --- |
+| `percent`, `text`, `dataTest` | Iguais (com clamp seguro de `0` a `100` e `NaN -> 0`) |
+| `size` | Removida: altura única `sizing/2xs` |
+| `color` | Removida: preenchimento único `accent/ai/start` |

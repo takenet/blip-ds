@@ -2,11 +2,11 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Accordion - Visual Regression', () => {
   test('default closed state', async ({ storybook }) => {
-    await storybook.screenshotStory('components-accordion--properties', 'accordion-default');
+    await storybook.screenshotStory('bds-components-accordion--properties', 'accordion-default');
   });
 
   test('opened state', async ({ storybook, page }) => {
-    await storybook.goto('components-accordion--properties');
+    await storybook.goto('bds-components-accordion--properties');
 
     // Open accordion via shadow DOM click
     await page.evaluate(() => {

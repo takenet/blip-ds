@@ -2,11 +2,11 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Datepicker - Visual Regression', () => {
   test('default state', async ({ storybook }) => {
-    await storybook.screenshotStory('components-datepicker--properties', 'datepicker-default');
+    await storybook.screenshotStory('bds-components-datepicker--properties', 'datepicker-default');
   });
 
   test('opened state', async ({ storybook, page }) => {
-    await storybook.goto('components-datepicker--properties');
+    await storybook.goto('bds-components-datepicker--properties');
 
     // Click to open the calendar via shadow DOM input
     await page.evaluate(() => {

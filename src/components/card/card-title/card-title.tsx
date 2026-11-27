@@ -1,5 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
 
+/**
+ * @deprecated Use `uai-card-title` instead.
+ */
 @Component({
   tag: 'bds-card-title',
   styleUrl: 'card-title.scss',

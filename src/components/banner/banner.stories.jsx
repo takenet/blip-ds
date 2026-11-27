@@ -3,7 +3,7 @@ import DocumentationTemplate from './banner.mdx';
 import { BdsBanner, BdsBannerLink } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/[deprecated] Banner',
+  title: 'BDS Components/[deprecated] Banner',
   parameters: {
     docs: {
       page: DocumentationTemplate,

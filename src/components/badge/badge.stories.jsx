@@ -3,7 +3,7 @@ import DocumentationTemplate from './badge.mdx';
 import { BdsBadge } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Badge',
+  title: 'BDS Components/Badge',
   parameters: {
     docs: {
       page: DocumentationTemplate,

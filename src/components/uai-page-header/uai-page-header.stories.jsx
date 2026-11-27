@@ -3,7 +3,7 @@ import { UaiButton, UaiPageHeader, UaiThemeProvider, UaiTypo } from '../../../bl
 import DocumentationTemplate from './uai-page-header.mdx';
 
 export default {
-  title: 'UAI/Page Header',
+  title: 'UAI Components/Page Header',
   component: UaiPageHeader,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

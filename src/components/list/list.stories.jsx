@@ -3,7 +3,7 @@ import DocumentationTemplate from './list.mdx';
 import { BdsList, BdsListItem } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/List',
+  title: 'BDS Components/List',
   parameters: {
     docs: {
       page: DocumentationTemplate,

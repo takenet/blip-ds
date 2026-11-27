@@ -10,7 +10,7 @@ import {
 import DocumentationTemplate from './alert.mdx';
 
 export default {
-  title: 'Components/Alert',
+  title: 'BDS Components/Alert',
   parameters: {
     docs: {
       page: DocumentationTemplate

@@ -2,7 +2,7 @@ import { background } from 'storybook/theming';
 import React from 'react';
 
 export default {
-  title: 'Snippets/Carousel',
+  title: 'BDS Snippets/Carousel',
 };
 const DATACAROUSEL = [
   {

@@ -3,7 +3,7 @@ import DocumentationTemplate from './navbar.mdx';
 import { BdsNavbar, BdsNavbarContent, BdsAvatar, BdsButtonIcon } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/[deprecated] Navbar',
+  title: 'BDS Components/[deprecated] Navbar',
   // Deprecated: kept out of the Storybook MCP manifest so agents use uai-navbar.
   tags: ['!manifest'],
   parameters: {

@@ -3,7 +3,7 @@ import DocumentationTemplate from './loading-bar.mdx';
 import { BdsLoadingBar } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Loading Bar',
+  title: 'BDS Components/Loading Bar',
   parameters: {
     docs: {
       page: DocumentationTemplate,
