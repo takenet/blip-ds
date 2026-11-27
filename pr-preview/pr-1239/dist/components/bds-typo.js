@@ -1,0 +1,1 @@
+import{T as o,d as p}from"./p-pfo-0zr-.js";const r=o,s=p;export{r as BdsTypo,s as defineCustomElement}

@@ -1,0 +1,1 @@
+import{I as o,d as s}from"./p-BozF694_.js";const p=o,r=s;export{p as BdsImage,r as defineCustomElement}

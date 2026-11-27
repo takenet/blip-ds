@@ -1,0 +1,5 @@
+System.register(["./p-DuRf6Kv_.system.js"],(function(t){"use strict";var e,i,a;return{setters:[function(t){e=t.r;i=t.h;a=t.H}],execute:function(){var n=function(){return":host{display:block;width:100%;min-width:0;color:var(--uai-content-primary, #242729)}.card-title__text{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}"};var r=t("uai_card_title",/** @class */function(){function t(t){e(this,t);
+/**
+                     * Text rendered as the card title.
+                     * Use a concise label; pair with `UaiCardHeader`; avoid duplicating the default slot content.
+                     */this.text=""}t.prototype.render=function(){return i(a,{key:"d3d5ee76ec5151df8b8e96f0c6ad850cb518baa7"},i("uai-typo",{key:"24dba5df9e40efe3b48964ad1fa9fe4d7dc54200",class:"card-title__text",variant:"title",tag:"h4",bold:"medium",margin:false},this.text?this.text:i("slot",null)))};return t}());r.style=n()}}}));

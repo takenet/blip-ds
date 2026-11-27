@@ -1,0 +1,1 @@
+import{t as o}from"./p-DUwG7Zwx.js";const s=(s,t)=>!!s&&s.localName===o(t);export{s as i}

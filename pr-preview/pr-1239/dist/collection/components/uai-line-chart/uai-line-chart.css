@@ -1,0 +1,314 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  display: block;
+  width: 100%;
+}
+
+.line-chart {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--uai-spacing-md, 1rem);
+  width: 100%;
+  min-height: calc(var(--uai-sizing-4xl, 4rem) * 5);
+  font-family: var(--uai-font-family-sans, Figtree);
+  color: var(--uai-content-primary, #242729);
+}
+.line-chart--empty {
+  align-items: center;
+  justify-content: center;
+}
+
+.line-chart__empty {
+  margin: 0;
+  font-size: var(--uai-body-base-font-size, 0.875rem);
+  line-height: var(--uai-body-base-line-height, 1.375rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  color: var(--uai-content-secondary, #5f676d);
+}
+
+.line-chart__layout {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: var(--uai-spacing-sm, 0.75rem);
+  row-gap: var(--uai-spacing-xs, 0.5rem);
+  width: 100%;
+}
+
+.line-chart__y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.line-chart__y-tick {
+  font-size: var(--uai-body-sm-font-size, 0.75rem);
+  line-height: var(--uai-body-sm-line-height, 1.25rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  letter-spacing: var(--uai-letter-spacing-normal, 0px);
+  color: var(--uai-content-primary, #242729);
+  white-space: nowrap;
+}
+
+.line-chart__plot {
+  position: relative;
+  min-width: 0;
+  min-height: calc(var(--uai-sizing-4xl, 4rem) * 3);
+  height: 100%;
+  border-radius: var(--uai-radius-sm, 0.25rem);
+}
+.line-chart__plot:focus-visible {
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline-offset: var(--uai-spacing-3xs, 0.125rem);
+}
+
+.line-chart__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.line-chart__grid-line,
+.line-chart__guide-line {
+  stroke: var(--uai-border-default, #e4e6e7);
+}
+
+.line-chart__curve {
+  fill: none;
+  stroke: currentColor;
+  pointer-events: none;
+}
+
+.line-chart__hit {
+  cursor: crosshair;
+}
+
+.line-chart__color--ai-start {
+  color: var(--uai-accent-ai-start, #0099ff);
+}
+.line-chart__color--ai-middle {
+  color: var(--uai-accent-ai-middle, #a855f7);
+}
+.line-chart__color--ai-end {
+  color: var(--uai-accent-ai-end, #00c6d7);
+}
+.line-chart__color--blue {
+  color: var(--uai-fixed-blue, #1e6bf1);
+}
+.line-chart__color--success {
+  color: var(--uai-feedback-success, #3da329);
+}
+.line-chart__color--warning {
+  color: var(--uai-feedback-warning, #ff8000);
+}
+.line-chart__color--error {
+  color: var(--uai-feedback-error, #cf0022);
+}
+
+.line-chart__points {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.line-chart__point {
+  position: absolute;
+  box-sizing: border-box;
+  width: var(--uai-sizing-xs, 0.75rem);
+  height: var(--uai-sizing-xs, 0.75rem);
+  border: var(--uai-border-width-thick, 2px) solid var(--uai-surface-paper, #ffffff);
+  border-radius: var(--uai-radius-full, 624.9375rem);
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+  transition: transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .line-chart__point {
+    transition: none;
+  }
+}
+
+.line-chart__tooltip {
+  position: absolute;
+  top: var(--uai-spacing-xs, 0.5rem);
+  z-index: var(--uai-layer-content, 100);
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  min-width: var(--uai-width-menu, 14rem);
+  padding: var(--uai-spacing-md, 1rem);
+  border: var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7);
+  border-radius: var(--uai-radius-md, 0.5rem);
+  background-color: var(--uai-surface-paper, #ffffff);
+  box-shadow: var(--uai-elevation-2, 0px 6px 16px -4px rgba(0, 0, 0, 0.16));
+  pointer-events: none;
+  transition: left var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .line-chart__tooltip {
+    transition: none;
+  }
+}
+
+.line-chart__tooltip-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--uai-spacing-sm, 0.75rem);
+}
+
+.line-chart__tooltip-title {
+  font-size: var(--uai-body-sm-font-size, 0.75rem);
+  line-height: var(--uai-body-sm-line-height, 1.25rem);
+  font-weight: var(--uai-font-weight-bold, 700);
+  color: var(--uai-content-primary, #242729);
+}
+
+.line-chart__tooltip-period {
+  font-size: var(--uai-caption-font-size, 0.75rem);
+  line-height: var(--uai-caption-line-height, 1.25rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  color: var(--uai-content-secondary, #5f676d);
+}
+
+.line-chart__tooltip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, 0.25rem);
+}
+
+.line-chart__tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  font-size: var(--uai-body-sm-font-size, 0.75rem);
+  line-height: var(--uai-body-sm-line-height, 1.25rem);
+  color: var(--uai-content-primary, #242729);
+}
+
+.line-chart__dot {
+  flex: none;
+  width: var(--uai-sizing-2xs, 0.5rem);
+  height: var(--uai-sizing-2xs, 0.5rem);
+  border-radius: var(--uai-radius-full, 624.9375rem);
+  background-color: currentColor;
+}
+
+.line-chart__tooltip-label {
+  color: var(--uai-content-secondary, #5f676d);
+}
+
+.line-chart__tooltip-value {
+  margin-left: auto;
+  font-weight: var(--uai-font-weight-semibold, 600);
+  color: var(--uai-content-primary, #242729);
+  white-space: nowrap;
+}
+
+.line-chart__x-axis {
+  position: relative;
+  width: 100%;
+  height: var(--uai-sizing-md, 1.25rem);
+}
+
+.line-chart__x-tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: var(--uai-body-sm-font-size, 0.75rem);
+  line-height: var(--uai-body-sm-line-height, 1.25rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  color: var(--uai-content-primary, #242729);
+  white-space: nowrap;
+}
+.line-chart__x-tick--start {
+  transform: translateX(0);
+}
+.line-chart__x-tick--end {
+  transform: translateX(-100%);
+}
+
+.line-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--uai-spacing-lg, 1.5rem);
+}
+
+.line-chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+}
+
+.line-chart__legend-glyph {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--uai-sizing-sm, 1rem);
+  height: var(--uai-sizing-2xs, 0.5rem);
+}
+
+.line-chart__legend-line {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.line-chart__legend-label {
+  font-size: var(--uai-body-sm-font-size, 0.75rem);
+  line-height: var(--uai-body-sm-line-height, 1.25rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  color: var(--uai-content-primary, #242729);
+}
+
+.line-chart__series {
+  animation: uai-chart-reveal var(--uai-duration-loop, 800ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .line-chart__series {
+    animation: none;
+  }
+}
+
+@keyframes uai-chart-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}

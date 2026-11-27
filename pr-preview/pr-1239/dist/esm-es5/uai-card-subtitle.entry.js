@@ -1,0 +1,5 @@
+import{r as registerInstance,h,H as Host}from"./index-DUwG7Zwx.js";var uaiCardSubtitleCss=function(){return":host{display:block;width:100%;min-width:0;color:var(--uai-content-secondary, #5f676d)}"};var UaiCardSubtitle=/** @class */function(){function t(t){registerInstance(this,t);
+/**
+         * Text rendered as the card subtitle.
+         * Use for secondary context such as timestamps or scope; pair with `UaiCardTitle`; avoid duplicating the default slot.
+         */this.text=""}t.prototype.render=function(){return h(Host,{key:"e56c752429c8e0d03ad125842b86b96056e30542"},h("uai-typo",{key:"f91fcb6ab3744c155e59644a0901b7ba14652f68",variant:"body-base",tag:"p",bold:"regular",margin:false},this.text?this.text:h("slot",null)))};return t}();UaiCardSubtitle.style=uaiCardSubtitleCss();export{UaiCardSubtitle as uai_card_subtitle};

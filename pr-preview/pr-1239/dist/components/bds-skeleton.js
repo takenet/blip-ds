@@ -1,0 +1,1 @@
+import{S as o,d as s}from"./p-BL03mt9w.js";const t=o,m=s;export{t as BdsSkeleton,m as defineCustomElement}

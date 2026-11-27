@@ -1,0 +1,1 @@
+import{B as o,d as p}from"./p-Doegeup8.js";const s=o,e=p;export{s as BdsLoadingSpinner,e as defineCustomElement}

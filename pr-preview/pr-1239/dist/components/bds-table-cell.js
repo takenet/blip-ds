@@ -1,0 +1,1 @@
+import{T as a,d as o}from"./p-OavDY72a.js";const s=a,p=o;export{s as BdsTableCell,p as defineCustomElement}

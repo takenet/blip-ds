@@ -1,0 +1,57 @@
+'use strict';
+
+var index = require('./index-JW9Yq-qX.js');
+var assetLoader = require('./asset-loader-CO6wtD2Y.js');
+var deprecation = require('./deprecation-DQqFZBv-.js');
+var utils = require('./utils-Glf6a2vm.js');
+require('./asset-config-CKVSo2i2.js');
+
+const uaiLogoCss = () => `:host{display:inline-block;vertical-align:middle}.asset{display:block}.asset svg{display:block;width:100%;height:auto}`;
+
+const UaiLogo = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        this.requestVersion = 0;
+        /**
+         * Accessible name for a meaningful logo. Without it, the logo is decorative.
+         */
+        this.ariaLabel = null;
+    }
+    connectedCallback() {
+        this.loadLogo();
+    }
+    disconnectedCallback() {
+        this.requestVersion++;
+    }
+    loadLogo() {
+        const version = ++this.requestVersion;
+        if (!this.name) {
+            this.svgContent = undefined;
+            return;
+        }
+        this.svgContent = undefined;
+        Promise.resolve()
+            .then(() => assetLoader.loadAssetSvg(utils.getLogoName(this.name)))
+            .then((svg) => {
+            if (version === this.requestVersion)
+                this.svgContent = svg;
+        })
+            .catch(() => {
+            if (version !== this.requestVersion)
+                return;
+            this.svgContent = undefined;
+            deprecation.warnOnce('uai-logo', `load:${this.name}`, `Failed to load logo "${this.name}" from blip-tokens.`);
+        });
+    }
+    render() {
+        return (index.h(index.Host, { key: 'd5e25c58665ba402cc9599bfdca9d35d938f3aab', role: this.ariaLabel ? 'img' : undefined, "aria-label": this.ariaLabel, "aria-hidden": this.ariaLabel ? undefined : 'true' }, index.h("div", { key: 'ce265bb29d569e449a17f5ef0dc08159756eb617', class: "asset", part: "asset", innerHTML: this.svgContent, "data-test": this.dataTest })));
+    }
+    static get watchers() { return {
+        "name": [{
+                "loadLogo": 0
+            }]
+    }; }
+};
+UaiLogo.style = uaiLogoCss();
+
+exports.uai_logo = UaiLogo;

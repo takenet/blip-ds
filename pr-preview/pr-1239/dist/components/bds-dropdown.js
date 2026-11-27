@@ -1,0 +1,1 @@
+import{B as o,d as s}from"./p-B_myRFcG.js";const m=o,p=s;export{m as BdsDropdown,p as defineCustomElement}

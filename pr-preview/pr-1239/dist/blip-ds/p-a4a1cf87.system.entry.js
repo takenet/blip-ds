@@ -1,0 +1,5 @@
+System.register(["./p-DuRf6Kv_.system.js"],(function(t){"use strict";var n,e,i;return{setters:[function(t){n=t.r;e=t.h;i=t.H}],execute:function(){var a=function(){return":host{display:block;width:100%;min-width:0;color:var(--uai-content-secondary, #5f676d)}"};var r=t("uai_card_subtitle",/** @class */function(){function t(t){n(this,t);
+/**
+                     * Text rendered as the card subtitle.
+                     * Use for secondary context such as timestamps or scope; pair with `UaiCardTitle`; avoid duplicating the default slot.
+                     */this.text=""}t.prototype.render=function(){return e(i,{key:"e56c752429c8e0d03ad125842b86b96056e30542"},e("uai-typo",{key:"f91fcb6ab3744c155e59644a0901b7ba14652f68",variant:"body-base",tag:"p",bold:"regular",margin:false},this.text?this.text:e("slot",null)))};return t}());r.style=a()}}}));

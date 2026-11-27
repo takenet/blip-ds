@@ -1,0 +1,1 @@
+import{T as o,d as s}from"./p-EywS8v5Z.js";const p=o,r=s;export{p as BdsThemeProvider,r as defineCustomElement}

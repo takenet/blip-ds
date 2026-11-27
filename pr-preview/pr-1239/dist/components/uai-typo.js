@@ -1,0 +1,1 @@
+import{U as s,d as o}from"./p-CtB3vesJ.js";const t=s,p=o;export{t as UaiTypo,p as defineCustomElement}

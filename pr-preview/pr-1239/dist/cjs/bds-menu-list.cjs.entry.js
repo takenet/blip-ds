@@ -1,0 +1,17 @@
+'use strict';
+
+var index = require('./index-JW9Yq-qX.js');
+
+const menuListCss = () => `.menu-list{display:-ms-flexbox;display:flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;-webkit-box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));box-shadow:0px 6px 16px -4px var(--color-shadow-1, rgba(0, 0, 0, 0.16));height:56px;border-radius:8px}.menu-list ${index.transformTag("bds-menu-list-item")}+${index.transformTag("bds-menu-list-item")}{border-left:1px solid #d4d4d4}.menu-list__left{width:7px;height:56px;border-radius:8px 0px 0px 8px;background-color:#f6f6f6}.menu-list__right{width:7px;height:56px;border-radius:0px 8px 8px 0px;background-color:#f6f6f6}`;
+
+const MenuList = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+    }
+    render() {
+        return (index.h(index.Host, { key: '1872021bbb0b55f1c182731899ca31d8fee42f3b' }, index.h("div", { key: '527d658807186cbbf27c7f6d8076692a84598b10', class: "menu-list" }, index.h("div", { key: '2dfb04c77c2b328d85c635b2878ed1b12f061d45', class: "menu-list__left" }), index.h("slot", { key: 'edc4efb3549a5944268398fc562250c8df92b4ef' }), index.h("div", { key: 'b781e15136b67c6f1af611c4079a30d8bdc18d41', class: "menu-list__right" }))));
+    }
+};
+MenuList.style = menuListCss();
+
+exports.bds_menu_list = MenuList;

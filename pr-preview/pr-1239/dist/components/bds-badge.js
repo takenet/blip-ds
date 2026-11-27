@@ -1,0 +1,1 @@
+import{B as s,d as o}from"./p-BNWVsCLH.js";const p=s,r=o;export{p as BdsBadge,r as defineCustomElement}

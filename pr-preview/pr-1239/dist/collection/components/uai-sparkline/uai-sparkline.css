@@ -1,0 +1,74 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  display: block;
+  width: 100%;
+}
+
+.sparkline {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uai-sizing-4xl, 4rem);
+  color: var(--uai-content-disabled, #848e94);
+}
+.sparkline--positive {
+  color: var(--uai-feedback-success, #3da329);
+}
+.sparkline--negative {
+  color: var(--uai-feedback-error, #cf0022);
+}
+
+.sparkline__svg {
+  animation: uai-chart-reveal var(--uai-duration-loop, 800ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sparkline__svg {
+    animation: none;
+  }
+}
+.sparkline__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sparkline__area {
+  opacity: var(--uai-opacity-focus-ring, 0.3);
+  fill-opacity: var(--uai-opacity-disabled, 0.5);
+}
+
+.sparkline__line {
+  fill: none;
+  stroke: currentColor;
+}
+
+@keyframes uai-chart-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}

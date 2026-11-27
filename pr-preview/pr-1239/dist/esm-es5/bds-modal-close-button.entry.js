@@ -1,0 +1,4 @@
+import{r as registerInstance,h}from"./index-DUwG7Zwx.js";var modalCloseButtonCss=function(){return".modal__close__button-icon{opacity:0;visibility:hidden;color:var(--color-content-default, rgb(40, 40, 40));display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end;padding-bottom:16px}.modal__close__button-icon--active{opacity:1;visibility:visible}"};var BdsModalCloseButton=/** @class */function(){function o(o){registerInstance(this,o);
+/**
+         * Used to hide or show the close button
+         */this.active=true}o.prototype.render=function(){return h("div",{key:"0060bf8435156ce5c21a7490129e925f23f3c65c",class:{"modal__close__button-icon":true,"modal__close__button-icon--active":this.active}},h("bds-icon",{key:"9167d5a302fadc15ae0df8c609df65d8be56bdae",size:"medium",name:"close"}))};return o}();BdsModalCloseButton.style=modalCloseButtonCss();export{BdsModalCloseButton as bds_modal_close_button};

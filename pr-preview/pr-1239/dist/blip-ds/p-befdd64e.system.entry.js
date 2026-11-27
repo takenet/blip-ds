@@ -1,0 +1,4 @@
+System.register(["./p-DuRf6Kv_.system.js"],(function(t){"use strict";var e,n;return{setters:[function(t){e=t.r;n=t.h}],execute:function(){var r=function(){return":host{width:100%}"};var s=t("bds_card_header",/** @class */function(){function t(t){e(this,t);
+/**
+                     * Prop for internal elements alignment. Will follow the same values of css.
+                     */this.align="space-between"}t.prototype.render=function(){return n("bds-grid",{key:"9d0392b56f287a7516e46816173f23ae6fe4eca1",xxs:"12",direction:"row",gap:"1",justifyContent:this.align,alignItems:"center"},n("slot",{key:"8665a7b594a760361525d8353858c8fe2ff6749b"}))};return t}());s.style=r()}}}));

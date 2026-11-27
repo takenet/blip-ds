@@ -1,0 +1,1 @@
+import{S as o,d as s}from"./p-BDxkkuOa.js";const a=o,p=s;export{a as BdsSwitch,p as defineCustomElement}

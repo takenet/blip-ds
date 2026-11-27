@@ -1,0 +1,1 @@
+import{U as o,d as s}from"./p-DcfQC6PX.js";const p=o,r=s;export{p as UaiIcon,r as defineCustomElement}

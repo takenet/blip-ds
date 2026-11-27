@@ -1,0 +1,82 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  display: block;
+  width: 100%;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  width: 100%;
+}
+
+.progress__track {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uai-sizing-2xs, 0.5rem);
+  border-radius: var(--uai-radius-2xl, 1.5rem);
+  background-color: var(--uai-surface-background, #f2f3f3);
+  overflow: hidden;
+}
+
+.progress__fill {
+  height: 100%;
+  border-radius: var(--uai-radius-2xl, 1.5rem);
+  background-color: var(--uai-accent-ai-start, #0099ff);
+  transition: width var(--uai-duration-moderate, 200ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress__fill {
+    transition: none;
+  }
+}
+.progress__fill {
+  animation: uai-chart-grow var(--uai-duration-loop, 800ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1)) backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress__fill {
+    animation: none;
+  }
+}
+.progress__fill--instant {
+  transition: none;
+}
+
+.progress__text {
+  margin: 0;
+  font-family: var(--uai-font-family-sans, Figtree);
+  font-size: var(--uai-body-base-font-size, 0.875rem);
+  line-height: var(--uai-body-base-line-height, 1.375rem);
+  font-weight: var(--uai-font-weight-regular, 400);
+  letter-spacing: var(--uai-letter-spacing-normal, 0px);
+  color: var(--uai-content-primary, #242729);
+}
+
+@keyframes uai-chart-grow {
+  from {
+    width: 0;
+  }
+}

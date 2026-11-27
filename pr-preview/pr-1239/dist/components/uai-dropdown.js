@@ -1,0 +1,1 @@
+import{U as s,d as o}from"./p--neliRus.js";const p=s,r=o;export{p as UaiDropdown,r as defineCustomElement}
