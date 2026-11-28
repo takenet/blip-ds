@@ -80,7 +80,7 @@ Playground.argTypes = {
   tag: {
     table: { defaultValue: { summary: 'p' } },
     description: 'Elemento HTML renderizado. Use para dar a semântica correta ao texto.',
-    options: ['p', 'h1', 'h2', 'h3', 'h4', 'span'],
+    options: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'],
     control: { type: 'select' },
   },
   italic: {

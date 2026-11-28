@@ -172,7 +172,7 @@ describe('uai-typo', () => {
   });
 
   describe('tag', () => {
-    it.each(['p', 'h1', 'h2', 'h3', 'h4', 'span'])('renders a %s element', async (tag) => {
+    it.each(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'])('renders a %s element', async (tag) => {
       const page = await render(`<uai-typo tag="${tag}">Text</uai-typo>`);
 
       expect(text(page).tagName).toBe(tag.toUpperCase());
