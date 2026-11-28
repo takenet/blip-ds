@@ -1,0 +1,1 @@
+import{U as o,d as p}from"./p-B8ApUi_R.js";const s=o,r=p;export{s as UaiButton,r as defineCustomElement}

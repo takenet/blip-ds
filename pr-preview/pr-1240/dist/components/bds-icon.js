@@ -1,0 +1,1 @@
+import{I as a,d as o}from"./p-kTBPaJ4a.js";const s=a,p=o;export{s as BdsIcon,p as defineCustomElement}

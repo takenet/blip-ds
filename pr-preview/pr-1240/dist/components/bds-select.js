@@ -1,0 +1,1 @@
+import{S as s,d as o}from"./p-BsGTBrJC.js";const r=s,p=o;export{r as BdsSelect,p as defineCustomElement}

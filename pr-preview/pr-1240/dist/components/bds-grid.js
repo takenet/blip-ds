@@ -1,0 +1,1 @@
+import{G as o,d as r}from"./p-BGGYMrqm.js";const s=o,m=r;export{s as BdsGrid,m as defineCustomElement}

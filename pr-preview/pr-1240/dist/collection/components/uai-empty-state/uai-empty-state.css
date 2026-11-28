@@ -1,0 +1,100 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  --empty-state-padding-block: var(--uai-spacing-2xl, 2.5rem);
+  --empty-state-padding-inline: var(--uai-spacing-lg, 1.5rem);
+  --empty-state-box-size: var(--uai-sizing-2xl, 2.5rem);
+  --empty-state-icon-size: var(--uai-sizing-lg, 1.5rem);
+  --empty-state-icon-color: var(--uai-content-secondary, #5f676d);
+  --empty-state-box-bg: var(--uai-surface-muted, #f2f3f3);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  width: 100%;
+  padding: var(--empty-state-padding-block) var(--empty-state-padding-inline);
+  font-family: var(--uai-font-family-sans, Figtree), sans-serif;
+  text-align: center;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host(.empty-state--inline) {
+  --empty-state-padding-block: var(--uai-spacing-lg, 1.5rem);
+  --empty-state-padding-inline: var(--uai-spacing-md, 1rem);
+  --empty-state-box-size: var(--uai-sizing-xl, 2rem);
+  --empty-state-icon-size: var(--uai-sizing-md, 1.25rem);
+}
+
+:host(.empty-state--error) {
+  --empty-state-icon-color: var(--uai-feedback-error, #cf0022);
+  --empty-state-box-bg: var(--uai-feedback-error-subtle, #fef2f2);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.empty-state__icon-box {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--empty-state-box-size);
+  height: var(--empty-state-box-size);
+  border-radius: var(--uai-radius-full, 624.9375rem);
+  background: var(--empty-state-box-bg);
+  color: var(--empty-state-icon-color);
+}
+
+.empty-state__icon {
+  --uai-icon-size: var(--empty-state-icon-size);
+}
+
+.empty-state__heading,
+.empty-state__description {
+  display: block;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.empty-state__heading {
+  --uai-typo-color: var(--uai-content-primary, #242729);
+}
+
+.empty-state__description {
+  --uai-typo-color: var(--uai-content-secondary, #5f676d);
+  max-width: var(--uai-width-dialog, 26.5rem);
+}
+
+.empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  padding-top: var(--uai-spacing-xs, 0.5rem);
+}

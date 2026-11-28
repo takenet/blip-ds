@@ -1,0 +1,7 @@
+import{r as registerInstance,h}from"./index-B3G05Lxx.js";var menuSeparationCss=function(){return".menuseparation{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;padding:0 16px}.menuseparation__small{margin:8px 0}.menuseparation__default{margin:12px 0}.menuseparation__large{margin:16px 0}.menuseparation .dividor-item{height:1px;width:100%;background-color:#d4d4d4}.menuseparation .title-item{margin-right:8px;margin-top:-4px;color:#6e7b91}"};var BdsMenuSeparation=/** @class */function(){function e(e){registerInstance(this,e);
+/**
+         * Value. Used to insert a title to the divider.
+         */this.value=null;
+/**
+         * Size. Used to set the size of the divider.
+         */this.size=null}e.prototype.render=function(){var e;return h("div",{key:"d3f261400fe5def6d2711b77d4616f97be7bac1f",class:(e={menuseparation:true},e["menuseparation__".concat(this.size)]=true,e)},this.value&&h("bds-typo",{key:"34854c1c7819a6eda00f2d2819df5cde2b8dc467",class:"title-item",variant:"fs-10",tag:"span"},this.value),h("div",{key:"7d78e0968962371f8040c7e13c02c39071bafd6a",class:"dividor-item"}))};return e}();BdsMenuSeparation.style=menuSeparationCss();export{BdsMenuSeparation as bds_menu_separation};

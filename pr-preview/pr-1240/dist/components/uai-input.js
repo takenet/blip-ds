@@ -1,0 +1,1 @@
+import{U as s,d as o}from"./p-B4Lv-Vs3.js";const p=s,r=o;export{p as UaiInput,r as defineCustomElement}
