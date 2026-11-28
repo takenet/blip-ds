@@ -1,0 +1,88 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as ListStories from './uai-list.stories';
+
+<Meta isTemplate />
+
+# List
+
+## Visão geral
+
+Lista de linhas `uai-list-item`, montada a partir de `data` ou de elementos filhos. Serve para listas simples e para seleção única (`radio`), múltipla (`checkbox`) ou liga/desliga (`switch`). Para dados em colunas, use `uai-table`.
+
+No React, importe `UaiList`, `UaiListItem`, `UaiListItemContent` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Como custom element: `<uai-list type-list="radio" data='[{"value":"01","text":"Opção"}]'></uai-list>`.
+
+## Playground
+
+<Canvas of={ListStories.Playground} />
+<Controls of={ListStories.Playground} />
+
+## Como usar
+
+Use o mesmo `typeList` em todas as linhas. Com `data`, os filhos são ignorados. Ouça `uaiListRadioChange`, `uaiListCheckboxChange` ou `uaiListSwitchChange` para guardar a seleção; numa lista `radio`, `value` lê e define a linha selecionada.
+
+<Canvas of={ListStories.Usage} sourceState="shown" />
+
+## Controles
+
+`checkbox` e `radio` ficam à esquerda; `switch` fica à direita. Com um controle, a linha é sempre clicável e a área de ação não aparece. `radio` fica marcado num segundo clique; `checkbox` e `switch` alternam.
+
+<Canvas of={ListStories.TypeLists} />
+
+## Estados
+
+`clickable` mostra hover (`overlay/hover`) e pressed (`overlay/pressed`). `active` marca a linha atual com `overlay/selected`, ícone sólido e texto em negrito, e independe de `checked`.
+
+<Canvas of={ListStories.States} />
+
+## Tamanhos
+
+`size` muda o padding: `tall` (`spacing/md`), `standard` (`spacing/xs` × `spacing/md`, padrão) e `short` (`spacing/xs`).
+
+<Canvas of={ListStories.Sizes} />
+
+## Chips e ações
+
+`chips` aceita JSON ou array; chips com mais de 30 caracteres são cortados com "..." e mostram o texto inteiro num tooltip. `actionsButtons` recebe nomes de ícone UAI e só aparece com `typeList` nulo ou `default`.
+
+<Canvas of={ListStories.Chips} />
+
+## Comportamento
+
+| Regra | Cobertura |
+| --- | --- |
+| Padrões, `data` em JSON ou array, filhos ignorados com `data` | `uai-list.spec.tsx` |
+| Eventos de mudança com todas as linhas marcadas (`checkbox`, `switch`) ou a linha selecionada (`radio`) | `uai-list.spec.tsx` |
+| Ordem dos elementos, corte de chips, prioridade do avatar sobre o ícone | `uai-list-item.spec.tsx` |
+| Foco visível, Enter e Espaço, hover só em linhas clicáveis | `uai-list-item.e2e.ts` |
+| Clique em botão de ação não alterna `checked` | `uai-list-item.spec.tsx`, `uai-list-item.e2e.ts` |
+
+## Acessibilidade
+
+A lista tem `role="list"` (`radiogroup` com `radio`) e cada linha `listitem`. Linhas com controle têm `role` `checkbox`, `radio` ou `switch` com `aria-checked`; linhas `default` clicáveis têm `role="button"`. Linhas interativas recebem foco com Tab, mostram o anel `border/ring` em `:focus-visible`, e Enter ou Espaço fazem o mesmo que o clique. Os controles internos são só visuais (`aria-hidden`, `inert`). A transição de fundo usa `duration/fast` e some com `prefers-reduced-motion: reduce`. Não há `disabled`, como no `bds-list`.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Linha | `spacing/md`, `spacing/xs`, `radius/none`, `radius/md`, `content/primary`, `font-family/sans` |
+| Estados | `overlay/hover`, `overlay/pressed`, `overlay/selected`, `border/ring`, `border-width/thick` |
+| Texto | `body/lg`, `caption`, `content/secondary` |
+| Chip provisório | `surface/muted`, `border/default`, `border-width/default`, `radius/full`, `sizing/lg` |
+
+## Migração do `bds-list`
+
+Props, padrões e formato de `Data` iguais; os eventos trocam o prefixo `bds` por `uai`.
+
+| `bds-list` / `bds-list-item` | `uai-list` / `uai-list-item` |
+| --- | --- |
+| `list.value` vira o objeto da linha ao clicar num radio; `value` externo não seleciona | `value` guarda o `value` da linha; `value` externo seleciona o radio |
+| `typeList` nulo da lista apaga o `typeList` dos filhos | só sobrescreve quando a lista tem `typeList` |
+| clique em botão de ação alterna `checked` | não alterna; o evento de ação continua |
+| `bdsChecked` dispara em mudança por código e com `false` nos radios desmarcados | `uaiChecked` só por clique, Enter ou Espaço |
+| texto nunca cresce (`chips.length < 0`) | texto cresce quando não há chips nem slots de conteúdo ou ação |
+| `bdsClickActionButtom` / `bdsClickActionsButtons` | `uaiClickActionButtom` / `uaiClickActionsButtons` e também `uaiClickActionButton` / `uaiClickActionsButton`, com o mesmo `detail` |
+| sem foco visível, teclado, ARIA nem movimento reduzido | anel de foco, Enter e Espaço, roles e `aria-checked`, transição removida com `reduce` |
+
+## Design
+
+[UaiListItem no UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4754-216) · [exemplos de UaiList](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4767-530).
