@@ -2,6 +2,9 @@ import { Component, h, Host, Prop } from '@stencil/core';
 
 export type Shape = 'circle' | 'square';
 
+/**
+ * @deprecated Use uai-skeleton with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-skeleton',
   styleUrl: 'skeleton.scss',

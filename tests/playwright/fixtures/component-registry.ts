@@ -204,9 +204,9 @@ export const WAVE_3: ComponentEntry[] = [
   },
   {
     tag: 'bds-skeleton',
-    name: 'Skeleton',
-    primaryStory: 'components-skeleton--properties',
-    stories: [{ storyId: 'components-skeleton--properties', label: 'Properties' }],
+    name: '[deprecated] Skeleton',
+    primaryStory: 'components-deprecated-skeleton--properties',
+    stories: [{ storyId: 'components-deprecated-skeleton--properties', label: 'Properties' }],
   },
 ];
 
@@ -480,9 +480,9 @@ export const WAVE_4: ComponentEntry[] = [
   },
   {
     tag: 'bds-list',
-    name: 'List',
-    primaryStory: 'components-list--properties',
-    stories: [{ storyId: 'components-list--properties', label: 'Properties' }],
+    name: '[deprecated] List',
+    primaryStory: 'components-deprecated-list--properties',
+    stories: [{ storyId: 'components-deprecated-list--properties', label: 'Properties' }],
   },
   {
     tag: 'bds-card-color',
