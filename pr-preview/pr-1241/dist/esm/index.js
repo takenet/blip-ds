@@ -1,7 +1,7 @@
 import { a as setTagTransformer, t as transformTag } from './index-B3G05Lxx.js';
 export { U as UAI_TOAST_POSITIONS, s as showToast } from './uai-toast-4p87iJPi.js';
 
-const prefix = "ds-0bfcf20c";
+const prefix = "ds-6822b830";
 var scope = {
 	prefix: prefix
 };
