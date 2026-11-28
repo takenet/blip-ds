@@ -17,7 +17,7 @@ export type UaiTypoVariant =
   | 'overline';
 export type UaiTypoBold = 'regular' | 'medium' | 'semibold' | 'bold';
 export type UaiTypoLetterSpacing = 'normal' | 'expanded';
-export type UaiTypoTag = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'span';
+export type UaiTypoTag = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
 export type UaiTypoLineHeight = 'none' | 'small' | 'simple' | 'plus' | 'double';
 
 const VARIANTS: UaiTypoVariant[] = [
@@ -37,7 +37,7 @@ const VARIANTS: UaiTypoVariant[] = [
 ];
 const BOLDS: UaiTypoBold[] = ['regular', 'medium', 'semibold', 'bold'];
 const LETTER_SPACINGS: UaiTypoLetterSpacing[] = ['normal', 'expanded'];
-const TAGS: UaiTypoTag[] = ['p', 'h1', 'h2', 'h3', 'h4', 'span'];
+const TAGS: UaiTypoTag[] = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'];
 const MARGIN_VARIANTS: UaiTypoVariant[] = ['display', 'heading-xl', 'heading-lg', 'heading-md'];
 
 const supported = <T extends string>(prop: string, value: string, allowed: T[], fallback: T): T => {
@@ -57,7 +57,7 @@ const hasThemeRoot = (el: HTMLElement): boolean => {
 
 /**
  * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
- * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+ * tag sets the HTML element, so use h1-h6 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
  *
  * @slot - Text content.
  * @part uai-typo__text - The text element.

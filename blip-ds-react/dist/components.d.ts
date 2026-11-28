@@ -118,6 +118,7 @@ import { UaiChipTag as UaiChipTagElement } from "blip-ds/dist/components/uai-chi
 import { UaiDatepicker as UaiDatepickerElement } from "blip-ds/dist/components/uai-datepicker.js";
 import { UaiDropdown as UaiDropdownElement } from "blip-ds/dist/components/uai-dropdown.js";
 import { UaiEmoji as UaiEmojiElement } from "blip-ds/dist/components/uai-emoji.js";
+import { UaiEmptyState as UaiEmptyStateElement } from "blip-ds/dist/components/uai-empty-state.js";
 import { UaiGrid as UaiGridElement } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement } from "blip-ds/dist/components/uai-input-chips.js";
@@ -737,6 +738,8 @@ export type UaiDropdownEvents = {
 export declare const UaiDropdown: StencilReactComponent<UaiDropdownElement, UaiDropdownEvents, Components.UaiDropdown>;
 export type UaiEmojiEvents = NonNullable<unknown>;
 export declare const UaiEmoji: StencilReactComponent<UaiEmojiElement, UaiEmojiEvents, Components.UaiEmoji>;
+export type UaiEmptyStateEvents = NonNullable<unknown>;
+export declare const UaiEmptyState: StencilReactComponent<UaiEmptyStateElement, UaiEmptyStateEvents, Components.UaiEmptyState>;
 export type UaiGridEvents = NonNullable<unknown>;
 export declare const UaiGrid: StencilReactComponent<UaiGridElement, UaiGridEvents, Components.UaiGrid>;
 export type UaiIconEvents = NonNullable<unknown>;

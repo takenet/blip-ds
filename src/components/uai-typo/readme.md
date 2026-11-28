@@ -8,7 +8,7 @@
 ## Overview
 
 Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
-tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+tag sets the HTML element, so use h1-h6 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
 
 ## Properties
 
@@ -22,7 +22,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
 | `margin`        | `margin`         | If true, adds the default bottom margin to display and heading variants.                                                                                                                                                  | `boolean`                                                                                                                                                                            | `true`        |
 | `noWrap`        | `no-wrap`        | Keeps the text on one line and truncates it with an ellipsis.                                                                                                                                                             | `boolean`                                                                                                                                                                            | `false`       |
 | `paragraph`     | `paragraph`      | Adds a bottom margin for paragraphs.                                                                                                                                                                                      | `boolean`                                                                                                                                                                            | `false`       |
-| `tag`           | `tag`            | Element tag. Use it to give the text the right semantics.                                                                                                                                                                 | `"h1" \| "h2" \| "h3" \| "h4" \| "p" \| "span"`                                                                                                                                      | `'p'`         |
+| `tag`           | `tag`            | Element tag. Use it to give the text the right semantics.                                                                                                                                                                 | `"h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "p" \| "span"`                                                                                                                      | `'p'`         |
 | `variant`       | `variant`        | Text style role from the UAI typography scale. Can be one of: 'display', 'heading-xl', 'heading-lg', 'heading-md', 'title-lg', 'title-md', 'title-sm', 'title', 'body-lg', 'body-base', 'body-sm', 'caption', 'overline'. | `"body-base" \| "body-lg" \| "body-sm" \| "caption" \| "display" \| "heading-lg" \| "heading-md" \| "heading-xl" \| "overline" \| "title" \| "title-lg" \| "title-md" \| "title-sm"` | `'body-base'` |
 
 
@@ -51,6 +51,7 @@ tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular,
  - [uai-button](../uai-button)
  - [uai-chip-tag](../uai-chip-tag)
  - [uai-datepicker](../uai-datepicker)
+ - [uai-empty-state](../uai-empty-state)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
  - [uai-input-date](../uai-input-date)
@@ -81,6 +82,7 @@ graph TD;
   uai-button --> uai-typo
   uai-chip-tag --> uai-typo
   uai-datepicker --> uai-typo
+  uai-empty-state --> uai-typo
   uai-input --> uai-typo
   uai-input-chips --> uai-typo
   uai-input-date --> uai-typo

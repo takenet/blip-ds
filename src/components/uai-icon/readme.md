@@ -50,6 +50,7 @@ without the FontFace API.
  - [uai-button](../uai-button)
  - [uai-chip-tag](../uai-chip-tag)
  - [uai-datepicker](../uai-datepicker)
+ - [uai-empty-state](../uai-empty-state)
  - [uai-input](../uai-input)
  - [uai-input-chips](../uai-input-chips)
  - [uai-input-date](../uai-input-date)
@@ -77,6 +78,7 @@ graph TD;
   uai-button --> uai-icon
   uai-chip-tag --> uai-icon
   uai-datepicker --> uai-icon
+  uai-empty-state --> uai-icon
   uai-input --> uai-icon
   uai-input-chips --> uai-icon
   uai-input-date --> uai-icon

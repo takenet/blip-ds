@@ -1,0 +1,78 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as EmptyStateStories from './uai-empty-state.stories';
+
+<Meta isTemplate />
+
+# Empty State
+
+## Visão geral
+
+Estado vazio ou de erro de uma página, painel, cartão ou lista: um ícone decorativo, um título, uma descrição curta e ações opcionais. Use quando uma região não tem o que mostrar ou falhou ao carregar. Para carregamento, use um skeleton; para retornos passageiros, use um toast.
+
+Componente novo, sem `bds-*` equivalente. Monta `uai-icon` e `uai-typo` e recebe `uai-button` no slot `actions`.
+
+No React, importe `UaiEmptyState` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Declare o tema na raiz e carregue a fonte **Figtree** e o CSS dos ícones UAI (`blip-tokens/uai-icons/css`) uma vez na aplicação.
+
+```jsx
+import { UaiButton, UaiEmptyState, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+<UaiThemeProvider theme="light">
+  <UaiEmptyState variant="inline" tone="error" heading="Não foi possível carregar as conversas">
+    <UaiButton slot="actions" variant="text" color="content" size="short" iconLeft="refresh" onUaiClick={retry}>
+      Tentar de novo
+    </UaiButton>
+  </UaiEmptyState>
+</UaiThemeProvider>;
+```
+
+## Playground
+
+<Canvas of={EmptyStateStories.Playground} />
+<Controls of={EmptyStateStories.Playground} />
+
+## Variantes e tons
+
+`variant` define a densidade: `page` (padrão) para uma página ou painel, `inline` para uma coluna estreita, um cartão ou uma lista lateral. `tone="error"` pinta o ícone com `feedback-error` sobre `feedback-error-subtle` e anuncia o estado. A largura é fluida (100% do contêiner).
+
+<Canvas of={EmptyStateStories.Variants} />
+
+## Em uma página
+
+Num painel principal, use `variant="page"` dentro de um `uai-paper`.
+
+<Canvas of={EmptyStateStories.InsidePaper} />
+
+## Erro com ação
+
+Numa lista lateral que falhou, use `variant="inline" tone="error"` e uma ação de texto para tentar de novo. O título diz o que falhou, não só a cor.
+
+<Canvas of={EmptyStateStories.InlineError} />
+
+## Ícone
+
+`icon` recebe um nome de ícone UAI e é sempre decorativo. Sem `icon`, o tom neutro usa `message-ballon` e o tom de erro usa `error`.
+
+## Descrição rica
+
+A prop `description` aceita texto simples. Para texto com link, use o slot padrão: quando preenchido, ele substitui a prop.
+
+<Canvas of={EmptyStateStories.RichDescription} />
+
+## Ações
+
+O slot `actions` recebe um ou dois `uai-button`: `variant="outline" size="short"` em `page`, `variant="text" size="short"` em `inline`. Vazio, ele não ocupa espaço. O componente não emite eventos: ouça `onUaiClick` nos botões.
+
+<Canvas of={EmptyStateStories.TwoActions} />
+
+## Acessibilidade
+
+- O título é semântico: `headingTag` escolhe o elemento (`h1` a `h6` ou `p`, padrão `h2`) pelo nível da página, não pelo tamanho. O visual é sempre `title-sm` semibold.
+- O ícone é decorativo (`aria-hidden="true"`).
+- `tone="error"` põe `role="alert"` no host, e a falha é anunciada uma vez ao aparecer. O tom neutro não tem papel ARIA.
+- O host não recebe foco: o Tab vai direto para a primeira ação. Depois de "Tentar de novo", leve o foco para o conteúdo carregado ou para o novo estado.
+- Os textos são do consumidor; não há texto padrão por idioma.
+
+Tokens: `surface-muted`, `content-primary`, `content-secondary`, `feedback-error`, `feedback-error-subtle`, `title-sm`, `body-base`, `font-family-sans`, `font-weight-semibold`, `sizing-2xl`, `sizing-xl`, `sizing-lg`, `sizing-md`, `spacing-2xl`, `spacing-lg`, `spacing-md`, `spacing-xs`, `radius-full` e `width-dialog`.
+
+[Componente no UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4752-29).
