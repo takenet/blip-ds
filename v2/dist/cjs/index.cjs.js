@@ -3,7 +3,7 @@
 var index = require('./index-GTJCA4wH.js');
 var uaiToast = require('./uai-toast-D1WUYP7I.js');
 
-const prefix = "ds-77c273a0";
+const prefix = "ds-5c2bf726";
 var scope = {
 	prefix: prefix
 };
