@@ -88,6 +88,7 @@ import { UaiButtonGroupSelectedDetail } from "./components/uai-button-group/uai-
 import { UaiDatepickerBannerVariant, UaiDatepickerConclude, UaiDatepickerLanguage, UaiDatepickerPosition, UaiDatepickerType } from "./components/uai-datepicker/uai-datepicker-interface";
 import { UaiDatepickerSize } from "./components/uai-datepicker/uai-datepicker";
 import { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
+import { UaiEmptyStateHeadingTag, UaiEmptyStateTone, UaiEmptyStateVariant } from "./components/uai-empty-state/uai-empty-state";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 import { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
@@ -198,6 +199,7 @@ export { UaiButtonGroupSelectedDetail } from "./components/uai-button-group/uai-
 export { UaiDatepickerBannerVariant, UaiDatepickerConclude, UaiDatepickerLanguage, UaiDatepickerPosition, UaiDatepickerType } from "./components/uai-datepicker/uai-datepicker-interface";
 export { UaiDatepickerSize } from "./components/uai-datepicker/uai-datepicker";
 export { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
+export { UaiEmptyStateHeadingTag, UaiEmptyStateTone, UaiEmptyStateVariant } from "./components/uai-empty-state/uai-empty-state";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
 export { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
@@ -4665,6 +4667,48 @@ export namespace Components {
         "name": string;
     }
     /**
+     * Empty or error state of a page, panel, card or list: a decorative icon, a title, a short description and optional actions.
+     * Use when a region has nothing to show or failed to load; pair with uai-button in the actions slot and uai-paper around a page state;
+     * avoid it for loading (use a skeleton) and for transient feedback (use a toast).
+     */
+    interface UaiEmptyState {
+        /**
+          * Test selector on the host (data-test). Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Short supporting text. Use it to say what the person can do now; the default slot replaces it. Avoid long paragraphs.
+          * @default null
+         */
+        "description"?: string;
+        /**
+          * Visible title (required). Use a short sentence that says what happened, without a final period; avoid generic titles such as "Erro".
+          * @default null
+         */
+        "heading"?: string;
+        /**
+          * Semantic element of the title; the look is always title-sm semibold. Use the level that fits the page outline; avoid choosing it by size.
+          * @default 'h2'
+         */
+        "headingTag"?: UaiEmptyStateHeadingTag;
+        /**
+          * UAI icon name, always decorative. Use one that matches the situation; without it, 'message-ballon' (neutral) or 'error' (error) is used. Avoid icons that carry meaning the text does not.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * 'error' tints the icon with feedback-error and announces the state with role="alert". Use it for load failures; pair the title with what failed; avoid color alone to convey it.
+          * @default 'neutral'
+         */
+        "tone"?: UaiEmptyStateTone;
+        /**
+          * Density: 'page' for a page or panel, 'inline' for a narrow column, card or side list. Use the one that fits the region; avoid 'page' in narrow columns.
+          * @default 'page'
+         */
+        "variant"?: UaiEmptyStateVariant;
+    }
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -7429,7 +7473,7 @@ export namespace Components {
     }
     /**
      * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
-     * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+     * tag sets the HTML element, so use h1-h6 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
      */
     interface UaiTypo {
         /**
@@ -9461,6 +9505,17 @@ declare global {
         new (): HTMLUaiEmojiElement;
     };
     /**
+     * Empty or error state of a page, panel, card or list: a decorative icon, a title, a short description and optional actions.
+     * Use when a region has nothing to show or failed to load; pair with uai-button in the actions slot and uai-paper around a page state;
+     * avoid it for loading (use a skeleton) and for transient feedback (use a toast).
+     */
+    interface HTMLUaiEmptyStateElement extends Components.UaiEmptyState, HTMLStencilElement {
+    }
+    var HTMLUaiEmptyStateElement: {
+        prototype: HTMLUaiEmptyStateElement;
+        new (): HTMLUaiEmptyStateElement;
+    };
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -10175,7 +10230,7 @@ declare global {
     };
     /**
      * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
-     * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+     * tag sets the HTML element, so use h1-h6 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
      */
     interface HTMLUaiTypoElement extends Components.UaiTypo, HTMLStencilElement {
     }
@@ -10301,6 +10356,7 @@ declare global {
         "uai-datepicker": HTMLUaiDatepickerElement;
         "uai-dropdown": HTMLUaiDropdownElement;
         "uai-emoji": HTMLUaiEmojiElement;
+        "uai-empty-state": HTMLUaiEmptyStateElement;
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
         "uai-input": HTMLUaiInputElement;
@@ -15073,6 +15129,48 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     /**
+     * Empty or error state of a page, panel, card or list: a decorative icon, a title, a short description and optional actions.
+     * Use when a region has nothing to show or failed to load; pair with uai-button in the actions slot and uai-paper around a page state;
+     * avoid it for loading (use a skeleton) and for transient feedback (use a toast).
+     */
+    interface UaiEmptyState {
+        /**
+          * Test selector on the host (data-test). Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Short supporting text. Use it to say what the person can do now; the default slot replaces it. Avoid long paragraphs.
+          * @default null
+         */
+        "description"?: string;
+        /**
+          * Visible title (required). Use a short sentence that says what happened, without a final period; avoid generic titles such as "Erro".
+          * @default null
+         */
+        "heading"?: string;
+        /**
+          * Semantic element of the title; the look is always title-sm semibold. Use the level that fits the page outline; avoid choosing it by size.
+          * @default 'h2'
+         */
+        "headingTag"?: UaiEmptyStateHeadingTag;
+        /**
+          * UAI icon name, always decorative. Use one that matches the situation; without it, 'message-ballon' (neutral) or 'error' (error) is used. Avoid icons that carry meaning the text does not.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * 'error' tints the icon with feedback-error and announces the state with role="alert". Use it for load failures; pair the title with what failed; avoid color alone to convey it.
+          * @default 'neutral'
+         */
+        "tone"?: UaiEmptyStateTone;
+        /**
+          * Density: 'page' for a page or panel, 'inline' for a narrow column, card or side list. Use the one that fits the region; avoid 'page' in narrow columns.
+          * @default 'page'
+         */
+        "variant"?: UaiEmptyStateVariant;
+    }
+    /**
      * UAI layout grid. The legacy bds-grid remains available; this component keeps
      * its layout props while using UAI dimensions and theme-aware color tokens.
      */
@@ -17911,7 +18009,7 @@ declare namespace LocalJSX {
     }
     /**
      * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
-     * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+     * tag sets the HTML element, so use h1-h6 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
      */
     interface UaiTypo {
         /**
@@ -18974,6 +19072,15 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiEmptyStateAttributes {
+        "variant": UaiEmptyStateVariant;
+        "tone": UaiEmptyStateTone;
+        "icon": string;
+        "heading": string;
+        "headingTag": UaiEmptyStateHeadingTag;
+        "description": string;
+        "dataTest": string;
+    }
     interface UaiGridAttributes {
         "height": string;
         "direction": direction;
@@ -19642,6 +19749,7 @@ declare namespace LocalJSX {
         "uai-datepicker": Omit<UaiDatepicker, keyof UaiDatepickerAttributes> & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes]?: UaiDatepicker[K] } & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes as `attr:${K}`]?: UaiDatepickerAttributes[K] } & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes as `prop:${K}`]?: UaiDatepicker[K] };
         "uai-dropdown": Omit<UaiDropdown, keyof UaiDropdownAttributes> & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes]?: UaiDropdown[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `attr:${K}`]?: UaiDropdownAttributes[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `prop:${K}`]?: UaiDropdown[K] };
         "uai-emoji": Omit<UaiEmoji, keyof UaiEmojiAttributes> & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes]?: UaiEmoji[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `attr:${K}`]?: UaiEmojiAttributes[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `prop:${K}`]?: UaiEmoji[K] };
+        "uai-empty-state": Omit<UaiEmptyState, keyof UaiEmptyStateAttributes> & { [K in keyof UaiEmptyState & keyof UaiEmptyStateAttributes]?: UaiEmptyState[K] } & { [K in keyof UaiEmptyState & keyof UaiEmptyStateAttributes as `attr:${K}`]?: UaiEmptyStateAttributes[K] } & { [K in keyof UaiEmptyState & keyof UaiEmptyStateAttributes as `prop:${K}`]?: UaiEmptyState[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
@@ -19983,6 +20091,12 @@ declare module "@stencil/core" {
              */
             "uai-emoji": LocalJSX.IntrinsicElements["uai-emoji"] & JSXBase.HTMLAttributes<HTMLUaiEmojiElement>;
             /**
+             * Empty or error state of a page, panel, card or list: a decorative icon, a title, a short description and optional actions.
+             * Use when a region has nothing to show or failed to load; pair with uai-button in the actions slot and uai-paper around a page state;
+             * avoid it for loading (use a skeleton) and for transient feedback (use a toast).
+             */
+            "uai-empty-state": LocalJSX.IntrinsicElements["uai-empty-state"] & JSXBase.HTMLAttributes<HTMLUaiEmptyStateElement>;
+            /**
              * UAI layout grid. The legacy bds-grid remains available; this component keeps
              * its layout props while using UAI dimensions and theme-aware color tokens.
              */
@@ -20210,7 +20324,7 @@ declare module "@stencil/core" {
             "uai-tooltip": LocalJSX.IntrinsicElements["uai-tooltip"] & JSXBase.HTMLAttributes<HTMLUaiTooltipElement>;
             /**
              * Text with the UAI type scale. variant and bold are the Figma text styles (heading/lg/semibold is variant="heading-lg" bold="semibold");
-             * tag sets the HTML element, so use h1-h4 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
+             * tag sets the HTML element, so use h1-h6 for titles. Default: body-base, regular, <p>. Wrap the app in UaiThemeProvider.
              */
             "uai-typo": LocalJSX.IntrinsicElements["uai-typo"] & JSXBase.HTMLAttributes<HTMLUaiTypoElement>;
         }

@@ -1,0 +1,83 @@
+@use '../../globals/helpers' as *;
+
+// Page density is the default; inline swaps the padding and the icon sizes.
+:host {
+  --empty-state-padding-block: var(--uai-spacing-2xl, #{$uai-spacing-2xl});
+  --empty-state-padding-inline: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  --empty-state-box-size: var(--uai-sizing-2xl, #{$uai-sizing-2xl});
+  --empty-state-icon-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
+  --empty-state-icon-color: var(--uai-content-secondary, #{$uai-content-secondary});
+  --empty-state-box-bg: var(--uai-surface-muted, #{$uai-surface-muted});
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  width: 100%;
+  padding: var(--empty-state-padding-block) var(--empty-state-padding-inline);
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+  text-align: center;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host(.empty-state--inline) {
+  --empty-state-padding-block: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  --empty-state-padding-inline: var(--uai-spacing-md, #{$uai-spacing-md});
+  --empty-state-box-size: var(--uai-sizing-xl, #{$uai-sizing-xl});
+  --empty-state-icon-size: var(--uai-sizing-md, #{$uai-sizing-md});
+}
+
+:host(.empty-state--error) {
+  --empty-state-icon-color: var(--uai-feedback-error, #{$uai-feedback-error});
+  --empty-state-box-bg: var(--uai-feedback-error-subtle, #{$uai-feedback-error-subtle});
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.empty-state__icon-box {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: var(--empty-state-box-size);
+  height: var(--empty-state-box-size);
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background: var(--empty-state-box-bg);
+  color: var(--empty-state-icon-color);
+}
+
+.empty-state__icon {
+  --uai-icon-size: var(--empty-state-icon-size);
+}
+
+.empty-state__heading,
+.empty-state__description {
+  display: block;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.empty-state__heading {
+  --uai-typo-color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.empty-state__description {
+  --uai-typo-color: var(--uai-content-secondary, #{$uai-content-secondary});
+
+  max-width: var(--uai-width-dialog, #{$uai-width-dialog});
+}
+
+// The actions sit spacing-md below the text: the host gap (spacing-xs) plus this padding (spacing-xs).
+.empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding-top: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}

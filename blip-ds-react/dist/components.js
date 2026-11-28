@@ -119,6 +119,7 @@ import { UaiChipTag as UaiChipTagElement, defineCustomElement as defineUaiChipTa
 import { UaiDatepicker as UaiDatepickerElement, defineCustomElement as defineUaiDatepicker } from "blip-ds/dist/components/uai-datepicker.js";
 import { UaiDropdown as UaiDropdownElement, defineCustomElement as defineUaiDropdown } from "blip-ds/dist/components/uai-dropdown.js";
 import { UaiEmoji as UaiEmojiElement, defineCustomElement as defineUaiEmoji } from "blip-ds/dist/components/uai-emoji.js";
+import { UaiEmptyState as UaiEmptyStateElement, defineCustomElement as defineUaiEmptyState } from "blip-ds/dist/components/uai-empty-state.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement, defineCustomElement as defineUaiInputChips } from "blip-ds/dist/components/uai-input-chips.js";
@@ -1235,6 +1236,14 @@ export const UaiEmoji = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiEmoji,
+    transformTag
+});
+export const UaiEmptyState = createComponent({
+    tagName: 'uai-empty-state',
+    elementClass: UaiEmptyStateElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiEmptyState,
     transformTag
 });
 export const UaiGrid = createComponent({
