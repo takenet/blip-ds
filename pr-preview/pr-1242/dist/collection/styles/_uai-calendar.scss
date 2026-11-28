@@ -1,0 +1,303 @@
+// Internal calendar styles (src/utils/uai-calendar.tsx), shared by uai-input-date and uai-datepicker.
+// Values from the UAI Core calendar: 32px day cells (sizing/xl) with radius/lg, the chosen day in
+// action/primary, and a period filled with surface/muted, rounded at the ends of each week row.
+@use 'blip-tokens/build/scss/uai-colors-light' as *;
+@use 'blip-tokens/build/scss/uai-dimensions' as *;
+@use 'blip-tokens/build/scss/uai-shadows' as *;
+@use 'blip-tokens/build/scss/uai-typography' as *;
+@use 'blip-tokens/build/scss/uai-motion' as *;
+@use 'uai-mixins' as *;
+
+// Motion: a new month slides in from the side it comes from, a view (days, months, years) fades in with a small
+// zoom, and the chosen day grows into place. All with duration/moderate (fast for the day) and easing/standard,
+// and none under prefers-reduced-motion.
+// The keyframes of the pickers. Include it at the root of a component stylesheet (uai-calendar does): at the top
+// of this partial they would land in every component that uses the helpers.
+@mixin uai-picker-keyframes {
+  @keyframes uai-calendar-from-next {
+    from {
+      opacity: 0;
+      transform: translateX(var(--uai-spacing-lg, #{$uai-spacing-lg}));
+    }
+  }
+
+  @keyframes uai-calendar-from-previous {
+    from {
+      opacity: 0;
+      transform: translateX(calc(-1 * var(--uai-spacing-lg, #{$uai-spacing-lg})));
+    }
+  }
+
+  @keyframes uai-calendar-view {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+
+  @keyframes uai-calendar-pick {
+    from {
+      transform: scale(0.8);
+    }
+  }
+}
+
+// The floating panel of a picker (calendar, time): it grows from 0.8 out of the field as it fades in, and shrinks back as it fades
+// out (the fade is the overlay's). The origin is the corner of the panel next to the field, read from the side and
+// alignment the overlay sets. With reduced motion, the overlay drops every transition.
+@mixin uai-picker-panel {
+  overflow-x: hidden;
+  transform: scale(0.8);
+  transform-origin: top left;
+  transition:
+    opacity var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    transform var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard}),
+    display var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+      allow-discrete,
+    overlay var(--uai-duration-moderate, #{$uai-duration-moderate}) var(--uai-easing-standard, #{$uai-easing-standard})
+      allow-discrete;
+
+  &[data-align='end'] {
+    transform-origin: top right;
+  }
+
+  &[data-side='top'] {
+    transform-origin: bottom left;
+  }
+
+  &[data-side='top'][data-align='end'] {
+    transform-origin: bottom right;
+  }
+
+  &.uai-overlay--open {
+    transform: none;
+
+    @starting-style {
+      transform: scale(0.8);
+    }
+  }
+
+  @include uai-reduced-motion {
+    transform: none;
+    transition: none;
+  }
+}
+
+@mixin uai-calendar {
+  @include uai-picker-keyframes;
+
+  .calendar__body {
+    animation-duration: var(--uai-duration-moderate, #{$uai-duration-moderate});
+    animation-timing-function: var(--uai-easing-standard, #{$uai-easing-standard});
+
+    &--next {
+      animation-name: uai-calendar-from-next;
+    }
+
+    &--previous {
+      animation-name: uai-calendar-from-previous;
+    }
+
+    &--view {
+      animation-name: uai-calendar-view;
+    }
+
+    @include uai-reduced-motion {
+      animation: none;
+    }
+  }
+
+  .calendar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+    padding: var(--uai-spacing-md, #{$uai-spacing-md});
+    border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+      var(--uai-border-default, #{$uai-border-default});
+  }
+
+  .calendar__pickers {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: center;
+    gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  }
+
+  .calendar__arrow,
+  .calendar__picker,
+  .calendar__day,
+  .calendar__option {
+    --uai-typo-color: currentColor;
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--uai-content-primary, #{$uai-content-primary});
+    font: inherit;
+    cursor: pointer;
+    @include uai-transition(background-color color);
+    @include uai-focus-visible;
+
+    &:hover:not(:disabled):not([aria-disabled='true']) {
+      background: var(--uai-overlay-hover, #{$uai-overlay-hover});
+    }
+
+    &:disabled,
+    &[aria-disabled='true'] {
+      color: var(--uai-content-disabled, #{$uai-content-disabled});
+      cursor: not-allowed;
+    }
+  }
+
+  .calendar__arrow {
+    flex: none;
+    width: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    height: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  .calendar__picker {
+    gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+    height: var(--uai-sizing-lg, #{$uai-sizing-lg});
+    padding: 0 var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+    border-radius: var(--uai-radius-md, #{$uai-radius-md});
+
+    uai-icon {
+      @include uai-transition(transform);
+    }
+
+    &--open uai-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .calendar__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--uai-spacing-md, #{$uai-spacing-md});
+    padding: var(--uai-spacing-md, #{$uai-spacing-md});
+  }
+
+  .calendar__grid {
+    border-collapse: separate;
+    border-spacing: 0 var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+    margin: calc(-1 * var(--uai-spacing-3xs, #{$uai-spacing-3xs})) 0;
+  }
+
+  .calendar__weekday {
+    --uai-typo-color: currentColor;
+    width: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    height: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    padding: 0;
+    color: var(--uai-content-secondary, #{$uai-content-secondary});
+    font-weight: inherit;
+    text-align: center;
+  }
+
+  .calendar__cell {
+    position: relative;
+    width: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    height: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    padding: 0;
+
+    // A period: the days between the ends are filled, and the fill reaches the ends from their inner side.
+    &--between {
+      background: var(--uai-surface-muted, #{$uai-surface-muted});
+    }
+
+    &--start,
+    &--end {
+      background: linear-gradient(
+        to var(--calendar-fill-side),
+        transparent 50%,
+        var(--uai-surface-muted, #{$uai-surface-muted}) 50%
+      );
+    }
+
+    &--start {
+      --calendar-fill-side: right;
+    }
+
+    &--end {
+      --calendar-fill-side: left;
+    }
+
+    &--start.calendar__cell--end {
+      background: none;
+    }
+
+    &--between.calendar__cell--week-start {
+      border-top-left-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+      border-bottom-left-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+    }
+
+    &--between.calendar__cell--week-end {
+      border-top-right-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+      border-bottom-right-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+    }
+  }
+
+  .calendar__day {
+    position: relative;
+    width: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    height: var(--uai-sizing-xl, #{$uai-sizing-xl});
+    border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+
+    // Today: the number in semibold inside a thin ring, besides aria-current.
+    &--today {
+      font-weight: var(--uai-font-weight-semibold, #{$uai-font-weight-semibold});
+      box-shadow: inset 0 0 0 var(--uai-border-width-default, #{$uai-border-width-default})
+        var(--uai-border-input, #{$uai-border-input});
+    }
+
+    &--selected,
+    &--selected:hover:not(:disabled):not([aria-disabled='true']) {
+      background: var(--uai-action-primary-default, #{$uai-action-primary-default});
+      color: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+    }
+
+    &--selected {
+      animation: uai-calendar-pick var(--uai-duration-fast, #{$uai-duration-fast})
+        var(--uai-easing-standard, #{$uai-easing-standard});
+
+      @include uai-reduced-motion {
+        animation: none;
+      }
+    }
+
+    @media (forced-colors: active) {
+      &--selected {
+        outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid Highlight;
+      }
+    }
+  }
+
+  .calendar__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+    min-width: calc(7 * var(--uai-sizing-xl, #{$uai-sizing-xl}));
+  }
+
+  .calendar__option {
+    height: var(--uai-control-height-short, #{$uai-control-height-short});
+    padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+    border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+
+    &--current,
+    &--current:hover:not(:disabled) {
+      background: var(--uai-action-primary-default, #{$uai-action-primary-default});
+      color: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+    }
+  }
+}
