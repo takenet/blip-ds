@@ -1,0 +1,67 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as SkeletonStories from './uai-skeleton.stories';
+
+<Meta isTemplate />
+
+# Skeleton
+
+## Visão geral
+
+Forma de espera que ocupa o lugar do conteúdo enquanto ele carrega. Use uma por elemento, com o tamanho do conteúdo final. Para uma espera sem layout para antecipar, use um indicador de carregamento.
+
+No React, importe `UaiSkeleton` e `UaiThemeProvider` de `blip-ds-react/dist/components`. Como custom element: `<uai-skeleton shape="circle" width="var(--uai-sizing-2xl)" height="var(--uai-sizing-2xl)"></uai-skeleton>`.
+
+## Playground
+
+<Canvas of={SkeletonStories.Playground} />
+<Controls of={SkeletonStories.Playground} />
+
+## Como usar
+
+Agrupe os skeletons num contêiner com `role="status"`, `aria-busy="true"` e `aria-label` descrevendo o que carrega. Remova o contêiner quando o conteúdo chegar.
+
+<Canvas of={SkeletonStories.Usage} sourceState="shown" />
+
+## Estados
+
+`shape` define o raio: `square` usa `radius/md` e `circle` usa `radius/full`. `width` e `height` aceitam qualquer valor CSS e são aplicados inline. O tamanho mínimo é `sizing/2xs` nos dois eixos.
+
+<Canvas of={SkeletonStories.Shapes} />
+
+## Comportamento
+
+| Regra | Cobertura |
+| --- | --- |
+| Padrões `square`, largura `100%` e altura do `bds-skeleton`; `width` e `height` inline | `uai-skeleton.spec.ts` |
+| Forma desconhecida vira `square` | `uai-skeleton.spec.ts` |
+| Brilho em ciclo de 2,5 s, `ease-out`, infinito, com a varredura nos primeiros 20% | `uai-skeleton.e2e.ts` |
+| `prefers-reduced-motion: reduce` remove o brilho e deixa a forma estática | `uai-skeleton.e2e.ts` |
+| Raio por forma e tamanho mínimo | `uai-skeleton.e2e.ts` |
+
+O brilho mantém o tempo do `bds-skeleton`. Não há token UAI de 2,5 s (`duration/loop` é de 800 ms), então o ciclo é escrito uma única vez no SCSS como múltiplo de `duration/loop`.
+
+## Acessibilidade
+
+O host tem `aria-hidden="true"`: a forma é decorativa e não recebe foco. O estado de carregamento é anunciado pelo contêiner com `role="status"` e `aria-busy="true"`. A forma não depende de cor para existir: com `forced-colors` ela ganha borda.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Superfície | `surface/contrast`, `radius/md`, `radius/full`, `sizing/2xs` |
+| Brilho | `overlay/hover`, `duration/loop` |
+
+## Migração do `bds-skeleton`
+
+| `bds-skeleton` | `uai-skeleton` |
+| --- | --- |
+| `shape`, `width`, `height`, `data-test` | iguais, com os mesmos padrões |
+| cor `content-default` a 16% | `surface/contrast` |
+| brilho branco em `mix-blend overlay` | faixa `overlay/hover` |
+| sem ARIA, sem `prefers-reduced-motion` | `aria-hidden` no host; brilho removido com `reduce` |
+
+Sem eventos, métodos nem slots, como no `bds-skeleton`.
+
+## Design
+
+[UaiSkeleton no UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4748-32).

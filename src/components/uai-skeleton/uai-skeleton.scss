@@ -1,0 +1,62 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  min-width: var(--uai-sizing-2xs, #{$uai-sizing-2xs});
+  min-height: var(--uai-sizing-2xs, #{$uai-sizing-2xs});
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+}
+
+:host(.uai-skeleton--circle) {
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+}
+
+.skeleton {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background-color: var(--uai-surface-contrast, #{$uai-surface-contrast});
+}
+
+// SOLFAC-117 (d): the shine keeps the bds-skeleton timing for parity: one 2.5 s ease-out cycle whose sweep takes
+// the first 20% and then rests. UAI has no 2.5 s duration token (duration/loop is 800 ms), so the cycle is written
+// once here as a multiple of duration/loop. Change it only in this declaration.
+.skeleton__shine {
+  --skeleton-shine-duration: calc(var(--uai-duration-loop, #{$uai-duration-loop}) * 3.125);
+  --skeleton-shine-easing: ease-out;
+
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, var(--uai-overlay-hover, #{$uai-overlay-hover}) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: uai-skeleton-shine var(--skeleton-shine-duration) var(--skeleton-shine-easing) infinite;
+
+  @include uai-reduced-motion {
+    display: none;
+    animation: none;
+  }
+}
+
+@keyframes uai-skeleton-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  20% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (forced-colors: active) {
+  .skeleton {
+    border: var(--uai-border-width-default, #{$uai-border-width-default}) solid CanvasText;
+  }
+}
