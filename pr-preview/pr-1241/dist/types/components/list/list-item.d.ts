@@ -1,6 +1,9 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { TypeList } from './list';
 export type ItemSize = 'tall' | 'standard' | 'short';
+/**
+ * @deprecated Use uai-list-item with UaiThemeProvider for tokenized styling.
+ */
 export declare class ListItem {
     private hasActionAreaSlot;
     private hasContentAreaSlot;

@@ -1,6 +1,9 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { Data } from './list-interface';
 export type TypeList = 'checkbox' | 'radio' | 'switch' | 'default';
+/**
+ * @deprecated Use uai-list with UaiThemeProvider for tokenized styling.
+ */
 export declare class List {
     private itemListElement?;
     private element;

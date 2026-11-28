@@ -1,0 +1,52 @@
+System.register(["./p-Btp-603e.system.js"],(function(t){"use strict";var e,i,s,a,c;return{setters:[function(t){e=t.r;i=t.c;s=t.h;a=t.H;c=t.g}],execute:function(){var o=function(){return':host{display:block;width:100%}:host(.list_item_content){display:-ms-flexbox;display:flex;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.list_item{display:-ms-flexbox;display:flex;gap:16px;-ms-flex-align:center;align-items:center}.list_item_tall{padding:16px}.list_item_standard{padding:8px 16px}.list_item_short{padding:8px}.list_item .input_list{position:relative}.list_item .avatar-item{position:relative;display:block}.list_item .icon-item{position:relative;color:var(--color-content-default, rgb(40, 40, 40))}.list_item .icon-item-active{color:var(--color-primary, rgb(30, 107, 241))}.list_item .grow-up{position:relative;-ms-flex-positive:2;flex-grow:2}.list_item .content-slot{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;gap:8px}.list_item .content-item{position:relative;display:-ms-flexbox;display:flex;gap:2px;-ms-flex-direction:column;flex-direction:column}.list_item .content-item .title-item{color:var(--color-content-default, rgb(40, 40, 40))}.list_item .content-item .subtitle-item{color:var(--color-content-default, rgb(40, 40, 40))}.list_item .content-area{position:relative;-ms-flex-positive:2;flex-grow:2}.list_item .content-area .internal-chips,.list_item .content-area ::slotted(*){display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;gap:8px}.list_item .action-area{position:relative}.list_item .action-area .internal-actions-buttons,.list_item .action-area ::slotted(*){display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;color:var(--color-content-default, rgb(40, 40, 40))}.list_item .icon-arrow{-webkit-transition:all ease 0.3s;-moz-transition:all ease 0.3s;transition:all ease 0.3s;-webkit-transform:rotate(0deg);transform:rotate(0deg)}.list_item .icon-arrow-active{-webkit-transform:rotate(180deg);transform:rotate(180deg)}.border_radius{border-radius:8px}.border_radius:before,.border_radius:after,.border_radius .active{border-radius:8px}.active{position:absolute;background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.08;inset:0}.clickable{position:relative;cursor:pointer;gap:8px}.clickable:before{content:"";position:absolute;inset:0}.clickable:hover:before{background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.08}.clickable:active:before{background-color:var(--color-content-default, rgb(40, 40, 40));opacity:0.16}'};var l=t("bds_list_item",/** @class */function(){function t(t){var s=this;e(this,t);this.bdsChecked=i(this,"bdsChecked");this.bdsClickActionButtom=i(this,"bdsClickActionButtom");this.internalChips=[];this.internalActionsButtons=[];this.checked=false;
+/**
+                     * Typelis. Used toselect type of item list.
+                     */this.typeList=null;
+/**
+                     * AvatarName. Used to enter the avatar name.
+                     */this.avatarName=null;
+/**
+                     * AvatarThumbnail. Used to insert the avatar photo.
+                     */this.avatarThumbnail=null;
+/**
+                     * Icon. Used to add icon in list item.
+                     */this.icon=null;
+/**
+                     * Value. Used to insert a value in list item.
+                     */this.value=null;
+/**
+                     * Text. Used to insert a text in the display item.
+                     */this.text=null;
+/**
+                     * SecondaryText. Used to insert a secondaryText in the display item.
+                     */this.secondaryText=null;
+/**
+                     * The chips on the component
+                     * Should be passed this way:
+                     * chips='["chip1", "chip2"]'
+                     */this.chips=[];
+/**
+                     * The actions buttons on the component
+                     * Should be passed this way:
+                     * actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
+                     */this.actionsButtons=[];
+/**
+                     * Clickable. Used to define if the item is clickable or not.
+                     */this.clickable=false;
+/**
+                     * Active. Used to define when the item is highlighted.
+                     */this.active=false;
+/**
+                     * Enable rounded border on item
+                     */this.borderRadius=false;
+/**
+                     * Size. Entered as one of the size. Can be one of:
+                     * 'tall', 'standard', 'short';
+                     */this.size="standard";
+/**
+                     * Data test is the prop to specifically test the component action object.
+                     */this.dataTest=null;this.handler=function(){s.typeList=="radio"?s.checked=true:s.checked=!s.checked};this.clickActionButtons=function(t,e){var i=e.composedPath()[0];s.bdsClickActionButtom.emit({value:s.value,icon:t,elementButton:i})}}t.prototype.componentWillLoad=function(){this.hasActionAreaSlot=!!this.hostElement.querySelector('[slot="action-area"]');this.hasContentAreaSlot=!!this.hostElement.querySelector('[slot="content-area"]');this.chipsChanged();this.actionsButtonsChanged()};t.prototype.checkedChanged=function(t){this.bdsChecked.emit({value:this.value,text:this.text,secondaryText:this.secondaryText,typeList:this.typeList,checked:t})};t.prototype.chipsChanged=function(){if(this.chips){if(typeof this.chips==="string"){
+// Keep the current chips if AngularJS has not interpolated the attribute yet; @Watch('chips') reloads it.
+try{this.internalChips=JSON.parse(this.chips)}catch(t){}}else{this.internalChips=this.chips}}else{this.internalChips=[]}};t.prototype.actionsButtonsChanged=function(){if(this.actionsButtons){if(typeof this.actionsButtons==="string"){
+// Keep the current buttons if AngularJS has not interpolated the attribute yet; @Watch('actionsButtons') reloads it.
+try{this.internalActionsButtons=JSON.parse(this.actionsButtons)}catch(t){}}else{this.internalActionsButtons=this.actionsButtons}}else{this.internalActionsButtons=[]}};t.prototype.renderChips=function(){if(!this.internalChips.length){return[]}return this.internalChips.map((function(t,e){var i=e.toString();var a=30;if(t.length<=a){return s("bds-chip-clickable",{id:i,key:i,color:"default"},t)}else{return s("bds-tooltip",{key:i,position:"top-center","tooltip-text":t},s("bds-chip-clickable",{id:i,key:i,color:"default"},"".concat(t.slice(0,a)," ...")))}}))};t.prototype.renderActionsButtons=function(){var t=this;if(!this.internalActionsButtons.length){return[]}return this.internalActionsButtons.map((function(e,i){var a=i.toString();return s("bds-button-icon",{key:a,variant:"secondary",icon:e,size:"short",onClick:function(i){return t.clickActionButtons(e,i)}})}))};t.prototype.render=function(){var t,e,i,c,o,l;var r=this.clickable==true||this.typeList=="checkbox"||this.typeList=="radio"||this.typeList=="switch";var n=this.typeList=="checkbox"||this.typeList=="radio";var d=this.avatarName||this.avatarThumbnail;return s(a,{key:"d600d912649d0b08d5651ca1555c5c7876d920a7"},s("div",{key:"d6d4452533d2133bc09cdfea18a747e6afb9f746",onClick:this.handler,tabindex:"0",class:(t={list_item:true,clickable:r,border_radius:this.borderRadius},t["list_item_".concat(this.size)]=true,t),"data-test":this.dataTest},this.active&&s("div",{key:"7ad20188d17a4d5a730138dfc6f90c01cd8c7088",class:"active"}),n&&s("div",{key:"db7bcc82fa6d18e30d7a7a2a1f02fde67da008d1",class:{input_list:true}},this.typeList=="radio"&&s("bds-radio",{key:"911fd0b3f4afa37c5d29dc05142b72915cd3b587",value:this.value,checked:this.checked}),this.typeList=="checkbox"&&s("bds-checkbox",{key:"7d3302b473eb14c735ec7b361ca2d9798f221772",refer:"",label:"",name:"cb1",disabled:false,checked:this.checked})),d?s("bds-avatar",{class:"avatar-item",name:this.avatarName,thumbnail:this.avatarThumbnail,size:"extra-small"}):this.icon&&s("bds-icon",{class:(e={},e["icon-item"]=true,e["icon-item-active"]=this.active,e),size:"medium",name:this.icon,color:"inherit",theme:this.active?"solid":"outline"}),s("div",{key:"0208ccc5ebe83b0bafab22cc00977eb21ce5b444",class:(i={},i["content-slot"]=true,i)},s("slot",{key:"8a82be329cf5eb11aee6b1dd6c1871c9c027ac08"})),(this.text||this.secondaryText)&&s("div",{key:"1d9f9ba78777a7a3a784c7f00bdb691486d6bf81",class:(c={},c["content-item"]=true,c["grow-up"]=!this.hasActionAreaSlot&&!this.hasContentAreaSlot&&this.internalChips.length<0,c)},this.text&&s("bds-typo",{key:"5e550c977c4538659565d38f3e00766d8df033c2",class:"title-item",variant:"fs-16",tag:"span",bold:this.active?"bold":"regular"},this.text),this.secondaryText&&s("bds-typo",{key:"f22dd9ee97fe5c98e8670a3e4e9bb9508f4e49aa",class:"subtitle-item",variant:"fs-12","line-height":"small",tag:"span"},this.secondaryText)),s("div",{key:"ae8c89251f7c659c0135f8a33cb1b851085f07f6",class:(o={},o["content-area"]=true,o["grow-up"]=true,o)},this.internalChips.length>0&&s("div",{key:"9653c75b61c6d51ac7bcc0eab2dbb486c73a5152",class:"internal-chips"},this.renderChips()),s("slot",{key:"c2d533c42a85edf8c67cd2b072529fde92e54b92",name:"content-area"})),(!this.typeList||this.typeList=="default")&&s("div",{key:"afb2cbb68a0fa6d7912972ff2615243020961df9",class:(l={},l["action-area"]=true,l)},this.internalActionsButtons.length>0&&s("div",{key:"65e127f8829a4e608bfb9c9bd3df19b5741e9d47",class:"internal-actions-buttons"},this.renderActionsButtons()),s("slot",{key:"6528ee22785ce57631292de08531159cf850b780",name:"action-area"})),this.typeList=="switch"&&s("bds-switch",{key:"dd748b5c9707a7bfa7dc5abf061ea14a660d9979",refer:"",name:"",checked:this.checked})))};Object.defineProperty(t.prototype,"hostElement",{get:function(){return c(this)},enumerable:false,configurable:true});Object.defineProperty(t,"watchers",{get:function(){return{checked:[{checkedChanged:0}],chips:[{chipsChanged:0}],actionsButtons:[{actionsButtonsChanged:0}]}},enumerable:false,configurable:true});return t}());l.style=o()}}}));

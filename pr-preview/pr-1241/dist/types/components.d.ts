@@ -2197,6 +2197,9 @@ export namespace Components {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use uai-list with UaiThemeProvider for tokenized styling.
+     */
     interface BdsList {
         /**
           * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
@@ -2212,6 +2215,9 @@ export namespace Components {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated Use uai-list-item with UaiThemeProvider for tokenized styling.
+     */
     interface BdsListItem {
         /**
           * The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
@@ -2288,6 +2294,9 @@ export namespace Components {
          */
         "value": string;
     }
+    /**
+     * @deprecated Use uai-list-item-content with UaiThemeProvider for tokenized styling.
+     */
     interface BdsListItemContent {
         /**
           * @default 'flex-start'
@@ -3210,6 +3219,9 @@ export namespace Components {
          */
         "width"?: number;
     }
+    /**
+     * @deprecated Use uai-skeleton with UaiThemeProvider for tokenized styling.
+     */
     interface BdsSkeleton {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -8717,6 +8729,9 @@ declare global {
   }[];
         "bdsClickActionsButtons": any;
     }
+    /**
+     * @deprecated Use uai-list with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsListElement extends Components.BdsList, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsListElementEventMap>(type: K, listener: (this: HTMLBdsListElement, ev: BdsListCustomEvent<HTMLBdsListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8745,6 +8760,9 @@ declare global {
     elementButton: EventTarget;
   };
     }
+    /**
+     * @deprecated Use uai-list-item with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsListItemElement extends Components.BdsListItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsListItemElementEventMap>(type: K, listener: (this: HTMLBdsListItemElement, ev: BdsListItemCustomEvent<HTMLBdsListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8759,6 +8777,9 @@ declare global {
         prototype: HTMLBdsListItemElement;
         new (): HTMLBdsListItemElement;
     };
+    /**
+     * @deprecated Use uai-list-item-content with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsListItemContentElement extends Components.BdsListItemContent, HTMLStencilElement {
     }
     var HTMLBdsListItemContentElement: {
@@ -9113,6 +9134,9 @@ declare global {
         prototype: HTMLBdsSidebarElement;
         new (): HTMLBdsSidebarElement;
     };
+    /**
+     * @deprecated Use uai-skeleton with UaiThemeProvider for tokenized styling.
+     */
     interface HTMLBdsSkeletonElement extends Components.BdsSkeleton, HTMLStencilElement {
     }
     var HTMLBdsSkeletonElement: {
@@ -12736,6 +12760,9 @@ declare namespace LocalJSX {
          */
         "value"?: string | null;
     }
+    /**
+     * @deprecated Use uai-list with UaiThemeProvider for tokenized styling.
+     */
     interface BdsList {
         /**
           * The Data of the list Should be passed this way: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="true","icon": "settings-builder"}, {"value": "02","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked"="false","icon": "settings-builder",}]' Data can also be passed as child by using bds-list-item component, but passing as a child you may have some compatibility problems with Angular.
@@ -12788,6 +12815,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated Use uai-list-item with UaiThemeProvider for tokenized styling.
+     */
     interface BdsListItem {
         /**
           * The actions buttons on the component Should be passed this way: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'
@@ -12882,6 +12912,9 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    /**
+     * @deprecated Use uai-list-item-content with UaiThemeProvider for tokenized styling.
+     */
     interface BdsListItemContent {
         /**
           * @default 'flex-start'
@@ -13875,6 +13908,9 @@ declare namespace LocalJSX {
          */
         "width"?: number;
     }
+    /**
+     * @deprecated Use uai-skeleton with UaiThemeProvider for tokenized styling.
+     */
     interface BdsSkeleton {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -20269,8 +20305,17 @@ declare module "@stencil/core" {
              * @deprecated Use `uai-input-phone` for new UAI experiences. This component remains supported for existing consumers.
              */
             "bds-input-phone-number": LocalJSX.IntrinsicElements["bds-input-phone-number"] & JSXBase.HTMLAttributes<HTMLBdsInputPhoneNumberElement>;
+            /**
+             * @deprecated Use uai-list with UaiThemeProvider for tokenized styling.
+             */
             "bds-list": LocalJSX.IntrinsicElements["bds-list"] & JSXBase.HTMLAttributes<HTMLBdsListElement>;
+            /**
+             * @deprecated Use uai-list-item with UaiThemeProvider for tokenized styling.
+             */
             "bds-list-item": LocalJSX.IntrinsicElements["bds-list-item"] & JSXBase.HTMLAttributes<HTMLBdsListItemElement>;
+            /**
+             * @deprecated Use uai-list-item-content with UaiThemeProvider for tokenized styling.
+             */
             "bds-list-item-content": LocalJSX.IntrinsicElements["bds-list-item-content"] & JSXBase.HTMLAttributes<HTMLBdsListItemContentElement>;
             "bds-loading-bar": LocalJSX.IntrinsicElements["bds-loading-bar"] & JSXBase.HTMLAttributes<HTMLBdsLoadingBarElement>;
             "bds-loading-page": LocalJSX.IntrinsicElements["bds-loading-page"] & JSXBase.HTMLAttributes<HTMLBdsLoadingPageElement>;
@@ -20326,6 +20371,9 @@ declare module "@stencil/core" {
              */
             "bds-select-option": LocalJSX.IntrinsicElements["bds-select-option"] & JSXBase.HTMLAttributes<HTMLBdsSelectOptionElement>;
             "bds-sidebar": LocalJSX.IntrinsicElements["bds-sidebar"] & JSXBase.HTMLAttributes<HTMLBdsSidebarElement>;
+            /**
+             * @deprecated Use uai-skeleton with UaiThemeProvider for tokenized styling.
+             */
             "bds-skeleton": LocalJSX.IntrinsicElements["bds-skeleton"] & JSXBase.HTMLAttributes<HTMLBdsSkeletonElement>;
             "bds-slider": LocalJSX.IntrinsicElements["bds-slider"] & JSXBase.HTMLAttributes<HTMLBdsSliderElement>;
             /**

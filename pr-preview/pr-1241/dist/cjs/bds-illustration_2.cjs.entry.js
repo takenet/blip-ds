@@ -60,21 +60,21 @@ const Skeleton = class {
         this.dataTest = null;
     }
     render() {
-        return (index.h(index.Host, { key: '197291536f4f1040c6fb84d04de1eefb93bff169', style: {
+        return (index.h(index.Host, { key: '187e4b047bc7fc3bc2f6a8f96af40b37f41d23fa', style: {
                 display: 'flex',
                 position: 'relative',
                 overflow: 'hidden',
                 width: this.width,
                 height: this.height,
                 borderRadius: this.shape === 'circle' ? '50%' : '8px',
-            } }, index.h("bds-grid", { key: '1b80d31d9e4e39c6f855662bcfced011523e1a91', xxs: "12", class: { skeleton: true, [`skeleton_shape--${this.shape}`]: true } }), index.h("div", { key: 'e92b287da270706d9d25efcde0fcf2da8af254b9', style: {
+            } }, index.h("bds-grid", { key: '8615f70a2b8cec72ac9dfb610a65813586a09e0a', xxs: "12", class: { skeleton: true, [`skeleton_shape--${this.shape}`]: true } }), index.h("div", { key: '5077ffb487767e836436720e866f5af5bc6f4b93', style: {
                 display: 'flex',
                 width: '100%',
                 height: '100%',
                 position: 'absolute',
                 borderRadius: this.shape === 'circle' ? '50%' : '8px',
                 overflow: 'hidden',
-            }, "data-test": this.dataTest }, index.h("div", { key: '174969e6c92034eab3e42afd40b5c199583c4413', class: "animation" }))));
+            }, "data-test": this.dataTest }, index.h("div", { key: 'aa8c77615412a9e6a8ef12b3fee56dd5b440f9da', class: "animation" }))));
     }
 };
 Skeleton.style = skeletonCss();

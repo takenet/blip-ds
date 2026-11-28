@@ -1,4 +1,7 @@
 import { Host, h } from "@stencil/core";
+/**
+ * @deprecated Use uai-list with UaiThemeProvider for tokenized styling.
+ */
 export class List {
     constructor() {
         this.itemListElement = null;
@@ -121,7 +124,7 @@ export class List {
         this.bdsListSwitchChange.emit(result);
     }
     render() {
-        return (h(Host, { key: '9d5a287d38d1b86761b46daf49bd9503cebc684f' }, h("div", { key: '53c25dbfe3ed0e3243818f37786e2feaa7f3b90d', class: {
+        return (h(Host, { key: '36c4a653a23ede3c9e17560596d982e9de8bf809' }, h("div", { key: '6c42e78cd3afef8ecfab833da194508d3b5430ce', class: {
                 list: true,
             } }, this.internalData ? (this.internalData.map((item, idx) => (h("bds-list-item", { key: idx, value: item.value, text: item.text, "type-list": this.typeList ? this.typeList : item.typeList, "secondary-text": item.secondaryText, "avatar-name": item.avatarName, "avatar-thumbnail": item.avatarThumbnail, checked: item.checked, icon: item.icon, chips: item.chips, actionsButtons: item.actionsButtons, onBdsChecked: (ev) => this.chagedOptions(ev), onBdsClickActionButtom: (ev) => this.onClickActionsButtons(ev), dataTest: item.dataTest })))) : (h("slot", null)))));
     }
