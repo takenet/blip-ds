@@ -46,6 +46,10 @@ or `openUpload` only when the avatar itself changes the photo. Wrap the app in U
 
 ## Dependencies
 
+### Used by
+
+ - [uai-list-item](../uai-list-item)
+
 ### Depends on
 
 - [uai-icon](../uai-icon)
@@ -54,6 +58,7 @@ or `openUpload` only when the avatar itself changes the photo. Wrap the app in U
 ```mermaid
 graph TD;
   uai-avatar --> uai-icon
+  uai-list-item --> uai-avatar
   style uai-avatar fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

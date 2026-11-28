@@ -99,6 +99,8 @@ import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-in
 import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 import { UaiInputTimeLanguage } from "./components/uai-input-time/uai-input-time-format";
 import { UaiInputTimeSize } from "./components/uai-input-time/uai-input-time";
+import { UaiListActionButtonDetail, UaiListChangeDetail, UaiListData, UaiListItemCheckedDetail, UaiListTypeList } from "./components/uai-list/uai-list-interface";
+import { UaiListItemSize } from "./components/uai-list-item/uai-list-item";
 import { UaiModalSize } from "./components/uai-modal/uai-modal";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
@@ -106,6 +108,7 @@ import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem 
 import { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 import { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
+import { UaiSkeletonShape } from "./components/uai-skeleton/uai-skeleton";
 import { UaiStepOrientation } from "./components/uai-step/uai-step";
 import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 import { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
@@ -209,6 +212,8 @@ export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-in
 export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 export { UaiInputTimeLanguage } from "./components/uai-input-time/uai-input-time-format";
 export { UaiInputTimeSize } from "./components/uai-input-time/uai-input-time";
+export { UaiListActionButtonDetail, UaiListChangeDetail, UaiListData, UaiListItemCheckedDetail, UaiListTypeList } from "./components/uai-list/uai-list-interface";
+export { UaiListItemSize } from "./components/uai-list-item/uai-list-item";
 export { UaiModalSize } from "./components/uai-modal/uai-modal";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
@@ -216,6 +221,7 @@ export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem 
 export { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
 export { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
+export { UaiSkeletonShape } from "./components/uai-skeleton/uai-skeleton";
 export { UaiStepOrientation } from "./components/uai-step/uai-step";
 export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 export { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
@@ -5950,6 +5956,139 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
+     * List of uai-list-item rows, from data or from child elements. Use for plain lists and for single (radio),
+     * multiple (checkbox) or on/off (switch) selection; pair with typeList; avoid it for tabular data (use uai-table).
+     * The host has the list role (radiogroup when typeList is radio) and each row the listitem role.
+     */
+    interface UaiList {
+        /**
+          * Rows as a JSON string or an array: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked": true,"icon": "settings-builder"}]'. Use for lists built from data, also in Angular; pair with typeList. When set, child uai-list-item elements are ignored.
+         */
+        "data"?: string | UaiListData[];
+        /**
+          * Control of every row: checkbox, radio, switch or default. Use to make the whole list selectable; pair with the change events. When null, each row keeps its own typeList.
+          * @default null
+         */
+        "typeList"?: UaiListTypeList;
+        /**
+          * Value of the selected radio row. Use to read or set the selection of a radio list; pair with uaiListRadioChange. Avoid it in other list types.
+         */
+        "value"?: string;
+    }
+    /**
+     * One row of a uai-list: text with optional avatar or icon, chips, action buttons and a checkbox, radio or
+     * switch. Use inside uai-list; pair with typeList for selection; avoid nesting other interactive rows.
+     * Interactive rows (clickable or with a control) are focusable and expose the checkbox, radio, switch or button
+     * role; Enter and Space do the same as a click.
+     */
+    interface UaiListItem {
+        /**
+          * UAI icon names of the action buttons on the right, as a JSON string or an array: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'. Use with typeList null or default; pair with uaiClickActionButtom. Avoid them with controls: they are not shown.
+          * @default []
+         */
+        "actionsButtons": string | string[];
+        /**
+          * Highlights the row as the current one: selected overlay, solid icon and bold text. Use for the current item; pair with navigation. Avoid it to mean checked.
+          * @default false
+         */
+        "active"?: boolean;
+        /**
+          * Name shown as avatar initials. Use for people or entities; pair with avatarThumbnail. Avoid it together with icon: the avatar wins.
+          * @default null
+         */
+        "avatarName"?: string;
+        /**
+          * Avatar photo URL. Use for people; pair with avatarName as fallback. Avoid decorative images.
+          * @default null
+         */
+        "avatarThumbnail"?: string;
+        /**
+          * Rounds the row corners with radius/md. Use for rows that float on a surface; pair with spacing between rows. Avoid it in full-bleed lists.
+          * @default false
+         */
+        "borderRadius"?: boolean;
+        /**
+          * Selected state of the control. Use with typeList checkbox, radio or switch; pair with uaiChecked. Avoid it on default rows, where it has no visual.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Chips shown after the text, as a JSON string or an array: chips='["chip1", "chip2"]'. Use for short tags; pair with text. Avoid long labels: they are cut with a tooltip.
+          * @default []
+         */
+        "chips": string | string[];
+        /**
+          * Shows the hover and pressed states and makes the row focusable. Use when the row does something on click; pair with a click handler. Controls are always clickable.
+          * @default false
+         */
+        "clickable"?: boolean;
+        /**
+          * Test selector on the row. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * UAI icon name shown before the text; solid when active. Use to identify the row type; pair with text. Avoid it with an avatar, which takes priority.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Supporting text below the main text. Use for details; pair with text. Avoid repeating the main text.
+          * @default null
+         */
+        "secondaryText"?: string;
+        /**
+          * Row padding: tall, standard or short. Use standard by default; pair with the density of the screen. Avoid mixing sizes in one list.
+          * @default 'standard'
+         */
+        "size"?: UaiListItemSize;
+        /**
+          * Main text of the row. Use a short label; pair with secondaryText for details. Avoid long paragraphs.
+          * @default null
+         */
+        "text"?: string;
+        /**
+          * Control of the row: checkbox and radio on the left, switch on the right; default or null has none. Use the same value in every row of a list; pair with uai-list typeList. Avoid mixing controls in one list.
+          * @default null
+         */
+        "typeList"?: UaiListTypeList;
+        /**
+          * Row identifier sent in the events. Use a unique value per list; pair with uai-list value for radios. Avoid duplicates.
+          * @default null
+         */
+        "value": string;
+    }
+    /**
+     * Flex wrapper for custom content inside a uai-list-item slot. Use to stack or align extra content; pair with
+     * the content-area or action-area slots; avoid it for whole page layouts (use uai-grid).
+     */
+    interface UaiListItemContent {
+        /**
+          * Cross-axis alignment. Use flex-start by default; pair with direction. Avoid stretch with icons.
+          * @default 'flex-start'
+         */
+        "alignItems"?: alignItems;
+        /**
+          * Flex direction of the content. Use column for stacked text; pair with gap. Avoid reverse directions for reading order.
+          * @default 'column'
+         */
+        "direction"?: direction;
+        /**
+          * Wrapping of the content. Use wrap by default; pair with gap. Avoid nowrap with long content.
+          * @default 'wrap'
+         */
+        "flexWrap"?: flexWrap;
+        /**
+          * Space between children, in the uai-grid gap scale. Use for separated content; pair with direction. Avoid margins on the children.
+         */
+        "gap"?: gap1;
+        /**
+          * Main-axis alignment. Use flex-start by default; pair with direction. Avoid space-around in narrow rows.
+          * @default 'flex-start'
+         */
+        "justifyContent"?: justifyContent2;
+    }
+    /**
      * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
      * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
      */
@@ -6666,6 +6805,34 @@ export namespace Components {
           * Value submitted and emitted when the option is chosen. Use a short stable string; pair with the label text; avoid duplicates inside one select.
          */
         "value": string;
+    }
+    /**
+     * Placeholder shape shown while content loads. Use one per element that is still loading, sized like the
+     * final content; pair with a container that has role="status" and aria-busy="true"; avoid it for loading
+     * that has no layout to anticipate (use a spinner) and avoid nesting interactive content inside it.
+     * The host is aria-hidden: the skeleton is decorative and the loading state is announced by its container.
+     */
+    interface UaiSkeleton {
+        /**
+          * Test selector on the placeholder surface. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Height as any CSS length, applied inline. Defaults to the bds-skeleton height. Use the height of the content being loaded; pair with width; avoid lengths below the minimum size.
+          * @default `${BDS_DEFAULT_HEIGHT}px`
+         */
+        "height"?: string;
+        /**
+          * Corner shape: square (radius/md) or circle (radius/full). Use circle for avatars; pair with equal width and height; avoid other values, which render as square.
+          * @default 'square'
+         */
+        "shape"?: UaiSkeletonShape;
+        /**
+          * Width as any CSS length, applied inline. Use 100% for text lines and fixed sizes for media; pair with height; avoid widths below the minimum size.
+          * @default '100%'
+         */
+        "width"?: string;
     }
     /**
      * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
@@ -7746,6 +7913,14 @@ export interface UaiInputPhoneCustomEvent<T> extends CustomEvent<T> {
 export interface UaiInputTimeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputTimeElement;
+}
+export interface UaiListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiListElement;
+}
+export interface UaiListItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiListItemElement;
 }
 export interface UaiModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -9680,6 +9855,67 @@ declare global {
         prototype: HTMLUaiInputTimeElement;
         new (): HTMLUaiInputTimeElement;
     };
+    interface HTMLUaiListElementEventMap {
+        "uaiListCheckboxChange": UaiListChangeDetail[];
+        "uaiListRadioChange": UaiListChangeDetail;
+        "uaiListSwitchChange": UaiListChangeDetail[];
+        "uaiClickActionsButtons": UaiListActionButtonDetail;
+        "uaiClickActionsButton": UaiListActionButtonDetail;
+    }
+    /**
+     * List of uai-list-item rows, from data or from child elements. Use for plain lists and for single (radio),
+     * multiple (checkbox) or on/off (switch) selection; pair with typeList; avoid it for tabular data (use uai-table).
+     * The host has the list role (radiogroup when typeList is radio) and each row the listitem role.
+     */
+    interface HTMLUaiListElement extends Components.UaiList, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiListElementEventMap>(type: K, listener: (this: HTMLUaiListElement, ev: UaiListCustomEvent<HTMLUaiListElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiListElementEventMap>(type: K, listener: (this: HTMLUaiListElement, ev: UaiListCustomEvent<HTMLUaiListElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiListElement: {
+        prototype: HTMLUaiListElement;
+        new (): HTMLUaiListElement;
+    };
+    interface HTMLUaiListItemElementEventMap {
+        "uaiChecked": UaiListItemCheckedDetail;
+        "uaiClickActionButtom": UaiListActionButtonDetail;
+        "uaiClickActionButton": UaiListActionButtonDetail;
+    }
+    /**
+     * One row of a uai-list: text with optional avatar or icon, chips, action buttons and a checkbox, radio or
+     * switch. Use inside uai-list; pair with typeList for selection; avoid nesting other interactive rows.
+     * Interactive rows (clickable or with a control) are focusable and expose the checkbox, radio, switch or button
+     * role; Enter and Space do the same as a click.
+     */
+    interface HTMLUaiListItemElement extends Components.UaiListItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiListItemElementEventMap>(type: K, listener: (this: HTMLUaiListItemElement, ev: UaiListItemCustomEvent<HTMLUaiListItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiListItemElementEventMap>(type: K, listener: (this: HTMLUaiListItemElement, ev: UaiListItemCustomEvent<HTMLUaiListItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiListItemElement: {
+        prototype: HTMLUaiListItemElement;
+        new (): HTMLUaiListItemElement;
+    };
+    /**
+     * Flex wrapper for custom content inside a uai-list-item slot. Use to stack or align extra content; pair with
+     * the content-area or action-area slots; avoid it for whole page layouts (use uai-grid).
+     */
+    interface HTMLUaiListItemContentElement extends Components.UaiListItemContent, HTMLStencilElement {
+    }
+    var HTMLUaiListItemContentElement: {
+        prototype: HTMLUaiListItemContentElement;
+        new (): HTMLUaiListItemContentElement;
+    };
     /**
      * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
      * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
@@ -9910,6 +10146,18 @@ declare global {
     var HTMLUaiSelectOptionElement: {
         prototype: HTMLUaiSelectOptionElement;
         new (): HTMLUaiSelectOptionElement;
+    };
+    /**
+     * Placeholder shape shown while content loads. Use one per element that is still loading, sized like the
+     * final content; pair with a container that has role="status" and aria-busy="true"; avoid it for loading
+     * that has no layout to anticipate (use a spinner) and avoid nesting interactive content inside it.
+     * The host is aria-hidden: the skeleton is decorative and the loading state is announced by its container.
+     */
+    interface HTMLUaiSkeletonElement extends Components.UaiSkeleton, HTMLStencilElement {
+    }
+    var HTMLUaiSkeletonElement: {
+        prototype: HTMLUaiSkeletonElement;
+        new (): HTMLUaiSkeletonElement;
     };
     interface HTMLUaiStepElementEventMap {
         "uaiStepSelect": number;
@@ -10310,6 +10558,9 @@ declare global {
         "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-input-phone": HTMLUaiInputPhoneElement;
         "uai-input-time": HTMLUaiInputTimeElement;
+        "uai-list": HTMLUaiListElement;
+        "uai-list-item": HTMLUaiListItemElement;
+        "uai-list-item-content": HTMLUaiListItemContentElement;
         "uai-logo": HTMLUaiLogoElement;
         "uai-modal": HTMLUaiModalElement;
         "uai-modal-action": HTMLUaiModalActionElement;
@@ -10324,6 +10575,7 @@ declare global {
         "uai-rich-text": HTMLUaiRichTextElement;
         "uai-select": HTMLUaiSelectElement;
         "uai-select-option": HTMLUaiSelectOptionElement;
+        "uai-skeleton": HTMLUaiSkeletonElement;
         "uai-step": HTMLUaiStepElement;
         "uai-stepper": HTMLUaiStepperElement;
         "uai-switch": HTMLUaiSwitchElement;
@@ -16394,6 +16646,171 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
+     * List of uai-list-item rows, from data or from child elements. Use for plain lists and for single (radio),
+     * multiple (checkbox) or on/off (switch) selection; pair with typeList; avoid it for tabular data (use uai-table).
+     * The host has the list role (radiogroup when typeList is radio) and each row the listitem role.
+     */
+    interface UaiList {
+        /**
+          * Rows as a JSON string or an array: data='[{"value": "01","text": "Text","secondaryText": "Secondary Text","avatarName": "","avatarThumbnail": "","checked": true,"icon": "settings-builder"}]'. Use for lists built from data, also in Angular; pair with typeList. When set, child uai-list-item elements are ignored.
+         */
+        "data"?: string | UaiListData[];
+        /**
+          * Same as uaiClickActionsButtons, with the corrected spelling; both are emitted with the same detail. Use in new code; avoid listening to both.
+         */
+        "onUaiClickActionsButton"?: (event: UaiListCustomEvent<UaiListActionButtonDetail>) => void;
+        /**
+          * An action button of a data row was clicked; name kept from bdsClickActionsButtons. detail: value, icon and elementButton. Use with data; pair with actionsButtons.
+         */
+        "onUaiClickActionsButtons"?: (event: UaiListCustomEvent<UaiListActionButtonDetail>) => void;
+        /**
+          * A checkbox row changed by user interaction. detail: every checked checkbox row. Use to keep the selection; pair with typeList checkbox.
+         */
+        "onUaiListCheckboxChange"?: (event: UaiListCustomEvent<UaiListChangeDetail[]>) => void;
+        /**
+          * A radio row was selected by user interaction. detail: the selected row. Use to keep the selection; pair with value.
+         */
+        "onUaiListRadioChange"?: (event: UaiListCustomEvent<UaiListChangeDetail>) => void;
+        /**
+          * A switch row changed by user interaction. detail: every switch row that is on. Use to keep the settings; pair with typeList switch.
+         */
+        "onUaiListSwitchChange"?: (event: UaiListCustomEvent<UaiListChangeDetail[]>) => void;
+        /**
+          * Control of every row: checkbox, radio, switch or default. Use to make the whole list selectable; pair with the change events. When null, each row keeps its own typeList.
+          * @default null
+         */
+        "typeList"?: UaiListTypeList;
+        /**
+          * Value of the selected radio row. Use to read or set the selection of a radio list; pair with uaiListRadioChange. Avoid it in other list types.
+         */
+        "value"?: string;
+    }
+    /**
+     * One row of a uai-list: text with optional avatar or icon, chips, action buttons and a checkbox, radio or
+     * switch. Use inside uai-list; pair with typeList for selection; avoid nesting other interactive rows.
+     * Interactive rows (clickable or with a control) are focusable and expose the checkbox, radio, switch or button
+     * role; Enter and Space do the same as a click.
+     */
+    interface UaiListItem {
+        /**
+          * UAI icon names of the action buttons on the right, as a JSON string or an array: actions-buttons='["copy", "settings-general", "more-options-horizontal"]'. Use with typeList null or default; pair with uaiClickActionButtom. Avoid them with controls: they are not shown.
+          * @default []
+         */
+        "actionsButtons"?: string | string[];
+        /**
+          * Highlights the row as the current one: selected overlay, solid icon and bold text. Use for the current item; pair with navigation. Avoid it to mean checked.
+          * @default false
+         */
+        "active"?: boolean;
+        /**
+          * Name shown as avatar initials. Use for people or entities; pair with avatarThumbnail. Avoid it together with icon: the avatar wins.
+          * @default null
+         */
+        "avatarName"?: string;
+        /**
+          * Avatar photo URL. Use for people; pair with avatarName as fallback. Avoid decorative images.
+          * @default null
+         */
+        "avatarThumbnail"?: string;
+        /**
+          * Rounds the row corners with radius/md. Use for rows that float on a surface; pair with spacing between rows. Avoid it in full-bleed lists.
+          * @default false
+         */
+        "borderRadius"?: boolean;
+        /**
+          * Selected state of the control. Use with typeList checkbox, radio or switch; pair with uaiChecked. Avoid it on default rows, where it has no visual.
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * Chips shown after the text, as a JSON string or an array: chips='["chip1", "chip2"]'. Use for short tags; pair with text. Avoid long labels: they are cut with a tooltip.
+          * @default []
+         */
+        "chips"?: string | string[];
+        /**
+          * Shows the hover and pressed states and makes the row focusable. Use when the row does something on click; pair with a click handler. Controls are always clickable.
+          * @default false
+         */
+        "clickable"?: boolean;
+        /**
+          * Test selector on the row. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * UAI icon name shown before the text; solid when active. Use to identify the row type; pair with text. Avoid it with an avatar, which takes priority.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Checked state changed by a click, Enter or Space. Use detail.checked; pair with checked. Not emitted for changes made by code.
+         */
+        "onUaiChecked"?: (event: UaiListItemCustomEvent<UaiListItemCheckedDetail>) => void;
+        /**
+          * Click on an action button; name kept from bdsClickActionButtom. Use detail.icon to know the button; pair with actionsButtons. Avoid toggling checked in it.
+         */
+        "onUaiClickActionButtom"?: (event: UaiListItemCustomEvent<UaiListActionButtonDetail>) => void;
+        /**
+          * Same as uaiClickActionButtom, with the corrected spelling; both are emitted with the same detail. Use in new code; pair with actionsButtons. Avoid listening to both.
+         */
+        "onUaiClickActionButton"?: (event: UaiListItemCustomEvent<UaiListActionButtonDetail>) => void;
+        /**
+          * Supporting text below the main text. Use for details; pair with text. Avoid repeating the main text.
+          * @default null
+         */
+        "secondaryText"?: string;
+        /**
+          * Row padding: tall, standard or short. Use standard by default; pair with the density of the screen. Avoid mixing sizes in one list.
+          * @default 'standard'
+         */
+        "size"?: UaiListItemSize;
+        /**
+          * Main text of the row. Use a short label; pair with secondaryText for details. Avoid long paragraphs.
+          * @default null
+         */
+        "text"?: string;
+        /**
+          * Control of the row: checkbox and radio on the left, switch on the right; default or null has none. Use the same value in every row of a list; pair with uai-list typeList. Avoid mixing controls in one list.
+          * @default null
+         */
+        "typeList"?: UaiListTypeList;
+        /**
+          * Row identifier sent in the events. Use a unique value per list; pair with uai-list value for radios. Avoid duplicates.
+          * @default null
+         */
+        "value"?: string;
+    }
+    /**
+     * Flex wrapper for custom content inside a uai-list-item slot. Use to stack or align extra content; pair with
+     * the content-area or action-area slots; avoid it for whole page layouts (use uai-grid).
+     */
+    interface UaiListItemContent {
+        /**
+          * Cross-axis alignment. Use flex-start by default; pair with direction. Avoid stretch with icons.
+          * @default 'flex-start'
+         */
+        "alignItems"?: alignItems;
+        /**
+          * Flex direction of the content. Use column for stacked text; pair with gap. Avoid reverse directions for reading order.
+          * @default 'column'
+         */
+        "direction"?: direction;
+        /**
+          * Wrapping of the content. Use wrap by default; pair with gap. Avoid nowrap with long content.
+          * @default 'wrap'
+         */
+        "flexWrap"?: flexWrap;
+        /**
+          * Space between children, in the uai-grid gap scale. Use for separated content; pair with direction. Avoid margins on the children.
+         */
+        "gap"?: gap1;
+        /**
+          * Main-axis alignment. Use flex-start by default; pair with direction. Avoid space-around in narrow rows.
+          * @default 'flex-start'
+         */
+        "justifyContent"?: justifyContent2;
+    }
+    /**
      * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
      * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
      */
@@ -17142,6 +17559,34 @@ declare namespace LocalJSX {
           * Value submitted and emitted when the option is chosen. Use a short stable string; pair with the label text; avoid duplicates inside one select.
          */
         "value": string;
+    }
+    /**
+     * Placeholder shape shown while content loads. Use one per element that is still loading, sized like the
+     * final content; pair with a container that has role="status" and aria-busy="true"; avoid it for loading
+     * that has no layout to anticipate (use a spinner) and avoid nesting interactive content inside it.
+     * The host is aria-hidden: the skeleton is decorative and the loading state is announced by its container.
+     */
+    interface UaiSkeleton {
+        /**
+          * Test selector on the placeholder surface. Use for automation; pair with semantic queries. Avoid styling by it.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Height as any CSS length, applied inline. Defaults to the bds-skeleton height. Use the height of the content being loaded; pair with width; avoid lengths below the minimum size.
+          * @default `${BDS_DEFAULT_HEIGHT}px`
+         */
+        "height"?: string;
+        /**
+          * Corner shape: square (radius/md) or circle (radius/full). Use circle for avatars; pair with equal width and height; avoid other values, which render as square.
+          * @default 'square'
+         */
+        "shape"?: UaiSkeletonShape;
+        /**
+          * Width as any CSS length, applied inline. Use 100% for text lines and fixed sizes for media; pair with height; avoid widths below the minimum size.
+          * @default '100%'
+         */
+        "width"?: string;
     }
     /**
      * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
@@ -19221,6 +19666,35 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiListAttributes {
+        "typeList": UaiListTypeList;
+        "value": string;
+        "data": string | UaiListData[];
+    }
+    interface UaiListItemAttributes {
+        "checked": boolean;
+        "typeList": UaiListTypeList;
+        "avatarName": string;
+        "avatarThumbnail": string;
+        "icon": string;
+        "value": string;
+        "text": string;
+        "secondaryText": string;
+        "chips": string | string[];
+        "actionsButtons": string | string[];
+        "clickable": boolean;
+        "active": boolean;
+        "borderRadius": boolean;
+        "size": UaiListItemSize;
+        "dataTest": string;
+    }
+    interface UaiListItemContentAttributes {
+        "direction": direction;
+        "justifyContent": justifyContent;
+        "flexWrap": flexWrap;
+        "alignItems": alignItems;
+        "gap": gap;
+    }
     interface UaiLogoAttributes {
         "name": string;
         "ariaLabel": string;
@@ -19361,6 +19835,12 @@ declare namespace LocalJSX {
         "value": string;
         "disabled": boolean;
         "icon": string;
+    }
+    interface UaiSkeletonAttributes {
+        "shape": UaiSkeletonShape;
+        "height": string;
+        "width": string;
+        "dataTest": string;
     }
     interface UaiStepAttributes {
         "heading": string;
@@ -19651,6 +20131,9 @@ declare namespace LocalJSX {
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
         "uai-input-time": Omit<UaiInputTime, keyof UaiInputTimeAttributes> & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes]?: UaiInputTime[K] } & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes as `attr:${K}`]?: UaiInputTimeAttributes[K] } & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes as `prop:${K}`]?: UaiInputTime[K] };
+        "uai-list": Omit<UaiList, keyof UaiListAttributes> & { [K in keyof UaiList & keyof UaiListAttributes]?: UaiList[K] } & { [K in keyof UaiList & keyof UaiListAttributes as `attr:${K}`]?: UaiListAttributes[K] } & { [K in keyof UaiList & keyof UaiListAttributes as `prop:${K}`]?: UaiList[K] };
+        "uai-list-item": Omit<UaiListItem, keyof UaiListItemAttributes> & { [K in keyof UaiListItem & keyof UaiListItemAttributes]?: UaiListItem[K] } & { [K in keyof UaiListItem & keyof UaiListItemAttributes as `attr:${K}`]?: UaiListItemAttributes[K] } & { [K in keyof UaiListItem & keyof UaiListItemAttributes as `prop:${K}`]?: UaiListItem[K] };
+        "uai-list-item-content": Omit<UaiListItemContent, keyof UaiListItemContentAttributes> & { [K in keyof UaiListItemContent & keyof UaiListItemContentAttributes]?: UaiListItemContent[K] } & { [K in keyof UaiListItemContent & keyof UaiListItemContentAttributes as `attr:${K}`]?: UaiListItemContentAttributes[K] } & { [K in keyof UaiListItemContent & keyof UaiListItemContentAttributes as `prop:${K}`]?: UaiListItemContent[K] };
         "uai-logo": Omit<UaiLogo, keyof UaiLogoAttributes> & { [K in keyof UaiLogo & keyof UaiLogoAttributes]?: UaiLogo[K] } & { [K in keyof UaiLogo & keyof UaiLogoAttributes as `attr:${K}`]?: UaiLogoAttributes[K] } & { [K in keyof UaiLogo & keyof UaiLogoAttributes as `prop:${K}`]?: UaiLogo[K] };
         "uai-modal": Omit<UaiModal, keyof UaiModalAttributes> & { [K in keyof UaiModal & keyof UaiModalAttributes]?: UaiModal[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `attr:${K}`]?: UaiModalAttributes[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `prop:${K}`]?: UaiModal[K] };
         "uai-modal-action": UaiModalAction;
@@ -19665,6 +20148,7 @@ declare namespace LocalJSX {
         "uai-rich-text": Omit<UaiRichText, keyof UaiRichTextAttributes> & { [K in keyof UaiRichText & keyof UaiRichTextAttributes]?: UaiRichText[K] } & { [K in keyof UaiRichText & keyof UaiRichTextAttributes as `attr:${K}`]?: UaiRichTextAttributes[K] } & { [K in keyof UaiRichText & keyof UaiRichTextAttributes as `prop:${K}`]?: UaiRichText[K] };
         "uai-select": Omit<UaiSelect, keyof UaiSelectAttributes> & { [K in keyof UaiSelect & keyof UaiSelectAttributes]?: UaiSelect[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `attr:${K}`]?: UaiSelectAttributes[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `prop:${K}`]?: UaiSelect[K] };
         "uai-select-option": Omit<UaiSelectOption, keyof UaiSelectOptionAttributes> & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes]?: UaiSelectOption[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `attr:${K}`]?: UaiSelectOptionAttributes[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `prop:${K}`]?: UaiSelectOption[K] } & OneOf<"value", UaiSelectOption["value"], UaiSelectOptionAttributes["value"]>;
+        "uai-skeleton": Omit<UaiSkeleton, keyof UaiSkeletonAttributes> & { [K in keyof UaiSkeleton & keyof UaiSkeletonAttributes]?: UaiSkeleton[K] } & { [K in keyof UaiSkeleton & keyof UaiSkeletonAttributes as `attr:${K}`]?: UaiSkeletonAttributes[K] } & { [K in keyof UaiSkeleton & keyof UaiSkeletonAttributes as `prop:${K}`]?: UaiSkeleton[K] };
         "uai-step": Omit<UaiStep, keyof UaiStepAttributes> & { [K in keyof UaiStep & keyof UaiStepAttributes]?: UaiStep[K] } & { [K in keyof UaiStep & keyof UaiStepAttributes as `attr:${K}`]?: UaiStepAttributes[K] } & { [K in keyof UaiStep & keyof UaiStepAttributes as `prop:${K}`]?: UaiStep[K] };
         "uai-stepper": Omit<UaiStepper, keyof UaiStepperAttributes> & { [K in keyof UaiStepper & keyof UaiStepperAttributes]?: UaiStepper[K] } & { [K in keyof UaiStepper & keyof UaiStepperAttributes as `attr:${K}`]?: UaiStepperAttributes[K] } & { [K in keyof UaiStepper & keyof UaiStepperAttributes as `prop:${K}`]?: UaiStepper[K] };
         "uai-switch": Omit<UaiSwitch, keyof UaiSwitchAttributes> & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes]?: UaiSwitch[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `attr:${K}`]?: UaiSwitchAttributes[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `prop:${K}`]?: UaiSwitch[K] };
@@ -20049,6 +20533,24 @@ declare module "@stencil/core" {
              */
             "uai-input-time": LocalJSX.IntrinsicElements["uai-input-time"] & JSXBase.HTMLAttributes<HTMLUaiInputTimeElement>;
             /**
+             * List of uai-list-item rows, from data or from child elements. Use for plain lists and for single (radio),
+             * multiple (checkbox) or on/off (switch) selection; pair with typeList; avoid it for tabular data (use uai-table).
+             * The host has the list role (radiogroup when typeList is radio) and each row the listitem role.
+             */
+            "uai-list": LocalJSX.IntrinsicElements["uai-list"] & JSXBase.HTMLAttributes<HTMLUaiListElement>;
+            /**
+             * One row of a uai-list: text with optional avatar or icon, chips, action buttons and a checkbox, radio or
+             * switch. Use inside uai-list; pair with typeList for selection; avoid nesting other interactive rows.
+             * Interactive rows (clickable or with a control) are focusable and expose the checkbox, radio, switch or button
+             * role; Enter and Space do the same as a click.
+             */
+            "uai-list-item": LocalJSX.IntrinsicElements["uai-list-item"] & JSXBase.HTMLAttributes<HTMLUaiListItemElement>;
+            /**
+             * Flex wrapper for custom content inside a uai-list-item slot. Use to stack or align extra content; pair with
+             * the content-area or action-area slots; avoid it for whole page layouts (use uai-grid).
+             */
+            "uai-list-item-content": LocalJSX.IntrinsicElements["uai-list-item-content"] & JSXBase.HTMLAttributes<HTMLUaiListItemContentElement>;
+            /**
              * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
              * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
              */
@@ -20123,6 +20625,13 @@ declare module "@stencil/core" {
              * nothing by itself.
              */
             "uai-select-option": LocalJSX.IntrinsicElements["uai-select-option"] & JSXBase.HTMLAttributes<HTMLUaiSelectOptionElement>;
+            /**
+             * Placeholder shape shown while content loads. Use one per element that is still loading, sized like the
+             * final content; pair with a container that has role="status" and aria-busy="true"; avoid it for loading
+             * that has no layout to anticipate (use a spinner) and avoid nesting interactive content inside it.
+             * The host is aria-hidden: the skeleton is decorative and the loading state is announced by its container.
+             */
+            "uai-skeleton": LocalJSX.IntrinsicElements["uai-skeleton"] & JSXBase.HTMLAttributes<HTMLUaiSkeletonElement>;
             /**
              * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
              * Use inside uai-stepper, which sets its orientation, number and position; avoid it outside a stepper.

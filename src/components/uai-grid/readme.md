@@ -46,6 +46,19 @@ its layout props while using UAI dimensions and theme-aware color tokens.
 |      | Grid items, including nested uai-grid elements. |
 
 
+## Dependencies
+
+### Used by
+
+ - [uai-list-item-content](../uai-list-item)
+
+### Graph
+```mermaid
+graph TD;
+  uai-list-item-content --> uai-grid
+  style uai-grid fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

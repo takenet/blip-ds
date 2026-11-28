@@ -65,6 +65,19 @@ Type: `Promise<boolean>`
 | `"track"`   | The visual track.             |
 
 
+## Dependencies
+
+### Used by
+
+ - [uai-list-item](../uai-list-item)
+
+### Graph
+```mermaid
+graph TD;
+  uai-list-item --> uai-switch
+  style uai-switch fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
