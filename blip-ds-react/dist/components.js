@@ -128,6 +128,9 @@ import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as def
 import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInputTime as UaiInputTimeElement, defineCustomElement as defineUaiInputTime } from "blip-ds/dist/components/uai-input-time.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
+import { UaiListItemContent as UaiListItemContentElement, defineCustomElement as defineUaiListItemContent } from "blip-ds/dist/components/uai-list-item-content.js";
+import { UaiListItem as UaiListItemElement, defineCustomElement as defineUaiListItem } from "blip-ds/dist/components/uai-list-item.js";
+import { UaiList as UaiListElement, defineCustomElement as defineUaiList } from "blip-ds/dist/components/uai-list.js";
 import { UaiLogo as UaiLogoElement, defineCustomElement as defineUaiLogo } from "blip-ds/dist/components/uai-logo.js";
 import { UaiModalAction as UaiModalActionElement, defineCustomElement as defineUaiModalAction } from "blip-ds/dist/components/uai-modal-action.js";
 import { UaiModalCloseButton as UaiModalCloseButtonElement, defineCustomElement as defineUaiModalCloseButton } from "blip-ds/dist/components/uai-modal-close-button.js";
@@ -142,6 +145,7 @@ import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } fr
 import { UaiRichText as UaiRichTextElement, defineCustomElement as defineUaiRichText } from "blip-ds/dist/components/uai-rich-text.js";
 import { UaiSelectOption as UaiSelectOptionElement, defineCustomElement as defineUaiSelectOption } from "blip-ds/dist/components/uai-select-option.js";
 import { UaiSelect as UaiSelectElement, defineCustomElement as defineUaiSelect } from "blip-ds/dist/components/uai-select.js";
+import { UaiSkeleton as UaiSkeletonElement, defineCustomElement as defineUaiSkeleton } from "blip-ds/dist/components/uai-skeleton.js";
 import { UaiStep as UaiStepElement, defineCustomElement as defineUaiStep } from "blip-ds/dist/components/uai-step.js";
 import { UaiStepper as UaiStepperElement, defineCustomElement as defineUaiStepper } from "blip-ds/dist/components/uai-stepper.js";
 import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
@@ -1355,6 +1359,40 @@ export const UaiInputTime = createComponent({
     defineCustomElement: defineUaiInputTime,
     transformTag
 });
+export const UaiList = createComponent({
+    tagName: 'uai-list',
+    elementClass: UaiListElement,
+    react: React,
+    events: {
+        onUaiListCheckboxChange: 'uaiListCheckboxChange',
+        onUaiListRadioChange: 'uaiListRadioChange',
+        onUaiListSwitchChange: 'uaiListSwitchChange',
+        onUaiClickActionsButtons: 'uaiClickActionsButtons',
+        onUaiClickActionsButton: 'uaiClickActionsButton'
+    },
+    defineCustomElement: defineUaiList,
+    transformTag
+});
+export const UaiListItem = createComponent({
+    tagName: 'uai-list-item',
+    elementClass: UaiListItemElement,
+    react: React,
+    events: {
+        onUaiChecked: 'uaiChecked',
+        onUaiClickActionButtom: 'uaiClickActionButtom',
+        onUaiClickActionButton: 'uaiClickActionButton'
+    },
+    defineCustomElement: defineUaiListItem,
+    transformTag
+});
+export const UaiListItemContent = createComponent({
+    tagName: 'uai-list-item-content',
+    elementClass: UaiListItemContentElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiListItemContent,
+    transformTag
+});
 export const UaiLogo = createComponent({
     tagName: 'uai-logo',
     elementClass: UaiLogoElement,
@@ -1484,6 +1522,14 @@ export const UaiSelectOption = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiSelectOption,
+    transformTag
+});
+export const UaiSkeleton = createComponent({
+    tagName: 'uai-skeleton',
+    elementClass: UaiSkeletonElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiSkeleton,
     transformTag
 });
 export const UaiStep = createComponent({
