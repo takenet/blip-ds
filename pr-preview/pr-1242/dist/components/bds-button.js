@@ -1,1 +1,0 @@
-import{B as o,d as s}from"./p-Cvatfn-T.js";const t=o,a=s;export{t as BdsButton,a as defineCustomElement}
