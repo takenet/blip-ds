@@ -1,4 +1,4 @@
-System.register(["./p-Btp-603e.system.js","./p-K3qvUp-C.system.js"],(function(r){"use strict";var e,t;return{setters:[function(n){e=n.a;t=n.t;r({setTagTransformer:n.a,transformTag:n.t})},function(e){r({UAI_TOAST_POSITIONS:e.U,showToast:e.s})}],execute:function(){r("scopeTags",c);var n="ds-191d06b8";var a={prefix:n};
+System.register(["./p-Btp-603e.system.js","./p-K3qvUp-C.system.js"],(function(r){"use strict";var e,t;return{setters:[function(n){e=n.a;t=n.t;r({setTagTransformer:n.a,transformTag:n.t})},function(e){r({UAI_TOAST_POSITIONS:e.U,showToast:e.s})}],execute:function(){r("scopeTags",c);var n="ds-e6259615";var a={prefix:n};
 /**
              * Tag prefix of this build of blip-ds, such as `ds-1a2b3c4d`. It is a hash of the component sources, so every app on
              * the same release gets the same prefix and shares the same registered components, and different releases never clash.

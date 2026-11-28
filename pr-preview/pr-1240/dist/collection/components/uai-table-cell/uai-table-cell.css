@@ -41,14 +41,13 @@
 }
 
 uai-typo {
-  --cell-halo: var(--uai-spacing-xs, 0.5rem);
   display: flex;
   gap: var(--uai-spacing-xs, 0.5rem);
   align-items: center;
   min-width: 0;
-  max-width: calc(100% + 2 * var(--cell-halo));
-  margin: calc(-1 * var(--cell-halo));
-  padding: var(--cell-halo);
+  max-width: calc(100% + 2 * var(--uai-spacing-xs, 0.5rem));
+  margin: calc(-1 * var(--uai-spacing-xs, 0.5rem));
+  padding: var(--uai-spacing-xs, 0.5rem);
   overflow: hidden;
 }
 
