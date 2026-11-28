@@ -1,0 +1,1 @@
+import{U as o,d as s}from"./p-D5T51dLd.js";const d=o,p=s;export{d as UaiCheckbox,p as defineCustomElement}

@@ -1,0 +1,21 @@
+'use strict';
+
+var index = require('./index-GTJCA4wH.js');
+
+const uaiSelectOptionCss = () => `:host{display:none}`;
+
+const UaiSelectOption = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+        /** Prevents choosing the option. Use for unavailable choices; pair with explanatory text elsewhere; avoid hiding options by disabling them all. */
+        this.disabled = false;
+        /** Optional UAI icon name shown before the label. Use to reinforce the label; pair with the label text; avoid icons without meaning. */
+        this.icon = null;
+    }
+    render() {
+        return (index.h(index.Host, { key: '5ef46bd8d9ab64488adf942dc3f6d07854e325b7', hidden: true }, index.h("slot", { key: '17c19417e2ba8f95eda5031916b01c4eb73f5708' })));
+    }
+};
+UaiSelectOption.style = uaiSelectOptionCss();
+
+exports.uai_select_option = UaiSelectOption;

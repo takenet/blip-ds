@@ -1,0 +1,1 @@
+import{U as o,d as r}from"./p-Ckr0HjzX.js";const s=o,p=r;export{s as UaiTooltip,p as defineCustomElement}

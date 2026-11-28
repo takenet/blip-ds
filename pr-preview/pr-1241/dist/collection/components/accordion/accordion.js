@@ -1,0 +1,292 @@
+import { h } from "@stencil/core";
+import { isTag } from "../../utils/tag-name";
+export class Accordion {
+    constructor() {
+        this.accGroup = null;
+        this.accheaders = null;
+        this.accBodies = null;
+        this.isOpen = false;
+        this.numberElement = null;
+        this.condition = false;
+        this.startOpen = false;
+        this.divisor = true;
+    }
+    async toggle() {
+        this.isOpen = !this.isOpen;
+        this.bdsToggle.emit({ value: this.isOpen });
+    }
+    async open() {
+        var _a, _b;
+        (_a = this.accheaders) === null || _a === void 0 ? void 0 : _a.open();
+        (_b = this.accBodies) === null || _b === void 0 ? void 0 : _b.open();
+        this.isOpen = true;
+    }
+    async close() {
+        var _a, _b;
+        (_a = this.accheaders) === null || _a === void 0 ? void 0 : _a.close();
+        (_b = this.accBodies) === null || _b === void 0 ? void 0 : _b.close();
+        this.isOpen = false;
+    }
+    async notStart() {
+        this.startOpen = false;
+    }
+    async reciveNumber(number) {
+        this.numberElement = number;
+    }
+    isOpenChanged(value) {
+        var _a, _b, _c, _d, _e;
+        if (value) {
+            if (this.accGroup.collapse == 'single' && this.condition === false) {
+                (_a = this.accGroup) === null || _a === void 0 ? void 0 : _a.closeAll(this.numberElement);
+            }
+            (_b = this.accheaders) === null || _b === void 0 ? void 0 : _b.open();
+            (_c = this.accBodies) === null || _c === void 0 ? void 0 : _c.open();
+            this.bdsAccordionOpen.emit();
+        }
+        else {
+            (_d = this.accheaders) === null || _d === void 0 ? void 0 : _d.close();
+            (_e = this.accBodies) === null || _e === void 0 ? void 0 : _e.close();
+            this.bdsAccordionClose.emit();
+        }
+        this.condition = false;
+    }
+    divisorChanged(newValue) {
+        const accordionBody = this.element.querySelector('bds-accordion-body');
+        if (accordionBody) {
+            accordionBody.divisor(newValue);
+        }
+    }
+    componentWillLoad() {
+        this.accGroup =
+            isTag(this.element.parentElement, 'bds-accordion-group') &&
+                this.element.parentElement;
+        this.accheaders = this.element.querySelector('bds-accordion-header');
+        this.accBodies = this.element.querySelector('bds-accordion-body');
+        // Passar a prop divisor para o AccordionBody
+        const accordionBody = this.element.querySelector('bds-accordion-body');
+        if (accordionBody) {
+            accordionBody.divisor(this.divisor);
+        }
+        if (this.startOpen === true) {
+            this.condition = true;
+            this.isOpen = true;
+        }
+    }
+    render() {
+        return (h("div", { key: 'af88f2666ff7d80dc119213c344c9512c42dd101', class: "accordion_group" }, h("slot", { key: '6f80a34f05ca8180d566566b00316a70401a8a2b' })));
+    }
+    static get is() { return "bds-accordion"; }
+    static get encapsulation() { return "shadow"; }
+    static get originalStyleUrls() {
+        return {
+            "$": ["accordion.scss"]
+        };
+    }
+    static get styleUrls() {
+        return {
+            "$": ["accordion.css"]
+        };
+    }
+    static get properties() {
+        return {
+            "startOpen": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": true,
+                "attribute": "start-open",
+                "defaultValue": "false"
+            },
+            "divisor": {
+                "type": "boolean",
+                "mutable": false,
+                "complexType": {
+                    "original": "boolean",
+                    "resolved": "boolean",
+                    "references": {}
+                },
+                "required": false,
+                "optional": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "getter": false,
+                "setter": false,
+                "reflect": true,
+                "attribute": "divisor",
+                "defaultValue": "true"
+            }
+        };
+    }
+    static get states() {
+        return {
+            "isOpen": {},
+            "numberElement": {},
+            "condition": {}
+        };
+    }
+    static get events() {
+        return [{
+                "method": "bdsToggle",
+                "name": "bdsToggle",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "complexType": {
+                    "original": "{ value: boolean }",
+                    "resolved": "{ value: boolean; }",
+                    "references": {}
+                }
+            }, {
+                "method": "bdsAccordionOpen",
+                "name": "bdsAccordionOpen",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "complexType": {
+                    "original": "void",
+                    "resolved": "void",
+                    "references": {}
+                }
+            }, {
+                "method": "bdsAccordionClose",
+                "name": "bdsAccordionClose",
+                "bubbles": true,
+                "cancelable": true,
+                "composed": true,
+                "docs": {
+                    "tags": [],
+                    "text": ""
+                },
+                "complexType": {
+                    "original": "void",
+                    "resolved": "void",
+                    "references": {}
+                }
+            }];
+    }
+    static get methods() {
+        return {
+            "toggle": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "",
+                    "tags": []
+                }
+            },
+            "open": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "",
+                    "tags": []
+                }
+            },
+            "close": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "",
+                    "tags": []
+                }
+            },
+            "notStart": {
+                "complexType": {
+                    "signature": "() => Promise<void>",
+                    "parameters": [],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "",
+                    "tags": []
+                }
+            },
+            "reciveNumber": {
+                "complexType": {
+                    "signature": "(number: any) => Promise<void>",
+                    "parameters": [{
+                            "name": "number",
+                            "type": "any",
+                            "docs": ""
+                        }],
+                    "references": {
+                        "Promise": {
+                            "location": "global",
+                            "id": "global::Promise"
+                        }
+                    },
+                    "return": "Promise<void>"
+                },
+                "docs": {
+                    "text": "",
+                    "tags": []
+                }
+            }
+        };
+    }
+    static get elementRef() { return "element"; }
+    static get watchers() {
+        return [{
+                "propName": "isOpen",
+                "methodName": "isOpenChanged"
+            }, {
+                "propName": "divisor",
+                "methodName": "divisorChanged"
+            }];
+    }
+}

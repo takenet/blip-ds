@@ -1,0 +1,1 @@
+import{U as o,d as p}from"./p-_KSpwgN9.js";const s=o,r=p;export{s as UaiTypo,r as defineCustomElement}

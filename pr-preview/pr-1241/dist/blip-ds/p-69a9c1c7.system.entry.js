@@ -1,0 +1,4 @@
+System.register(["./p-Btp-603e.system.js"],(function(t){"use strict";var e,n,a;return{setters:[function(t){e=t.r;n=t.h;a=t.H}],execute:function(){var s=function(){return'.bds-tab-panel{display:none;font-family:"Nunito Sans", "Carbona", "Tahoma", "Helvetica", "Arial", sans-serif;font-size:1rem;font-style:normal;font-weight:normal}.bds-tab-panel--selected{display:block}'};var i=t("bds_tab_panel",/** @class */function(){function t(t){e(this,t);
+/**
+                     * State to control if a tab panel is current active
+                     */this.isActive=false}t.prototype.handleTabChange=function(t){this.isActive=t.detail==this.group};t.prototype.render=function(){var t;return n(a,{key:"85f4aa6a21f34e010a1ed145861bdc6500e6d191",class:(t={"bds-tab-panel":true},t["bds-tab-panel--selected"]=this.isActive,t)},n("slot",{key:"f5f10417d82d9242801ba4e518be7d9f44ef8347"}))};return t}());i.style=s()}}}));

@@ -1,0 +1,1 @@
+import{U as o,d as s}from"./p-D6X18DhE.js";const p=o,r=s;export{p as UaiSwitch,r as defineCustomElement}

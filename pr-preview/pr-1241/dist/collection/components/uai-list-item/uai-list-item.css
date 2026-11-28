@@ -1,0 +1,180 @@
+/*
+  Font family is Nunito Sans. Its fallback is Helvetica
+*/
+/*
+  Font sizes have been converted to rem considering a base size of 16px.
+*/
+/** Customs */
+/** Animations */
+/** Aligns */
+/** Scoll Bar */
+/** Hover & Pressed */
+/*
+*  Z-Index
+*  
+*  The z-index CSS property sets the z-order of a positioned element and its descendants or flex items. 
+*  Overlapping elements with a larger z-index cover those with a smaller one.
+*  
+*  REF: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+*  REF: https://www.smashingmagazine.com/2019/04/z-index-component-based-web-application/  
+*/
+/**
+* Define media query values
+*/
+:host {
+  display: block;
+  width: 100%;
+}
+
+.list-item {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-md, 1rem);
+  border-radius: var(--uai-radius-none, 0rem);
+  color: var(--uai-content-primary, #242729);
+  font-family: var(--uai-font-family-sans, Figtree), sans-serif;
+}
+.list-item--tall {
+  padding: var(--uai-spacing-md, 1rem);
+}
+.list-item--standard {
+  padding: var(--uai-spacing-xs, 0.5rem) var(--uai-spacing-md, 1rem);
+}
+.list-item--short {
+  padding: var(--uai-spacing-xs, 0.5rem);
+}
+.list-item--border-radius {
+  border-radius: var(--uai-radius-md, 0.5rem);
+}
+.list-item::before, .list-item::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  content: "";
+  pointer-events: none;
+}
+.list-item::before {
+  background-color: transparent;
+  transition: background-color var(--uai-duration-fast, 150ms) var(--uai-easing-standard, cubic-bezier(0.25, 0.1, 0.25, 1));
+}
+@media (prefers-reduced-motion: reduce) {
+  .list-item::before {
+    transition: none;
+  }
+}
+.list-item--active::after {
+  background-color: var(--uai-overlay-selected, rgba(0, 0, 0, 0.06));
+}
+.list-item--clickable {
+  gap: var(--uai-spacing-xs, 0.5rem);
+  cursor: pointer;
+}
+.list-item--clickable:hover::before {
+  background-color: var(--uai-overlay-hover, rgba(0, 0, 0, 0.08));
+}
+.list-item--clickable:active::before {
+  background-color: var(--uai-overlay-pressed, rgba(0, 0, 0, 0.16));
+}
+.list-item--clickable:focus {
+  outline: none;
+}
+.list-item--clickable:focus-visible {
+  outline: var(--uai-border-width-thick, 2px) solid var(--uai-border-ring, #242729);
+  outline-offset: calc(-1 * var(--uai-spacing-3xs, 0.125rem));
+}
+.list-item > * {
+  position: relative;
+}
+
+.control {
+  display: inline-flex;
+  flex: none;
+  pointer-events: none;
+}
+
+.avatar-item {
+  display: block;
+  flex: none;
+}
+
+.icon-item {
+  flex: none;
+  color: var(--uai-content-primary, #242729);
+}
+
+.content-slot {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+}
+
+.content-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-3xs, 0.125rem);
+  min-width: 0;
+}
+
+.title-item {
+  --uai-typo-color: var(--uai-content-primary, #242729);
+}
+
+.subtitle-item {
+  --uai-typo-color: var(--uai-content-secondary, #5f676d);
+}
+
+.grow-up {
+  flex-grow: 2;
+}
+
+.content-area {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, 0.5rem);
+  min-width: 0;
+}
+.content-area .internal-chips,
+.content-area ::slotted(*) {
+  display: flex;
+  flex-direction: row;
+  gap: var(--uai-spacing-xs, 0.5rem);
+}
+
+.chip {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  height: var(--uai-sizing-lg, 1.5rem);
+  padding: 0 var(--uai-spacing-xs, 0.5rem);
+  border: var(--uai-border-width-default, 1px) solid var(--uai-border-default, #e4e6e7);
+  border-radius: var(--uai-radius-full, 624.9375rem);
+  background-color: var(--uai-surface-muted, #f2f3f3);
+  color: var(--uai-content-primary, #242729);
+  font-size: var(--uai-caption-font-size, 0.75rem);
+  font-weight: var(--uai-font-weight-medium, 500);
+  line-height: var(--uai-caption-line-height, 1.25rem);
+  white-space: nowrap;
+}
+
+.action-area {
+  display: flex;
+  align-items: center;
+}
+.action-area .internal-actions-buttons,
+.action-area ::slotted(*) {
+  display: flex;
+  flex-direction: row;
+  gap: var(--uai-spacing-none, 0rem);
+  color: var(--uai-content-primary, #242729);
+}
+
+@media (forced-colors: active) {
+  .list-item--active {
+    outline: var(--uai-border-width-default, 1px) solid Highlight;
+  }
+  .chip {
+    border-color: CanvasText;
+  }
+}

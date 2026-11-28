@@ -1,0 +1,1 @@
+import{C as o,d as s}from"./p-BbtAbWQ-.js";const t=o,p=s;export{t as BdsChipClickable,p as defineCustomElement}

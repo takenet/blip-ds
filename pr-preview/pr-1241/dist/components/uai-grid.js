@@ -1,0 +1,1 @@
+import{U as o,d as a}from"./p-CCFuoaaI.js";const s=o,p=a;export{s as UaiGrid,p as defineCustomElement}

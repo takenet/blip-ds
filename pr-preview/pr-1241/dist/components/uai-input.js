@@ -1,0 +1,1 @@
+import{U as s,d as o}from"./p-bIQLYzls.js";const p=s,r=o;export{p as UaiInput,r as defineCustomElement}

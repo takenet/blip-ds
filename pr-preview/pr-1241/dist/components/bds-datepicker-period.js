@@ -1,0 +1,1 @@
+import{B as o,d as s}from"./p-D5v_b1iP.js";const p=o,r=s;export{p as BdsDatepickerPeriod,r as defineCustomElement}

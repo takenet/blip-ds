@@ -1,0 +1,17 @@
+'use strict';
+
+var index = require('./index-GTJCA4wH.js');
+
+const warningCss = () => `:host{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}.warning__body{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;width:100%;max-width:100%;max-height:100%;background-color:#ededed;border-radius:8px;padding:16px}.warning__icon{color:#f6a721}.warning__message{color:#505f79;margin-left:8px}`;
+
+const Warning = class {
+    constructor(hostRef) {
+        index.registerInstance(this, hostRef);
+    }
+    render() {
+        return (index.h(index.Host, { key: '6d822227664127c2fa3b2e39625c11380ae375d6' }, index.h("div", { key: 'ac5d9ba959ae1e94a4c92cc2c313ea9c9c57f9de', class: "warning__body" }, index.h("bds-icon", { key: '8fb2d189f3f381a630a46d100056e6074f792f21', class: "warning__icon", theme: "solid", size: "small", name: "warning" }), index.h("bds-typo", { key: 'a79fb46d0981c439e3f096525fbe42e665ad84d7', variant: "fs-14", tag: "span", class: "warning__message" }, index.h("slot", { key: '6f36d26d6368c71ff8e938c092a868d7f327bbd1' })))));
+    }
+};
+Warning.style = warningCss();
+
+exports.bds_warning = Warning;

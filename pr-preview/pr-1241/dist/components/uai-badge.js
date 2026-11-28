@@ -1,0 +1,1 @@
+import{U as a,d as o}from"./p-BnzKaZfa.js";const s=a,p=o;export{s as UaiBadge,p as defineCustomElement}
