@@ -1,6 +1,9 @@
 import { Element, Component, Host, h, State, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 import { TypeList } from './list';
 export type ItemSize = 'tall' | 'standard' | 'short';
+/**
+ * @deprecated Use uai-list-item with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-list-item',
   styleUrl: 'list.scss',

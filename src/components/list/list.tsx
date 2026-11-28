@@ -3,6 +3,9 @@ import { Data } from './list-interface';
 
 export type TypeList = 'checkbox' | 'radio' | 'switch' | 'default';
 
+/**
+ * @deprecated Use uai-list with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-list',
   styleUrl: 'list.scss',

@@ -57,6 +57,7 @@ without the FontFace API.
  - [uai-input-password](../uai-input-password)
  - [uai-input-phone](../uai-input-phone)
  - [uai-input-time](../uai-input-time)
+ - [uai-list-item](../uai-list-item)
  - [uai-modal](../uai-modal)
  - [uai-modal-close-button](../uai-modal-close-button)
  - [uai-select](../uai-select)
@@ -84,6 +85,7 @@ graph TD;
   uai-input-password --> uai-icon
   uai-input-phone --> uai-icon
   uai-input-time --> uai-icon
+  uai-list-item --> uai-icon
   uai-modal --> uai-icon
   uai-modal-close-button --> uai-icon
   uai-select --> uai-icon

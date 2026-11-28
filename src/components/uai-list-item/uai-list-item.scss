@@ -1,0 +1,176 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.list-item {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  border-radius: var(--uai-radius-none, #{$uai-radius-none});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans}), sans-serif;
+
+  &--tall {
+    padding: var(--uai-spacing-md, #{$uai-spacing-md});
+  }
+
+  &--standard {
+    padding: var(--uai-spacing-xs, #{$uai-spacing-xs}) var(--uai-spacing-md, #{$uai-spacing-md});
+  }
+
+  &--short {
+    padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  }
+
+  &--border-radius {
+    border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  }
+
+  // State layers: ::before carries hover and pressed, ::after the active (selected) overlay.
+  &::before,
+  &::after {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    content: '';
+    pointer-events: none;
+  }
+
+  &::before {
+    background-color: transparent;
+    @include uai-transition(background-color);
+  }
+
+  &--active::after {
+    background-color: var(--uai-overlay-selected, #{$uai-overlay-selected});
+  }
+
+  &--clickable {
+    gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+    cursor: pointer;
+
+    &:hover::before {
+      background-color: var(--uai-overlay-hover, #{$uai-overlay-hover});
+    }
+
+    &:active::before {
+      background-color: var(--uai-overlay-pressed, #{$uai-overlay-pressed});
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    // SOLFAC-117 (a): visible focus ring (border/ring, border-width/thick), drawn inside the row so a list with
+    // overflow hidden does not clip it.
+    &:focus-visible {
+      outline: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid var(--uai-border-ring, #{$uai-border-ring});
+      outline-offset: calc(-1 * var(--uai-spacing-3xs, #{$uai-spacing-3xs}));
+    }
+  }
+
+  > * {
+    position: relative;
+  }
+}
+
+.control {
+  display: inline-flex;
+  flex: none;
+  pointer-events: none;
+}
+
+.avatar-item {
+  display: block;
+  flex: none;
+}
+
+.icon-item {
+  flex: none;
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.content-slot {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.content-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+  min-width: 0;
+}
+
+.title-item {
+  --uai-typo-color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.subtitle-item {
+  --uai-typo-color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+.grow-up {
+  flex-grow: 2;
+}
+
+.content-area {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  min-width: 0;
+
+  .internal-chips,
+  ::slotted(*) {
+    display: flex;
+    flex-direction: row;
+    gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  }
+}
+
+// Provisional chip from the UAI Core handoff: there is no clickable chip in UAI yet (SOLFAC-115).
+.chip {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  height: var(--uai-sizing-lg, #{$uai-sizing-lg});
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background-color: var(--uai-surface-muted, #{$uai-surface-muted});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-size: var(--uai-caption-font-size, #{$uai-caption-font-size});
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  line-height: var(--uai-caption-line-height, #{$uai-caption-line-height});
+  white-space: nowrap;
+}
+
+.action-area {
+  display: flex;
+  align-items: center;
+
+  .internal-actions-buttons,
+  ::slotted(*) {
+    display: flex;
+    flex-direction: row;
+    gap: var(--uai-spacing-none, #{$uai-spacing-none});
+    color: var(--uai-content-primary, #{$uai-content-primary});
+  }
+}
+
+@media (forced-colors: active) {
+  .list-item--active {
+    outline: var(--uai-border-width-default, #{$uai-border-width-default}) solid Highlight;
+  }
+
+  .chip {
+    border-color: CanvasText;
+  }
+}

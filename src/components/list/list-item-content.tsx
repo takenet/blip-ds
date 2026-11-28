@@ -1,6 +1,9 @@
 import { Component, h, Host, Element, Prop } from '@stencil/core';
 import { direction, justifyContent, flexWrap, alignItems, gap } from '../grid/grid-interface';
 
+/**
+ * @deprecated Use uai-list-item-content with UaiThemeProvider for tokenized styling.
+ */
 @Component({
   tag: 'bds-list-item-content',
   styleUrl: 'list.scss',

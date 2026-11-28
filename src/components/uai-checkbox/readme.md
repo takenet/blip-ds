@@ -78,6 +78,19 @@ Type: `Promise<void>`
 | `"label"`     | The label and control layout.           |
 
 
+## Dependencies
+
+### Used by
+
+ - [uai-list-item](../uai-list-item)
+
+### Graph
+```mermaid
+graph TD;
+  uai-list-item --> uai-checkbox
+  style uai-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -1,9 +1,13 @@
 # bds-list-item
 
+> **[DEPRECATED]** bds-list, bds-list-item and bds-list-item-content: use uai-list, uai-list-item and uai-list-item-content with UaiThemeProvider for tokenized styling.
+
 
 
 <!-- Auto Generated Below -->
 
+
+> **[DEPRECATED]** Use uai-list-item-content with UaiThemeProvider for tokenized styling.
 
 ## Properties
 

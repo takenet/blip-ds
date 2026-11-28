@@ -3,7 +3,7 @@ import DocumentationTemplate from './skeleton.mdx';
 import { BdsGrid, BdsSkeleton } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Skeleton',
+  title: 'Components/[deprecated] Skeleton',
   parameters: {
     docs: {
       page: DocumentationTemplate,
