@@ -1,0 +1,44 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-flex;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.icon-box {
+  --icon-box-glyph-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background-color: var(--uai-surface-background, #{$uai-surface-background});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+
+  &--size-sm {
+    --icon-box-glyph-size: var(--uai-sizing-md, #{$uai-sizing-md});
+  }
+
+  &--size-md {
+    --icon-box-glyph-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
+  }
+
+  &--size-lg {
+    --icon-box-glyph-size: var(--uai-sizing-xl, #{$uai-sizing-xl});
+  }
+}
+
+.icon-box__icon {
+  --uai-icon-size: var(--icon-box-glyph-size);
+
+  color: inherit;
+}
+
+::slotted(*) {
+  width: var(--icon-box-glyph-size);
+  height: var(--icon-box-glyph-size);
+  color: inherit;
+}

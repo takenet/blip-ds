@@ -2,10 +2,10 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('NavBar - Visual Regression', () => {
   test('default state', async ({ storybook }) => {
-    await storybook.screenshotStory('components-deprecated-navbar--properties', 'navbar-default');
+    await storybook.screenshotStory('bds-components-deprecated-navbar--properties', 'navbar-default');
   });
 
   test('v2 default state', async ({ storybook }) => {
-    await storybook.screenshotStory('uai-navbar--playground', 'uai-navbar-default');
+    await storybook.screenshotStory('uai-components-navbar--playground', 'uai-navbar-default');
   });
 });

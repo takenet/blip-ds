@@ -92,4 +92,113 @@ describe('uai-grid', () => {
     expect(page.root.classList.contains('padding--t-2')).toBe(false);
     expect(page.root.classList.contains('padding--x-3')).toBe(false);
   });
+
+  it('renders drag handle and plus button in type="draggable" and preserves gap class', async () => {
+    const page = await newSpecPage({
+      components: [UaiGrid],
+      html: `
+        <uai-grid type="draggable" max-items="2">
+          <div>Item 1</div>
+        </uai-grid>
+      `,
+    });
+
+    const handle = page.root.shadowRoot.querySelector('.grid-draggable__handle') as HTMLButtonElement;
+    const slotWrap = page.root.shadowRoot.querySelector('.grid-draggable__slot') as HTMLElement;
+    const addBtn = page.root.shadowRoot.querySelector('.grid-draggable__add') as HTMLButtonElement;
+
+    expect(page.root.classList.contains('row-draggable')).toBe(true);
+    expect(handle).toBeTruthy();
+    expect(slotWrap.classList.contains('grid-draggable__slot--gap-2')).toBe(true);
+    expect(addBtn.getAttribute('aria-disabled')).toBeNull();
+
+    const addSpy = jest.fn();
+    page.root.addEventListener('uaiAddClick', addSpy);
+    addBtn.click();
+    expect(addSpy).toHaveBeenCalledTimes(1);
+    expect(addSpy.mock.calls[0][0].detail).toEqual({ count: 1, maxItems: 2 });
+  });
+
+  it('marks plus button aria-disabled and blocks uaiAddClick when slot reaches maxItems', async () => {
+    const page = await newSpecPage({
+      components: [UaiGrid],
+      html: `
+        <uai-grid type="draggable" max-items="2">
+          <div>Item 1</div>
+          <div>Item 2</div>
+        </uai-grid>
+      `,
+    });
+
+    const addSpy = jest.fn();
+    page.root.addEventListener('uaiAddClick', addSpy);
+    const addBtn = page.root.shadowRoot.querySelector('.grid-draggable__add') as HTMLButtonElement;
+
+    expect(addBtn.getAttribute('aria-disabled')).toBe('true');
+    addBtn.click();
+    expect(addSpy).not.toHaveBeenCalled();
+  });
+
+  it('reorders child draggable rows via Alt+ArrowDown and Alt+ArrowUp when sortable is enabled', async () => {
+    const page = await newSpecPage({
+      components: [UaiGrid],
+      html: `
+        <uai-grid id="list" direction="column" gap="2" sortable>
+          <uai-grid id="row-a" type="draggable"><div>A</div></uai-grid>
+          <uai-grid id="row-b" type="draggable"><div>B</div></uai-grid>
+        </uai-grid>
+      `,
+    });
+
+    const reorderSpy = jest.fn();
+    page.root.addEventListener('uaiReorder', reorderSpy);
+
+    const rowA = page.root.querySelector('#row-a') as HTMLElement;
+    const handleA = rowA.shadowRoot.querySelector('.grid-draggable__handle') as HTMLButtonElement;
+
+    const keyEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', altKey: true, bubbles: true, composed: true });
+    Object.defineProperty(keyEvent, 'composedPath', {
+      value: () => [handleA, rowA.shadowRoot, rowA, page.root],
+    });
+
+    page.root.dispatchEvent(keyEvent);
+    await page.waitForChanges();
+
+    expect(reorderSpy).toHaveBeenCalledTimes(1);
+    expect(reorderSpy.mock.calls[0][0].detail).toEqual({ fromIndex: 0, toIndex: 1 });
+    const idsAfter = Array.from(page.root.querySelectorAll('uai-grid')).map((el) => el.id);
+    expect(idsAfter).toEqual(['row-b', 'row-a']);
+  });
+
+  it('starts handling Alt+Arrow reorder when sortable is enabled after mount', async () => {
+    const page = await newSpecPage({
+      components: [UaiGrid],
+      html: `
+        <uai-grid id="list" direction="column" gap="2">
+          <uai-grid id="row-a" type="draggable"><div>A</div></uai-grid>
+          <uai-grid id="row-b" type="draggable"><div>B</div></uai-grid>
+        </uai-grid>
+      `,
+    });
+
+    const reorderSpy = jest.fn();
+    page.root.addEventListener('uaiReorder', reorderSpy);
+    const rowA = page.root.querySelector('#row-a') as HTMLElement;
+    const handleA = rowA.shadowRoot.querySelector('.grid-draggable__handle') as HTMLButtonElement;
+    const dispatch = () => {
+      const keyEvent = new KeyboardEvent('keydown', { key: 'ArrowDown', altKey: true, bubbles: true, composed: true });
+      Object.defineProperty(keyEvent, 'composedPath', { value: () => [handleA, rowA.shadowRoot, rowA, page.root] });
+      page.root.dispatchEvent(keyEvent);
+    };
+
+    dispatch();
+    await page.waitForChanges();
+    expect(reorderSpy).not.toHaveBeenCalled();
+
+    page.root.sortable = true;
+    await page.waitForChanges();
+    dispatch();
+    await page.waitForChanges();
+    expect(reorderSpy).toHaveBeenCalledTimes(1);
+  });
 });

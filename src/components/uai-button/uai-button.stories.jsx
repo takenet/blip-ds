@@ -3,7 +3,7 @@ import { UaiButton, UaiThemeProvider } from '../../../blip-ds-react/dist/compone
 import DocumentationTemplate from './uai-button.mdx';
 
 export default {
-  title: 'UAI/Button',
+  title: 'UAI Components/Button',
   component: UaiButton,
   tags: ['autodocs'],
   parameters: {

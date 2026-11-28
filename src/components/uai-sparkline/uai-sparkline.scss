@@ -1,0 +1,52 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.sparkline {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uai-sizing-4xl, #{$uai-sizing-4xl});
+  color: var(--uai-content-disabled, #{$uai-content-disabled});
+
+  &--positive {
+    color: var(--uai-feedback-success, #{$uai-feedback-success});
+  }
+
+  &--negative {
+    color: var(--uai-feedback-error, #{$uai-feedback-error});
+  }
+}
+
+.sparkline__svg {
+  @include uai-enter-animation(uai-chart-reveal);
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sparkline__area {
+  // Figma layer: opacity 0.3 × fill-opacity 0.5 on a 1 → 0 vertical gradient.
+  opacity: var(--uai-opacity-focus-ring, #{$uai-opacity-focus-ring});
+  fill-opacity: var(--uai-opacity-disabled, #{$uai-opacity-disabled});
+}
+
+.sparkline__line {
+  fill: none;
+  stroke: currentColor;
+}
+
+// Reveals the chart from left to right on entrance.
+@keyframes uai-chart-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}

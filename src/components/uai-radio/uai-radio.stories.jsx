@@ -3,7 +3,7 @@ import { UaiRadio, UaiRadioGroup, UaiThemeProvider } from '../../../blip-ds-reac
 import DocumentationTemplate from './uai-radio.mdx';
 
 export default {
-  title: 'UAI/Radio',
+  title: 'UAI Components/Radio',
   component: UaiRadio,
   tags: ['autodocs'],
   parameters: {

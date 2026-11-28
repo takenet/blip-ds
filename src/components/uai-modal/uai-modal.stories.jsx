@@ -3,7 +3,7 @@ import { UaiButton, UaiModal, UaiModalAction, UaiThemeProvider, UaiTypo } from '
 import DocumentationTemplate from './uai-modal.mdx';
 
 export default {
-  title: 'UAI/Modal',
+  title: 'UAI Components/Modal',
   component: UaiModal,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

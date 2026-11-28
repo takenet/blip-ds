@@ -2,6 +2,9 @@ import { Component, ComponentInterface, h, Prop } from '@stencil/core';
 
 export type justifyContent = 'flex-start' | 'center' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
 
+/**
+ * @deprecated Use `uai-card-footer` instead.
+ */
 @Component({
   tag: 'bds-card-footer',
   styleUrl: 'card-footer.scss',

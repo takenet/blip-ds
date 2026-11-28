@@ -1,0 +1,238 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: inline-flex;
+  position: relative;
+  width: fit-content;
+  vertical-align: middle;
+}
+
+.icon-button {
+  --icon-button-icon-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
+  --icon-button-bg: transparent;
+  --icon-button-bg-hover: var(--icon-button-bg);
+  --icon-button-bg-pressed: var(--icon-button-bg);
+  --icon-button-fg: var(--uai-content-primary, #{$uai-content-primary});
+  --icon-button-border: transparent;
+  --icon-button-overlay-hover: transparent;
+  --icon-button-overlay-pressed: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  margin: 0;
+  padding: 0;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid var(--icon-button-border);
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background-color: var(--icon-button-bg);
+  color: var(--icon-button-fg);
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  @include uai-transition(background-color border-color color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: calc(-1 * var(--uai-border-width-default, #{$uai-border-width-default}));
+    border-radius: inherit;
+    background-color: transparent;
+    pointer-events: none;
+    @include uai-transition(background-color);
+  }
+
+  &:hover {
+    background-color: var(--icon-button-bg-hover);
+
+    &::after {
+      background-color: var(--icon-button-overlay-hover);
+    }
+  }
+
+  &:active,
+  &.active,
+  &.icon-button--active {
+    background-color: var(--icon-button-bg-pressed);
+
+    &::after {
+      background-color: var(--icon-button-overlay-pressed);
+    }
+  }
+
+  @include uai-focus-visible;
+
+  &:disabled {
+    opacity: var(--uai-opacity-disabled, #{$uai-opacity-disabled});
+    cursor: not-allowed;
+  }
+
+  &:disabled,
+  &.icon-button--loading {
+    background-color: var(--icon-button-bg);
+
+    &::after {
+      background-color: transparent;
+    }
+  }
+
+  &.icon-button--loading {
+    cursor: progress;
+  }
+
+  // Sizes (strictly control-height/*, never spacing/*)
+  &--size-compact {
+    --icon-button-icon-size: var(--uai-sizing-sm, #{$uai-sizing-sm});
+
+    width: var(--uai-control-height-compact, #{$uai-control-height-compact});
+    height: var(--uai-control-height-compact, #{$uai-control-height-compact});
+    border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  }
+
+  &--size-short {
+    --icon-button-icon-size: var(--uai-sizing-md, #{$uai-sizing-md});
+
+    width: var(--uai-control-height-short, #{$uai-control-height-short});
+    height: var(--uai-control-height-short, #{$uai-control-height-short});
+    border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  }
+
+  &--size-medium {
+    --icon-button-icon-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
+
+    width: var(--uai-control-height-medium, #{$uai-control-height-medium});
+    height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+    border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  }
+
+  &--size-large {
+    --icon-button-icon-size: var(--uai-sizing-lg, #{$uai-sizing-lg});
+
+    width: var(--uai-control-height-large, #{$uai-control-height-large});
+    height: var(--uai-control-height-large, #{$uai-control-height-large});
+    border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  }
+
+  // Solid
+  &--solid.icon-button--color-primary {
+    --icon-button-bg: var(--uai-action-primary-default, #{$uai-action-primary-default});
+    --icon-button-bg-hover: var(--uai-action-primary-hover, #{$uai-action-primary-hover});
+    --icon-button-bg-pressed: var(--uai-action-primary-pressed, #{$uai-action-primary-pressed});
+    --icon-button-fg: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+  }
+
+  &--solid.icon-button--color-content,
+  &--solid.icon-button--color-positive,
+  &--solid.icon-button--color-negative {
+    --icon-button-overlay-hover: var(--uai-overlay-hover, #{$uai-overlay-hover});
+    --icon-button-overlay-pressed: var(--uai-overlay-pressed, #{$uai-overlay-pressed});
+  }
+
+  &--solid.icon-button--color-content {
+    --icon-button-bg: var(--uai-content-primary, #{$uai-content-primary});
+    --icon-button-fg: var(--uai-surface-background, #{$uai-surface-background});
+  }
+
+  &--solid.icon-button--color-positive {
+    --icon-button-bg: var(--uai-action-positive, #{$uai-action-positive});
+    --icon-button-fg: var(--uai-action-positive-foreground, #{$uai-action-positive-foreground});
+  }
+
+  &--solid.icon-button--color-negative {
+    --icon-button-bg: var(--uai-action-destructive, #{$uai-action-destructive});
+    --icon-button-fg: var(--uai-action-destructive-foreground, #{$uai-action-destructive-foreground});
+  }
+
+  // Outline
+  &--outline {
+    --icon-button-bg: var(--uai-action-outline-default, #{$uai-action-outline-default});
+    --icon-button-bg-hover: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+    --icon-button-bg-pressed: var(--uai-action-outline-pressed, #{$uai-action-outline-pressed});
+  }
+
+  &--outline.icon-button--color-primary {
+    --icon-button-fg: var(--uai-action-primary-default, #{$uai-action-primary-default});
+    --icon-button-border: var(--icon-button-fg);
+  }
+
+  // Same border variables as uai-input in every state (rest, hover, disabled).
+  &--outline.icon-button--color-content {
+    --icon-button-fg: var(--uai-content-primary, #{$uai-content-primary});
+    --icon-button-border: var(--uai-border-input, #{$uai-border-input});
+
+    &:hover:not(:disabled):not(.icon-button--loading),
+    &:active:not(:disabled):not(.icon-button--loading) {
+      --icon-button-border: var(--uai-content-secondary, #{$uai-content-secondary});
+    }
+
+    &:disabled {
+      --icon-button-border: var(--uai-border-default, #{$uai-border-default});
+    }
+  }
+
+  &--outline.icon-button--color-positive {
+    --icon-button-fg: var(--uai-feedback-success, #{$uai-feedback-success});
+    --icon-button-border: var(--icon-button-fg);
+  }
+
+  &--outline.icon-button--color-negative {
+    --icon-button-fg: var(--uai-action-destructive, #{$uai-action-destructive});
+    --icon-button-border: var(--icon-button-fg);
+  }
+
+  // Ghost
+  &--ghost {
+    --icon-button-bg: transparent;
+    --icon-button-bg-hover: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+    --icon-button-bg-pressed: var(--uai-action-outline-pressed, #{$uai-action-outline-pressed});
+  }
+
+  &--ghost.icon-button--color-primary,
+  &--ghost.icon-button--color-content {
+    --icon-button-fg: var(--uai-content-primary, #{$uai-content-primary});
+  }
+
+  &--ghost.icon-button--color-positive {
+    --icon-button-fg: var(--uai-feedback-success, #{$uai-feedback-success});
+  }
+
+  &--ghost.icon-button--color-negative {
+    --icon-button-fg: var(--uai-action-destructive, #{$uai-action-destructive});
+  }
+}
+
+.icon-button__icon,
+.icon-button__spinner {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.icon-button__icon {
+  --uai-icon-size: var(--icon-button-icon-size);
+
+  color: inherit;
+}
+
+.icon-button__spinner {
+  box-sizing: border-box;
+  width: var(--icon-button-icon-size);
+  height: var(--icon-button-icon-size);
+  border: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  animation: uai-icon-button-spin var(--uai-duration-loop, #{$uai-duration-loop})
+    var(--uai-easing-linear, #{$uai-easing-linear}) infinite;
+
+  @include uai-reduced-motion {
+    animation: none;
+  }
+}
+
+@keyframes uai-icon-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

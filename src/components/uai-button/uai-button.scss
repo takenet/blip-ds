@@ -192,8 +192,18 @@
     --button-border: var(--button-fg);
   }
 
+  // Same border variables as uai-input in every state (rest, hover, disabled).
   &--outline.button--color-content {
-    --button-border: var(--uai-border-default, #{$uai-border-default});
+    --button-border: var(--uai-border-input, #{$uai-border-input});
+
+    &:hover:not(:disabled):not(.button--loading),
+    &:active:not(:disabled):not(.button--loading) {
+      --button-border: var(--uai-content-secondary, #{$uai-content-secondary});
+    }
+
+    &:disabled {
+      --button-border: var(--uai-border-default, #{$uai-border-default});
+    }
   }
 
   // Content alignment

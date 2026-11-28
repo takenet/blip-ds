@@ -7,13 +7,13 @@ test.describe('UaiAvatar - Visual Regression', () => {
     ['upload', 'uai-avatar-upload'],
   ]) {
     test(story, async ({ storybook }) => {
-      await storybook.screenshotStory(`uai-avatar--${story}`, name);
+      await storybook.screenshotStory(`uai-components-avatar--${story}`, name);
     });
   }
 
   for (const story of ['colors', 'upload']) {
     test(`${story} in the dark theme`, async ({ page, storybook }) => {
-      await gotoStoryUrl(page, `/iframe.html?id=uai-avatar--${story}&viewMode=story&globals=hasTheme:dark`);
+      await gotoStoryUrl(page, `/iframe.html?id=uai-components-avatar--${story}&viewMode=story&globals=hasTheme:dark`);
       await expect(storybook.root()).toHaveScreenshot(`uai-avatar-${story}-dark.png`);
     });
   }

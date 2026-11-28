@@ -13,7 +13,7 @@ import {
 } from '../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Snippets/Tables',
+  title: 'BDS Snippets/Tables',
 };
 
 export const TableDefault = () => {

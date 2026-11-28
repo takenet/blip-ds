@@ -3,7 +3,7 @@ import DocumentationTemplate from './slider.mdx';
 import { BdsGrid, BdsSlider } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Slider',
+  title: 'BDS Components/Slider',
   parameters: {
     docs: {
       page: DocumentationTemplate,

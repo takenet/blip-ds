@@ -1,0 +1,45 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiIconBoxStories from './uai-icon-box.stories';
+
+<Meta isTemplate />
+
+# Icon Box
+
+## Visão geral
+
+Contêiner passivo com superfície `surface/background`, espaçamento interno `spacing/xs` e raio `radius/md` para enquadrar ícones ao lado de títulos de cards, indicadores e blocos informativos. Não é um controle interativo: para ações use `UaiIconButton`.
+
+```jsx
+import { UaiIconBox, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+<UaiThemeProvider theme="light">
+  <UaiIconBox icon="robot-2" size="md" />
+</UaiThemeProvider>;
+```
+
+## Playground
+
+<Canvas of={UaiIconBoxStories.Playground} />
+<Controls of={UaiIconBoxStories.Playground} />
+
+## Tamanhos
+
+| Tamanho | Ícone interno | Padding | Raio |
+| --- | --- | --- | --- |
+| `sm` | `sizing/md` | `spacing/xs` | `radius/md` |
+| `md` (padrão) | `sizing/lg` | `spacing/xs` | `radius/md` |
+| `lg` | `sizing/xl` | `spacing/xs` | `radius/md` |
+
+<Canvas of={UaiIconBoxStories.Sizes} />
+
+## Projeção via slot
+
+Quando `icon` não é informado, qualquer elemento gráfico projetado no slot padrão herda o enquadramento do contêiner.
+
+<Canvas of={UaiIconBoxStories.CustomSlot} />
+
+## Acessibilidade
+
+- Por padrão é tratado como decorativo (`aria-hidden="true"`), evitando leitura redundante quando acompanha um título visível.
+- Quando `aria-label` é informado no host, expõe `role="img"` com o nome acessível correspondente.

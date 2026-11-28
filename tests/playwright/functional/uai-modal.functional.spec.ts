@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 // Keyboard and focus behavior of the native <dialog> used by uai-modal (modal mode).
 test.describe('UaiModal - Storybook', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/?path=/story/uai-modal--playground');
+    await page.goto('/?path=/story/uai-components-modal--playground');
   });
 
   const inside = (modal) =>

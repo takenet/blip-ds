@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  title: 'Snippets/Search',
+  title: 'BDS Snippets/Search',
 };
 
 export const BasicSearch = (args) => {

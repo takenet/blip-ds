@@ -3,7 +3,7 @@ import { UaiTypo, UaiThemeProvider } from '../../../blip-ds-react/dist/component
 import DocumentationTemplate from './uai-typo.mdx';
 
 export default {
-  title: 'UAI/Typo',
+  title: 'UAI Components/Typo',
   component: UaiTypo,
   tags: ['autodocs'],
   parameters: {

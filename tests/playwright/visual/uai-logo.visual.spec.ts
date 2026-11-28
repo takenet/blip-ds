@@ -3,12 +3,12 @@ import { test, gotoStoryUrl, expect } from '../fixtures/storybook.fixture';
 test.describe('UaiLogo - Visual Regression', () => {
   for (const story of ['playground', 'catalog']) {
     test(story, async ({ storybook }) => {
-      await storybook.screenshotStory(`uai-logo--${story}`, `uai-logo-${story}`);
+      await storybook.screenshotStory(`uai-components-logo--${story}`, `uai-logo-${story}`);
     });
   }
 
   test('catalog loads local logo previews from the Storybook base path', async ({ page, storybook }) => {
-    await storybook.goto('uai-logo--catalog');
+    await storybook.goto('uai-components-logo--catalog');
 
     for (const name of ['google-ads', 'google-rcs', 'meta']) {
       const image = page.locator(`img[src$="assets/logos/${name}.svg"]`);
@@ -17,7 +17,7 @@ test.describe('UaiLogo - Visual Regression', () => {
   });
 
   test('playground in the dark theme', async ({ page, storybook }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=uai-logo--playground&viewMode=story&globals=hasTheme:dark');
+    await gotoStoryUrl(page, '/iframe.html?id=uai-components-logo--playground&viewMode=story&globals=hasTheme:dark');
     await expect(storybook.root()).toHaveScreenshot('uai-logo-playground-dark.png');
   });
 });

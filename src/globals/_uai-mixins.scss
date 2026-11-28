@@ -59,6 +59,17 @@ $uai-durations: (
   }
 }
 
+// Entrance animation for data visualisations: plays $keyframes once with duration/loop and easing/standard.
+// Uses `backwards` fill so the element returns to its natural styles after the animation; none with reduced motion.
+@mixin uai-enter-animation($keyframes) {
+  animation: $keyframes var(--uai-duration-loop, #{$uai-duration-loop}) var(--uai-easing-standard, #{$uai-easing-standard})
+    backwards;
+
+  @include uai-reduced-motion {
+    animation: none;
+  }
+}
+
 // Panel positioned by src/utils/uai-overlay.ts. It opens in the top layer (Popover API), takes no layout
 // space while closed and fades with duration/moderate. The custom properties feed the positioning math.
 @mixin uai-overlay-panel {

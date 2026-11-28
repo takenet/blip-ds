@@ -3,7 +3,7 @@ import DocumentationTemplate from './chip-clickable.mdx';
 import { BdsChipClickable } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Chip Clickable',
+  title: 'BDS Components/Chip Clickable',
   parameters: {
     docs: {
       page: DocumentationTemplate,

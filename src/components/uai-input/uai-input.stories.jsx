@@ -3,7 +3,7 @@ import { UaiButton, UaiInput, UaiThemeProvider } from '../../../blip-ds-react/di
 import DocumentationTemplate from './uai-input.mdx';
 
 export default {
-  title: 'UAI/Input',
+  title: 'UAI Components/Input',
   component: UaiInput,
   tags: ['autodocs'],
   parameters: {

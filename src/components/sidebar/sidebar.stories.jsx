@@ -3,7 +3,7 @@ import DocumentationTemplate from './sidebar.mdx';
 import { BdsSidebar, BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Sidebar',
+  title: 'BDS Components/Sidebar',
   parameters: {
     docs: {
       page: DocumentationTemplate,

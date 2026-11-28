@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/storybook.fixture';
 
 test.describe('Tabs - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-deprecated-tabs--properties');
+    await storybook.goto('bds-components-deprecated-tabs--properties');
   });
 
   test('renders tab items', async ({ page }) => {

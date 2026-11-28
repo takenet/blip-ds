@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Data Table - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-data-table--properties');
+    await storybook.goto('bds-components-data-table--properties');
   });
 
   test('renders correctly', async ({ page }) => {

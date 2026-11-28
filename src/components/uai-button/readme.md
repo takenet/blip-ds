@@ -179,6 +179,7 @@ Type: `Promise<void>`
 
  - [uai-breadcrumb](../uai-breadcrumb)
  - [uai-datepicker](../uai-datepicker)
+ - [uai-filter-bar](../uai-filter-bar)
  - [uai-pagination](../uai-pagination)
  - [uai-rich-text](../uai-rich-text)
  - [uai-tab-group](../uai-tab-group)
@@ -197,6 +198,7 @@ graph TD;
   uai-button --> uai-typo
   uai-breadcrumb --> uai-button
   uai-datepicker --> uai-button
+  uai-filter-bar --> uai-button
   uai-pagination --> uai-button
   uai-rich-text --> uai-button
   uai-tab-group --> uai-button

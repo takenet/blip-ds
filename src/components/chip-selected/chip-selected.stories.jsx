@@ -3,7 +3,7 @@ import DocumentationTemplate from './chip-selected.mdx';
 import { BdsChipSelected } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Chip Selected',
+  title: 'BDS Components/Chip Selected',
   parameters: {
     docs: {
       page: DocumentationTemplate,

@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 
 const open = async (page: Page, story: string) => {
-  await page.goto(`/iframe.html?id=uai-rich-text--${story}&viewMode=story`);
+  await page.goto(`/iframe.html?id=uai-components-rich-text--${story}&viewMode=story`);
   const editor = page.locator('uai-rich-text .rich-text__content');
   // The first test of a run waits for Storybook to compile and the components to hydrate.
   await expect(editor).toBeVisible({ timeout: 30_000 });

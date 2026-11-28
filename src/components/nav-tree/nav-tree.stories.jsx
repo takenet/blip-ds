@@ -3,7 +3,7 @@ import DocumentationTemplate from './nav-tree.mdx';
 import { BdsNavTree, BdsNavTreeItem } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/NavTree',
+  title: 'BDS Components/NavTree',
   parameters: {
     docs: {
       page: DocumentationTemplate,

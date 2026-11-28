@@ -111,15 +111,25 @@ import { UaiAutocomplete as UaiAutocompleteElement, defineCustomElement as defin
 import { UaiAvatar as UaiAvatarElement, defineCustomElement as defineUaiAvatar } from "blip-ds/dist/components/uai-avatar.js";
 import { UaiBadge as UaiBadgeElement, defineCustomElement as defineUaiBadge } from "blip-ds/dist/components/uai-badge.js";
 import { UaiBanner as UaiBannerElement, defineCustomElement as defineUaiBanner } from "blip-ds/dist/components/uai-banner.js";
+import { UaiBarChart as UaiBarChartElement, defineCustomElement as defineUaiBarChart } from "blip-ds/dist/components/uai-bar-chart.js";
 import { UaiBreadcrumb as UaiBreadcrumbElement, defineCustomElement as defineUaiBreadcrumb } from "blip-ds/dist/components/uai-breadcrumb.js";
 import { UaiButtonGroup as UaiButtonGroupElement, defineCustomElement as defineUaiButtonGroup } from "blip-ds/dist/components/uai-button-group.js";
 import { UaiButton as UaiButtonElement, defineCustomElement as defineUaiButton } from "blip-ds/dist/components/uai-button.js";
+import { UaiCardBody as UaiCardBodyElement, defineCustomElement as defineUaiCardBody } from "blip-ds/dist/components/uai-card-body.js";
+import { UaiCardFooter as UaiCardFooterElement, defineCustomElement as defineUaiCardFooter } from "blip-ds/dist/components/uai-card-footer.js";
+import { UaiCardHeader as UaiCardHeaderElement, defineCustomElement as defineUaiCardHeader } from "blip-ds/dist/components/uai-card-header.js";
+import { UaiCardSubtitle as UaiCardSubtitleElement, defineCustomElement as defineUaiCardSubtitle } from "blip-ds/dist/components/uai-card-subtitle.js";
+import { UaiCardTitle as UaiCardTitleElement, defineCustomElement as defineUaiCardTitle } from "blip-ds/dist/components/uai-card-title.js";
+import { UaiCard as UaiCardElement, defineCustomElement as defineUaiCard } from "blip-ds/dist/components/uai-card.js";
 import { UaiCheckbox as UaiCheckboxElement, defineCustomElement as defineUaiCheckbox } from "blip-ds/dist/components/uai-checkbox.js";
 import { UaiChipTag as UaiChipTagElement, defineCustomElement as defineUaiChipTag } from "blip-ds/dist/components/uai-chip-tag.js";
 import { UaiDatepicker as UaiDatepickerElement, defineCustomElement as defineUaiDatepicker } from "blip-ds/dist/components/uai-datepicker.js";
 import { UaiDropdown as UaiDropdownElement, defineCustomElement as defineUaiDropdown } from "blip-ds/dist/components/uai-dropdown.js";
 import { UaiEmoji as UaiEmojiElement, defineCustomElement as defineUaiEmoji } from "blip-ds/dist/components/uai-emoji.js";
+import { UaiFilterBar as UaiFilterBarElement, defineCustomElement as defineUaiFilterBar } from "blip-ds/dist/components/uai-filter-bar.js";
 import { UaiGrid as UaiGridElement, defineCustomElement as defineUaiGrid } from "blip-ds/dist/components/uai-grid.js";
+import { UaiIconBox as UaiIconBoxElement, defineCustomElement as defineUaiIconBox } from "blip-ds/dist/components/uai-icon-box.js";
+import { UaiIconButton as UaiIconButtonElement, defineCustomElement as defineUaiIconButton } from "blip-ds/dist/components/uai-icon-button.js";
 import { UaiIcon as UaiIconElement, defineCustomElement as defineUaiIcon } from "blip-ds/dist/components/uai-icon.js";
 import { UaiInputChips as UaiInputChipsElement, defineCustomElement as defineUaiInputChips } from "blip-ds/dist/components/uai-input-chips.js";
 import { UaiInputDate as UaiInputDateElement, defineCustomElement as defineUaiInputDate } from "blip-ds/dist/components/uai-input-date.js";
@@ -128,6 +138,7 @@ import { UaiInputPassword as UaiInputPasswordElement, defineCustomElement as def
 import { UaiInputPhone as UaiInputPhoneElement, defineCustomElement as defineUaiInputPhone } from "blip-ds/dist/components/uai-input-phone.js";
 import { UaiInputTime as UaiInputTimeElement, defineCustomElement as defineUaiInputTime } from "blip-ds/dist/components/uai-input-time.js";
 import { UaiInput as UaiInputElement, defineCustomElement as defineUaiInput } from "blip-ds/dist/components/uai-input.js";
+import { UaiLineChart as UaiLineChartElement, defineCustomElement as defineUaiLineChart } from "blip-ds/dist/components/uai-line-chart.js";
 import { UaiLogo as UaiLogoElement, defineCustomElement as defineUaiLogo } from "blip-ds/dist/components/uai-logo.js";
 import { UaiModalAction as UaiModalActionElement, defineCustomElement as defineUaiModalAction } from "blip-ds/dist/components/uai-modal-action.js";
 import { UaiModalCloseButton as UaiModalCloseButtonElement, defineCustomElement as defineUaiModalCloseButton } from "blip-ds/dist/components/uai-modal-close-button.js";
@@ -137,11 +148,14 @@ import { UaiNavbar as UaiNavbarElement, defineCustomElement as defineUaiNavbar }
 import { UaiPageHeader as UaiPageHeaderElement, defineCustomElement as defineUaiPageHeader } from "blip-ds/dist/components/uai-page-header.js";
 import { UaiPagination as UaiPaginationElement, defineCustomElement as defineUaiPagination } from "blip-ds/dist/components/uai-pagination.js";
 import { UaiPaper as UaiPaperElement, defineCustomElement as defineUaiPaper } from "blip-ds/dist/components/uai-paper.js";
+import { UaiProgressBar as UaiProgressBarElement, defineCustomElement as defineUaiProgressBar } from "blip-ds/dist/components/uai-progress-bar.js";
 import { UaiRadioGroup as UaiRadioGroupElement, defineCustomElement as defineUaiRadioGroup } from "blip-ds/dist/components/uai-radio-group.js";
 import { UaiRadio as UaiRadioElement, defineCustomElement as defineUaiRadio } from "blip-ds/dist/components/uai-radio.js";
 import { UaiRichText as UaiRichTextElement, defineCustomElement as defineUaiRichText } from "blip-ds/dist/components/uai-rich-text.js";
+import { UaiSectionTitle as UaiSectionTitleElement, defineCustomElement as defineUaiSectionTitle } from "blip-ds/dist/components/uai-section-title.js";
 import { UaiSelectOption as UaiSelectOptionElement, defineCustomElement as defineUaiSelectOption } from "blip-ds/dist/components/uai-select-option.js";
 import { UaiSelect as UaiSelectElement, defineCustomElement as defineUaiSelect } from "blip-ds/dist/components/uai-select.js";
+import { UaiSparkline as UaiSparklineElement, defineCustomElement as defineUaiSparkline } from "blip-ds/dist/components/uai-sparkline.js";
 import { UaiStep as UaiStepElement, defineCustomElement as defineUaiStep } from "blip-ds/dist/components/uai-step.js";
 import { UaiStepper as UaiStepperElement, defineCustomElement as defineUaiStepper } from "blip-ds/dist/components/uai-stepper.js";
 import { UaiSwitch as UaiSwitchElement, defineCustomElement as defineUaiSwitch } from "blip-ds/dist/components/uai-switch.js";
@@ -1162,6 +1176,17 @@ export const UaiBanner = createComponent({
     defineCustomElement: defineUaiBanner,
     transformTag
 });
+export const UaiBarChart = createComponent({
+    tagName: 'uai-bar-chart',
+    elementClass: UaiBarChartElement,
+    react: React,
+    events: {
+        onUaiBarHover: 'uaiBarHover',
+        onUaiBarClick: 'uaiBarClick'
+    },
+    defineCustomElement: defineUaiBarChart,
+    transformTag
+});
 export const UaiBreadcrumb = createComponent({
     tagName: 'uai-breadcrumb',
     elementClass: UaiBreadcrumbElement,
@@ -1187,6 +1212,54 @@ export const UaiButtonGroup = createComponent({
     react: React,
     events: { onUaiButtonSelected: 'uaiButtonSelected' },
     defineCustomElement: defineUaiButtonGroup,
+    transformTag
+});
+export const UaiCard = createComponent({
+    tagName: 'uai-card',
+    elementClass: UaiCardElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiCard,
+    transformTag
+});
+export const UaiCardBody = createComponent({
+    tagName: 'uai-card-body',
+    elementClass: UaiCardBodyElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiCardBody,
+    transformTag
+});
+export const UaiCardFooter = createComponent({
+    tagName: 'uai-card-footer',
+    elementClass: UaiCardFooterElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiCardFooter,
+    transformTag
+});
+export const UaiCardHeader = createComponent({
+    tagName: 'uai-card-header',
+    elementClass: UaiCardHeaderElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiCardHeader,
+    transformTag
+});
+export const UaiCardSubtitle = createComponent({
+    tagName: 'uai-card-subtitle',
+    elementClass: UaiCardSubtitleElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiCardSubtitle,
+    transformTag
+});
+export const UaiCardTitle = createComponent({
+    tagName: 'uai-card-title',
+    elementClass: UaiCardTitleElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiCardTitle,
     transformTag
 });
 export const UaiCheckbox = createComponent({
@@ -1237,11 +1310,27 @@ export const UaiEmoji = createComponent({
     defineCustomElement: defineUaiEmoji,
     transformTag
 });
+export const UaiFilterBar = createComponent({
+    tagName: 'uai-filter-bar',
+    elementClass: UaiFilterBarElement,
+    react: React,
+    events: {
+        onUaiPeriodChange: 'uaiPeriodChange',
+        onUaiSearchChange: 'uaiSearchChange',
+        onUaiFilterChange: 'uaiFilterChange',
+        onUaiFilterOpenChange: 'uaiFilterOpenChange'
+    },
+    defineCustomElement: defineUaiFilterBar,
+    transformTag
+});
 export const UaiGrid = createComponent({
     tagName: 'uai-grid',
     elementClass: UaiGridElement,
     react: React,
-    events: {},
+    events: {
+        onUaiAddClick: 'uaiAddClick',
+        onUaiReorder: 'uaiReorder'
+    },
     defineCustomElement: defineUaiGrid,
     transformTag
 });
@@ -1251,6 +1340,22 @@ export const UaiIcon = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiIcon,
+    transformTag
+});
+export const UaiIconBox = createComponent({
+    tagName: 'uai-icon-box',
+    elementClass: UaiIconBoxElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiIconBox,
+    transformTag
+});
+export const UaiIconButton = createComponent({
+    tagName: 'uai-icon-button',
+    elementClass: UaiIconButtonElement,
+    react: React,
+    events: { onUaiClick: 'uaiClick' },
+    defineCustomElement: defineUaiIconButton,
     transformTag
 });
 export const UaiInput = createComponent({
@@ -1355,6 +1460,14 @@ export const UaiInputTime = createComponent({
     defineCustomElement: defineUaiInputTime,
     transformTag
 });
+export const UaiLineChart = createComponent({
+    tagName: 'uai-line-chart',
+    elementClass: UaiLineChartElement,
+    react: React,
+    events: { onUaiPointHover: 'uaiPointHover' },
+    defineCustomElement: defineUaiLineChart,
+    transformTag
+});
 export const UaiLogo = createComponent({
     tagName: 'uai-logo',
     elementClass: UaiLogoElement,
@@ -1433,6 +1546,14 @@ export const UaiPaper = createComponent({
     defineCustomElement: defineUaiPaper,
     transformTag
 });
+export const UaiProgressBar = createComponent({
+    tagName: 'uai-progress-bar',
+    elementClass: UaiProgressBarElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiProgressBar,
+    transformTag
+});
 export const UaiRadio = createComponent({
     tagName: 'uai-radio',
     elementClass: UaiRadioElement,
@@ -1465,6 +1586,14 @@ export const UaiRichText = createComponent({
     defineCustomElement: defineUaiRichText,
     transformTag
 });
+export const UaiSectionTitle = createComponent({
+    tagName: 'uai-section-title',
+    elementClass: UaiSectionTitleElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiSectionTitle,
+    transformTag
+});
 export const UaiSelect = createComponent({
     tagName: 'uai-select',
     elementClass: UaiSelectElement,
@@ -1484,6 +1613,14 @@ export const UaiSelectOption = createComponent({
     react: React,
     events: {},
     defineCustomElement: defineUaiSelectOption,
+    transformTag
+});
+export const UaiSparkline = createComponent({
+    tagName: 'uai-sparkline',
+    elementClass: UaiSparklineElement,
+    react: React,
+    events: {},
+    defineCustomElement: defineUaiSparkline,
     transformTag
 });
 export const UaiStep = createComponent({

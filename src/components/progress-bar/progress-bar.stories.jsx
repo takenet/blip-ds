@@ -3,7 +3,7 @@ import DocumentationTemplate from './progress-bar.mdx';
 import { BdsProgressBar } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Progress Bar',
+  title: 'BDS Components/[deprecated] Progress Bar',
   parameters: {
     docs: {
       page: DocumentationTemplate,

@@ -3,7 +3,7 @@ import DocumentationTemplate from './checkbox.mdx';
 import { BdsCheckbox } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/[deprecated] Checkbox',
+  title: 'BDS Components/[deprecated] Checkbox',
   parameters: {
     docs: {
       page: DocumentationTemplate,

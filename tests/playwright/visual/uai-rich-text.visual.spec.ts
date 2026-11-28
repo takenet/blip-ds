@@ -7,13 +7,13 @@ test.describe('UaiRichText - Visual Regression', () => {
   ]) {
     test(story, async ({ page, storybook }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
-      await storybook.screenshotStory(`uai-rich-text--${story}`, name);
+      await storybook.screenshotStory(`uai-components-rich-text--${story}`, name);
     });
   }
 
   test('playground in the dark theme', async ({ page, storybook }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await gotoStoryUrl(page, '/iframe.html?id=uai-rich-text--playground&viewMode=story&globals=hasTheme:dark');
+    await gotoStoryUrl(page, '/iframe.html?id=uai-components-rich-text--playground&viewMode=story&globals=hasTheme:dark');
     await expect(storybook.root()).toHaveScreenshot('uai-rich-text-playground-dark.png');
   });
 });

@@ -3,7 +3,7 @@ import { UaiDatepicker, UaiThemeProvider } from '../../../blip-ds-react/dist/com
 import DocumentationTemplate from './uai-datepicker.mdx';
 
 export default {
-  title: 'UAI/Datepicker',
+  title: 'UAI Components/Datepicker',
   component: UaiDatepicker,
   tags: ['autodocs'],
   parameters: {

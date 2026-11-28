@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 
 const open = async (page: Page, story: string, ready: string) => {
-  await page.goto(`/iframe.html?id=uai-toast--${story}&viewMode=story`);
+  await page.goto(`/iframe.html?id=uai-components-toast--${story}&viewMode=story`);
   // The first test of a run waits for Storybook to compile and the components to hydrate.
   await expect(page.getByRole('button', { name: ready, exact: true })).toBeVisible({ timeout: 30_000 });
 };

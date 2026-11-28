@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use `uai-card-footer` instead.
+
 ## Properties
 
 | Property | Attribute | Description                                                               | Type                                                                                            | Default      |

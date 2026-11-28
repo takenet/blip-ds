@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Dropdown - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-deprecated-dropdown--properties');
+    await storybook.goto('bds-components-deprecated-dropdown--properties');
   });
 
   test('opens via toggle method', async ({ page }) => {

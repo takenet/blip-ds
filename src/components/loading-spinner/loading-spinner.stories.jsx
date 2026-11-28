@@ -3,7 +3,7 @@ import DocumentationTemplate from './loading-spinner.mdx';
 import { BdsLoadingSpinner } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Loading spinner',
+  title: 'BDS Components/Loading spinner',
   parameters: {
     docs: {
       page: DocumentationTemplate,

@@ -1,0 +1,67 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiIconButtonStories from './uai-icon-button.stories';
+
+<Meta isTemplate />
+
+# Icon Button
+
+## Visão geral
+
+Botão quadrado de ação rápida representado apenas por ícone, indicado para cabeçalhos de cards, barras de ferramentas e controles auxiliares. Sempre forneça `aria-label` ou `aria-labelledby` para anunciar a ação em leitores de tela.
+
+```jsx
+import { UaiIconButton, UaiThemeProvider } from 'blip-ds-react/dist/components';
+import 'blip-tokens/uai-icons/css';
+
+<UaiThemeProvider theme="light">
+  <UaiIconButton icon="edit" variant="ghost" size="short" aria-label="Editar seção" />
+</UaiThemeProvider>;
+```
+
+## Playground
+
+<Canvas of={UaiIconButtonStories.Playground} />
+<Controls of={UaiIconButtonStories.Playground} />
+
+## Variantes e cores
+
+Use `solid` para gatilhos de maior destaque, `outline` para ações secundárias com contorno e `ghost` para ações sutis sobre cards e cabeçalhos.
+
+<Canvas of={UaiIconButtonStories.VariantsAndColors} />
+
+## Tamanhos
+
+| Tamanho | Dimensão (`width` e `height`) | Raio | Ícone interno |
+| --- | --- | --- | --- |
+| `compact` | `control-height/compact` | `radius/md` | `sizing/sm` (`x-small`) |
+| `short` | `control-height/short` | `radius/lg` | `sizing/md` (`small`) |
+| `medium` (padrão) | `control-height/medium` | `radius/lg` | `sizing/lg` (`medium`) |
+| `large` | `control-height/large` | `radius/lg` | `sizing/lg` (`medium`) |
+
+<Canvas of={UaiIconButtonStories.Sizes} />
+
+## Estados
+
+Em `loading` ou `disabled`, o disparo de `uaiClick` é bloqueado. O estado ativo programático pode ser controlado via método `isActive(boolean)`.
+
+<Canvas of={UaiIconButtonStories.States} />
+
+## Acessibilidade
+
+- Repassa `aria-label` e `aria-labelledby` ao `<button>` nativo e registra aviso em desenvolvimento caso nenhum nome acessível seja informado.
+- Exibe anel de foco `border/ring` em `:focus-visible`.
+- Desativa transições e animação do spinner sob `prefers-reduced-motion: reduce`.
+
+## Migração de `bds-button-icon`
+
+| `bds-button-icon` | `uai-icon-button` |
+| --- | --- |
+| `onBdsClick` / `bdsClick` | `onUaiClick` / `uaiClick` |
+| `variant="primary"` | `variant="solid"` |
+| `variant="secondary" \| "secondary--white" \| "tertiary"` | `variant="outline"` |
+| `variant="ghost" \| "text"` | `variant="ghost"` |
+| `variant="delete"` | `variant="solid" color="negative"` |
+| `size="standard"` | `size="medium"` |
+| `size="tall"` | `size="large"` |
+
+Valores legados em `variant` e `size` são convertidos automaticamente com um único aviso via `warnLegacyValue`.

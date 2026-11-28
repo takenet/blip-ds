@@ -81,15 +81,23 @@ import { UaiAutocompleteSize } from "./components/uai-autocomplete/uai-autocompl
 import { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 import { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 import { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
+import { UaiBarChartFormat, UaiBarChartItem, UaiBarChartLanguage } from "./components/uai-bar-chart/uai-bar-chart";
 import { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 import { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 import { UaiButtonColor as UaiButtonColor1, UaiButtonDirection as UaiButtonDirection1, UaiButtonSize as UaiButtonSize1 } from "./components/uai-button/uai-button";
 import { UaiButtonGroupSelectedDetail } from "./components/uai-button-group/uai-button-group";
+import { UaiCardSize } from "./components/uai-card/uai-card";
+import { UaiCardJustifyContent } from "./components/uai-card-header/uai-card-header";
+import { UaiCardJustifyContent as UaiCardJustifyContent1 } from "./components/uai-card-header/uai-card-header";
 import { UaiDatepickerBannerVariant, UaiDatepickerConclude, UaiDatepickerLanguage, UaiDatepickerPosition, UaiDatepickerType } from "./components/uai-datepicker/uai-datepicker-interface";
 import { UaiDatepickerSize } from "./components/uai-datepicker/uai-datepicker";
 import { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
+import { UaiAppliedFilters, UaiFilterBarLanguage, UaiFilterCategory, UaiFilterPeriodPreset } from "./components/uai-filter-bar/uai-filter-bar";
+import { UaiGridAddDetail, UaiGridLanguage, UaiGridReorderDetail, UaiGridType } from "./components/uai-grid/uai-grid";
 import { UaiIconTheme } from "./globals/uai-icons";
 import { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
+import { UaiIconBoxSize, UaiIconBoxTheme } from "./components/uai-icon-box/uai-icon-box";
+import { UaiIconButtonColor, UaiIconButtonIconTheme, UaiIconButtonSize, UaiIconButtonType, UaiIconButtonVariant } from "./components/uai-icon-button/uai-icon-button";
 import { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
 import { UaiInputChipsChange, UaiInputChipsLanguage, UaiInputChipsSize, UaiInputChipsType } from "./components/uai-input-chips/uai-input-chips";
 import { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
@@ -99,13 +107,16 @@ import { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-in
 import { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 import { UaiInputTimeLanguage } from "./components/uai-input-time/uai-input-time-format";
 import { UaiInputTimeSize } from "./components/uai-input-time/uai-input-time";
+import { UaiLineChartDatum, UaiLineChartFormat, UaiLineChartLanguage, UaiLineChartSeries } from "./components/uai-line-chart/uai-line-chart";
 import { UaiModalSize } from "./components/uai-modal/uai-modal";
 import { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 import { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
 import { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
 import { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 import { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
+import { UaiSectionTitleHeadingTag } from "./components/uai-section-title/uai-section-title";
 import { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
+import { UaiSparklineLanguage, UaiSparklineVariant } from "./components/uai-sparkline/uai-sparkline";
 import { UaiStepOrientation } from "./components/uai-step/uai-step";
 import { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 import { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
@@ -191,15 +202,23 @@ export { UaiAutocompleteSize } from "./components/uai-autocomplete/uai-autocompl
 export { UaiAvatarColor, UaiAvatarSize } from "./components/uai-avatar/uai-avatar";
 export { UaiBadgeShape } from "./components/uai-badge/uai-badge";
 export { UaiBannerAlign, UaiBannerButtonClose, UaiBannerContext, UaiBannerVariant } from "./components/uai-banner/uai-banner";
+export { UaiBarChartFormat, UaiBarChartItem, UaiBarChartLanguage } from "./components/uai-bar-chart/uai-bar-chart";
 export { UaiBreadcrumbEditDetail, UaiBreadcrumbItem, UaiBreadcrumbLabels, UaiBreadcrumbLanguage } from "./components/uai-breadcrumb/uai-breadcrumb";
 export { UaiButtonColor, UaiButtonDirection, UaiButtonIconTheme, UaiButtonIconType, UaiButtonJustifyContent, UaiButtonPosition, UaiButtonSize, UaiButtonType, UaiButtonVariant } from "./components/uai-button/uai-button";
 export { UaiButtonColor as UaiButtonColor1, UaiButtonDirection as UaiButtonDirection1, UaiButtonSize as UaiButtonSize1 } from "./components/uai-button/uai-button";
 export { UaiButtonGroupSelectedDetail } from "./components/uai-button-group/uai-button-group";
+export { UaiCardSize } from "./components/uai-card/uai-card";
+export { UaiCardJustifyContent } from "./components/uai-card-header/uai-card-header";
+export { UaiCardJustifyContent as UaiCardJustifyContent1 } from "./components/uai-card-header/uai-card-header";
 export { UaiDatepickerBannerVariant, UaiDatepickerConclude, UaiDatepickerLanguage, UaiDatepickerPosition, UaiDatepickerType } from "./components/uai-datepicker/uai-datepicker-interface";
 export { UaiDatepickerSize } from "./components/uai-datepicker/uai-datepicker";
 export { UaiDropdownActiveMode, UaiDropdownPosition } from "./components/uai-dropdown/uai-dropdown";
+export { UaiAppliedFilters, UaiFilterBarLanguage, UaiFilterCategory, UaiFilterPeriodPreset } from "./components/uai-filter-bar/uai-filter-bar";
+export { UaiGridAddDetail, UaiGridLanguage, UaiGridReorderDetail, UaiGridType } from "./components/uai-grid/uai-grid";
 export { UaiIconTheme } from "./globals/uai-icons";
 export { UaiIconColor, UaiIconSize } from "./components/uai-icon/uai-icon";
+export { UaiIconBoxSize, UaiIconBoxTheme } from "./components/uai-icon-box/uai-icon-box";
+export { UaiIconButtonColor, UaiIconButtonIconTheme, UaiIconButtonSize, UaiIconButtonType, UaiIconButtonVariant } from "./components/uai-icon-button/uai-icon-button";
 export { UaiInputLegacyType, UaiInputSize, UaiInputType } from "./components/uai-input/uai-input";
 export { UaiInputChipsChange, UaiInputChipsLanguage, UaiInputChipsSize, UaiInputChipsType } from "./components/uai-input-chips/uai-input-chips";
 export { UaiInputDateLanguage } from "./components/uai-input-date/uai-input-date-format";
@@ -209,13 +228,16 @@ export { UaiPasswordStrengthLevel } from "./components/uai-input-password/uai-in
 export { UaiInputPhoneLanguage, UaiInputPhoneSize, UaiPhoneNumberChange } from "./components/uai-input-phone/uai-input-phone";
 export { UaiInputTimeLanguage } from "./components/uai-input-time/uai-input-time-format";
 export { UaiInputTimeSize } from "./components/uai-input-time/uai-input-time";
+export { UaiLineChartDatum, UaiLineChartFormat, UaiLineChartLanguage, UaiLineChartSeries } from "./components/uai-line-chart/uai-line-chart";
 export { UaiModalSize } from "./components/uai-modal/uai-modal";
 export { uaiNavbarBackground, uaiNavbarJustifyContent, uaiNavbarOrientation } from "./components/uai-navbar/uai-navbar";
 export { UaiPageHeaderLevel } from "./components/uai-page-header/uai-page-header";
 export { UaiBreadcrumbEditDetail as UaiBreadcrumbEditDetail1, UaiBreadcrumbItem as UaiBreadcrumbItem1, UaiBreadcrumbLabels as UaiBreadcrumbLabels1, UaiBreadcrumbLanguage as UaiBreadcrumbLanguage1 } from "./components/uai-breadcrumb/uai-breadcrumb";
 export { UaiPaginationLanguage } from "./components/uai-pagination/uai-pagination";
 export { BorderColor as BorderColor1, PaperBackground as PaperBackground1, PaperElevation as PaperElevation1 } from "./components/uai-paper/uai-paper-interface";
+export { UaiSectionTitleHeadingTag } from "./components/uai-section-title/uai-section-title";
 export { UaiSelectChange, UaiSelectOptionData, UaiSelectSize, UaiSelectValue } from "./components/uai-select/uai-select";
+export { UaiSparklineLanguage, UaiSparklineVariant } from "./components/uai-sparkline/uai-sparkline";
 export { UaiStepOrientation } from "./components/uai-step/uai-step";
 export { UaiSwitchSize } from "./components/uai-switch/uai-switch";
 export { UaiTableJustify } from "./components/uai-table-cell/uai-table-cell";
@@ -720,6 +742,9 @@ export namespace Components {
          */
         "size"?: ButtonSize1;
     }
+    /**
+     * @deprecated Use `uai-icon-button` instead.
+     */
     interface BdsButtonIcon {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -752,6 +777,9 @@ export namespace Components {
          */
         "variant"?: IconButtonVariant;
     }
+    /**
+     * @deprecated Use `uai-card` instead.
+     */
     interface BdsCard {
         /**
           * Prop for set the background color.
@@ -789,6 +817,9 @@ export namespace Components {
          */
         "width"?: string;
     }
+    /**
+     * @deprecated Use `uai-card-body` instead.
+     */
     interface BdsCardBody {
     }
     interface BdsCardColor {
@@ -815,6 +846,9 @@ export namespace Components {
          */
         "variable": string;
     }
+    /**
+     * @deprecated Use `uai-card-footer` instead.
+     */
     interface BdsCardFooter {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
@@ -822,6 +856,9 @@ export namespace Components {
          */
         "align"?: justifyContent;
     }
+    /**
+     * @deprecated Use `uai-card-header` instead.
+     */
     interface BdsCardHeader {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
@@ -829,12 +866,18 @@ export namespace Components {
          */
         "align"?: justifyContent1;
     }
+    /**
+     * @deprecated Use `uai-card-subtitle` instead.
+     */
     interface BdsCardSubtitle {
         /**
           * Set the card subtitle.
          */
         "text"?: string;
     }
+    /**
+     * @deprecated Use `uai-card-title` instead.
+     */
     interface BdsCardTitle {
         /**
           * Set the card title.
@@ -2734,6 +2777,9 @@ export namespace Components {
          */
         "width"?: string;
     }
+    /**
+     * @deprecated Use `uai-progress-bar` instead.
+     */
     interface BdsProgressBar {
         /**
           * Text, property to define status of component.
@@ -4125,6 +4171,56 @@ export namespace Components {
         "variant"?: UaiBannerVariant;
     }
     /**
+     * Responsive horizontal bar chart for comparing ranked categories against a shared numeric domain.
+     * Use inside analytics cards and panels; pair with `seriesLabel` and `format` so axis ticks and keyboard tooltips remain clear;
+     * avoid overcrowding with excessive categories when a paginated table is more appropriate.
+     */
+    interface UaiBarChart {
+        /**
+          * ISO 4217 currency code used when `format` is `currency`.
+          * @default 'BRL'
+         */
+        "currency"?: string;
+        /**
+          * Category items as an array of `{ label, value, formattedValue? }` or a JSON-encoded array string.
+          * @default []
+         */
+        "data"?: UaiBarChartItem[] | string;
+        /**
+          * Optional test identifier placed on the chart container.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Optional custom message displayed when `data` is empty.
+         */
+        "emptyText"?: string;
+        /**
+          * Value formatting mode applied to horizontal axis ticks and tooltips (`number`, `currency`, or `percent`).
+          * @default 'number'
+         */
+        "format"?: UaiBarChartFormat;
+        /**
+          * Locale used for number formatting and fallback copy (`pt_BR`, `en_US`, or `es_ES`).
+          * @default 'pt_BR'
+         */
+        "language"?: UaiBarChartLanguage;
+        /**
+          * Optional explicit upper bound for the horizontal domain; computed automatically when omitted.
+         */
+        "maxValue"?: number;
+        /**
+          * Series name displayed in the bottom legend (for example, `ROI`).
+          * @default ''
+         */
+        "seriesLabel"?: string;
+        /**
+          * Controls whether the bottom legend is shown when `seriesLabel` is provided.
+          * @default true
+         */
+        "showLegend"?: boolean;
+    }
+    /**
      * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
      * avoid using it as an organization or flow context switcher.
      */
@@ -4350,6 +4446,108 @@ export namespace Components {
           * @default 'medium'
          */
         "size"?: UaiButtonSize1;
+    }
+    /**
+     * Structured surface for grouping related information, metrics, charts, and actions.
+     * Use with `heading`, `description`, and named slots (`icon`, `actions`, `media`, `footer`) or `uai-card-*` subcomponents;
+     * pair with `UaiGrid` for multi-card rows; to make a whole card navigable, wrap it in a link or button instead of making the card itself interactive.
+     */
+    interface UaiCard {
+        /**
+          * Automation selector applied to the inner card surface. Use in automated tests; pair with accessible role queries; avoid styling by this attribute.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Supporting description displayed below `heading` in the card header. Use to clarify metric scope or period; pair with `heading` and `size="md"`; avoid long paragraphs.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * Primary title displayed in the card header. Use a short noun phrase; pair with `description` or `slot="actions"`; avoid duplicating a `uai-card-title` inside `slot="header"`.
+          * @default ''
+         */
+        "heading"?: string;
+        /**
+          * Explicit CSS height applied to the card host. Use token-based values or `100%` when stretching in a grid; pair with `width`; avoid hardcoded pixel heights that clip dynamic content.
+          * @default null
+         */
+        "height"?: string;
+        /**
+          * Accessible alternative text for `imageSrc` (empty string when decorative). Use to describe informative media; pair with `imageSrc`; avoid repeating the `heading` text.
+          * @default ''
+         */
+        "imageAlt"?: string;
+        /**
+          * Optional cover image URL rendered in the top media region. Use for illustrated or editorial cards; pair with `imageAlt` when informative; avoid combining with `slot="media"`.
+          * @default null
+         */
+        "imageSrc"?: string;
+        /**
+          * Spacing preset of the card layout (`sm` or `md`). Use `sm` for compact KPI/indicator cards and `md` for cards with subtitle or full charts; pair with `heading` and `description`; avoid arbitrary padding overrides.
+          * @default 'sm'
+         */
+        "size"?: UaiCardSize;
+        /**
+          * Explicit CSS width applied to the card host. Use `100%` or `fit-content` according to layout; pair with `UaiGrid` in multi-column rows; avoid fixed pixel widths in responsive layouts.
+          * @default null
+         */
+        "width"?: string;
+    }
+    /**
+     * Body container for `UaiCard` when migrating from `bds-card-body`.
+     * Use inside `uai-card` (or place content directly in `uai-card`'s default slot);
+     * pair with `UaiCardHeader` and `UaiCardFooter`; avoid extra manual padding that duplicates the card body spacing.
+     */
+    interface UaiCardBody {
+    }
+    /**
+     * Footer container for `UaiCard` when composing with subcomponents.
+     * Use inside `uai-card` (or place content directly with `slot="footer"`);
+     * pair with `UaiButton` or supporting trend/goal metadata; avoid using outside a card context.
+     */
+    interface UaiCardFooter {
+        /**
+          * Horizontal distribution of children inside the footer. Use `flex-end` for action buttons or `space-between` for dual metadata; pair with `UaiCard`; avoid invalid CSS alignment values.
+          * @default 'flex-end'
+         */
+        "align"?: UaiCardJustifyContent;
+    }
+    /**
+     * Header container for `UaiCard` when composing with subcomponents.
+     * Use inside `uai-card` (or prefer `heading`/`description` and `slot="actions"` directly on `uai-card`);
+     * pair with `UaiCardTitle` and `UaiCardSubtitle`; avoid using outside a card context.
+     */
+    interface UaiCardHeader {
+        /**
+          * Horizontal distribution of children inside the header. Use `space-between` for title + actions or `flex-start` for stacked headings; pair with `UaiCardTitle`; avoid invalid CSS alignment values.
+          * @default 'space-between'
+         */
+        "align"?: UaiCardJustifyContent1;
+    }
+    /**
+     * Subtitle element for `UaiCardHeader` when composing with subcomponents.
+     * Use inside `uai-card-header` (or pass `description` directly to `uai-card`);
+     * pair with `UaiCardTitle`; avoid using without a corresponding title.
+     */
+    interface UaiCardSubtitle {
+        /**
+          * Text rendered as the card subtitle. Use for secondary context such as timestamps or scope; pair with `UaiCardTitle`; avoid duplicating the default slot.
+          * @default ''
+         */
+        "text"?: string;
+    }
+    /**
+     * Title element for `UaiCardHeader` when composing with subcomponents.
+     * Use inside `uai-card-header` (or pass `heading` directly to `uai-card`);
+     * pair with `UaiCardSubtitle`; avoid long sentences that wrap onto multiple lines.
+     */
+    interface UaiCardTitle {
+        /**
+          * Text rendered as the card title. Use a concise label; pair with `UaiCardHeader`; avoid duplicating the default slot content.
+          * @default ''
+         */
+        "text"?: string;
     }
     /**
      * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
@@ -4665,100 +4863,234 @@ export namespace Components {
         "name": string;
     }
     /**
-     * UAI layout grid. The legacy bds-grid remains available; this component keeps
-     * its layout props while using UAI dimensions and theme-aware color tokens.
+     * Composite analytical filter toolbar combining period presets, quick search, active filter chips, and a two-level category popover.
+     * Use at the top of analytical pages and dashboards; pair with `UaiCard`, `UaiLineChart`, and `UaiBarChart`;
+     * avoid embedding backend requests directly inside the toolbar.
+     */
+    interface UaiFilterBar {
+        /**
+          * Map of category ids to selected option values, as an object or JSON string. Use to control or seed active filters; pair with `categories` and `onUaiFilterChange`; avoid unknown category keys.
+          * @default {}
+         */
+        "appliedFilters"?: UaiAppliedFilters | string;
+        /**
+          * Filter categories and options displayed in the two-level popover, as an array or JSON string. Use to let people filter by dimensions such as channel or campaign; pair with `appliedFilters` and `onUaiFilterChange`; avoid empty option lists.
+          * @default []
+         */
+        "categories"?: UaiFilterCategory[] | string;
+        /**
+          * Closes the filter category popover if open. Use to dismiss programmatically; pair with `open()`; avoid skipping focus restoration on keyboard flows.
+         */
+        "close": () => Promise<void>;
+        /**
+          * Automation selector applied to the toolbar container. Use in automated tests; pair with semantic role queries; avoid styling by this attribute.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Label override for the filter trigger button. Use concise verbs; pair with `language`; avoid icon-only triggers when space allows text.
+          * @default ''
+         */
+        "filterButtonLabel"?: string;
+        /**
+          * Locale for built-in labels and default period presets (`pt_BR`, `en_US`, `es_ES`). Use to match the application language; pair with label override props when needed; avoid mixing locales.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiFilterBarLanguage;
+        /**
+          * Opens the filter category popover anchored to the filter trigger. Use for programmatic focus flows; pair with `close()`; avoid opening when `categories` is empty.
+         */
+        "open": () => Promise<void>;
+        /**
+          * Preset periods rendered in the segmented group, as an array or JSON string. Use when customizing available date ranges; pair with `selectedPeriod` and `onUaiPeriodChange`; avoid more than seven presets in one bar.
+         */
+        "periods"?: UaiFilterPeriodPreset[] | string;
+        /**
+          * Placeholder override for the quick search input. Use to specify what can be searched (for example campaigns or flows); pair with `language`; avoid long instructions.
+          * @default ''
+         */
+        "searchPlaceholder"?: string;
+        /**
+          * Current text value of the quick search input. Use in controlled flows; pair with `onUaiSearchChange`; avoid mutating without updating consumer state.
+          * @default ''
+         */
+        "searchValue"?: string;
+        /**
+          * Identifier of the currently selected period preset. Use in controlled or uncontrolled mode; pair with `onUaiPeriodChange`; avoid ids absent from `periods`.
+          * @default '7d'
+         */
+        "selectedPeriod"?: string;
+        /**
+          * Shows or hides the trailing filter button. Use `false` when only period and search are needed; pair with `categories`; avoid hiding when `categories` are provided.
+          * @default true
+         */
+        "showFilterButton"?: boolean;
+        /**
+          * Shows or hides the segmented period preset group. Use `false` when the page has no temporal dimension; pair with `periods`; avoid hiding both periods, search, and filters simultaneously.
+          * @default true
+         */
+        "showPeriods"?: boolean;
+        /**
+          * Shows or hides the built-in quick search input. Use `true` to filter metrics or items by text; pair with `searchValue` and `onUaiSearchChange`; avoid duplicating another page-level search right below.
+          * @default true
+         */
+        "showSearch"?: boolean;
+    }
+    /**
+     * UAI layout grid and reorderable section row. Keeps legacy `bds-grid` 12-column props while adding
+     * UAI Core row composition (`type="default" | "draggable"`) and vertical block sorting (`sortable`).
+     * Use `type="draggable"` inside a `sortable` column `UaiGrid` to let people reorder whole rows and add items;
+     * pair with `UaiCard` and `UaiSectionTitle`; avoid nesting `draggable` rows inside another `draggable` row.
      */
     interface UaiGrid {
         /**
-          * Controls the alignment of children along the cross axis.
+          * Explicitly disables the lateral `+` button with `aria-disabled="true"` while keeping it focusable. Use when external business rules block adding items; pair with `addDisabledLabel`; avoid hiding the button abruptly during keyboard navigation.
+          * @default false
+         */
+        "addDisabled"?: boolean;
+        /**
+          * Accessible name and tooltip title override when the `+` button reaches `maxItems` or `addDisabled`. Use to explain why no more items can be added; pair with `maxItems`; avoid generic messages.
+          * @default ''
+         */
+        "addDisabledLabel"?: string;
+        /**
+          * Accessible name override for the lateral `+` button when enabled. Use to specify what kind of block will be added; pair with `type="draggable"`; avoid empty strings.
+          * @default ''
+         */
+        "addLabel"?: string;
+        /**
+          * Controls whether the lateral `+` button is rendered when `type="draggable"`. Use `true` when users can append items to the row; pair with `maxItems` and `onUaiAddClick`; avoid when the row has a fixed single item.
+          * @default true
+         */
+        "addable"?: boolean;
+        /**
+          * Controls alignment along the cross axis. Use `stretch` for equal-height cards or `center` for toolbars; pair with `direction`; avoid clipping taller items.
          */
         "alignItems"?: alignItems;
         /**
-          * Legacy color name mapped to the closest semantic UAI background token. Prefer surface tokens in new UAI usage.
+          * Legacy color name mapped to the closest semantic UAI background token. Use surface tokens in new UAI usage; pair with `UaiThemeProvider`; avoid raw hex colors.
          */
         "bgColor"?: Color;
         /**
-          * Applies a centered container capped by the UAI width-content token.
+          * Applies a centered container capped by the UAI `width/content` token. Use for page-aligned rows; pair with `gap`; avoid combining with `containerFluid`.
          */
         "container"?: boolean;
         /**
-          * Applies the wider responsive fluid-container max widths compatible with bds-grid.
+          * Applies the wider responsive fluid-container max widths compatible with `bds-grid`. Use only for legacy fluid layouts; pair with `flexWrap="wrap"`; avoid combining with `container`.
          */
         "containerFluid"?: boolean;
         /**
-          * Controls the flex direction of children.
+          * Skips automatic DOM node movement on reorder so controlled frameworks (such as React state) own child order. Use `true` when rendering `draggable` rows from a reactive array in `onUaiReorder`; pair with `sortable`; avoid `true` in uncontrolled static HTML.
+          * @default false
+         */
+        "controlledReorder"?: boolean;
+        /**
+          * Automation selector applied to the draggable container or host. Use in automated tests; pair with accessible role queries; avoid styling by this attribute.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Controls the flex direction of children. Use `column` for vertical stacks and `row` for horizontal rows; pair with `gap`; avoid reversing visual vs DOM focus order unnecessarily.
          */
         "direction"?: direction;
         /**
-          * Controls whether children wrap to another line.
+          * Accessible name override for the lateral drag handle button. Use to name the specific section being reordered; pair with `type="draggable"`; avoid empty strings.
+          * @default ''
+         */
+        "dragLabel"?: string;
+        /**
+          * Controls whether children wrap onto multiple lines. Use `wrap` for 12-column grids; pair with `xxs`–`xg`; avoid wrapping inside fixed-slot `draggable` rows.
          */
         "flexWrap"?: flexWrap;
         /**
-          * Gap token alias retained for compatibility with bds-grid.
+          * Focuses the internal drag handle when `type="draggable"`. Use after programmatic reorder in controlled layouts; pair with `controlledReorder`; avoid calling on non-draggable grids.
+         */
+        "focusDragHandle": () => Promise<void>;
+        /**
+          * Gap token alias retained for compatibility with `bds-grid` (`2` maps to `spacing/md`). Use `2` for standard card rows and vertical stacks; pair with `direction`; avoid arbitrary margins on children.
          */
         "gap"?: gap1;
         /**
-          * Sets an explicit height on the grid container.
+          * Sets an explicit CSS height on the grid container. Use token variables or percentages; pair with `alignItems`; avoid literal pixel strings.
          */
         "height"?: string;
         /**
-          * Controls how children are distributed along the main axis.
+          * Controls how children are distributed along the main axis. Use standard flex alignment values; pair with `direction`; avoid non-standard CSS strings.
          */
         "justifyContent"?: justifyContent2;
         /**
-          * 12-column span from the legacy lg breakpoint.
+          * Language for default accessible labels of the drag handle, plus button, and live announcements. Use `pt_BR`, `en_US`, or `es_ES`; pair with `dragLabel` and `addLabel` for custom copy; avoid untranslated labels.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiGridLanguage;
+        /**
+          * 12-column span from the legacy `lg` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "lg"?: breakpoint;
         /**
-          * Left offset from the legacy lg breakpoint.
+          * Left offset from the legacy `lg` breakpoint. Use for responsive offsets; pair with `lg`; avoid in `type="draggable"` rows.
          */
         "lgOffset"?: breakpoint;
         /**
-          * Margin token aliases retained for compatibility with bds-grid. Accepts one value or a space-separated list, for example `"t-2 x-auto"`. Takes the same values as `padding`, plus `auto`. When values overlap, the more specific one wins: single side over axis, axis over all sides.
+          * Margin token aliases retained for compatibility with `bds-grid`. Accepts one value or a space-separated list, for example `"t-2 x-auto"`. Use for tokenized outer spacing; pair with `container`; avoid manual negative margins.
          */
         "margin"?: string;
         /**
-          * 12-column span from the legacy md breakpoint.
+          * Maximum number of slotted items allowed in the row before marking the `+` button `aria-disabled="true"`. Use `4` for dashboard KPI rows; pair with `addable` and `onUaiAddClick`; avoid setting `0`.
+          * @default 4
+         */
+        "maxItems"?: number;
+        /**
+          * 12-column span from the legacy `md` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "md"?: breakpoint;
         /**
-          * Left offset from the legacy md breakpoint.
+          * Left offset from the legacy `md` breakpoint. Use for responsive offsets; pair with `md`; avoid in `type="draggable"` rows.
          */
         "mdOffset"?: breakpoint;
         /**
-          * Padding token aliases retained for compatibility with bds-grid. Accepts one value or a space-separated list, for example `"t-2 x-3"`. Values: `none`, `half`, `1` to `12`, optionally prefixed by a side (`l-`, `r-`, `t-`, `b-`) or an axis (`x-`, `y-`). When values overlap, the more specific one wins: single side over axis, axis over all sides.
+          * Padding token aliases retained for compatibility with `bds-grid`. Accepts one value or a space-separated list, for example `"t-2 x-3"`. Use for tokenized container spacing; pair with `gap`; avoid overriding internal `draggable` slot padding.
          */
         "padding"?: string;
         /**
-          * 12-column span from the legacy sm breakpoint.
+          * 12-column span from the legacy `sm` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "sm"?: breakpoint;
         /**
-          * Left offset from the legacy sm breakpoint.
+          * Left offset from the legacy `sm` breakpoint. Use for responsive offsets; pair with `sm`; avoid in `type="draggable"` rows.
          */
         "smOffset"?: breakpoint;
         /**
-          * 12-column span from the legacy xg breakpoint.
+          * Enables vertical drag-and-drop and keyboard (`Alt+ArrowUp` / `Alt+ArrowDown`) sorting of child `uai-grid[type="draggable"]` rows. Use on a vertical (`direction="column"`) parent `UaiGrid`; pair with `onUaiReorder`; avoid enabling on leaf item grids.
+          * @default false
+         */
+        "sortable"?: boolean;
+        /**
+          * Row composition mode from UAI Core (`default` or `draggable`). Use `draggable` to display the lateral reorder handle and plus action while preserving slot `gap`; pair with a `sortable` parent `UaiGrid`; avoid using the native HTML `draggable` attribute.
+         */
+        "type"?: UaiGridType;
+        /**
+          * 12-column span from the legacy `xg` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "xg"?: breakpoint;
         /**
-          * Left offset from the legacy xg breakpoint.
+          * Left offset from the legacy `xg` breakpoint. Use for responsive offsets; pair with `xg`; avoid in `type="draggable"` rows.
          */
         "xgOffset"?: breakpoint;
         /**
-          * 12-column span from the legacy xs breakpoint.
+          * 12-column span from the legacy `xs` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "xs"?: breakpoint;
         /**
-          * Left offset from the legacy xs breakpoint.
+          * Left offset from the legacy `xs` breakpoint. Use for responsive offsets; pair with `xs`; avoid in `type="draggable"` rows.
          */
         "xsOffset"?: breakpoint;
         /**
-          * Base 12-column span.
+          * Base 12-column span. Use values `1`–`12` or `auto`; pair with a `flexWrap="wrap"` parent `UaiGrid`; avoid combining with `type="draggable"`.
          */
         "xxs"?: breakpoint;
         /**
-          * Base left offset in the 12-column grid.
+          * Base left offset in the 12-column grid. Use values `1`–`12` or `auto`; pair with `xxs`; avoid in `type="draggable"` rows.
          */
         "xxsOffset"?: breakpoint;
     }
@@ -4799,6 +5131,104 @@ export namespace Components {
           * @default 'outline'
          */
         "theme": UaiIconTheme;
+    }
+    /**
+     * Passive rounded surface container that frames a UAI icon or custom slotted graphic.
+     * Use alongside card headings or KPI indicators; pair with `aria-label` only when the icon conveys standalone meaning;
+     * avoid using it as an interactive button (use `uai-icon-button` instead).
+     */
+    interface UaiIconBox {
+        /**
+          * Accessible label when the icon box communicates standalone meaning; otherwise the box is decorative.
+          * @default null
+         */
+        "ariaLabel": string | null;
+        /**
+          * Selector attribute applied to the box container for automated tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Name of the glyph from the UAI icon font. When omitted, renders the default slot content.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Style of the UAI icon glyph (`outline` or `solid`).
+          * @default 'outline'
+         */
+        "iconTheme"?: UaiIconBoxTheme;
+        /**
+          * Scale of the icon container (`sm`, `md`, or `lg`).
+          * @default 'md'
+         */
+        "size"?: UaiIconBoxSize;
+    }
+    /**
+     * Square icon-only action button for toolbars, card headers, and compact controls.
+     * Use `variant="ghost"` or `variant="outline"` for secondary actions and `variant="solid"` for high-emphasis triggers;
+     * pair with `aria-label` or `aria-labelledby` so assistive technologies announce the action; avoid omitting an accessible name.
+     */
+    interface UaiIconButton {
+        /**
+          * Accessible name forwarded to the inner `<button>`. Required when `aria-labelledby` is not set.
+          * @default null
+         */
+        "ariaLabel": string | null;
+        /**
+          * ID reference forwarded to the inner `<button>` when labelled by an external element.
+          * @default null
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * Semantic color of the action (`primary`, `content`, `positive`, or `negative`).
+          * @default 'primary'
+         */
+        "color"?: UaiIconButtonColor;
+        /**
+          * Selector attribute forwarded to the inner `<button>` for automated tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, disables the native button and prevents `uaiClick` emission.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Name of the glyph from the UAI icon font. When omitted, nothing is rendered.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Style of the UAI icon glyph (`outline` or `solid`).
+          * @default 'outline'
+         */
+        "iconTheme"?: UaiIconButtonIconTheme;
+        /**
+          * Controls the visual active/pressed state of the button programmatically.
+         */
+        "isActive": (value: boolean) => Promise<void>;
+        /**
+          * If true, renders a loading spinner instead of the icon and prevents `uaiClick` emission.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Control size (`compact`, `short`, `medium`, or `large`), mapped to `control-height/*` tokens.
+          * @default 'medium'
+         */
+        "size"?: UaiIconButtonSize;
+        /**
+          * Native button type (`button`, `submit`, or `reset`).
+          * @default 'button'
+         */
+        "type"?: UaiIconButtonType;
+        /**
+          * Visual emphasis of the button (`solid`, `outline`, or `ghost`).
+          * @default 'solid'
+         */
+        "variant"?: UaiIconButtonVariant;
     }
     /**
      * Text field. Use it for short free text, e-mail, numbers and search, with an optional label above and a helper,
@@ -5950,6 +6380,62 @@ export namespace Components {
         "value"?: string | null;
     }
     /**
+     * Responsive multi-series line chart in SVG with UAI semantic palette, axes, legend, and keyboard/pointer inspection.
+     * Use to visualize temporal evolution across one or more series; pair with `series`, `tooltipTitle`, and `format`;
+     * avoid plotting unrelated scales on a single vertical axis.
+     */
+    interface UaiLineChart {
+        /**
+          * ISO 4217 currency code used when `format` is `currency`.
+          * @default 'BRL'
+         */
+        "currency"?: string;
+        /**
+          * Data points (`Record<string, string | number>`) as an array or a JSON-encoded array string.
+          * @default []
+         */
+        "data"?: UaiLineChartDatum[] | string;
+        /**
+          * Optional test identifier placed on the chart container.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Optional custom message displayed when `data` or `series` is empty.
+         */
+        "emptyText"?: string;
+        /**
+          * Value formatting mode applied to vertical axis ticks and tooltip rows (`number`, `currency`, or `percent`).
+          * @default 'number'
+         */
+        "format"?: UaiLineChartFormat;
+        /**
+          * Locale used for number formatting and fallback copy (`pt_BR`, `en_US`, or `es_ES`).
+          * @default 'pt_BR'
+         */
+        "language"?: UaiLineChartLanguage;
+        /**
+          * Series definitions (`{ key, label, color? }`) as an array or a JSON-encoded array string.
+          * @default []
+         */
+        "series"?: UaiLineChartSeries[] | string;
+        /**
+          * Controls whether the bottom series legend is rendered.
+          * @default true
+         */
+        "showLegend"?: boolean;
+        /**
+          * Optional title displayed at the top of the inspection tooltip card.
+          * @default ''
+         */
+        "tooltipTitle"?: string;
+        /**
+          * Property name in each datum used for horizontal axis labels (automatically falls back to `key`, `label`, or `name`).
+          * @default 'key'
+         */
+        "xKey"?: string;
+    }
+    /**
      * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
      * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
      */
@@ -6244,6 +6730,39 @@ export namespace Components {
           * @default null
          */
         "width"?: string;
+    }
+    /**
+     * Horizontal progress indicator with safe bounds and accessible `progressbar` semantics.
+     * Single visual defined by the UAI Figma: `sizing/2xs` track on `surface/background` with an `accent/ai-start` fill.
+     * Use to communicate completion percentages or quota usage; pair with `text` or `aria-label` so screen readers announce what is progressing;
+     * avoid using it to communicate critical status without accompanying text.
+     */
+    interface UaiProgressBar {
+        /**
+          * Accessible name forwarded to the `progressbar` element when no visible `text` is used.
+          * @default null
+         */
+        "ariaLabel": string | null;
+        /**
+          * ID reference forwarded to the `progressbar` element when labelled externally.
+          * @default null
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * Selector attribute applied to the `progressbar` element for automated tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Completion percentage clamped safely between 0 and 100 (`NaN` is treated as 0).
+          * @default 0
+         */
+        "percent"?: number;
+        /**
+          * Optional descriptive label rendered alongside the progress bar.
+          * @default ''
+         */
+        "text"?: string;
     }
     /**
      * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.
@@ -6547,6 +7066,33 @@ export namespace Components {
         "value"?: string;
     }
     /**
+     * Semantic section header with heading, optional description, and optional trailing actions.
+     * Use to introduce analytical or content blocks beneath `uai-page-header`; pair with `headingTag` matching document hierarchy;
+     * avoid using `h1` here (reserve `h1` for the page title).
+     */
+    interface UaiSectionTitle {
+        /**
+          * Selector attribute applied to the container for automated tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Optional supporting description rendered below the heading when non-empty.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * Main text of the section heading.
+          * @default ''
+         */
+        "heading"?: string;
+        /**
+          * HTML heading element tag (`h2`, `h3`, or `h4`) to preserve document outline hierarchy.
+          * @default 'h2'
+         */
+        "headingTag"?: UaiSectionTitleHeadingTag;
+    }
+    /**
      * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
      * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
      * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
@@ -6666,6 +7212,48 @@ export namespace Components {
           * Value submitted and emitted when the option is chosen. Use a short stable string; pair with the label text; avoid duplicates inside one select.
          */
         "value": string;
+    }
+    /**
+     * Compact responsive trend sparkline rendered in SVG without axes.
+     * Use inside KPI and summary cards to illustrate directional variation; pair with a visible metric and `label`;
+     * avoid using color alone to communicate positive or negative status.
+     */
+    interface UaiSparkline {
+        /**
+          * Numeric series as an array of numbers or a JSON-encoded array string.
+          * @default []
+         */
+        "data"?: number[] | string;
+        /**
+          * Optional test identifier placed on the chart container.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Accessible description announced for the sparkline. Falls back to a localized summary when omitted.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Locale used for fallback accessible announcements (`pt_BR`, `en_US`, or `es_ES`).
+          * @default 'pt_BR'
+         */
+        "language"?: UaiSparklineLanguage;
+        /**
+          * Displays the subtle vertical gradient area under the curve for every variant, including flat `neutral` trends.
+          * @default true
+         */
+        "showArea"?: boolean;
+        /**
+          * Renders a monotone smooth cubic curve when `true`, or straight segments when `false`.
+          * @default true
+         */
+        "smooth"?: boolean;
+        /**
+          * Semantic color variant (`neutral`, `positive`, or `negative`). Legacy aliases `green` and `red` map to `positive` and `negative`.
+          * @default 'neutral'
+         */
+        "variant"?: UaiSparklineVariant;
     }
     /**
      * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
@@ -7695,6 +8283,10 @@ export interface UaiBannerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiBannerElement;
 }
+export interface UaiBarChartCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiBarChartElement;
+}
 export interface UaiBreadcrumbCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiBreadcrumbElement;
@@ -7718,6 +8310,18 @@ export interface UaiDatepickerCustomEvent<T> extends CustomEvent<T> {
 export interface UaiDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiDropdownElement;
+}
+export interface UaiFilterBarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiFilterBarElement;
+}
+export interface UaiGridCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiGridElement;
+}
+export interface UaiIconButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiIconButtonElement;
 }
 export interface UaiInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -7746,6 +8350,10 @@ export interface UaiInputPhoneCustomEvent<T> extends CustomEvent<T> {
 export interface UaiInputTimeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUaiInputTimeElement;
+}
+export interface UaiLineChartCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUaiLineChartElement;
 }
 export interface UaiModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -8048,6 +8656,9 @@ declare global {
     interface HTMLBdsButtonIconElementEventMap {
         "bdsClick": PointerEvent;
     }
+    /**
+     * @deprecated Use `uai-icon-button` instead.
+     */
     interface HTMLBdsButtonIconElement extends Components.BdsButtonIcon, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsButtonIconElementEventMap>(type: K, listener: (this: HTMLBdsButtonIconElement, ev: BdsButtonIconCustomEvent<HTMLBdsButtonIconElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8065,6 +8676,9 @@ declare global {
     interface HTMLBdsCardElementEventMap {
         "bdsClick": PointerEvent | KeyboardEvent;
     }
+    /**
+     * @deprecated Use `uai-card` instead.
+     */
     interface HTMLBdsCardElement extends Components.BdsCard, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBdsCardElementEventMap>(type: K, listener: (this: HTMLBdsCardElement, ev: BdsCardCustomEvent<HTMLBdsCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8079,6 +8693,9 @@ declare global {
         prototype: HTMLBdsCardElement;
         new (): HTMLBdsCardElement;
     };
+    /**
+     * @deprecated Use `uai-card-body` instead.
+     */
     interface HTMLBdsCardBodyElement extends Components.BdsCardBody, HTMLStencilElement {
     }
     var HTMLBdsCardBodyElement: {
@@ -8091,24 +8708,36 @@ declare global {
         prototype: HTMLBdsCardColorElement;
         new (): HTMLBdsCardColorElement;
     };
+    /**
+     * @deprecated Use `uai-card-footer` instead.
+     */
     interface HTMLBdsCardFooterElement extends Components.BdsCardFooter, HTMLStencilElement {
     }
     var HTMLBdsCardFooterElement: {
         prototype: HTMLBdsCardFooterElement;
         new (): HTMLBdsCardFooterElement;
     };
+    /**
+     * @deprecated Use `uai-card-header` instead.
+     */
     interface HTMLBdsCardHeaderElement extends Components.BdsCardHeader, HTMLStencilElement {
     }
     var HTMLBdsCardHeaderElement: {
         prototype: HTMLBdsCardHeaderElement;
         new (): HTMLBdsCardHeaderElement;
     };
+    /**
+     * @deprecated Use `uai-card-subtitle` instead.
+     */
     interface HTMLBdsCardSubtitleElement extends Components.BdsCardSubtitle, HTMLStencilElement {
     }
     var HTMLBdsCardSubtitleElement: {
         prototype: HTMLBdsCardSubtitleElement;
         new (): HTMLBdsCardSubtitleElement;
     };
+    /**
+     * @deprecated Use `uai-card-title` instead.
+     */
     interface HTMLBdsCardTitleElement extends Components.BdsCardTitle, HTMLStencilElement {
     }
     var HTMLBdsCardTitleElement: {
@@ -8784,6 +9413,9 @@ declare global {
         prototype: HTMLBdsPaperElement;
         new (): HTMLBdsPaperElement;
     };
+    /**
+     * @deprecated Use `uai-progress-bar` instead.
+     */
     interface HTMLBdsProgressBarElement extends Components.BdsProgressBar, HTMLStencilElement {
     }
     var HTMLBdsProgressBarElement: {
@@ -9301,6 +9933,29 @@ declare global {
         prototype: HTMLUaiBannerElement;
         new (): HTMLUaiBannerElement;
     };
+    interface HTMLUaiBarChartElementEventMap {
+        "uaiBarHover": UaiBarChartItem | null;
+        "uaiBarClick": UaiBarChartItem;
+    }
+    /**
+     * Responsive horizontal bar chart for comparing ranked categories against a shared numeric domain.
+     * Use inside analytics cards and panels; pair with `seriesLabel` and `format` so axis ticks and keyboard tooltips remain clear;
+     * avoid overcrowding with excessive categories when a paginated table is more appropriate.
+     */
+    interface HTMLUaiBarChartElement extends Components.UaiBarChart, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiBarChartElementEventMap>(type: K, listener: (this: HTMLUaiBarChartElement, ev: UaiBarChartCustomEvent<HTMLUaiBarChartElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiBarChartElementEventMap>(type: K, listener: (this: HTMLUaiBarChartElement, ev: UaiBarChartCustomEvent<HTMLUaiBarChartElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiBarChartElement: {
+        prototype: HTMLUaiBarChartElement;
+        new (): HTMLUaiBarChartElement;
+    };
     interface HTMLUaiBreadcrumbElementEventMap {
         "uaiBreadcrumbItemClick": UaiBreadcrumbItem;
         "uaiBreadcrumbItemEdit": UaiBreadcrumbEditDetail;
@@ -9367,6 +10022,72 @@ declare global {
     var HTMLUaiButtonGroupElement: {
         prototype: HTMLUaiButtonGroupElement;
         new (): HTMLUaiButtonGroupElement;
+    };
+    /**
+     * Structured surface for grouping related information, metrics, charts, and actions.
+     * Use with `heading`, `description`, and named slots (`icon`, `actions`, `media`, `footer`) or `uai-card-*` subcomponents;
+     * pair with `UaiGrid` for multi-card rows; to make a whole card navigable, wrap it in a link or button instead of making the card itself interactive.
+     */
+    interface HTMLUaiCardElement extends Components.UaiCard, HTMLStencilElement {
+    }
+    var HTMLUaiCardElement: {
+        prototype: HTMLUaiCardElement;
+        new (): HTMLUaiCardElement;
+    };
+    /**
+     * Body container for `UaiCard` when migrating from `bds-card-body`.
+     * Use inside `uai-card` (or place content directly in `uai-card`'s default slot);
+     * pair with `UaiCardHeader` and `UaiCardFooter`; avoid extra manual padding that duplicates the card body spacing.
+     */
+    interface HTMLUaiCardBodyElement extends Components.UaiCardBody, HTMLStencilElement {
+    }
+    var HTMLUaiCardBodyElement: {
+        prototype: HTMLUaiCardBodyElement;
+        new (): HTMLUaiCardBodyElement;
+    };
+    /**
+     * Footer container for `UaiCard` when composing with subcomponents.
+     * Use inside `uai-card` (or place content directly with `slot="footer"`);
+     * pair with `UaiButton` or supporting trend/goal metadata; avoid using outside a card context.
+     */
+    interface HTMLUaiCardFooterElement extends Components.UaiCardFooter, HTMLStencilElement {
+    }
+    var HTMLUaiCardFooterElement: {
+        prototype: HTMLUaiCardFooterElement;
+        new (): HTMLUaiCardFooterElement;
+    };
+    /**
+     * Header container for `UaiCard` when composing with subcomponents.
+     * Use inside `uai-card` (or prefer `heading`/`description` and `slot="actions"` directly on `uai-card`);
+     * pair with `UaiCardTitle` and `UaiCardSubtitle`; avoid using outside a card context.
+     */
+    interface HTMLUaiCardHeaderElement extends Components.UaiCardHeader, HTMLStencilElement {
+    }
+    var HTMLUaiCardHeaderElement: {
+        prototype: HTMLUaiCardHeaderElement;
+        new (): HTMLUaiCardHeaderElement;
+    };
+    /**
+     * Subtitle element for `UaiCardHeader` when composing with subcomponents.
+     * Use inside `uai-card-header` (or pass `description` directly to `uai-card`);
+     * pair with `UaiCardTitle`; avoid using without a corresponding title.
+     */
+    interface HTMLUaiCardSubtitleElement extends Components.UaiCardSubtitle, HTMLStencilElement {
+    }
+    var HTMLUaiCardSubtitleElement: {
+        prototype: HTMLUaiCardSubtitleElement;
+        new (): HTMLUaiCardSubtitleElement;
+    };
+    /**
+     * Title element for `UaiCardHeader` when composing with subcomponents.
+     * Use inside `uai-card-header` (or pass `heading` directly to `uai-card`);
+     * pair with `UaiCardSubtitle`; avoid long sentences that wrap onto multiple lines.
+     */
+    interface HTMLUaiCardTitleElement extends Components.UaiCardTitle, HTMLStencilElement {
+    }
+    var HTMLUaiCardTitleElement: {
+        prototype: HTMLUaiCardTitleElement;
+        new (): HTMLUaiCardTitleElement;
     };
     interface HTMLUaiCheckboxElementEventMap {
         "uaiChange": { checked: boolean; indeterminate: boolean };
@@ -9460,11 +10181,50 @@ declare global {
         prototype: HTMLUaiEmojiElement;
         new (): HTMLUaiEmojiElement;
     };
+    interface HTMLUaiFilterBarElementEventMap {
+        "uaiPeriodChange": { id: string; label: string };
+        "uaiSearchChange": { value: string };
+        "uaiFilterChange": { filters: UaiAppliedFilters };
+        "uaiFilterOpenChange": { open: boolean };
+    }
     /**
-     * UAI layout grid. The legacy bds-grid remains available; this component keeps
-     * its layout props while using UAI dimensions and theme-aware color tokens.
+     * Composite analytical filter toolbar combining period presets, quick search, active filter chips, and a two-level category popover.
+     * Use at the top of analytical pages and dashboards; pair with `UaiCard`, `UaiLineChart`, and `UaiBarChart`;
+     * avoid embedding backend requests directly inside the toolbar.
+     */
+    interface HTMLUaiFilterBarElement extends Components.UaiFilterBar, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiFilterBarElementEventMap>(type: K, listener: (this: HTMLUaiFilterBarElement, ev: UaiFilterBarCustomEvent<HTMLUaiFilterBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiFilterBarElementEventMap>(type: K, listener: (this: HTMLUaiFilterBarElement, ev: UaiFilterBarCustomEvent<HTMLUaiFilterBarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiFilterBarElement: {
+        prototype: HTMLUaiFilterBarElement;
+        new (): HTMLUaiFilterBarElement;
+    };
+    interface HTMLUaiGridElementEventMap {
+        "uaiAddClick": UaiGridAddDetail;
+        "uaiReorder": UaiGridReorderDetail;
+    }
+    /**
+     * UAI layout grid and reorderable section row. Keeps legacy `bds-grid` 12-column props while adding
+     * UAI Core row composition (`type="default" | "draggable"`) and vertical block sorting (`sortable`).
+     * Use `type="draggable"` inside a `sortable` column `UaiGrid` to let people reorder whole rows and add items;
+     * pair with `UaiCard` and `UaiSectionTitle`; avoid nesting `draggable` rows inside another `draggable` row.
      */
     interface HTMLUaiGridElement extends Components.UaiGrid, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiGridElementEventMap>(type: K, listener: (this: HTMLUaiGridElement, ev: UaiGridCustomEvent<HTMLUaiGridElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiGridElementEventMap>(type: K, listener: (this: HTMLUaiGridElement, ev: UaiGridCustomEvent<HTMLUaiGridElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLUaiGridElement: {
         prototype: HTMLUaiGridElement;
@@ -9483,6 +10243,39 @@ declare global {
     var HTMLUaiIconElement: {
         prototype: HTMLUaiIconElement;
         new (): HTMLUaiIconElement;
+    };
+    /**
+     * Passive rounded surface container that frames a UAI icon or custom slotted graphic.
+     * Use alongside card headings or KPI indicators; pair with `aria-label` only when the icon conveys standalone meaning;
+     * avoid using it as an interactive button (use `uai-icon-button` instead).
+     */
+    interface HTMLUaiIconBoxElement extends Components.UaiIconBox, HTMLStencilElement {
+    }
+    var HTMLUaiIconBoxElement: {
+        prototype: HTMLUaiIconBoxElement;
+        new (): HTMLUaiIconBoxElement;
+    };
+    interface HTMLUaiIconButtonElementEventMap {
+        "uaiClick": MouseEvent;
+    }
+    /**
+     * Square icon-only action button for toolbars, card headers, and compact controls.
+     * Use `variant="ghost"` or `variant="outline"` for secondary actions and `variant="solid"` for high-emphasis triggers;
+     * pair with `aria-label` or `aria-labelledby` so assistive technologies announce the action; avoid omitting an accessible name.
+     */
+    interface HTMLUaiIconButtonElement extends Components.UaiIconButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiIconButtonElementEventMap>(type: K, listener: (this: HTMLUaiIconButtonElement, ev: UaiIconButtonCustomEvent<HTMLUaiIconButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiIconButtonElementEventMap>(type: K, listener: (this: HTMLUaiIconButtonElement, ev: UaiIconButtonCustomEvent<HTMLUaiIconButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiIconButtonElement: {
+        prototype: HTMLUaiIconButtonElement;
+        new (): HTMLUaiIconButtonElement;
     };
     interface HTMLUaiInputElementEventMap {
         "uaiChange": { value: string };
@@ -9680,6 +10473,28 @@ declare global {
         prototype: HTMLUaiInputTimeElement;
         new (): HTMLUaiInputTimeElement;
     };
+    interface HTMLUaiLineChartElementEventMap {
+        "uaiPointHover": { index: number; datum: UaiLineChartDatum } | null;
+    }
+    /**
+     * Responsive multi-series line chart in SVG with UAI semantic palette, axes, legend, and keyboard/pointer inspection.
+     * Use to visualize temporal evolution across one or more series; pair with `series`, `tooltipTitle`, and `format`;
+     * avoid plotting unrelated scales on a single vertical axis.
+     */
+    interface HTMLUaiLineChartElement extends Components.UaiLineChart, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUaiLineChartElementEventMap>(type: K, listener: (this: HTMLUaiLineChartElement, ev: UaiLineChartCustomEvent<HTMLUaiLineChartElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUaiLineChartElementEventMap>(type: K, listener: (this: HTMLUaiLineChartElement, ev: UaiLineChartCustomEvent<HTMLUaiLineChartElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUaiLineChartElement: {
+        prototype: HTMLUaiLineChartElement;
+        new (): HTMLUaiLineChartElement;
+    };
     /**
      * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
      * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
@@ -9804,6 +10619,18 @@ declare global {
         prototype: HTMLUaiPaperElement;
         new (): HTMLUaiPaperElement;
     };
+    /**
+     * Horizontal progress indicator with safe bounds and accessible `progressbar` semantics.
+     * Single visual defined by the UAI Figma: `sizing/2xs` track on `surface/background` with an `accent/ai-start` fill.
+     * Use to communicate completion percentages or quota usage; pair with `text` or `aria-label` so screen readers announce what is progressing;
+     * avoid using it to communicate critical status without accompanying text.
+     */
+    interface HTMLUaiProgressBarElement extends Components.UaiProgressBar, HTMLStencilElement {
+    }
+    var HTMLUaiProgressBarElement: {
+        prototype: HTMLUaiProgressBarElement;
+        new (): HTMLUaiProgressBarElement;
+    };
     interface HTMLUaiRadioElementEventMap {
         "uaiChange": { checked: boolean };
         "uaiClickChange": { checked: boolean };
@@ -9874,6 +10701,17 @@ declare global {
         prototype: HTMLUaiRichTextElement;
         new (): HTMLUaiRichTextElement;
     };
+    /**
+     * Semantic section header with heading, optional description, and optional trailing actions.
+     * Use to introduce analytical or content blocks beneath `uai-page-header`; pair with `headingTag` matching document hierarchy;
+     * avoid using `h1` here (reserve `h1` for the page title).
+     */
+    interface HTMLUaiSectionTitleElement extends Components.UaiSectionTitle, HTMLStencilElement {
+    }
+    var HTMLUaiSectionTitleElement: {
+        prototype: HTMLUaiSectionTitleElement;
+        new (): HTMLUaiSectionTitleElement;
+    };
     interface HTMLUaiSelectElementEventMap {
         "uaiChange": UaiSelectChange;
         "uaiCancel": void;
@@ -9910,6 +10748,17 @@ declare global {
     var HTMLUaiSelectOptionElement: {
         prototype: HTMLUaiSelectOptionElement;
         new (): HTMLUaiSelectOptionElement;
+    };
+    /**
+     * Compact responsive trend sparkline rendered in SVG without axes.
+     * Use inside KPI and summary cards to illustrate directional variation; pair with a visible metric and `label`;
+     * avoid using color alone to communicate positive or negative status.
+     */
+    interface HTMLUaiSparklineElement extends Components.UaiSparkline, HTMLStencilElement {
+    }
+    var HTMLUaiSparklineElement: {
+        prototype: HTMLUaiSparklineElement;
+        new (): HTMLUaiSparklineElement;
     };
     interface HTMLUaiStepElementEventMap {
         "uaiStepSelect": number;
@@ -10293,16 +11142,26 @@ declare global {
         "uai-avatar": HTMLUaiAvatarElement;
         "uai-badge": HTMLUaiBadgeElement;
         "uai-banner": HTMLUaiBannerElement;
+        "uai-bar-chart": HTMLUaiBarChartElement;
         "uai-breadcrumb": HTMLUaiBreadcrumbElement;
         "uai-button": HTMLUaiButtonElement;
         "uai-button-group": HTMLUaiButtonGroupElement;
+        "uai-card": HTMLUaiCardElement;
+        "uai-card-body": HTMLUaiCardBodyElement;
+        "uai-card-footer": HTMLUaiCardFooterElement;
+        "uai-card-header": HTMLUaiCardHeaderElement;
+        "uai-card-subtitle": HTMLUaiCardSubtitleElement;
+        "uai-card-title": HTMLUaiCardTitleElement;
         "uai-checkbox": HTMLUaiCheckboxElement;
         "uai-chip-tag": HTMLUaiChipTagElement;
         "uai-datepicker": HTMLUaiDatepickerElement;
         "uai-dropdown": HTMLUaiDropdownElement;
         "uai-emoji": HTMLUaiEmojiElement;
+        "uai-filter-bar": HTMLUaiFilterBarElement;
         "uai-grid": HTMLUaiGridElement;
         "uai-icon": HTMLUaiIconElement;
+        "uai-icon-box": HTMLUaiIconBoxElement;
+        "uai-icon-button": HTMLUaiIconButtonElement;
         "uai-input": HTMLUaiInputElement;
         "uai-input-chips": HTMLUaiInputChipsElement;
         "uai-input-date": HTMLUaiInputDateElement;
@@ -10310,6 +11169,7 @@ declare global {
         "uai-input-password": HTMLUaiInputPasswordElement;
         "uai-input-phone": HTMLUaiInputPhoneElement;
         "uai-input-time": HTMLUaiInputTimeElement;
+        "uai-line-chart": HTMLUaiLineChartElement;
         "uai-logo": HTMLUaiLogoElement;
         "uai-modal": HTMLUaiModalElement;
         "uai-modal-action": HTMLUaiModalActionElement;
@@ -10319,11 +11179,14 @@ declare global {
         "uai-page-header": HTMLUaiPageHeaderElement;
         "uai-pagination": HTMLUaiPaginationElement;
         "uai-paper": HTMLUaiPaperElement;
+        "uai-progress-bar": HTMLUaiProgressBarElement;
         "uai-radio": HTMLUaiRadioElement;
         "uai-radio-group": HTMLUaiRadioGroupElement;
         "uai-rich-text": HTMLUaiRichTextElement;
+        "uai-section-title": HTMLUaiSectionTitleElement;
         "uai-select": HTMLUaiSelectElement;
         "uai-select-option": HTMLUaiSelectOptionElement;
+        "uai-sparkline": HTMLUaiSparklineElement;
         "uai-step": HTMLUaiStepElement;
         "uai-stepper": HTMLUaiStepperElement;
         "uai-switch": HTMLUaiSwitchElement;
@@ -10866,6 +11729,9 @@ declare namespace LocalJSX {
          */
         "size"?: ButtonSize1;
     }
+    /**
+     * @deprecated Use `uai-icon-button` instead.
+     */
     interface BdsButtonIcon {
         /**
           * Data test is the prop to specifically test the component action object.
@@ -10902,6 +11768,9 @@ declare namespace LocalJSX {
          */
         "variant"?: IconButtonVariant;
     }
+    /**
+     * @deprecated Use `uai-card` instead.
+     */
     interface BdsCard {
         /**
           * Prop for set the background color.
@@ -10943,6 +11812,9 @@ declare namespace LocalJSX {
          */
         "width"?: string;
     }
+    /**
+     * @deprecated Use `uai-card-body` instead.
+     */
     interface BdsCardBody {
     }
     interface BdsCardColor {
@@ -10969,6 +11841,9 @@ declare namespace LocalJSX {
          */
         "variable": string;
     }
+    /**
+     * @deprecated Use `uai-card-footer` instead.
+     */
     interface BdsCardFooter {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
@@ -10976,6 +11851,9 @@ declare namespace LocalJSX {
          */
         "align"?: justifyContent;
     }
+    /**
+     * @deprecated Use `uai-card-header` instead.
+     */
     interface BdsCardHeader {
         /**
           * Prop for internal elements alignment. Will follow the same values of css.
@@ -10983,12 +11861,18 @@ declare namespace LocalJSX {
          */
         "align"?: justifyContent1;
     }
+    /**
+     * @deprecated Use `uai-card-subtitle` instead.
+     */
     interface BdsCardSubtitle {
         /**
           * Set the card subtitle.
          */
         "text"?: string;
     }
+    /**
+     * @deprecated Use `uai-card-title` instead.
+     */
     interface BdsCardTitle {
         /**
           * Set the card title.
@@ -13096,6 +13980,9 @@ declare namespace LocalJSX {
          */
         "width"?: string;
     }
+    /**
+     * @deprecated Use `uai-progress-bar` instead.
+     */
     interface BdsProgressBar {
         /**
           * Text, property to define status of component.
@@ -14549,6 +15436,64 @@ declare namespace LocalJSX {
         "variant"?: UaiBannerVariant;
     }
     /**
+     * Responsive horizontal bar chart for comparing ranked categories against a shared numeric domain.
+     * Use inside analytics cards and panels; pair with `seriesLabel` and `format` so axis ticks and keyboard tooltips remain clear;
+     * avoid overcrowding with excessive categories when a paginated table is more appropriate.
+     */
+    interface UaiBarChart {
+        /**
+          * ISO 4217 currency code used when `format` is `currency`.
+          * @default 'BRL'
+         */
+        "currency"?: string;
+        /**
+          * Category items as an array of `{ label, value, formattedValue? }` or a JSON-encoded array string.
+          * @default []
+         */
+        "data"?: UaiBarChartItem[] | string;
+        /**
+          * Optional test identifier placed on the chart container.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Optional custom message displayed when `data` is empty.
+         */
+        "emptyText"?: string;
+        /**
+          * Value formatting mode applied to horizontal axis ticks and tooltips (`number`, `currency`, or `percent`).
+          * @default 'number'
+         */
+        "format"?: UaiBarChartFormat;
+        /**
+          * Locale used for number formatting and fallback copy (`pt_BR`, `en_US`, or `es_ES`).
+          * @default 'pt_BR'
+         */
+        "language"?: UaiBarChartLanguage;
+        /**
+          * Optional explicit upper bound for the horizontal domain; computed automatically when omitted.
+         */
+        "maxValue"?: number;
+        /**
+          * Emitted when a bar is activated by pointer click or keyboard (`Enter` or `Space`).
+         */
+        "onUaiBarClick"?: (event: UaiBarChartCustomEvent<UaiBarChartItem>) => void;
+        /**
+          * Emitted when a bar is hovered or focused, or `null` when inspection is cleared.
+         */
+        "onUaiBarHover"?: (event: UaiBarChartCustomEvent<UaiBarChartItem | null>) => void;
+        /**
+          * Series name displayed in the bottom legend (for example, `ROI`).
+          * @default ''
+         */
+        "seriesLabel"?: string;
+        /**
+          * Controls whether the bottom legend is shown when `seriesLabel` is provided.
+          * @default true
+         */
+        "showLegend"?: boolean;
+    }
+    /**
      * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
      * avoid using it as an organization or flow context switcher.
      */
@@ -14758,6 +15703,108 @@ declare namespace LocalJSX {
           * @default 'medium'
          */
         "size"?: UaiButtonSize1;
+    }
+    /**
+     * Structured surface for grouping related information, metrics, charts, and actions.
+     * Use with `heading`, `description`, and named slots (`icon`, `actions`, `media`, `footer`) or `uai-card-*` subcomponents;
+     * pair with `UaiGrid` for multi-card rows; to make a whole card navigable, wrap it in a link or button instead of making the card itself interactive.
+     */
+    interface UaiCard {
+        /**
+          * Automation selector applied to the inner card surface. Use in automated tests; pair with accessible role queries; avoid styling by this attribute.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Supporting description displayed below `heading` in the card header. Use to clarify metric scope or period; pair with `heading` and `size="md"`; avoid long paragraphs.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * Primary title displayed in the card header. Use a short noun phrase; pair with `description` or `slot="actions"`; avoid duplicating a `uai-card-title` inside `slot="header"`.
+          * @default ''
+         */
+        "heading"?: string;
+        /**
+          * Explicit CSS height applied to the card host. Use token-based values or `100%` when stretching in a grid; pair with `width`; avoid hardcoded pixel heights that clip dynamic content.
+          * @default null
+         */
+        "height"?: string;
+        /**
+          * Accessible alternative text for `imageSrc` (empty string when decorative). Use to describe informative media; pair with `imageSrc`; avoid repeating the `heading` text.
+          * @default ''
+         */
+        "imageAlt"?: string;
+        /**
+          * Optional cover image URL rendered in the top media region. Use for illustrated or editorial cards; pair with `imageAlt` when informative; avoid combining with `slot="media"`.
+          * @default null
+         */
+        "imageSrc"?: string;
+        /**
+          * Spacing preset of the card layout (`sm` or `md`). Use `sm` for compact KPI/indicator cards and `md` for cards with subtitle or full charts; pair with `heading` and `description`; avoid arbitrary padding overrides.
+          * @default 'sm'
+         */
+        "size"?: UaiCardSize;
+        /**
+          * Explicit CSS width applied to the card host. Use `100%` or `fit-content` according to layout; pair with `UaiGrid` in multi-column rows; avoid fixed pixel widths in responsive layouts.
+          * @default null
+         */
+        "width"?: string;
+    }
+    /**
+     * Body container for `UaiCard` when migrating from `bds-card-body`.
+     * Use inside `uai-card` (or place content directly in `uai-card`'s default slot);
+     * pair with `UaiCardHeader` and `UaiCardFooter`; avoid extra manual padding that duplicates the card body spacing.
+     */
+    interface UaiCardBody {
+    }
+    /**
+     * Footer container for `UaiCard` when composing with subcomponents.
+     * Use inside `uai-card` (or place content directly with `slot="footer"`);
+     * pair with `UaiButton` or supporting trend/goal metadata; avoid using outside a card context.
+     */
+    interface UaiCardFooter {
+        /**
+          * Horizontal distribution of children inside the footer. Use `flex-end` for action buttons or `space-between` for dual metadata; pair with `UaiCard`; avoid invalid CSS alignment values.
+          * @default 'flex-end'
+         */
+        "align"?: UaiCardJustifyContent;
+    }
+    /**
+     * Header container for `UaiCard` when composing with subcomponents.
+     * Use inside `uai-card` (or prefer `heading`/`description` and `slot="actions"` directly on `uai-card`);
+     * pair with `UaiCardTitle` and `UaiCardSubtitle`; avoid using outside a card context.
+     */
+    interface UaiCardHeader {
+        /**
+          * Horizontal distribution of children inside the header. Use `space-between` for title + actions or `flex-start` for stacked headings; pair with `UaiCardTitle`; avoid invalid CSS alignment values.
+          * @default 'space-between'
+         */
+        "align"?: UaiCardJustifyContent1;
+    }
+    /**
+     * Subtitle element for `UaiCardHeader` when composing with subcomponents.
+     * Use inside `uai-card-header` (or pass `description` directly to `uai-card`);
+     * pair with `UaiCardTitle`; avoid using without a corresponding title.
+     */
+    interface UaiCardSubtitle {
+        /**
+          * Text rendered as the card subtitle. Use for secondary context such as timestamps or scope; pair with `UaiCardTitle`; avoid duplicating the default slot.
+          * @default ''
+         */
+        "text"?: string;
+    }
+    /**
+     * Title element for `UaiCardHeader` when composing with subcomponents.
+     * Use inside `uai-card-header` (or pass `heading` directly to `uai-card`);
+     * pair with `UaiCardSubtitle`; avoid long sentences that wrap onto multiple lines.
+     */
+    interface UaiCardTitle {
+        /**
+          * Text rendered as the card title. Use a concise label; pair with `UaiCardHeader`; avoid duplicating the default slot content.
+          * @default ''
+         */
+        "text"?: string;
     }
     /**
      * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
@@ -15073,100 +16120,246 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     /**
-     * UAI layout grid. The legacy bds-grid remains available; this component keeps
-     * its layout props while using UAI dimensions and theme-aware color tokens.
+     * Composite analytical filter toolbar combining period presets, quick search, active filter chips, and a two-level category popover.
+     * Use at the top of analytical pages and dashboards; pair with `UaiCard`, `UaiLineChart`, and `UaiBarChart`;
+     * avoid embedding backend requests directly inside the toolbar.
+     */
+    interface UaiFilterBar {
+        /**
+          * Map of category ids to selected option values, as an object or JSON string. Use to control or seed active filters; pair with `categories` and `onUaiFilterChange`; avoid unknown category keys.
+          * @default {}
+         */
+        "appliedFilters"?: UaiAppliedFilters | string;
+        /**
+          * Filter categories and options displayed in the two-level popover, as an array or JSON string. Use to let people filter by dimensions such as channel or campaign; pair with `appliedFilters` and `onUaiFilterChange`; avoid empty option lists.
+          * @default []
+         */
+        "categories"?: UaiFilterCategory[] | string;
+        /**
+          * Automation selector applied to the toolbar container. Use in automated tests; pair with semantic role queries; avoid styling by this attribute.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Label override for the filter trigger button. Use concise verbs; pair with `language`; avoid icon-only triggers when space allows text.
+          * @default ''
+         */
+        "filterButtonLabel"?: string;
+        /**
+          * Locale for built-in labels and default period presets (`pt_BR`, `en_US`, `es_ES`). Use to match the application language; pair with label override props when needed; avoid mixing locales.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiFilterBarLanguage;
+        /**
+          * Emitted when category filters are applied, cleared, or removed via chip. Use to refresh analytical cards and charts; pair with `appliedFilters`; avoid mutating the emitted detail object in place.
+         */
+        "onUaiFilterChange"?: (event: UaiFilterBarCustomEvent<{ filters: UaiAppliedFilters }>) => void;
+        /**
+          * Emitted when the filter popover opens or closes. Use for analytics or coordinating external UI; pair with `open()` and `close()`; avoid preventing Escape closure.
+         */
+        "onUaiFilterOpenChange"?: (event: UaiFilterBarCustomEvent<{ open: boolean }>) => void;
+        /**
+          * Emitted when the user selects a period preset. Use to update analytical queries; pair with `selectedPeriod`; avoid firing network calls on already-selected presets.
+         */
+        "onUaiPeriodChange"?: (event: UaiFilterBarCustomEvent<{ id: string; label: string }>) => void;
+        /**
+          * Emitted when the quick search value changes. Use to filter visible items or metrics; pair with `searchValue`; avoid blocking typing with synchronous heavy work.
+         */
+        "onUaiSearchChange"?: (event: UaiFilterBarCustomEvent<{ value: string }>) => void;
+        /**
+          * Preset periods rendered in the segmented group, as an array or JSON string. Use when customizing available date ranges; pair with `selectedPeriod` and `onUaiPeriodChange`; avoid more than seven presets in one bar.
+         */
+        "periods"?: UaiFilterPeriodPreset[] | string;
+        /**
+          * Placeholder override for the quick search input. Use to specify what can be searched (for example campaigns or flows); pair with `language`; avoid long instructions.
+          * @default ''
+         */
+        "searchPlaceholder"?: string;
+        /**
+          * Current text value of the quick search input. Use in controlled flows; pair with `onUaiSearchChange`; avoid mutating without updating consumer state.
+          * @default ''
+         */
+        "searchValue"?: string;
+        /**
+          * Identifier of the currently selected period preset. Use in controlled or uncontrolled mode; pair with `onUaiPeriodChange`; avoid ids absent from `periods`.
+          * @default '7d'
+         */
+        "selectedPeriod"?: string;
+        /**
+          * Shows or hides the trailing filter button. Use `false` when only period and search are needed; pair with `categories`; avoid hiding when `categories` are provided.
+          * @default true
+         */
+        "showFilterButton"?: boolean;
+        /**
+          * Shows or hides the segmented period preset group. Use `false` when the page has no temporal dimension; pair with `periods`; avoid hiding both periods, search, and filters simultaneously.
+          * @default true
+         */
+        "showPeriods"?: boolean;
+        /**
+          * Shows or hides the built-in quick search input. Use `true` to filter metrics or items by text; pair with `searchValue` and `onUaiSearchChange`; avoid duplicating another page-level search right below.
+          * @default true
+         */
+        "showSearch"?: boolean;
+    }
+    /**
+     * UAI layout grid and reorderable section row. Keeps legacy `bds-grid` 12-column props while adding
+     * UAI Core row composition (`type="default" | "draggable"`) and vertical block sorting (`sortable`).
+     * Use `type="draggable"` inside a `sortable` column `UaiGrid` to let people reorder whole rows and add items;
+     * pair with `UaiCard` and `UaiSectionTitle`; avoid nesting `draggable` rows inside another `draggable` row.
      */
     interface UaiGrid {
         /**
-          * Controls the alignment of children along the cross axis.
+          * Explicitly disables the lateral `+` button with `aria-disabled="true"` while keeping it focusable. Use when external business rules block adding items; pair with `addDisabledLabel`; avoid hiding the button abruptly during keyboard navigation.
+          * @default false
+         */
+        "addDisabled"?: boolean;
+        /**
+          * Accessible name and tooltip title override when the `+` button reaches `maxItems` or `addDisabled`. Use to explain why no more items can be added; pair with `maxItems`; avoid generic messages.
+          * @default ''
+         */
+        "addDisabledLabel"?: string;
+        /**
+          * Accessible name override for the lateral `+` button when enabled. Use to specify what kind of block will be added; pair with `type="draggable"`; avoid empty strings.
+          * @default ''
+         */
+        "addLabel"?: string;
+        /**
+          * Controls whether the lateral `+` button is rendered when `type="draggable"`. Use `true` when users can append items to the row; pair with `maxItems` and `onUaiAddClick`; avoid when the row has a fixed single item.
+          * @default true
+         */
+        "addable"?: boolean;
+        /**
+          * Controls alignment along the cross axis. Use `stretch` for equal-height cards or `center` for toolbars; pair with `direction`; avoid clipping taller items.
          */
         "alignItems"?: alignItems;
         /**
-          * Legacy color name mapped to the closest semantic UAI background token. Prefer surface tokens in new UAI usage.
+          * Legacy color name mapped to the closest semantic UAI background token. Use surface tokens in new UAI usage; pair with `UaiThemeProvider`; avoid raw hex colors.
          */
         "bgColor"?: Color;
         /**
-          * Applies a centered container capped by the UAI width-content token.
+          * Applies a centered container capped by the UAI `width/content` token. Use for page-aligned rows; pair with `gap`; avoid combining with `containerFluid`.
          */
         "container"?: boolean;
         /**
-          * Applies the wider responsive fluid-container max widths compatible with bds-grid.
+          * Applies the wider responsive fluid-container max widths compatible with `bds-grid`. Use only for legacy fluid layouts; pair with `flexWrap="wrap"`; avoid combining with `container`.
          */
         "containerFluid"?: boolean;
         /**
-          * Controls the flex direction of children.
+          * Skips automatic DOM node movement on reorder so controlled frameworks (such as React state) own child order. Use `true` when rendering `draggable` rows from a reactive array in `onUaiReorder`; pair with `sortable`; avoid `true` in uncontrolled static HTML.
+          * @default false
+         */
+        "controlledReorder"?: boolean;
+        /**
+          * Automation selector applied to the draggable container or host. Use in automated tests; pair with accessible role queries; avoid styling by this attribute.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Controls the flex direction of children. Use `column` for vertical stacks and `row` for horizontal rows; pair with `gap`; avoid reversing visual vs DOM focus order unnecessarily.
          */
         "direction"?: direction;
         /**
-          * Controls whether children wrap to another line.
+          * Accessible name override for the lateral drag handle button. Use to name the specific section being reordered; pair with `type="draggable"`; avoid empty strings.
+          * @default ''
+         */
+        "dragLabel"?: string;
+        /**
+          * Controls whether children wrap onto multiple lines. Use `wrap` for 12-column grids; pair with `xxs`–`xg`; avoid wrapping inside fixed-slot `draggable` rows.
          */
         "flexWrap"?: flexWrap;
         /**
-          * Gap token alias retained for compatibility with bds-grid.
+          * Gap token alias retained for compatibility with `bds-grid` (`2` maps to `spacing/md`). Use `2` for standard card rows and vertical stacks; pair with `direction`; avoid arbitrary margins on children.
          */
         "gap"?: gap1;
         /**
-          * Sets an explicit height on the grid container.
+          * Sets an explicit CSS height on the grid container. Use token variables or percentages; pair with `alignItems`; avoid literal pixel strings.
          */
         "height"?: string;
         /**
-          * Controls how children are distributed along the main axis.
+          * Controls how children are distributed along the main axis. Use standard flex alignment values; pair with `direction`; avoid non-standard CSS strings.
          */
         "justifyContent"?: justifyContent2;
         /**
-          * 12-column span from the legacy lg breakpoint.
+          * Language for default accessible labels of the drag handle, plus button, and live announcements. Use `pt_BR`, `en_US`, or `es_ES`; pair with `dragLabel` and `addLabel` for custom copy; avoid untranslated labels.
+          * @default 'pt_BR'
+         */
+        "language"?: UaiGridLanguage;
+        /**
+          * 12-column span from the legacy `lg` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "lg"?: breakpoint;
         /**
-          * Left offset from the legacy lg breakpoint.
+          * Left offset from the legacy `lg` breakpoint. Use for responsive offsets; pair with `lg`; avoid in `type="draggable"` rows.
          */
         "lgOffset"?: breakpoint;
         /**
-          * Margin token aliases retained for compatibility with bds-grid. Accepts one value or a space-separated list, for example `"t-2 x-auto"`. Takes the same values as `padding`, plus `auto`. When values overlap, the more specific one wins: single side over axis, axis over all sides.
+          * Margin token aliases retained for compatibility with `bds-grid`. Accepts one value or a space-separated list, for example `"t-2 x-auto"`. Use for tokenized outer spacing; pair with `container`; avoid manual negative margins.
          */
         "margin"?: string;
         /**
-          * 12-column span from the legacy md breakpoint.
+          * Maximum number of slotted items allowed in the row before marking the `+` button `aria-disabled="true"`. Use `4` for dashboard KPI rows; pair with `addable` and `onUaiAddClick`; avoid setting `0`.
+          * @default 4
+         */
+        "maxItems"?: number;
+        /**
+          * 12-column span from the legacy `md` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "md"?: breakpoint;
         /**
-          * Left offset from the legacy md breakpoint.
+          * Left offset from the legacy `md` breakpoint. Use for responsive offsets; pair with `md`; avoid in `type="draggable"` rows.
          */
         "mdOffset"?: breakpoint;
         /**
-          * Padding token aliases retained for compatibility with bds-grid. Accepts one value or a space-separated list, for example `"t-2 x-3"`. Values: `none`, `half`, `1` to `12`, optionally prefixed by a side (`l-`, `r-`, `t-`, `b-`) or an axis (`x-`, `y-`). When values overlap, the more specific one wins: single side over axis, axis over all sides.
+          * Emitted when the lateral `+` button of a `type="draggable"` row is activated while enabled. Use to append or choose a new card/item for this row; pair with `maxItems`; avoid mutating unrelated rows.
+         */
+        "onUaiAddClick"?: (event: UaiGridCustomEvent<UaiGridAddDetail>) => void;
+        /**
+          * Emitted by a `sortable` `UaiGrid` when a child `type="draggable"` row moves to a new index via pointer or `Alt+ArrowUp`/`Alt+ArrowDown`. Use to persist or sync the new section order; pair with `sortable`; avoid mutating DOM manually when `controlledReorder` is true.
+         */
+        "onUaiReorder"?: (event: UaiGridCustomEvent<UaiGridReorderDetail>) => void;
+        /**
+          * Padding token aliases retained for compatibility with `bds-grid`. Accepts one value or a space-separated list, for example `"t-2 x-3"`. Use for tokenized container spacing; pair with `gap`; avoid overriding internal `draggable` slot padding.
          */
         "padding"?: string;
         /**
-          * 12-column span from the legacy sm breakpoint.
+          * 12-column span from the legacy `sm` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "sm"?: breakpoint;
         /**
-          * Left offset from the legacy sm breakpoint.
+          * Left offset from the legacy `sm` breakpoint. Use for responsive offsets; pair with `sm`; avoid in `type="draggable"` rows.
          */
         "smOffset"?: breakpoint;
         /**
-          * 12-column span from the legacy xg breakpoint.
+          * Enables vertical drag-and-drop and keyboard (`Alt+ArrowUp` / `Alt+ArrowDown`) sorting of child `uai-grid[type="draggable"]` rows. Use on a vertical (`direction="column"`) parent `UaiGrid`; pair with `onUaiReorder`; avoid enabling on leaf item grids.
+          * @default false
+         */
+        "sortable"?: boolean;
+        /**
+          * Row composition mode from UAI Core (`default` or `draggable`). Use `draggable` to display the lateral reorder handle and plus action while preserving slot `gap`; pair with a `sortable` parent `UaiGrid`; avoid using the native HTML `draggable` attribute.
+         */
+        "type"?: UaiGridType;
+        /**
+          * 12-column span from the legacy `xg` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "xg"?: breakpoint;
         /**
-          * Left offset from the legacy xg breakpoint.
+          * Left offset from the legacy `xg` breakpoint. Use for responsive offsets; pair with `xg`; avoid in `type="draggable"` rows.
          */
         "xgOffset"?: breakpoint;
         /**
-          * 12-column span from the legacy xs breakpoint.
+          * 12-column span from the legacy `xs` breakpoint. Use for responsive column widths; pair with `xxs`; avoid without a base span.
          */
         "xs"?: breakpoint;
         /**
-          * Left offset from the legacy xs breakpoint.
+          * Left offset from the legacy `xs` breakpoint. Use for responsive offsets; pair with `xs`; avoid in `type="draggable"` rows.
          */
         "xsOffset"?: breakpoint;
         /**
-          * Base 12-column span.
+          * Base 12-column span. Use values `1`–`12` or `auto`; pair with a `flexWrap="wrap"` parent `UaiGrid`; avoid combining with `type="draggable"`.
          */
         "xxs"?: breakpoint;
         /**
-          * Base left offset in the 12-column grid.
+          * Base left offset in the 12-column grid. Use values `1`–`12` or `auto`; pair with `xxs`; avoid in `type="draggable"` rows.
          */
         "xxsOffset"?: breakpoint;
     }
@@ -15207,6 +16400,104 @@ declare namespace LocalJSX {
           * @default 'outline'
          */
         "theme"?: UaiIconTheme;
+    }
+    /**
+     * Passive rounded surface container that frames a UAI icon or custom slotted graphic.
+     * Use alongside card headings or KPI indicators; pair with `aria-label` only when the icon conveys standalone meaning;
+     * avoid using it as an interactive button (use `uai-icon-button` instead).
+     */
+    interface UaiIconBox {
+        /**
+          * Accessible label when the icon box communicates standalone meaning; otherwise the box is decorative.
+          * @default null
+         */
+        "ariaLabel"?: string | null;
+        /**
+          * Selector attribute applied to the box container for automated tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Name of the glyph from the UAI icon font. When omitted, renders the default slot content.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Style of the UAI icon glyph (`outline` or `solid`).
+          * @default 'outline'
+         */
+        "iconTheme"?: UaiIconBoxTheme;
+        /**
+          * Scale of the icon container (`sm`, `md`, or `lg`).
+          * @default 'md'
+         */
+        "size"?: UaiIconBoxSize;
+    }
+    /**
+     * Square icon-only action button for toolbars, card headers, and compact controls.
+     * Use `variant="ghost"` or `variant="outline"` for secondary actions and `variant="solid"` for high-emphasis triggers;
+     * pair with `aria-label` or `aria-labelledby` so assistive technologies announce the action; avoid omitting an accessible name.
+     */
+    interface UaiIconButton {
+        /**
+          * Accessible name forwarded to the inner `<button>`. Required when `aria-labelledby` is not set.
+          * @default null
+         */
+        "ariaLabel"?: string | null;
+        /**
+          * ID reference forwarded to the inner `<button>` when labelled by an external element.
+          * @default null
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * Semantic color of the action (`primary`, `content`, `positive`, or `negative`).
+          * @default 'primary'
+         */
+        "color"?: UaiIconButtonColor;
+        /**
+          * Selector attribute forwarded to the inner `<button>` for automated tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * If true, disables the native button and prevents `uaiClick` emission.
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * Name of the glyph from the UAI icon font. When omitted, nothing is rendered.
+          * @default null
+         */
+        "icon"?: string;
+        /**
+          * Style of the UAI icon glyph (`outline` or `solid`).
+          * @default 'outline'
+         */
+        "iconTheme"?: UaiIconButtonIconTheme;
+        /**
+          * If true, renders a loading spinner instead of the icon and prevents `uaiClick` emission.
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * Emitted when the button is activated by pointer or keyboard while enabled and not loading.
+         */
+        "onUaiClick"?: (event: UaiIconButtonCustomEvent<MouseEvent>) => void;
+        /**
+          * Control size (`compact`, `short`, `medium`, or `large`), mapped to `control-height/*` tokens.
+          * @default 'medium'
+         */
+        "size"?: UaiIconButtonSize;
+        /**
+          * Native button type (`button`, `submit`, or `reset`).
+          * @default 'button'
+         */
+        "type"?: UaiIconButtonType;
+        /**
+          * Visual emphasis of the button (`solid`, `outline`, or `ghost`).
+          * @default 'solid'
+         */
+        "variant"?: UaiIconButtonVariant;
     }
     /**
      * Text field. Use it for short free text, e-mail, numbers and search, with an optional label above and a helper,
@@ -16394,6 +17685,66 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     /**
+     * Responsive multi-series line chart in SVG with UAI semantic palette, axes, legend, and keyboard/pointer inspection.
+     * Use to visualize temporal evolution across one or more series; pair with `series`, `tooltipTitle`, and `format`;
+     * avoid plotting unrelated scales on a single vertical axis.
+     */
+    interface UaiLineChart {
+        /**
+          * ISO 4217 currency code used when `format` is `currency`.
+          * @default 'BRL'
+         */
+        "currency"?: string;
+        /**
+          * Data points (`Record<string, string | number>`) as an array or a JSON-encoded array string.
+          * @default []
+         */
+        "data"?: UaiLineChartDatum[] | string;
+        /**
+          * Optional test identifier placed on the chart container.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Optional custom message displayed when `data` or `series` is empty.
+         */
+        "emptyText"?: string;
+        /**
+          * Value formatting mode applied to vertical axis ticks and tooltip rows (`number`, `currency`, or `percent`).
+          * @default 'number'
+         */
+        "format"?: UaiLineChartFormat;
+        /**
+          * Locale used for number formatting and fallback copy (`pt_BR`, `en_US`, or `es_ES`).
+          * @default 'pt_BR'
+         */
+        "language"?: UaiLineChartLanguage;
+        /**
+          * Emitted when an X index is inspected by pointer or keyboard, or `null` when inspection is cleared.
+         */
+        "onUaiPointHover"?: (event: UaiLineChartCustomEvent<{ index: number; datum: UaiLineChartDatum } | null>) => void;
+        /**
+          * Series definitions (`{ key, label, color? }`) as an array or a JSON-encoded array string.
+          * @default []
+         */
+        "series"?: UaiLineChartSeries[] | string;
+        /**
+          * Controls whether the bottom series legend is rendered.
+          * @default true
+         */
+        "showLegend"?: boolean;
+        /**
+          * Optional title displayed at the top of the inspection tooltip card.
+          * @default ''
+         */
+        "tooltipTitle"?: string;
+        /**
+          * Property name in each datum used for horizontal axis labels (automatically falls back to `key`, `label`, or `name`).
+          * @default 'key'
+         */
+        "xKey"?: string;
+    }
+    /**
      * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
      * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
      */
@@ -16706,6 +18057,39 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     /**
+     * Horizontal progress indicator with safe bounds and accessible `progressbar` semantics.
+     * Single visual defined by the UAI Figma: `sizing/2xs` track on `surface/background` with an `accent/ai-start` fill.
+     * Use to communicate completion percentages or quota usage; pair with `text` or `aria-label` so screen readers announce what is progressing;
+     * avoid using it to communicate critical status without accompanying text.
+     */
+    interface UaiProgressBar {
+        /**
+          * Accessible name forwarded to the `progressbar` element when no visible `text` is used.
+          * @default null
+         */
+        "ariaLabel"?: string | null;
+        /**
+          * ID reference forwarded to the `progressbar` element when labelled externally.
+          * @default null
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * Selector attribute applied to the `progressbar` element for automated tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Completion percentage clamped safely between 0 and 100 (`NaN` is treated as 0).
+          * @default 0
+         */
+        "percent"?: number;
+        /**
+          * Optional descriptive label rendered alongside the progress bar.
+          * @default ''
+         */
+        "text"?: string;
+    }
+    /**
      * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.
      * Wrap the app in UaiThemeProvider.
      */
@@ -17011,6 +18395,33 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     /**
+     * Semantic section header with heading, optional description, and optional trailing actions.
+     * Use to introduce analytical or content blocks beneath `uai-page-header`; pair with `headingTag` matching document hierarchy;
+     * avoid using `h1` here (reserve `h1` for the page title).
+     */
+    interface UaiSectionTitle {
+        /**
+          * Selector attribute applied to the container for automated tests.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Optional supporting description rendered below the heading when non-empty.
+          * @default ''
+         */
+        "description"?: string;
+        /**
+          * Main text of the section heading.
+          * @default ''
+         */
+        "heading"?: string;
+        /**
+          * HTML heading element tag (`h2`, `h3`, or `h4`) to preserve document outline hierarchy.
+          * @default 'h2'
+         */
+        "headingTag"?: UaiSectionTitleHeadingTag;
+    }
+    /**
      * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
      * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
      * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
@@ -17142,6 +18553,48 @@ declare namespace LocalJSX {
           * Value submitted and emitted when the option is chosen. Use a short stable string; pair with the label text; avoid duplicates inside one select.
          */
         "value": string;
+    }
+    /**
+     * Compact responsive trend sparkline rendered in SVG without axes.
+     * Use inside KPI and summary cards to illustrate directional variation; pair with a visible metric and `label`;
+     * avoid using color alone to communicate positive or negative status.
+     */
+    interface UaiSparkline {
+        /**
+          * Numeric series as an array of numbers or a JSON-encoded array string.
+          * @default []
+         */
+        "data"?: number[] | string;
+        /**
+          * Optional test identifier placed on the chart container.
+          * @default null
+         */
+        "dataTest"?: string;
+        /**
+          * Accessible description announced for the sparkline. Falls back to a localized summary when omitted.
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * Locale used for fallback accessible announcements (`pt_BR`, `en_US`, or `es_ES`).
+          * @default 'pt_BR'
+         */
+        "language"?: UaiSparklineLanguage;
+        /**
+          * Displays the subtle vertical gradient area under the curve for every variant, including flat `neutral` trends.
+          * @default true
+         */
+        "showArea"?: boolean;
+        /**
+          * Renders a monotone smooth cubic curve when `true`, or straight segments when `false`.
+          * @default true
+         */
+        "smooth"?: boolean;
+        /**
+          * Semantic color variant (`neutral`, `positive`, or `negative`). Legacy aliases `green` and `red` map to `positive` and `negative`.
+          * @default 'neutral'
+         */
+        "variant"?: UaiSparklineVariant;
     }
     /**
      * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
@@ -18872,6 +20325,17 @@ declare namespace LocalJSX {
         "closeLabel": string;
         "dtButtonClose": string;
     }
+    interface UaiBarChartAttributes {
+        "data": UaiBarChartItem[] | string;
+        "seriesLabel": string;
+        "showLegend": boolean;
+        "format": UaiBarChartFormat;
+        "currency": string;
+        "maxValue": number;
+        "language": UaiBarChartLanguage;
+        "emptyText": string;
+        "dataTest": string;
+    }
     interface UaiBreadcrumbAttributes {
         "items": string | UaiBreadcrumbItem[];
         "wrapItems": boolean;
@@ -18912,6 +20376,28 @@ declare namespace LocalJSX {
         "color": UaiButtonColor;
         "multiple": boolean;
         "label": string;
+    }
+    interface UaiCardAttributes {
+        "size": UaiCardSize;
+        "heading": string;
+        "description": string;
+        "imageSrc": string;
+        "imageAlt": string;
+        "height": string;
+        "width": string;
+        "dataTest": string;
+    }
+    interface UaiCardFooterAttributes {
+        "align": UaiCardJustifyContent;
+    }
+    interface UaiCardHeaderAttributes {
+        "align": UaiCardJustifyContent;
+    }
+    interface UaiCardSubtitleAttributes {
+        "text": string;
+    }
+    interface UaiCardTitleAttributes {
+        "text": string;
     }
     interface UaiCheckboxAttributes {
         "refer": string;
@@ -18974,6 +20460,20 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiFilterBarAttributes {
+        "periods": UaiFilterPeriodPreset[] | string;
+        "showPeriods": boolean;
+        "selectedPeriod": string;
+        "showSearch": boolean;
+        "searchValue": string;
+        "searchPlaceholder": string;
+        "categories": UaiFilterCategory[] | string;
+        "appliedFilters": UaiAppliedFilters | string;
+        "showFilterButton": boolean;
+        "filterButtonLabel": string;
+        "language": UaiFilterBarLanguage;
+        "dataTest": string;
+    }
     interface UaiGridAttributes {
         "height": string;
         "direction": direction;
@@ -18998,6 +20498,17 @@ declare namespace LocalJSX {
         "padding": string;
         "margin": string;
         "bgColor": Color;
+        "type": UaiGridType;
+        "sortable": boolean;
+        "controlledReorder": boolean;
+        "addable": boolean;
+        "maxItems": number;
+        "addDisabled": boolean;
+        "language": UaiGridLanguage;
+        "dragLabel": string;
+        "addLabel": string;
+        "addDisabledLabel": string;
+        "dataTest": string;
     }
     interface UaiIconAttributes {
         "name": string;
@@ -19005,6 +20516,26 @@ declare namespace LocalJSX {
         "size": UaiIconSize;
         "color": UaiIconColor;
         "ariaLabel": string;
+        "dataTest": string;
+    }
+    interface UaiIconBoxAttributes {
+        "icon": string;
+        "iconTheme": UaiIconBoxTheme;
+        "size": UaiIconBoxSize;
+        "ariaLabel": string | null;
+        "dataTest": string;
+    }
+    interface UaiIconButtonAttributes {
+        "icon": string;
+        "iconTheme": UaiIconButtonIconTheme;
+        "variant": UaiIconButtonVariant;
+        "color": UaiIconButtonColor;
+        "size": UaiIconButtonSize;
+        "disabled": boolean;
+        "loading": boolean;
+        "type": UaiIconButtonType;
+        "ariaLabel": string | null;
+        "ariaLabelledby": string;
         "dataTest": string;
     }
     interface UaiInputAttributes {
@@ -19221,6 +20752,18 @@ declare namespace LocalJSX {
         "ariaLabel": string;
         "dataTest": string;
     }
+    interface UaiLineChartAttributes {
+        "series": UaiLineChartSeries[] | string;
+        "data": UaiLineChartDatum[] | string;
+        "xKey": string;
+        "tooltipTitle": string;
+        "format": UaiLineChartFormat;
+        "currency": string;
+        "language": UaiLineChartLanguage;
+        "showLegend": boolean;
+        "emptyText": string;
+        "dataTest": string;
+    }
     interface UaiLogoAttributes {
         "name": string;
         "ariaLabel": string;
@@ -19282,6 +20825,13 @@ declare namespace LocalJSX {
         "bgColor": PaperBackground;
         "borderColor": BorderColor;
     }
+    interface UaiProgressBarAttributes {
+        "percent": number;
+        "text": string;
+        "ariaLabel": string | null;
+        "ariaLabelledby": string;
+        "dataTest": string;
+    }
     interface UaiRadioAttributes {
         "refer": string;
         "label": string;
@@ -19339,6 +20889,12 @@ declare namespace LocalJSX {
         "maxHeight": number;
         "dataTest": string;
     }
+    interface UaiSectionTitleAttributes {
+        "heading": string;
+        "description": string;
+        "headingTag": UaiSectionTitleHeadingTag;
+        "dataTest": string;
+    }
     interface UaiSelectAttributes {
         "name": string;
         "value": string;
@@ -19361,6 +20917,15 @@ declare namespace LocalJSX {
         "value": string;
         "disabled": boolean;
         "icon": string;
+    }
+    interface UaiSparklineAttributes {
+        "data": number[] | string;
+        "variant": UaiSparklineVariant;
+        "smooth": boolean;
+        "showArea": boolean;
+        "label": string;
+        "language": UaiSparklineLanguage;
+        "dataTest": string;
     }
     interface UaiStepAttributes {
         "heading": string;
@@ -19634,16 +21199,26 @@ declare namespace LocalJSX {
         "uai-avatar": Omit<UaiAvatar, keyof UaiAvatarAttributes> & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes]?: UaiAvatar[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `attr:${K}`]?: UaiAvatarAttributes[K] } & { [K in keyof UaiAvatar & keyof UaiAvatarAttributes as `prop:${K}`]?: UaiAvatar[K] };
         "uai-badge": Omit<UaiBadge, keyof UaiBadgeAttributes> & { [K in keyof UaiBadge & keyof UaiBadgeAttributes]?: UaiBadge[K] } & { [K in keyof UaiBadge & keyof UaiBadgeAttributes as `attr:${K}`]?: UaiBadgeAttributes[K] } & { [K in keyof UaiBadge & keyof UaiBadgeAttributes as `prop:${K}`]?: UaiBadge[K] };
         "uai-banner": Omit<UaiBanner, keyof UaiBannerAttributes> & { [K in keyof UaiBanner & keyof UaiBannerAttributes]?: UaiBanner[K] } & { [K in keyof UaiBanner & keyof UaiBannerAttributes as `attr:${K}`]?: UaiBannerAttributes[K] } & { [K in keyof UaiBanner & keyof UaiBannerAttributes as `prop:${K}`]?: UaiBanner[K] };
+        "uai-bar-chart": Omit<UaiBarChart, keyof UaiBarChartAttributes> & { [K in keyof UaiBarChart & keyof UaiBarChartAttributes]?: UaiBarChart[K] } & { [K in keyof UaiBarChart & keyof UaiBarChartAttributes as `attr:${K}`]?: UaiBarChartAttributes[K] } & { [K in keyof UaiBarChart & keyof UaiBarChartAttributes as `prop:${K}`]?: UaiBarChart[K] };
         "uai-breadcrumb": Omit<UaiBreadcrumb, keyof UaiBreadcrumbAttributes> & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes]?: UaiBreadcrumb[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `attr:${K}`]?: UaiBreadcrumbAttributes[K] } & { [K in keyof UaiBreadcrumb & keyof UaiBreadcrumbAttributes as `prop:${K}`]?: UaiBreadcrumb[K] };
         "uai-button": Omit<UaiButton, keyof UaiButtonAttributes> & { [K in keyof UaiButton & keyof UaiButtonAttributes]?: UaiButton[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `attr:${K}`]?: UaiButtonAttributes[K] } & { [K in keyof UaiButton & keyof UaiButtonAttributes as `prop:${K}`]?: UaiButton[K] };
         "uai-button-group": Omit<UaiButtonGroup, keyof UaiButtonGroupAttributes> & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes]?: UaiButtonGroup[K] } & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes as `attr:${K}`]?: UaiButtonGroupAttributes[K] } & { [K in keyof UaiButtonGroup & keyof UaiButtonGroupAttributes as `prop:${K}`]?: UaiButtonGroup[K] };
+        "uai-card": Omit<UaiCard, keyof UaiCardAttributes> & { [K in keyof UaiCard & keyof UaiCardAttributes]?: UaiCard[K] } & { [K in keyof UaiCard & keyof UaiCardAttributes as `attr:${K}`]?: UaiCardAttributes[K] } & { [K in keyof UaiCard & keyof UaiCardAttributes as `prop:${K}`]?: UaiCard[K] };
+        "uai-card-body": UaiCardBody;
+        "uai-card-footer": Omit<UaiCardFooter, keyof UaiCardFooterAttributes> & { [K in keyof UaiCardFooter & keyof UaiCardFooterAttributes]?: UaiCardFooter[K] } & { [K in keyof UaiCardFooter & keyof UaiCardFooterAttributes as `attr:${K}`]?: UaiCardFooterAttributes[K] } & { [K in keyof UaiCardFooter & keyof UaiCardFooterAttributes as `prop:${K}`]?: UaiCardFooter[K] };
+        "uai-card-header": Omit<UaiCardHeader, keyof UaiCardHeaderAttributes> & { [K in keyof UaiCardHeader & keyof UaiCardHeaderAttributes]?: UaiCardHeader[K] } & { [K in keyof UaiCardHeader & keyof UaiCardHeaderAttributes as `attr:${K}`]?: UaiCardHeaderAttributes[K] } & { [K in keyof UaiCardHeader & keyof UaiCardHeaderAttributes as `prop:${K}`]?: UaiCardHeader[K] };
+        "uai-card-subtitle": Omit<UaiCardSubtitle, keyof UaiCardSubtitleAttributes> & { [K in keyof UaiCardSubtitle & keyof UaiCardSubtitleAttributes]?: UaiCardSubtitle[K] } & { [K in keyof UaiCardSubtitle & keyof UaiCardSubtitleAttributes as `attr:${K}`]?: UaiCardSubtitleAttributes[K] } & { [K in keyof UaiCardSubtitle & keyof UaiCardSubtitleAttributes as `prop:${K}`]?: UaiCardSubtitle[K] };
+        "uai-card-title": Omit<UaiCardTitle, keyof UaiCardTitleAttributes> & { [K in keyof UaiCardTitle & keyof UaiCardTitleAttributes]?: UaiCardTitle[K] } & { [K in keyof UaiCardTitle & keyof UaiCardTitleAttributes as `attr:${K}`]?: UaiCardTitleAttributes[K] } & { [K in keyof UaiCardTitle & keyof UaiCardTitleAttributes as `prop:${K}`]?: UaiCardTitle[K] };
         "uai-checkbox": Omit<UaiCheckbox, keyof UaiCheckboxAttributes> & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes]?: UaiCheckbox[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `attr:${K}`]?: UaiCheckboxAttributes[K] } & { [K in keyof UaiCheckbox & keyof UaiCheckboxAttributes as `prop:${K}`]?: UaiCheckbox[K] };
         "uai-chip-tag": Omit<UaiChipTag, keyof UaiChipTagAttributes> & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes]?: UaiChipTag[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `attr:${K}`]?: UaiChipTagAttributes[K] } & { [K in keyof UaiChipTag & keyof UaiChipTagAttributes as `prop:${K}`]?: UaiChipTag[K] };
         "uai-datepicker": Omit<UaiDatepicker, keyof UaiDatepickerAttributes> & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes]?: UaiDatepicker[K] } & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes as `attr:${K}`]?: UaiDatepickerAttributes[K] } & { [K in keyof UaiDatepicker & keyof UaiDatepickerAttributes as `prop:${K}`]?: UaiDatepicker[K] };
         "uai-dropdown": Omit<UaiDropdown, keyof UaiDropdownAttributes> & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes]?: UaiDropdown[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `attr:${K}`]?: UaiDropdownAttributes[K] } & { [K in keyof UaiDropdown & keyof UaiDropdownAttributes as `prop:${K}`]?: UaiDropdown[K] };
         "uai-emoji": Omit<UaiEmoji, keyof UaiEmojiAttributes> & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes]?: UaiEmoji[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `attr:${K}`]?: UaiEmojiAttributes[K] } & { [K in keyof UaiEmoji & keyof UaiEmojiAttributes as `prop:${K}`]?: UaiEmoji[K] };
+        "uai-filter-bar": Omit<UaiFilterBar, keyof UaiFilterBarAttributes> & { [K in keyof UaiFilterBar & keyof UaiFilterBarAttributes]?: UaiFilterBar[K] } & { [K in keyof UaiFilterBar & keyof UaiFilterBarAttributes as `attr:${K}`]?: UaiFilterBarAttributes[K] } & { [K in keyof UaiFilterBar & keyof UaiFilterBarAttributes as `prop:${K}`]?: UaiFilterBar[K] };
         "uai-grid": Omit<UaiGrid, keyof UaiGridAttributes> & { [K in keyof UaiGrid & keyof UaiGridAttributes]?: UaiGrid[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `attr:${K}`]?: UaiGridAttributes[K] } & { [K in keyof UaiGrid & keyof UaiGridAttributes as `prop:${K}`]?: UaiGrid[K] };
         "uai-icon": Omit<UaiIcon, keyof UaiIconAttributes> & { [K in keyof UaiIcon & keyof UaiIconAttributes]?: UaiIcon[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `attr:${K}`]?: UaiIconAttributes[K] } & { [K in keyof UaiIcon & keyof UaiIconAttributes as `prop:${K}`]?: UaiIcon[K] };
+        "uai-icon-box": Omit<UaiIconBox, keyof UaiIconBoxAttributes> & { [K in keyof UaiIconBox & keyof UaiIconBoxAttributes]?: UaiIconBox[K] } & { [K in keyof UaiIconBox & keyof UaiIconBoxAttributes as `attr:${K}`]?: UaiIconBoxAttributes[K] } & { [K in keyof UaiIconBox & keyof UaiIconBoxAttributes as `prop:${K}`]?: UaiIconBox[K] };
+        "uai-icon-button": Omit<UaiIconButton, keyof UaiIconButtonAttributes> & { [K in keyof UaiIconButton & keyof UaiIconButtonAttributes]?: UaiIconButton[K] } & { [K in keyof UaiIconButton & keyof UaiIconButtonAttributes as `attr:${K}`]?: UaiIconButtonAttributes[K] } & { [K in keyof UaiIconButton & keyof UaiIconButtonAttributes as `prop:${K}`]?: UaiIconButton[K] };
         "uai-input": Omit<UaiInput, keyof UaiInputAttributes> & { [K in keyof UaiInput & keyof UaiInputAttributes]?: UaiInput[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `attr:${K}`]?: UaiInputAttributes[K] } & { [K in keyof UaiInput & keyof UaiInputAttributes as `prop:${K}`]?: UaiInput[K] };
         "uai-input-chips": Omit<UaiInputChips, keyof UaiInputChipsAttributes> & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes]?: UaiInputChips[K] } & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes as `attr:${K}`]?: UaiInputChipsAttributes[K] } & { [K in keyof UaiInputChips & keyof UaiInputChipsAttributes as `prop:${K}`]?: UaiInputChips[K] };
         "uai-input-date": Omit<UaiInputDate, keyof UaiInputDateAttributes> & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes]?: UaiInputDate[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `attr:${K}`]?: UaiInputDateAttributes[K] } & { [K in keyof UaiInputDate & keyof UaiInputDateAttributes as `prop:${K}`]?: UaiInputDate[K] };
@@ -19651,6 +21226,7 @@ declare namespace LocalJSX {
         "uai-input-password": Omit<UaiInputPassword, keyof UaiInputPasswordAttributes> & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes]?: UaiInputPassword[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `attr:${K}`]?: UaiInputPasswordAttributes[K] } & { [K in keyof UaiInputPassword & keyof UaiInputPasswordAttributes as `prop:${K}`]?: UaiInputPassword[K] };
         "uai-input-phone": Omit<UaiInputPhone, keyof UaiInputPhoneAttributes> & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes]?: UaiInputPhone[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `attr:${K}`]?: UaiInputPhoneAttributes[K] } & { [K in keyof UaiInputPhone & keyof UaiInputPhoneAttributes as `prop:${K}`]?: UaiInputPhone[K] };
         "uai-input-time": Omit<UaiInputTime, keyof UaiInputTimeAttributes> & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes]?: UaiInputTime[K] } & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes as `attr:${K}`]?: UaiInputTimeAttributes[K] } & { [K in keyof UaiInputTime & keyof UaiInputTimeAttributes as `prop:${K}`]?: UaiInputTime[K] };
+        "uai-line-chart": Omit<UaiLineChart, keyof UaiLineChartAttributes> & { [K in keyof UaiLineChart & keyof UaiLineChartAttributes]?: UaiLineChart[K] } & { [K in keyof UaiLineChart & keyof UaiLineChartAttributes as `attr:${K}`]?: UaiLineChartAttributes[K] } & { [K in keyof UaiLineChart & keyof UaiLineChartAttributes as `prop:${K}`]?: UaiLineChart[K] };
         "uai-logo": Omit<UaiLogo, keyof UaiLogoAttributes> & { [K in keyof UaiLogo & keyof UaiLogoAttributes]?: UaiLogo[K] } & { [K in keyof UaiLogo & keyof UaiLogoAttributes as `attr:${K}`]?: UaiLogoAttributes[K] } & { [K in keyof UaiLogo & keyof UaiLogoAttributes as `prop:${K}`]?: UaiLogo[K] };
         "uai-modal": Omit<UaiModal, keyof UaiModalAttributes> & { [K in keyof UaiModal & keyof UaiModalAttributes]?: UaiModal[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `attr:${K}`]?: UaiModalAttributes[K] } & { [K in keyof UaiModal & keyof UaiModalAttributes as `prop:${K}`]?: UaiModal[K] };
         "uai-modal-action": UaiModalAction;
@@ -19660,11 +21236,14 @@ declare namespace LocalJSX {
         "uai-page-header": Omit<UaiPageHeader, keyof UaiPageHeaderAttributes> & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes]?: UaiPageHeader[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `attr:${K}`]?: UaiPageHeaderAttributes[K] } & { [K in keyof UaiPageHeader & keyof UaiPageHeaderAttributes as `prop:${K}`]?: UaiPageHeader[K] };
         "uai-pagination": Omit<UaiPagination, keyof UaiPaginationAttributes> & { [K in keyof UaiPagination & keyof UaiPaginationAttributes]?: UaiPagination[K] } & { [K in keyof UaiPagination & keyof UaiPaginationAttributes as `attr:${K}`]?: UaiPaginationAttributes[K] } & { [K in keyof UaiPagination & keyof UaiPaginationAttributes as `prop:${K}`]?: UaiPagination[K] };
         "uai-paper": Omit<UaiPaper, keyof UaiPaperAttributes> & { [K in keyof UaiPaper & keyof UaiPaperAttributes]?: UaiPaper[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `attr:${K}`]?: UaiPaperAttributes[K] } & { [K in keyof UaiPaper & keyof UaiPaperAttributes as `prop:${K}`]?: UaiPaper[K] };
+        "uai-progress-bar": Omit<UaiProgressBar, keyof UaiProgressBarAttributes> & { [K in keyof UaiProgressBar & keyof UaiProgressBarAttributes]?: UaiProgressBar[K] } & { [K in keyof UaiProgressBar & keyof UaiProgressBarAttributes as `attr:${K}`]?: UaiProgressBarAttributes[K] } & { [K in keyof UaiProgressBar & keyof UaiProgressBarAttributes as `prop:${K}`]?: UaiProgressBar[K] };
         "uai-radio": Omit<UaiRadio, keyof UaiRadioAttributes> & { [K in keyof UaiRadio & keyof UaiRadioAttributes]?: UaiRadio[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `attr:${K}`]?: UaiRadioAttributes[K] } & { [K in keyof UaiRadio & keyof UaiRadioAttributes as `prop:${K}`]?: UaiRadio[K] } & OneOf<"value", UaiRadio["value"], UaiRadioAttributes["value"]>;
         "uai-radio-group": Omit<UaiRadioGroup, keyof UaiRadioGroupAttributes> & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes]?: UaiRadioGroup[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `attr:${K}`]?: UaiRadioGroupAttributes[K] } & { [K in keyof UaiRadioGroup & keyof UaiRadioGroupAttributes as `prop:${K}`]?: UaiRadioGroup[K] };
         "uai-rich-text": Omit<UaiRichText, keyof UaiRichTextAttributes> & { [K in keyof UaiRichText & keyof UaiRichTextAttributes]?: UaiRichText[K] } & { [K in keyof UaiRichText & keyof UaiRichTextAttributes as `attr:${K}`]?: UaiRichTextAttributes[K] } & { [K in keyof UaiRichText & keyof UaiRichTextAttributes as `prop:${K}`]?: UaiRichText[K] };
+        "uai-section-title": Omit<UaiSectionTitle, keyof UaiSectionTitleAttributes> & { [K in keyof UaiSectionTitle & keyof UaiSectionTitleAttributes]?: UaiSectionTitle[K] } & { [K in keyof UaiSectionTitle & keyof UaiSectionTitleAttributes as `attr:${K}`]?: UaiSectionTitleAttributes[K] } & { [K in keyof UaiSectionTitle & keyof UaiSectionTitleAttributes as `prop:${K}`]?: UaiSectionTitle[K] };
         "uai-select": Omit<UaiSelect, keyof UaiSelectAttributes> & { [K in keyof UaiSelect & keyof UaiSelectAttributes]?: UaiSelect[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `attr:${K}`]?: UaiSelectAttributes[K] } & { [K in keyof UaiSelect & keyof UaiSelectAttributes as `prop:${K}`]?: UaiSelect[K] };
         "uai-select-option": Omit<UaiSelectOption, keyof UaiSelectOptionAttributes> & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes]?: UaiSelectOption[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `attr:${K}`]?: UaiSelectOptionAttributes[K] } & { [K in keyof UaiSelectOption & keyof UaiSelectOptionAttributes as `prop:${K}`]?: UaiSelectOption[K] } & OneOf<"value", UaiSelectOption["value"], UaiSelectOptionAttributes["value"]>;
+        "uai-sparkline": Omit<UaiSparkline, keyof UaiSparklineAttributes> & { [K in keyof UaiSparkline & keyof UaiSparklineAttributes]?: UaiSparkline[K] } & { [K in keyof UaiSparkline & keyof UaiSparklineAttributes as `attr:${K}`]?: UaiSparklineAttributes[K] } & { [K in keyof UaiSparkline & keyof UaiSparklineAttributes as `prop:${K}`]?: UaiSparkline[K] };
         "uai-step": Omit<UaiStep, keyof UaiStepAttributes> & { [K in keyof UaiStep & keyof UaiStepAttributes]?: UaiStep[K] } & { [K in keyof UaiStep & keyof UaiStepAttributes as `attr:${K}`]?: UaiStepAttributes[K] } & { [K in keyof UaiStep & keyof UaiStepAttributes as `prop:${K}`]?: UaiStep[K] };
         "uai-stepper": Omit<UaiStepper, keyof UaiStepperAttributes> & { [K in keyof UaiStepper & keyof UaiStepperAttributes]?: UaiStepper[K] } & { [K in keyof UaiStepper & keyof UaiStepperAttributes as `attr:${K}`]?: UaiStepperAttributes[K] } & { [K in keyof UaiStepper & keyof UaiStepperAttributes as `prop:${K}`]?: UaiStepper[K] };
         "uai-switch": Omit<UaiSwitch, keyof UaiSwitchAttributes> & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes]?: UaiSwitch[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `attr:${K}`]?: UaiSwitchAttributes[K] } & { [K in keyof UaiSwitch & keyof UaiSwitchAttributes as `prop:${K}`]?: UaiSwitch[K] };
@@ -19720,13 +21299,34 @@ declare module "@stencil/core" {
              * @deprecated Use uai-button-group with uai-button and UaiThemeProvider for tokenized styling.
              */
             "bds-button-group": LocalJSX.IntrinsicElements["bds-button-group"] & JSXBase.HTMLAttributes<HTMLBdsButtonGroupElement>;
+            /**
+             * @deprecated Use `uai-icon-button` instead.
+             */
             "bds-button-icon": LocalJSX.IntrinsicElements["bds-button-icon"] & JSXBase.HTMLAttributes<HTMLBdsButtonIconElement>;
+            /**
+             * @deprecated Use `uai-card` instead.
+             */
             "bds-card": LocalJSX.IntrinsicElements["bds-card"] & JSXBase.HTMLAttributes<HTMLBdsCardElement>;
+            /**
+             * @deprecated Use `uai-card-body` instead.
+             */
             "bds-card-body": LocalJSX.IntrinsicElements["bds-card-body"] & JSXBase.HTMLAttributes<HTMLBdsCardBodyElement>;
             "bds-card-color": LocalJSX.IntrinsicElements["bds-card-color"] & JSXBase.HTMLAttributes<HTMLBdsCardColorElement>;
+            /**
+             * @deprecated Use `uai-card-footer` instead.
+             */
             "bds-card-footer": LocalJSX.IntrinsicElements["bds-card-footer"] & JSXBase.HTMLAttributes<HTMLBdsCardFooterElement>;
+            /**
+             * @deprecated Use `uai-card-header` instead.
+             */
             "bds-card-header": LocalJSX.IntrinsicElements["bds-card-header"] & JSXBase.HTMLAttributes<HTMLBdsCardHeaderElement>;
+            /**
+             * @deprecated Use `uai-card-subtitle` instead.
+             */
             "bds-card-subtitle": LocalJSX.IntrinsicElements["bds-card-subtitle"] & JSXBase.HTMLAttributes<HTMLBdsCardSubtitleElement>;
+            /**
+             * @deprecated Use `uai-card-title` instead.
+             */
             "bds-card-title": LocalJSX.IntrinsicElements["bds-card-title"] & JSXBase.HTMLAttributes<HTMLBdsCardTitleElement>;
             "bds-carousel": LocalJSX.IntrinsicElements["bds-carousel"] & JSXBase.HTMLAttributes<HTMLBdsCarouselElement>;
             "bds-carousel-item": LocalJSX.IntrinsicElements["bds-carousel-item"] & JSXBase.HTMLAttributes<HTMLBdsCarouselItemElement>;
@@ -19819,6 +21419,9 @@ declare module "@stencil/core" {
              */
             "bds-pagination": LocalJSX.IntrinsicElements["bds-pagination"] & JSXBase.HTMLAttributes<HTMLBdsPaginationElement>;
             "bds-paper": LocalJSX.IntrinsicElements["bds-paper"] & JSXBase.HTMLAttributes<HTMLBdsPaperElement>;
+            /**
+             * @deprecated Use `uai-progress-bar` instead.
+             */
             "bds-progress-bar": LocalJSX.IntrinsicElements["bds-progress-bar"] & JSXBase.HTMLAttributes<HTMLBdsProgressBarElement>;
             /**
              * @deprecated Use uai-radio for new work.
@@ -19935,6 +21538,12 @@ declare module "@stencil/core" {
              */
             "uai-banner": LocalJSX.IntrinsicElements["uai-banner"] & JSXBase.HTMLAttributes<HTMLUaiBannerElement>;
             /**
+             * Responsive horizontal bar chart for comparing ranked categories against a shared numeric domain.
+             * Use inside analytics cards and panels; pair with `seriesLabel` and `format` so axis ticks and keyboard tooltips remain clear;
+             * avoid overcrowding with excessive categories when a paginated table is more appropriate.
+             */
+            "uai-bar-chart": LocalJSX.IntrinsicElements["uai-bar-chart"] & JSXBase.HTMLAttributes<HTMLUaiBarChartElement>;
+            /**
              * Hierarchical page navigation. Use items in ancestor-to-current order; pair with UaiPageHeader;
              * avoid using it as an organization or flow context switcher.
              */
@@ -19952,6 +21561,42 @@ declare module "@stencil/core" {
              * aria-label; avoid it for actions that do not keep a selected state (use separate uai-button).
              */
             "uai-button-group": LocalJSX.IntrinsicElements["uai-button-group"] & JSXBase.HTMLAttributes<HTMLUaiButtonGroupElement>;
+            /**
+             * Structured surface for grouping related information, metrics, charts, and actions.
+             * Use with `heading`, `description`, and named slots (`icon`, `actions`, `media`, `footer`) or `uai-card-*` subcomponents;
+             * pair with `UaiGrid` for multi-card rows; to make a whole card navigable, wrap it in a link or button instead of making the card itself interactive.
+             */
+            "uai-card": LocalJSX.IntrinsicElements["uai-card"] & JSXBase.HTMLAttributes<HTMLUaiCardElement>;
+            /**
+             * Body container for `UaiCard` when migrating from `bds-card-body`.
+             * Use inside `uai-card` (or place content directly in `uai-card`'s default slot);
+             * pair with `UaiCardHeader` and `UaiCardFooter`; avoid extra manual padding that duplicates the card body spacing.
+             */
+            "uai-card-body": LocalJSX.IntrinsicElements["uai-card-body"] & JSXBase.HTMLAttributes<HTMLUaiCardBodyElement>;
+            /**
+             * Footer container for `UaiCard` when composing with subcomponents.
+             * Use inside `uai-card` (or place content directly with `slot="footer"`);
+             * pair with `UaiButton` or supporting trend/goal metadata; avoid using outside a card context.
+             */
+            "uai-card-footer": LocalJSX.IntrinsicElements["uai-card-footer"] & JSXBase.HTMLAttributes<HTMLUaiCardFooterElement>;
+            /**
+             * Header container for `UaiCard` when composing with subcomponents.
+             * Use inside `uai-card` (or prefer `heading`/`description` and `slot="actions"` directly on `uai-card`);
+             * pair with `UaiCardTitle` and `UaiCardSubtitle`; avoid using outside a card context.
+             */
+            "uai-card-header": LocalJSX.IntrinsicElements["uai-card-header"] & JSXBase.HTMLAttributes<HTMLUaiCardHeaderElement>;
+            /**
+             * Subtitle element for `UaiCardHeader` when composing with subcomponents.
+             * Use inside `uai-card-header` (or pass `description` directly to `uai-card`);
+             * pair with `UaiCardTitle`; avoid using without a corresponding title.
+             */
+            "uai-card-subtitle": LocalJSX.IntrinsicElements["uai-card-subtitle"] & JSXBase.HTMLAttributes<HTMLUaiCardSubtitleElement>;
+            /**
+             * Title element for `UaiCardHeader` when composing with subcomponents.
+             * Use inside `uai-card-header` (or pass `heading` directly to `uai-card`);
+             * pair with `UaiCardSubtitle`; avoid long sentences that wrap onto multiple lines.
+             */
+            "uai-card-title": LocalJSX.IntrinsicElements["uai-card-title"] & JSXBase.HTMLAttributes<HTMLUaiCardTitleElement>;
             /**
              * Checkbox for selecting any combination of options. Use a visible label, and use indeterminate only to
              * represent a parent selection whose children are partially selected. Wrap the app in UaiThemeProvider.
@@ -19983,8 +21628,16 @@ declare module "@stencil/core" {
              */
             "uai-emoji": LocalJSX.IntrinsicElements["uai-emoji"] & JSXBase.HTMLAttributes<HTMLUaiEmojiElement>;
             /**
-             * UAI layout grid. The legacy bds-grid remains available; this component keeps
-             * its layout props while using UAI dimensions and theme-aware color tokens.
+             * Composite analytical filter toolbar combining period presets, quick search, active filter chips, and a two-level category popover.
+             * Use at the top of analytical pages and dashboards; pair with `UaiCard`, `UaiLineChart`, and `UaiBarChart`;
+             * avoid embedding backend requests directly inside the toolbar.
+             */
+            "uai-filter-bar": LocalJSX.IntrinsicElements["uai-filter-bar"] & JSXBase.HTMLAttributes<HTMLUaiFilterBarElement>;
+            /**
+             * UAI layout grid and reorderable section row. Keeps legacy `bds-grid` 12-column props while adding
+             * UAI Core row composition (`type="default" | "draggable"`) and vertical block sorting (`sortable`).
+             * Use `type="draggable"` inside a `sortable` column `UaiGrid` to let people reorder whole rows and add items;
+             * pair with `UaiCard` and `UaiSectionTitle`; avoid nesting `draggable` rows inside another `draggable` row.
              */
             "uai-grid": LocalJSX.IntrinsicElements["uai-grid"] & JSXBase.HTMLAttributes<HTMLUaiGridElement>;
             /**
@@ -19996,6 +21649,18 @@ declare module "@stencil/core" {
              * without the FontFace API.
              */
             "uai-icon": LocalJSX.IntrinsicElements["uai-icon"] & JSXBase.HTMLAttributes<HTMLUaiIconElement>;
+            /**
+             * Passive rounded surface container that frames a UAI icon or custom slotted graphic.
+             * Use alongside card headings or KPI indicators; pair with `aria-label` only when the icon conveys standalone meaning;
+             * avoid using it as an interactive button (use `uai-icon-button` instead).
+             */
+            "uai-icon-box": LocalJSX.IntrinsicElements["uai-icon-box"] & JSXBase.HTMLAttributes<HTMLUaiIconBoxElement>;
+            /**
+             * Square icon-only action button for toolbars, card headers, and compact controls.
+             * Use `variant="ghost"` or `variant="outline"` for secondary actions and `variant="solid"` for high-emphasis triggers;
+             * pair with `aria-label` or `aria-labelledby` so assistive technologies announce the action; avoid omitting an accessible name.
+             */
+            "uai-icon-button": LocalJSX.IntrinsicElements["uai-icon-button"] & JSXBase.HTMLAttributes<HTMLUaiIconButtonElement>;
             /**
              * Text field. Use it for short free text, e-mail, numbers and search, with an optional label above and a helper,
              * error or success message below. It takes part in native forms: give it a name to submit its value.
@@ -20049,6 +21714,12 @@ declare module "@stencil/core" {
              */
             "uai-input-time": LocalJSX.IntrinsicElements["uai-input-time"] & JSXBase.HTMLAttributes<HTMLUaiInputTimeElement>;
             /**
+             * Responsive multi-series line chart in SVG with UAI semantic palette, axes, legend, and keyboard/pointer inspection.
+             * Use to visualize temporal evolution across one or more series; pair with `series`, `tooltipTitle`, and `format`;
+             * avoid plotting unrelated scales on a single vertical axis.
+             */
+            "uai-line-chart": LocalJSX.IntrinsicElements["uai-line-chart"] & JSXBase.HTMLAttributes<HTMLUaiLineChartElement>;
+            /**
              * Brand logo from the versioned asset catalog in blip-tokens. Set the host width to control its size;
              * the SVG keeps the aspect ratio from its viewBox. Use aria-label for a meaningful logo, or omit it when decorative.
              */
@@ -20093,6 +21764,13 @@ declare module "@stencil/core" {
             "uai-pagination": LocalJSX.IntrinsicElements["uai-pagination"] & JSXBase.HTMLAttributes<HTMLUaiPaginationElement>;
             "uai-paper": LocalJSX.IntrinsicElements["uai-paper"] & JSXBase.HTMLAttributes<HTMLUaiPaperElement>;
             /**
+             * Horizontal progress indicator with safe bounds and accessible `progressbar` semantics.
+             * Single visual defined by the UAI Figma: `sizing/2xs` track on `surface/background` with an `accent/ai-start` fill.
+             * Use to communicate completion percentages or quota usage; pair with `text` or `aria-label` so screen readers announce what is progressing;
+             * avoid using it to communicate critical status without accompanying text.
+             */
+            "uai-progress-bar": LocalJSX.IntrinsicElements["uai-progress-bar"] & JSXBase.HTMLAttributes<HTMLUaiProgressBarElement>;
+            /**
              * Radio option for one choice in a mutually exclusive group. Pair radios with a labelled UaiRadioGroup.
              * Wrap the app in UaiThemeProvider.
              */
@@ -20111,6 +21789,12 @@ declare module "@stencil/core" {
              */
             "uai-rich-text": LocalJSX.IntrinsicElements["uai-rich-text"] & JSXBase.HTMLAttributes<HTMLUaiRichTextElement>;
             /**
+             * Semantic section header with heading, optional description, and optional trailing actions.
+             * Use to introduce analytical or content blocks beneath `uai-page-header`; pair with `headingTag` matching document hierarchy;
+             * avoid using `h1` here (reserve `h1` for the page title).
+             */
+            "uai-section-title": LocalJSX.IntrinsicElements["uai-section-title"] & JSXBase.HTMLAttributes<HTMLUaiSectionTitleElement>;
+            /**
              * Field to choose one option from a list. Use it for 4 to about 15 mutually exclusive choices that do not fit as
              * radios: the field shows the chosen label and opens a listbox below or above it. It takes part in native forms:
              * give it a name to submit the chosen value. Pair with a visible label and UaiButton in forms. Avoid it for fewer than
@@ -20123,6 +21807,12 @@ declare module "@stencil/core" {
              * nothing by itself.
              */
             "uai-select-option": LocalJSX.IntrinsicElements["uai-select-option"] & JSXBase.HTMLAttributes<HTMLUaiSelectOptionElement>;
+            /**
+             * Compact responsive trend sparkline rendered in SVG without axes.
+             * Use inside KPI and summary cards to illustrate directional variation; pair with a visible metric and `label`;
+             * avoid using color alone to communicate positive or negative status.
+             */
+            "uai-sparkline": LocalJSX.IntrinsicElements["uai-sparkline"] & JSXBase.HTMLAttributes<HTMLUaiSparklineElement>;
             /**
              * One stage of a UaiStepper, with a numbered marker, a title and an optional description.
              * Use inside uai-stepper, which sets its orientation, number and position; avoid it outside a stepper.

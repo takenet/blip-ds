@@ -262,4 +262,33 @@ describe('uai-button e2e', () => {
       expect(style).toEqual({ opacity: '0.5' });
     });
   });
+
+  describe('control border', () => {
+    it.each(['light', 'dark'])('outline content uses the same border as uai-input at rest and on hover (%s)', async (theme) => {
+      const page = await newE2EPage({
+        html: withTheme(
+          '<uai-input label="Buscar"></uai-input><uai-button variant="outline" color="content">Filtros</uai-button>',
+          theme,
+        ),
+      });
+      // Reduced motion removes the border transition, so hover colors can be read right away.
+      await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+      const borders = () =>
+        page.evaluate(() => {
+          const input = document.querySelector('uai-input').shadowRoot.querySelector('.input__control');
+          const button = document.querySelector('uai-button').shadowRoot.querySelector('button');
+          return { input: getComputedStyle(input).borderTopColor, button: getComputedStyle(button).borderTopColor };
+        });
+
+      const rest = await borders();
+      expect(rest.button).toBe(rest.input);
+
+      await (await page.find('uai-input >>> .input__control')).hover();
+      const inputHover = (await borders()).input;
+      await (await page.find('uai-button >>> button')).hover();
+      const buttonHover = (await borders()).button;
+      expect(buttonHover).toBe(inputHover);
+      expect(buttonHover).not.toBe(rest.button);
+    });
+  });
 });

@@ -83,4 +83,45 @@ describe('uai-grid layout', () => {
     expect(styles.gap).toBe('20px');
     expect(styles.backgroundColor).toBe('rgb(1, 2, 3)');
   });
+
+  it('Scenario: Reordenação por teclado, cursor grab e movimento reduzido em type="draggable"', async () => {
+    const page = await newE2EPage();
+    await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
+    await page.setContent(`
+      <div data-uai-theme="light" style="padding: 32px">
+        <uai-grid id="stack" direction="column" gap="2" sortable>
+          <uai-grid id="first-row" type="draggable" max-items="2">
+            <div>Card 1</div>
+          </uai-grid>
+          <uai-grid id="second-row" type="draggable" max-items="2">
+            <div>Card 2</div>
+          </uai-grid>
+        </uai-grid>
+      </div>
+    `);
+
+    await page.waitForChanges();
+    const reorderSpy = await page.spyOnEvent('uaiReorder');
+
+    const handleStyles = await page.$eval('#first-row >>> .grid-draggable__handle', (el) => {
+      const cs = getComputedStyle(el);
+      return { cursor: cs.cursor, transitionDuration: cs.transitionDuration };
+    });
+    expect(handleStyles.cursor).toBe('grab');
+    expect(
+      handleStyles.transitionDuration.split(',').every((v) => v.trim() === '0s' || v.trim() === '0ms'),
+    ).toBe(true);
+
+    await page.$eval('#first-row >>> .grid-draggable__handle', (el: HTMLElement) => el.focus());
+    await page.keyboard.down('Alt');
+    await page.keyboard.press('ArrowDown');
+    await page.keyboard.up('Alt');
+    await page.waitForChanges();
+
+    expect(reorderSpy).toHaveReceivedEventDetail({ fromIndex: 0, toIndex: 1 });
+    const order = await page.evaluate(() =>
+      Array.from(document.querySelectorAll('#stack > uai-grid')).map((el) => el.id),
+    );
+    expect(order).toEqual(['second-row', 'first-row']);
+  });
 });

@@ -3,7 +3,7 @@ import { UaiBanner, UaiButton, UaiThemeProvider } from '../../../blip-ds-react/d
 import DocumentationTemplate from './uai-banner.mdx';
 
 export default {
-  title: 'UAI/Banner',
+  title: 'UAI Components/Banner',
   component: UaiBanner,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

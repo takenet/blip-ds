@@ -1,0 +1,362 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--uai-width-content, #{$uai-width-content});
+  padding: var(--uai-spacing-lg, #{$uai-spacing-lg});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-xl, #{$uai-radius-xl});
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+}
+
+.filter-bar__periods {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-input, #{$uai-border-input});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+  @include uai-transition(border-color, fast);
+
+  // Same border variables as uai-input; the inner dividers stay decorative (border/default).
+  &:hover {
+    border-color: var(--uai-content-secondary, #{$uai-content-secondary});
+  }
+}
+
+.filter-bar__period-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  box-sizing: border-box;
+  height: var(--uai-control-height-medium, #{$uai-control-height-medium});
+  margin: 0;
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs}) var(--uai-spacing-sm, #{$uai-spacing-sm});
+  border: 0;
+  border-left: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  letter-spacing: var(--uai-letter-spacing-normal, #{$uai-letter-spacing-normal});
+  white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
+  @include uai-transition(background-color, fast);
+  @include uai-focus-visible;
+
+  &:first-child {
+    border-left: 0;
+  }
+
+  &:hover {
+    background-color: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+  }
+
+  &--selected {
+    background-color: var(--uai-action-outline-pressed, #{$uai-action-outline-pressed});
+  }
+}
+
+.filter-bar__search {
+  display: flex;
+  flex: 1 1 0%;
+  min-width: calc(var(--uai-sizing-5xl, #{$uai-sizing-5xl}) * 2);
+}
+
+.filter-bar__search > uai-input {
+  width: 100%;
+}
+
+.filter-bar__chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+
+  &:empty {
+    display: none;
+  }
+}
+
+.filter-bar__chip {
+  display: inline-flex;
+  align-items: center;
+  height: var(--uai-control-height-short, #{$uai-control-height-short});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-input, #{$uai-border-input});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background-color: var(--uai-surface-background, #{$uai-surface-background});
+  overflow: hidden;
+}
+
+.filter-bar__chip-edit,
+.filter-bar__chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  height: 100%;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
+  cursor: pointer;
+  appearance: none;
+  @include uai-transition(background-color, fast);
+  @include uai-focus-visible;
+
+  &:hover {
+    background-color: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+  }
+}
+
+.filter-bar__chip-edit {
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.filter-bar__chip-remove {
+  padding: 0 var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+  border-left: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}
+
+.filter-bar__chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--uai-sizing-md, #{$uai-sizing-md});
+  height: var(--uai-sizing-md, #{$uai-sizing-md});
+  padding: 0 var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background-color: var(--uai-action-primary-default, #{$uai-action-primary-default});
+  color: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+  font-size: var(--uai-caption-font-size, #{$uai-caption-font-size});
+  font-weight: var(--uai-font-weight-semibold, #{$uai-font-weight-semibold});
+  line-height: var(--uai-caption-line-height, #{$uai-caption-line-height});
+}
+
+.filter-bar__trigger {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.filter-panel {
+  @include uai-overlay-panel;
+  z-index: var(--uai-layer-navigation-overlay, #{$uai-layer-navigation-overlay});
+}
+
+.filter-panel__surface {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: var(--uai-width-panel, #{$uai-width-panel});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-lg, #{$uai-radius-lg});
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  overflow: hidden;
+}
+
+.filter-panel__header {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  padding: var(--uai-spacing-sm, #{$uai-spacing-sm}) var(--uai-spacing-md, #{$uai-spacing-md});
+  border-bottom: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}
+
+.filter-panel__back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--uai-control-height-compact, #{$uai-control-height-compact});
+  height: var(--uai-control-height-compact, #{$uai-control-height-compact});
+  padding: 0;
+  border: 0;
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background-color: transparent;
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  cursor: pointer;
+  @include uai-focus-visible;
+
+  &:hover {
+    background-color: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+  }
+}
+
+.filter-panel__title {
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  font-weight: var(--uai-font-weight-semibold, #{$uai-font-weight-semibold});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+}
+
+.filter-panel__categories,
+.filter-panel__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-3xs, #{$uai-spacing-3xs});
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.filter-panel__category-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  width: 100%;
+  min-height: var(--uai-control-height-short, #{$uai-control-height-short});
+  padding: var(--uai-spacing-2xs, #{$uai-spacing-2xs}) var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: 0;
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background-color: transparent;
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  cursor: pointer;
+  text-align: start;
+  @include uai-focus-visible;
+
+  &:hover {
+    background-color: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+  }
+}
+
+.filter-panel__category-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+}
+
+.filter-panel__search {
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs}) var(--uai-spacing-xs, #{$uai-spacing-xs}) 0;
+}
+
+.filter-panel__search-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--uai-control-height-short, #{$uai-control-height-short});
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-input, #{$uai-border-input});
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  @include uai-focus-visible;
+}
+
+.filter-panel__option {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  min-height: var(--uai-control-height-short, #{$uai-control-height-short});
+  padding: 0 var(--uai-spacing-xs, #{$uai-spacing-xs});
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--uai-action-outline-hover, #{$uai-action-outline-hover});
+  }
+}
+
+.filter-panel__empty {
+  margin: 0;
+  padding: var(--uai-spacing-sm, #{$uai-spacing-sm});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+  font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
+  text-align: center;
+}
+
+.filter-panel__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--uai-spacing-xs, #{$uai-spacing-xs}) var(--uai-spacing-sm, #{$uai-spacing-sm});
+  border-top: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+}
+
+.filter-panel__footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  width: 100%;
+}
+
+.filter-panel__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--uai-control-height-short, #{$uai-control-height-short});
+  padding: 0 var(--uai-spacing-sm, #{$uai-spacing-sm});
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  font-weight: var(--uai-font-weight-medium, #{$uai-font-weight-medium});
+  line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
+  cursor: pointer;
+  @include uai-focus-visible;
+
+  &:disabled {
+    opacity: var(--uai-opacity-disabled, #{$uai-opacity-disabled});
+    cursor: not-allowed;
+  }
+
+  &--secondary {
+    border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+      var(--uai-border-input, #{$uai-border-input});
+    background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+    color: var(--uai-content-primary, #{$uai-content-primary});
+
+    &:hover:not(:disabled) {
+      border-color: var(--uai-content-secondary, #{$uai-content-secondary});
+    }
+
+    &:disabled {
+      border-color: var(--uai-border-default, #{$uai-border-default});
+    }
+  }
+
+  &--primary {
+    border: var(--uai-border-width-default, #{$uai-border-width-default}) solid transparent;
+    background-color: var(--uai-action-primary-default, #{$uai-action-primary-default});
+    color: var(--uai-action-primary-foreground, #{$uai-action-primary-foreground});
+  }
+}

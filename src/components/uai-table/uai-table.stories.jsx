@@ -16,7 +16,7 @@ import {
 import DocumentationTemplate from './uai-table.mdx';
 
 export default {
-  title: 'UAI/Table',
+  title: 'UAI Components/Table',
   component: UaiTable,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

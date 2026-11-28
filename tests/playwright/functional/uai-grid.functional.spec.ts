@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('UaiGrid - Storybook', () => {
   test('updates the playground through its controls', async ({ page }) => {
-    await page.goto('/?path=/story/uai-grid--playground');
+    await page.goto('/?path=/story/uai-components-grid--playground');
 
     const preview = page.frameLocator('#storybook-preview-iframe');
     const grid = preview.locator('uai-grid').first();
@@ -43,7 +43,7 @@ test.describe('UaiGrid - Storybook', () => {
   });
 
   test('shows the overview with structure, controls and React usage', async ({ page }) => {
-    await page.goto('/iframe.html?id=uai-grid--vis%C3%A3o-geral&viewMode=docs');
+    await page.goto('/iframe.html?id=uai-components-grid--vis%C3%A3o-geral&viewMode=docs');
 
     await expect(page.getByRole('heading', { name: 'Estrutura' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Propriedades' })).toBeVisible();
@@ -53,7 +53,7 @@ test.describe('UaiGrid - Storybook', () => {
 
   test('fits six span-2 items on one row without an additional gap', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 900 });
-    await page.goto('/?path=/story/uai-grid--playground');
+    await page.goto('/?path=/story/uai-components-grid--playground');
 
     const preview = page.frameLocator('#storybook-preview-iframe');
     const grid = preview.locator('uai-grid').first();

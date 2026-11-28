@@ -1,0 +1,15 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.card-title__text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

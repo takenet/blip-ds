@@ -3,7 +3,7 @@ import { UaiSelect, UaiSelectOption, UaiThemeProvider } from '../../../blip-ds-r
 import DocumentationTemplate from './uai-select.mdx';
 
 export default {
-  title: 'UAI/Select',
+  title: 'UAI Components/Select',
   component: UaiSelect,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

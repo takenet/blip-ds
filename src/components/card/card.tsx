@@ -3,6 +3,9 @@ import { PaperBackground, BorderColor } from '../paper/paper-interface';
 
 export type elevationType = 'primary' | 'secondary' | 'static' | 'none';
 
+/**
+ * @deprecated Use `uai-card` instead.
+ */
 @Component({
   tag: 'bds-card',
   styleUrl: 'card.scss',

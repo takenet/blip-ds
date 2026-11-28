@@ -4,7 +4,7 @@ import assetConfig from '../../utils/asset-config.json';
 import DocumentationTemplate from './uai-logo.mdx';
 
 export default {
-  title: 'UAI/Logo',
+  title: 'UAI Components/Logo',
   component: UaiLogo,
   tags: ['autodocs'],
   parameters: {

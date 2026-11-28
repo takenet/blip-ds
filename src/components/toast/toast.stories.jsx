@@ -3,7 +3,7 @@ import DocumentationTemplate from './toast.mdx';
 import { BdsToast } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/[deprecated] Toast',
+  title: 'BDS Components/[deprecated] Toast',
   parameters: {
     docs: {
       page: DocumentationTemplate,

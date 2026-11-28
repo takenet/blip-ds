@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Chip Clickable - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-chip-clickable--properties');
+    await storybook.goto('bds-components-chip-clickable--properties');
   });
 
   test('renders correctly', async ({ page }) => {
@@ -13,7 +13,7 @@ test.describe('Chip Clickable - Functional Tests', () => {
 
 test.describe('Chip Selected - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-chip-selected--properties');
+    await storybook.goto('bds-components-chip-selected--properties');
   });
 
   test('emits chipClick event on click', async ({ page }) => {
@@ -36,7 +36,7 @@ test.describe('Chip Selected - Functional Tests', () => {
 
 test.describe('Chip Tag - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-deprecated-chip-tag--properties');
+    await storybook.goto('bds-components-deprecated-chip-tag--properties');
   });
 
   test('renders correctly', async ({ page }) => {

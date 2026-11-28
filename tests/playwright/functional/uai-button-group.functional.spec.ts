@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('UaiButtonGroup - Storybook', () => {
   test('selects one button at a time and reports it as pressed', async ({ page }) => {
-    await page.goto('/?path=/story/uai-button-group--playground');
+    await page.goto('/?path=/story/uai-components-button-group--playground');
     const preview = page.frameLocator('#storybook-preview-iframe');
     const center = preview.getByRole('button', { name: 'Centralizar' });
     const right = preview.getByRole('button', { name: 'Alinhar à direita' });
@@ -18,7 +18,7 @@ test.describe('UaiButtonGroup - Storybook', () => {
   });
 
   test('keeps several buttons selected in the multiple story', async ({ page }) => {
-    await page.goto('/?path=/story/uai-button-group--multiple');
+    await page.goto('/?path=/story/uai-components-button-group--multiple');
     const preview = page.frameLocator('#storybook-preview-iframe');
     const today = preview.getByRole('button', { name: 'Hoje' });
     const alerts = preview.getByRole('button', { name: 'Com alerta' });

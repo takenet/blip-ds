@@ -10,7 +10,7 @@ import {
 import DocumentationTemplate from './uai-stepper.mdx';
 
 export default {
-  title: 'UAI/Stepper',
+  title: 'UAI Components/Stepper',
   component: UaiStepper,
   subcomponents: { UaiStep },
   tags: ['autodocs'],

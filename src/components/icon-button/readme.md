@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use `uai-icon-button` instead.
+
 ## Properties
 
 | Property    | Attribute    | Description                                                                                       | Type                                                                                  | Default      |

@@ -3,7 +3,7 @@ import { UaiPagination, UaiThemeProvider } from '../../../blip-ds-react/dist/com
 import DocumentationTemplate from './uai-pagination.mdx';
 
 export default {
-  title: 'UAI/Pagination',
+  title: 'UAI Components/Pagination',
   component: UaiPagination,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('UaiDropdown - Storybook', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/?path=/story/uai-dropdown--playground');
+    await page.goto('/?path=/story/uai-components-dropdown--playground');
   });
 
   test('opens from the activator and shows the header, the body and the footer', async ({ page }) => {

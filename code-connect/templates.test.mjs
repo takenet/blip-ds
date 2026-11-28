@@ -21,19 +21,6 @@ const radioSource = readFileSync(new URL('./uai-radio.figma.ts', import.meta.url
 const switchSource = readFileSync(new URL('./uai-switch.figma.ts', import.meta.url), 'utf8');
 const imports = ['import { UaiIcon } from "blip-ds-react/dist/components"'];
 
-test('switch maps every UAI Core variant and focus state to its existing contract', () => {
-  for (const Variant of ['Unchecked', 'Checked']) {
-    for (const State of ['Default', 'Focus']) {
-      const result = evaluate(switchSource, { Variant, State });
-      assert.equal(result.id, 'uai-switch');
-      assert.equal(result.example.includes(' checked'), Variant === 'Checked');
-      assert.equal(result.example.includes('aria-label='), true);
-      assert.equal(result.example.includes('state='), false);
-      assertJsx(result.example);
-    }
-  }
-});
-
 const evaluate = (source, properties = {}, swaps = {}, instances = {}) => {
   const figma = {
     selectedInstance: {
@@ -45,6 +32,8 @@ const evaluate = (source, properties = {}, swaps = {}, instances = {}) => {
       },
       getInstanceSwap: (key) => swaps[key],
       findInstance: (name) => instances[name] ?? { type: 'ERROR' },
+      findText: (name) =>
+        typeof properties[name] === 'string' ? { type: 'TEXT', textContent: properties[name] } : { type: 'ERROR' },
     },
     code: (strings, ...values) => strings.reduce((result, part, index) => result + part + (values[index] ?? ''), ''),
   };
@@ -264,7 +253,6 @@ const passwordDefaults = {
   Visibility: 'Hidden',
   Feedback: 'Default',
   State: 'Default',
-  Level: 'None',
 };
 
 test('password covers every feedback, state and visibility with valid React', () => {
@@ -287,12 +275,29 @@ test('password covers every feedback, state and visibility with valid React', ()
 });
 
 test('password maps the optional consumer-provided strength level', () => {
-  for (const [Level, expected] of [['None', 'none'], ['Low', 'low'], ['Medium', 'medium'], ['High', 'high']]) {
-    const { example } = evaluate(passwordSource, { ...passwordDefaults, 'Show Strength': true, Level });
+  for (const [Level, expected] of [
+    ['None', 'none'],
+    ['Low', 'low'],
+    ['Medium', 'medium'],
+    ['High', 'high'],
+  ]) {
+    const strength = { type: 'INSTANCE', getEnum: (key, values) => values[Level] };
+    const { example } = evaluate(
+      passwordSource,
+      { ...passwordDefaults, 'Show Strength': true },
+      {},
+      { 'Password Strength': strength },
+    );
     assertJsx(example);
     assert.ok(example.includes(`showStrength strengthLevel="${expected}"`));
   }
-  const { example } = evaluate(passwordSource, { ...passwordDefaults, 'Show Strength': false, Level: 'High' });
+  const high = { type: 'INSTANCE', getEnum: (key, values) => values.High };
+  const { example } = evaluate(
+    passwordSource,
+    { ...passwordDefaults, 'Show Strength': false },
+    {},
+    { 'Password Strength': high },
+  );
   assert.ok(!example.includes('showStrength'));
 });
 
@@ -669,47 +674,163 @@ test('avatar rejects unmapped size and type', () => {
   assert.throws(() => evaluate(avatarSource, { ...avatarDefaults, Type: 'Icon' }), /Unmapped Type/);
 });
 
-test('checkbox maps the Intelligence variants and keeps an accessible name', () => {
-  const defaults = { Variant: 'Unchecked', State: 'Default' };
-  for (const Variant of ['Unchecked', 'Checked', 'Indeterminate'])
-    for (const State of ['Default', 'Focus', 'Disabled']) {
-      const { example } = evaluate(checkboxSource, { ...defaults, Variant, State });
-      assertJsx(example);
-      assert.equal(example.includes(' checked'), Variant === 'Checked');
-      assert.equal(example.includes(' indeterminate'), Variant === 'Indeterminate');
-      assert.equal(example.includes(' disabled'), State === 'Disabled');
-    }
+const selectionControls = [
+  {
+    source: () => checkboxSource,
+    tag: 'UaiCheckbox',
+    id: 'uai-checkbox',
+    selections: { Unchecked: '', Checked: ' checked', Indeterminate: ' indeterminate' },
+  },
+  { source: () => radioSource, tag: 'UaiRadio', id: 'uai-radio', selections: { Unselected: '', Selected: ' checked' } },
+  {
+    source: () => switchSource,
+    tag: 'UaiSwitch',
+    id: 'uai-switch',
+    selections: { Unchecked: '', Checked: ' checked' },
+  },
+];
 
-  const result = evaluate(checkboxSource, defaults);
-  assert.equal(result.example, '<UaiCheckbox aria-label="Opção" />');
-  assert.deepEqual(Array.from(result.imports), ['import { UaiCheckbox } from "blip-ds-react/dist/components"']);
-  assert.equal(result.id, 'uai-checkbox');
-  assert.equal(result.metadata.nestable, true);
+for (const control of selectionControls) {
+  test(`${control.id} maps Selection, State, Size and Label from the UAI Core node`, () => {
+    for (const [Selection, flag] of Object.entries(control.selections))
+      for (const State of ['Default', 'Hover', 'Focus', 'Disabled'])
+        for (const Size of ['short', 'standard', 'tall']) {
+          const { example } = evaluate(control.source(), {
+            Selection,
+            State,
+            Size,
+            'Show label': true,
+            Label: 'Aceito os termos',
+          });
+          assertJsx(example);
+          assert.ok(example.startsWith(`<${control.tag} label={"Aceito os termos"}`));
+          assert.equal(example.includes(' checked'), flag === ' checked');
+          assert.equal(example.includes(' indeterminate'), flag === ' indeterminate');
+          assert.equal(example.includes(' disabled'), State === 'Disabled');
+          assert.equal(example.includes(' size='), Size !== 'standard');
+        }
+
+    const hidden = evaluate(control.source(), {
+      Selection: Object.keys(control.selections)[0],
+      State: 'Default',
+      Size: 'standard',
+      'Show label': false,
+      Label: 'x',
+    });
+    assert.ok(hidden.example.includes('aria-label='));
+    assert.ok(!hidden.example.includes('label={'));
+    assert.equal(hidden.id, control.id);
+    assert.deepEqual(Array.from(hidden.imports), [`import { ${control.tag} } from "blip-ds-react/dist/components"`]);
+  });
+
+  test(`${control.id} rejects the legacy Variant contract`, () => {
+    assert.throws(
+      () => evaluate(control.source(), { Variant: 'Checked', State: 'Default', Size: 'standard' }),
+      /Unmapped Selection/,
+    );
+  });
+}
+
+const iconButtonSource = readFileSync(new URL('./uai-icon-button.figma.ts', import.meta.url), 'utf8');
+const iconBoxSource = readFileSync(new URL('./uai-icon-box.figma.ts', import.meta.url), 'utf8');
+const sectionTitleSource = readFileSync(new URL('./uai-section-title.figma.ts', import.meta.url), 'utf8');
+const progressBarSource = readFileSync(new URL('./uai-progress-bar.figma.ts', import.meta.url), 'utf8');
+const cardSource = readFileSync(new URL('./uai-card.figma.ts', import.meta.url), 'utf8');
+const gridSource = readFileSync(new URL('./uai-grid.figma.ts', import.meta.url), 'utf8');
+const filterBarSource = readFileSync(new URL('./uai-filter-bar.figma.ts', import.meta.url), 'utf8');
+const sparklineSource = readFileSync(new URL('./uai-sparkline.figma.ts', import.meta.url), 'utf8');
+const barChartSource = readFileSync(new URL('./uai-bar-chart.figma.ts', import.meta.url), 'utf8');
+const lineChartSource = readFileSync(new URL('./uai-line-chart.figma.ts', import.meta.url), 'utf8');
+
+test('icon button covers every variant, size, color and state with valid React', () => {
+  for (const Variant of ['Solid', 'Outline', 'Ghost'])
+    for (const Size of ['Compact', 'Short', 'Medium', 'Large'])
+      for (const Color of ['Primary', 'Content', 'Positive', 'Negative'])
+        for (const State of ['Default', 'Hover', 'Pressed', 'Active']) {
+          const result = evaluate(iconButtonSource, { Variant, Size, Color, State });
+          assertJsx(result.example);
+          assert.equal(result.id, 'uai-icon-button');
+          assert.equal(result.example.includes('variant="ghost"'), Variant === 'Ghost');
+          assert.equal(result.example.includes('aria-label='), true);
+        }
 });
 
-test('checkbox rejects an unmapped state or variant', () => {
-  assert.throws(() => evaluate(checkboxSource, { Variant: 'Partial', State: 'Default' }), /Unmapped Variant/);
-  assert.throws(() => evaluate(checkboxSource, { Variant: 'Checked', State: 'Hover' }), /Unmapped State/);
+test('icon box, section title and progress bar produce valid React and metadata', () => {
+  for (const Size of ['sm', 'md', 'lg']) {
+    const box = evaluate(iconBoxSource, { Size });
+    assertJsx(box.example);
+    assert.equal(box.id, 'uai-icon-box');
+    assert.equal(box.metadata.nestable, true);
+  }
+
+  const section = evaluate(sectionTitleSource, {
+    'Edit title': 'Geração de demanda',
+    'Edit description': 'Entenda o comportamento.',
+    'Show description?': true,
+  });
+  assertJsx(section.example);
+  assert.equal(section.id, 'uai-section-title');
+  assert.ok(section.example.includes('heading={"Geração de demanda"}'));
+
+  const progress = evaluate(progressBarSource);
+  assertJsx(progress.example);
+  assert.equal(progress.id, 'uai-progress-bar');
 });
 
-test('radio maps the Intelligence variants and keeps an accessible name', () => {
-  const defaults = { Variant: 'Unchecked', State: 'Default' };
-  for (const Variant of ['Unchecked', 'Checked'])
-    for (const State of ['Default', 'Focus', 'Disabled']) {
-      const { example } = evaluate(radioSource, { ...defaults, Variant, State });
-      assertJsx(example);
-      assert.equal(example.includes(' checked'), Variant === 'Checked');
-      assert.equal(example.includes(' disabled'), State === 'Disabled');
-    }
+test('card, grid and filter bar templates cover slots and modes with valid React', () => {
+  for (const Size of ['sm', 'md'])
+    for (const showFooter of [true, false])
+      for (const showImage of [true, false]) {
+        const card = evaluate(
+          cardSource,
+          { Size, 'Show Footer?': showFooter, 'Show Imagem?': showImage },
+          {},
+          {
+            _PaperHeader: {
+              type: 'INSTANCE',
+              getBoolean: (k) =>
+                ({ 'Show Title?': true, 'Show Description?': Size === 'md', 'Show UaiIconBox?': true })[k],
+              getString: (k) => ({ 'Edit title': 'Receita', 'Edit description': 'Mensal' })[k],
+            },
+          },
+        );
+        assertJsx(card.example);
+        assert.equal(card.id, 'uai-card');
+        assert.equal(card.example.includes('slot="footer"'), showFooter);
+        assert.equal(card.example.includes('slot="icon"'), true);
+      }
 
-  const result = evaluate(radioSource, defaults);
-  assert.equal(result.example, '<UaiRadio aria-label="Opção" value="option" />');
-  assert.deepEqual(Array.from(result.imports), ['import { UaiRadio } from "blip-ds-react/dist/components"']);
-  assert.equal(result.id, 'uai-radio');
-  assert.equal(result.metadata.nestable, true);
+  for (const Type of ['Default', 'Draggable']) {
+    const grid = evaluate(gridSource, { Type });
+    assertJsx(grid.example);
+    assert.equal(grid.id, 'uai-grid');
+    assert.equal(grid.example.includes('type="draggable"'), Type === 'Draggable');
+  }
+
+  const filterBar = evaluate(filterBarSource);
+  assertJsx(filterBar.example);
+  assert.equal(filterBar.id, 'uai-filter-bar');
 });
 
-test('radio rejects an unmapped state or variant', () => {
-  assert.throws(() => evaluate(radioSource, { Variant: 'Unknown', State: 'Default' }), /Unmapped Variant/);
-  assert.throws(() => evaluate(radioSource, { Variant: 'Checked', State: 'Hover' }), /Unmapped State/);
+test('sparkline, bar chart and line chart templates map variants and produce valid React', () => {
+  for (const [Variant, expected] of [
+    ['Neutral', 'neutral'],
+    ['Green', 'positive'],
+    ['Red', 'negative'],
+  ]) {
+    const spark = evaluate(sparklineSource, { Variant });
+    assertJsx(spark.example);
+    assert.equal(spark.id, 'uai-sparkline');
+    assert.equal(spark.example.includes(`variant="${expected}"`), expected !== 'neutral');
+  }
+
+  const bar = evaluate(barChartSource);
+  assertJsx(bar.example);
+  assert.equal(bar.id, 'uai-bar-chart');
+
+  for (const state of ['default', 'hover']) {
+    const line = evaluate(lineChartSource, { state });
+    assertJsx(line.example);
+    assert.equal(line.id, 'uai-line-chart');
+  }
 });

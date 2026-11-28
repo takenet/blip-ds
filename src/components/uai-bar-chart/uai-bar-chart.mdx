@@ -1,0 +1,38 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as BarChartStories from './uai-bar-chart.stories';
+
+<Meta isTemplate />
+
+# Bar Chart
+
+## Visão geral
+
+`uai-bar-chart` renderiza um gráfico de barras horizontais tokenizado para comparar categorias ordenadas em um mesmo domínio numérico. Cada barra é acessível por teclado (`Tab`, `ArrowUp`, `ArrowDown`, `Enter`, `Escape`) e apresenta tooltip com o valor formatado.
+
+No React, importe `UaiBarChart` e `UaiThemeProvider` de `blip-ds-react/dist/components`.
+
+```jsx
+<UaiBarChart
+  seriesLabel="ROI"
+  format="currency"
+  currency="BRL"
+  data={[
+    { label: 'Black Friday Wpp', value: 94000 },
+    { label: 'Reativação de carrinho', value: 78000 },
+    { label: 'Lançamento 2026', value: 62000 },
+  ]}
+/>
+```
+
+## Playground
+
+<Canvas of={BarChartStories.Playground} />
+<Controls of={BarChartStories.Playground} />
+
+## Percentual com domínio fixo
+
+<Canvas of={BarChartStories.PercentRanking} />
+
+## Estado vazio
+
+<Canvas of={BarChartStories.EmptyState} />

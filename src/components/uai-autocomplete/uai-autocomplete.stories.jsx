@@ -3,7 +3,7 @@ import { UaiAutocomplete, UaiButton, UaiThemeProvider } from '../../../blip-ds-r
 import DocumentationTemplate from './uai-autocomplete.mdx';
 
 export default {
-  title: 'UAI/Autocomplete',
+  title: 'UAI Components/Autocomplete',
   component: UaiAutocomplete,
   tags: ['autodocs'],
   parameters: {

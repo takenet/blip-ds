@@ -3,7 +3,7 @@ import DocumentationTemplate from './modal.mdx';
 import { BdsButton, BdsModal, BdsModalAction, BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/[deprecated] Modal',
+  title: 'BDS Components/[deprecated] Modal',
   parameters: {
     docs: {
       page: DocumentationTemplate,

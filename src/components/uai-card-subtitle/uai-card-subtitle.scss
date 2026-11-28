@@ -1,0 +1,8 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}

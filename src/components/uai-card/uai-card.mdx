@@ -1,0 +1,57 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiCardStories from './uai-card.stories';
+
+<Meta isTemplate />
+
+# Card
+
+Superfície estruturada para agrupar indicadores, metas, gráficos e conteúdos acionáveis com cabeçalho, corpo e rodapé opcionais. Quando precisar apenas de um contêiner neutro sem regiões internas, use `UaiPaper`.
+
+## Visão geral
+
+Envolva a aplicação em `UaiThemeProvider`. O `UaiCard` funciona no modelo híbrido: por props rápidas e slots nomeados (`heading`, `description`, `slot="icon"`, `slot="actions"`, `slot="media"`, `slot="footer"`) ou com os subcomponentes `UaiCardHeader`, `UaiCardTitle`, `UaiCardSubtitle`, `UaiCardBody` e `UaiCardFooter`.
+
+## Playground
+
+<Canvas of={UaiCardStories.Playground} />
+
+<Controls of={UaiCardStories.Playground} />
+
+## Como usar
+
+<Canvas of={UaiCardStories.Usage} sourceState="shown" />
+
+## Composições
+
+O card é uma superfície estática, como no Figma: não tem estados de hover, seleção ou clique. Ações ficam em controles internos (`slot="actions"`, botões no corpo ou no rodapé).
+
+<Canvas of={UaiCardStories.States} />
+
+## Comportamento
+
+- Regiões opcionais (`media`, `header`, `footer`) não renderizam espaçamento quando vazias (`test/uai-card.spec.tsx`).
+
+## Acessibilidade
+
+- O card não entra na ordem de foco por `Tab` (corrigindo o foco fantasma do legado); apenas os controles internos recebem foco.
+- Não envolva o card inteiro em um link ou botão quando ele contém controles internos, para não aninhar elementos interativos.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Superfície e borda | `--uai-surface-paper`, `--uai-border-width-default`, `--uai-border-default`, `--uai-radius-xl` |
+| Espaçamentos | `--uai-spacing-lg`, `--uai-spacing-md`, `--uai-spacing-sm`, `--uai-spacing-xs` |
+| Tipografia | `--uai-font-family-sans`, `--uai-body-lg-font-size`, `--uai-body-lg-line-height`, `--uai-font-weight-semibold`, `--uai-body-base-font-size`, `--uai-body-base-line-height`, `--uai-content-primary`, `--uai-content-secondary` |
+
+## Migração do `bds-card`
+
+| Legado | UAI | Mudança |
+| --- | --- | --- |
+| `bds-card` / `BdsCard` | `uai-card` / `UaiCard` | Superfície fixa `--uai-surface-paper`; adiciona `size`, `heading`, `description` e slots nomeados. `clickable`, `selectable`, `bgColor` e `borderColor` foram removidas por não existirem no Figma |
+| `bdsClick` | — | Removido: use controles internos para ações |
+| `bds-card-header`, `-body`, `-footer`, `-title`, `-subtitle` | `uai-card-header`, `-body`, `-footer`, `-title`, `-subtitle` | Mesmas props (`align`, `text`), roteadas automaticamente às regiões de header e footer |
+
+## Design
+
+- [UaiCard no Figma UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4652-27579)

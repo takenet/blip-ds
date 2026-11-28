@@ -3,7 +3,7 @@ import { BdsTabGroup, BdsTabItem, BdsTypo } from '../../../blip-ds-react/dist/co
 import DocumentationTemplate from './tabs.mdx';
 
 export default {
-  title: 'Components/[deprecated] Tabs',
+  title: 'BDS Components/[deprecated] Tabs',
   parameters: {
     docs: {
       page: DocumentationTemplate,

@@ -2,12 +2,12 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Toast - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-deprecated-toast--properties');
+    await storybook.goto('bds-components-deprecated-toast--properties');
   });
 
   test('renders with correct variant', async ({ page }) => {
     for (const variant of ['system', 'error', 'success', 'warning']) {
-      await gotoStoryUrl(page, `/iframe.html?id=components-deprecated-toast--properties&args=variant:${variant}`);
+      await gotoStoryUrl(page, `/iframe.html?id=bds-components-deprecated-toast--properties&args=variant:${variant}`);
 
       const rendered = await page.evaluate((v) => {
         const toast = document.querySelector('bds-toast') as any;

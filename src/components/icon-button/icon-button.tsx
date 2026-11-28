@@ -7,6 +7,9 @@ export type IconSizeMap = { [key in string]: IconSize };
 export type IconButtonVariantMap = { [key in IconButtonVariant]: string };
 export type ButtonIconTheme = 'outline' | 'solid';
 
+/**
+ * @deprecated Use `uai-icon-button` instead.
+ */
 @Component({
   tag: 'bds-button-icon',
   styleUrl: 'icon-button.scss',

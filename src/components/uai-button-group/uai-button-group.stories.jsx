@@ -3,7 +3,7 @@ import { UaiButton, UaiButtonGroup, UaiThemeProvider, UaiTypo } from '../../../b
 import DocumentationTemplate from './uai-button-group.mdx';
 
 export default {
-  title: 'UAI/Button Group',
+  title: 'UAI Components/Button Group',
   component: UaiButtonGroup,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

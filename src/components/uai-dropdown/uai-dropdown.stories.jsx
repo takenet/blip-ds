@@ -3,7 +3,7 @@ import { UaiButton, UaiDropdown, UaiInput, UaiThemeProvider, UaiTypo } from '../
 import DocumentationTemplate from './uai-dropdown.mdx';
 
 export default {
-  title: 'UAI/Dropdown',
+  title: 'UAI Components/Dropdown',
   component: UaiDropdown,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

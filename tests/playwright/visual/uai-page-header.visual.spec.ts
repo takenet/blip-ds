@@ -4,7 +4,7 @@ import type { Components } from '../../../src/components';
 test.describe('UaiPageHeader - Visual Regression', () => {
   for (const theme of ['light', 'dark']) {
     test(`primary, secondary and editing in ${theme}`, async ({ page, storybook }) => {
-      await gotoStoryUrl(page, `/iframe.html?id=uai-page-header--playground&viewMode=story&globals=hasTheme:${theme}`);
+      await gotoStoryUrl(page, `/iframe.html?id=uai-components-page-header--playground&viewMode=story&globals=hasTheme:${theme}`);
       const header = page.locator('uai-page-header').first();
       await expect(header).toHaveClass(/hydrated/);
       await header.evaluate((el: HTMLElement & Components.UaiPageHeader) => {
@@ -36,7 +36,7 @@ test.describe('UaiPageHeader - Visual Regression', () => {
 
   test('long labels and actions remain available in a narrow viewport', async ({ page, storybook }) => {
     await page.setViewportSize({ width: 360, height: 800 });
-    await gotoStoryUrl(page, '/iframe.html?id=uai-page-header--playground&viewMode=story');
+    await gotoStoryUrl(page, '/iframe.html?id=uai-components-page-header--playground&viewMode=story');
     const header = page.locator('uai-page-header').first();
     await expect(header).toHaveClass(/hydrated/);
     await header.evaluate((el: HTMLElement & Components.UaiPageHeader) => {

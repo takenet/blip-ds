@@ -8,12 +8,12 @@ test.describe('UaiButton - Visual Regression', () => {
     ['icons', 'uai-button-icons'],
   ]) {
     test(story, async ({ storybook }) => {
-      await storybook.screenshotStory(`uai-button--${story}`, name);
+      await storybook.screenshotStory(`uai-components-button--${story}`, name);
     });
   }
 
   test('variants-and-colors in the dark theme', async ({ page, storybook }) => {
-    await gotoStoryUrl(page, '/iframe.html?id=uai-button--variants-and-colors&viewMode=story&globals=hasTheme:dark');
+    await gotoStoryUrl(page, '/iframe.html?id=uai-components-button--variants-and-colors&viewMode=story&globals=hasTheme:dark');
     await expect(storybook.root()).toHaveScreenshot('uai-button-variants-and-colors-dark.png');
   });
 });

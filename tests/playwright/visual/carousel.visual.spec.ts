@@ -6,7 +6,7 @@ test.describe('Carousel - Visual Regression', () => {
     const pendingBackgrounds: Route[] = [];
     await page.route('https://blipmediastore.blip.ai/**', route => { pendingBackgrounds.push(route); });
     try {
-      await storybook.screenshotStory('components-carousel--properties', 'carousel-default');
+      await storybook.screenshotStory('bds-components-carousel--properties', 'carousel-default');
     } finally {
       await Promise.all(pendingBackgrounds.map(route => route.abort()));
     }

@@ -3,7 +3,7 @@ import DocumentationTemplate from './pagination.mdx';
 import { BdsPagination } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/[deprecated] Pagination',
+  title: 'BDS Components/[deprecated] Pagination',
   parameters: {
     docs: {
       page: DocumentationTemplate,

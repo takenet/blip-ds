@@ -5,6 +5,8 @@
 <!-- Auto Generated Below -->
 
 
+> **[DEPRECATED]** Use `uai-progress-bar` instead.
+
 ## Properties
 
 | Property   | Attribute   | Description                                                             | Type                                                    | Default     |

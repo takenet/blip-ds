@@ -1,0 +1,45 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiSectionTitleStories from './uai-section-title.stories';
+
+<Meta isTemplate />
+
+# Section Title
+
+## Visão geral
+
+Cabeçalho semântico para abrir blocos de conteúdo e painéis analíticos abaixo do `UaiPageHeader`. Combina título em `heading/md` (`semibold`), descrição opcional em `body/base` (`regular`) e área `slot="actions"` alinhada à extremidade final.
+
+```jsx
+import { UaiButton, UaiSectionTitle, UaiThemeProvider } from 'blip-ds-react/dist/components';
+
+<UaiThemeProvider theme="light">
+  <UaiSectionTitle heading="Indicadores de atendimento" description="Volume consolidado do período">
+    <UaiButton slot="actions" variant="outline" size="short">
+      Exportar
+    </UaiButton>
+  </UaiSectionTitle>
+</UaiThemeProvider>;
+```
+
+## Playground
+
+<Canvas of={UaiSectionTitleStories.Playground} />
+<Controls of={UaiSectionTitleStories.Playground} />
+
+## Sem descrição
+
+Quando `description` está vazio ou omitido, o parágrafo secundário não é renderizado no DOM.
+
+<Canvas of={UaiSectionTitleStories.WithoutDescription} />
+
+## Com ações contextuais
+
+Use `slot="actions"` para posicionar ações secundárias da seção ao final da linha sem sobrepor o título.
+
+<Canvas of={UaiSectionTitleStories.WithActions} />
+
+## Acessibilidade e tokens
+
+- Usa `<h2>` por padrão (`headingTag="h2" | "h3" | "h4"`), preservando `<h1>` exclusivamente para o título principal da página.
+- Padding fixo do Figma: `spacing/xs` (vertical) e `spacing/md` (horizontal).
+- Tipografia: `heading-md` + `font-weight-semibold` + `content-primary` no título; `body-base` + `font-weight-regular` + `content-secondary` na descrição.

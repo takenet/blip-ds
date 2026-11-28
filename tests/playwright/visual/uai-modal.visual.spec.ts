@@ -6,7 +6,7 @@ test.describe('UaiModal - Visual Regression', () => {
   for (const theme of ['light', 'dark']) {
     test(`opened modal in the ${theme} theme`, async ({ page }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
-      await gotoStoryUrl(page, `/iframe.html?id=uai-modal--opened&viewMode=story&globals=hasTheme:${theme}`);
+      await gotoStoryUrl(page, `/iframe.html?id=uai-components-modal--opened&viewMode=story&globals=hasTheme:${theme}`);
       await expect(page.locator('uai-modal')).toHaveJSProperty('open', true);
       await expect(page).toHaveScreenshot(`uai-modal-opened-${theme}.png`);
     });

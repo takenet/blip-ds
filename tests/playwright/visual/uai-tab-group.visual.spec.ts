@@ -4,7 +4,7 @@ test.describe('UaiTabGroup — w2-uai-tabs visual', () => {
   for (const story of ['playground', 'states', 'overflow']) {
     for (const theme of ['light', 'dark']) {
       test(`Tokens / tema e estados: ${story} ${theme}`, async ({ page, storybook }) => {
-        await gotoStoryUrl(page, `/iframe.html?id=uai-tab-group--${story}&viewMode=story&globals=hasTheme:${theme}`);
+        await gotoStoryUrl(page, `/iframe.html?id=uai-components-tab-group--${story}&viewMode=story&globals=hasTheme:${theme}`);
         await expect(page.getByRole('tablist').first()).toBeVisible();
         await expect(storybook.root()).toHaveScreenshot(`uai-tab-group-${story}-${theme}.png`);
       });
@@ -12,7 +12,7 @@ test.describe('UaiTabGroup — w2-uai-tabs visual', () => {
   }
 
   test('Tokens / tema e estados: hover e pressed sem trocar seleção', async ({ page, storybook }) => {
-    await storybook.goto('uai-tab-group--playground');
+    await storybook.goto('uai-components-tab-group--playground');
     const tab = page.locator('[role="tab"]:not([aria-disabled="true"])').first();
     await tab.hover();
     await expect(storybook.root()).toHaveScreenshot('uai-tab-group-hover.png');
@@ -26,7 +26,7 @@ test.describe('UaiTabGroup — w2-uai-tabs visual', () => {
 
   for (const theme of ['light', 'dark']) {
     test(`Acessibilidade / teclado sem ativação implícita: foco ${theme}`, async ({ page, storybook }) => {
-      await gotoStoryUrl(page, `/iframe.html?id=uai-tab-group--playground&viewMode=story&globals=hasTheme:${theme}`);
+      await gotoStoryUrl(page, `/iframe.html?id=uai-components-tab-group--playground&viewMode=story&globals=hasTheme:${theme}`);
       const tabs = page.getByRole('tab');
       await tabs.first().focus();
       await page.keyboard.press('ArrowRight');
@@ -37,7 +37,7 @@ test.describe('UaiTabGroup — w2-uai-tabs visual', () => {
 
   test('Tokens / tema e estados: forced colors conserva seleção, erro e foco', async ({ page, storybook }) => {
     await page.emulateMedia({ forcedColors: 'active' });
-    await storybook.goto('uai-tab-group--states');
+    await storybook.goto('uai-components-tab-group--states');
     await page.getByRole('tab').first().focus();
     await page.keyboard.press('ArrowRight');
     await expect(storybook.root()).toHaveScreenshot('uai-tab-group-states-forced-colors.png');
@@ -45,7 +45,7 @@ test.describe('UaiTabGroup — w2-uai-tabs visual', () => {
 
   test('Tokens / movimento reduzido: badges e foco no último item com overflow', async ({ page, storybook }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await storybook.goto('uai-tab-group--overflow');
+    await storybook.goto('uai-components-tab-group--overflow');
     await page.getByRole('tab').first().focus();
     await page.keyboard.press('End');
     await page.keyboard.press('Enter');

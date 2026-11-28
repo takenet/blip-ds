@@ -10,7 +10,7 @@ import { showToast } from '../../../blip-ds-react/dist/toast';
 import DocumentationTemplate from './uai-toast.mdx';
 
 export default {
-  title: 'UAI/Toast',
+  title: 'UAI Components/Toast',
   component: UaiToast,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

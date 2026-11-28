@@ -3,7 +3,7 @@ import DocumentationTemplate from './image.mdx';
 import { BdsImage } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Image',
+  title: 'BDS Components/Image',
   parameters: {
     docs: {
       page: DocumentationTemplate,

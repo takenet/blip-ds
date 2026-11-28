@@ -7,7 +7,7 @@ const PAPER_HEIGHT = 'var(--uai-sizing-5xl)';
 const PAPER_WIDTH = 'calc(var(--uai-sizing-5xl) * 2)';
 
 export default {
-  title: 'UAI/Paper',
+  title: 'UAI Components/Paper',
   component: UaiPaper,
   parameters: {
     docs: {

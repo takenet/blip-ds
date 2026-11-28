@@ -3,7 +3,7 @@ import { UaiButton, UaiInputDate, UaiInputTime, UaiThemeProvider } from '../../.
 import DocumentationTemplate from './uai-input-time.mdx';
 
 export default {
-  title: 'UAI/Input Time',
+  title: 'UAI Components/Input Time',
   component: UaiInputTime,
   tags: ['autodocs'],
   parameters: {

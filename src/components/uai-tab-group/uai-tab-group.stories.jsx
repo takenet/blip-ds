@@ -3,7 +3,7 @@ import { UaiTabGroup, UaiTabItem, UaiThemeProvider, UaiTypo } from '../../../bli
 import DocumentationTemplate from './uai-tab-group.mdx';
 
 export default {
-  title: 'UAI/Tab Group',
+  title: 'UAI Components/Tab Group',
   component: UaiTabGroup,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

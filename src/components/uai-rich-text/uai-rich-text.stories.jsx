@@ -5,7 +5,7 @@ import colors from './uai-rich-text-colors.json';
 import features from './uai-rich-text-features.json';
 
 export default {
-  title: 'UAI/Rich Text',
+  title: 'UAI Components/Rich Text',
   component: UaiRichText,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

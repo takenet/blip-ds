@@ -1,0 +1,293 @@
+@use '../../globals/helpers' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.line-chart {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--uai-spacing-md, #{$uai-spacing-md});
+  width: 100%;
+  min-height: calc(var(--uai-sizing-4xl, #{$uai-sizing-4xl}) * 5);
+  font-family: var(--uai-font-family-sans, #{$uai-font-family-sans});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+
+  &--empty {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.line-chart__empty {
+  margin: 0;
+  font-size: var(--uai-body-base-font-size, #{$uai-body-base-font-size});
+  line-height: var(--uai-body-base-line-height, #{$uai-body-base-line-height});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+.line-chart__layout {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: var(--uai-spacing-sm, #{$uai-spacing-sm});
+  row-gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  width: 100%;
+}
+
+.line-chart__y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.line-chart__y-tick {
+  font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  letter-spacing: var(--uai-letter-spacing-normal, #{$uai-letter-spacing-normal});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  white-space: nowrap;
+}
+
+.line-chart__plot {
+  position: relative;
+  min-width: 0;
+  min-height: calc(var(--uai-sizing-4xl, #{$uai-sizing-4xl}) * 3);
+  height: 100%;
+  border-radius: var(--uai-radius-sm, #{$uai-radius-sm});
+
+  @include uai-focus-visible;
+}
+
+.line-chart__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.line-chart__grid-line,
+.line-chart__guide-line {
+  stroke: var(--uai-border-default, #{$uai-border-default});
+}
+
+.line-chart__curve {
+  fill: none;
+  stroke: currentColor;
+  pointer-events: none;
+}
+
+.line-chart__hit {
+  cursor: crosshair;
+}
+
+.line-chart__color {
+  &--ai-start {
+    color: var(--uai-accent-ai-start, #{$uai-accent-ai-start});
+  }
+
+  &--ai-middle {
+    color: var(--uai-accent-ai-middle, #{$uai-accent-ai-middle});
+  }
+
+  &--ai-end {
+    color: var(--uai-accent-ai-end, #{$uai-accent-ai-end});
+  }
+
+  &--blue {
+    color: var(--uai-fixed-blue, #{$uai-fixed-blue});
+  }
+
+  &--success {
+    color: var(--uai-feedback-success, #{$uai-feedback-success});
+  }
+
+  &--warning {
+    color: var(--uai-feedback-warning, #{$uai-feedback-warning});
+  }
+
+  &--error {
+    color: var(--uai-feedback-error, #{$uai-feedback-error});
+  }
+}
+
+.line-chart__points {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.line-chart__point {
+  position: absolute;
+  box-sizing: border-box;
+  width: var(--uai-sizing-xs, #{$uai-sizing-xs});
+  height: var(--uai-sizing-xs, #{$uai-sizing-xs});
+  border: var(--uai-border-width-thick, #{$uai-border-width-thick}) solid
+    var(--uai-surface-paper, #{$uai-surface-paper});
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+
+  @include uai-transition(transform, fast);
+}
+
+.line-chart__tooltip {
+  position: absolute;
+  top: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  z-index: var(--uai-layer-content, #{$uai-layer-content});
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  min-width: var(--uai-width-menu, #{$uai-width-menu});
+  padding: var(--uai-spacing-md, #{$uai-spacing-md});
+  border: var(--uai-border-width-default, #{$uai-border-width-default}) solid
+    var(--uai-border-default, #{$uai-border-default});
+  border-radius: var(--uai-radius-md, #{$uai-radius-md});
+  background-color: var(--uai-surface-paper, #{$uai-surface-paper});
+  box-shadow: var(--uai-elevation-2, #{$uai-elevation-2});
+  pointer-events: none;
+
+  @include uai-transition((left, transform), fast);
+}
+
+.line-chart__tooltip-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--uai-spacing-sm, #{$uai-spacing-sm});
+}
+
+.line-chart__tooltip-title {
+  font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
+  font-weight: var(--uai-font-weight-bold, #{$uai-font-weight-bold});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.line-chart__tooltip-period {
+  font-size: var(--uai-caption-font-size, #{$uai-caption-font-size});
+  line-height: var(--uai-caption-line-height, #{$uai-caption-line-height});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+.line-chart__tooltip-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--uai-spacing-2xs, #{$uai-spacing-2xs});
+}
+
+.line-chart__tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+  font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.line-chart__dot {
+  flex: none;
+  width: var(--uai-sizing-2xs, #{$uai-sizing-2xs});
+  height: var(--uai-sizing-2xs, #{$uai-sizing-2xs});
+  border-radius: var(--uai-radius-full, #{$uai-radius-full});
+  background-color: currentColor;
+}
+
+.line-chart__tooltip-label {
+  color: var(--uai-content-secondary, #{$uai-content-secondary});
+}
+
+.line-chart__tooltip-value {
+  margin-left: auto;
+  font-weight: var(--uai-font-weight-semibold, #{$uai-font-weight-semibold});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  white-space: nowrap;
+}
+
+.line-chart__x-axis {
+  position: relative;
+  width: 100%;
+  height: var(--uai-sizing-md, #{$uai-sizing-md});
+}
+
+.line-chart__x-tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+  white-space: nowrap;
+
+  &--start {
+    transform: translateX(0);
+  }
+
+  &--end {
+    transform: translateX(-100%);
+  }
+}
+
+.line-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--uai-spacing-lg, #{$uai-spacing-lg});
+}
+
+.line-chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--uai-spacing-xs, #{$uai-spacing-xs});
+}
+
+.line-chart__legend-glyph {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--uai-sizing-sm, #{$uai-sizing-sm});
+  height: var(--uai-sizing-2xs, #{$uai-sizing-2xs});
+}
+
+.line-chart__legend-line {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.line-chart__legend-label {
+  font-size: var(--uai-body-sm-font-size, #{$uai-body-sm-font-size});
+  line-height: var(--uai-body-sm-line-height, #{$uai-body-sm-line-height});
+  font-weight: var(--uai-font-weight-regular, #{$uai-font-weight-regular});
+  color: var(--uai-content-primary, #{$uai-content-primary});
+}
+
+.line-chart__series {
+  @include uai-enter-animation(uai-chart-reveal);
+}
+
+// Reveals the chart from left to right on entrance.
+@keyframes uai-chart-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}

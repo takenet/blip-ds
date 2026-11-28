@@ -4,11 +4,16 @@
 import figma from 'figma';
 
 const instance = figma.selectedInstance;
-const label = instance.getString('Label');
-const text = instance.getString('Text');
-const helperMessage = instance.getString('Helper Message');
-const errorMessage = instance.getString('Error Message');
-const successMessage = instance.getString('Success Message');
+// Label, Text and messages are text layers (not component properties) in this node.
+const layer = (name) => {
+  const node = instance.findText(name);
+  return node && node.type !== 'ERROR' ? node.textContent || '' : '';
+};
+const label = layer('Label');
+const text = layer('Text');
+const helperMessage = layer('Helper Message');
+const errorMessage = layer('Error Message');
+const successMessage = layer('Success Message');
 const visibility = instance.getEnum('Visibility', { Hidden: 'hidden', Revealed: 'revealed' });
 const feedback = instance.getEnum('Feedback', { Default: 'default', Error: 'danger', Success: 'success' });
 const state = instance.getEnum('State', {
@@ -20,9 +25,11 @@ const state = instance.getEnum('State', {
   Readonly: 'readonly',
 });
 const showStrength = instance.getBoolean('Show Strength');
-const strengthLevel = showStrength
-  ? instance.getEnum('Level', { None: 'none', Low: 'low', Medium: 'medium', High: 'high' })
-  : 'none';
+const strength = showStrength ? instance.findInstance('Password Strength') : null;
+const strengthLevel =
+  strength && strength.type === 'INSTANCE'
+    ? strength.getEnum('Level', { None: 'none', Low: 'low', Medium: 'medium', High: 'high' })
+    : 'none';
 
 if (!label.trim()) throw new Error('A password field needs a visible label.');
 

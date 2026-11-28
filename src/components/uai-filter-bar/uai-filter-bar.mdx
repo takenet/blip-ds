@@ -1,0 +1,64 @@
+import { Canvas, Meta, Controls } from '@storybook/addon-docs/blocks';
+import * as UaiFilterBarStories from './uai-filter-bar.stories';
+
+<Meta isTemplate />
+
+# Filter Bar
+
+Barra de filtragem composta para painéis analíticos e listagens, reunindo seletor de período, busca rápida, chips de filtros ativos e popover categorizado em dois níveis. Para um único campo de busca isolado, use `UaiInput`.
+
+## Visão geral
+
+Envolva a aplicação em `UaiThemeProvider`. O `UaiFilterBar` compõe `UaiInput`, `UaiButton` e a primitiva `UaiOverlay` na top layer.
+
+## Playground
+
+<Canvas of={UaiFilterBarStories.Playground} />
+
+<Controls of={UaiFilterBarStories.Playground} />
+
+## Como usar
+
+<Canvas of={UaiFilterBarStories.Usage} sourceState="shown" />
+
+## Estados
+
+Suporta estado inicial sem filtros aplicados e estado com múltiplos chips categorizados removíveis.
+
+<Canvas of={UaiFilterBarStories.States} />
+
+## Comportamento
+
+- Selecionar um período atualiza `aria-pressed="true"` e emite `uaiPeriodChange` (`test/uai-filter-bar.spec.tsx`).
+- Digitar na busca emite `uaiSearchChange` (`test/uai-filter-bar.spec.tsx`).
+- O botão `Filtrar` abre o popover em dois níveis (Categorias → Opções com busca opcional), aplica seleções em `uaiFilterChange`, permite remover categorias direto pelo chip e fecha com `Escape` ou clique externo devolvendo foco ao gatilho (`test/uai-filter-bar.spec.tsx` e `test/uai-filter-bar.e2e.ts`).
+- Respeita `prefers-reduced-motion: reduce` (`test/uai-filter-bar.e2e.ts`).
+
+| Evento React | Evento Custom Element | Quando dispara | `detail` |
+| --- | --- | --- | --- |
+| `onUaiPeriodChange` | `uaiPeriodChange` | Clique em um preset de período | `{ id, label }` |
+| `onUaiSearchChange` | `uaiSearchChange` | Alteração no campo de busca | `{ value }` |
+| `onUaiFilterChange` | `uaiFilterChange` | Aplicação, limpeza ou remoção de chip | `{ filters }` |
+| `onUaiFilterOpenChange` | `uaiFilterOpenChange` | Abertura ou fechamento do popover | `{ open }` |
+
+## Acessibilidade
+
+- Grupo de períodos expõe `role="group"` com nome acessível e botões `aria-pressed`.
+- Região de chips usa `aria-live="polite"`, com botões independentes para editar e remover cada categoria.
+- Popover abre com `role="dialog"` via `UaiOverlay` e restaura o foco ao fechar com `Escape`.
+
+## Tokens
+
+| Parte | Tokens |
+| --- | --- |
+| Contêiner | `--uai-surface-paper`, `--uai-border-default`, `--uai-border-width-default`, `--uai-radius-xl`, `--uai-spacing-lg`, `--uai-spacing-xs`, `--uai-width-content` |
+| Grupo de períodos e chips | `--uai-control-height-medium`, `--uai-control-height-short`, `--uai-radius-lg`, `--uai-action-outline-hover`, `--uai-action-outline-pressed`, `--uai-action-primary-default`, `--uai-action-primary-foreground` |
+| Painel flutuante | `--uai-width-panel`, `--uai-elevation-2`, `--uai-duration-moderate`, `--uai-easing-standard` |
+
+## Migração do `bds-filter-bar`
+
+Componente novo, sem equivalente `bds-*`.
+
+## Design
+
+- [UaiFilterBar no Figma UAI Core](https://www.figma.com/design/4H8ECPPE83nfyLcIvhz9I5/UAI-Core---Components?node-id=4649-20852)

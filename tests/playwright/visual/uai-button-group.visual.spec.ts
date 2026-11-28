@@ -8,13 +8,13 @@ test.describe('UaiButtonGroup - Visual Regression', () => {
   ]) {
     test(story, async ({ page, storybook }) => {
       await page.emulateMedia({ reducedMotion: 'reduce' });
-      await storybook.screenshotStory(`uai-button-group--${story}`, name);
+      await storybook.screenshotStory(`uai-components-button-group--${story}`, name);
     });
   }
 
   test('selected in the dark theme', async ({ page, storybook }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await gotoStoryUrl(page, '/iframe.html?id=uai-button-group--selected&viewMode=story&globals=hasTheme:dark');
+    await gotoStoryUrl(page, '/iframe.html?id=uai-components-button-group--selected&viewMode=story&globals=hasTheme:dark');
     await expect(storybook.root()).toHaveScreenshot('uai-button-group-selected-dark.png');
   });
 });

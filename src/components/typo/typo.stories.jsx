@@ -3,7 +3,7 @@ import DocumentationTemplate from './typo.mdx';
 import { BdsTypo } from '../../../blip-ds-react/dist/components';
 
 export default {
-  title: 'Components/Typo',
+  title: 'BDS Components/Typo',
   parameters: {
     docs: {
       page: DocumentationTemplate,

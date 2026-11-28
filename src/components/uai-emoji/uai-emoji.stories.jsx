@@ -4,7 +4,7 @@ import assetConfig from '../../utils/asset-config.json';
 import DocumentationTemplate from './uai-emoji.mdx';
 
 export default {
-  title: 'UAI/Emoji',
+  title: 'UAI Components/Emoji',
   component: UaiEmoji,
   tags: ['autodocs'],
   parameters: {

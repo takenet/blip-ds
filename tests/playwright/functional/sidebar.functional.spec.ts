@@ -2,7 +2,7 @@ import { test, expect, gotoStoryUrl } from '../fixtures/storybook.fixture';
 
 test.describe('Sidebar - Functional Tests', () => {
   test.beforeEach(async ({ storybook }) => {
-    await storybook.goto('components-sidebar--properties');
+    await storybook.goto('bds-components-sidebar--properties');
   });
 
   test('renders correctly', async ({ page }) => {

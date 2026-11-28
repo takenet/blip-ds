@@ -3,7 +3,7 @@ import { UaiCheckbox, UaiThemeProvider } from '../../../blip-ds-react/dist/compo
 import DocumentationTemplate from './uai-checkbox.mdx';
 
 export default {
-  title: 'UAI/Checkbox',
+  title: 'UAI Components/Checkbox',
   component: UaiCheckbox,
   tags: ['autodocs'],
   parameters: {

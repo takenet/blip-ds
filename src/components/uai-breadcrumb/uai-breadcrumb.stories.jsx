@@ -3,7 +3,7 @@ import { UaiBreadcrumb, UaiThemeProvider, UaiTypo } from '../../../blip-ds-react
 import DocumentationTemplate from './uai-breadcrumb.mdx';
 
 export default {
-  title: 'UAI/Breadcrumb',
+  title: 'UAI Components/Breadcrumb',
   component: UaiBreadcrumb,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

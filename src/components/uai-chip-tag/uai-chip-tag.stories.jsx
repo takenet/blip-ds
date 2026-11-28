@@ -5,7 +5,7 @@ import DocumentationTemplate from './uai-chip-tag.mdx';
 const COLORS = ['system', 'outline', 'info', 'success', 'warning', 'danger', 'disabled'];
 
 export default {
-  title: 'UAI/Chip Tag',
+  title: 'UAI Components/Chip Tag',
   component: UaiChipTag,
   tags: ['autodocs'],
   parameters: { docs: { page: DocumentationTemplate } },

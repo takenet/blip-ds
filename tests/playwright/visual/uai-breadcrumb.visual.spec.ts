@@ -4,7 +4,7 @@ import type { Components } from '../../../src/components';
 test.describe('UaiBreadcrumb - Visual Regression', () => {
   for (const theme of ['light', 'dark']) {
     test(`collapsed and expanded in ${theme}`, async ({ page, storybook }) => {
-      await gotoStoryUrl(page, `/iframe.html?id=uai-breadcrumb--playground&viewMode=story&globals=hasTheme:${theme}`);
+      await gotoStoryUrl(page, `/iframe.html?id=uai-components-breadcrumb--playground&viewMode=story&globals=hasTheme:${theme}`);
       const breadcrumb = page.locator('uai-breadcrumb').first();
       await expect(breadcrumb).toHaveClass(/hydrated/);
       await breadcrumb.evaluate((el: HTMLElement & Components.UaiBreadcrumb) => {
@@ -24,7 +24,7 @@ test.describe('UaiBreadcrumb - Visual Regression', () => {
     });
 
     test(`editor focus and invalid draft in ${theme}`, async ({ page, storybook }) => {
-      await gotoStoryUrl(page, `/iframe.html?id=uai-breadcrumb--playground&viewMode=story&globals=hasTheme:${theme}`);
+      await gotoStoryUrl(page, `/iframe.html?id=uai-components-breadcrumb--playground&viewMode=story&globals=hasTheme:${theme}`);
       const breadcrumb = page.locator('uai-breadcrumb').first();
       await expect(breadcrumb).toHaveClass(/hydrated/);
       await breadcrumb.evaluate((el: HTMLElement & Components.UaiBreadcrumb) => {
